@@ -24,11 +24,11 @@
 
 html_df <- function(urlx){
   z <- tibble(url = urlx) %>%
-    mutate(page = get_pages(url)) %>%
-    mutate(url2 = get_nice_url(page)) %>%
-    mutate(html = get_html(page)) %>%
-    mutate(title = get_title(html, urls = url2)) %>%
-    mutate(lang = get_language(html)) %>%
+    mutate(page   = get_pages(url)) %>%
+    mutate(url2   = get_nice_url(page)) %>%
+    mutate(html   = get_html(page)) %>%
+    mutate(title  = get_title(html, urls = url2)) %>%
+    mutate(lang   = get_language(html)) %>%
     select(url, title, lang, url2, page, html)
   return(z)
 }

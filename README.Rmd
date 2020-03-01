@@ -13,7 +13,7 @@ To install the package:
 remotes::install_github('alastairrushworth/htmldf)
 ```
 
-
+To get summaries of two webpages:
 ```{r}
 library(htmldf)
 urlx <- c("https://ropensci.org/blog/2020/02/21/ropensci-leadership/",

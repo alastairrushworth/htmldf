@@ -10,3 +10,4 @@ test_that("html_df works", {
   expect_equal(z$lang[3], 'es')
   expect_that(is.na(z$lang[4]), equals(TRUE))
 })
+

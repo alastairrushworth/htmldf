@@ -1,0 +1,22 @@
+---
+output: github_document
+---
+
+
+# htmldf
+
+From a vector of urls, `htmldf::html_df()` will attempt to fetch the html, get the page title and the language, returning the result as a dataframe.
+
+To install the package:
+
+```{r, eval=FALSE}
+remotes::install_github('alastairrushworth/htmldf)
+```
+
+
+```{r}
+library(htmldf)
+urlx <- c("https://ropensci.org/blog/2020/02/21/ropensci-leadership/",
+           "https://es.wikipedia.org/wiki/Wikipedia_en_espa%C3%B1ol")
+html_df(urlx)
+```

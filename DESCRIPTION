@@ -6,9 +6,8 @@ Author: Alastair Rushworth
 Maintainer: Alastair Rushworth <alastairmrushworth@gmail.com>
 Description: Simple tabular webpage summaries.  Provides wrappers to httr and rvest.  Uses cld3 for language detection. 
 License: GPL-2
-Imports: cld3, httr, progress
+Imports: cld3, httr, progress, tools
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 7.0.2
-Suggests: 
-    testthat
+Suggests: testthat

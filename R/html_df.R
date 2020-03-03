@@ -5,10 +5,19 @@
 #'
 #' @param urlx A character vector containing urls
 #'
-#' @return A tibble with columns \code{url} the original vector of urls;
-#' \code{title} the page title' \code{url2} the final url if the original was a
-#' redirect; \code{page} the result of a \code{GET} command; \code{html} the
-#' html content.
+#' @return A tibble with columns 
+#' \itemize{
+#' \item \code{url} the original vector of urls
+#' \item \code{title} the page title
+#' \item \code{lang} the langauge of the webpage
+#' \item \code{url2} the final url (for example, if the original was a redirect) 
+#' \item \code{images} list column containing page images
+#' \item \code{twitter} comma separated string containing embedded links to twitter profiles 
+#' \item \code{github} comma separated string containing embedded links to github profiles 
+#' \item \code{linkedin} comma separated string containing embedded links to linkedin profiles 
+#' \item \code{page} list column containing results of a \code{GET} command; 
+#' \item \code{html} list column containing page xml documents
+#' }
 #'
 #' @author Alastair Rushworth
 #' @examples
@@ -19,6 +28,7 @@
 #' @importFrom tibble tibble
 #' @importFrom dplyr mutate
 #' @importFrom dplyr select
+#' @importFrom dplyr bind_cols
 #' @importFrom magrittr `%>%`
 #' @export
 
@@ -29,7 +39,9 @@ html_df <- function(urlx){
     mutate(html   = get_html(page)) %>%
     mutate(title  = get_title(html, urls = url2)) %>%
     mutate(lang   = get_language(html)) %>%
-    select(url, title, lang, url2, page, html)
+    mutate(images = get_imgs(page))
+  z <- bind_cols(z, get_social(z$page)) %>%
+    select(url, title, lang, url2, images, twitter, github, linkedin, page, html)
   return(z)
 }
 

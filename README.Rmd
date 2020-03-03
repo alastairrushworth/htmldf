@@ -5,7 +5,7 @@ output: github_document
 
 # htmldf
 
-From a vector of urls, `htmldf::html_df()` will attempt to fetch the html, get the page title and the language, returning the result as a dataframe.
+From a vector of urls, `htmldf::html_df()` will attempt to fetch the html, page title, language, image urls and social tags returning the result as a dataframe.
 
 To install the package:
 

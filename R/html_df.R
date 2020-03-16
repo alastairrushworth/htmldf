@@ -39,9 +39,10 @@ html_df <- function(urlx){
     mutate(html   = get_html(page)) %>%
     mutate(title  = get_title(html, urls = url2)) %>%
     mutate(lang   = get_language(html)) %>%
-    mutate(images = get_imgs(page))
+    mutate(images = get_imgs(page)) %>%
+    mutate(rss    = get_rss(page)) 
   z <- bind_cols(z, get_social(z$page)) %>%
-    select(url, title, lang, url2, images, twitter, github, linkedin, page, html)
+    select(url, title, lang, url2, rss, images, twitter, github, linkedin, page, html)
   return(z)
 }
 

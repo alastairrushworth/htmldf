@@ -17,7 +17,7 @@ get_social_links <- function(page){
     grep('twitter.com/', .,  value = TRUE) %>%
     gsub('\\?(.*)', '', .) %>% # remove query components
     gsub('/status/(.*)', '', .) %>% # remove statuses
-    grep('https://twitter.com/(?!share$)(?!status/)(?!search$)(?!hashtag/)(?!intent/)', ., value = TRUE, perl = TRUE) %>%
+    grep('twitter.com/(?!share$)(?!status/)(?!search$)(?!hashtag/)(?!intent/)', ., value = TRUE, perl = TRUE) %>%
     unique(.) %>%
     sort(.)
   # linkedin links

@@ -14,10 +14,12 @@ get_social_links <- function(page){
   # twitter links - remove shares and queries
   twitter  <- links %>% 
     gsub(',', '', .) %>%
-    grep('twitter.com/', .,  value = TRUE) %>%
+    grep('(?<!developer\\.)twitter\\.com/', .,  value = TRUE, perl = TRUE) %>%
     gsub('\\?(.*)', '', .) %>% # remove query components
-    gsub('/status/(.*)', '', .) %>% # remove statuses
+    gsub('/status/(.*)|/statuses/(.*)', '', .) %>% # remove status
     grep('twitter.com/(?!share$)(?!status/)(?!search$)(?!hashtag/)(?!intent/)', ., value = TRUE, perl = TRUE) %>%
+    gsub('http://', 'https://', .) %>% # use secure http
+    gsub('www\\.twitter\\.com', 'twitter.com', .) %>% # remove the 'www.'
     unique(.) %>%
     sort(.)
   # linkedin links

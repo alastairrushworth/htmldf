@@ -9,8 +9,9 @@
 #' \itemize{
 #' \item \code{url} the original vector of urls
 #' \item \code{title} the page title
-#' \item \code{lang} the langauge of the webpage
-#' \item \code{url2} the final url (for example, if the original was a redirect) 
+#' \item \code{lang} a guess of the page language
+#' \item \code{url2} the fetched url (for example, if the original was a redirect) 
+#' \item \code{rss} a list of embedded rss feeds found on the page
 #' \item \code{images} list column containing page images
 #' \item \code{twitter} comma separated string containing embedded links to twitter profiles 
 #' \item \code{github} comma separated string containing embedded links to github profiles 

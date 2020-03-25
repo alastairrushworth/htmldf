@@ -2,6 +2,7 @@
 
 export(get_title)
 export(html_df)
+importFrom(R.utils,withTimeout)
 importFrom(cld3,detect_language)
 importFrom(dplyr,bind_cols)
 importFrom(dplyr,bind_rows)

@@ -1,12 +1,17 @@
 #' @importFrom xml2 read_html
-get_html <- function(page){
+#' @importFrom R.utils withTimeout
+get_html <- function(page, show_progress = TRUE){
+  if(show_progress) message('Extracting html content...\r', appendLF = FALSE)
   n_page    <- length(page)
   html_out  <- vector('list', length = n_page)
   pb        <- start_progress(prefix = "Getting html", total = n_page)
-  for(i in 1:n_page){
+  for(i in seq_along(page)){
     update_progress(bar = pb, iter = i, total = n_page, what = '')
     if(class(page[[i]]) == 'response') {
-      html_out[[i]] <- try(page[[i]] %>% xml2::read_html(), silent = TRUE)
+      html_out[[i]] <- try(withTimeout(xml2::read_html(page[[i]]), 
+                                       onTimeout = 'error', 
+                                       timeout = 10), 
+                           silent = TRUE)
     } else {
       html_out[[i]] <- NA
     }
@@ -14,5 +19,6 @@ get_html <- function(page){
       html_out[[i]] <- NA
     }
   }
+  if(show_progress) flush.console()
   return(html_out)
 }

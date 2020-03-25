@@ -4,10 +4,16 @@
 \alias{html_df}
 \title{Get a tabular summary of webpage content from a vector of urls}
 \usage{
-html_df(urlx)
+html_df(urlx, show_progress = TRUE, max_size = NULL)
 }
 \arguments{
-\item{urlx}{A character vector containing urls}
+\item{urlx}{A character vector containing urls.}
+
+\item{show_progress}{Logical, defaults to \code{TRUE}. Whether to print progress 
+messages to the console.}
+
+\item{max_size}{Maximum size in bytes of pages to attempt to parse, defaults to \code{NULL}.
+Very large pages can cause \code{read_html()} to hang.}
 }
 \value{
 A tibble with columns 
@@ -21,7 +27,7 @@ A tibble with columns
 \item \code{twitter} comma separated string containing embedded links to twitter profiles 
 \item \code{github} comma separated string containing embedded links to github profiles 
 \item \code{linkedin} comma separated string containing embedded links to linkedin profiles 
-\item \code{page} list column containing results of a \code{GET} command; 
+\item \code{size} the size of the downloaded page in bytes
 \item \code{html} list column containing page xml documents
 }
 }

@@ -1,6 +1,7 @@
 #' @importFrom cld3 detect_language
 #' @importFrom rvest html_text
-get_language <- function(page){
+get_language <- function(page, show_progress = TRUE){
+  if(show_progress) message('Inferring page language...\r', appendLF = FALSE)
   lang_vec  <- character(length = length(page))
   for(i in 1:length(page)){
     if('xml_document' %in% class(page[[i]])){
@@ -15,5 +16,6 @@ get_language <- function(page){
       lang_vec[i] <- NA
     }
   }
+  if(show_progress) flush.console()
   return(lang_vec)
 }

@@ -2,7 +2,8 @@
 #' @importFrom rvest html_nodes
 #' @importFrom rvest html_text
 #' @importFrom urltools path
-get_title <- function(page, urls){
+get_title <- function(page, urls, show_progress = TRUE){
+  if(show_progress) message('Finding page titles...\r', appendLF = FALSE)
   n_page     <- length(page)
   title_out  <- vector('character', length = n_page)
   pb         <- start_progress(prefix = "Page titles", total = n_page)
@@ -36,6 +37,9 @@ get_title <- function(page, urls){
   title_out <- gsub('\\\n|\\\t|\\\r', '', title_out)
   # replace dashes with bullets
   title_out <- gsub(' - |: | – ', ' • ', title_out)
+  # remove trailling / leading white space
+  title_out <- gsub('^\\s+|\\s+$', '', title_out)
+  if(show_progress) flush.console()
   return(title_out)
 }
 

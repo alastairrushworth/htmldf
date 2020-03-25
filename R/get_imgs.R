@@ -3,30 +3,32 @@
 #' @importFrom tools file_ext
 #' @importFrom xml2 url_absolute
 #' @importFrom xml2 xml_url
-#' @importFrom xml2 read_html
 
-get_img_links <- function(page){
+get_img_links <- function(html_content, url){
   # Extract the link text
-  link_ <- page %>%
-    xml2::read_html() %>%
+  link_ <- html_content %>%
     rvest::html_nodes("img") %>%
     rvest::html_attr('src') %>%
-    xml2::url_absolute(base = page$url) %>%
+    xml2::url_absolute(base = url) %>%
     unique(.) %>%
     sort(.)
   # return vector of links
   return(link_)
 }
 
-get_imgs <- function(pages){
-  img_list <- vector("list", length = length(pages))
-  for(i in seq_along(pages)){
-    links_vec <- try(get_img_links(pages[[i]]), silent = TRUE)
+get_imgs <- function(html_list, urls, show_progress = TRUE){
+  if(show_progress) message('Extracting image links...\r', appendLF = FALSE)
+  img_list <- vector("list", length = length(html_list))
+  for(i in seq_along(html_list)){
+    links_vec <- try(get_img_links(html_list[[i]], url = urls[i]), silent = TRUE)
     if(!'try-error' %in% class(links_vec)){
-      img_list[[i]] <- tibble(image_url = links_vec, image_ext = file_ext(links_vec))
+      img_list[[i]] <- tibble(image_url = links_vec, 
+                              image_ext = file_ext(links_vec))
     } else {
-      img_list[[i]] <- tibble(image_url = NA, image_ext = NA)
+      img_list[[i]] <- tibble(image_url = NA, 
+                              image_ext = NA)
     }
   }
+  if(show_progress) flush.console()
   return(img_list)
 }

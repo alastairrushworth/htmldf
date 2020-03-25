@@ -6,9 +6,8 @@
 #' @importFrom xml2 xml_url
 #' @importFrom xml2 read_html
 
-get_social_links <- function(page){
-  x <- page %>% read_html()
-  links    <- x %>% html_nodes("a") %>% html_attr('href') %>% tolower() %>% unique()
+get_social_links <- function(html_content){
+  links    <- html_content %>% html_nodes("a") %>% html_attr('href') %>% tolower() %>% unique()
   # remove empty links
   links <- links[!links == '']
   # twitter links - remove shares and queries
@@ -17,7 +16,8 @@ get_social_links <- function(page){
     grep('(?<!developer\\.)twitter\\.com/', .,  value = TRUE, perl = TRUE) %>%
     gsub('\\?(.*)', '', .) %>% # remove query components
     gsub('/status/(.*)|/statuses/(.*)', '', .) %>% # remove status
-    grep('twitter.com/(?!share$)(?!status/)(?!search$)(?!hashtag/)(?!intent/)', ., value = TRUE, perl = TRUE) %>%
+    grep('twitter.com/(?!share$)(?!status/)(?!search$)(?!hashtag/)(?!intent/)', 
+         ., value = TRUE, perl = TRUE) %>%
     gsub('http://', 'https://', .) %>% # use secure http
     gsub('www\\.twitter\\.com', 'twitter.com', .) %>% # remove the 'www.'
     unique(.) %>%
@@ -25,16 +25,21 @@ get_social_links <- function(page){
   # linkedin links
   linkedin <- links %>% grep('linkedin.com/', ., value = TRUE)
   # github links
-  github   <- links %>% grep('https://github.com/(?!security$)(?!events$)(?!about$)(?!pricing$)(?!contact$)(?!.*/)([a-z0-9]+)', ., value = TRUE, perl = TRUE)
+  github   <- links %>% grep('https://github.com/(?!security$)(?!events$)\
+                             (?!about$)(?!pricing$)(?!contact$)(?!.*/)([a-z0-9]+)', 
+                             ., value = TRUE, perl = TRUE)
   linklist <- lapply(list(twitter, github, linkedin), paste, collapse = ",")
-  social   <- tibble(twitter = linklist[[1]], github = linklist[[2]], linkedin = linklist[[3]])
+  social   <- tibble(twitter  = linklist[[1]], 
+                     github   = linklist[[2]], 
+                     linkedin = linklist[[3]])
   return(social)
 }
 
-get_social <- function(pages){
-  social_list <- vector("list", length = length(pages))
-  for(i in seq_along(pages)){
-    soc_df <- try(get_social_links(pages[[i]]), silent = TRUE)
+get_social <- function(html_list, show_progress = TRUE){
+  if(show_progress) message('Finding social handles...\r', appendLF = FALSE)
+  social_list <- vector("list", length = length(html_list))
+  for(i in seq_along(html_list)){
+    soc_df <- try(get_social_links(html_list[[i]]), silent = TRUE)
     if(!'try-error' %in% class(soc_df)){
       social_list[[i]] <- soc_df
     } else {

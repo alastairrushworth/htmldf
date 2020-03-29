@@ -40,9 +40,8 @@ html_df <- function(urlx, show_progress = TRUE, max_size = NULL){
   
   # fetch the pages from url and exract url & size from header
   z <- tibble(url = urlx) %>%
-    mutate(page   = get_pages(url, show_progress = show_progress)) %>%
-    mutate(size   = get_size(page, show_progress = show_progress)) %>%
-    mutate(url2   = get_nice_url(page, show_progress = show_progress)) 
+    mutate(page   = get_pages(url, show_progress = show_progress))  %>%
+    bind_cols(get_headers(.$page))
   
   # if any pages exceed the max size, replace page with NA
   if(!is.null(max_size)) z$page[z$size > max_size] <- NA
@@ -56,9 +55,12 @@ html_df <- function(urlx, show_progress = TRUE, max_size = NULL){
     mutate(rss    = get_rss(html, urls = url2, show_progress = show_progress)) 
   
   # get social handles, reorder columns and return
-  z <- bind_cols(z, get_social(z$html, show_progress = show_progress)) %>%
+  z <- bind_cols(z, 
+                 get_social(z$html, show_progress = show_progress)) %>%
     select(url, title, lang, url2, rss, images, 
-           twitter, github, linkedin, size, html)
+           twitter, github, linkedin, size, server, html)
+  
+  # progress print and flush
   if(show_progress){
     flush.console()
     message('Done.                         ', appendLF = FALSE)

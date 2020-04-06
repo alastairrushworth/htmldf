@@ -52,13 +52,14 @@ html_df <- function(urlx, show_progress = TRUE, max_size = NULL){
     mutate(title  = get_title(html, urls = url2, show_progress = show_progress)) %>%
     mutate(lang   = get_language(html, show_progress = show_progress)) %>%
     mutate(images = get_imgs(html, urls = url2, show_progress = show_progress)) %>%
-    mutate(rss    = get_rss(html, urls = url2, show_progress = show_progress)) 
+    mutate(rss    = get_rss(html, urls = url2, show_progress = show_progress)) %>%
+    mutate(generator = get_generator(html, show_progress = show_progress))
   
   # get social handles, reorder columns and return
   z <- bind_cols(z, 
                  get_social(z$html, show_progress = show_progress)) %>%
     select(url, title, lang, url2, rss, images, 
-           twitter, github, linkedin, size, server, html)
+           twitter, github, linkedin, size, server, generator, html)
   
   # progress print and flush
   if(show_progress){

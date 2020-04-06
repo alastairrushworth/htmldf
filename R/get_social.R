@@ -20,18 +20,19 @@ get_social_links <- function(html_content){
          ., value = TRUE, perl = TRUE) %>%
     gsub('http://', 'https://', .) %>% # use secure http
     gsub('www\\.twitter\\.com', 'twitter.com', .) %>% # remove the 'www.'
+    gsub('https://twitter.com/', '@', .) %>%# drop scheme and domain, leaving handle
     unique(.) %>%
-    sort(.)
+    sort(.) 
   # linkedin links
   linkedin <- links %>% grep('linkedin.com/', ., value = TRUE)
   # github links
   github   <- links %>% grep('https://github.com/(?!security$)(?!events$)\
                              (?!about$)(?!pricing$)(?!contact$)(?!.*/)([a-z0-9]+)', 
                              ., value = TRUE, perl = TRUE)
-  linklist <- lapply(list(twitter, github, linkedin), paste, collapse = ",")
-  social   <- tibble(twitter  = linklist[[1]], 
-                     github   = linklist[[2]], 
-                     linkedin = linklist[[3]])
+  # combine and return a dataframe
+  social   <- tibble(twitter  = list(twitter), 
+                     github   = list(github), 
+                     linkedin = list(linkedin))
   return(social)
 }
 

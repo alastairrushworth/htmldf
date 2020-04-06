@@ -15,7 +15,7 @@ get_headers <- function(pages, show_progress = TRUE){
       try_url <- try(pages[[i]]$url, silent = TRUE)
       # add to vectors if no error
       size_out[i] <- ifelse('try_error' %in% class(try_size), NA, try_size)
-      server_out[i] <- ifelse('try_error' %in% class(try_server), NA, try_server)
+      server_out[i] <- ifelse(any(c('try_error', 'NULL') %in% class(try_server)), NA, try_server)
       url_out[i] <- ifelse('try_error' %in% class(try_url), NA, try_url)
     } else {
       size_out[i] <- server_out[i] <- url_out[i] <- NA

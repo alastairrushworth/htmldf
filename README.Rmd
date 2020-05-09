@@ -5,14 +5,14 @@ output: github_document
 
 # htmldf
 
-The package `htmldf` contains a single function `html_df()` which accepts a vector of urls as an input and from each will attempt to download each page, extract and parse the html.  The result is returned as a `tibble` where each row corresponds to a document, and the columns contain useful page attributes extracted from the html, including:
+The package `htmldf` contains a single function `html_df()` which accepts a vector of urls as an input and from each will attempt to download each page, extract and parse the html.  The result is returned as a `tibble` where each row corresponds to a document, and the columns contain page attributes and metadata extracted from the html, including:
 
 + page title
-+ language
++ inferred language
 + RSS feeds
 + image links
 + twitter, github and linkedin profiles
-+ page size
++ page size and server
 
 
 Installation and usage
@@ -30,8 +30,26 @@ library(htmldf)
 urlx <- c("https://ropensci.org/blog/2020/02/21/ropensci-leadership/",
           "https://es.wikipedia.org/wiki/Wikipedia_en_espa%C3%B1ol", 
           "https://juliasilge.com/")
-html_df(urlx, show_progress = FALSE)
+z <- html_df(urlx, show_progress = FALSE)
+z
 ```
+
+Page titles
+```{r}
+z$title
+```
+
+RSS feeds
+```{r}
+z$rss
+```
+
+Twitter handles
+```{r}
+z$twitter
+```
+
+
 
 
 Comments? Suggestions? Issues?

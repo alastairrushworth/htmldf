@@ -26,30 +26,24 @@ get_social_links <- function(html_content){
   # linkedin links
   linkedin <- links %>% grep('linkedin.com/', ., value = TRUE)
   # github links
-  github   <- links %>% grep('https://github.com/(?!security$)(?!events$)\
-                             (?!about$)(?!pricing$)(?!contact$)(?!.*/)([a-z0-9]+)', 
+  github   <- links %>% grep('https://github.com/(?!security$)(?!events$)(?!about$)(?!pricing$)(?!contact$)(?!.*/)([a-z0-9]+)', 
                              ., value = TRUE, perl = TRUE)
   # combine and return a dataframe
-  social   <- tibble(twitter  = list(twitter), 
-                     github   = list(github), 
-                     linkedin = list(linkedin))
+  social   <- list(twitter  = twitter, 
+                   github   = github, 
+                   linkedin = linkedin)
+  social   <- lapply(social, function(v){if(length(v) == 0) v <- NA; v})
   return(social)
 }
 
-get_social <- function(html_list, show_progress = TRUE){
-  if(show_progress) message('Finding social handles...\r', appendLF = FALSE)
-  social_list <- vector("list", length = length(html_list))
-  for(i in seq_along(html_list)){
-    soc_df <- try(get_social_links(html_list[[i]]), silent = TRUE)
-    if(!'try-error' %in% class(soc_df)){
-      social_list[[i]] <- soc_df
-    } else {
-      social_list[[i]] <- tibble(github = NA, twitter = NA, linkedin = NA)
-    }
+get_social <- function(page){
+  soc_df <- try(get_social_links(page), silent = TRUE)
+  if(!'try-error' %in% class(soc_df)){
+    social_df <- soc_df
+  } else {
+    social_df <- list(github = NA, twitter = NA, linkedin = NA)
   }
-  social_df <- bind_rows(social_list)
   return(social_df)
 }
-
 
 

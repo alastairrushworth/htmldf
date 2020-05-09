@@ -39,17 +39,12 @@ get_rss_links <- function(html_content, url){
   return(links)
 }
 
-get_rss <- function(html_list, urls, show_progress = TRUE){
-  if(show_progress) message('Finding RSS feeds...\r', appendLF = FALSE)
-  rss_vec <- vector("list", length = length(html_list))
-  for(i in seq_along(html_list)){
-    rss_char <- try(get_rss_links(html_list[[i]], url = urls[i]), silent = TRUE)
-    if(!'try-error' %in% class(rss_char)){
-      rss_vec[[i]] <- rss_char
-    } else {
-      rss_vec[[i]] <- NA
-    }
+get_rss <- function(page, url){
+  rss_char <- try(get_rss_links(page, url = url), silent = TRUE)
+  if(!'try-error' %in% class(rss_char)){
+    rss_out <- rss_char
+  } else {
+    rss_out <- list()
   }
-  if(show_progress) flush.console()
-  return(rss_vec)
+  return(rss_out)
 }

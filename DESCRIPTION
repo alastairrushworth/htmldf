@@ -4,9 +4,9 @@ Title: Simple tabular webpage summaries
 Version: 0.0.1
 Author: Alastair Rushworth
 Maintainer: Alastair Rushworth <alastairmrushworth@gmail.com>
-Description: Simple tabular webpage summaries.  Provides wrappers to httr and rvest.  Uses cld3 for language detection. 
+Description: Get a tabular summary of webpage content from a vector of urls
 License: GPL-2
-Imports: cld3, httr, progress, R.utils, tools
+Imports: cld3, dplyr, httr, magrittr, progress, R.utils, stringr, tibble, tidyr, tools, urltools, xml2
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 7.1.0

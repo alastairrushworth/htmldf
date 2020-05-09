@@ -4,36 +4,43 @@
 \alias{html_df}
 \title{Get a tabular summary of webpage content from a vector of urls}
 \usage{
-html_df(urlx, show_progress = TRUE, max_size = NULL)
+html_df(urlx, max_size = 5e+06, time_out = 10, show_progress = TRUE)
 }
 \arguments{
 \item{urlx}{A character vector containing urls.}
 
-\item{show_progress}{Logical, defaults to \code{TRUE}. Whether to print progress 
-messages to the console.}
+\item{max_size}{Maximum size in bytes of pages to attempt to parse, defaults to \code{5000000}.
+This is to avoid reading very large base64 encoded pages can cause \code{read_html()} to hang.}
 
-\item{max_size}{Maximum size in bytes of pages to attempt to parse, defaults to \code{NULL}.
-Very large pages can cause \code{read_html()} to hang.}
+\item{time_out}{Time in seconds to wait for \code{httr::GET()} when fetching the page.  Defaults 
+to 10 seconds.}
+
+\item{show_progress}{Logical, defaults to \code{TRUE}. Whether to print progress 
+messages to the console while download and parse is in progress.}
 }
 \value{
 A tibble with columns 
 \itemize{
-\item \code{url} the original vector of urls
-\item \code{title} the page title
-\item \code{lang} a guess of the page language
-\item \code{url2} the fetched url (for example, if the original was a redirect) 
+\item \code{url} the original vector of urls provided
+\item \code{title} the page title, if found
+\item \code{lang} inferred page language
+\item \code{url2} the fetched url this may be different to the original eg. if it was redirected
 \item \code{rss} a list of embedded rss feeds found on the page
-\item \code{images} list column containing page images
-\item \code{twitter} comma separated string containing embedded links to twitter profiles 
-\item \code{github} comma separated string containing embedded links to github profiles 
-\item \code{linkedin} comma separated string containing embedded links to linkedin profiles 
+\item \code{images} list of tibbles containing image links found on the page
+\item \code{twitter} character vector of twitter handles found on the page
+\item \code{github} character vector of github profile pages found on the page
+\item \code{linkedin} character vectors of linkedin profile pages found on the page 
 \item \code{size} the size of the downloaded page in bytes
-\item \code{html} list column containing page xml documents
+\item \code{server} the page server
+\item \code{generator} the page generator (if found)
+\item \code{source} list column containing page xml documents
 }
 }
 \description{
-From a vector of urls, \code{html_df} will attempt to fetch the html,
-get the page title and the language, returning the result as a dataframe.
+From a vector of urls, \code{html_df} will attempt to fetch the html.  From the 
+html, html_df will attempt to look for a page title, rss feeds, images, embedded social media
+profile handles and other page metadata.  Page language is inferred using the package \code{cld3}
+which uses Google's Compact Language Detector 3.
 }
 \examples{
 urlx <- c("https://ropensci.org/blog/2020/02/21/ropensci-leadership/",

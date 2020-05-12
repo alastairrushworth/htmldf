@@ -54,7 +54,7 @@ html_df <- function(urlx, max_size = 5000000, time_out = 10, show_progress = TRU
   # combine into dataFrame
   z <- tibble(z = fetch_list) %>% 
     unnest_wider(z) %>%
-    select(url, title, lang, url2, rss, images, 
+    select(url, pub_date, title, lang, url2, rss, images, 
            twitter, github, linkedin, size, server, generator, source)
   # progress print and flush
   if(show_progress){
@@ -89,6 +89,7 @@ fetch_page <- function(url, time_out, max_size){
   pg_lng <- get_language(pg_htm)
   pg_rss <- get_rss(pg_htm, url = url2)
   pg_gen <- get_generator(pg_htm)
+  pg_tim <- get_time(pg_htm, url = url2)
 
   # combine into list
   pg_features <- c(
@@ -101,7 +102,8 @@ fetch_page <- function(url, time_out, max_size){
          generator = pg_gen, 
          lang = pg_lng, 
          server = pg_hdr$server, 
-         size = pg_hdr$size), 
+         size = pg_hdr$size, 
+         pub_date = pg_tim), 
     pg_scl)
   return(pg_features)
 }

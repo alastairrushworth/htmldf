@@ -10,8 +10,9 @@ get_social_links <- function(html_content){
   links    <- html_content %>% html_nodes("a") %>% html_attr('href') %>% tolower() %>% unique()
   # remove empty links
   links <- links[!links == '']
-  # twitter links - remove shares and queries
-  twitter  <- links %>% 
+  #
+  # twitter handles and profile pages
+  twitter_handle  <- links %>% 
     gsub(',', '', .) %>%
     grep('(?<!developer\\.)twitter\\.com/', .,  value = TRUE, perl = TRUE) %>%
     gsub('\\?(.*)', '', .) %>% # remove query components
@@ -20,19 +21,27 @@ get_social_links <- function(html_content){
          ., value = TRUE, perl = TRUE) %>%
     gsub('http://', 'https://', .) %>% # use secure http
     gsub('www\\.twitter\\.com', 'twitter.com', .) %>% # remove the 'www.'
-    gsub('https://twitter.com/', '@', .) %>%# drop scheme and domain, leaving handle
+    gsub('https://twitter.com/|#!/', '@', .) %>%# drop scheme and domain, leaving handle
     unique(.) %>%
     sort(.) 
-  # linkedin links
-  linkedin <- links %>% grep('linkedin.com/', ., value = TRUE)
-  # github links
-  github   <- links %>% grep('https://github.com/(?!security$)(?!events$)(?!about$)(?!pricing$)(?!contact$)(?!.*/)([a-z0-9]+)', 
-                             ., value = TRUE, perl = TRUE)
+  twitter_profile  <- paste0('https://twitter.com/', gsub('@', '', twitter_handle))
+  twitter_df <- tibble(site = 'twitter', handle = twitter_handle, profile = twitter_profile)
+  
+  #
+  # github links handles and profile pages
+  github_profile  <- links %>% 
+    grep('https://github.com/(?!security$)(?!events$)(?!about$)(?!pricing$)(?!contact$)(?!.*/)([a-z0-9]+)', 
+         ., value = TRUE, perl = TRUE)
+  github_handle   <- gsub('https://github.com/', '@', github_profile)
+  github_df <- tibble(site = 'github', handle = github_handle, profile = github_profile)
   # combine and return a dataframe
-  social   <- list(twitter  = twitter, 
-                   github   = github, 
-                   linkedin = linkedin)
-  social   <- lapply(social, function(v){if(length(v) == 0) v <- NA; v})
+  social   <- bind_rows(twitter_df, github_df)
+  
+  # # linkedin links
+  # linkedin <- links %>% grep('linkedin.com/', ., value = TRUE)
+  # linkedin_df <- tibble(site = 'linkedin', handle = linkedin)
+
+  # social   <- lapply(social, function(v){if(length(v) == 0) v <- NA; v})
   return(social)
 }
 
@@ -41,7 +50,7 @@ get_social <- function(page){
   if(!'try-error' %in% class(soc_df)){
     social_df <- soc_df
   } else {
-    social_df <- list(github = NA, twitter = NA, linkedin = NA)
+    social_df <- tibble(site = character(), handle = character())
   }
   return(social_df)
 }

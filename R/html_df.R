@@ -55,7 +55,9 @@ html_df <- function(urlx, max_size = 5000000, time_out = 10, show_progress = TRU
   z <- tibble(z = fetch_list) %>% 
     unnest_wider(z) %>%
     select(url, pub_date, title, lang, url2, rss, images, 
-           twitter, github, linkedin, size, server, generator, source)
+           social, size, server, generator, source)
+  # unlist the source html column
+  z$source <- lapply(z$source, function(v) v[[1]])
   # progress print and flush
   if(show_progress){
     flush.console()
@@ -74,13 +76,17 @@ fetch_page <- function(url, time_out, max_size){
     if(!is.null(max_size)){
       if(max_size < pg_hdr$size){
         pg_dl <- NA
+        url2  <- NA
+      } else {
+        url2  <- pg_dl$url
       }
+    } else {
+      url2  <- pg_dl$url
     }
-    url2  <- pg_dl$url
   } else {
     url2 <- url
   }
-
+  
   # get attributes from html
   pg_htm <- get_html(pg_dl)
   pg_img <- get_imgs(pg_htm, url2)
@@ -92,18 +98,18 @@ fetch_page <- function(url, time_out, max_size){
   pg_tim <- get_time(pg_htm, url = url2)
 
   # combine into list
-  pg_features <- c(
+  pg_features <- 
     list(url = url, 
          url2 = url2, 
          rss = pg_rss, 
          title = pg_ttl, 
          source = list(pg_htm), 
+         social = pg_scl,
          images = pg_img, 
          generator = pg_gen, 
          lang = pg_lng, 
          server = pg_hdr$server, 
          size = pg_hdr$size, 
-         pub_date = pg_tim), 
-    pg_scl)
+         pub_date = pg_tim)
   return(pg_features)
 }

@@ -44,7 +44,7 @@ get_rss <- function(page, url){
   if(!'try-error' %in% class(rss_char)){
     rss_out <- rss_char
   } else {
-    rss_out <- list()
+    rss_out <- NA
   }
   return(rss_out)
 }

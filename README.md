@@ -12,7 +12,9 @@ contain page attributes and metadata extracted from the html, including:
   - RSS feeds
   - image links
   - twitter, github and linkedin profiles
-  - page size and server
+  - page size, generator and server
+  - page accessed date
+  - page published or last updated dates
 
 ## Installation and usage
 
@@ -34,12 +36,12 @@ z
 ```
 
     ## # A tibble: 3 x 13
-    ##   url   title lang  url2  rss   images twitter github linkedin   size server
-    ##   <chr> <chr> <chr> <chr> <chr> <list> <list>  <list> <lgl>     <int> <chr> 
-    ## 1 http… rOpe… en    http… <NA>  <tibb… <chr [… <chr … NA        22725 cloud…
-    ## 2 http… Wiki… es    http… http… <tibb… <lgl [… <lgl … NA       202630 mw127…
-    ## 3 http… Juli… en    http… http… <tibb… <lgl [… <lgl … NA        21844 Netli…
-    ## # … with 2 more variables: generator <chr>, source <list>
+    ##   url   title lang  url2  rss   images social   size server accessed           
+    ##   <chr> <chr> <chr> <chr> <chr> <list> <list>  <int> <chr>  <dttm>             
+    ## 1 http… rOpe… en    http… <NA>  <tibb… <tibb…  22725 cloud… 2020-05-23 10:17:16
+    ## 2 http… Wiki… es    http… http… <tibb… <tibb… 209260 mw136… 2020-05-23 05:30:24
+    ## 3 http… Juli… en    http… http… <tibb… <tibb…  21497 Netli… 2020-05-21 23:04:03
+    ## # … with 3 more variables: published <dttm>, generator <chr>, source <list>
 
 Page titles
 
@@ -61,21 +63,33 @@ z$rss
     ## [2] "https://es.wikipedia.org/w/index.php?title=especial:cambiosrecientes&feed=atom"
     ## [3] "https://juliasilge.com/index.xml"
 
-Twitter handles
+Social profiles
 
 ``` r
-z$twitter
+z$social
 ```
 
     ## [[1]]
-    ## [1] "@_inundata"   "@ben_d_best"  "@jamiecmonty" "@jcheng"      "@juliesquid" 
-    ## [6] "@leafletjs"   "@ropensci"   
+    ## # A tibble: 9 x 3
+    ##   site    handle        profile                        
+    ##   <chr>   <chr>         <chr>                          
+    ## 1 twitter @_inundata    https://twitter.com/_inundata  
+    ## 2 twitter @ben_d_best   https://twitter.com/ben_d_best 
+    ## 3 twitter @jamiecmonty  https://twitter.com/jamiecmonty
+    ## 4 twitter @jcheng       https://twitter.com/jcheng     
+    ## 5 twitter @juliesquid   https://twitter.com/juliesquid 
+    ## 6 twitter @leafletjs    https://twitter.com/leafletjs  
+    ## 7 twitter @ropensci     https://twitter.com/ropensci   
+    ## 8 github  @ropensci     https://github.com/ropensci    
+    ## 9 github  @ropenscilabs https://github.com/ropenscilabs
     ## 
     ## [[2]]
-    ## [1] NA
+    ## # A tibble: 0 x 3
+    ## # … with 3 variables: site <chr>, handle <chr>, profile <chr>
     ## 
     ## [[3]]
-    ## [1] NA
+    ## # A tibble: 0 x 3
+    ## # … with 3 variables: site <chr>, handle <chr>, profile <chr>
 
 ## Comments? Suggestions? Issues?
 

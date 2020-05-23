@@ -20,12 +20,12 @@
 #' \item \code{url2} the fetched url this may be different to the original eg. if it was redirected
 #' \item \code{rss} a list of embedded rss feeds found on the page
 #' \item \code{images} list of tibbles containing image links found on the page
-#' \item \code{twitter} character vector of twitter handles found on the page
-#' \item \code{github} character vector of github profile pages found on the page
-#' \item \code{linkedin} character vectors of linkedin profile pages found on the page 
+#' \item \code{social} list of tibbles containing twitter, linkedin and github user info found on page
 #' \item \code{size} the size of the downloaded page in bytes
 #' \item \code{server} the page server
-#' \item \code{generator} the page generator (if found)
+#' \item \code{accessed} datetime when the page was accessed
+#' \item \code{published} page publication or last updated date, if detected 
+#' \item \code{generator} the page generator, if found
 #' \item \code{source} list column containing page xml documents
 #' }
 #'
@@ -41,6 +41,7 @@
 #' @importFrom magrittr `%>%`
 #' @importFrom tidyr unnest_wider
 #' @importFrom tibble tibble
+#' @importFrom lubridate as_datetime
 #' @export
 
 html_df <- function(urlx, max_size = 5000000, time_out = 10, show_progress = TRUE){
@@ -54,10 +55,21 @@ html_df <- function(urlx, max_size = 5000000, time_out = 10, show_progress = TRU
   # combine into dataFrame
   z <- tibble(z = fetch_list) %>% 
     unnest_wider(z) %>%
-    select(url, pub_date, title, lang, url2, rss, images, 
-           social, size, server, generator, source)
+    select(url, title, lang, url2, rss, images, 
+           social, size, server, 
+           accessed, published, generator, source)
   # unlist the source html column
   z$source <- lapply(z$source, function(v) v[[1]])
+  # coerce the accessed dt to datetime
+  accessed_dt <- try(as_datetime(z$accessed), silent = TRUE)
+  if(!'try-error' %in% class(accessed_dt)){
+    z$accessed <- accessed_dt
+  }
+  # coerce the pub_date to datetime
+  published_dt <- try(as_datetime(z$published), silent = TRUE)
+  if(!'try-error' %in% class(published_dt)){
+    z$published <- published_dt
+  }
   # progress print and flush
   if(show_progress){
     flush.console()
@@ -110,6 +122,7 @@ fetch_page <- function(url, time_out, max_size){
          lang = pg_lng, 
          server = pg_hdr$server, 
          size = pg_hdr$size, 
-         pub_date = pg_tim)
+         accessed = pg_hdr$accessed,
+         published = pg_tim)
   return(pg_features)
 }

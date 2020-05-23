@@ -27,12 +27,12 @@ A tibble with columns
 \item \code{url2} the fetched url this may be different to the original eg. if it was redirected
 \item \code{rss} a list of embedded rss feeds found on the page
 \item \code{images} list of tibbles containing image links found on the page
-\item \code{twitter} character vector of twitter handles found on the page
-\item \code{github} character vector of github profile pages found on the page
-\item \code{linkedin} character vectors of linkedin profile pages found on the page 
+\item \code{social} list of tibbles containing twitter, linkedin and github user info found on page
 \item \code{size} the size of the downloaded page in bytes
 \item \code{server} the page server
-\item \code{generator} the page generator (if found)
+\item \code{accessed} datetime when the page was accessed
+\item \code{published} page publication or last updated date, if detected 
+\item \code{generator} the page generator, if found
 \item \code{source} list column containing page xml documents
 }
 }

@@ -12,7 +12,9 @@ The package `htmldf` contains a single function `html_df()` which accepts a vect
 + RSS feeds
 + image links
 + twitter, github and linkedin profiles
-+ page size and server
++ page size, generator and server
++ page accessed date
++ page published or last updated dates
 
 
 Installation and usage
@@ -44,9 +46,9 @@ RSS feeds
 z$rss
 ```
 
-Twitter handles
+Social profiles
 ```{r}
-z$twitter
+z$social
 ```
 
 

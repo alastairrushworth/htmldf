@@ -15,7 +15,10 @@ get_social_links <- function(html_content){
   tw_attr_urlx  <- twitter_handles_from_urls(links) 
   tw_attr_meta1 <- html_content %>% html_nodes('meta[name="twitter:site"]') %>% html_attr('content') %>% tolower()
   tw_attr_meta2 <- html_content %>% html_nodes('meta[name="twitter:creator"]') %>% html_attr('content') %>% tolower()
-  twitter_handle <- gsub('@@', '@', c(tw_attr_urlx, tw_attr_meta1, tw_attr_meta2)) %>% unique() %>% sort()
+  tw_attr_meta3 <- html_content %>% html_nodes('meta[property="twitter:site"]') %>% html_attr('content') %>% tolower()
+  tw_attr_meta4 <- html_content %>% html_nodes('meta[property="twitter:creator"]') %>% html_attr('content') %>% tolower()
+  twitter_handle <- gsub('@@', '@', c(tw_attr_urlx, tw_attr_meta1, tw_attr_meta2,
+                                      tw_attr_meta3, tw_attr_meta4)) %>% unique() %>% sort()
   # add scheme and site root for full profile url
   twitter_profile  <- paste0('https://twitter.com/', gsub('@', '', twitter_handle))
   twitter_df       <- tibble(site = 'twitter', handle = twitter_handle, profile = twitter_profile)

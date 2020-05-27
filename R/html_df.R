@@ -44,20 +44,22 @@
 #' @importFrom lubridate as_datetime
 #' @export
 
-html_df <- function(urlx, max_size = 5000000, time_out = 10, show_progress = TRUE){
+html_df <- function(urlx, max_size = 5000000, time_out = 10, show_progress = TRUE, 
+                    keep_source = TRUE){
   fetch_list <- vector('list', length = length(urlx))
   # loop over pages and fetch
   if(show_progress) pb <- start_progress(total = length(urlx), prefix = 'Parsing link: ')
   for(i in seq_along(urlx)){
     if(show_progress) update_progress(bar = pb, iter = i, total = length(urlx), what = urlx[i])
-    fetch_list[[i]] <- fetch_page(urlx[i], max_size = max_size, time_out = time_out)
+    fetch_list[[i]] <- fetch_page(urlx[i], max_size = max_size, time_out = time_out, keep_source = keep_source)
   }
   # combine into dataFrame
   z <- tibble(z = fetch_list) %>% 
     unnest_wider(z) %>%
     select(url, title, lang, url2, rss, images, 
            social, size, server, 
-           accessed, published, generator, source)
+           accessed, published, generator,
+           source)
   # unlist the source html column
   z$source <- lapply(z$source, function(v) v[[1]])
   # coerce the accessed dt to datetime
@@ -80,7 +82,7 @@ html_df <- function(urlx, max_size = 5000000, time_out = 10, show_progress = TRU
 }
 
 
-fetch_page <- function(url, time_out, max_size){
+fetch_page <- function(url, time_out, max_size, keep_source){
   # download page
   pg_dl  <- get_pages(url, time_out = time_out)
   pg_hdr <- get_headers(pg_dl)
@@ -115,7 +117,7 @@ fetch_page <- function(url, time_out, max_size){
          url2 = url2, 
          rss = pg_rss, 
          title = pg_ttl, 
-         source = list(pg_htm), 
+         source = ifelse(keep_source, list(pg_htm), NA),
          social = pg_scl,
          images = pg_img, 
          generator = pg_gen, 

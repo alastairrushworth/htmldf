@@ -38,9 +38,9 @@ z
     ## # A tibble: 3 x 13
     ##   url   title lang  url2  rss   images social   size server accessed           
     ##   <chr> <chr> <chr> <chr> <chr> <list> <list>  <int> <chr>  <dttm>             
-    ## 1 http… rOpe… en    http… <NA>  <tibb… <tibb…  22725 cloud… 2020-05-23 10:17:16
+    ## 1 http… rOpe… en    http… <NA>  <tibb… <tibb…  22725 cloud… 2020-05-23 14:21:13
     ## 2 http… Wiki… es    http… http… <tibb… <tibb… 209260 mw136… 2020-05-23 05:30:24
-    ## 3 http… Juli… en    http… http… <tibb… <tibb…  21497 Netli… 2020-05-21 23:04:03
+    ## 3 http… Juli… en    http… http… <tibb… <tibb…  21497 Netli… 2020-05-22 08:04:45
     ## # … with 3 more variables: published <dttm>, generator <chr>, source <list>
 
 Page titles
@@ -88,8 +88,10 @@ z$social
     ## # … with 3 variables: site <chr>, handle <chr>, profile <chr>
     ## 
     ## [[3]]
-    ## # A tibble: 0 x 3
-    ## # … with 3 variables: site <chr>, handle <chr>, profile <chr>
+    ## # A tibble: 1 x 3
+    ##   site    handle      profile                       
+    ##   <chr>   <chr>       <chr>                         
+    ## 1 twitter @juliasilge https://twitter.com/juliasilge
 
 ## Comments? Suggestions? Issues?
 

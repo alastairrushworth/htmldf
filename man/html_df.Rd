@@ -4,7 +4,13 @@
 \alias{html_df}
 \title{Get a tabular summary of webpage content from a vector of urls}
 \usage{
-html_df(urlx, max_size = 5e+06, time_out = 10, show_progress = TRUE)
+html_df(
+  urlx,
+  max_size = 5e+06,
+  time_out = 10,
+  show_progress = TRUE,
+  keep_source = TRUE
+)
 }
 \arguments{
 \item{urlx}{A character vector containing urls.}

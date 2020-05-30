@@ -13,9 +13,14 @@ test_that("Resolve user from status url", {
 })
 
 
-test_that("Resolve user from status url", {
+test_that("Resolve user from with_replies url", {
   # example
   tt <- twitter_handles_from_urls('https://twitter.com/icymi_r/with_replies')
   expect_equal(tt, '@icymi_r')
 })
 
+test_that("Resolve user from intent and tweet", {
+  # example
+  tt <- twitter_handles_from_urls('https://twitter.com/intent/tweet?text=Introducing+the+hacksaw+package+http://daranzolin.github.io/2020-05-25-introducing-hacksaw/')
+  expect_equal(tt, character())
+})

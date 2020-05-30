@@ -1,6 +1,7 @@
 #' @importFrom dplyr bind_rows
 #' @importFrom rvest html_nodes
 #' @importFrom rvest html_attr
+#' @importFrom stringr str_extract
 #' @importFrom tools file_ext
 #' @importFrom xml2 url_absolute
 #' @importFrom xml2 xml_url
@@ -12,13 +13,13 @@ get_social_links <- function(html_content){
   
   #
   # TWITTER HANDLES AND PAGES
-  tw_attr_urlx  <- twitter_handles_from_urls(links) 
   tw_attr_meta1 <- html_content %>% html_nodes('meta[name="twitter:site"]') %>% html_attr('content') %>% tolower()
   tw_attr_meta2 <- html_content %>% html_nodes('meta[name="twitter:creator"]') %>% html_attr('content') %>% tolower()
   tw_attr_meta3 <- html_content %>% html_nodes('meta[property="twitter:site"]') %>% html_attr('content') %>% tolower()
   tw_attr_meta4 <- html_content %>% html_nodes('meta[property="twitter:creator"]') %>% html_attr('content') %>% tolower()
-  twitter_handle <- gsub('@@', '@', c(tw_attr_urlx, tw_attr_meta1, tw_attr_meta2,
-                                      tw_attr_meta3, tw_attr_meta4)) %>% unique() %>% sort()
+  twitter_handle <- gsub('@@', '@', 
+                         c(tw_attr_urlx, tw_attr_meta1, tw_attr_meta2,
+                           tw_attr_meta3, tw_attr_meta4)) %>% unique() %>% sort()
   # add scheme and site root for full profile url
   twitter_profile  <- paste0('https://twitter.com/', gsub('@', '', twitter_handle))
   twitter_df       <- tibble(site = 'twitter', handle = twitter_handle, profile = twitter_profile)
@@ -52,17 +53,30 @@ get_social <- function(page){
 
 # function to get twitter handles from twitter urls
 twitter_handles_from_urls <- function(urlx){
-  handles <- urlx %>% 
+  
+  # get list of twitter urls from all document links
+  twitter_links <- urlx %>% 
     gsub(',', '', .) %>%
     grep('(?<!developer\\.)twitter\\.com/', .,  value = TRUE, perl = TRUE) %>%
-    gsub('\\?(.*)', '', .) %>% # remove query components
-    gsub('/status/(.*)|/statuses/(.*)|/with_replies(.*)|/followers/(.*)|/following/(.*)', '', .) %>% # remove status
+    gsub('\\?(.*)', '', .) # remove query components
+  
+  # extract handles from URLs
+  handles <- twitter_links %>% 
     grep('twitter.com/(?!share$)(?!status/)(?!search$)(?!hashtag/)(?!intent/)', 
          ., value = TRUE, perl = TRUE) %>%
-    gsub('http://', 'https://', .) %>% # use secure http
-    gsub('www\\.twitter\\.com', 'twitter.com', .) %>% # remove the 'www.'
-    gsub('https://twitter.com/|#!/', '@', .) %>% # remove handles that appear as 18 digit numbers
-    tolower() %>% unique() 
+    str_extract(., '(?<=twitter\\.com/).*') %>%
+    gsub('/status/(.*)|/statuses/(.*)|/with_replies(.*)|/followers/(.*)|/following/(.*)', '', .) %>% # remove status
+    strsplit(., split = '/') %>%
+    lapply(., function(x) x[1]) %>%
+    unlist(.) %>%
+    tolower(.) %>%
+    unique(.)   %>%
+    paste0('@', .)
+  
+  # remove anything with fewer than 4 characters
+  if(length(handles) > 0) handles <- handles[nchar(handles) >= 5]
+  
+  # return vector of handles
   return(handles)
 }
 

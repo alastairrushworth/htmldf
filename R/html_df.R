@@ -57,7 +57,7 @@ html_df <- function(urlx, max_size = 5000000, time_out = 10, show_progress = TRU
   z <- tibble(z = fetch_list) %>% 
     unnest_wider(z) %>%
     select(url, title, lang, url2, rss, images, 
-           social, size, server, 
+           social, code_lang, size, server, 
            accessed, published, generator,
            source)
   # unlist the source html column
@@ -110,6 +110,7 @@ fetch_page <- function(url, time_out, max_size, keep_source){
   pg_rss <- get_rss(pg_htm, url = url2)
   pg_gen <- get_generator(pg_htm)
   pg_tim <- get_time(pg_htm, url = url2)
+  pg_code_lang <- guess_code_lang(pg_htm)
 
   # combine into list
   pg_features <- 
@@ -125,6 +126,7 @@ fetch_page <- function(url, time_out, max_size, keep_source){
          server = pg_hdr$server, 
          size = pg_hdr$size, 
          accessed = pg_hdr$accessed,
-         published = pg_tim)
+         published = pg_tim, 
+         code_lang = pg_code_lang)
   return(pg_features)
 }

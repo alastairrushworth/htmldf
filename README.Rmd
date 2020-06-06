@@ -10,6 +10,7 @@ The package `htmldf` contains a single function `html_df()` which accepts a vect
 + page title
 + inferred language
 + RSS feeds
++ hyperlinks
 + image links
 + twitter, github and linkedin profiles
 + the inferred programming language of any text with code tags

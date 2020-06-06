@@ -1,4 +1,3 @@
-#' @export
 #' @importFrom dplyr arrange
 #' @importFrom dplyr desc
 #' @importFrom rvest html_nodes

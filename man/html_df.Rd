@@ -31,6 +31,7 @@ A tibble with columns
 \item \code{title} the page title, if found
 \item \code{lang} inferred page language
 \item \code{url2} the fetched url this may be different to the original eg. if it was redirected
+\item \code{links} a list of tibbles of hyperlinks found in \code{a} tags
 \item \code{rss} a list of embedded rss feeds found on the page
 \item \code{images} list of tibbles containing image links found on the page
 \item \code{social} list of tibbles containing twitter, linkedin and github user info found on page

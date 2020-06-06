@@ -1,4 +1,3 @@
-#' @export
 #' @importFrom rvest html_nodes
 #' @importFrom rvest html_text
 #' @importFrom urltools path
@@ -7,7 +6,7 @@ get_title <- function(page, url){
     title <- try(page %>% html_nodes('title') %>% html_text(), silent = TRUE)
     if(length(title) > 0){
       title_out <- title[1]
-      # if this is a Github repo, paste in the repo name
+      # if this is a Github repo, use the repo name as the page title
       if(grepl('https://github\\.com', url)){
         gh_title     <- github_title_read(page)
         title_out    <- ifelse(length(gh_title) > 0, gh_title, title[1])

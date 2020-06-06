@@ -10,6 +10,7 @@ contain page attributes and metadata extracted from the html, including:
   - page title
   - inferred language
   - RSS feeds
+  - hyperlinks
   - image links
   - twitter, github and linkedin profiles
   - the inferred programming language of any text with code tags
@@ -38,12 +39,12 @@ z <- html_df(urlx, show_progress = FALSE)
 z
 ```
 
-    ## # A tibble: 3 x 14
-    ##   url   title lang  url2  rss   images social code_lang   size server
-    ##   <chr> <chr> <chr> <chr> <chr> <list> <list> <chr>      <int> <chr> 
-    ## 1 http… Visu… en    http… http… <tibb… <tibb… r          38198 GitHu…
-    ## 2 http… Conv… en    http… <NA>  <tibb… <tibb… py         96547 Googl…
-    ## 3 http… Robe… en    http… <NA>  <tibb… <tibb… r         290976 Netli…
+    ## # A tibble: 3 x 15
+    ##   url   title lang  url2  links rss   images social code_lang   size server
+    ##   <chr> <chr> <chr> <chr> <lis> <chr> <list> <list> <chr>      <int> <chr> 
+    ## 1 http… Visu… en    http… <tib… http… <tibb… <tibb… r          38198 GitHu…
+    ## 2 http… Conv… en    http… <tib… <NA>  <tibb… <tibb… py         96547 Googl…
+    ## 3 http… Robe… en    http… <tib… <NA>  <tibb… <tibb… r         290976 Netli…
     ## # … with 4 more variables: accessed <dttm>, published <dttm>, generator <chr>,
     ## #   source <list>
 

@@ -18,6 +18,7 @@
 #' \item \code{title} the page title, if found
 #' \item \code{lang} inferred page language
 #' \item \code{url2} the fetched url this may be different to the original eg. if it was redirected
+#' \item \code{links} a list of tibbles of hyperlinks found in \code{a} tags
 #' \item \code{rss} a list of embedded rss feeds found on the page
 #' \item \code{images} list of tibbles containing image links found on the page
 #' \item \code{social} list of tibbles containing twitter, linkedin and github user info found on page
@@ -46,7 +47,9 @@
 #' @importFrom lubridate as_datetime
 #' @export
 
-html_df <- function(urlx, max_size = 5000000, time_out = 10, show_progress = TRUE, 
+html_df <- function(urlx, max_size = 5000000, 
+                    time_out = 10, 
+                    show_progress = TRUE, 
                     keep_source = TRUE){
   fetch_list <- vector('list', length = length(urlx))
   # loop over pages and fetch
@@ -58,7 +61,7 @@ html_df <- function(urlx, max_size = 5000000, time_out = 10, show_progress = TRU
   # combine into dataFrame
   z <- tibble(z = fetch_list) %>% 
     unnest_wider(z) %>%
-    select(url, title, lang, url2, rss, images, 
+    select(url, title, lang, url2, links, rss, images, 
            social, code_lang, size, server, 
            accessed, published, generator,
            source)
@@ -106,6 +109,7 @@ fetch_page <- function(url, time_out, max_size, keep_source){
   # get attributes from html
   pg_htm <- get_html(pg_dl)
   pg_img <- get_imgs(pg_htm, url2)
+  pg_lnk <- get_links(pg_htm, url2)
   pg_ttl <- get_title(pg_htm, url = url2)
   pg_scl <- get_social(pg_htm)
   pg_lng <- get_language(pg_htm)
@@ -120,6 +124,7 @@ fetch_page <- function(url, time_out, max_size, keep_source){
          url2 = url2, 
          rss = pg_rss, 
          title = pg_ttl, 
+         links = pg_lnk,
          source = ifelse(keep_source, list(pg_htm), NA),
          social = pg_scl,
          images = pg_img, 

@@ -34,6 +34,8 @@ A tibble with columns
 \item \code{rss} a list of embedded rss feeds found on the page
 \item \code{images} list of tibbles containing image links found on the page
 \item \code{social} list of tibbles containing twitter, linkedin and github user info found on page
+\item \code{code_lang} character indicating inferred code language.  If not code tags are detected,
+or the language could not be inferred, this returns an \code{NA}.
 \item \code{size} the size of the downloaded page in bytes
 \item \code{server} the page server
 \item \code{accessed} datetime when the page was accessed

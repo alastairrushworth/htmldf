@@ -16,14 +16,12 @@ train  <- z[-sample_inds, ]
 test   <- z[ sample_inds, ]
 
 # train the language classifier
-code_lang_classifier <- ranger(lang ~ ., num.trees = 500, data = train)
+code_lang_classifier <- ranger(lang ~ ., num.trees = 100, data = train, probability = TRUE)
 test_pred <- predict(code_lang_classifier, data = test)
+
 # save the language classifier
 save(code_lang_classifier, file = "R/sysdata.rda")
 
-# table(test_pred$predictions, test$lang)
-# xx <- ddf[as.integer(rownames(test[which(as.character(test_pred$predictions) != test$lang), ])), ]
-# xx$url2
-
-
-
+table(test_pred$predictions, test$lang)
+xx <- ddf[as.integer(rownames(test[which(as.character(test_pred$predictions) != test$lang), ])), ]
+xx$url2

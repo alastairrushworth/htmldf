@@ -12,6 +12,7 @@ contain page attributes and metadata extracted from the html, including:
   - RSS feeds
   - image links
   - twitter, github and linkedin profiles
+  - the inferred programming language of any text with code tags
   - page size, generator and server
   - page accessed date
   - page published or last updated dates
@@ -28,30 +29,36 @@ To use `html_df`
 
 ``` r
 library(htmldf)
-urlx <- c("https://ropensci.org/blog/2020/02/21/ropensci-leadership/",
-          "https://es.wikipedia.org/wiki/Wikipedia_en_espa%C3%B1ol", 
-          "https://juliasilge.com/")
+library(dplyr)
+
+urlx <- c("https://alastairrushworth.github.io/Visualising-Tour-de-France-data-in-R/",
+          "https://www.tensorflow.org/tutorials/images/cnn", 
+          "https://www.robertmylesmcdonnell.com/content/posts/mtcars/")
 z <- html_df(urlx, show_progress = FALSE)
 z
 ```
 
-    ## # A tibble: 3 x 13
-    ##   url   title lang  url2  rss   images social   size server accessed           
-    ##   <chr> <chr> <chr> <chr> <chr> <list> <list>  <int> <chr>  <dttm>             
-    ## 1 http… rOpe… en    http… <NA>  <tibb… <tibb…  22725 cloud… 2020-05-23 14:21:13
-    ## 2 http… Wiki… es    http… http… <tibb… <tibb… 209260 mw136… 2020-05-23 05:30:24
-    ## 3 http… Juli… en    http… http… <tibb… <tibb…  21497 Netli… 2020-05-22 08:04:45
-    ## # … with 3 more variables: published <dttm>, generator <chr>, source <list>
+    ## # A tibble: 3 x 14
+    ##   url   title lang  url2  rss   images social code_lang   size server
+    ##   <chr> <chr> <chr> <chr> <chr> <list> <list> <chr>      <int> <chr> 
+    ## 1 http… Visu… en    http… http… <tibb… <tibb… r          38198 GitHu…
+    ## 2 http… Conv… en    http… <NA>  <tibb… <tibb… py         96547 Googl…
+    ## 3 http… Robe… en    http… <NA>  <tibb… <tibb… r         290976 Netli…
+    ## # … with 4 more variables: accessed <dttm>, published <dttm>, generator <chr>,
+    ## #   source <list>
 
 Page titles
 
 ``` r
-z$title
+z %>% select(title, url2)
 ```
 
-    ## [1] "rOpenSci | rOpenSci's Leadership in #rstats Culture"    
-    ## [2] "Wikipedia en español • Wikipedia, la enciclopedia libre"
-    ## [3] "Julia Silge"
+    ## # A tibble: 3 x 2
+    ##   title                              url2                                       
+    ##   <chr>                              <chr>                                      
+    ## 1 Visualising Tour De France Data I… https://alastairrushworth.github.io/Visual…
+    ## 2 Convolutional Neural Network (CNN… https://www.tensorflow.org/tutorials/image…
+    ## 3 Robert Myles McDonnell             https://www.robertmylesmcdonnell.com/conte…
 
 RSS feeds
 
@@ -59,9 +66,9 @@ RSS feeds
 z$rss
 ```
 
-    ## [1] NA                                                                              
-    ## [2] "https://es.wikipedia.org/w/index.php?title=especial:cambiosrecientes&feed=atom"
-    ## [3] "https://juliasilge.com/index.xml"
+    ## [1] "https://alastairrushworth.github.io/feed.xml"
+    ## [2] NA                                            
+    ## [3] NA
 
 Social profiles
 
@@ -70,28 +77,39 @@ z$social
 ```
 
     ## [[1]]
-    ## # A tibble: 9 x 3
-    ##   site    handle        profile                        
-    ##   <chr>   <chr>         <chr>                          
-    ## 1 twitter @_inundata    https://twitter.com/_inundata  
-    ## 2 twitter @ben_d_best   https://twitter.com/ben_d_best 
-    ## 3 twitter @jamiecmonty  https://twitter.com/jamiecmonty
-    ## 4 twitter @jcheng       https://twitter.com/jcheng     
-    ## 5 twitter @juliesquid   https://twitter.com/juliesquid 
-    ## 6 twitter @leafletjs    https://twitter.com/leafletjs  
-    ## 7 twitter @ropensci     https://twitter.com/ropensci   
-    ## 8 github  @ropensci     https://github.com/ropensci    
-    ## 9 github  @ropenscilabs https://github.com/ropenscilabs
+    ## # A tibble: 2 x 3
+    ##   site    handle             profile                             
+    ##   <chr>   <chr>              <chr>                               
+    ## 1 twitter @rushworth_a       https://twitter.com/rushworth_a     
+    ## 2 github  @alastairrushworth https://github.com/alastairrushworth
     ## 
     ## [[2]]
-    ## # A tibble: 0 x 3
-    ## # … with 3 variables: site <chr>, handle <chr>, profile <chr>
-    ## 
-    ## [[3]]
     ## # A tibble: 1 x 3
     ##   site    handle      profile                       
     ##   <chr>   <chr>       <chr>                         
-    ## 1 twitter @juliasilge https://twitter.com/juliasilge
+    ## 1 twitter @tensorflow https://twitter.com/tensorflow
+    ## 
+    ## [[3]]
+    ## # A tibble: 4 x 3
+    ##   site     handle                   profile                                     
+    ##   <chr>    <chr>                    <chr>                                       
+    ## 1 twitter  @robertmylesmc           https://twitter.com/robertmylesmc           
+    ## 2 linkedin @robert-mcdonnell-7475b… https://linkedin.com/in/robert-mcdonnell-74…
+    ## 3 github   @coolbutuseless          https://github.com/coolbutuseless           
+    ## 4 github   @robertmyles             https://github.com/robertmyles
+
+Inferred code language
+
+``` r
+z %>% select(code_lang, url2)
+```
+
+    ## # A tibble: 3 x 2
+    ##   code_lang url2                                                                
+    ##   <chr>     <chr>                                                               
+    ## 1 r         https://alastairrushworth.github.io/Visualising-Tour-de-France-data…
+    ## 2 py        https://www.tensorflow.org/tutorials/images/cnn                     
+    ## 3 r         https://www.robertmylesmcdonnell.com/content/posts/mtcars/
 
 ## Comments? Suggestions? Issues?
 

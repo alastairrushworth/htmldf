@@ -17,6 +17,7 @@ get_social_links <- function(html_content){
   tw_attr_meta2 <- html_content %>% html_nodes('meta[name="twitter:creator"]') %>% html_attr('content') %>% tolower()
   tw_attr_meta3 <- html_content %>% html_nodes('meta[property="twitter:site"]') %>% html_attr('content') %>% tolower()
   tw_attr_meta4 <- html_content %>% html_nodes('meta[property="twitter:creator"]') %>% html_attr('content') %>% tolower()
+  tw_attr_urlx  <- twitter_handles_from_urls(links)
   twitter_handle <- gsub('@@', '@', 
                          c(tw_attr_urlx, tw_attr_meta1, tw_attr_meta2,
                            tw_attr_meta3, tw_attr_meta4)) %>% unique() %>% sort()

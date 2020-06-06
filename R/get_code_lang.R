@@ -1,8 +1,11 @@
 #' @export
+#' @importFrom dplyr arrange
+#' @importFrom dplyr desc
 #' @importFrom rvest html_nodes
 #' @importFrom rvest html_attr
 #' @importFrom rvest html_text
 #' @importFrom stringr str_count
+#' @importFrom tidyr pivot_longer
 #' @import ranger
 
 guess_code_lang <- function(x){
@@ -30,14 +33,25 @@ guess_code_lang <- function(x){
     # count up the number of occurences of the patterns above
     code_pattern_counts <- lapply(tolower(code), str_count, pattern = items)
     xout           <- as.data.frame(do.call("rbind", code_pattern_counts))
-    cnts           <- rowSums(xout)
-    cnts[cnts == 0] <- 1
-    xout           <- xout / cnts
-    
-    # score with the language classifier
-    lang <- as.character(predict(code_lang_classifier, data = xout)$prediction)
-  }
-  else {
+    if(sum(xout[1, ]) > 0){
+      cnts           <- rowSums(xout)
+      cnts[cnts == 0] <- 1
+      xout           <- xout / cnts
+      
+      # score with the language classifier
+      z <- predict(code_lang_classifier, data = xout)$predictions %>%
+        tibble::as_tibble()  %>%
+        tidyr::pivot_longer(cols = c('r', 'py')) %>%
+        dplyr::arrange(desc(value))
+      if(all(z$value == z$value[1]) | is.na(z$value[1])){
+        lang <- NA 
+      } else {
+        lang <- z$name[1]
+      }
+    } else {
+      lang <- NA
+    }
+  } else {
     lang <- NA
   }
   return(lang)

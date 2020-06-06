@@ -1,4 +1,4 @@
-context("html_df")
+context("Natural language inference")
 
 
 test_that("html_df works", {

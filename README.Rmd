@@ -12,6 +12,7 @@ The package `htmldf` contains a single function `html_df()` which accepts a vect
 + RSS feeds
 + image links
 + twitter, github and linkedin profiles
++ the inferred programming language of any text with code tags
 + page size, generator and server
 + page accessed date
 + page published or last updated dates
@@ -27,18 +28,20 @@ remotes::install_github('alastairrushworth/htmldf)
 ```
 
 To use `html_df`
-```{r}
+```{r, message=FALSE}
 library(htmldf)
-urlx <- c("https://ropensci.org/blog/2020/02/21/ropensci-leadership/",
-          "https://es.wikipedia.org/wiki/Wikipedia_en_espa%C3%B1ol", 
-          "https://juliasilge.com/")
+library(dplyr)
+
+urlx <- c("https://alastairrushworth.github.io/Visualising-Tour-de-France-data-in-R/",
+          "https://www.tensorflow.org/tutorials/images/cnn", 
+          "https://www.robertmylesmcdonnell.com/content/posts/mtcars/")
 z <- html_df(urlx, show_progress = FALSE)
 z
 ```
 
 Page titles
 ```{r}
-z$title
+z %>% select(title, url2)
 ```
 
 RSS feeds
@@ -51,7 +54,10 @@ Social profiles
 z$social
 ```
 
-
+Inferred code language
+```{r}
+z %>% select(code_lang, url2)
+```
 
 
 Comments? Suggestions? Issues?

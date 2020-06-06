@@ -1,4 +1,3 @@
-#' @export
 #' @importFrom rvest html_nodes
 #' @importFrom rvest html_attr
 

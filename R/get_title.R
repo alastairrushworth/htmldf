@@ -28,7 +28,7 @@ get_title <- function(page, url){
   # tidy up titles with html tags
   title_out <- gsub('\\\n|\\\t|\\\r', '', title_out)
   # replace dashes with bullets
-  title_out <- gsub(': ', ' \u2022 ', title_out)
+  title_out <- gsub(' - |: ', ' \u2022 ', title_out)
   # remove trailling / leading white space
   title_out <- gsub('^\\s+|\\s+$', '', title_out)
   return(title_out)

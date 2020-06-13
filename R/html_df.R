@@ -10,6 +10,8 @@
 #' messages to the console while download and parse is in progress.
 #' @param max_size Maximum size in bytes of pages to attempt to parse, defaults to \code{5000000}.
 #'   This is to avoid reading very large base64 encoded pages can cause \code{read_html()} to hang.
+#' @param keep_source Logical argument - should the xml2 document containing page source be kept as 
+#' a column in the output tibble.  Defaults to \code{TRUE}.
 #' @param time_out Time in seconds to wait for \code{httr::GET()} when fetching the page.  Defaults 
 #' to 10 seconds. 
 #' @return A tibble with columns 
@@ -45,6 +47,7 @@
 #' @importFrom tidyr unnest_wider
 #' @importFrom tibble tibble
 #' @importFrom lubridate as_datetime
+#' @importFrom utils flush.console
 #' @export
 
 html_df <- function(urlx, max_size = 5000000, 

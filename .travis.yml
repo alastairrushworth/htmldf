@@ -7,7 +7,7 @@ warnings_are_errors: true
 
 
 before_install:
-  - sudo apt-get -y install libprotobuf-dev
+  - sudo apt-get -y install libprotobuf-dev protobuf-compiler
 
 r_packages:
   - covr

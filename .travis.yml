@@ -5,9 +5,12 @@ sudo: false
 cache: packages
 warnings_are_errors: true
 
+
+before_install:
+  - sudo apt-get -y install libprotobuf-dev
+
 r_packages:
   - covr
-  - vdiffr
 
 after_success:
   - Rscript -e 'library(covr); codecov(token = "e26e5035-f732-472b-8f7f-d7a3529d3d9c")'

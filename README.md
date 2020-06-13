@@ -1,4 +1,8 @@
 
+[![Build
+Status](https://travis-ci.org/alastairrushworth/htmldf.svg?branch=master)](https://travis-ci.org/alastairrushworth/htmldf)
+[![codecov](https://codecov.io/gh/alastairrushworth/htmldf/branch/master/graph/badge.svg)](https://codecov.io/gh/alastairrushworth/htmldf)
+
 # htmldf
 
 The package `htmldf` contains a single function `html_df()` which
@@ -43,8 +47,8 @@ z
     ##   url   title lang  url2  links rss   images social code_lang   size server
     ##   <chr> <chr> <chr> <chr> <lis> <chr> <list> <list> <chr>      <int> <chr> 
     ## 1 http… Visu… en    http… <tib… http… <tibb… <tibb… r          38198 GitHu…
-    ## 2 http… Conv… en    http… <tib… <NA>  <tibb… <tibb… py         96547 Googl…
-    ## 3 http… Robe… en    http… <tib… <NA>  <tibb… <tibb… r         290976 Netli…
+    ## 2 http… Conv… en    http… <tib… <NA>  <tibb… <tibb… py         96758 Googl…
+    ## 3 http… Robe… en    http… <tib… <NA>  <tibb… <tibb… r         291099 Netli…
     ## # … with 4 more variables: accessed <dttm>, published <dttm>, generator <chr>,
     ## #   source <list>
 

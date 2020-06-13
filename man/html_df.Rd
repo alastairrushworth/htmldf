@@ -23,6 +23,9 @@ to 10 seconds.}
 
 \item{show_progress}{Logical, defaults to \code{TRUE}. Whether to print progress 
 messages to the console while download and parse is in progress.}
+
+\item{keep_source}{Logical argument - should the xml2 document containing page source be kept as 
+a column in the output tibble.  Defaults to \code{TRUE}.}
 }
 \value{
 A tibble with columns 

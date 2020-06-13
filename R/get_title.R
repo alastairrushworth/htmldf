@@ -12,7 +12,7 @@ get_title <- function(page, url){
         title_out    <- ifelse(length(gh_title) > 0, gh_title, title[1])
         url_bits     <- unlist(strsplit(path(url), '/'))
         repo_name    <- url_bits[length(url_bits)]
-        title_out    <- paste0(repo_name, ' • ', title_out)
+        title_out    <- paste0(repo_name, ' \u2022 ', title_out)
       }
     } else {
       title_out <- NA
@@ -28,7 +28,7 @@ get_title <- function(page, url){
   # tidy up titles with html tags
   title_out <- gsub('\\\n|\\\t|\\\r', '', title_out)
   # replace dashes with bullets
-  title_out <- gsub(' - |: | – ', ' • ', title_out)
+  title_out <- gsub(': ', ' \u2022 ', title_out)
   # remove trailling / leading white space
   title_out <- gsub('^\\s+|\\s+$', '', title_out)
   return(title_out)

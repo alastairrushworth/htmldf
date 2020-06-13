@@ -2,3 +2,6 @@
 ^\.Rproj\.user$
 ^page_inference$
 ^\.travis\.yml$
+^readme\.rmd$
+^code_classifier.R$
+^main.R$

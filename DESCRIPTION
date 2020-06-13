@@ -1,12 +1,13 @@
 Package: htmldf
 Type: Package
-Title: Simple tabular webpage summaries
+Title: Simple scraping and tidy webpage summaries
 Version: 0.0.1
 Author: Alastair Rushworth
 Maintainer: Alastair Rushworth <alastairmrushworth@gmail.com>
-Description: Get a tabular summary of webpage content from a vector of urls
+Description: Simple tools for scraping webpages, extracting common html tags and parsing to tidy format.
 License: GPL-2
-Imports: cld3, dplyr, httr, lubridate, magrittr, progress, R.utils, ranger, stringr, tibble, tidyr, tools, urltools, xml2
+Imports: cld3, dplyr, httr, lubridate, magrittr, progress, R.utils, ranger, rvest, stringr, tibble, tidyr, tools, urltools, xml2
+Depends: R (>= 3.5.0)
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 7.1.0

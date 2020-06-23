@@ -128,7 +128,7 @@ fetch_page <- function(url, time_out, max_size, keep_source){
          rss = pg_rss, 
          title = pg_ttl, 
          links = pg_lnk,
-         source = ifelse(keep_source, list(pg_htm), NA),
+         source = ifelse(keep_source, as.character(pg_htm), NA),
          social = pg_scl,
          images = pg_img, 
          generator = pg_gen, 
@@ -138,5 +138,6 @@ fetch_page <- function(url, time_out, max_size, keep_source){
          accessed = pg_hdr$accessed,
          published = pg_tim, 
          code_lang = pg_code_lang)
+  rm(pg_htm)
   return(pg_features)
 }

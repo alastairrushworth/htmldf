@@ -11,7 +11,8 @@
 #' @param max_size Maximum size in bytes of pages to attempt to parse, defaults to \code{5000000}.
 #'   This is to avoid reading very large base64 encoded pages can cause \code{read_html()} to hang.
 #' @param keep_source Logical argument - should the xml2 document containing page source be kept as 
-#' a column in the output tibble.  Defaults to \code{TRUE}.
+#' a column in the output tibble.  Useful when scraping many pages, as the \code{source} column can
+#' become very large.  Defaults to \code{TRUE}.
 #' @param time_out Time in seconds to wait for \code{httr::GET()} when fetching the page.  Defaults 
 #' to 10 seconds. 
 #' @return A tibble with columns 
@@ -31,7 +32,8 @@
 #' \item \code{accessed} datetime when the page was accessed
 #' \item \code{published} page publication or last updated date, if detected 
 #' \item \code{generator} the page generator, if found
-#' \item \code{source} list column containing page xml documents
+#' \item \code{source} character string of xml documents.  These can each be coerced to \code{xml_document}
+#' for further processing using \code{rvest} using \code{xml2:read_html()}.
 #' }
 #'
 #' @author Alastair Rushworth
@@ -69,7 +71,7 @@ html_df <- function(urlx, max_size = 5000000,
            accessed, published, generator,
            source)
   # unlist the source html column
-  z$source <- lapply(z$source, function(v) v[[1]])
+  # z$source <- lapply(z$source, function(v) v[[1]])
   # coerce the accessed dt to datetime
   accessed_dt <- try(as_datetime(z$accessed), silent = TRUE)
   if(!'try-error' %in% class(accessed_dt)){

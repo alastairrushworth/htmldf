@@ -25,7 +25,8 @@ to 10 seconds.}
 messages to the console while download and parse is in progress.}
 
 \item{keep_source}{Logical argument - should the xml2 document containing page source be kept as 
-a column in the output tibble.  Defaults to \code{TRUE}.}
+a column in the output tibble.  Useful when scraping many pages, as the \code{source} column can
+become very large.  Defaults to \code{TRUE}.}
 }
 \value{
 A tibble with columns 
@@ -45,7 +46,8 @@ or the language could not be inferred, this returns an \code{NA}.
 \item \code{accessed} datetime when the page was accessed
 \item \code{published} page publication or last updated date, if detected 
 \item \code{generator} the page generator, if found
-\item \code{source} list column containing page xml documents
+\item \code{source} character string of xml documents.  These can each be coerced to \code{xml_document}
+for further processing using \code{rvest} using \code{xml2:read_html()}.
 }
 }
 \description{

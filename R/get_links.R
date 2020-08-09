@@ -23,6 +23,8 @@ get_page_links <- function(html_content, url){
   l_hrefs  <- xml2::url_absolute(l_hrefs, url)
   # get text
   l_text   <- links %>% html_text()
+  # clean up text a bit
+  l_text   <- clean_string(l_text)
   # combine into a single tibble
   links_df <- tibble(href = l_hrefs, text = l_text)
   # return tibble

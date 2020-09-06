@@ -5,7 +5,7 @@
 #' @importFrom rvest html_text
 #' @importFrom stringr str_count
 #' @importFrom tidyr pivot_longer
-#' @importMethodsFrom ranger ranger.predict
+#' @import ranger
 #' @import ranger
 
 guess_code_lang <- function(x){

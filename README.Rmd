@@ -28,7 +28,7 @@ Installation and usage
 To install the package:
 
 ```{r, eval=FALSE}
-remotes::install_github('alastairrushworth/htmldf)
+remotes::install_github('alastairrushworth/htmldf')
 ```
 
 To use `html_df`

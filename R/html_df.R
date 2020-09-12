@@ -113,7 +113,7 @@ fetch_page <- function(url, time_out, max_size, keep_source){
   }
   
   # get attributes from html
-  pg_htm       <- get_html(pg_dl)
+  pg_htm       <- if(grepl('file://', url)) read_html(file(url)) else get_html(pg_dl) 
   pg_img       <- get_imgs(pg_htm, url2)
   pg_lnk       <- get_links(pg_htm, url2)
   pg_ttl       <- get_title(pg_htm, url = url2)

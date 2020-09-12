@@ -1,0 +1,1132 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xmlns:fb="https://www.facebook.com/2008/fbml" xmlns:addthis="https://www.addthis.com/help/api-spec" >
+
+<head profile="http://gmpg.org/xfn/11">
+
+<link href='http://fonts.googleapis.com/css?family=Varela+Round&v2' rel='stylesheet' type='text/css'>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="google-site-verification" content="wXTtAmdxMF-75GTAsv8-fua8l9B18ZCrfCnlfMHWQ-g" />
+
+<title> Statistical Modeling, Causal Inference, and Social Science</title>
+
+<link rel="stylesheet" href="https://statmodeling.stat.columbia.edu/wp-content/themes/f2/style.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="https://statmodeling.stat.columbia.edu/wp-content/themes/f2/print.css" type="text/css" media="print" />
+
+<link rel="pingback" href="https://statmodeling.stat.columbia.edu/xmlrpc.php" />
+
+
+<link rel='dns-prefetch' href='//s.w.org' />
+<link rel="alternate" type="application/rss+xml" title="Statistical Modeling, Causal Inference, and Social Science &raquo; Feed" href="https://statmodeling.stat.columbia.edu/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Statistical Modeling, Causal Inference, and Social Science &raquo; Comments Feed" href="https://statmodeling.stat.columbia.edu/comments/feed/" />
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/12.0.0-1\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/12.0.0-1\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/statmodeling.stat.columbia.edu\/wp-includes\/js\/wp-emoji-release.min.js?ver=5.4.2"}};
+			/*! This file is auto-generated */
+			!function(e,a,t){var r,n,o,i,p=a.createElement("canvas"),s=p.getContext&&p.getContext("2d");function c(e,t){var a=String.fromCharCode;s.clearRect(0,0,p.width,p.height),s.fillText(a.apply(this,e),0,0);var r=p.toDataURL();return s.clearRect(0,0,p.width,p.height),s.fillText(a.apply(this,t),0,0),r===p.toDataURL()}function l(e){if(!s||!s.fillText)return!1;switch(s.textBaseline="top",s.font="600 32px Arial",e){case"flag":return!c([127987,65039,8205,9895,65039],[127987,65039,8203,9895,65039])&&(!c([55356,56826,55356,56819],[55356,56826,8203,55356,56819])&&!c([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]));case"emoji":return!c([55357,56424,55356,57342,8205,55358,56605,8205,55357,56424,55356,57340],[55357,56424,55356,57342,8203,55358,56605,8203,55357,56424,55356,57340])}return!1}function d(e){var t=a.createElement("script");t.src=e,t.defer=t.type="text/javascript",a.getElementsByTagName("head")[0].appendChild(t)}for(i=Array("flag","emoji"),t.supports={everything:!0,everythingExceptFlag:!0},o=0;o<i.length;o++)t.supports[i[o]]=l(i[o]),t.supports.everything=t.supports.everything&&t.supports[i[o]],"flag"!==i[o]&&(t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&t.supports[i[o]]);t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&!t.supports.flag,t.DOMReady=!1,t.readyCallback=function(){t.DOMReady=!0},t.supports.everything||(n=function(){t.readyCallback()},a.addEventListener?(a.addEventListener("DOMContentLoaded",n,!1),e.addEventListener("load",n,!1)):(e.attachEvent("onload",n),a.attachEvent("onreadystatechange",function(){"complete"===a.readyState&&t.readyCallback()})),(r=t.source||{}).concatemoji?d(r.concatemoji):r.wpemoji&&r.twemoji&&(d(r.twemoji),d(r.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+	<link rel='stylesheet' id='wp-block-library-css'  href='https://statmodeling.stat.columbia.edu/wp-includes/css/dist/block-library/style.min.css?ver=5.4.2' type='text/css' media='all' />
+<link rel='stylesheet' id='wpt-twitter-feed-css'  href='https://statmodeling.stat.columbia.edu/wp-content/plugins/wp-to-twitter/css/twitter-feed.css?ver=5.4.2' type='text/css' media='all' />
+<link rel='stylesheet' id='addthis_all_pages-css'  href='https://statmodeling.stat.columbia.edu/wp-content/plugins/addthis/frontend/build/addthis_wordpress_public.min.css?ver=5.4.2' type='text/css' media='all' />
+<script type='text/javascript' src='https://statmodeling.stat.columbia.edu/wp-includes/js/jquery/jquery.js?ver=1.12.4-wp'></script>
+<script type='text/javascript' src='https://statmodeling.stat.columbia.edu/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.4.1'></script>
+<script type='text/javascript' src='https://statmodeling.stat.columbia.edu/wp-content/plugins/google-analyticator/external-tracking.min.js?ver=6.5.4'></script>
+<link rel='https://api.w.org/' href='https://statmodeling.stat.columbia.edu/wp-json/' />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://statmodeling.stat.columbia.edu/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://statmodeling.stat.columbia.edu/wp-includes/wlwmanifest.xml" /> 
+ 
+	<script type="text/javascript">
+	 //<![CDATA[ 
+	function toggleLinkGrp(id) {
+	   var e = document.getElementById(id);
+	   if(e.style.display == 'block')
+			e.style.display = 'none';
+	   else
+			e.style.display = 'block';
+	}
+	// ]]>
+	</script> 
+	
+<!-- Fluid Blue customized styles generated by functions.php -->
+<style type="text/css">
+#header {
+	background-color: #3366cc;
+}
+#headerlogo h1 a {
+	color: #000000;
+}
+#headerlogo div.description {
+	color: #ffffff;
+}
+#container {
+	padding-right: 190px;
+	padding-left: 0;
+}
+#wrapper {
+	border-right-width: 190px;
+	margin-right: -190px;
+	border-left: 0;
+	margin-left: 0;
+}
+#sidebar_right {
+	width: 150px;
+	margin-right: -190px;
+	font-size: 1em;
+}
+#sidebar_left {
+	font-size: 1em;
+}
+.postentry p {
+	font-size: 1em;
+}
+.postentry ul {
+	font-size: 1em;
+}
+.postentry ol {
+	font-size: 1em;
+}
+</style>
+<link rel="stylesheet" href="https://statmodeling.stat.columbia.edu/wp-content/themes/f2/rounded-corners.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="https://statmodeling.stat.columbia.edu/wp-content/themes/f2/custom.css" type="text/css" media="screen" />
+<style type="text/css">.recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}</style><!-- All in one Favicon 4.7 --><link rel="shortcut icon" href="/wp-content/uploads/2013/02/favicon.ico" />
+<style type="text/css">
+/* <![CDATA[ */
+img.latex { vertical-align: middle; border: none; }
+/* ]]> */
+</style>
+<script data-cfasync="false" type="text/javascript">if (window.addthis_product === undefined) { window.addthis_product = "wpp"; } if (window.wp_product_version === undefined) { window.wp_product_version = "wpp-6.1.8"; } if (window.wp_blog_version === undefined) { window.wp_blog_version = "5.4.2"; } if (window.addthis_share === undefined) { window.addthis_share = {}; } if (window.addthis_config === undefined) { window.addthis_config = {"data_track_clickback":true,"ignore_server_config":true,"ui_atversion":"300"}; } if (window.addthis_layers === undefined) { window.addthis_layers = {}; } if (window.addthis_layers_tools === undefined) { window.addthis_layers_tools = [{"sharetoolbox":{"numPreferredServices":5,"counts":"one","size":"32px","style":"fixed","shareCountThreshold":0,"elements":".addthis_inline_share_toolbox_below,.at-below-post-homepage,.at-below-post-arch-page,.at-below-post-cat-page,.at-below-post,.at-below-post-page"}}]; } else { window.addthis_layers_tools.push({"sharetoolbox":{"numPreferredServices":5,"counts":"one","size":"32px","style":"fixed","shareCountThreshold":0,"elements":".addthis_inline_share_toolbox_below,.at-below-post-homepage,.at-below-post-arch-page,.at-below-post-cat-page,.at-below-post,.at-below-post-page"}});  } if (window.addthis_plugin_info === undefined) { window.addthis_plugin_info = {"info_status":"enabled","cms_name":"WordPress","plugin_name":"Share Buttons by AddThis","plugin_version":"6.1.8","plugin_mode":"WordPress","anonymous_profile_id":"wp-7bd3648ea53f59fc85c724fbe56a3550","page_info":{"template":"home","post_type":""},"sharing_enabled_on_post_via_metabox":false}; } 
+                    (function() {
+                      var first_load_interval_id = setInterval(function () {
+                        if (typeof window.addthis !== 'undefined') {
+                          window.clearInterval(first_load_interval_id);
+                          if (typeof window.addthis_layers !== 'undefined' && Object.getOwnPropertyNames(window.addthis_layers).length > 0) {
+                            window.addthis.layers(window.addthis_layers);
+                          }
+                          if (Array.isArray(window.addthis_layers_tools)) {
+                            for (i = 0; i < window.addthis_layers_tools.length; i++) {
+                              window.addthis.layers(window.addthis_layers_tools[i]);
+                            }
+                          }
+                        }
+                     },1000)
+                    }());
+                </script> <script data-cfasync="false" type="text/javascript" src="https://s7.addthis.com/js/300/addthis_widget.js#pubid=wp-7bd3648ea53f59fc85c724fbe56a3550" async="async"></script><!-- Google Analytics Tracking by Google Analyticator 6.5.4: http://www.videousermanuals.com/google-analyticator/ -->
+<script type="text/javascript">
+    var analyticsFileTypes = [''];
+    var analyticsSnippet = 'enabled';
+    var analyticsEventTracking = 'enabled';
+</script>
+<script type="text/javascript">
+	var _gaq = _gaq || [];
+  
+	_gaq.push(['_setAccount', 'UA-46652329-1']);
+    _gaq.push(['_addDevId', 'i9k95']); // Google Analyticator App ID with Google
+	_gaq.push(['_trackPageview']);
+
+	(function() {
+		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		                ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		                var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	})();
+</script>
+
+</head>
+
+<body class="home blog">
+<div id="page">
+
+<div id="header">
+	<div id="headerlogo">
+		<h1><a href="https://statmodeling.stat.columbia.edu" title="Statistical Modeling, Causal Inference, and Social Science: ">Statistical Modeling, Causal Inference, and Social Science</a></h1>
+		<div class="description"></div>
+	</div> 
+</div>
+
+<div id="hmenu"> <!-- Horizontal navigation menu -->
+<a style="display:none;" href="#content">Skip to content</a>
+<ul>
+	<li><a href="https://statmodeling.stat.columbia.edu">Home</a></li>
+	<li class="page_item page-item-2"><a href="https://statmodeling.stat.columbia.edu/books/">Books</a></li>
+<li class="page_item page-item-31"><a href="https://statmodeling.stat.columbia.edu/blogroll/">Blogroll</a></li>
+<li class="page_item page-item-33"><a href="https://statmodeling.stat.columbia.edu/sponsors/">Sponsors</a></li>
+<li class="page_item page-item-12257"><a href="https://statmodeling.stat.columbia.edu/authors/">Authors</a></li>
+	<li class="hmenu_rss"><a href="https://statmodeling.stat.columbia.edu/feed/">Feed</a></li>
+</ul>
+</div>
+
+<div id="container">
+<div id="wrapper">
+	<div id="content">
+
+			
+						
+			<div class="post-43270 post type-post status-publish format-standard hentry category-miscellaneous-statistics" id="post-43270">
+				<h2 class="posttitle"><a href="https://statmodeling.stat.columbia.edu/2020/09/12/what-are-my-statistical-principles/" rel="bookmark" title="Permanent Link to What are my statistical principles?">What are my statistical principles?</a></h2>
+				<div class="postmetadata">
+								Posted by <span class="postauthor"><a href="https://statmodeling.stat.columbia.edu/author/andrew/" title="Posts by Andrew" rel="author">Andrew</a></span> on								<span class="postdate">12 September 2020, 9:52 am</span>
+								</div>
+				
+				<div class="postentry">
+					<div class="at-above-post-homepage addthis_tool" data-url="https://statmodeling.stat.columbia.edu/2020/09/12/what-are-my-statistical-principles/"></div><p>Jared Harris writes:</p>
+<blockquote><p>I am not a statistician but am a long time reader of your blog and have strong interests in most of your core subject matter, as well as scientific and social epistemology. </p>
+<p>I’ve been trying for some time to piece together the broader implications of your specific comments, and have finally gotten to a perspective that seems to be implicit in a lot of your writing, but deserves to be made more explicit. (Or if you’ve already made it explicit, I want to find out where!) </p>
+<p>My sense is that many see statistics as essentially defensive — helping us *not* to believe things that are likely to be wrong. While this is clearly part of the story it is not an adequate mission statement. </p>
+<p>Your interests seem much wider — for example your advocacy of maximally informative graphs and multilevel models. I’d just like to have a clearer and more explicit statement of the broad principles. </p>
+<p>An attempted summary: Experimental design and analysis, including statistics, should help us learn as much as we can from our work:<br />
+&#8211; Frame and carry out experiments that help us learn as much as possible.<br />
+&#8211; Analyze the results of the experiments to learn as much as possible.</p>
+<p>One obstacle to learning from experiments is the way we talk and think about experimental outcomes. We say an experiment succeeded or failed — but this is not aligned with maximizing learning. Naturally we want to minimize or hide failures and this leads to the file drawer problem and many others. Conversely we are inclined to maximize success and so we are motivated to produce and trumpet “successful” results even if they are uninformative. </p>
+<p>We&#8217;d be better aligned if we judged experiments on whether they are informative or uninformative (a matter of degree). Negative results can be extremely informative. The cost to the community of missing or suppressing negative results can be enormous because of the effort that others will waste. Also negative results can help delimit “negative space” and contribute to seeing important patterns. </p>
+<p>I’m not at all experienced with experiment design, but I guess that designing experiments to be maximally informative would lead to a very different approach than designing experiments to have the best possible chance of yielding positive results, and could produce much more useful negative results.  </p>
+<p>This approach has some immediate normative implications:</p>
+<p>One grave sin is wasting effort on uninformative experiments and analysis, when we could have gotten informative outcomes — even if negative. Design errors like poor measurement and forking paths lead to uninformative results. This seems like a stronger position than just avoiding poorly grounded positive results. </p>
+<p>Another grave sin is suppressing informative results — whether negative or positive. The file drawer problem should be seen as a moral failure — partly collective because most disciplines and publishing venues share the bias against negative results.</p></blockquote>
+<p>I was going to respond to this with some statement of my statistical principles and priorities&#8212;but then I thought maybe all of you could make more sense out of this than I can.  You tell me what you think are my principles and priorities based on what you&#8217;ve read from me, then I&#8217;ll see what you say and react to it.  It might be that what you think are my priorities, are not my actual priorities.  If so, that implies that some of what I&#8217;ve written has been misfocused&#8212;and it would be good for us to know that!</p>
+<!-- AddThis Advanced Settings above via filter on the_content --><!-- AddThis Advanced Settings below via filter on the_content --><!-- AddThis Advanced Settings generic via filter on the_content --><!-- AddThis Share Buttons above via filter on the_content --><!-- AddThis Share Buttons below via filter on the_content --><div class="at-below-post-homepage addthis_tool" data-url="https://statmodeling.stat.columbia.edu/2020/09/12/what-are-my-statistical-principles/"></div><!-- AddThis Share Buttons generic via filter on the_content -->				</div>
+				
+				
+
+				<div class="postmetadata">
+
+					<div class="posttagscat">
+										<span class="postcat">Filed under&nbsp;<a href="https://statmodeling.stat.columbia.edu/category/miscellaneous-statistics/" rel="category tag">Miscellaneous Statistics</a>.</span>
+															</div>
+
+					<span class="postcomment">
+					<a href="https://statmodeling.stat.columbia.edu/2020/09/12/what-are-my-statistical-principles/#respond">Comment</a>					</span>
+										
+				 </div>
+			</div>
+	
+						
+			<div class="post-44481 post type-post status-publish format-standard hentry category-multilevel-modeling category-political-science" id="post-44481">
+				<h2 class="posttitle"><a href="https://statmodeling.stat.columbia.edu/2020/09/11/congressional-representation-accountability-from-the-constituents-perspective/" rel="bookmark" title="Permanent Link to &#8220;Congressional Representation: Accountability from the Constituent’s Perspective&#8221;">&#8220;Congressional Representation: Accountability from the Constituent’s Perspective&#8221;</a></h2>
+				<div class="postmetadata">
+								Posted by <span class="postauthor"><a href="https://statmodeling.stat.columbia.edu/author/andrew/" title="Posts by Andrew" rel="author">Andrew</a></span> on								<span class="postdate">11 September 2020, 9:27 am</span>
+								</div>
+				
+				<div class="postentry">
+					<div class="at-above-post-homepage addthis_tool" data-url="https://statmodeling.stat.columbia.edu/2020/09/11/congressional-representation-accountability-from-the-constituents-perspective/"></div><p>Steve Ansolabehere and Shiro Kuriwaki <a href="https://statmodeling.stat.columbia.edu/wp-content/uploads/2020/09/ajk.pdf">write</a>:</p>
+<blockquote><p>The premise that constituents hold representatives accountable for their legislative decisions undergirds political theories of democracy and legal theories of statutory interpretation. But studies of this at the individual level are rare, examine only a handful of issues, and arrive at mixed results. We provide an extensive assessment of issue accountability at the individual level. We trace the congressional rollcall votes on 44 bills across seven Congresses (2006–2018), and link them to constituent’s perceptions of their representative’s votes and their evaluation of their representative. Correlational, instrumental variables, and experimental approaches all show that constituents hold representatives accountable. A one-standard deviation increase in a constituent’s perceived issue agreement with their representative can improve net approval by 35 percentage points. Congressional districts, however, are heterogeneous. Consequently, the effect of issue agreement on vote is much smaller at the district level, resolving an apparent discrepancy between micro and macro studies.</p></blockquote>
+<p>That last point is worth saying again, and Ansolabehere and Kuriwaki do so, at the end of their article:</p>
+<blockquote><p>Our findings also help reconcile two observations. On the one hand, individual con- stituents respond strongly to their legislators’ roll call votes. But on the other hand, aggregate vote shares are only modestly correlated with legislators’ roll call voting records. This is a result of aggregation. Many legislative districts are fairly evenly split on key legislation. A legislator may vote with the majority of her district and get the support of 55 percent of her constituents, but lose the support of the remaining 45 percent. Those with whom the legislator sides care deeply about the issue, as do those opposed to the legislator’s vote. But, in the aggregate the net effect is modest because much of the support and opposition for the bill cancels out. Aggregate correlations should not be taken as measures of the true degree to which individuals care about or vote on the issues. By the same token, in extremely competitive districts, representatives have a difficult time satisfying the majority of the voters back home.</p></blockquote>
+<p>This is thematically consistent with Ansolabehere&#8217;s earlier work on stability of issue attitudes, in that details of measurement can make a bit difference in how we understand political behavior.</p>
+<!-- AddThis Advanced Settings above via filter on the_content --><!-- AddThis Advanced Settings below via filter on the_content --><!-- AddThis Advanced Settings generic via filter on the_content --><!-- AddThis Share Buttons above via filter on the_content --><!-- AddThis Share Buttons below via filter on the_content --><div class="at-below-post-homepage addthis_tool" data-url="https://statmodeling.stat.columbia.edu/2020/09/11/congressional-representation-accountability-from-the-constituents-perspective/"></div><!-- AddThis Share Buttons generic via filter on the_content -->				</div>
+				
+				
+
+				<div class="postmetadata">
+
+					<div class="posttagscat">
+										<span class="postcat">Filed under&nbsp;<a href="https://statmodeling.stat.columbia.edu/category/multilevel-modeling/" rel="category tag">Multilevel Modeling</a>, <a href="https://statmodeling.stat.columbia.edu/category/political-science/" rel="category tag">Political Science</a>.</span>
+															</div>
+
+					<span class="postcomment">
+					<a href="https://statmodeling.stat.columbia.edu/2020/09/11/congressional-representation-accountability-from-the-constituents-perspective/#comments">17 Comments</a>					</span>
+										
+				 </div>
+			</div>
+	
+						
+			<div class="post-42386 post type-post status-publish format-standard hentry category-sports category-stan category-teaching" id="post-42386">
+				<h2 class="posttitle"><a href="https://statmodeling.stat.columbia.edu/2020/09/10/why-we-kept-the-trig-in-golf-mathematical-simplicity-is-not-always-the-same-as-conceptual-simplicity/" rel="bookmark" title="Permanent Link to Why we kept the trig in golf:  Mathematical simplicity is not always the same as conceptual simplicity">Why we kept the trig in golf:  Mathematical simplicity is not always the same as conceptual simplicity</a></h2>
+				<div class="postmetadata">
+								Posted by <span class="postauthor"><a href="https://statmodeling.stat.columbia.edu/author/andrew/" title="Posts by Andrew" rel="author">Andrew</a></span> on								<span class="postdate">10 September 2020, 9:08 am</span>
+								</div>
+				
+				<div class="postentry">
+					<div class="at-above-post-homepage addthis_tool" data-url="https://statmodeling.stat.columbia.edu/2020/09/10/why-we-kept-the-trig-in-golf-mathematical-simplicity-is-not-always-the-same-as-conceptual-simplicity/"></div><p>Someone read the <a href="https://statmodeling.stat.columbia.edu/2019/10/04/golf-example-now-a-stan-case-study/">golf example</a> and asked:</p>
+<blockquote><p>You define the threshold angle as arcsin((R &#8211; r)/x), but shouldn&#8217;t it be arctan((R &#8211; r)/x) instead?</p>
+<p>Is it just that it does not matter with these small angles, where<br />
+sine and tangent are about the same, or am I missing something?</p></blockquote>
+<p>My reply:</p>
+<p>This sin vs tan thing comes up from time to time.</p>
+<p>As you note, given the dimensions involved, the two functions are for all practical purposes equivalent.  If you look at the picture I drew of the little ball and the big ball and the solid and dotted lines, the dotted lines are supposed to just touch the edge of the inner circle.  In that case, if you drop a perpendicular from where the dotted line hits the circle, that perpendicular goes through the center of the circle, hence the angle of interest is arcsin((r-R)/x):  the solid line of length x is the hypoteneuse of the triangle.</p>
+<p>As many people have pointed out, the whole model is approximate in that it assumes the ball enters the whole only if the entire ball is over the hole.  But actually the ball could fall in, if only half of the ball is over the whole.  So, arguably, it should be asin(R/x).  But that&#8217;s also only an approximation!</p>
+<p>So we could replace all that trig with a simple R/x, and I&#8217;m guessing it would fit the data just as well.  So why didn&#8217;t I do that?  Doesn&#8217;t the trig just complicate things?  I kept the trig because, to me, it&#8217;s cleaner to derive the trig solution and just use it, then have mathematical conversations about simplifying it. Mathematically, arcsin((R-r)/x) is more complicated than R/x, but conceptually I think it&#8217;s simpler to go with arcsin((R-r)/x) as it has a direct geometrical derivation.  And, for teaching purposes, I like having a model that&#8217;s very clearly tailored to this particular problem.</p>
+<p>Mathematical simplicity is not always the same as conceptual simplicity.  A (somewhat) complicated mathematical expression can give some clarity, as the reader can see how each part of the formula corresponds to a different aspect of the problem being modeled.</p>
+<!-- AddThis Advanced Settings above via filter on the_content --><!-- AddThis Advanced Settings below via filter on the_content --><!-- AddThis Advanced Settings generic via filter on the_content --><!-- AddThis Share Buttons above via filter on the_content --><!-- AddThis Share Buttons below via filter on the_content --><div class="at-below-post-homepage addthis_tool" data-url="https://statmodeling.stat.columbia.edu/2020/09/10/why-we-kept-the-trig-in-golf-mathematical-simplicity-is-not-always-the-same-as-conceptual-simplicity/"></div><!-- AddThis Share Buttons generic via filter on the_content -->				</div>
+				
+				
+
+				<div class="postmetadata">
+
+					<div class="posttagscat">
+										<span class="postcat">Filed under&nbsp;<a href="https://statmodeling.stat.columbia.edu/category/sports/" rel="category tag">Sports</a>, <a href="https://statmodeling.stat.columbia.edu/category/stan/" rel="category tag">Stan</a>, <a href="https://statmodeling.stat.columbia.edu/category/teaching/" rel="category tag">Teaching</a>.</span>
+															</div>
+
+					<span class="postcomment">
+					<a href="https://statmodeling.stat.columbia.edu/2020/09/10/why-we-kept-the-trig-in-golf-mathematical-simplicity-is-not-always-the-same-as-conceptual-simplicity/#comments">10 Comments</a>					</span>
+										
+				 </div>
+			</div>
+	
+						
+			<div class="post-42389 post type-post status-publish format-standard hentry category-decision-theory category-zombies" id="post-42389">
+				<h2 class="posttitle"><a href="https://statmodeling.stat.columbia.edu/2020/09/09/they-want-statistical-proof-whatever-that-is/" rel="bookmark" title="Permanent Link to They want &#8220;statistical proof&#8221;&#8212;whatever that is!">They want &#8220;statistical proof&#8221;&#8212;whatever that is!</a></h2>
+				<div class="postmetadata">
+								Posted by <span class="postauthor"><a href="https://statmodeling.stat.columbia.edu/author/andrew/" title="Posts by Andrew" rel="author">Andrew</a></span> on								<span class="postdate">9 September 2020, 9:40 am</span>
+								</div>
+				
+				<div class="postentry">
+					<div class="at-above-post-homepage addthis_tool" data-url="https://statmodeling.stat.columbia.edu/2020/09/09/they-want-statistical-proof-whatever-that-is/"></div><p>Bert Gunter writes:</p>
+<blockquote><p>I leave it to you to decide whether <a href="https://www.nytimes.com/2019/10/08/opinion/ai-hiring-discrimination.html">this</a> is fodder for your blog:</p>
+<blockquote><p>So when a plaintiff using a hiring platform encounters a problematic design feature — like platforms that check for gaps in employment — she should be able to bring a lawsuit on the basis of discrimination per se, and the employer would then be required to provide <em>statistical proof</em> from internal and external audits to show that its hiring platform is not unlawfully discriminating against certain groups.</p></blockquote>
+<p>It&#8217;s from an opinion column about the problems of automated hiring algorithms/systems.</p>
+<p>I would not begin to know how to respond.</p></blockquote>
+<p>I don&#8217;t know how to respond either!  Looking for statistical &#8220;proof&#8221; seems like asking for trouble.  The larger problem, it seems, is an inappropriate desire for certainty.</p>
+<p>I&#8217;m reminded of the time, several years ago, when I was doing legal consulting, and the lawyers I was working for asked me what I would say on the stand if the opposing lawyer asked me if I was certain my analysis was correct, if it was possible I had made a mistake.  I responded that, if asked, I&#8217;d say, Sure, it&#8217;s possible I made a mistake.  The lawyer told me I shouldn&#8217;t say that.  I can&#8217;t remember how this particular conversation got resolved, but as it happened the case was settled and I never had to testify.</p>
+<p>I don&#8217;t know what &#8220;statistical proof&#8221; is, but I hope it&#8217;s not the thing that the ESP guy, the beauty-and-sex-ratio guy, the Bible Code dudes, etc etc etc, had that got all those papers published in peer-reviewed journals.</p>
+<p>In response to the above-linked op-ed, I&#8217;d prefer to replace the phrase &#8220;statistical proof&#8221; by the phrase &#8220;strong statistical evidence.&#8221;  Yes, it&#8217;s just a change of words, but I think it&#8217;s an improvement in that it&#8217;s now demanding something that could really be delivered.  If you&#8217;re asking for &#8220;proof,&#8221; then . . . remember the Lance Armstrong <a href="https://statmodeling.stat.columbia.edu/2017/06/08/lance-armstrong-principle/">principle</a>.</p>
+<!-- AddThis Advanced Settings above via filter on the_content --><!-- AddThis Advanced Settings below via filter on the_content --><!-- AddThis Advanced Settings generic via filter on the_content --><!-- AddThis Share Buttons above via filter on the_content --><!-- AddThis Share Buttons below via filter on the_content --><div class="at-below-post-homepage addthis_tool" data-url="https://statmodeling.stat.columbia.edu/2020/09/09/they-want-statistical-proof-whatever-that-is/"></div><!-- AddThis Share Buttons generic via filter on the_content -->				</div>
+				
+				
+
+				<div class="postmetadata">
+
+					<div class="posttagscat">
+										<span class="postcat">Filed under&nbsp;<a href="https://statmodeling.stat.columbia.edu/category/decision-theory/" rel="category tag">Decision Theory</a>, <a href="https://statmodeling.stat.columbia.edu/category/zombies/" rel="category tag">Zombies</a>.</span>
+															</div>
+
+					<span class="postcomment">
+					<a href="https://statmodeling.stat.columbia.edu/2020/09/09/they-want-statistical-proof-whatever-that-is/#comments">88 Comments</a>					</span>
+										
+				 </div>
+			</div>
+	
+						
+			<div class="post-44471 post type-post status-publish format-standard hentry category-bayesian-statistics category-decision-theory category-economics category-political-science" id="post-44471">
+				<h2 class="posttitle"><a href="https://statmodeling.stat.columbia.edu/2020/09/08/information-incentives-and-goals-in-election-forecasts/" rel="bookmark" title="Permanent Link to Information, incentives, and goals in election forecasts">Information, incentives, and goals in election forecasts</a></h2>
+				<div class="postmetadata">
+								Posted by <span class="postauthor"><a href="https://statmodeling.stat.columbia.edu/author/andrew/" title="Posts by Andrew" rel="author">Andrew</a></span> on								<span class="postdate">8 September 2020, 9:07 am</span>
+								</div>
+				
+				<div class="postentry">
+					<div class="at-above-post-homepage addthis_tool" data-url="https://statmodeling.stat.columbia.edu/2020/09/08/information-incentives-and-goals-in-election-forecasts/"></div><p><img src="https://statmodeling.stat.columbia.edu/wp-content/uploads/2020/09/Screen-Shot-2020-09-07-at-10.10.32-PM.png" alt="" width="550" /></p>
+<p>Jessica Hullman, Christopher Wlezien, and I <a href="http://www.stat.columbia.edu/~gelman/research/unpublished/forecast_incentives3.pdf">write</a>:</p>
+<blockquote><p>Presidential elections can be forecast using information from political and economic conditions, polls, and a statistical model of changes in public opinion over time. We discuss challenges in understanding, communicating, and evaluating election predictions, using as examples the Economist and Fivethirtyeight forecasts of the 2020 election.</p></blockquote>
+<p>Here are the contents of the article:</p>
+<blockquote><p>1. Forecasting presidential elections</p>
+<p>1.1. Forecasting elections from political and economic fundamentals</p>
+<p>1.2. Pre-election surveys and poll aggregation</p>
+<p>1.3. Putting together an electoral college forecast</p>
+<p>2. Communicating and diagnosing problems with probabilistic election forecasts</p>
+<p>2.1. Win probabilities</p>
+<p>2.2. Visualizing uncertainty</p>
+<p>2.3. Other ways to communicate uncertainty</p>
+<p>2.4. State and national predictions</p>
+<p>2.5. Replacement candidates, vote-counting disputes, and other possibilities not included in the forecasting model</p>
+<p>3. Calibration and incentives</p>
+<p>3.1. The difficulty of calibration</p>
+<p>3.2. Incentives for overconfidence</p>
+<p>3.3. Incentives for underconfidence</p>
+<p>3.4. Comparing different forecasts</p>
+<p>3.5. Martingale property</p>
+<p>3.6. Novelty and stability</p>
+<p>4. Discussion</p></blockquote>
+<p>I like this paper.  It gathers various thoughts we&#8217;ve had about information underlying election forecasts, how we communicate and understand these predictions, and some of the incentives that lead to different forecasts having different statistical properties.</p>
+<p>We thank Joshua Goldstein, Elliott Morris, Merlin Heidemanns, Dhruv Madeka, Yair Ghitza, Doug Rivers, Bob Erikson, Bob Shapiro, and Jon Baron for helpful comments and various government agencies and private foundations for supporting this research.</p>
+<!-- AddThis Advanced Settings above via filter on the_content --><!-- AddThis Advanced Settings below via filter on the_content --><!-- AddThis Advanced Settings generic via filter on the_content --><!-- AddThis Share Buttons above via filter on the_content --><!-- AddThis Share Buttons below via filter on the_content --><div class="at-below-post-homepage addthis_tool" data-url="https://statmodeling.stat.columbia.edu/2020/09/08/information-incentives-and-goals-in-election-forecasts/"></div><!-- AddThis Share Buttons generic via filter on the_content -->				</div>
+				
+				
+
+				<div class="postmetadata">
+
+					<div class="posttagscat">
+										<span class="postcat">Filed under&nbsp;<a href="https://statmodeling.stat.columbia.edu/category/bayesian-statistics/" rel="category tag">Bayesian Statistics</a>, <a href="https://statmodeling.stat.columbia.edu/category/decision-theory/" rel="category tag">Decision Theory</a>, <a href="https://statmodeling.stat.columbia.edu/category/economics/" rel="category tag">Economics</a>, <a href="https://statmodeling.stat.columbia.edu/category/political-science/" rel="category tag">Political Science</a>.</span>
+															</div>
+
+					<span class="postcomment">
+					<a href="https://statmodeling.stat.columbia.edu/2020/09/08/information-incentives-and-goals-in-election-forecasts/#comments">10 Comments</a>					</span>
+										
+				 </div>
+			</div>
+	
+						
+			<div class="post-44467 post type-post status-publish format-standard hentry category-economics category-miscellaneous-statistics" id="post-44467">
+				<h2 class="posttitle"><a href="https://statmodeling.stat.columbia.edu/2020/09/07/who-are-you-gonna-believe-me-or-your-lying-eyes/" rel="bookmark" title="Permanent Link to Who are you gonna believe, me or your lying eyes?">Who are you gonna believe, me or your lying eyes?</a></h2>
+				<div class="postmetadata">
+								Posted by <span class="postauthor"><a href="https://statmodeling.stat.columbia.edu/author/phil/" title="Posts by Phil" rel="author">Phil</a></span> on								<span class="postdate">7 September 2020, 1:58 pm</span>
+								</div>
+				
+				<div class="postentry">
+					<div class="at-above-post-homepage addthis_tool" data-url="https://statmodeling.stat.columbia.edu/2020/09/07/who-are-you-gonna-believe-me-or-your-lying-eyes/"></div><p>This post is by Phil Price, not Andrew.</p>
+<p>A commenter on an earlier post quoted Terence Kealey, who said this in an interview in Scientific American in 2003:</p>
+<p>&#8220;But the really fascinating example is the States, because it’s so stunningly abrupt. Until 1940 it was American government policy not to fund science. Then, bang, the American government goes from funding something like $20 million of basic science to $3,000 million, over the space of 10 or 15 years. I mean, it’s an unbelievable increase, which continues all the way to the present day. And underlying rates of economic growth in the States simply do not change. So these two historical bits of evidence are very, very powerful…&#8221;</p>
+<p>One thing any reader of this blog should know by now, if you didn&#8217;t learn it long ago, is that you should not take any claim at face value, no matter how strongly and authoritatively it is made. Back In The Day (pre-Internet), checking this kind of thing was not always so easy. A lot of people, myself included, would have a copy of the Statistical Abstract of the United States, and an almanac or two, and a new atlas and an old atlas, and a CRC datebook, and a bunch of other references&#8230;but honestly usually we just had to go through life not knowing whether a claim like this was true or not.</p>
+<p>But now it&#8217;s a lot easier to check this sort of thing, and in this case it&#8217;s especially easy because another blog commenter provided a reference: https://nintil.com/on-the-constancy-of-the-rate-of-gdp-growth/</p>
+<p>So I look at that page, and sure enough there&#8217;s a nice graph of US GDP per capita as a function of time&#8230;and the growth rate is NOT, in fact, the same after 1940 as before!</p>
+<p><div id="attachment_44469" style="width: 1034px" class="wp-caption aligncenter"><a href="https://statmodeling.stat.columbia.edu/2020/09/07/who-are-you-gonna-believe-me-or-your-lying-eyes/screen-shot-2020-09-07-at-10-18-59-am/" rel="attachment wp-att-44469"><img aria-describedby="caption-attachment-44469" class="size-large wp-image-44469" src="https://statmodeling.stat.columbia.edu/wp-content/uploads/2020/09/Screen-Shot-2020-09-07-at-10.18.59-AM-1024x604.png" alt="" width="550" srcset="https://statmodeling.stat.columbia.edu/wp-content/uploads/2020/09/Screen-Shot-2020-09-07-at-10.18.59-AM-1024x604.png 1024w, https://statmodeling.stat.columbia.edu/wp-content/uploads/2020/09/Screen-Shot-2020-09-07-at-10.18.59-AM-300x177.png 300w, https://statmodeling.stat.columbia.edu/wp-content/uploads/2020/09/Screen-Shot-2020-09-07-at-10.18.59-AM-768x453.png 768w, https://statmodeling.stat.columbia.edu/wp-content/uploads/2020/09/Screen-Shot-2020-09-07-at-10.18.59-AM-1536x906.png 1536w, https://statmodeling.stat.columbia.edu/wp-content/uploads/2020/09/Screen-Shot-2020-09-07-at-10.18.59-AM.png 1566w" sizes="(max-width: 1024px) 100vw, 1024px" /></a><p id="caption-attachment-44469" class="wp-caption-text">US per capita GDP from late 1800s to 2011, in 2011 dollars; y axis is logarithmic</p></div></p>
+<p>I have done no quantitative calculations at all, all I&#8217;ve done is look at the plot, but it&#8217;s obvious that the slope is higher after 1940 than before. Maybe the best thing to do is to leave out the Great Depression and WWII, and just look at the period before 1930 and after 1950, or you can just look at pre and post 1940 if you want&#8230;no matter how you slice it, the slope is higher after WWII. I&#8217;m not saying the change is huge &#8212; if you continued the pre-WWII slope until 2011, you&#8217;d be within a factor of 2 of the data &#8212; but there&#8217;s no doubt that there&#8217;s a change.</p>
+<p>I pointed out to the commenter who provided the link that the slope is higher after WWII, and he said, in essence, no it isn&#8217;t: economists agree that the slope is the same before and after. So who am I gonna believe, economists or my lying eyes?</p>
+<p>I have no idea about the topic that started the conversation, which is whether government investment in science pays off economically. The increase in slope after WWII could be due to all kinds of things (for instance, women and blacks were allowed to enter the workforce in ways and numbers not previously available).  I&#8217;m not making any claims about that topic. I just think it&#8217;s funny that someone claims that the &#8220;fact&#8221; that a number is unchanged is &#8220;very, very powerful&#8221; evidence of something&#8230;and in fact the number did change!</p>
+<p>This post is by Phil.</p>
+<!-- AddThis Advanced Settings above via filter on the_content --><!-- AddThis Advanced Settings below via filter on the_content --><!-- AddThis Advanced Settings generic via filter on the_content --><!-- AddThis Share Buttons above via filter on the_content --><!-- AddThis Share Buttons below via filter on the_content --><div class="at-below-post-homepage addthis_tool" data-url="https://statmodeling.stat.columbia.edu/2020/09/07/who-are-you-gonna-believe-me-or-your-lying-eyes/"></div><!-- AddThis Share Buttons generic via filter on the_content -->				</div>
+				
+				
+
+				<div class="postmetadata">
+
+					<div class="posttagscat">
+										<span class="postcat">Filed under&nbsp;<a href="https://statmodeling.stat.columbia.edu/category/economics/" rel="category tag">Economics</a>, <a href="https://statmodeling.stat.columbia.edu/category/miscellaneous-statistics/" rel="category tag">Miscellaneous Statistics</a>.</span>
+															</div>
+
+					<span class="postcomment">
+					<a href="https://statmodeling.stat.columbia.edu/2020/09/07/who-are-you-gonna-believe-me-or-your-lying-eyes/#comments">43 Comments</a>					</span>
+										
+				 </div>
+			</div>
+	
+						
+			<div class="post-44454 post type-post status-publish format-standard hentry category-miscellaneous-science" id="post-44454">
+				<h2 class="posttitle"><a href="https://statmodeling.stat.columbia.edu/2020/09/07/day-science-and-night-science-are-the-same-thing-if-done-right/" rel="bookmark" title="Permanent Link to &#8220;Day science&#8221; and &#8220;Night science&#8221; are the same thing&#8212;if done right!">&#8220;Day science&#8221; and &#8220;Night science&#8221; are the same thing&#8212;if done right!</a></h2>
+				<div class="postmetadata">
+								Posted by <span class="postauthor"><a href="https://statmodeling.stat.columbia.edu/author/andrew/" title="Posts by Andrew" rel="author">Andrew</a></span> on								<span class="postdate">7 September 2020, 9:30 am</span>
+								</div>
+				
+				<div class="postentry">
+					<div class="at-above-post-homepage addthis_tool" data-url="https://statmodeling.stat.columbia.edu/2020/09/07/day-science-and-night-science-are-the-same-thing-if-done-right/"></div><p><img src="https://statmodeling.stat.columbia.edu/wp-content/uploads/2016/05/Screen-Shot-2016-05-17-at-12.57.39-AM-1024x948.png" alt="Screen Shot 2016-05-17 at 12.57.39 AM" width="550"  /></p>
+<p>Chetan Chawla writes:</p>
+<blockquote><p><a href="https://genomebiology.biomedcentral.com/articles/10.1186/s13059-020-02133-w">This paper</a> will interest you, in defense of data mining.</p>
+<p>Isn’t this similar to the exploration Wasnik was encouraging in his infamous <a href="https://statmodeling.stat.columbia.edu/2016/12/15/hark-hark-p-value-heavens-gate-sings/">blog post</a>?</p></blockquote>
+<p>The article, by Itai Yanai and Martin Lercher, is called, &#8220;A hypothesis is a liability,&#8221; and it appeared in the journal Genome Biology.</p>
+<p>I took a look and replied:  I don&#8217;t think they&#8217;re like Wansink, but there&#8217;s something important they are missing.</p>
+<p>Here&#8217;s what they write:</p>
+<blockquote><p>There is a hidden cost to having a hypothesis. It arises from the relationship between night science and day science, the two very distinct modes of activity in which scientific ideas are generated and tested, respectively. With a hypothesis in hand, the impressive strengths of day science are unleashed, guiding us in designing tests, estimating parameters, and throwing out the hypothesis if it fails the tests. But when we analyze the results of an experiment, our mental focus on a specific hypothesis can prevent us from exploring other aspects of the data, effectively blinding us to new ideas. A hypothesis then becomes a liability for any night science explorations. The corresponding limitations on our creativity, self-imposed in hypothesis-driven research, are of particular concern in the context of modern biological datasets, which are often vast and likely to contain hints at multiple distinct and potentially exciting discoveries. Night science has its own liability though, generating many spurious relationships and false hypotheses. Fortunately, these are exposed by the light of day science, emphasizing the complementarity of the two modes, where each overcomes the other’s shortcomings. . . .</p></blockquote>
+<p>I understand that a lot of scientists think of science as being like this, an alternation between inspiration and criticism, exploratory data analysis and confirmatory data analysis, creative &#8220;night science&#8221; and rigorous &#8220;day science.&#8221;  Indeed, in Bayesian Data Analysis we talk about the separate steps of model building, model fitting, and model checking.</p>
+<p>But . . . I don&#8217;t think we should enthrone this separation.</p>
+<p>Yanai and Lercher contrast &#8220;the expressed goal of testing a specific hypothesis&#8221; with the mindset of &#8220;exploration, where we look at the data from as many angles as possible.&#8221;  They continue:</p>
+<blockquote><p>In this mode, we take on a sort of playfulness with the data, comparing everything to everything else. We become explorers, building a map of the data as we start out in one direction, switching directions at crossroads and stumbling into unanticipated regions.  Essentially, night science is an attitude that encourages us to explore and speculate. . . .</p></blockquote>
+<p>What&#8217;s missing here is a respect for the ways in which hypotheses, models, and theories can help us be more effective explorers.</p>
+<p>Consider exploratory data analysis, which uses tools designed to reveal unexpected patterns in data.  &#8220;Unexpected&#8221; is defined relative to &#8220;expected,&#8221; and the more fully fleshed out our models of the expected, the more effective can be our explorations in search of the unexpected.  This is a key point of <a href="http://www.stat.columbia.edu/~gelman/research/published/isr.pdf">my 2003 article</a>, A Bayesian formulation of exploratory data analysis and goodness-of-fit testing (one of my favorite papers, even though it&#8217;s been only cited about 200 times, and many of those citations are by me!).  I&#8217;m not  claiming here that fancy models are <em>required</em> to do good exploratory analysis; rather, I&#8217;m saying that exploration is relative to models, and formalizing these models can help us do better exploration.</p>
+<p>And it goes the other way, too:  careful exploration can reveal unexpected data patterns that improve our modeling.</p>
+<p>My first problem with the creative-night-science, rigorous-day-science dichotomy is that it oversimplifies the creative part of the work.  In part, Yanai and Lercher get it:  they write:</p>
+<blockquote><p>[M]ore often than not, night science may require the most acute state of mental activity: we not only need to make connections where previously there were none, we must do this while contrasting any observed pattern on an elaborate mental background that represents the expected. . . .</p>
+<p>[W]hen you roam the limits of the scientific knowns, you need a deep understanding of a field to even recognize a pattern or to recognize it as surprising. Different scientists looking at a given dataset will do this against a backdrop of subtly different knowledge and expectations, potentially highlighting different patterns. Looking is not the same as seeing, after all, and this may be why some of us may stumble upon discoveries in data that others have already analyzed.</p></blockquote>
+<p>That&#8217;s good.  It reminds me of Seth Roberts&#8217;s championing of the &#8220;insider-outsider perspective,&#8221; where you&#8217;re open to new ideas (you&#8217;re an outsider without an investment in the currently dominant way of thinking) but you have enough knowledge and understanding that you&#8217;ll know where to look for anomalies (you&#8217;re an insider with some amount of specialized knowledge).</p>
+<p>But &#8220;day science&#8221; is part of this exploration too!  By not using the inferential tools of &#8220;day science,&#8221; you&#8217;re doing &#8220;night science&#8221; with one hand behind your back, using your intuition but not allowing it to be informed by calculation.</p>
+<p>To put it another way, calculation and formal statistical inference are not just about the &#8220;day science&#8221; of hypothesis testing and p-values; they&#8217;re also about helping us better understand our data.</p>
+<p>Consider the <a href="https://statmodeling.stat.columbia.edu/2016/05/18/birthday-analysis-friday-the-13th-update/">birthday example</a> from the cover of BDA3 and pictured above.  Is this &#8220;night science&#8221; (exploration) or &#8220;day science&#8221; (confirmation)?  The answer is that it&#8217;s both!  Or, to put it another way, we&#8217;re using the modeling and inferential tools of &#8220;day science&#8221; to do &#8220;night science&#8221; more effectively.  If you want, you can say that the birthday example is pure &#8220;night science&#8221;&#8212;but then I&#8217;d say that night science is pretty much all we ever need.  I&#8217;d just call it &#8220;science.&#8221;</p>
+<p>My second problem with the night/day science framing is that it doesn&#8217;t give enough for &#8220;day science&#8221; to do.  Rigorous inference is not just about testing hypothesis; it&#8217;s about modeling variation, causation, all sorts of things.  Testing the null hypothesis of zero effect and all data coming from a specific random number <a href="https://statmodeling.stat.columbia.edu/2016/05/05/null-hypothesis-a-specific-random-number-generator/">generator</a>&#8212;that&#8217;s pretty much the most boring thing, and one of the most useless things, you can do in statistics.  If we have data from lots of different experiments with lots of different hypotheses floating around, we can do some multilevel modeling!  </p>
+<p>To put it another way:  Just as &#8220;night science&#8221; can be more effective if it uses statistical inference from data, &#8220;day science&#8221; can be more effective via creative modeling, not just testing fixed hypotheses.</p>
+<p>Science is not basketball.  You&#8217;re allowed to do a moving pick.</p>
+<p><strong>P.S.</strong>  After I wrote and scheduled this post, another person emailed me asking about the above-linked article.  If 2 different people email me, that&#8217;s a sign of some general interest, so I decided to post this right away instead of on the usual delay. </p>
+<!-- AddThis Advanced Settings above via filter on the_content --><!-- AddThis Advanced Settings below via filter on the_content --><!-- AddThis Advanced Settings generic via filter on the_content --><!-- AddThis Share Buttons above via filter on the_content --><!-- AddThis Share Buttons below via filter on the_content --><div class="at-below-post-homepage addthis_tool" data-url="https://statmodeling.stat.columbia.edu/2020/09/07/day-science-and-night-science-are-the-same-thing-if-done-right/"></div><!-- AddThis Share Buttons generic via filter on the_content -->				</div>
+				
+				
+
+				<div class="postmetadata">
+
+					<div class="posttagscat">
+										<span class="postcat">Filed under&nbsp;<a href="https://statmodeling.stat.columbia.edu/category/miscellaneous-science/" rel="category tag">Miscellaneous Science</a>.</span>
+															</div>
+
+					<span class="postcomment">
+					<a href="https://statmodeling.stat.columbia.edu/2020/09/07/day-science-and-night-science-are-the-same-thing-if-done-right/#comments">8 Comments</a>					</span>
+										
+				 </div>
+			</div>
+	
+						
+			<div class="post-43252 post type-post status-publish format-standard hentry category-miscellaneous-science" id="post-43252">
+				<h2 class="posttitle"><a href="https://statmodeling.stat.columbia.edu/2020/09/06/heres-a-question-for-the-historians-of-science-out-there-how-modern-is-the-idea-of-a-scientific-anomaly/" rel="bookmark" title="Permanent Link to Here&#8217;s a question for the historians of science out there:  How modern is the idea of a scientific &#8220;anomaly&#8221;?">Here&#8217;s a question for the historians of science out there:  How modern is the idea of a scientific &#8220;anomaly&#8221;?</a></h2>
+				<div class="postmetadata">
+								Posted by <span class="postauthor"><a href="https://statmodeling.stat.columbia.edu/author/andrew/" title="Posts by Andrew" rel="author">Andrew</a></span> on								<span class="postdate">6 September 2020, 9:51 am</span>
+								</div>
+				
+				<div class="postentry">
+					<div class="at-above-post-homepage addthis_tool" data-url="https://statmodeling.stat.columbia.edu/2020/09/06/heres-a-question-for-the-historians-of-science-out-there-how-modern-is-the-idea-of-a-scientific-anomaly/"></div><p>Occasional blog commenter Raghu recommended Les Insulaires by Pascal Garnier.  My French isn&#8217;t so good but dammit I&#8217;m gonna read this one all the way through.  We&#8217;ll see if I finish it by the time this post appears in September . . .</p>
+<p>Anyway, I was talking with someone about my difficulties with foreign languages, which reminded me about <a href="http://www.stat.columbia.edu/~gelman/research/published/laplace21.pdf">this paper</a> I wrote with Josh &#8220;Don&#8217;t call him &#8216;hot hand'&#8221; Miller on Laplace’s theories of cognitive illusions, heuristics, and biases.  I bought a copy the original Laplace book that we were discussing in our paper, but I found it too much of a struggle to read, so I relied entirely on the translation.</p>
+<p>And this got me thinking about Laplace, who famously promoted the idea of a clockwork universe that runs all on its own without the assistance of God.  And that got me wondering what Laplace thought about rigid bodies. Not &#8220;how do rigid bodies move?&#8221;, but &#8220;how can rigid bodies exist?&#8221;  If you try to build a rigid body out of billiard balls, they&#8217;ll just drift apart.  For that matter, how does a block of wood hold itself together?  When I took physics in college, I learned that quantum mechanics is required here:  no quantum mechanics, no rigid bodies.  But Laplace didn&#8217;t know about quantum mechanics, so how did he think about rigid bodies?  Did he just hypothesize some glue-like force that held the cells together in a block of wood or a ball of ivory?  For that matter, how did he think glue worked?</p>
+<p>I&#8217;m not expecting here that Laplace would&#8217;ve had all the answers.  My question is:  Did Laplace think of the existence of rigid bodies as an anomaly within his world of a clockwork universe?</p>
+<p>But then this made me think:  Is the concept of a scientific anomaly itself a modern idea?  Did scientists before the 1850s, say, think in terms of anomalies, or did they just view science as a collection of partly connected theories and facts?  I&#8217;m asking about Laplace in particular because he&#8217;s famous for presenting science as a complete explanation of the world.</p>
+<p>I asked David Schiminovich about this and he pointed to this Isaac Newton quote from Opticks (Query 31):</p>
+<blockquote><p>&#8230;All Bodies seem to be composed of hard Particles: For otherwise Fluids would not congeal; as Water, Oils, Vinegar, and Spirit or Oil of Vitriol do by freezing; Mercury by Fumes of Lead; Spirit of Nitre and Mercury, by dissolving the Mercury and evaporating the Flegm; Spirit of Wine and Spirit of Urine, by deflegming and mixing them; and Spirit of Urine and Spirit of Salt, by subliming them together to make Sal-armoniac. Even the Rays of Light seem to be hard Bodies; for otherwise they would not retain different Properties in their different Sides. And therefore Hardness may be reckon&#8217;d the Property of all uncompounded Matter. At least, this seems to be as evident as the universal Impenetrability of Matter. For all Bodies, so far as Experience reaches, are either hard, or may be harden&#8217;d; and we have no other Evidence of universal Impenetrability, besides a large Experience without an experimental Exception. Now if compound Bodies are so very hard as we find some of them to be, and yet are very porous, and consist of Parts which are only laid together; the simple Particles which are void of Pores, and were never yet divided, must be much harder. For such hard Particles being heaped up together, can scarce touch one another in more than a few Points, and therefore must be separable by much less Force than is requisite to break a solid Particle, whose Parts touch in all the Space between them, without any Pores or Interstices to weaken their Cohesion. And how such very hard Particles which are only laid together and touch only in a few Points, can stick together, and that so firmly as they do, without the assistance of something which causes them to be attracted or press&#8217;d towards one another, is very difficult to conceive.</p></blockquote>
+<!-- AddThis Advanced Settings above via filter on the_content --><!-- AddThis Advanced Settings below via filter on the_content --><!-- AddThis Advanced Settings generic via filter on the_content --><!-- AddThis Share Buttons above via filter on the_content --><!-- AddThis Share Buttons below via filter on the_content --><div class="at-below-post-homepage addthis_tool" data-url="https://statmodeling.stat.columbia.edu/2020/09/06/heres-a-question-for-the-historians-of-science-out-there-how-modern-is-the-idea-of-a-scientific-anomaly/"></div><!-- AddThis Share Buttons generic via filter on the_content -->				</div>
+				
+				
+
+				<div class="postmetadata">
+
+					<div class="posttagscat">
+										<span class="postcat">Filed under&nbsp;<a href="https://statmodeling.stat.columbia.edu/category/miscellaneous-science/" rel="category tag">Miscellaneous Science</a>.</span>
+															</div>
+
+					<span class="postcomment">
+					<a href="https://statmodeling.stat.columbia.edu/2020/09/06/heres-a-question-for-the-historians-of-science-out-there-how-modern-is-the-idea-of-a-scientific-anomaly/#comments">26 Comments</a>					</span>
+										
+				 </div>
+			</div>
+	
+						
+			<div class="post-43245 post type-post status-publish format-standard hentry category-zombies" id="post-43245">
+				<h2 class="posttitle"><a href="https://statmodeling.stat.columbia.edu/2020/09/05/psychologys-zombie-ideas/" rel="bookmark" title="Permanent Link to &#8220;Psychology’s Zombie Ideas&#8221;">&#8220;Psychology’s Zombie Ideas&#8221;</a></h2>
+				<div class="postmetadata">
+								Posted by <span class="postauthor"><a href="https://statmodeling.stat.columbia.edu/author/andrew/" title="Posts by Andrew" rel="author">Andrew</a></span> on								<span class="postdate">5 September 2020, 9:51 am</span>
+								</div>
+				
+				<div class="postentry">
+					<div class="at-above-post-homepage addthis_tool" data-url="https://statmodeling.stat.columbia.edu/2020/09/05/psychologys-zombie-ideas/"></div><p>Hey, psychologists!  Don&#8217;t get mad at me about the above title.  I took it from <a href="https://community.macmillan.com/community/the-psychology-community/blog/2020/02/26/psychology-s-zombie-ideas">a post</a> at Macmillan Learning by David Myers, who&#8217;s a psychology professor and textbook writer.  Myers presents some &#8220;mind-eating, refuse-to-die ideas&#8221; that are present in everyday psychology but are contradicted by research:</p>
+<blockquote><p>1. People often repress painful experiences, which years later may later reappear as recovered memories or disguised emotions. (In reality, we <a href="https://community.macmillan.com/external-link.jspa?url=https%3A%2F%2Fwww.psychologytoday.com%2Fus%2Fblog%2Ftalk-psych%2F201508%2Fmemories-trauma">remember</a> traumas all too well, often as unwanted flashbacks.)</p>
+<p>2. In realms from sports to stock picking, it pays to go with the person who’s had the hot hand. . . .</p>
+<p>3. Parental nurture shapes our abilities, personality, and sexual orientation. (The greatest and most oft-replicated surprise of psychological science is the minimal contribution of siblings’ “shared environment.”)</p>
+<p>4.  Immigrants are crime-prone. (Contrary to what President Donald Trump has alleged, and contrary to people’s greater <a href="https://community.macmillan.com/community/the-psychology-community/blog/2018/08/23/do-more-immigrants-equal-greater-acceptance-or-greater-fear-of-immigrants">fear</a> of immigrants in regions where few immigrants live, immigrants do <a href="https://community.macmillan.com/community/the-psychology-community/blog/2018/02/09/killer-immigrants">not</a> have greater-than-average arrest and incarceration rates.)</p>
+<p>5. Big round numbers: The brain has 100 billion neurons. 10 percent of people are gay. We use only 10 percent of our brain. 10,000 daily steps make for health. 10,000 practice hours make an expert. (Psychological science tells us to <a href="https://community.macmillan.com/community/the-psychology-community/blog/2016/07/19/questioning-big-round-numbers-the-brain-has-how-many-neurons">distrust</a> such big round numbers.)</p>
+<p>6. Psychology’s three most misunderstood concepts are that: “Negative reinforcement” refers to punishment. “Heritability” means how much of a person’s traits are attributable to genes. “Short-term memory” refers to your inability to remember what you experienced yesterday or last week, as opposed to long ago. (These zombie ideas are all false, as I explain <a href="https://community.macmillan.com/community/the-psychology-community/blog/2018/03/15/psychology-s-third-most-misunderstood-concept">here</a>.)</p>
+<p>7.  Seasonal affective disorder causes more people to get depressed in winter, especially in cloudy places, and in northern latitudes. (This is still an open debate, but massive new <a href="https://community.macmillan.com/community/the-psychology-community/blog/2016/10/18/is-seasonal-affective-disorder-a-folk-myth">data</a> suggest to me that it just isn’t so.)</p>
+<p>8. To raise healthy children, protect them from stress and other risks. (Actually, children are <a href="https://community.macmillan.com/community/the-psychology-community/blog/2020/01/21/the-risks-of-protecting-children-from-risk">antifragile</a>. Much as their immune systems develop protective antibodies from being challenged, children’s emotional resilience builds from experiencing normal stresses.)</p>
+<p>9. Teaching should align with individual students’ “learning styles.” (Do students learn best when teaching builds on their responding to, say, auditory versus visual input? Nice-sounding idea, but researchers—<a href="https://community.macmillan.com/external-link.jspa?url=https%3A%2F%2Fjournals.sagepub.com%2Fdoi%2Ffull%2F10.1111%2Fj.1539-6053.2009.01038.x">here</a> and <a href="https://community.macmillan.com/external-link.jspa?url=https%3A%2F%2Fwww.theatlantic.com%2Fscience%2Farchive%2F2018%2F04%2Fthe-myth-of-learning-styles%2F557687%2F">here</a>—continue to find little support for it.)</p>
+<p>10. Well-intentioned therapies change lives. (Often yes, but sometimes no—as illustrated by the repeated failures of some therapy zombies: Critical Incident Stress Debriefing, D.A.R.E. Drug Abuse Prevention, Scared Straight crime prevention, Conversion Therapy for sexual reorientation, permanent weight-loss training programs.)</p></blockquote>
+<p>Of the above list, one is wrong (#2; see <a href="https://statmodeling.stat.columbia.edu/2015/07/09/hey-guess-what-there-really-is-a-hot-hand/">here</a>), one is not psychology (#4), two seem too vague to have any real empirical content (#8 and #9), and for one, I&#8217;m not sure many people really hold the &#8220;zombie belief&#8221; in question (#10).  But the other five seem reasonable.  And, no joke, 5 out of 10 ain&#8217;t bad.  If I gave a list of 10 recommendations, I&#8217;d be happy if some outsider felt that 5 of them made sense.</p>
+<p>So, overall, I like Myers&#8217;s post.  It&#8217;s commonsensical, relevant to everyday life, and connects theory with evidence&#8212;all good things that I aspire to in my own teaching.  Based on this post, I bet he writes good textbooks.</p>
+<p><strong>Just one thing . . .</strong></p>
+<p>There&#8217;s one thing that bugs me, though:  The zombie psychology ideas that Myers mention all seem to fall outside of current mainstream psychology.  I guess that some of these ideas such as the effect of parental nurture or learning styles used to be popular in academic psychology, but no longer.</p>
+<p>Here are some zombie psychology ideas that Myers didn&#8217;t mention:</p>
+<p>11.  Extreme evolutionary psychology:  The claim that women are three times more likely to wear red or pink during certain times of the month, the claim that single women were 20 percentage points more likely to vote for Barack Obama during certain times of the month, the claim that beautiful parents are more likely to have girl babies, and lots more along those lines.  These debunked claims all fit within a naive gender-essentialism that is popular within evolutionary psychology and in some segments of the public.</p>
+<p>12.  Claims that trivial things have large and consistent effects on people&#8217;s personal lives:  The idea that disaster responses are much different for hurricanes with boy or girl names.  The idea that all sorts of behaviors are different if your age ends in a 9.  There are all these superficially plausible ideas but they are not borne out by the data.</p>
+<p>13.  Claims that trivial things have large and consistent effects on people&#8217;s political decisions:  The claims that votes are determined by shark attacks, college football games, and subliminal smiley faces.</p>
+<p>14.  Embodied cognition, <a href="https://statmodeling.stat.columbia.edu/2015/09/03/name-this-blog-post-a-contest/">Sadness may impair color perception</a>, <a href="https://statmodeling.stat.columbia.edu/2016/04/27/51-shades-of-gray/">Visual contrast polarizes moral judgment</a>, etc etc etc.</p>
+<p>OK, you get the idea.  We could keep going and going.  Just pick up an issue of Psychological Science or PNAS from a few years ago.</p>
+<p>It&#8217;s good for a psychology textbook writer to point out misconceptions in psychology.  Here&#8217;s how Myers ends his post:</p>
+<blockquote><p>When subjected to skeptical scrutiny, crazy-sounding ideas do sometimes find support. . . . But more often, as I suggest in Psychology 13th Edition (with Nathan DeWall), “science becomes society’s garbage collector, sending crazy-sounding ideas to the waste heap atop previous claims of perpetual motion machines, miracle cancer cures, and out-of-body travels. To sift reality from fantasy and fact from fiction therefore requires a scientific attitude: being skeptical but not cynical, open-minded but not gullible.”</p></blockquote>
+<p>That&#8217;s all fine.  But watch out.  Sometimes <a href="https://tvtropes.org/pmwiki/pmwiki.php/Main/TheCallsAreComingFromInsideTheHouse">the call is coming from inside the house</a>.  Or, to be more specific, sometimes science (as manifested in the Association for Psychological Science, the National Academy of Sciences, etc.) is not &#8220;society’s garbage collector,&#8221; it&#8217;s society&#8217;s garbage <em>creator</em>, and it&#8217;s the institution that gives garbage a high value.</p>
+<p>I&#8217;m not saying that psychology is worse than other fields.  I&#8217;m just saying that if a psychologist is going to write about bad zombie ideas in psychology, it would make sense for him to include some that remain popular with high-status researchers within psychology itself.</p>
+<!-- AddThis Advanced Settings above via filter on the_content --><!-- AddThis Advanced Settings below via filter on the_content --><!-- AddThis Advanced Settings generic via filter on the_content --><!-- AddThis Share Buttons above via filter on the_content --><!-- AddThis Share Buttons below via filter on the_content --><div class="at-below-post-homepage addthis_tool" data-url="https://statmodeling.stat.columbia.edu/2020/09/05/psychologys-zombie-ideas/"></div><!-- AddThis Share Buttons generic via filter on the_content -->				</div>
+				
+				
+
+				<div class="postmetadata">
+
+					<div class="posttagscat">
+										<span class="postcat">Filed under&nbsp;<a href="https://statmodeling.stat.columbia.edu/category/zombies/" rel="category tag">Zombies</a>.</span>
+															</div>
+
+					<span class="postcomment">
+					<a href="https://statmodeling.stat.columbia.edu/2020/09/05/psychologys-zombie-ideas/#comments">60 Comments</a>					</span>
+										
+				 </div>
+			</div>
+	
+						
+			<div class="post-43249 post type-post status-publish format-standard hentry category-economics category-sociology category-zombies" id="post-43249">
+				<h2 class="posttitle"><a href="https://statmodeling.stat.columbia.edu/2020/09/04/grad-student-asks-why-is-the-government-paying-us-money-instead-of-just-firing-us-all/" rel="bookmark" title="Permanent Link to Econ grad student asks, &#8220;why is the government paying us money, instead of just firing us all?&#8221;">Econ grad student asks, &#8220;why is the government paying us money, instead of just firing us all?&#8221;</a></h2>
+				<div class="postmetadata">
+								Posted by <span class="postauthor"><a href="https://statmodeling.stat.columbia.edu/author/andrew/" title="Posts by Andrew" rel="author">Andrew</a></span> on								<span class="postdate">4 September 2020, 9:40 am</span>
+								</div>
+				
+				<div class="postentry">
+					<div class="at-above-post-homepage addthis_tool" data-url="https://statmodeling.stat.columbia.edu/2020/09/04/grad-student-asks-why-is-the-government-paying-us-money-instead-of-just-firing-us-all/"></div><p>Someone who wishes anonymity writes:</p>
+<blockquote><p>
+I am a graduate student at the Department of Economics at a European university.</p>
+<p>Throughout the last several years, I have been working as RA (and sometimes co-author) together with multiple different professors and senior researchers, mainly within economics, and predominantly analysing very large datasets.</p>
+<p>I have 3 questions related to my accumulated professional experiences from &#8220;the garden of forking paths&#8221; etcetera. Maybe it would suffice with just asking the actual questions, but I nevertheless begin with some background and examples…</p>
+<p>In my experience, all social science researchers that I have worked with seem to treat the process of writing a paper as some kind of exercise in going &#8220;back-and-forth&#8221; between theoretical analysis and empirical evidence. Just as an example, they (we) might run X number of regressions, and try to find a fitting theory that can explain the results. Researchers with the most top publications often seem to get/have access to the greatest number of RAs and PhD students, who perform thousands of analyses that only very few people will ever hear about unless something &#8220;promising&#8221; is found (or unless you happen to share the same office). I have performed plenty of such analyses myself. In one recent case, my task was to attempt to replicate a paper published in a top journal using data from my country (instead of from the country whose data was used in the original paper). When asking my boss in that project whether we could perhaps publish the results of this replication as a working paper, he replied that him and his collaborator (a famous professor from yet another country) just wanted me to perform this replication in order to see whether it was &#8220;worthwhile&#8221; to test some other (somewhat related) hypotheses they had. The idea, he wrote, was never to make any independent product out of this replication, or even to incorporate it into any related research product. In this case, I found &#8220;promising&#8221; results, so they decided to pursue the investigation of their (somewhat) related hypotheses. In other similar cases, where I didn’t find any such &#8220;promising&#8221; results, my boss decided to try something else or even drop the subject entirely.</p>
+<p>Using e.g. &#8220;pre-analysis plans&#8221; never seems to be an option in practice for most researchers that I have worked with, and the more honest(?) ones explicitly tell me that it would be career suicide if they chose not to try out multiple analyses after looking at the data. Furthermore, at seminars people often ask if you have tried this or that analysis, if you haven’t (yet) found enough &#8220;valuable&#8221; stuff in your analyses. (To be fair, they also ask whether you have performed this or that robustness check or sensitivity analysis.) </p>
+<p>I might also note that when writing my M.Sc. thesis, some supervisors explicitly and openly encouraged me and other students to exclude results that were not consistent with the overall &#8220;story&#8221; (we) tried to &#8220;tell&#8221;, with the motivation that ”this is only a M.Sc. thesis”. However, while maybe not as openly encouraged, similar stuff nevertheless continues also during Ph.D studies (if one is admitted to the Ph.D. program, perhaps partly thanks to a M.Sc. thesis telling a sufficiently convincing &#8220;story&#8221;). And, as my experiences as RA suggest, it continues also after finishing a Ph.D. In my experience, the incentives to be (partially) dishonest often seem to be quite overwhelming at most stages of a researcher&#8217;s career.</p>
+<p>No one seems to worry too much about statistical significance, not necessarily because they do not care about &#8220;obtaining&#8221; significant results, but because if one analysis doesn’t yield any stars, you can almost always just try a different one (or ask your PhD student or RA to do it for you). I have &#8220;tried&#8221; hundreds of analyses, models and specifications during my four years as research assistant. I’d say that I might easily have produced sufficient material to publish at least 5 complete studies with null results or results that were not regarded as &#8220;interesting&#8221; or &#8220;clear&#8221; enough. No one except me and a few other researchers will hear of these results.</p>
+<p>In the project where I am working at the moment, we are currently awaiting a delivery of data. While waiting, I suggested to my current boss, who has published articles in top journals, that I could write all the necessary code for our regression analyses as well as the empirical method section of our paper. In that way, we would have everything completely ready when finally getting access to all the data. My boss replied that this might be sensible with regards to the code used for e.g. the final merging of the data and some variable construction, but he argued that writing code for any subsequent regression analyses before obtaining access to the final datasets would be less useful for us since &#8220;after seeing the data you’ll always have to try out multiple different analyses&#8221;. To be fair, I want to stress here that my impression was not at all that he had any intention to fish. I simply interpreted his comment as a spontaneous and frank/disillusioned statement about what is (unfortunately) current standard practice at the department and in the field more generally. Similar to at least some other researchers that I have worked with, my current boss seems like a genuinely honest person and he also seems quite aware of many of the problems you mention in your articles and blog. My impression is that he is also transparent with most of what he does (at least compared to some others I’ve worked with). In my opinion, he is both generous, fair-minded and honest. Thus, my concern in this particular example is more about the existing incentives and standard practices which seem to make even the most honest researchers do stuff that perhaps they should not. I also want to stress that the sample sizes in our analyses are very large (using high-quality data, sometimes with millions of observations). Furthermore, (top) publications in economics often include e.g. a very comprehensive Web Appendix with sensitivity analyses, robustness checks and alternative specifications (and sometimes also replication dofiles). </p>
+<p>Now, if you have time, my questions to you are the following:</p>
+<p>1. Does e.g. having access to very large sample sizes in the analyses, and publishing a 100+ page Web Appendix together with any article, mitigate &#8220;the garden of forking paths&#8221; problems outlined above somewhat? And what can I do to contribute less to these problems? </p>
+<p>2. A small number of researchers that I have collaborated with argue (at least in private) that their research is mainly to be regarded as &#8220;exploratory&#8221; because of the stuff I have outlined above. Would simply stating that one’s research is &#8220;exploratory&#8221; in a paper be a half-decent excuse to do any of the p-hacking and other stuff outlined in my email? </p>
+<p>3. Has my job throughout the last several years been completely useless (or even destructive) for society? That is how I personally feel sometimes. And if I am right, why should we fund any social science research at all? It often seems to me that it would be impossible to get any of the incentives right. When recently asking a prominent researcher at my current workplace whether he believed that the current system of peer-review is successful in mitigating problems related to :the garden of forking paths&#8221; or even outright &#8220;cheating&#8221;, he simply started to laugh and replied &#8220;No, no… No! Absolutely not!&#8221; If this prominent researcher is right, why is the government paying us money, instead of just firing us all? </p></blockquote>
+<p>My reply:</p>
+<p>First, it&#8217;s too bad you have to remain anonymous.  I understand it, but I just want to lament the state of the world, by which the expectation is that people can&#8217;t gripe in public without fear of retaliation.</p>
+<p>Now to answer your questions in reverse order:</p>
+<p><em>Why is the government paying us money, instead of just firing us all?</em>  All cynicism aside, our society has the need, or the perceived need, for social science expertise.  We need people to perform cost-benefit analyses, to game out scenarios, to make decisions about where to allocate resources.  Governments need this, and business need it too.  There&#8217;s more to decision analysis than running a spreadsheet.  We need this expertise, and universities are where we train people to learn these tools, so the government funds universities.  It doesn&#8217;t have to be done this way, but it&#8217;s how things have been set up for awhile.</p>
+<p>Should they be funding this particular research?  Probably not!  The trouble is, this is the research that is given the expert seal of approval in the &#8220;top 5 journals&#8221; and so on.  So it&#8217;s not quite clear what to do.  The government could just zero all the funding:  that wouldn&#8217;t be the worst thing in the world, but it would disrupt the training pipeline.  So I can see why they are funding you.</p>
+<p><em>Has my job during the last 4 years been completely useless (or even destructive) for society?</em>  Possibly.  Again, though, perhaps the most important part of the job is not the research but the training.  Also, even if your own research has been a complete waste of time, or even negative value in that it&#8217;s wasting other people&#8217;s time and money also, there might be other research being done by similarly-situated people in your country that&#8217;s actually useful.  In which case it could make sense to quit your current job and work for some people who are doing good work.  In practice, though, this could be difficult to do or even bad for your career, so I&#8217;m not sure what to actually recommend.</p>
+<p><em>Would simply stating that one’s research is &#8220;exploratory&#8221; in a paper be a half-decent excuse to do any of the p-hacking and other criminal stuff?</em>  Lots of my research is exploratory, and that&#8217;s fine.  The problem with p-values, p-hacking, etc., is not that they are &#8220;exploratory&#8221; but rather that they&#8217;re mostly a way to add noise to your data.  Take a perfectly fine, if noisy, experiment, run it through the statistical-significance filter (made worse by p-hacking, but often pretty bad even when only one analysis is done on your data), and you can end up with something close to a pile of random numbers.  That&#8217;s not good for exploratory research either!</p>
+<p>So, no, labeling one&#8217;s research as exploratory is no excuse at all for doing bad work.  <a href="http://www.stat.columbia.edu/~gelman/research/published/ChanceEthics14.pdf">Honesty and transparency</a> are no excuse for being bad work.  A good person can do bad work.  Doing bad work doesn&#8217;t mean you&#8217;re a bad person; being a good person doesn&#8217;t mean you&#8217;re doing good work.</p>
+<p><em>Does e.g. having access to very large sample sizes in the analyses, and publishing a 100+ page Web Appendix together with any article, mitigate &#8220;the garden of forking paths&#8221; problems?</em>  I don&#8217;t think the 100+ page web appendix will get you much.  I mean, fine, sure, include it, but web appendixes are subject to forking paths, just like everything else.  I&#8217;ve seen lots of robustness studies that avoid dealing with real problems.  My recommendation is to perform the analyses simultaneously using a multilevel model.  Partial pooling is your friend.</p>
+<!-- AddThis Advanced Settings above via filter on the_content --><!-- AddThis Advanced Settings below via filter on the_content --><!-- AddThis Advanced Settings generic via filter on the_content --><!-- AddThis Share Buttons above via filter on the_content --><!-- AddThis Share Buttons below via filter on the_content --><div class="at-below-post-homepage addthis_tool" data-url="https://statmodeling.stat.columbia.edu/2020/09/04/grad-student-asks-why-is-the-government-paying-us-money-instead-of-just-firing-us-all/"></div><!-- AddThis Share Buttons generic via filter on the_content -->				</div>
+				
+				
+
+				<div class="postmetadata">
+
+					<div class="posttagscat">
+										<span class="postcat">Filed under&nbsp;<a href="https://statmodeling.stat.columbia.edu/category/economics/" rel="category tag">Economics</a>, <a href="https://statmodeling.stat.columbia.edu/category/sociology/" rel="category tag">Sociology</a>, <a href="https://statmodeling.stat.columbia.edu/category/zombies/" rel="category tag">Zombies</a>.</span>
+															</div>
+
+					<span class="postcomment">
+					<a href="https://statmodeling.stat.columbia.edu/2020/09/04/grad-student-asks-why-is-the-government-paying-us-money-instead-of-just-firing-us-all/#comments">44 Comments</a>					</span>
+										
+				 </div>
+			</div>
+	
+						
+			<div class="post-44411 post type-post status-publish format-standard hentry category-economics category-miscellaneous-science category-miscellaneous-statistics" id="post-44411">
+				<h2 class="posttitle"><a href="https://statmodeling.stat.columbia.edu/2020/09/03/rethinking-rob-kass-recent-talk-on-science-in-a-less-statistics-centric-way/" rel="bookmark" title="Permanent Link to Rethinking Rob Kass&#8217; recent talk on science in a less statistics-centric way.">Rethinking Rob Kass&#8217; recent talk on science in a less statistics-centric way.</a></h2>
+				<div class="postmetadata">
+								Posted by <span class="postauthor"><a href="https://statmodeling.stat.columbia.edu/author/keithor/" title="Posts by Keith O’Rourke" rel="author">Keith O’Rourke</a></span> on								<span class="postdate">3 September 2020, 2:30 pm</span>
+								</div>
+				
+				<div class="postentry">
+					<div class="at-above-post-homepage addthis_tool" data-url="https://statmodeling.stat.columbia.edu/2020/09/03/rethinking-rob-kass-recent-talk-on-science-in-a-less-statistics-centric-way/"></div><p>Reflection on a recent <a href="https://statmodeling.stat.columbia.edu/2020/08/25/the-truth-of-a-theory-is-contingent-on-both-our-state-of-knowledge-and-the-purposes-to-which-it-will-be-put/">post</a> on a talk by Rob Kass&#8217; has lead me to write this post. I liked the talk very much and found it informative. Perhaps especially for it&#8217;s call to clearly distinguish abstract models from brute force reality. I believe that is a very important point that has often been lost sight of by many statisticians in the past. I would actually point to many indicating Box&#8217;s quote  &#8220;all models are wrong, but some are useful&#8221; as being insightful rather as something already at the top on most statisticians minds, as evidence of that.</p>
+<p>However, the reflection has lead me to think Kass&#8217; talk is too statistics-centic. Now Kass&#8217; talk was only about 25 minutes long while being on subtle topic. It is very hard to be both concise and fully balanced, but I believe we have a different perspective and I would like to bring that out here. For instance, I think this  statement “I [Kass] conclude by saying that science and the world as a whole would function better if scientific narratives were informed consistently by statistical thinking” would be better put as saying that statistics and the statistical discipline as a whole would function better if statistical methods and practice were informed consistently by purposeful experimental thinking (AKA scientific thinking).</p>
+<p>Additionally, this statement &#8220;“the essential flaw in the ways we talk about science is that they neglect the fundamental process of reasoning from data” seems somewhat dismissive of science being even more fundamental about process of reasoning from data, with statistics being a specialization when data is noisy or varies haphazardly. In fact, Steven Stigler has argued that statistics arose as a result of astronomers trying to make sense of observations that varied when they believed what was being observed did not.</p>
+<p>Finally, this statement “the aim of science is to explain how things work” I would rework into the aim (logic) of science is to understand how experiments can bring out how things work in this world by using abstractions that themselves are understood by using experiments. So experiments all the way up.</p>
+<p>As usual, I am drawing heavily on my grasp of writings by CS Peirce. He seemed to think that everything should be thought as an experiment. Including mathematics that he defined as experiments performed on diagrams or symbols rather than chemicals or physical objects. Some quotes from his 1905 paper <a href="https://arisbe.sitehost.iu.edu/menu/library/bycsp/whatis/whatpragis.htm">What pragmatism is</a>.  “Whenever a man acts purposively, he acts under a belief in some experimental phenomenon. … some unchanging idea may come to influence a man more than it had done; but only because some experience equivalent to an experiment has brought its truth home to him more intimately than before…”</p>
+<p>I do find the thinking of anything one can as an experiment as being helpful. For instance, in this previous <a href="https://statmodeling.stat.columbia.edu/2020/08/05/somethings-do-not-seem-to-spread-easily-the-role-of-simulation-in-statistical-practice-and-perhaps-theory/">post</a> discussion led to a comment by Andrew that &#8220;Mathematics is simulation by other means&#8221;. One way to unpack this by thinking of mathematics as experiments on diagrams or symbols would be to claim that calculus is one design of an experiment while simulation is just another design. Different costs and advantages, that&#8217;s all.  It&#8217;s the idea to be experimental and experiment most appropriately that one can &#8211; that is fundamental. Then sorting out most appropriately would point to economy of research as the other fundamental piece.</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<!-- AddThis Advanced Settings above via filter on the_content --><!-- AddThis Advanced Settings below via filter on the_content --><!-- AddThis Advanced Settings generic via filter on the_content --><!-- AddThis Share Buttons above via filter on the_content --><!-- AddThis Share Buttons below via filter on the_content --><div class="at-below-post-homepage addthis_tool" data-url="https://statmodeling.stat.columbia.edu/2020/09/03/rethinking-rob-kass-recent-talk-on-science-in-a-less-statistics-centric-way/"></div><!-- AddThis Share Buttons generic via filter on the_content -->				</div>
+				
+				
+
+				<div class="postmetadata">
+
+					<div class="posttagscat">
+										<span class="postcat">Filed under&nbsp;<a href="https://statmodeling.stat.columbia.edu/category/economics/" rel="category tag">Economics</a>, <a href="https://statmodeling.stat.columbia.edu/category/miscellaneous-science/" rel="category tag">Miscellaneous Science</a>, <a href="https://statmodeling.stat.columbia.edu/category/miscellaneous-statistics/" rel="category tag">Miscellaneous Statistics</a>.</span>
+															</div>
+
+					<span class="postcomment">
+					<a href="https://statmodeling.stat.columbia.edu/2020/09/03/rethinking-rob-kass-recent-talk-on-science-in-a-less-statistics-centric-way/#comments">12 Comments</a>					</span>
+										
+				 </div>
+			</div>
+	
+						
+			<div class="post-43436 post type-post status-publish format-standard hentry category-sociology category-zombies" id="post-43436">
+				<h2 class="posttitle"><a href="https://statmodeling.stat.columbia.edu/2020/09/03/battle-of-the-open-science-asymmetries/" rel="bookmark" title="Permanent Link to Battle of the open-science asymmetries">Battle of the open-science asymmetries</a></h2>
+				<div class="postmetadata">
+								Posted by <span class="postauthor"><a href="https://statmodeling.stat.columbia.edu/author/andrew/" title="Posts by Andrew" rel="author">Andrew</a></span> on								<span class="postdate">3 September 2020, 9:10 am</span>
+								</div>
+				
+				<div class="postentry">
+					<div class="at-above-post-homepage addthis_tool" data-url="https://statmodeling.stat.columbia.edu/2020/09/03/battle-of-the-open-science-asymmetries/"></div><p>1.  Various tenured legacy-science yahoos say:  &#8220;Any idiot can write a critique; it takes work to do original research.&#8221;  That&#8217;s my paraphrase of various concerns that the replication movement makes it too easy for critics to get cheap publications.</p>
+<p>2.  Rex Douglass says:  &#8220;It is an order of magnitude less effort to spam poorly constructed hypotheticals than it is to deconstruct them.&#8221;  That&#8217;s one of the problems that arise when we deal with junk science published in PNAS etc.  Any well-connected fool can run with some data, make dramatic claims, and get published in PNAS, get featured in NPR, etc.  But it can take a lot of work to untangle exactly what went wrong.  Which is one reason we have to move beyond the default presumption that published and publicized claims are correct.</p>
+<p>It&#8217;s interesting that these two perspectives are the exact opposite?  We have two models of the world:</p>
+<p>1.  Original researchers do all the hard work, and &#8220;open science&#8221; critics such as myself are lazy parasites; or</p>
+<p>2.  People who write and publish junk science papers are lazy parasites on the body of healthy science, and open science critics have to do the hard work to figure out exactly what went wrong in each case.</p>
+<p>Which model is correct?</p>
+<p>I guess both models are correct, at different times.  It depends on the quality of the science and the quality of the criticism.  Also, some junk science takes a lot of work.  Brian Wansink wasn&#8217;t just sitting on his ass!  He was writing press releases and doing TV interviews all the time:  that&#8217;s not easy.</p>
+<p>In any case, it&#8217;s interesting that people on both sides of this divide each think that they&#8217;re doing the hard work and that the people on the other side are freeloaders.</p>
+<!-- AddThis Advanced Settings above via filter on the_content --><!-- AddThis Advanced Settings below via filter on the_content --><!-- AddThis Advanced Settings generic via filter on the_content --><!-- AddThis Share Buttons above via filter on the_content --><!-- AddThis Share Buttons below via filter on the_content --><div class="at-below-post-homepage addthis_tool" data-url="https://statmodeling.stat.columbia.edu/2020/09/03/battle-of-the-open-science-asymmetries/"></div><!-- AddThis Share Buttons generic via filter on the_content -->				</div>
+				
+				
+
+				<div class="postmetadata">
+
+					<div class="posttagscat">
+										<span class="postcat">Filed under&nbsp;<a href="https://statmodeling.stat.columbia.edu/category/sociology/" rel="category tag">Sociology</a>, <a href="https://statmodeling.stat.columbia.edu/category/zombies/" rel="category tag">Zombies</a>.</span>
+															</div>
+
+					<span class="postcomment">
+					<a href="https://statmodeling.stat.columbia.edu/2020/09/03/battle-of-the-open-science-asymmetries/#comments">18 Comments</a>					</span>
+										
+				 </div>
+			</div>
+	
+						
+			<div class="post-44368 post type-post status-publish format-standard hentry category-stan category-statistical-computing" id="post-44368">
+				<h2 class="posttitle"><a href="https://statmodeling.stat.columbia.edu/2020/09/02/path-sampling-in-stan/" rel="bookmark" title="Permanent Link to From monthly return rate to importance sampling to path sampling to the second law of thermodynamics to metastable sampling in Stan">From monthly return rate to importance sampling to path sampling to the second law of thermodynamics to metastable sampling in Stan</a></h2>
+				<div class="postmetadata">
+								Posted by <span class="postauthor"><a href="https://statmodeling.stat.columbia.edu/author/yulingyao/" title="Posts by Yuling Yao" rel="author">Yuling Yao</a></span> on								<span class="postdate">2 September 2020, 1:10 pm</span>
+								</div>
+				
+				<div class="postentry">
+					<div class="at-above-post-homepage addthis_tool" data-url="https://statmodeling.stat.columbia.edu/2020/09/02/path-sampling-in-stan/"></div><p>(This post is by Yuling, not Andrew, except many ideas are originated from Andrew.)</p>
+<p>This post is intended to advertise our new preprint <a href="https://arxiv.org/abs/2009.00471">Adaptive Path Sampling in Metastable Posterior Distributions </a> by Collin, Aki, Andrew and me, where we developed an automated implementation of path sampling and adaptive continuous tempering.<span class="Apple-converted-space"> </span>But I have been recently reading a writing book and I am convinced that an advertisement post should always start by stories to hook the audience, so let&#8217;s pretend I am starting this post from the next paragraph with an example.</p>
+<h4>Some elementary math about geometric means</h4>
+<p>To start, one day I was computing my portfolio return, but I was doing that in Excel, in which the only function I knew is mean and sum. So I would simply calculate the average monthly return, and multiply it by 12.</p>
+<p>Of course you do not really open your 401K account now. We can simulate data in R too, which amounts to:</p>
+<pre>month_return=rnorm(60,.01,0.04)
+print(mean(month_return)*12)
+</pre>
+<p>Sure, it is not the &#8220;annualized return&#8221;. A 50% gain followed by a 50% loss in the next month results in 1.5* 0.5 = 0.75, or a 25% loss. Jensen&#8217;s inequality ensures that the geometric mean is always smaller than the arithmetic mean.</p>
+<pre>exp(mean(log(1+ month_return)))-1- mean(month_return)</pre>
+<p>That said, this difference is small since the monthly return itself is typically close enough to zero. But even to annualize these two estimates to a whole year still yields a nearly identical annualized return value:</p>
+<pre>exp(mean(log(1+month_return)))^12-1 - mean(month_return)*12</pre>
+<p>Intuitively, the arithmetic mean is larger per unit, but is also offset by lack of the compound interest.<br />
+It is not anything surprising beyond elementary math. The first order Taylor series expansion says<br />
+<img src='https://s0.wp.com/latex.php?latex=%5Clog+%281%2B+x%29+%5Capprox+x%2C+&#038;bg=ffffff&#038;fg=000000&#038;s=0' alt='\log (1+ x) \approx x, ' title='\log (1+ x) \approx x, ' class='latex' /><br />
+for any small x. And the geometric mean of x is really the arithmetic mean of log (1+ x). Indeed in the limit of per second return, by integrating both sides, these two approaches are just identical. When per unit change of x is not smooth enough (i.e. too big gap), the second order term -.5 sd(x) will kick in via Itô calculus, but that is irreverent to what I will discuss next. Also the implicit assumption here is that x&gt;-1 otherwise log(1+x) becomes invalid, so this asymptotical equivalence will also fail if the account is liquidated, but that is more irreverent to what I will discuss.</p>
+<h4>The bridge between Taylor series expansion and importance sampling</h4>
+<p>Forget about finance, let&#8217;s focus on the normalizing constant in statistical computing. In many statistical problems, including marginal likelihood computation and marginal density/moment estimation in MCMC, we are given an unnormalized density <img src='https://s0.wp.com/latex.php?latex=q%28%5Ctheta%2C+%5Clambda%29&#038;bg=ffffff&#038;fg=000000&#038;s=0' alt='q(\theta, \lambda)' title='q(\theta, \lambda)' class='latex' />, where <img src='https://s0.wp.com/latex.php?latex=%5Ctheta+%5Cin+%5CTheta&#038;bg=ffffff&#038;fg=000000&#038;s=0' alt='\theta \in \Theta' title='\theta \in \Theta' class='latex' /> is a multidimensional sampling parameter and <img src='https://s0.wp.com/latex.php?latex=%5Clambda+%5Cin+%5CLambda&#038;bg=ffffff&#038;fg=000000&#038;s=0' alt='\lambda \in \Lambda' title='\lambda \in \Lambda' class='latex' /> is a free parameter, and we need to evaluate the integrals <img src='https://s0.wp.com/latex.php?latex=z%28%5Clambda%29&#038;bg=ffffff&#038;fg=000000&#038;s=0' alt='z(\lambda)' title='z(\lambda)' class='latex' />=<img src='https://s0.wp.com/latex.php?latex=%5Cint_%7B%5CTheta%7D+q%28%5Ctheta%2C+%5Clambda%29+d+%5Ctheta&#038;bg=ffffff&#038;fg=000000&#038;s=0' alt='\int_{\Theta} q(\theta, \lambda) d \theta' title='\int_{\Theta} q(\theta, \lambda) d \theta' class='latex' />, for any <img src='https://s0.wp.com/latex.php?latex=%5Clambda+%5Cin+%5CLambda.&#038;bg=ffffff&#038;fg=000000&#038;s=0' alt='\lambda \in \Lambda.' title='\lambda \in \Lambda.' class='latex' /></p>
+<p>Here z(.) is a function of <img src='https://s0.wp.com/latex.php?latex=%5Clambda&#038;bg=ffffff&#038;fg=000000&#038;s=0' alt='\lambda' title='\lambda' class='latex' />. For convenience let&#8217;s still call z() the normalizing constant without mentioning function.</p>
+<p>Two accessible but conceptually orthogonal approaches stand out for the normalizing constant. Viewing it as the expectation with respect to the conditional density <img src='https://s0.wp.com/latex.php?latex=%5Ctheta%7C%5Clambda+%5Cpropto+q%28%5Ctheta%2C+%5Clambda%29&#038;bg=ffffff&#038;fg=000000&#038;s=0' alt='\theta|\lambda \propto q(\theta, \lambda)' title='\theta|\lambda \propto q(\theta, \lambda)' class='latex' />, we can numerically integrate it using quadrature, where the simplest is linearly interpolation, and first order Taylor series expansion yields<br />
+<img src='https://s0.wp.com/latex.php?latex=%5Clog%5Cfrac%7Bz%28%5Clambda%29%7D%7Bz%28%5Clambda_0%29%7D&#038;bg=ffffff&#038;fg=000000&#038;s=0' alt='\log\frac{z(\lambda)}{z(\lambda_0)}' title='\log\frac{z(\lambda)}{z(\lambda_0)}' class='latex' /> <img src='https://s0.wp.com/latex.php?latex=%5Capprox+%28%5Clambda+-+%5Clambda_0%29+%5Cfrac%7B1%7D%7B+z%28%5Clambda_0%29%7D%5Cint_%5CTheta+%28%5Cfrac+%7Bd%7D%7Bd+%5Clambda+%7Dq%28%5Ctheta%2C+%5Clambda%29+%7C+%7B%5Clambda%3D%5Clambda_0%7D+%29d+%5Ctheta.&#038;bg=ffffff&#038;fg=000000&#038;s=0' alt='\approx (\lambda - \lambda_0) \frac{1}{ z(\lambda_0)}\int_\Theta (\frac {d}{d \lambda }q(\theta, \lambda) | {\lambda=\lambda_0} )d \theta.' title='\approx (\lambda - \lambda_0) \frac{1}{ z(\lambda_0)}\int_\Theta (\frac {d}{d \lambda }q(\theta, \lambda) | {\lambda=\lambda_0} )d \theta.' class='latex' /><br />
+In contrast, we can sample from the conditional density <img src='https://s0.wp.com/latex.php?latex=%5Ctheta%7C+%5Clambda_0+%5Cpropto+q%28%5Ctheta%2C+%5Clambda_0%29&#038;bg=ffffff&#038;fg=000000&#038;s=0' alt='\theta| \lambda_0 \propto q(\theta, \lambda_0)' title='\theta| \lambda_0 \propto q(\theta, \lambda_0)' class='latex' />, and apply importance sampling,<br />
+<img src='https://s0.wp.com/latex.php?latex=%5Cfrac%7Bz%28%5Clambda%29%7D%7Bz%28%5Clambda_0%29%7D%5Capprox%5Cfrac%7B1%7D%7BS%7D%5Csum_%7Bs%3D1%7D%5ES&#038;bg=ffffff&#038;fg=000000&#038;s=0' alt='\frac{z(\lambda)}{z(\lambda_0)}\approx\frac{1}{S}\sum_{s=1}^S' title='\frac{z(\lambda)}{z(\lambda_0)}\approx\frac{1}{S}\sum_{s=1}^S' class='latex' /> <img src='https://s0.wp.com/latex.php?latex=%5Cfrac%7B+q+%28%5Ctheta_s%2C+%5Clambda%29%7D%7Bq%28%5Ctheta_s%2C+%5Clambda_0%29%7D&#038;bg=ffffff&#038;fg=000000&#038;s=0' alt='\frac{ q (\theta_s, \lambda)}{q(\theta_s, \lambda_0)}' title='\frac{ q (\theta_s, \lambda)}{q(\theta_s, \lambda_0)}' class='latex' />, <img src='https://s0.wp.com/latex.php?latex=%5Ctheta_%7Bs%3D1%2C+%5Ccdots%2C+S%7D+%5Csim+q+%28%5Ctheta%2C+%5Clambda_0%29.&#038;bg=ffffff&#038;fg=000000&#038;s=0' alt='\theta_{s=1, \cdots, S} \sim q (\theta, \lambda_0).' title='\theta_{s=1, \cdots, S} \sim q (\theta, \lambda_0).' class='latex' /><br />
+Due to the same reason that the annualized arithmetic return equivalents the geometric return, the first order Taylor series expansion and importance sampling reach the same first order limit when the proposal is infinitely close to the target. That is, for any fixed <img src='https://s0.wp.com/latex.php?latex=%5Clambda_0&#038;bg=ffffff&#038;fg=000000&#038;s=0' alt='\lambda_0' title='\lambda_0' class='latex' />, as <img src='https://s0.wp.com/latex.php?latex=%5Cdelta%3D%7C%5Clambda_1+-+%5Clambda_0%7C%5Cto+0&#038;bg=ffffff&#038;fg=000000&#038;s=0' alt='\delta=|\lambda_1 - \lambda_0|\to 0' title='\delta=|\lambda_1 - \lambda_0|\to 0' class='latex' />,<br />
+<img src='https://s0.wp.com/latex.php?latex=%5Cfrac%7B1%7D%7B%5Cdelta%7D%5Clog+E_%7B%5Clambda_%7B0%7D%7D%5Cleft%5B%5Cfrac%7Bq%28%5Ctheta%7C%5Clambda_%7B1%7D%29%7D%7Bq%28%5Ctheta%7C%5Clambda_0%29%7D%5Cright%5D&#038;bg=ffffff&#038;fg=000000&#038;s=0' alt='\frac{1}{\delta}\log E_{\lambda_{0}}\left[\frac{q(\theta|\lambda_{1})}{q(\theta|\lambda_0)}\right]' title='\frac{1}{\delta}\log E_{\lambda_{0}}\left[\frac{q(\theta|\lambda_{1})}{q(\theta|\lambda_0)}\right]' class='latex' /> = <img src='https://s0.wp.com/latex.php?latex=%5Cint_%7B%5CTheta%7D+%5Cfrac%7B%5Cpartial%7D%7B%5Cpartial+%5Clambda%7D+%5Clog+q%28%5Ctheta%7C%5Clambda_%7B0%7D%29+p%28%5Ctheta%7C%5Clambda_0%29d%5Ctheta+%2B+o%281%29%3D+%5Cfrac%7B1%7D%7B%5Cdelta%7DE_%7B%5Clambda_%7B0%7D%7D%5Cleft%5B+%5Clog+%5Cfrac%7Bq%28%5Ctheta%7C%5Clambda_%7B1%7D%29%7D+%7Bq%28%5Ctheta%7C%5Clambda_0%29%7D%5Cright%5D.&#038;bg=ffffff&#038;fg=000000&#038;s=0' alt='\int_{\Theta} \frac{\partial}{\partial \lambda} \log q(\theta|\lambda_{0}) p(\theta|\lambda_0)d\theta + o(1)= \frac{1}{\delta}E_{\lambda_{0}}\left[ \log \frac{q(\theta|\lambda_{1})} {q(\theta|\lambda_0)}\right].' title='\int_{\Theta} \frac{\partial}{\partial \lambda} \log q(\theta|\lambda_{0}) p(\theta|\lambda_0)d\theta + o(1)= \frac{1}{\delta}E_{\lambda_{0}}\left[ \log \frac{q(\theta|\lambda_{1})} {q(\theta|\lambda_0)}\right].' class='latex' /></p>
+<h4>Path sampling</h4>
+<p>The path sampling estimate is just the integral of the dominate term in the middle of the equation above:<br />
+<img src='https://s0.wp.com/latex.php?latex=%5Cfrac%7Bz%28%5Clambda_1%29%7D%7Bz%28%5Clambda_0%29%7D%5Capprox%5Cint_%7B%5Clambda_0%7D%5E%7B%5Clambda_1%7D%5Cint_%7B%5CTheta%7D+%5Cfrac%7B%5Cpartial%7D%7B%5Cpartial+%5Clambda%7D+%5Clog+q%28%5Ctheta%7C%5Clambda_%7Bl%7D%29+p%28%5Ctheta%7C%5Clambda_l%29d%5Ctheta+d+%5Clambda.&#038;bg=ffffff&#038;fg=000000&#038;s=0' alt='\frac{z(\lambda_1)}{z(\lambda_0)}\approx\int_{\lambda_0}^{\lambda_1}\int_{\Theta} \frac{\partial}{\partial \lambda} \log q(\theta|\lambda_{l}) p(\theta|\lambda_l)d\theta d \lambda.' title='\frac{z(\lambda_1)}{z(\lambda_0)}\approx\int_{\lambda_0}^{\lambda_1}\int_{\Theta} \frac{\partial}{\partial \lambda} \log q(\theta|\lambda_{l}) p(\theta|\lambda_l)d\theta d \lambda.' class='latex' /><br />
+In such sense, the path sampling is the continuous limit of both the importance sampling and the Taylor expansion approach.</p>
+<p>More generally, if we draw <img src='https://s0.wp.com/latex.php?latex=%28a%2C+%5Ctheta%29&#038;bg=ffffff&#038;fg=000000&#038;s=0' alt='(a, \theta)' title='(a, \theta)' class='latex' /> sample from the joint density<br />
+<img src='https://s0.wp.com/latex.php?latex=p%28a%2C%5Ctheta%29%5Cpropto%5Cfrac%7B1%7D%7Bc%28a%29%7Dq%28%5Ctheta%2C%5Clambda%3Df%28a%29%29%2C&#038;bg=ffffff&#038;fg=000000&#038;s=0' alt='p(a,\theta)\propto\frac{1}{c(a)}q(\theta,\lambda=f(a)),' title='p(a,\theta)\propto\frac{1}{c(a)}q(\theta,\lambda=f(a)),' class='latex' /><br />
+where <img src='https://s0.wp.com/latex.php?latex=c%28%29&#038;bg=ffffff&#038;fg=000000&#038;s=0' alt='c()' title='c()' class='latex' /> is any pseudo prior, and <img src='https://s0.wp.com/latex.php?latex=a&#038;bg=ffffff&#038;fg=000000&#038;s=0' alt='a' title='a' class='latex' /> is a transformed parameter of lambda through a link function f(), then the thermodynamic integration (<a href="https://projecteuclid.org/euclid.ss/1028905934">Gelman and Meng, 1998</a>, indeed dated back to<a href="https://aip.scitation.org/doi/pdf/10.1063/1.1749657"> Kirkwood, 1935</a>) yields the identity<br />
+<img src='https://s0.wp.com/latex.php?latex=%5Cfrac%7Bd%7D%7Bda%7D%5Clog+z%28f%28a%29%29%3DE_%7B%5Ctheta%7Cf%28a%29%7D%5CBigl%5B%5Cfrac%7B%5Cpartial%7D%7B%5Cpartial+a%7D%5Clog%5Cleft%28q%28%5Ctheta%2C+f%28a%29%5Cright%29%5CBigr%5D%2C&#038;bg=ffffff&#038;fg=000000&#038;s=0' alt='\frac{d}{da}\log z(f(a))=E_{\theta|f(a)}\Bigl[\frac{\partial}{\partial a}\log\left(q(\theta, f(a)\right)\Bigr],' title='\frac{d}{da}\log z(f(a))=E_{\theta|f(a)}\Bigl[\frac{\partial}{\partial a}\log\left(q(\theta, f(a)\right)\Bigr],' class='latex' /><br />
+where the expectation is over the invariant conditional distribution <img src='https://s0.wp.com/latex.php?latex=%5Ctheta+%7C+a+%5Cpropto+q%28%5Ctheta%2C+f%28a%29%29&#038;bg=ffffff&#038;fg=000000&#038;s=0' alt='\theta | a \propto q(\theta, f(a))' title='\theta | a \propto q(\theta, f(a))' class='latex' />.</p>
+<p>If a is continuous, this conditional <img src='https://s0.wp.com/latex.php?latex=%5Ctheta%7Cf%28a%29&#038;bg=ffffff&#038;fg=000000&#038;s=0' alt='\theta|f(a)' title='\theta|f(a)' class='latex' /> is hard to evaluate, as typically there is only one theta for each unique <img src='https://s0.wp.com/latex.php?latex=a&#038;bg=ffffff&#038;fg=000000&#038;s=0' alt='a' title='a' class='latex' />. However, it is still a valid <em>stochastic approximation</em> to approximate<br />
+<img src='https://s0.wp.com/latex.php?latex=E_%7B%5Ctheta%7Cf%28a_i%29%7D%5CBigl%5B%5Cfrac%7B%5Cpartial%7D%7B%5Cpartial+a%7D%5Clog%5Cleft%28q%28%5Ctheta%2Cf%28a%29%5Cright%29%5CBigr%5D%5Capprox%5Cfrac%7B%5Cpartial%7D%7B%5Cpartial+a%7D%5Clog%5Cleft%28q%28%5Ctheta_i%2C+f%28a_i%29%5Cright%29&#038;bg=ffffff&#038;fg=000000&#038;s=0' alt='E_{\theta|f(a_i)}\Bigl[\frac{\partial}{\partial a}\log\left(q(\theta,f(a)\right)\Bigr]\approx\frac{\partial}{\partial a}\log\left(q(\theta_i, f(a_i)\right)' title='E_{\theta|f(a_i)}\Bigl[\frac{\partial}{\partial a}\log\left(q(\theta,f(a)\right)\Bigr]\approx\frac{\partial}{\partial a}\log\left(q(\theta_i, f(a_i)\right)' class='latex' /><br />
+by one Monte Carlo draw.</p>
+<h4>Continuously simulated tempering on an isentropic circle</h4>
+<p>Simulated tempering and its variants provide an accessible approach to sampling from a multimodal distribution. We augment the state space <img src='https://s0.wp.com/latex.php?latex=%5CTheta&#038;bg=ffffff&#038;fg=000000&#038;s=0' alt='\Theta' title='\Theta' class='latex' /> with an auxiliary inverse temperature parameter <img src='https://s0.wp.com/latex.php?latex=%5Clambda&#038;bg=ffffff&#038;fg=000000&#038;s=0' alt='\lambda' title='\lambda' class='latex' />, and employ a sequence of interpolating densities, typically through a power transformation <img src='https://s0.wp.com/latex.php?latex=p_j%5Cpropto+p%28%5Ctheta%7Cy%29%5E%7B%5Clambda_j%7D&#038;bg=ffffff&#038;fg=000000&#038;s=0' alt='p_j\propto p(\theta|y)^{\lambda_j}' title='p_j\propto p(\theta|y)^{\lambda_j}' class='latex' /> on the ladder 0=<img src='https://s0.wp.com/latex.php?latex=%5Clambda_0+%5Cleq+%5Ccdots%5Cleq+%5Clambda_K%3D1&#038;bg=ffffff&#038;fg=000000&#038;s=0' alt='\lambda_0 \leq \cdots\leq \lambda_K=1' title='\lambda_0 \leq \cdots\leq \lambda_K=1' class='latex' />,<br />
+such that <img src='https://s0.wp.com/latex.php?latex=p_K&#038;bg=ffffff&#038;fg=000000&#038;s=0' alt='p_K' title='p_K' class='latex' /> is the distribution we want to sample from and <img src='https://s0.wp.com/latex.php?latex=p_0&#038;bg=ffffff&#038;fg=000000&#038;s=0' alt='p_0' title='p_0' class='latex' /> is a (proper) base distribution. At a smaller <img src='https://s0.wp.com/latex.php?latex=%5Clambda&#038;bg=ffffff&#038;fg=000000&#038;s=0' alt='\lambda' title='\lambda' class='latex' />, the between-mode energy barriers in <img src='https://s0.wp.com/latex.php?latex=p%28%5Ctheta%7C%5Clambda%29&#038;bg=ffffff&#038;fg=000000&#038;s=0' alt='p(\theta|\lambda)' title='p(\theta|\lambda)' class='latex' /> collapse and the Markov chains are easier to mix. This dynamic makes the sampler more likely to fully explore the target distribution at <img src='https://s0.wp.com/latex.php?latex=%5Clambda%3D1&#038;bg=ffffff&#038;fg=000000&#038;s=0' alt='\lambda=1' title='\lambda=1' class='latex' />. However, it is often required to scale the number of interpolating densities K at least O(parameter dimension), soon becoming unaffordable in any moderately high dimensional problems.</p>
+<p>A few years ago, Andrew came up with this idea to use path sampling in continuous simulated tempering (I remember he did so during one BDA class when he was teaching simulated temperimg). In this new paper, we present an automated way to conduct continuously simulated tempering and adaptive path sampling.</p>
+<p>The basic strategy is to augment the target density <img src='https://s0.wp.com/latex.php?latex=q%28%5Ctheta%29&#038;bg=ffffff&#038;fg=000000&#038;s=0' alt='q(\theta)' title='q(\theta)' class='latex' />, potentially multimodal, by a tempered path<br />
+<img src='https://s0.wp.com/latex.php?latex=1%2Fc%28%5Clambda%29%5Cpsi%28%5Ctheta%29%5E%7B1-%5Clambda%7Dq%28%5Ctheta%29%5E%7B%5Clambda%7D&#038;bg=ffffff&#038;fg=000000&#038;s=0' alt='1/c(\lambda)\psi(\theta)^{1-\lambda}q(\theta)^{\lambda}' title='1/c(\lambda)\psi(\theta)^{1-\lambda}q(\theta)^{\lambda}' class='latex' /> where <img src='https://s0.wp.com/latex.php?latex=%5Cpsi&#038;bg=ffffff&#038;fg=000000&#038;s=0' alt='\psi' title='\psi' class='latex' /> is some base measurement. Here the temperature lambda is continuous in [0,1], so as to adapt to regions where the conditional density changes rapidly with the temperature (which might be missed by discrete tempering).</p>
+<p>Directly sampling from theta and lambda makes it hard to access the samples from the target density (as Pr(lambda=1)=0 in any continuous densities). Hence we further transform theta into a transformed <img src='https://s0.wp.com/latex.php?latex=a&#038;bg=ffffff&#038;fg=000000&#038;s=0' alt='a' title='a' class='latex' /> using a piecewise polynomial link function <img src='https://s0.wp.com/latex.php?latex=%5Clambda%3Df%28a%29&#038;bg=ffffff&#038;fg=000000&#038;s=0' alt='\lambda=f(a)' title='\lambda=f(a)' class='latex' /> like this,<br />
+<a href="https://statmodeling.stat.columbia.edu/wp-content/uploads/2020/09/h_x.jpg"><img class="aligncenter wp-image-44371 size-large" src="https://statmodeling.stat.columbia.edu/wp-content/uploads/2020/09/h_x-1024x507.jpg" alt="" width="500" height="250" /></a><br />
+An <img src='https://s0.wp.com/latex.php?latex=a&#038;bg=ffffff&#038;fg=000000&#038;s=0' alt='a' title='a' class='latex' />-trajectory from 0 to 2 corresponds to a complete <img src='https://s0.wp.com/latex.php?latex=%5Clambda&#038;bg=ffffff&#038;fg=000000&#038;s=0' alt='\lambda' title='\lambda' class='latex' /> tour from 0 to 1 (cooling) and back down to 0 (heating). This formulation allows the sampler to cycle back and forth through the space of lambda continuously, while ensuring that some of the simulation draws (those with a between 0.8 and 1.2) are drawn from the exact target distribution with <img src='https://s0.wp.com/latex.php?latex=%5Clambda%3D1&#038;bg=ffffff&#038;fg=000000&#038;s=0' alt='\lambda=1' title='\lambda=1' class='latex' />. The actual sampling takes place in <img src='https://s0.wp.com/latex.php?latex=a%5Cin+%5B0%2C2%5D%5Ctimes%5Ctheta%5Cin%5CTheta&#038;bg=ffffff&#038;fg=000000&#038;s=0' alt='a\in [0,2]\times\theta\in\Theta' title='a\in [0,2]\times\theta\in\Theta' class='latex' />. It has a continuous density and is readily implemented in Stan.</p>
+<p>We then use path sampling compute the log normalizing constant of this system, and adaptive modify the a-margin to ensure a complete cooling-heating cycle.</p>
+<p>Notable, in discrete simulated tempering and annealed importance sampling, we typically compute the marginal density and the normalization constant<br />
+<img src='https://s0.wp.com/latex.php?latex=%5Cfrac%7Bz_%7B%5Clambda_K%7D%7D%7Bz_%7B%5Clambda_0%7D%7D%3DE%5Cleft%5B%5Cexp%5Cmathcal%7BW%7D%28%5Ctheta_0%2C%5Cdots%2C%5Ctheta_%7BK-1%7D%29%5Cright%5D%2C%5Cmathcal%7BW%7D%28%5Ctheta_0%2C%5Cdots%2C%5Ctheta_%7BK-1%7D%29%3D%5Clog%5Cprod_%7Bj%3D0%7D%5E%7Bk-1%7D%5Cfrac%7Bq%28%5Ctheta_j%2C%5Clambda_%7Bj%2B1%7D%29%7D%7Bq%28%5Ctheta_j%2C%5Clambda_%7Bj%7D%29%7D.&#038;bg=ffffff&#038;fg=000000&#038;s=0' alt='\frac{z_{\lambda_K}}{z_{\lambda_0}}=E\left[\exp\mathcal{W}(\theta_0,\dots,\theta_{K-1})\right],\mathcal{W}(\theta_0,\dots,\theta_{K-1})=\log\prod_{j=0}^{k-1}\frac{q(\theta_j,\lambda_{j+1})}{q(\theta_j,\lambda_{j})}.' title='\frac{z_{\lambda_K}}{z_{\lambda_0}}=E\left[\exp\mathcal{W}(\theta_0,\dots,\theta_{K-1})\right],\mathcal{W}(\theta_0,\dots,\theta_{K-1})=\log\prod_{j=0}^{k-1}\frac{q(\theta_j,\lambda_{j+1})}{q(\theta_j,\lambda_{j})}.' class='latex' /><br />
+In statistical physics, the <img src='https://s0.wp.com/latex.php?latex=%5Cmathcal%7BW%7D&#038;bg=ffffff&#038;fg=000000&#038;s=0' alt='\mathcal{W}' title='\mathcal{W}' class='latex' /> quantity can be interpreted as virtual work induced on the system. The same Jensen&#8217;s inequality that has appeared twice above leads to <img src='https://s0.wp.com/latex.php?latex=E+%5Cmathcal%7BW%7D+%5Cgeq+%5Clog+z%28%5Clambda_K%29-+%5Clog+z%28%5Clambda_0%29&#038;bg=ffffff&#038;fg=000000&#038;s=0' alt='E \mathcal{W} \geq \log z(\lambda_K)- \log z(\lambda_0)' title='E \mathcal{W} \geq \log z(\lambda_K)- \log z(\lambda_0)' class='latex' />. This is a microscopic analogy to the <strong>second law of thermodynamics:</strong> the sum of work entered in the system is always larger than the free energy change, unless the switching is processed infinitely slow, which corresponds to the proposed path sampling scheme where the interpolating densities are infinitely dense. A physics minded might call this procedure a reversible-adiabatic/isentropic/quasistatic process&#8212;It is the conjunction of path sampling estimation (unbiased for free energy) and the continuous tempering (infinitely many interpolating states) that  preserves the entropy.</p>
+<p>This asymptotic equivalence between importance sampling based tempering and continuous tempering is again the same math behind the annualize return example. The log (1+ monthly return) term now corresponds the free energy (log normalization constant) difference between two adjacent temperatures, which are essentially dense in our scheme.</p>
+<h4>Practical implementation in Stan</h4>
+<p>Well, if the blog post is an ideal format for writing math equations, there would not be journal articles, the same reason that MCMC will not exist if importance sampling scales well. Details of our methods are better summarized in the paper. We also provide an easy access to continuous tempering in R and Stan for a black box implementation of path sampling based continuous tempering.<br />
+Consider the following Stan model:</p>
+<pre>data {
+real y;
+}
+parameters {
+real theta;
+}
+model{
+y ~ cauchy(theta, 0.1);
+-y ~ cauchy(theta, 0.1);
+}</pre>
+<p>With a moderately large input data y, the posterior distribution of theta will be only be asymptotically changed at two points close to y and -y. As a result, Stan cannot fully sample from this two-point-spike even with a large number of iterations.</p>
+<p>To run continuous tempering, a user can specify any base model, say normal(0,5), and list it in an alternative model block as if it is a regular model.</p>
+<pre>model{ // keep the original model
+  y ~ cauchy(theta,0.1);
+  -y ~ cauchy(theta,0.1);
+}
+alternative model{ // add a new block of the base measure (e.g., the prior).
+  theta ~ normal(0,5);
+}</pre>
+<p>Save this as `cauchy.stan`. To run path sampling, simply run</p>
+<pre>devtools::install_github("yao-yl/path-tempering/package/pathtemp")
+library(pathtemp)
+update_model &lt;- stan_model("solve_tempering.stan")
+#https://github.com/yao-yl/path-tempering/blob/master/solve_tempering.stan
+file_new &lt;- code_temperature_augment("cauchy.stan")
+sampling_model &lt;- stan_model(file_new) # compile
+path_sample_fit &lt;- path_sample(data=list(gap=10), # the data list in original model,
+                               sampling_model=sampling_model,
+                               N_loop=5, iter_final=6000)</pre>
+<p>The returned value provides access to the posterior draws from the target density and base density, the join path in the final adaptation, and the estimated log normalizing constant.</p>
+<pre> sim_cauchy &lt;- extract(path_sample_fit$fit_main)
+in_target &lt;- sim_cauchy$lambda==1
+in_prior &lt;- sim_cauchy$lambda==0
+# sample from the target
+hist(sim_cauchy$theta[in_target])
+# sample from the base
+hist(sim_cauchy$theta[in_prior])
+# the joint "path"
+plot(sim_cauchy$a, sim_cauchy$theta)
+# the normalizing constant
+plot(g_lambda(path_sample_fit$path_post_a), path_sample_fit$path_post_z)
+</pre>
+<p>Here is the output.<br />
+<a href="https://statmodeling.stat.columbia.edu/wp-content/uploads/2020/09/Cauchy.jpg"><img class="aligncenter wp-image-44372" src="https://statmodeling.stat.columbia.edu/wp-content/uploads/2020/09/Cauchy-1024x297.jpg" alt="" width="800" height="232" srcset="https://statmodeling.stat.columbia.edu/wp-content/uploads/2020/09/Cauchy-1024x297.jpg 1024w, https://statmodeling.stat.columbia.edu/wp-content/uploads/2020/09/Cauchy-300x87.jpg 300w, https://statmodeling.stat.columbia.edu/wp-content/uploads/2020/09/Cauchy-768x223.jpg 768w, https://statmodeling.stat.columbia.edu/wp-content/uploads/2020/09/Cauchy-1536x446.jpg 1536w, https://statmodeling.stat.columbia.edu/wp-content/uploads/2020/09/Cauchy.jpg 1625w" sizes="(max-width: 800px) 100vw, 800px" /></a><br />
+Have fun playing with code!</p>
+<p>Let me close with two caveats. First, we don&#8217;t think tempering can solve all metastability issues in MCMC. Tempering imposes limitations on dimensions and problem scales. We provide a failure mode example where the proposed tempering scheme (or any other tempering methods) fails. Adaptive path sampling comes with an importance-sampling-theory-based diagnosis that makes this failure manifest. That said, in many cases we find this new path-sampling-adapted-continuous-tempering approach performs better than existing methods for metastable sampling. Second, posterior multimodality often betokens model misspecification (we discussed this in our<a href="https://arxiv.org/abs/2006.12335"> previous paper</a> on chain-stacking). The ultimate goal is not to stop at the tempered posterior simulation draws, but to use them to check and improve the model in a workflow.</p>
+<p>&nbsp;</p>
+<!-- AddThis Advanced Settings above via filter on the_content --><!-- AddThis Advanced Settings below via filter on the_content --><!-- AddThis Advanced Settings generic via filter on the_content --><!-- AddThis Share Buttons above via filter on the_content --><!-- AddThis Share Buttons below via filter on the_content --><div class="at-below-post-homepage addthis_tool" data-url="https://statmodeling.stat.columbia.edu/2020/09/02/path-sampling-in-stan/"></div><!-- AddThis Share Buttons generic via filter on the_content -->				</div>
+				
+				
+
+				<div class="postmetadata">
+
+					<div class="posttagscat">
+										<span class="postcat">Filed under&nbsp;<a href="https://statmodeling.stat.columbia.edu/category/stan/" rel="category tag">Stan</a>, <a href="https://statmodeling.stat.columbia.edu/category/statistical-computing/" rel="category tag">Statistical computing</a>.</span>
+															</div>
+
+					<span class="postcomment">
+					<a href="https://statmodeling.stat.columbia.edu/2020/09/02/path-sampling-in-stan/#comments">20 Comments</a>					</span>
+										
+				 </div>
+			</div>
+	
+						
+			<div class="post-43197 post type-post status-publish format-standard hentry category-stan category-statistical-computing" id="post-43197">
+				<h2 class="posttitle"><a href="https://statmodeling.stat.columbia.edu/2020/09/02/parallel-in-stan/" rel="bookmark" title="Permanent Link to Parallel in Stan">Parallel in Stan</a></h2>
+				<div class="postmetadata">
+								Posted by <span class="postauthor"><a href="https://statmodeling.stat.columbia.edu/author/andrew/" title="Posts by Andrew" rel="author">Andrew</a></span> on								<span class="postdate">2 September 2020, 9:22 am</span>
+								</div>
+				
+				<div class="postentry">
+					<div class="at-above-post-homepage addthis_tool" data-url="https://statmodeling.stat.columbia.edu/2020/09/02/parallel-in-stan/"></div><p><img src="https://statmodeling.stat.columbia.edu/wp-content/uploads/2020/09/IMG_6245-scaled.jpg" alt="" width="400" /></a></p>
+<p><em>by Andrew Gelman and Bob Carpenter</em></p>
+<p>We&#8217;ve been talking about some of the many many ways that parallel computing is, or could be used, in Stan.  Here are a few:</p>
+<p>&#8211; Multiple chains (Stan runs 4 or 8 on my laptop automatically)</p>
+<p>&#8211; Hessians scale linearly in computation with dimension and are super useful.  And we now have a fully vetted forward mode other than for ODEs.</p>
+<p>&#8211; <a href="http://www.stat.columbia.edu/~gelman/research/published/ep_life_jmlr.pdf">EP</a> (data partitioning)</p>
+<p>&#8211; Running many parallel chains, stopping perhaps before convergence, and weighting them using stacking (Yuling and I are working on a paper on this)</p>
+<p>&#8211; Bob&#8217;s idea of using many parallel chains spawned off an optimization, as a way to locate the typical set during warmup</p>
+<p>&#8211; Generic MPI for multicore in-box and out-of-box for<br />
+ parallel density evaluation</p>
+<p>&#8211; Multithreading for parallel forward and backward time exploration in HMC</p>
+<p>&#8211; Multithreading parallel density evaluation</p>
+<p>&#8211; GPU kernelization of sequence operations</p>
+<p>&#8211; Multithreading for multiple outcomes in density functions</p>
+<p>&#8211; Then there&#8217;s all the SSE optimization down at the CPU level for pipelining.</p>
+<p>P.S.  Thanks to Zad for the above image demonstrating parallelism.</p>
+<!-- AddThis Advanced Settings above via filter on the_content --><!-- AddThis Advanced Settings below via filter on the_content --><!-- AddThis Advanced Settings generic via filter on the_content --><!-- AddThis Share Buttons above via filter on the_content --><!-- AddThis Share Buttons below via filter on the_content --><div class="at-below-post-homepage addthis_tool" data-url="https://statmodeling.stat.columbia.edu/2020/09/02/parallel-in-stan/"></div><!-- AddThis Share Buttons generic via filter on the_content -->				</div>
+				
+				
+
+				<div class="postmetadata">
+
+					<div class="posttagscat">
+										<span class="postcat">Filed under&nbsp;<a href="https://statmodeling.stat.columbia.edu/category/stan/" rel="category tag">Stan</a>, <a href="https://statmodeling.stat.columbia.edu/category/statistical-computing/" rel="category tag">Statistical computing</a>.</span>
+															</div>
+
+					<span class="postcomment">
+					<a href="https://statmodeling.stat.columbia.edu/2020/09/02/parallel-in-stan/#comments">5 Comments</a>					</span>
+										
+				 </div>
+			</div>
+	
+						
+			<div class="post-44442 post type-post status-publish format-standard hentry category-bayesian-statistics category-political-science category-stan" id="post-44442">
+				<h2 class="posttitle"><a href="https://statmodeling.stat.columbia.edu/2020/09/02/post-stratified-longitudinal-item-response-model-for-trust-in-state-institutions-in-europe/" rel="bookmark" title="Permanent Link to Post-stratified longitudinal item response model for trust in state institutions in Europe">Post-stratified longitudinal item response model for trust in state institutions in Europe</a></h2>
+				<div class="postmetadata">
+								Posted by <span class="postauthor"><a href="https://statmodeling.stat.columbia.edu/author/aki/" title="Posts by Aki Vehtari" rel="author">Aki Vehtari</a></span> on								<span class="postdate">2 September 2020, 5:40 am</span>
+								</div>
+				
+				<div class="postentry">
+					<div class="at-above-post-homepage addthis_tool" data-url="https://statmodeling.stat.columbia.edu/2020/09/02/post-stratified-longitudinal-item-response-model-for-trust-in-state-institutions-in-europe/"></div><p>This is a guest post by Marta Kołczyńska:</p>
+<p>Paul, Lauren, Aki, and I (Marta) wrote <a href="https://osf.io/preprints/socarxiv/3v5g7/">a preprint</a> where we estimate trends in political trust in European countries between 1989 and 2019 based on cross-national survey data.</p>
+<p>This paper started from the following question: How to estimate country-year levels of political trust with data from surveys that (a) mostly have the same trust questions but measured with ordinal rating scales of different lengths, and (b) mostly have samples that aim to be representative for general adult populations, but this representativeness is likely reached to different degrees?</p>
+<p>Our solution combines: </p>
+<ol>
+<li> item response models of responses to trust items that account for the varying scale lengths across survey projects,
+<li> splines to model changes over time,
+<li> post-stratification by age, sex, and education.
+</ol>
+<p>In the paper we try to explain all the modeling decisions, so that the paper may serve as a guide for people who want to apply similar methods or &#8212; even better &#8212; extend and improve them.</p>
+<p>We apply this approach to data from 12 cross-national projects (1663 national surveys) carried out in 27 European countries between 1989 and 2019. We find that (a) political trust is pretty volatile, (b) there has not been any clear downward trend in political trust in Europe in the last 30 years, although trust did decline in many Central-East European countries in the 1990s, and there was a visible dip following the 2008 crisis in countries that were hit most, followed by at least partial recovery. Below are estimated levels of political trust for the 27 countries (see the preprint for more details on differences in political trust by sex, age, and education):</p>
+<p><a href="https://statmodeling.stat.columbia.edu/wp-content/uploads/2020/09/est-all-regions-1.png"><img src="https://statmodeling.stat.columbia.edu/wp-content/uploads/2020/09/est-all-regions-1-1024x896.png" alt="Estimated political trust in Europe" width="1024" height="896" class="alignnone size-large wp-image-44443" srcset="https://statmodeling.stat.columbia.edu/wp-content/uploads/2020/09/est-all-regions-1-1024x896.png 1024w, https://statmodeling.stat.columbia.edu/wp-content/uploads/2020/09/est-all-regions-1-300x263.png 300w, https://statmodeling.stat.columbia.edu/wp-content/uploads/2020/09/est-all-regions-1-768x672.png 768w, https://statmodeling.stat.columbia.edu/wp-content/uploads/2020/09/est-all-regions-1.png 1320w" sizes="(max-width: 1024px) 100vw, 1024px" /></a></p>
+<p>The modeling was done in <a href="https://cran.r-project.org/package=brms">brms</a> thanks to some special features that Paul wrote, and overall this is one of the projects that would not have been possible without <a href="https://mc-stan.org/">Stan</a>. </p>
+<p>One of the main obstacles we faced was the limited availability of population data for post-stratification. In the end we used crude education categories (less than high school, high school or above &#8211; also because of the incoherent coding of education in surveys), combined Eurostat data with harmonized census samples from <a href="https://international.ipums.org/international/">IPUMS International</a>, and imputed values for the missing years. </p>
+<p>We think our approach or some of its components can be more broadly applied to modeling attitudes in a way that addresses issues of measurement and sample representativeness.</p>
+<!-- AddThis Advanced Settings above via filter on the_content --><!-- AddThis Advanced Settings below via filter on the_content --><!-- AddThis Advanced Settings generic via filter on the_content --><!-- AddThis Share Buttons above via filter on the_content --><!-- AddThis Share Buttons below via filter on the_content --><div class="at-below-post-homepage addthis_tool" data-url="https://statmodeling.stat.columbia.edu/2020/09/02/post-stratified-longitudinal-item-response-model-for-trust-in-state-institutions-in-europe/"></div><!-- AddThis Share Buttons generic via filter on the_content -->				</div>
+				
+				
+
+				<div class="postmetadata">
+
+					<div class="posttagscat">
+										<span class="postcat">Filed under&nbsp;<a href="https://statmodeling.stat.columbia.edu/category/bayesian-statistics/" rel="category tag">Bayesian Statistics</a>, <a href="https://statmodeling.stat.columbia.edu/category/political-science/" rel="category tag">Political Science</a>, <a href="https://statmodeling.stat.columbia.edu/category/stan/" rel="category tag">Stan</a>.</span>
+															</div>
+
+					<span class="postcomment">
+					<a href="https://statmodeling.stat.columbia.edu/2020/09/02/post-stratified-longitudinal-item-response-model-for-trust-in-state-institutions-in-europe/#comments">6 Comments</a>					</span>
+										
+				 </div>
+			</div>
+	
+						
+			<div class="post-43268 post type-post status-publish format-standard hentry category-decision-theory" id="post-43268">
+				<h2 class="posttitle"><a href="https://statmodeling.stat.columbia.edu/2020/09/01/automatic-data-reweighting/" rel="bookmark" title="Permanent Link to Automatic data reweighting!">Automatic data reweighting!</a></h2>
+				<div class="postmetadata">
+								Posted by <span class="postauthor"><a href="https://statmodeling.stat.columbia.edu/author/andrew/" title="Posts by Andrew" rel="author">Andrew</a></span> on								<span class="postdate">1 September 2020, 9:30 am</span>
+								</div>
+				
+				<div class="postentry">
+					<div class="at-above-post-homepage addthis_tool" data-url="https://statmodeling.stat.columbia.edu/2020/09/01/automatic-data-reweighting/"></div><p>John Cook <a href="https://www.johndcook.com/blog/2020/03/04/automatic-data-reweighting/">writes</a>:</p>
+<blockquote><p>Suppose you are designing an autonomous system that will gather data and adapt its behavior to that data.</p>
+<p>At first you face the so-called cold-start problem. You don’t have any data when you first turn the system on, and yet the system needs to do something before it has accumulated data. So you prime the pump by having the system act at first . . .</p>
+<p>Now you face a problem. You initially let the system operate on assumptions rather than data out of necessity, but you’d like to go by data rather than assumptions once you have enough data. Not just some data, but enough data. Once you have a single data point, you have some data, but you can hardly expect a system to act reasonably based on one datum. . . . you’d like the system to gradually transition . . . weaning the system off initial assumptions as it becomes more reliant on new data.</p>
+<p>The delicate part is how to manage this transition. How often should you adjust the relative weight of prior assumptions and empirical data? And how should you determine what weights to use? Should you set the weight given to the prior assumptions to zero at some point, or should you let the weight asymptotically approach zero?</p>
+<p>Fortunately, there is a general theory of how to design such systems. . . .</p></blockquote>
+<p>Cool!  Sounds like a good idea to me.  Could be the basis for a new religion if you play it right.</p>
+<!-- AddThis Advanced Settings above via filter on the_content --><!-- AddThis Advanced Settings below via filter on the_content --><!-- AddThis Advanced Settings generic via filter on the_content --><!-- AddThis Share Buttons above via filter on the_content --><!-- AddThis Share Buttons below via filter on the_content --><div class="at-below-post-homepage addthis_tool" data-url="https://statmodeling.stat.columbia.edu/2020/09/01/automatic-data-reweighting/"></div><!-- AddThis Share Buttons generic via filter on the_content -->				</div>
+				
+				
+
+				<div class="postmetadata">
+
+					<div class="posttagscat">
+										<span class="postcat">Filed under&nbsp;<a href="https://statmodeling.stat.columbia.edu/category/decision-theory/" rel="category tag">Decision Theory</a>.</span>
+															</div>
+
+					<span class="postcomment">
+					<a href="https://statmodeling.stat.columbia.edu/2020/09/01/automatic-data-reweighting/#comments">17 Comments</a>					</span>
+										
+				 </div>
+			</div>
+	
+						
+			<div class="post-44436 post type-post status-publish format-standard hentry category-bayesian-statistics category-political-science category-zombies" id="post-44436">
+				<h2 class="posttitle"><a href="https://statmodeling.stat.columbia.edu/2020/08/31/problem-of-the-between-state-correlations-in-the-fivethirtyeight-election-forecast/" rel="bookmark" title="Permanent Link to Problem of the between-state correlations in the Fivethirtyeight election forecast">Problem of the between-state correlations in the Fivethirtyeight election forecast</a></h2>
+				<div class="postmetadata">
+								Posted by <span class="postauthor"><a href="https://statmodeling.stat.columbia.edu/author/andrew/" title="Posts by Andrew" rel="author">Andrew</a></span> on								<span class="postdate">31 August 2020, 9:05 pm</span>
+								</div>
+				
+				<div class="postentry">
+					<div class="at-above-post-homepage addthis_tool" data-url="https://statmodeling.stat.columbia.edu/2020/08/31/problem-of-the-between-state-correlations-in-the-fivethirtyeight-election-forecast/"></div><p>Elliott writes:</p>
+<blockquote><p>I think we&#8217;re onto something with the low between-state correlations [see item 1 of our <a href="https://statmodeling.stat.columbia.edu/2020/08/31/more-on-that-fivethirtyeight-prediction-that-biden-might-only-get-42-of-the-vote-in-florida/">earlier post</a>]. Someone sent me this collage of maps from Nate&#8217;s model that show:</p>
+<p>&#8211; Biden winning every state except NJ<br />
+&#8211; Biden winning LA and MS but not MI and WI<br />
+&#8211; Biden losing OR but winning WI, PA</p>
+<p>And someone says that in the 538 simulations where Trump wins CA, he only has a 60% chance of winning the elec overall.</p>
+<p>Seems like the arrows are pointing to a very weird covariance structure.</p></blockquote>
+<p><img src="https://statmodeling.stat.columbia.edu/wp-content/uploads/2020/08/Egw7NUkXcAEHyqr.png" alt="" width="550"  class="alignnone size-full wp-image-44437" srcset="https://statmodeling.stat.columbia.edu/wp-content/uploads/2020/08/Egw7NUkXcAEHyqr.png 819w, https://statmodeling.stat.columbia.edu/wp-content/uploads/2020/08/Egw7NUkXcAEHyqr-300x235.png 300w, https://statmodeling.stat.columbia.edu/wp-content/uploads/2020/08/Egw7NUkXcAEHyqr-768x601.png 768w" sizes="(max-width: 819px) 100vw, 819px" /></p>
+<p><img src="https://statmodeling.stat.columbia.edu/wp-content/uploads/2020/08/EgxGFxeX0AA0S7P.png" alt="" width="285" height="246" class="alignnone size-full wp-image-44438" /></p>
+<p><img src="https://statmodeling.stat.columbia.edu/wp-content/uploads/2020/08/EgxghkGUMAAuDNW.jpg" alt="" width="330" height="344" class="alignnone size-full wp-image-44439" srcset="https://statmodeling.stat.columbia.edu/wp-content/uploads/2020/08/EgxghkGUMAAuDNW.jpg 330w, https://statmodeling.stat.columbia.edu/wp-content/uploads/2020/08/EgxghkGUMAAuDNW-288x300.jpg 288w" sizes="(max-width: 330px) 100vw, 330px" /></p>
+<p><img src="https://statmodeling.stat.columbia.edu/wp-content/uploads/2020/08/EgxgjxbVoAA5z95.jpg" alt="" width="254" height="183" class="alignnone size-full wp-image-44440" /></p>
+<p>I agree that these maps look really implausible for 2020.  How&#8217;s Biden gonna win Idaho, Wyoming, Alabama, etc. . . . but not New Jersey?</p>
+<p>But this does all seem consistent with correlations of uncertainties between states that are too low.</p>
+<p>Perhaps this is a byproduct of Fivethirtyeight relying too strongly on state polls and not fully making use of the information from national polls and from the relative positions of the states in previous elections.</p>
+<p>If you think of the goal as forecasting the election outcome (by way of vote intentions; see item 4 in the above-linked post), then state polls are just one of many sources of information.  But if you start by aggregating state polls, and then try to hack your way into a national election forecast, then you can run into all sorts of problems.  The issue here is that the between-state correlation is  mostly not coming from the polling process at all; it&#8217;s coming from uncertainty in public opinion changes among states.  So you need some underlying statistical model of opinion swings in the 50 states, or else you need to hack in a correlation just right.  I don&#8217;t think we did this perfectly either!  But I can see how the Fivethirtyeight team could&#8217;ve not even realized the difficulty of this problem, if they were too focused on creating simulations based on state polls without thinking about the larger forecasting problem.</p>
+<p>There&#8217;s a Bayesian point here, which is that correlation in the prior induces correlation in the posterior, even if there&#8217;s no correlation in the likelihood.</p>
+<p>And, as we discussed earlier, if your between-state correlations are too low, and at the same time you&#8217;re aiming for a realistic uncertainty in the national level, then you&#8217;re gonna end up with too much uncertainty for each individual state.</p>
+<p>At some level, the Fivethirtyeight team must realize this&#8212;earlier this year, Nate Silver wrote that correlated errors are &#8220;where often *most* of the work is in modeling if you want your models to remotely resemble real-world conditions&#8221;&#8212;but recognizing the general principle is not the same thing as doing something reasonable in a live application.</p>
+<p><strong>These things happen</strong></p>
+<p>Again, assuming the above maps actually reflect the Fivethirtyeight forecast and they&#8217;re not just some sort of computer glitch, this does <em>not</em> mean that what they&#8217;re doing at that website is useless, nor does it mean that we&#8217;re &#8220;right&#8221; and they&#8217;re &#8220;wrong&#8221; in whatever other disagreements we might have (although I&#8217;m standing fast on the Carmelo Anthony <a href="https://statmodeling.stat.columbia.edu/2020/02/03/mrp-carmelo-anthony-update-trash-talkings-fine-but-you-gotta-give-details-or-links-or-something/">thing</a>).  Everybody makes mistakes!  We made mistakes in our forecast too (see item 3 in our <a href="https://statmodeling.stat.columbia.edu/2020/08/31/more-on-that-fivethirtyeight-prediction-that-biden-might-only-get-42-of-the-vote-in-florida/">earlier post</a>)!  Multivariate forecasting is harder than it looks.  In our case, it helped that we had a team of 3 people staring at our model, but of course that didn&#8217;t stop us from making our mistakes the first time.</p>
+<p>At the very least, maybe this will remind us all that knowing that a forecast is based on 40,000 simulations or 40,000,000 simulations or 40,000,000,000 simulations doesn&#8217;t really tell us anything until we know how the simulations are produced.</p>
+<p><strong>P.S.</strong> Again, the point here is not about the silly scenario in which Trump wins New Jersey while losing the other 49 states; rather, we can use problems in the predictive distribution to try to understand what went wrong with the forecasting procedure.  Just as Kos did for me several years ago (go <a href="https://statmodeling.stat.columbia.edu/2020/08/27/florida-comparing-economist-and-fivethirtyeight-forecasts/">here</a> and search on &#8220;Looking at specifics has worked&#8221;).  When your procedure messes up, that&#8217;s good news in that it represents a learning opportunity.</p>
+<p><strong>P.P.S.</strong>  A commenter informs us that Nate <a href="https://twitter.com/NateSilver538/status/1300825856072454145">wrote something</a>, not specifically addressing the maps shown here, but saying that these extreme results arose from a long-tailed error term in his simulation procedure.  There&#8217;s some further discussion in comments.  One relevant point here is that it you add independent state errors with a long-tailed distribution, this will induce lower  correlation in the final distribution.  See discussion in comments <a href="https://statmodeling.stat.columbia.edu/2020/08/31/problem-of-the-between-state-correlations-in-the-fivethirtyeight-election-forecast/#comment-1434758">here</a> and <a href="https://statmodeling.stat.columbia.edu/2020/08/31/more-on-that-fivethirtyeight-prediction-that-biden-might-only-get-42-of-the-vote-in-florida/#comment-1434776">here</a>.</p>
+<!-- AddThis Advanced Settings above via filter on the_content --><!-- AddThis Advanced Settings below via filter on the_content --><!-- AddThis Advanced Settings generic via filter on the_content --><!-- AddThis Share Buttons above via filter on the_content --><!-- AddThis Share Buttons below via filter on the_content --><div class="at-below-post-homepage addthis_tool" data-url="https://statmodeling.stat.columbia.edu/2020/08/31/problem-of-the-between-state-correlations-in-the-fivethirtyeight-election-forecast/"></div><!-- AddThis Share Buttons generic via filter on the_content -->				</div>
+				
+				
+
+				<div class="postmetadata">
+
+					<div class="posttagscat">
+										<span class="postcat">Filed under&nbsp;<a href="https://statmodeling.stat.columbia.edu/category/bayesian-statistics/" rel="category tag">Bayesian Statistics</a>, <a href="https://statmodeling.stat.columbia.edu/category/political-science/" rel="category tag">Political Science</a>, <a href="https://statmodeling.stat.columbia.edu/category/zombies/" rel="category tag">Zombies</a>.</span>
+															</div>
+
+					<span class="postcomment">
+					<a href="https://statmodeling.stat.columbia.edu/2020/08/31/problem-of-the-between-state-correlations-in-the-fivethirtyeight-election-forecast/#comments">96 Comments</a>					</span>
+										
+				 </div>
+			</div>
+	
+						
+			<div class="post-44409 post type-post status-publish format-standard hentry category-bayesian-statistics category-decision-theory category-political-science category-zombies" id="post-44409">
+				<h2 class="posttitle"><a href="https://statmodeling.stat.columbia.edu/2020/08/31/more-on-that-fivethirtyeight-prediction-that-biden-might-only-get-42-of-the-vote-in-florida/" rel="bookmark" title="Permanent Link to More on that Fivethirtyeight prediction that Biden might only get 42% of the vote in Florida">More on that Fivethirtyeight prediction that Biden might only get 42% of the vote in Florida</a></h2>
+				<div class="postmetadata">
+								Posted by <span class="postauthor"><a href="https://statmodeling.stat.columbia.edu/author/andrew/" title="Posts by Andrew" rel="author">Andrew</a></span> on								<span class="postdate">31 August 2020, 9:10 am</span>
+								</div>
+				
+				<div class="postentry">
+					<div class="at-above-post-homepage addthis_tool" data-url="https://statmodeling.stat.columbia.edu/2020/08/31/more-on-that-fivethirtyeight-prediction-that-biden-might-only-get-42-of-the-vote-in-florida/"></div><p><img src="https://statmodeling.stat.columbia.edu/wp-content/uploads/2020/08/Screen-Shot-2020-08-26-at-8.55.28-AM.png" alt="" width="450" /></p>
+<p>I&#8217;ve been chewing more on <a href="https://statmodeling.stat.columbia.edu/2020/08/27/florida-comparing-economist-and-fivethirtyeight-forecasts/">the above Florida forecast</a> from Fivethirtyeight.</p>
+<p>Their 95% interval for the election-day vote margin in Florida is something like [+16% Trump, +20% Biden], which corresponds to an approximate 95% interval of [42%, 60%] for Biden&#8217;s share of the two-party vote.</p>
+<p>This is buggin me because it&#8217;s really hard for me to picture Biden only getting 42% of the vote in Florida.</p>
+<p>By comparison, our Economist forecast gives a 95% interval of [47%, 58%] for Biden&#8217;s Florida vote share.</p>
+<p>Is there really a serious chance that Biden gets only 42% of the vote in Florida?</p>
+<p>Let&#8217;s look at this in a few ways:</p>
+<p>1.  Where did the Fivethirtyeight interval come from?</p>
+<p>2.  From 95% intervals to 50% intervals.</p>
+<p>3.  Using weird predictions to discover problems with your model.</p>
+<p>4.  Vote intentions vs. the ultimate official vote count.</p>
+<p><strong>1. Where did the Fivethirtyeight interval come from?</strong></p>
+<p>How did they get such a wide interval for Florida?</p>
+<p>I think two things happened.</p>
+<p>First, they made the national forecast wider.  Biden has a clear lead in the polls and a lead in the fundamentals (poor economy and unpopular incumbent).  Put that together and you give Biden a big lead in the forecast; for example, we <a href="https://projects.economist.com/us-2020-forecast/president">give</a> him a 90% chance of winning the electoral college.  For understandable reasons, the Fivethirtyeight team didn&#8217;t think Biden&#8217;s chances of winning were so high.  I disagree on this&#8212;I&#8217;ll stand by our forecast&#8212;but I can see where they&#8217;re coming from.  After all, this is kind of a replay of 2016 when Trump <em>did</em> win the electoral college, also he has the advantages of incumbency, for all that&#8217;s worth.  You can lower Biden&#8217;s win probability by lowering his expected vote&#8212;you can&#8217;t do much with the polls, but you can choose a fundamentals model that forecasts less than 54% for the challenger&#8212;and you can widen the interval.  Part of what Fivethirtyeight did is widen their intervals, and when you widen the interval for the national vote, this will also widen your interval for individual states.</p>
+<p>Second, I suspect they screwed up a bit in their model of correlation between states.  I can&#8217;t be sure of this&#8212;I couldn&#8217;t find a full description of their forecasting method anywhere&#8212;but I&#8217;m guessing that the correlation of uncertainties between states is too low.  Why do I say this?  Because the lower the correlation between states, the more uncertainty you need for each individual state forecast to get a desired national uncertainty.</p>
+<p>Also, setting up between-state uncertainties is tricky. I know this because Elliott, Merlin, and I struggled when setting up <a href="https://projects.economist.com/us-2020-forecast/president/how-this-works">our own model</a>, which indeed is a bit of a kluge when it comes to that bit.</p>
+<p>Alternatively, you could argue that [42%, 60%] is just fine as a 95% interval for Biden&#8217;s Florida vote share&#8212;I&#8217;ll get back to that in a bit.  But if you feel, as we do that this 42% is too low to be plausible, then the above two model features&#8212;an expanded national uncertainty and too-low between-state correlations&#8212;are one way that Fivethirtyeight could&#8217;ve ended up there.</p>
+<p><strong>2.  From 95% intervals to 50% intervals.</strong></p>
+<p>95% intervals are hard to calibrate.  If all is good with your modeling, your 95% intervals will be wrong only 1 time in 20.  To put it another way, you&#8217;d expect only 50 such mispredicted state-level events in 80 years of national elections.  So you might say that the interval for Florida <em>should</em> be super-wide.  This doesn&#8217;t answer the question of <em>how</em> wide:  should the lower bound of that interval be 47% (as we have it), or 42% (as per 538), or maybe 37%???&#8212;but it does tell us that it&#8217;s hard to think about such intervals.</p>
+<p>It&#8217;s easier to think about 50% intervals, and, fortunately, we can read these off the above graphic too.  The 50% prediction interval for Florida is roughly (+4% Trump, +8% Biden), i.e. (0.48, 0.54) for Biden’s two-party vote share.</p>
+<p>Given that Biden&#8217;s currently at 52% in the polls in <a href="https://projects.economist.com/us-2020-forecast/president/florida">Florida</a> (and at 55% in <a href="https://projects.economist.com/us-2020-forecast/president">national</a> polls, so it&#8217;s not like the Florida polls are some kind of fluke), I don&#8217;t really buy the (0.48, 0.54) interval.</p>
+<p>To put it another way, I think there&#8217;s less than a 1-in-4 probability that Biden less than 48% of the two-party vote in Florida.  This is not to say I think Biden is certain to win, just that I think the Fivethirtyeight interval is too wide.  I already thought this about the 95% interval, and I think this about the 50% interval too.</p>
+<p>That&#8217;s just my take (and the take of our statistical model).  The Fivethirtyeight is under no obligation to spit out numbers that are consistent with my view of the race.  I&#8217;m just explaining where I&#8217;m coming from.</p>
+<p>In their defense, back in 2016, some of the polls were biased.  Indeed, back in September of that year, the New York Times gave data from a Florida poll to Sam Corbett-Davies, David Rothschild, and me.  We <a href="https://www.nytimes.com/interactive/2016/09/20/upshot/the-error-the-polling-world-rarely-talks-about.html">estimated</a> Trump with a 1% lead in the state&#8212;even while the Times and three other pollsters (one Republican, one Democratic, and one nonpartisan) all pointed toward Clinton, giving her a lead of between 1 and 4 points.</p>
+<p>In that case, we adjusted the raw poll data for party registration, the other pollsters didn&#8217;t, and that explains why they were off.  If the current Florida polls are off in the same way, then that would explain the Fivethirtyeight forecast.  But (a) I have no reason to think the current polls are off in this way, and one reason I have this assurance is that our model does allow for bias in polls that don&#8217;t adjust for partisanship of respondents, and (b) I don&#8217;t think Fivethirtyeight attempts this bias correction; it&#8217;s my impression that they take the state poll toplines as is.  Again, I do think they widen their intervals, but I think that leads to unrealistic possibilities in their forecast distribution, which is how I led off this post.</p>
+<p><strong>3.  Using weird predictions to discover problems with your model.</strong></p>
+<p>Weird predictions can be a good way of finding problems with your model.  We discussed this in our post the other day: <a href="https://statmodeling.stat.columbia.edu/2020/08/27/florida-comparing-economist-and-fivethirtyeight-forecasts/">go here</a> and scroll down to &#8220;Making predictions, seeing where they look implausible, and using this to improve our modeling.&#8221;  As I wrote, it&#8217;s happened to me many times that I&#8217;ve fit a model that seemed reasonable, but then some of its predictions didn&#8217;t quite make sense, and I used this disconnect to motivate a careful look at the model, followed by a retooling.</p>
+<p>Indeed, this <a href="https://statmodeling.stat.columbia.edu/2020/07/31/thinking-about-election-forecast-uncertainty/">happened to us</a> just a month ago!  It started when Nate Silver and others questioned the narrow forecast intervals of our election forecasting model&#8212;at the time, we were giving Biden a 99% chance of winning more than half the national vote.  Actually, we&#8217;d been wrestling with this ourselves, but the outside criticism motivated us to go in and think more carefully about it.  We looked at our model and found some bugs in the code! and some other places where the model could be improved.  And we even did some work on our between-state covariance matrix.</p>
+<p>We could tell when looking into this that the changes in our model would not have huge effects&#8212;of course they wouldn&#8217;t, given that we&#8217;d carefully tested our earlier model on 2008, 2012, and 2016&#8212;so we kept up our old model while we fixed up the new one, and then after about a week we were read and we released the improved model (<a href="https://projects.economist.com/us-2020-forecast/president/how-this-works">go here</a> and scroll down to &#8220;Updated August 5th, 2020&#8221;).</p>
+<p><strong>4.  Vote intentions vs. the ultimate official vote count.</strong></p>
+<p>I was talking with someone about my doubts that a forecast that allowed Biden to get only 42% of the vote in Florida, and I got the following response:</p>
+<blockquote><p>Your model may be better than Nate&#8217;s in using historical and polling data.  But historical and polling data don&#8217;t help you much when one of the parties has transformed into a cult of personality that will go the extra mile to suppress opposing votes.</p></blockquote>
+<p>I responded:</p>
+<blockquote><p>How does cult of personality get to Trump winning 58% of votes in Florida?</p></blockquote>
+<p>He responded:</p>
+<blockquote><p>Proposition: Vote-suppression act X is de-facto legal and constitutional as long as SCOTUS doesn&#8217;t enforce an injunction against act X.</p></blockquote>
+<p>This made me realize that in talking about the election, we should distinguish between two things:</p>
+<p>1.  <em>Vote intentions.</em>  The total number of votes for each candidate, if everyone who wants to vote gets to vote and if all these votes are counted.</p>
+<p>2.  <em>The official vote count.</em>  Whatever that is, after some people decide not to vote because the usual polling places are closed and the new polling places are too crowded, or because they planned to vote absentee but their ballots arrived too late (this happened to me on primary day this year!), or because they followed all the rules and voted absentee but then the post office didn&#8217;t postmark their votes, or because their ballot is ruled invalid for some reason, or whatever.</p>
+<p>Both these vote counts matter.  Vote intentions matter, and the official vote count matters.  Indeed, if they differ by enough, we could have a constitutional crisis.</p>
+<p>But here&#8217;s the point.  Poll-aggregation procedures such as Fivethirtyeight&#8217;s and ours at the Economist are entirely forecasting vote intentions.  Polls are vote intentions, and any validation of these models is based on past elections, where sure there have been some gaps between vote intentions and the official vote count (notably Florida in <a href="https://www.cambridge.org/core/journals/perspectives-on-politics/article/wrong-man-is-president-overvotes-in-the-2000-presidential-election-in-florida/104AC05BBC067AF162E778889446C67C">2000</a>), but nothing like what it would take to get a candidate&#8217;s vote share from, say, 47% down to 42%.</p>
+<p>When Nate Silver says, &#8220;this year’s uncertainty is about average, which means that the historical accuracy of polls in past campaigns is a reasonably good guide to how accurate they are this year,” he&#8217;s talking about vote intentions, not about potential irregularities in the vote count.</p>
+<p>If you want to model the possible effects of vote suppression, that can make sense&#8212;<a href="https://www.economist.com/united-states/2020/08/22/more-mail-in-voting-doubles-the-chances-of-recounts-in-close-states">here&#8217;s Elliott Morris&#8217;s analysis</a>, which I haven&#8217;t looked at in detail myself&#8212;but we should be clear that this is separate from, or in addition to, poll aggregation.</p>
+<p><strong>Summary</strong></p>
+<p>I think that [42%, 60%] is way too wide as a 95% interval for Biden&#8217;s share of the two-party vote in Florida, and I suspect that Fivethirtyeight ended up with this super-wide interval because they messed up with their correlation model.</p>
+<p>A naive take on this might be that the super-wide interval could be plausible because maybe some huge percentage of mail-in ballots will be invalidated, but, if so, this isn&#8217;t in the Fivethirtyeight procedure (or in our Economist model), as these forecasts are based on poll aggregation and are validated based on past elections which have not had massive voting irregularities.  If you&#8217;re concerned about problems with the vote count, this is maybe worth being concerned about, but it&#8217;s a completely separate issue from how to aggregate polls and fundamentals-based forecasts.</p>
+<p><strong>P.S.</strong>  A correspondent pointed me to <a href="https://www.realclearpolitics.com/elections/betting_odds/2020_president/">this summary</a> of betting odds, which suggests that the bettors see the race as a 50/50 tossup.  I&#8217;ve talked <a href="https://statmodeling.stat.columbia.edu/2020/06/24/election-odds-update/">earlier</a> about my skepticism regarding betting odds; still, 50/50 is a big difference between anything you&#8217;d expect from the polls <em>or</em> the economic and political fundamentals.  I think a lot of this 50% for Trump is coming from some assessed probability of irregularities in vote counting.  If the election is disputed, I have no idea how these betting services will decide who gets paid off.</p>
+<p>Or you could disagree with me entirely and say that Trump has  a legit chance at 58% of the two-party vote preference in Florida come election day.  Then you&#8217;d have a different model than we have.</p>
+<p><img src="https://statmodeling.stat.columbia.edu/wp-content/uploads/2020/08/Screen-Shot-2020-08-29-at-1.04.24-AM.png" alt="" width="150" /></p>
+<!-- AddThis Advanced Settings above via filter on the_content --><!-- AddThis Advanced Settings below via filter on the_content --><!-- AddThis Advanced Settings generic via filter on the_content --><!-- AddThis Share Buttons above via filter on the_content --><!-- AddThis Share Buttons below via filter on the_content --><div class="at-below-post-homepage addthis_tool" data-url="https://statmodeling.stat.columbia.edu/2020/08/31/more-on-that-fivethirtyeight-prediction-that-biden-might-only-get-42-of-the-vote-in-florida/"></div><!-- AddThis Share Buttons generic via filter on the_content -->				</div>
+				
+				
+
+				<div class="postmetadata">
+
+					<div class="posttagscat">
+										<span class="postcat">Filed under&nbsp;<a href="https://statmodeling.stat.columbia.edu/category/bayesian-statistics/" rel="category tag">Bayesian Statistics</a>, <a href="https://statmodeling.stat.columbia.edu/category/decision-theory/" rel="category tag">Decision Theory</a>, <a href="https://statmodeling.stat.columbia.edu/category/political-science/" rel="category tag">Political Science</a>, <a href="https://statmodeling.stat.columbia.edu/category/zombies/" rel="category tag">Zombies</a>.</span>
+															</div>
+
+					<span class="postcomment">
+					<a href="https://statmodeling.stat.columbia.edu/2020/08/31/more-on-that-fivethirtyeight-prediction-that-biden-might-only-get-42-of-the-vote-in-florida/#comments">72 Comments</a>					</span>
+										
+				 </div>
+			</div>
+	
+						
+			<div class="post-44415 post type-post status-publish format-standard hentry category-statistical-graphics category-teaching" id="post-44415">
+				<h2 class="posttitle"><a href="https://statmodeling.stat.columbia.edu/2020/08/30/an-example-of-a-parallel-dot-plot-a-great-way-to-display-many-properties-of-a-set-of-items/" rel="bookmark" title="Permanent Link to An example of a parallel dot plot:  a great way to display many properties of a list of items">An example of a parallel dot plot:  a great way to display many properties of a list of items</a></h2>
+				<div class="postmetadata">
+								Posted by <span class="postauthor"><a href="https://statmodeling.stat.columbia.edu/author/andrew/" title="Posts by Andrew" rel="author">Andrew</a></span> on								<span class="postdate">30 August 2020, 12:12 pm</span>
+								</div>
+				
+				<div class="postentry">
+					<div class="at-above-post-homepage addthis_tool" data-url="https://statmodeling.stat.columbia.edu/2020/08/30/an-example-of-a-parallel-dot-plot-a-great-way-to-display-many-properties-of-a-set-of-items/"></div><p>I often see articles that are full of long tables of numbers and it&#8217;s hard to see what&#8217;s going on, so then I&#8217;ll suggest parallel dot plots.  But people don&#8217;t always know what I&#8217;m talking about, so here I&#8217;m sharing an example.</p>
+<p><a href="https://statmodeling.stat.columbia.edu/wp-content/uploads/2020/08/girls70.pdf"><img src="https://statmodeling.stat.columbia.edu/wp-content/uploads/2020/08/girls70.png" alt="" width="700" /></a></p>
+<p>Next time when I suggest a parallel dot plot, I can point people to this post.</p>
+<p>Also I thought Margaret would appreciate this one since her name is the oldest on the list.  Well, not the oldest in average&#8212;Dorothy and Winifred and a few others have her beat&#8212;but one of the earliest peak years, and somehow she ended up on top of the graph.</p>
+<!-- AddThis Advanced Settings above via filter on the_content --><!-- AddThis Advanced Settings below via filter on the_content --><!-- AddThis Advanced Settings generic via filter on the_content --><!-- AddThis Share Buttons above via filter on the_content --><!-- AddThis Share Buttons below via filter on the_content --><div class="at-below-post-homepage addthis_tool" data-url="https://statmodeling.stat.columbia.edu/2020/08/30/an-example-of-a-parallel-dot-plot-a-great-way-to-display-many-properties-of-a-set-of-items/"></div><!-- AddThis Share Buttons generic via filter on the_content -->				</div>
+				
+				
+
+				<div class="postmetadata">
+
+					<div class="posttagscat">
+										<span class="postcat">Filed under&nbsp;<a href="https://statmodeling.stat.columbia.edu/category/statistical-graphics/" rel="category tag">Statistical graphics</a>, <a href="https://statmodeling.stat.columbia.edu/category/teaching/" rel="category tag">Teaching</a>.</span>
+															</div>
+
+					<span class="postcomment">
+					<a href="https://statmodeling.stat.columbia.edu/2020/08/30/an-example-of-a-parallel-dot-plot-a-great-way-to-display-many-properties-of-a-set-of-items/#comments">29 Comments</a>					</span>
+										
+				 </div>
+			</div>
+	
+						
+			<div class="post-44413 post type-post status-publish format-standard hentry category-causal-inference category-political-science" id="post-44413">
+				<h2 class="posttitle"><a href="https://statmodeling.stat.columbia.edu/2020/08/30/44413/" rel="bookmark" title="Permanent Link to Update on social science debate about measurement of discrimination">Update on social science debate about measurement of discrimination</a></h2>
+				<div class="postmetadata">
+								Posted by <span class="postauthor"><a href="https://statmodeling.stat.columbia.edu/author/andrew/" title="Posts by Andrew" rel="author">Andrew</a></span> on								<span class="postdate">30 August 2020, 9:00 am</span>
+								</div>
+				
+				<div class="postentry">
+					<div class="at-above-post-homepage addthis_tool" data-url="https://statmodeling.stat.columbia.edu/2020/08/30/44413/"></div><p>Dean Knox writes:</p>
+<blockquote><p>Following up on <a href="https://statmodeling.stat.columbia.edu/2020/07/06/statistical-controversy-on-racial-bias-in-the-criminal-justice-system/">our earlier conversation</a>, we write to share a new, detailed examination of the article, Deconstructing Claims of Post-Treatment Bias in Observational Studies of Discrimination, by Johann Gaebler, William Cai, Guillaume Basse, Ravi Shroff, Sharad Goel, and Jennifer Hill (GCBSGH).</p>
+<p>Here&#8217;s <a href="https://dcknox.github.io/files/KnoxLoweMummolo_PostTreatmentSelectionPolicing.pdf">our new paper</a>, Using Data Contaminated by Post-Treatment Selection?, with Will Lowe and Jonathan Mummolo.  This is an important debate and the methods discussed are being used to study serious policy issues. We think these new derivations are valuable for those producing and consuming discrimination research.</p>
+<p>Examining GCBSGH’s proposed approach was a very useful exercise for us. In the paper, we clear up some confusion about estimands, in particular showing that given post-treatment selection, analysts do not even get the controlled direct effect (CDE) among the people included in the experiment, unless observations are exactly the same despite responding to treatment differently. This is conceptually the same as arguing that IV recovers the ATE&#8212;I [Knox] think few reasonable analysts would argue that compliers are somehow exactly the same as the full sample. In our paper, we prove the following is logically equivalent to GCBSGH&#8217;s proposal: in ideal experimental settings where civilians of different racial groups are randomly assigned to police encounters pre-stop, acknowledging that biased police may stop minority civilians for as little as jaywalking but white civilians only for assault&#8212;yet arguing that both sets of stops are somehow identical in potential for police violence.</p>
+<p>But there is a more important point that we hadn&#8217;t appreciated on first read: GCBSGH&#8217;s proposal is described as working even when treatment ignorability doesn&#8217;t hold. We now examine that aspect closely and find the proposed approach recovers the estimand in this more general setting only if post-treatment selection bias exactly cancels out omitted variable bias. Of course, analysts are free to assume whatever they want, but we think federal judges and civil rights orgs are unlikely to find this argument compelling.</p>
+<p>We realize this exchange got heated, so we&#8217;ve tried hard to dial the tone back and just focus on the intellectual arguments. The back-and-forth has been relegated to a short section that runs through claimed &#8220;counterexamples&#8221; (which all mirror the parenthetical asides and appendices in our original paper) and also the fact that we couldn&#8217;t find a textual basis for their critique anywhere in our paper. Ultimately this is a pretty minor point, but we said we needed assumptions 1-4 for X under conditions Y, and they attacked us for assumptions 2/4/5 not being necessary for Z. Frustrating, but I guess we could&#8217;ve been clearer.</p></blockquote>
+<p>I&#8217;ve not tried to follow all the details here so I&#8217;ll let people go at it in the comments section.  I&#8217;ll just say that I&#8217;m not sure what to make of the &#8220;knife-edge&#8221; or &#8220;measure zero&#8221; issue.  Almost all statistical methods are correct only under precise assumptions which in observational data will never hold.  But that doesn&#8217;t mean the methods are useless.  When we estimated incumbency advantage in congressional elections (<a href="http://www.stat.columbia.edu/~gelman/research/published/JASAAP03026R1.pdf">here</a> and <a href="http://www.stat.columbia.edu/~gelman/research/published/ajps1990.pdf">here</a>), our estimates were only strictly kosher assuming random assignment or linearity and additivity, none of which are actually correct.  This is not to say that Knox et al. are wrong in their arguments, just to say that biases will always be with us.  Regarding the point about post-treatment selection bias exactly canceling out omitted variable bias:  I think that must depend on what you&#8217;re estimating.  This gets back to my comment in that earlier post that some of the disagreement between Knox et al. and Gaebler at al. is that they&#8217;re estimating different things.</p>
+<p>I sent the above paragraph to Knox, who replied:</p>
+<blockquote><p>We must point out that your statement about estimands is simply inaccurate. Our new paper considers the exact same estimand as GCBSGH and we are very explicit about that. Our original paper also considered this estimand, among several others.</p>
+<p>We also think the problem is pretty intuitive. You cannot, in general, pick up halfway through a selective process and run a standard analysis without bias, because the selection almost always breaks the apples-to-apples comparison between treatment and control.</p>
+<p>The only time when you can ignore selection is when various differences happen to accidentally cancel (see our paper), and there are simply no substantive reasons to believe this is happening. That is the real problem. As we say in the paper, this is no as-if-randomness assumption. This is an assumption about observations being the same despite responding to treatment differently. The knife-edgedness isn’t the root of the issue, it just makes it worse.</p></blockquote>
+<p>I think that even if the estimands are the same mathematically, they can correspond to different applied goals.  I still think the two sides of this debate are closer than they think.  But in any case at this point you can read this all yourself.  </p>
+<!-- AddThis Advanced Settings above via filter on the_content --><!-- AddThis Advanced Settings below via filter on the_content --><!-- AddThis Advanced Settings generic via filter on the_content --><!-- AddThis Share Buttons above via filter on the_content --><!-- AddThis Share Buttons below via filter on the_content --><div class="at-below-post-homepage addthis_tool" data-url="https://statmodeling.stat.columbia.edu/2020/08/30/44413/"></div><!-- AddThis Share Buttons generic via filter on the_content -->				</div>
+				
+				
+
+				<div class="postmetadata">
+
+					<div class="posttagscat">
+										<span class="postcat">Filed under&nbsp;<a href="https://statmodeling.stat.columbia.edu/category/causal-inference/" rel="category tag">Causal Inference</a>, <a href="https://statmodeling.stat.columbia.edu/category/political-science/" rel="category tag">Political Science</a>.</span>
+															</div>
+
+					<span class="postcomment">
+					<a href="https://statmodeling.stat.columbia.edu/2020/08/30/44413/#comments">33 Comments</a>					</span>
+										
+				 </div>
+			</div>
+	
+		
+		<div class="navigation">
+			<div class="alignleft"><a href="https://statmodeling.stat.columbia.edu/page/2/" >&laquo; Older Entries</a></div>
+			<div class="alignright"></div>
+		</div>
+		
+	
+	</div>
+	<div id="sidebar_right" class="sidebar">
+		<ul>
+			
+			<li id="search-3" class="widget widget_search"><form role="search" method="get" id="searchform" class="searchform" action="https://statmodeling.stat.columbia.edu/">
+				<div>
+					<label class="screen-reader-text" for="s">Search for:</label>
+					<input type="text" value="" name="s" id="s" />
+					<input type="submit" id="searchsubmit" value="Search" />
+				</div>
+			</form></li>
+<li id="recent-comments-3" class="widget widget_recent_comments"><h2 class="widgettitle">Recent Comments</h2>
+<ul id="recentcomments"><li class="recentcomments"><span class="comment-author-link"><a href='http://models.street-artists.org' rel='external nofollow ugc' class='url'>Daniel Lakeland</a></span> on <a href="https://statmodeling.stat.columbia.edu/2020/09/10/why-we-kept-the-trig-in-golf-mathematical-simplicity-is-not-always-the-same-as-conceptual-simplicity/#comment-1469271">Why we kept the trig in golf:  Mathematical simplicity is not always the same as conceptual simplicity</a></li><li class="recentcomments"><span class="comment-author-link">jim</span> on <a href="https://statmodeling.stat.columbia.edu/2020/09/11/congressional-representation-accountability-from-the-constituents-perspective/#comment-1468611">&#8220;Congressional Representation: Accountability from the Constituent’s Perspective&#8221;</a></li><li class="recentcomments"><span class="comment-author-link">jim</span> on <a href="https://statmodeling.stat.columbia.edu/2020/09/11/congressional-representation-accountability-from-the-constituents-perspective/#comment-1468600">&#8220;Congressional Representation: Accountability from the Constituent’s Perspective&#8221;</a></li><li class="recentcomments"><span class="comment-author-link">confused</span> on <a href="https://statmodeling.stat.columbia.edu/2020/09/11/congressional-representation-accountability-from-the-constituents-perspective/#comment-1468395">&#8220;Congressional Representation: Accountability from the Constituent’s Perspective&#8221;</a></li><li class="recentcomments"><span class="comment-author-link">Steve</span> on <a href="https://statmodeling.stat.columbia.edu/2020/09/11/congressional-representation-accountability-from-the-constituents-perspective/#comment-1467953">&#8220;Congressional Representation: Accountability from the Constituent’s Perspective&#8221;</a></li><li class="recentcomments"><span class="comment-author-link">confused</span> on <a href="https://statmodeling.stat.columbia.edu/2020/09/11/congressional-representation-accountability-from-the-constituents-perspective/#comment-1467747">&#8220;Congressional Representation: Accountability from the Constituent’s Perspective&#8221;</a></li><li class="recentcomments"><span class="comment-author-link"><a href='http://models.street-artists.org' rel='external nofollow ugc' class='url'>Daniel Lakeland</a></span> on <a href="https://statmodeling.stat.columbia.edu/2020/09/09/they-want-statistical-proof-whatever-that-is/#comment-1467334">They want &#8220;statistical proof&#8221;&#8212;whatever that is!</a></li><li class="recentcomments"><span class="comment-author-link">Carlos Ungil</span> on <a href="https://statmodeling.stat.columbia.edu/2020/02/23/holes-in-bayesian-statistics/#comment-1467146">Holes in Bayesian Statistics</a></li><li class="recentcomments"><span class="comment-author-link">Steve</span> on <a href="https://statmodeling.stat.columbia.edu/2020/09/11/congressional-representation-accountability-from-the-constituents-perspective/#comment-1467119">&#8220;Congressional Representation: Accountability from the Constituent’s Perspective&#8221;</a></li><li class="recentcomments"><span class="comment-author-link">confused</span> on <a href="https://statmodeling.stat.columbia.edu/2020/09/11/congressional-representation-accountability-from-the-constituents-perspective/#comment-1467092">&#8220;Congressional Representation: Accountability from the Constituent’s Perspective&#8221;</a></li><li class="recentcomments"><span class="comment-author-link">Bob76</span> on <a href="https://statmodeling.stat.columbia.edu/2020/09/06/heres-a-question-for-the-historians-of-science-out-there-how-modern-is-the-idea-of-a-scientific-anomaly/#comment-1467036">Here&#8217;s a question for the historians of science out there:  How modern is the idea of a scientific &#8220;anomaly&#8221;?</a></li><li class="recentcomments"><span class="comment-author-link">John Williams</span> on <a href="https://statmodeling.stat.columbia.edu/2020/09/11/congressional-representation-accountability-from-the-constituents-perspective/#comment-1467027">&#8220;Congressional Representation: Accountability from the Constituent’s Perspective&#8221;</a></li><li class="recentcomments"><span class="comment-author-link">Joshua</span> on <a href="https://statmodeling.stat.columbia.edu/2020/09/09/they-want-statistical-proof-whatever-that-is/#comment-1467021">They want &#8220;statistical proof&#8221;&#8212;whatever that is!</a></li><li class="recentcomments"><span class="comment-author-link">Joshua</span> on <a href="https://statmodeling.stat.columbia.edu/2020/09/09/they-want-statistical-proof-whatever-that-is/#comment-1467002">They want &#8220;statistical proof&#8221;&#8212;whatever that is!</a></li><li class="recentcomments"><span class="comment-author-link">Bob76</span> on <a href="https://statmodeling.stat.columbia.edu/2020/09/10/why-we-kept-the-trig-in-golf-mathematical-simplicity-is-not-always-the-same-as-conceptual-simplicity/#comment-1466934">Why we kept the trig in golf:  Mathematical simplicity is not always the same as conceptual simplicity</a></li><li class="recentcomments"><span class="comment-author-link"><a href='http://models.street-artists.org' rel='external nofollow ugc' class='url'>Daniel Lakeland</a></span> on <a href="https://statmodeling.stat.columbia.edu/2020/09/09/they-want-statistical-proof-whatever-that-is/#comment-1466898">They want &#8220;statistical proof&#8221;&#8212;whatever that is!</a></li><li class="recentcomments"><span class="comment-author-link">Eric</span> on <a href="https://statmodeling.stat.columbia.edu/2020/09/11/congressional-representation-accountability-from-the-constituents-perspective/#comment-1466695">&#8220;Congressional Representation: Accountability from the Constituent’s Perspective&#8221;</a></li><li class="recentcomments"><span class="comment-author-link">jim</span> on <a href="https://statmodeling.stat.columbia.edu/2020/09/11/congressional-representation-accountability-from-the-constituents-perspective/#comment-1466679">&#8220;Congressional Representation: Accountability from the Constituent’s Perspective&#8221;</a></li><li class="recentcomments"><span class="comment-author-link"><a href='https://eighteenthelephant.com/' rel='external nofollow ugc' class='url'>Raghuveer Parthasarathy</a></span> on <a href="https://statmodeling.stat.columbia.edu/2020/09/11/congressional-representation-accountability-from-the-constituents-perspective/#comment-1466649">&#8220;Congressional Representation: Accountability from the Constituent’s Perspective&#8221;</a></li><li class="recentcomments"><span class="comment-author-link"><a href='https://eighteenthelephant.com/' rel='external nofollow ugc' class='url'>Raghuveer Parthasarathy</a></span> on <a href="https://statmodeling.stat.columbia.edu/2020/09/11/congressional-representation-accountability-from-the-constituents-perspective/#comment-1466643">&#8220;Congressional Representation: Accountability from the Constituent’s Perspective&#8221;</a></li></ul></li>
+<li id="categories-4" class="widget widget_categories"><h2 class="widgettitle">Categories</h2>
+		<ul>
+				<li class="cat-item cat-item-18"><a href="https://statmodeling.stat.columbia.edu/category/administrative/">Administrative</a>
+</li>
+	<li class="cat-item cat-item-25"><a href="https://statmodeling.stat.columbia.edu/category/art/">Art</a>
+</li>
+	<li class="cat-item cat-item-12"><a href="https://statmodeling.stat.columbia.edu/category/bayesian-statistics/">Bayesian Statistics</a>
+</li>
+	<li class="cat-item cat-item-13"><a href="https://statmodeling.stat.columbia.edu/category/causal-inference/">Causal Inference</a>
+</li>
+	<li class="cat-item cat-item-11"><a href="https://statmodeling.stat.columbia.edu/category/decision-theory/">Decision Theory</a>
+</li>
+	<li class="cat-item cat-item-19"><a href="https://statmodeling.stat.columbia.edu/category/economics/">Economics</a>
+</li>
+	<li class="cat-item cat-item-21"><a href="https://statmodeling.stat.columbia.edu/category/literature/">Literature</a>
+</li>
+	<li class="cat-item cat-item-23"><a href="https://statmodeling.stat.columbia.edu/category/miscellaneous-science/">Miscellaneous Science</a>
+</li>
+	<li class="cat-item cat-item-16"><a href="https://statmodeling.stat.columbia.edu/category/miscellaneous-statistics/">Miscellaneous Statistics</a>
+</li>
+	<li class="cat-item cat-item-14"><a href="https://statmodeling.stat.columbia.edu/category/multilevel-modeling/">Multilevel Modeling</a>
+</li>
+	<li class="cat-item cat-item-10"><a href="https://statmodeling.stat.columbia.edu/category/political-science/">Political Science</a>
+</li>
+	<li class="cat-item cat-item-17"><a href="https://statmodeling.stat.columbia.edu/category/public-health/">Public Health</a>
+</li>
+	<li class="cat-item cat-item-15"><a href="https://statmodeling.stat.columbia.edu/category/sociology/">Sociology</a>
+</li>
+	<li class="cat-item cat-item-44"><a href="https://statmodeling.stat.columbia.edu/category/sports/">Sports</a>
+</li>
+	<li class="cat-item cat-item-94"><a href="https://statmodeling.stat.columbia.edu/category/stan/">Stan</a>
+</li>
+	<li class="cat-item cat-item-22"><a href="https://statmodeling.stat.columbia.edu/category/statistical-computing/">Statistical computing</a>
+</li>
+	<li class="cat-item cat-item-24"><a href="https://statmodeling.stat.columbia.edu/category/statistical-graphics/">Statistical graphics</a>
+</li>
+	<li class="cat-item cat-item-20"><a href="https://statmodeling.stat.columbia.edu/category/teaching/">Teaching</a>
+</li>
+	<li class="cat-item cat-item-27"><a href="https://statmodeling.stat.columbia.edu/category/zombies/">Zombies</a>
+</li>
+		</ul>
+			</li>
+		</ul>
+	</div>
+
+</div> <!-- wrapper -->
+</div> <!-- container -->
+<div id="footer">
+	<script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js"></script>
+	<div></div>
+	<div id="footer_credit">
+	Powered by <a href="http://wordpress.org/" title="Powered by WordPress.">WordPress</a>. Theme <a href="http://srinig.com/wordpress/themes/f2/">F2</a>.</div> 
+	<!-- 65 queries. 0.140 seconds. -->
+	<script type='text/javascript' src='https://statmodeling.stat.columbia.edu/wp-includes/js/wp-embed.min.js?ver=5.4.2'></script>
+</div>
+</div> <!-- page -->
+</body>
+</html>

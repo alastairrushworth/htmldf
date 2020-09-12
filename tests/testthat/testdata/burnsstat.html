@@ -1,0 +1,1201 @@
+
+<!DOCTYPE html>
+<html lang="en-US" class="unknown unknown? html_boxed ">
+<head>
+<meta charset="UTF-8" /><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={licenseKey:"52c0c7a266",applicationID:"8495806"};window.NREUM||(NREUM={}),__nr_require=function(e,n,t){function r(t){if(!n[t]){var i=n[t]={exports:{}};e[t][0].call(i.exports,function(n){var i=e[t][1][n];return r(i||n)},i,i.exports)}return n[t].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<t.length;i++)r(t[i]);return r}({1:[function(e,n,t){function r(){}function i(e,n,t){return function(){return o(e,[u.now()].concat(c(arguments)),n?null:this,t),n?void 0:this}}var o=e("handle"),a=e(5),c=e(6),f=e("ee").get("tracer"),u=e("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var d=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],p="api-",l=p+"ixn-";a(d,function(e,n){s[n]=i(p+n,!0,"api")}),s.addPageAction=i(p+"addPageAction",!0),s.setCurrentRouteName=i(p+"routeName",!0),n.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(e,n){var t={},r=this,i="function"==typeof n;return o(l+"tracer",[u.now(),e,t],r),function(){if(f.emit((i?"":"no-")+"fn-start",[u.now(),r,i],t),i)try{return n.apply(this,arguments)}catch(e){throw f.emit("fn-err",[arguments,this,e],t),e}finally{f.emit("fn-end",[u.now()],t)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(e,n){m[n]=i(l+n)}),newrelic.noticeError=function(e,n){"string"==typeof e&&(e=new Error(e)),o("err",[e,u.now(),!1,n])}},{}],2:[function(e,n,t){function r(e,n){var t=e.getEntries();t.forEach(function(e){"first-paint"===e.name?d("timing",["fp",Math.floor(e.startTime)]):"first-contentful-paint"===e.name&&d("timing",["fcp",Math.floor(e.startTime)])})}function i(e,n){var t=e.getEntries();t.length>0&&d("lcp",[t[t.length-1]])}function o(e){e.getEntries().forEach(function(e){e.hadRecentInput||d("cls",[e])})}function a(e){if(e instanceof m&&!g){var n=Math.round(e.timeStamp),t={type:e.type};n<=p.now()?t.fid=p.now()-n:n>p.offset&&n<=Date.now()?(n-=p.offset,t.fid=p.now()-n):n=p.now(),g=!0,d("timing",["fi",n,t])}}function c(e){d("pageHide",[p.now(),e])}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var f,u,s,d=e("handle"),p=e("loader"),l=e(4),m=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){f=new PerformanceObserver(r);try{f.observe({entryTypes:["paint"]})}catch(v){}u=new PerformanceObserver(i);try{u.observe({entryTypes:["largest-contentful-paint"]})}catch(v){}s=new PerformanceObserver(o);try{s.observe({type:"layout-shift",buffered:!0})}catch(v){}}if("addEventListener"in document){var g=!1,y=["click","keydown","mousedown","pointerdown","touchstart"];y.forEach(function(e){document.addEventListener(e,a,!1)})}l(c)}},{}],3:[function(e,n,t){function r(e,n){if(!i)return!1;if(e!==i)return!1;if(!n)return!0;if(!o)return!1;for(var t=o.split("."),r=n.split("."),a=0;a<r.length;a++)if(r[a]!==t[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var c=navigator.userAgent,f=c.match(a);f&&c.indexOf("Chrome")===-1&&c.indexOf("Chromium")===-1&&(i="Safari",o=f[1])}n.exports={agent:i,version:o,match:r}},{}],4:[function(e,n,t){function r(e){function n(){e(a&&document[a]?document[a]:document[i]?"hidden":"visible")}"addEventListener"in document&&o&&document.addEventListener(o,n,!1)}n.exports=r;var i,o,a;"undefined"!=typeof document.hidden?(i="hidden",o="visibilitychange",a="visibilityState"):"undefined"!=typeof document.msHidden?(i="msHidden",o="msvisibilitychange"):"undefined"!=typeof document.webkitHidden&&(i="webkitHidden",o="webkitvisibilitychange",a="webkitVisibilityState")},{}],5:[function(e,n,t){function r(e,n){var t=[],r="",o=0;for(r in e)i.call(e,r)&&(t[o]=n(r,e[r]),o+=1);return t}var i=Object.prototype.hasOwnProperty;n.exports=r},{}],6:[function(e,n,t){function r(e,n,t){n||(n=0),"undefined"==typeof t&&(t=e?e.length:0);for(var r=-1,i=t-n||0,o=Array(i<0?0:i);++r<i;)o[r]=e[n+r];return o}n.exports=r},{}],7:[function(e,n,t){n.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(e,n,t){function r(){}function i(e){function n(e){return e&&e instanceof r?e:e?f(e,c,o):o()}function t(t,r,i,o){if(!p.aborted||o){e&&e(t,r,i);for(var a=n(i),c=v(t),f=c.length,u=0;u<f;u++)c[u].apply(a,r);var d=s[w[t]];return d&&d.push([b,t,r,a]),a}}function l(e,n){h[e]=v(e).concat(n)}function m(e,n){var t=h[e];if(t)for(var r=0;r<t.length;r++)t[r]===n&&t.splice(r,1)}function v(e){return h[e]||[]}function g(e){return d[e]=d[e]||i(t)}function y(e,n){u(e,function(e,t){n=n||"feature",w[t]=n,n in s||(s[n]=[])})}var h={},w={},b={on:l,addEventListener:l,removeEventListener:m,emit:t,get:g,listeners:v,context:n,buffer:y,abort:a,aborted:!1};return b}function o(){return new r}function a(){(s.api||s.feature)&&(p.aborted=!0,s=p.backlog={})}var c="nr@context",f=e("gos"),u=e(5),s={},d={},p=n.exports=i();p.backlog=s},{}],gos:[function(e,n,t){function r(e,n,t){if(i.call(e,n))return e[n];var r=t();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(e,n,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return e[n]=r,r}var i=Object.prototype.hasOwnProperty;n.exports=r},{}],handle:[function(e,n,t){function r(e,n,t,r){i.buffer([e],r),i.emit(e,n,t)}var i=e("ee").get("handle");n.exports=r,r.ee=i},{}],id:[function(e,n,t){function r(e){var n=typeof e;return!e||"object"!==n&&"function"!==n?-1:e===window?0:a(e,o,function(){return i++})}var i=1,o="nr@id",a=e("gos");n.exports=r},{}],loader:[function(e,n,t){function r(){if(!x++){var e=E.info=NREUM.info,n=l.getElementsByTagName("script")[0];if(setTimeout(s.abort,3e4),!(e&&e.licenseKey&&e.applicationID&&n))return s.abort();u(w,function(n,t){e[n]||(e[n]=t)});var t=a();f("mark",["onload",t+E.offset],null,"api"),f("timing",["load",t]);var r=l.createElement("script");r.src="https://"+e.agent,n.parentNode.insertBefore(r,n)}}function i(){"complete"===l.readyState&&o()}function o(){f("mark",["domContent",a()+E.offset],null,"api")}function a(){return O.exists&&performance.now?Math.round(performance.now()):(c=Math.max((new Date).getTime(),c))-E.offset}var c=(new Date).getTime(),f=e("handle"),u=e(5),s=e("ee"),d=e(3),p=window,l=p.document,m="addEventListener",v="attachEvent",g=p.XMLHttpRequest,y=g&&g.prototype;NREUM.o={ST:setTimeout,SI:p.setImmediate,CT:clearTimeout,XHR:g,REQ:p.Request,EV:p.Event,PR:p.Promise,MO:p.MutationObserver};var h=""+location,w={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1177.min.js"},b=g&&y&&y[m]&&!/CriOS/.test(navigator.userAgent),E=n.exports={offset:c,now:a,origin:h,features:{},xhrWrappable:b,userAgent:d};e(1),e(2),l[m]?(l[m]("DOMContentLoaded",o,!1),p[m]("load",r,!1)):(l[v]("onreadystatechange",i),p[v]("onload",r)),f("mark",["firstbyte",c],null,"api");var x=0,O=e(7)},{}],"wrap-function":[function(e,n,t){function r(e){return!(e&&e instanceof Function&&e.apply&&!e[a])}var i=e("ee"),o=e(6),a="nr@original",c=Object.prototype.hasOwnProperty,f=!1;n.exports=function(e,n){function t(e,n,t,i){function nrWrapper(){var r,a,c,f;try{a=this,r=o(arguments),c="function"==typeof t?t(r,a):t||{}}catch(u){p([u,"",[r,a,i],c])}s(n+"start",[r,a,i],c);try{return f=e.apply(a,r)}catch(d){throw s(n+"err",[r,a,d],c),d}finally{s(n+"end",[r,a,f],c)}}return r(e)?e:(n||(n=""),nrWrapper[a]=e,d(e,nrWrapper),nrWrapper)}function u(e,n,i,o){i||(i="");var a,c,f,u="-"===i.charAt(0);for(f=0;f<n.length;f++)c=n[f],a=e[c],r(a)||(e[c]=t(a,u?c+i:i,o,c))}function s(t,r,i){if(!f||n){var o=f;f=!0;try{e.emit(t,r,i,n)}catch(a){p([a,t,r,i])}f=o}}function d(e,n){if(Object.defineProperty&&Object.keys)try{var t=Object.keys(e);return t.forEach(function(t){Object.defineProperty(n,t,{get:function(){return e[t]},set:function(n){return e[t]=n,n}})}),n}catch(r){p([r])}for(var i in e)c.call(e,i)&&(n[i]=e[i]);return n}function p(n){try{e.emit("internal-error",n)}catch(t){}}return e||(e=i),t.inPlace=u,t.flag=a,t}},{}]},{},["loader"]);</script>
+
+
+
+<!-- page title, displayed in your browser bar -->
+
+
+<!-- add feeds, pingback and stuff-->
+<link rel="profile" href="https://gmpg.org/xfn/11" />
+<link rel="alternate" type="application/rss+xml" title="Burns Statistics RSS2 Feed" href="https://www.burns-stat.com/feed/" />
+<link rel="pingback" href="https://www.burns-stat.com/xmlrpc.php" />
+
+
+<!-- add css stylesheets -->
+<link rel="stylesheet" type="text/css" media="all" href="https://www.burns-stat.com/wp-content/themes/burns-stat/style.css" />
+<link rel="stylesheet" href="https://www.burns-stat.com/wp-content/themes/sentence/css/grid.css" type="text/css" media="screen"/>
+<link rel="stylesheet" href="https://www.burns-stat.com/wp-content/themes/sentence/css/base.css" type="text/css" media="screen"/>
+<link rel="stylesheet" href="https://www.burns-stat.com/wp-content/themes/sentence/css/layout.css?v=1" type="text/css" media="screen"/>
+<link rel="stylesheet" href="https://www.burns-stat.com/wp-content/themes/sentence/css/slideshow.css?v=1" type="text/css" media="screen"/>
+<link rel="stylesheet" href="https://www.burns-stat.com/wp-content/themes/sentence/css/shortcodes.css" type="text/css" media="screen"/>
+
+
+
+<link rel="stylesheet" href="https://www.burns-stat.com/wp-content/themes/sentence/js/prettyPhoto/css/prettyPhoto.css" type="text/css" media="screen"/>
+<!--<link rel="stylesheet" href="https://www.burns-stat.com/wp-content/themes/sentence/js/projekktor/theme/style.css" type="text/css" media="screen"/>-->
+
+
+<!-- mobile setting -->
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+
+
+<!-- plugin and theme output with wp_head() -->
+
+	<!-- This site is optimized with the Yoast SEO plugin v14.9 - https://yoast.com/wordpress/plugins/seo/ -->
+	<title>Blog - Burns Statistics</title>
+	<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+	<link rel="canonical" href="https://www.burns-stat.com/blog-2/" />
+	<link rel="next" href="https://www.burns-stat.com/blog-2/page/2/" />
+	<meta property="og:locale" content="en_US" />
+	<meta property="og:type" content="article" />
+	<meta property="og:title" content="Blog - Burns Statistics" />
+	<meta property="og:url" content="https://www.burns-stat.com/blog-2/" />
+	<meta property="og:site_name" content="Burns Statistics" />
+	<script type="application/ld+json" class="yoast-schema-graph">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://www.burns-stat.com/#website","url":"https://www.burns-stat.com/","name":"Burns Statistics","description":"","potentialAction":[{"@type":"SearchAction","target":"https://www.burns-stat.com/?s={search_term_string}","query-input":"required name=search_term_string"}],"inLanguage":"en-US"},{"@type":["WebPage","CollectionPage"],"@id":"https://www.burns-stat.com/blog-2/#webpage","url":"https://www.burns-stat.com/blog-2/","name":"Blog - Burns Statistics","isPartOf":{"@id":"https://www.burns-stat.com/#website"},"datePublished":"2013-01-04T19:18:28+00:00","dateModified":"2013-01-04T19:18:28+00:00","inLanguage":"en-US","potentialAction":[{"@type":"ReadAction","target":["https://www.burns-stat.com/blog-2/"]}]}]}</script>
+	<!-- / Yoast SEO plugin. -->
+
+
+<link rel='dns-prefetch' href='//secure.gravatar.com' />
+<link rel='dns-prefetch' href='//s.w.org' />
+<link rel='dns-prefetch' href='//v0.wordpress.com' />
+
+<!-- google webfont font replacement -->
+
+			<script type='text/javascript'>
+			if(!document.cookie.match(/aviaPrivacyGoogleWebfontsDisabled/)){
+				(function() {
+					var f = document.createElement('link');
+					
+					f.type 	= 'text/css';
+					f.rel 	= 'stylesheet';
+					f.href 	= '//fonts.googleapis.com/css?family=Signika+Negative';
+					f.id 	= 'avia-google-webfont';
+					
+					document.getElementsByTagName('head')[0].appendChild(f);
+				})();
+			}
+			</script>
+			<!-- This site uses the Google Analytics by MonsterInsights plugin v7.12.2 - Using Analytics tracking - https://www.monsterinsights.com/ -->
+<script type="text/javascript" data-cfasync="false">
+	var mi_version         = '7.12.2';
+	var mi_track_user      = true;
+	var mi_no_track_reason = '';
+	
+	var disableStr = 'ga-disable-UA-37818079-1';
+
+	/* Function to detect opted out users */
+	function __gaTrackerIsOptedOut() {
+		return document.cookie.indexOf(disableStr + '=true') > -1;
+	}
+
+	/* Disable tracking if the opt-out cookie exists. */
+	if ( __gaTrackerIsOptedOut() ) {
+		window[disableStr] = true;
+	}
+
+	/* Opt-out function */
+	function __gaTrackerOptout() {
+	  document.cookie = disableStr + '=true; expires=Thu, 31 Dec 2099 23:59:59 UTC; path=/';
+	  window[disableStr] = true;
+	}
+
+	if ( 'undefined' === typeof gaOptout ) {
+		function gaOptout() {
+			__gaTrackerOptout();
+		}
+	}
+	
+	if ( mi_track_user ) {
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','//www.google-analytics.com/analytics.js','__gaTracker');
+
+		__gaTracker('create', 'UA-37818079-1', 'auto');
+		__gaTracker('set', 'forceSSL', true);
+		__gaTracker('send','pageview');
+	} else {
+		console.log( "" );
+		(function() {
+			/* https://developers.google.com/analytics/devguides/collection/analyticsjs/ */
+			var noopfn = function() {
+				return null;
+			};
+			var noopnullfn = function() {
+				return null;
+			};
+			var Tracker = function() {
+				return null;
+			};
+			var p = Tracker.prototype;
+			p.get = noopfn;
+			p.set = noopfn;
+			p.send = noopfn;
+			var __gaTracker = function() {
+				var len = arguments.length;
+				if ( len === 0 ) {
+					return;
+				}
+				var f = arguments[len-1];
+				if ( typeof f !== 'object' || f === null || typeof f.hitCallback !== 'function' ) {
+					console.log( 'Not running function __gaTracker(' + arguments[0] + " ....) because you are not being tracked. " + mi_no_track_reason );
+					return;
+				}
+				try {
+					f.hitCallback();
+				} catch (ex) {
+
+				}
+			};
+			__gaTracker.create = function() {
+				return new Tracker();
+			};
+			__gaTracker.getByName = noopnullfn;
+			__gaTracker.getAll = function() {
+				return [];
+			};
+			__gaTracker.remove = noopfn;
+			window['__gaTracker'] = __gaTracker;
+					})();
+		}
+</script>
+<!-- / Google Analytics by MonsterInsights -->
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/13.0.0\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/13.0.0\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/www.burns-stat.com\/wp-includes\/js\/wp-emoji-release.min.js?ver=5.5.1"}};
+			!function(e,a,t){var r,n,o,i,p=a.createElement("canvas"),s=p.getContext&&p.getContext("2d");function c(e,t){var a=String.fromCharCode;s.clearRect(0,0,p.width,p.height),s.fillText(a.apply(this,e),0,0);var r=p.toDataURL();return s.clearRect(0,0,p.width,p.height),s.fillText(a.apply(this,t),0,0),r===p.toDataURL()}function l(e){if(!s||!s.fillText)return!1;switch(s.textBaseline="top",s.font="600 32px Arial",e){case"flag":return!c([127987,65039,8205,9895,65039],[127987,65039,8203,9895,65039])&&(!c([55356,56826,55356,56819],[55356,56826,8203,55356,56819])&&!c([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]));case"emoji":return!c([55357,56424,8205,55356,57212],[55357,56424,8203,55356,57212])}return!1}function d(e){var t=a.createElement("script");t.src=e,t.defer=t.type="text/javascript",a.getElementsByTagName("head")[0].appendChild(t)}for(i=Array("flag","emoji"),t.supports={everything:!0,everythingExceptFlag:!0},o=0;o<i.length;o++)t.supports[i[o]]=l(i[o]),t.supports.everything=t.supports.everything&&t.supports[i[o]],"flag"!==i[o]&&(t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&t.supports[i[o]]);t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&!t.supports.flag,t.DOMReady=!1,t.readyCallback=function(){t.DOMReady=!0},t.supports.everything||(n=function(){t.readyCallback()},a.addEventListener?(a.addEventListener("DOMContentLoaded",n,!1),e.addEventListener("load",n,!1)):(e.attachEvent("onload",n),a.attachEvent("onreadystatechange",function(){"complete"===a.readyState&&t.readyCallback()})),(r=t.source||{}).concatemoji?d(r.concatemoji):r.wpemoji&&r.twemoji&&(d(r.twemoji),d(r.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+	<link rel='stylesheet' id='wp-block-library-css'  href='https://www.burns-stat.com/wp-includes/css/dist/block-library/style.min.css?ver=5.5.1' type='text/css' media='all' />
+<style id='wp-block-library-inline-css' type='text/css'>
+.has-text-align-justify{text-align:justify;}
+</style>
+<link rel='stylesheet' id='jetpack_css-css'  href='https://www.burns-stat.com/wp-content/plugins/jetpack/css/jetpack.css?ver=8.9' type='text/css' media='all' />
+<script type='text/javascript' src='https://www.burns-stat.com/wp-includes/js/jquery/jquery.js?ver=1.12.4-wp' id='jquery-core-js'></script>
+<script type='text/javascript' src='https://www.burns-stat.com/wp-content/themes/sentence/js/avia.js?ver=2' id='avia-default-js'></script>
+<script type='text/javascript' id='monsterinsights-frontend-script-js-extra'>
+/* <![CDATA[ */
+var monsterinsights_frontend = {"js_events_tracking":"true","download_extensions":"doc,pdf,ppt,zip,xls,docx,pptx,xlsx","inbound_paths":"[]","home_url":"https:\/\/www.burns-stat.com","hash_tracking":"false"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://www.burns-stat.com/wp-content/plugins/google-analytics-for-wordpress/assets/js/frontend.min.js?ver=7.12.2' id='monsterinsights-frontend-script-js'></script>
+<link rel="https://api.w.org/" href="https://www.burns-stat.com/wp-json/" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://www.burns-stat.com/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://www.burns-stat.com/wp-includes/wlwmanifest.xml" /> 
+<link rel="profile" href="https://gmpg.org/xfn/11" />
+<link rel="alternate" type="application/rss+xml" title="Burns Statistics RSS2 Feed" href="https://www.burns-stat.com/feed/" />
+<link rel="pingback" href="https://www.burns-stat.com/xmlrpc.php" />
+
+<!-- custom styles set at your backend-->
+<style type='text/css' id='dynamic-styles'>
+#top .site-fontcolor, html, body, .blog-meta .post-meta-infos a, .blog-meta .post-meta-infos a span, .entry-content p a, .entry-content blockquote a, .entry-content>ul li a, .entry-content>ol li a{
+color:#29383d;
+}
+
+#top .meta-color, div .meta-color a, .main_menu ul li a, .blog-inner-meta, .blog-inner-meta a, #top .widget ul li a, .minitext, .form-allowed-tags, div .pagination, #comments span, .minitext, .commentmetadata a, .blog-tags, .blog-tags a, .title_container #s, .wp-caption, .first-quote:before, .first-quote:after, blockquote small, blockquote cite, .hero-text, .js_active .tab, .news-time, .contentSlideControlls a, #js_sort_items a, .text-sep, .template-search a.post-entry .news-excerpt, .borderlist>li, .post_nav, .post_nav a, .quote-content, #top .widget_nav_menu li, .tweet-time, #top .avia_parnter_empty, .avia_socialcount a span, td, #top th.nobg, caption, .page-title, #top .first-title{
+color:#5F6A6E;
+}
+
+#top .heading-color, strong, #top .main-color, .main_menu a,  #top .first-quote p, #top .main_menu .menu li li a:hover, h1, h2, h3, h4, h5, h6, .js_active .tab.active_tab, .first-quote, div .callout{
+color:#151C1F;
+}
+
+#top .search-result-counter{
+color:#f8f8f8;
+}
+
+.side-container, .post_nav{
+background-color:#151C1F;
+}
+
+#top .site-background, html, body, .comment-reply-link, .main_menu .menu ul li, .title_container #searchsubmit:hover, .isotope .entry-content, .image_overlay_effect, .tagcloud a, .news-thumb, .tweet-thumb a, fieldset, pre, .container_wrap .social_bookmarks li, #info_text_header.minimized{
+background-color:#1e2324;
+}
+
+tr:nth-child(even) td, tr:nth-child(even) th{
+background-color:#1e2324;
+}
+
+#top .on-primary-color, #top .on-primary-color a, .dropcap2, div .button, input[type="submit"], #submit, .info_text_header, .info_text_header a, .info_text_header a:hover, .contentSlideControlls a.activeItem, #top .related_posts .contentSlideControlls a.activeItem, .contentSlideControlls a:hover, #top .related_posts .contentSlideControlls a:hover, #top th, #top th a,  a.button:hover, .callout a, #top .big_button:hover{
+color:#1e2324;
+}
+
+#top .aside-background, div .gravatar img, #top .main_menu .menu li ul a:hover, #top .related_posts_default_image, div .numeric_controls a, .title_container #searchsubmit, .title_container #s, .tab_content.active_tab_content, .js_active #top  .active_tab, .toggler.activeTitle, .contentSlideControlls a, #top .social_bookmarks li{
+background-color:#f8f8f8;
+}
+
+tr:nth-child(odd) td, tr:nth-child(odd) th{
+background-color:#f8f8f8;
+}
+
+.boxed #overflow_bg, .boxed #primary, #top #header, #top.boxed .site-background, .boxed .comment-reply-link, .boxed .main_menu .menu ul li, .boxed .title_container #searchsubmit:hover, .boxed .isotope .entry-content, .boxed .image_overlay_effect, .boxed .tagcloud a, .boxed .news-thumb, .boxed fieldset, .boxed pre, .boxed .social_bookmarks li, .boxed #info_text_header.minimized, .portfolio-sort-container, .post_nav_sep, #top.boxed .news-thumb ,#top.boxed .tweet-thumb a{
+background-color:#ffffff;
+}
+
+.boxed tr:nth-child(even) td, .boxed tr:nth-child(even) th{
+background-color:#ffffff;
+}
+
+#top.boxed  .on-primary-color,  #top.boxed .on-primary-color a, .boxed .dropcap2, .boxed div .button,.boxed  input[type="submit"],.boxed  #submit, .boxed .info_text_header,.boxed  .info_text_header a,.boxed  .info_text_header a:hover, .boxed .contentSlideControlls a.activeItem, #top.boxed  .related_posts .contentSlideControlls a.activeItem, .boxed .contentSlideControlls a:hover, #top.boxed  .related_posts .contentSlideControlls a:hover, .boxed th, .boxed .tweet-thumb a, #top.boxed th, #top.boxed th a, .boxed a.button:hover, .boxed .callout a, .side-container, .main_menu ul:first-child > li.current-menu-item > a, .main_menu ul:first-child > li.current_page_item > a, .main_menu a:hover, .post_nav span, .post_nav a, .post_nav a:hover, #top .entry-content p a:hover, #top .entry-content blockquote a:hover, #top .entry-content>ul li a:hover, #top .entry-content>ol li a:hover{
+color:#ffffff;
+}
+
+#top .primary-background, .dropcap2, div .button, input[type="submit"], #submit, .info_text_header, #info_text_header .infotext, .numeric_controls a:hover, .numeric_controls .active_item, .contentSlideControlls a.activeItem, #top th, #top .related_posts .contentSlideControlls a.activeItem, #top .arrow_controls a, #main .content #searchsubmit:hover, .callout a, #info_text_header.minimized:hover{
+background-color:#2e9dbf;
+}
+
+#top .primary-color, a, #cancel-comment-reply-link, .blog-tags a:hover, .relThumb a:hover strong, .flex_column h1, .flex_column h2, .flex_column h3, .flex_column h4, .flex_column h5, .flex_column h6, #top #wrap_all .tweet-text a, #top #js_sort_items a.active_sort, .callout a:hover{
+color:#2e9dbf;
+}
+
+#top .primary-border, div .main_menu ul:first-child > li.current-menu-item > a, div .main_menu ul:first-child > li.current_page_item > a, div .button, input[type="submit"], #submit, #top .main_menu .menu ul, .info_text_header, .entry-content a, blockquote, blockquote blockquote blockquote{
+border-color:#2e9dbf;
+}
+
+h1, h2, h3, h4, h5, h6, .hero-text, .first-quote, legend, #top .slideshow_caption h1, .main_menu ul:first-child > li > a strong.signika_negative {font-family:'signika negative', 'HelveticaNeue', 'Helvetica Neue', 'Helvetica-Neue', Helvetica, Arial, sans-serif; }
+body.helvetica_neue {font-family:'helvetica neue', 'HelveticaNeue', 'Helvetica-Neue', Helvetica, Arial, sans-serif; }
+#top .extralight-border, div #header .container, div .pagination, #top .pagination span, div .pagination a, div .gravatar img, #top div .commentlist ul, div .children .children .says, div .commentlist>.comment, div .input-text, input[type="text"], input[type="password"], input[type="email"], textarea, select, #top .main_menu .menu li, pre, code, div .numeric_controls a, div .pullquote_boxed, div .news-thumb, div .tweet-thumb a, #top .borderlist>li, .post_nav, #top .wp-caption, .slideshow,  .widget a, .widget li, .widget span, .widget div, table, td, tr, th, #footer .container, #socket .container, #top fieldset, #top .social_bookmarks, #top .social_bookmarks li, #info_text_header, .ajax-control a, .inner_column, #top .blog-meta, .inner-entry, .inner_slide, #top .main_menu ul:first-child{
+border-color:#e1e1e1;
+}
+
+#top .highlight-background, div .button:hover, input[type="submit"]:hover, #submit:hover, .contentSlideControlls a:hover, #top .related_posts .contentSlideControlls a:hover, #top .caption-slideshow-button:hover, #top .arrow_controls a:hover, #main .content #searchsubmit, #top .entry-content p a:hover, #top .entry-content blockquote a:hover, #top .entry-content>ul li a:hover, #top .entry-content>ol li a:hover{
+background-color:#089cc9;
+}
+
+a:hover, #top .widget ul li a:hover, #top .widget ul li .news-link:hover strong, #top #wrap_all .tweet-text a:hover, #js_sort_items a:hover, .ajax_slide a:hover, .ajax-control a:hover, .like-count:hover a{
+color:#089cc9;
+}
+
+#top .caption-slideshow-button:hover, blockquote blockquote, blockquote blockquote blockquote blockquote{
+border-color:#089cc9;
+}
+
+.sidebar, #sidebar_bg, #top .sidebar .main_menu .menu li ul a, .sidebar .main_menu .menu ul, #top .sidebar th, .sort_width_container.large_element #js_sort_items{
+background-color:#222829;
+}
+
+.sidebar tr:nth-child(even) td, .sidebar tr:nth-child(even) th{
+background-color:#222829;
+}
+
+.sidebar .main_menu ul:first-child > li.current-menu-item > a, .sidebar .main_menu ul:first-child > li.current_page_item > a, .sidebar .main_menu li:hover > a,  .sidebar .avia_socialcount, .sidebar .avia_parnter_empty, .sidebar .tagcloud a, .sidebar .tab_content.active_tab_content, .js_active #top .sidebar .active_tab, .sidebar .toggler.activeTitle, #top .portfolio-title, .inner-entry{
+background-color:#33393a;
+}
+
+.sidebar .main_menu ul:first-child > li> a, #top .sidebar .main_menu ul:first-child > li > a strong, #top .sidebar h1, #top .sidebar h2, #top .sidebar h3, #top .sidebar h4, #top .sidebar h5, #top .sidebar h6, #top .sidebar, #top .sidebar strong, #top #secondary .sidebar .widget a:hover, #top .sidebar th, #top .sidebar .widget ul li .news-link:hover strong, #top #wrap_all .sidebar .tweet-text a:hover, #top .sidebar .main_menu .menu li ul a:hover, #top .portfolio-title, #top .portfolio-title a:hover, #top .sort_width_container.large_element #js_sort_items a.active_sort{
+color:#ffffff;
+}
+
+.sidebar .main_menu ul:first-child > li > a span, #top .sidebar span,  #top .sidebar .tweet-time, #top #secondary .sidebar .widget a,  #top #secondary .sidebar caption, #top .sidebar td, #top .sidebar .widget ul li .news-link:hover strong, #top .sidebar .main_menu .menu li ul a, #top .sort_width_container.large_element a{
+color:#919494;
+}
+
+#top .sidebar img{
+border-color:#919494;
+}
+
+#top #secondary .sidebar div, #top #secondary .sidebar ul, #top #secondary  .sidebar li, #top #secondary .sidebar a, #top #secondary .sidebar span, #top .sidebar .widget .seperator, .sidebar td, .sidebar th{
+border-color:#3E4344;
+}
+
+#top .sidebar img, .sidebar tr:nth-child(odd) td, .sidebar tr:nth-child(odd) th {
+background-color:#3E4344;
+}
+
+#footer{
+background-color:#33393a;
+}
+
+#top #wrap_all #footer a, #footer h1, #footer h2, #footer h3, #footer h4, #footer h5, #footer h6, #footer strong, #footer .tabcontainer span, #top #footer table, #top #footer table td, #top #footer table caption{
+color:#ffffff;
+}
+
+#footer, #footer div, #footer p, #footer span, #top #wrap_all #footer a:hover strong{
+color:#CCCECE;
+}
+
+#footer a, #footer div, #footer span, #footer li, #footer ul{
+border-color:#666B6C;
+}
+
+#footer table, #footer td, #footer tr, #footer th #footer img{
+border-color:#CCCECE;
+}
+
+#top #footer .tagcloud a, #footer .tab_content.active_tab_content, .js_active #top #footer .active_tab, #footer .news-thumb, #footer .tweet-thumb a{
+background-color:#666B6C;
+}
+
+#footer tr:nth-child(odd) td, #footer tr:nth-child(odd) th{
+background-color:#666B6C;
+}
+
+#socket, #socket a, html.html_stretched{
+background-color:#222829;
+}
+
+#socket, #socket a{
+color:#ffffff;
+}
+
+::-moz-selection{
+background-color:#2e9dbf;
+}
+
+::-webkit-selection{
+background-color:#2e9dbf;
+}
+
+::selection{
+background-color:#2e9dbf;
+}
+
+::-moz-selection{
+color:#ffffff;
+}
+
+::-webkit-selection{
+color:#ffffff;
+}
+
+::selection{
+color:#ffffff;
+}
+
+</style>
+
+<!-- end custom styles-->
+
+
+
+<!--
+Debugging Info for Theme support: 
+
+Theme: Sentence
+Version: 2.1.1
+Installed: sentence
+AviaFramework Version: 5.0
+- - - - - - - - - - -
+ChildTheme: Burns Stat
+ChildTheme Version: 1.0
+ChildTheme Installed: sentence
+
+ML:512-PU:51-PLA:9
+WP:5.5.1
+Compress: CSS:modules only - JS:modules only
+Updates: disabled
+-->
+
+<link rel="stylesheet" href="https://www.burns-stat.com/wp-content/themes/sentence/css/custom.css" type="text/css" media="screen"/>
+
+</head>
+
+
+<body id="top" class="blog right_sidebar boxed signika_negative helvetica-neue-websave helvetica_neue ">
+
+	<div id='wrap_all'>
+
+			<div class='container_wrap' >
+
+						<div class='container'>
+
+							<div id='overflow_bg'></div>
+							<div id='sidebar_bg'></div>
+
+							<div id='header' class='seven units alpha offset-by-one'>
+
+							<h1 class='logo'><a href='https://www.burns-stat.com/'><img  src='https://www.burns-stat.com/wp-content/uploads/2012/03/logo-150.png' alt='Burns Statistics' /></a></h1><ul class="social_bookmarks">	<li class="rss"><a href="https://www.burns-stat.com/feed/">RSS</a></li></ul>							</div> <!-- end header -->
+
+							<div id='primary' class='eight alpha units'>
+
+
+
+
+
+
+
+		<!-- ####### MAIN CONTAINER ####### -->
+		<div id='main'>
+		
+			<div class='template-blog inner_container'>	
+
+				<div class='content eight alpha units'>
+				
+				
+				
+				
+
+		<div class='post-entry post-entry-type-standard post-entry-1494'>
+		
+			<span class='entry-border-overflow extralight-border'></span>
+			
+			
+			<h1 class='post-title offset-by-one '>
+					<a href="https://www.burns-stat.com/probably-useful-r-function-ive-ever-written/" rel="bookmark" title="Permanent Link: Probably the most useful R function I&#8217;ve ever written">Probably the most useful R function I&#8217;ve ever written					<span class='post-format-icon minor-meta'></span>
+					</a>
+			</h1>
+			
+			<!--meta info-->
+	        <div class="one unit alpha blog-meta">
+	        	
+	        	<div class='side-container side-container-date'>
+	        		
+	        		<div class='side-container-inner'>
+	        		
+	        			<span class='date-day'>15</span>
+   						<span class='date-month'>Aug</span>
+   						<span class='date-year date-day'>2016</span>
+   						
+	        		</div>
+	        		
+	        	</div>
+				
+			</div><!--end meta info-->	
+			
+
+			<div class="seven units entry-content">	
+			
+			 <span class='date-container minor-meta meta-color'>2016/08/15</span>	
+				<p>The function in question is <code>scriptSearch</code>. I&#8217;m not much for superlatives &#8212; &#8220;most&#8221; and &#8220;best&#8221; imply one dimension, but we live in a multi-dimensional world. I&#8217;m making an exception.</p>
+<p>The statistic I have in mind for this use of &#8220;useful&#8221; is the waiting time between calls to the function divided by the human time saved by the call.</p>
+<p>I wrote a version of this for a company where I do consulting. There are few days working there that I don&#8217;t have at least one bout with it.  Using <code>scriptSearch</code> can easily save half an hour compared to what I would have done prior to having the function.</p>
+<p> <a href="https://www.burns-stat.com/probably-useful-r-function-ive-ever-written/" class="more-link">Read more  &rarr;</a></p>
+				
+				
+				
+				<div class='blog-inner-meta extralight-border'>
+	        	
+					<div class='post-meta-infos'>
+												
+						<span class='comment-container minor-meta'><a href="https://www.burns-stat.com/probably-useful-r-function-ive-ever-written/#comments" class="comments-link" > <span>9 Comments</span></a></span><span class='text-sep comment-container-sep'>/</span><div class="like-count minor-meta"><a data-post_id='1494' data-json='http://api.facebook.com/restserver.php?method=links.getStats&urls=https%3A%2F%2Fwww.burns-stat.com%2Fprobably-useful-r-function-ive-ever-written%2F' class='avia_social_link avia_facebook_likes' href="https://www.facebook.com/sharer/sharer.php?t=Probably+the+most+useful+R+function+I%26%238217%3Bve+ever+written&amp;u=https%3A%2F%2Fwww.burns-stat.com%2Fprobably-useful-r-function-ive-ever-written%2F"><span class='avia_count'>Array</span> Likes</a><div class="avia-facebook-like"><div class="fb-like" data-href="https%3A%2F%2Fwww.burns-stat.com%2Fprobably-useful-r-function-ive-ever-written%2F" data-send="false" data-layout="box_count" data-width="250" data-show-faces="false" data-font="arial"></div></div></div><span class="text-sep like-count-sep">/</span><span class="tweets-count minor-meta"><a data-post_id='1494' data-json='http://urls.api.twitter.com/1/urls/count.json?url=https%3A%2F%2Fwww.burns-stat.com%2Fprobably-useful-r-function-ive-ever-written%2F' class='avia_social_link avia_retweet_link' href='https://twitter.com/intent/tweet?text=Probably+the+most+useful+R+function+I%26%238217%3Bve+ever+written&amp;url=https%3A%2F%2Fwp.me%2Fp35Y1V-o6'><span class='avia_count'>0</span> Tweets</a></span><span class="text-sep tweets-count-sep">/</span><span class="blog-categories minor-meta">posted in <a href="https://www.burns-stat.com/category/r-language/" rel="category tag">R language</a>, <a href="https://www.burns-stat.com/category/uncategorized/" rel="category tag">Uncategorized</a> </span>					
+					</div>	
+					
+				</div>
+
+								
+			</div>	
+			
+
+		</div><!--end post-entry-->
+
+		<div class='post-entry post-entry-type-standard post-entry-1485'>
+		
+			<span class='entry-border-overflow extralight-border'></span>
+			
+			
+			<h1 class='post-title offset-by-one '>
+					<a href="https://www.burns-stat.com/source-marketagent-r-package/" rel="bookmark" title="Permanent Link: Source for the marketAgent R package">Source for the marketAgent R package					<span class='post-format-icon minor-meta'></span>
+					</a>
+			</h1>
+			
+			<!--meta info-->
+	        <div class="one unit alpha blog-meta">
+	        	
+	        	<div class='side-container side-container-date'>
+	        		
+	        		<div class='side-container-inner'>
+	        		
+	        			<span class='date-day'>22</span>
+   						<span class='date-month'>May</span>
+   						<span class='date-year date-day'>2016</span>
+   						
+	        		</div>
+	        		
+	        	</div>
+				
+			</div><!--end meta info-->	
+			
+
+			<div class="seven units entry-content">	
+			
+			 <span class='date-container minor-meta meta-color'>2016/05/22</span>	
+				<p>I recently gave a talk at the <a href="http://www.rinfinance.com/" target="blank">R in Finance conference</a> in which I introduced the marketAgent package for R.</p>
+<p>Here is the source for the package if you&#8217;d like to play with it: <a href="https://www.burns-stat.com/source-marketagent-r-package/marketagent_0-000-tar/" rel="attachment wp-att-1486">marketAgent_0.000.tar</a></p>
+<p>I&#8217;ll be giving more details of the talk <strong>real soon now</strong>.</p>
+<p>&nbsp;</p>
+<p><strong>Update</strong>:  The Portfolio Probe website now has a <a href="http://www.portfolioprobe.com/2016/05/29/reminiscences-of-r-in-finance-2016/" target="_blank">blog post on the conference</a>.  And here are <a href="https://www.burns-stat.com/documents/presentations/linguistics-quantitative-finance/">the slides for my talk</a>.</p>
+				
+				
+				
+				<div class='blog-inner-meta extralight-border'>
+	        	
+					<div class='post-meta-infos'>
+												
+						<span class='comment-container minor-meta'><a href="https://www.burns-stat.com/source-marketagent-r-package/#comments" class="comments-link" > <span>2 Comments</span></a></span><span class='text-sep comment-container-sep'>/</span><div class="like-count minor-meta"><a data-post_id='1485' data-json='http://api.facebook.com/restserver.php?method=links.getStats&urls=https%3A%2F%2Fwww.burns-stat.com%2Fsource-marketagent-r-package%2F' class='avia_social_link avia_facebook_likes' href="https://www.facebook.com/sharer/sharer.php?t=Source+for+the+marketAgent+R+package&amp;u=https%3A%2F%2Fwww.burns-stat.com%2Fsource-marketagent-r-package%2F"><span class='avia_count'>Array</span> Likes</a><div class="avia-facebook-like"><div class="fb-like" data-href="https%3A%2F%2Fwww.burns-stat.com%2Fsource-marketagent-r-package%2F" data-send="false" data-layout="box_count" data-width="250" data-show-faces="false" data-font="arial"></div></div></div><span class="text-sep like-count-sep">/</span><span class="tweets-count minor-meta"><a data-post_id='1485' data-json='http://urls.api.twitter.com/1/urls/count.json?url=https%3A%2F%2Fwww.burns-stat.com%2Fsource-marketagent-r-package%2F' class='avia_social_link avia_retweet_link' href='https://twitter.com/intent/tweet?text=Source+for+the+marketAgent+R+package&amp;url=https%3A%2F%2Fwp.me%2Fp35Y1V-nX'><span class='avia_count'>0</span> Tweets</a></span><span class="text-sep tweets-count-sep">/</span><span class="blog-categories minor-meta">posted in <a href="https://www.burns-stat.com/category/r-language/" rel="category tag">R language</a> </span>					
+					</div>	
+					
+				</div>
+
+								
+			</div>	
+			
+
+		</div><!--end post-entry-->
+
+		<div class='post-entry post-entry-type-standard post-entry-1482'>
+		
+			<span class='entry-border-overflow extralight-border'></span>
+			
+			
+			<h1 class='post-title offset-by-one '>
+					<a href="https://www.burns-stat.com/review-of-advanced-r-by-hadley-wickham/" rel="bookmark" title="Permanent Link: Review of &#8216;Advanced R&#8217; by Hadley Wickham">Review of &#8216;Advanced R&#8217; by Hadley Wickham					<span class='post-format-icon minor-meta'></span>
+					</a>
+			</h1>
+			
+			<!--meta info-->
+	        <div class="one unit alpha blog-meta">
+	        	
+	        	<div class='side-container side-container-date'>
+	        		
+	        		<div class='side-container-inner'>
+	        		
+	        			<span class='date-day'>24</span>
+   						<span class='date-month'>May</span>
+   						<span class='date-year date-day'>2015</span>
+   						
+	        		</div>
+	        		
+	        	</div>
+				
+			</div><!--end meta info-->	
+			
+
+			<div class="seven units entry-content">	
+			
+			 <span class='date-container minor-meta meta-color'>2015/05/24</span>	
+				<h2>Executive summary</h2>
+<p>Surprisingly good.</p>
+<p>And it&#8217;s not like my expectations were especially low.</p>
+<h2>Structure</h2>
+<p>There are 20 chapters.  I mostly like the chapters and their order.</p>
+<p>Hadley breaks the 20 chapters into 4 parts.  He&#8217;s wrong.  Figure 1 illustrates the correct way to formulate parts.</p>
+<p>Figure 1: Chapters and Parts of Advanced R. <a href="https://www.burns-stat.com/wp-content/uploads/2015/05/advanced_R_table_of_contents.png"><img loading="lazy" class="aligncenter size-full wp-image-1483" src="https://www.burns-stat.com/wp-content/uploads/2015/05/advanced_R_table_of_contents.png" alt="advanced_R_table_of_contents" width="512" height="700" srcset="https://www.burns-stat.com/wp-content/uploads/2015/05/advanced_R_table_of_contents.png 512w, https://www.burns-stat.com/wp-content/uploads/2015/05/advanced_R_table_of_contents-219x300.png 219w" sizes="(max-width: 512px) 100vw, 512px" /></a></p>
+<p>&nbsp;</p>
+<p> <a href="https://www.burns-stat.com/review-of-advanced-r-by-hadley-wickham/" class="more-link">Read more  &rarr;</a></p>
+				
+				
+				
+				<div class='blog-inner-meta extralight-border'>
+	        	
+					<div class='post-meta-infos'>
+												
+						<span class='comment-container minor-meta'><a href="https://www.burns-stat.com/review-of-advanced-r-by-hadley-wickham/#respond" class="comments-link" > <span>0 Comments</span></a></span><span class='text-sep comment-container-sep'>/</span><div class="like-count minor-meta"><a data-post_id='1482' data-json='http://api.facebook.com/restserver.php?method=links.getStats&urls=https%3A%2F%2Fwww.burns-stat.com%2Freview-of-advanced-r-by-hadley-wickham%2F' class='avia_social_link avia_facebook_likes' href="https://www.facebook.com/sharer/sharer.php?t=Review+of+%26%238216%3BAdvanced+R%26%238217%3B+by+Hadley+Wickham&amp;u=https%3A%2F%2Fwww.burns-stat.com%2Freview-of-advanced-r-by-hadley-wickham%2F"><span class='avia_count'>Array</span> Likes</a><div class="avia-facebook-like"><div class="fb-like" data-href="https%3A%2F%2Fwww.burns-stat.com%2Freview-of-advanced-r-by-hadley-wickham%2F" data-send="false" data-layout="box_count" data-width="250" data-show-faces="false" data-font="arial"></div></div></div><span class="text-sep like-count-sep">/</span><span class="tweets-count minor-meta"><a data-post_id='1482' data-json='http://urls.api.twitter.com/1/urls/count.json?url=https%3A%2F%2Fwww.burns-stat.com%2Freview-of-advanced-r-by-hadley-wickham%2F' class='avia_social_link avia_retweet_link' href='https://twitter.com/intent/tweet?text=Review+of+%26%238216%3BAdvanced+R%26%238217%3B+by+Hadley+Wickham&amp;url=https%3A%2F%2Fwp.me%2Fp35Y1V-nU'><span class='avia_count'>44</span> Tweets</a></span><span class="text-sep tweets-count-sep">/</span><span class="blog-categories minor-meta">posted in <a href="https://www.burns-stat.com/category/book-review/" rel="category tag">Book review</a>, <a href="https://www.burns-stat.com/category/r-language/" rel="category tag">R language</a> </span>					
+					</div>	
+					
+				</div>
+
+								
+			</div>	
+			
+
+		</div><!--end post-entry-->
+
+		<div class='post-entry post-entry-type-standard post-entry-1476'>
+		
+			<span class='entry-border-overflow extralight-border'></span>
+			
+			
+			<h1 class='post-title offset-by-one '>
+					<a href="https://www.burns-stat.com/the-wings-of-a-programmer/" rel="bookmark" title="Permanent Link: The wings of a programmer">The wings of a programmer					<span class='post-format-icon minor-meta'></span>
+					</a>
+			</h1>
+			
+			<!--meta info-->
+	        <div class="one unit alpha blog-meta">
+	        	
+	        	<div class='side-container side-container-date'>
+	        		
+	        		<div class='side-container-inner'>
+	        		
+	        			<span class='date-day'>12</span>
+   						<span class='date-month'>Apr</span>
+   						<span class='date-year date-day'>2015</span>
+   						
+	        		</div>
+	        		
+	        	</div>
+				
+			</div><!--end meta info-->	
+			
+
+			<div class="seven units entry-content">	
+			
+			 <span class='date-container minor-meta meta-color'>2015/04/12</span>	
+				<p>Programmers think programming is really hard.  Non-programmers think it&#8217;s even harder than that.</p>
+<p>Figure 1: The perceived difficulty of programming. <a href="https://www.burns-stat.com/wp-content/uploads/2015/04/perceived_programming_difficulty2.png"><img loading="lazy" class="aligncenter size-full wp-image-1479" src="https://www.burns-stat.com/wp-content/uploads/2015/04/perceived_programming_difficulty2.png" alt="perceived_programming_difficulty" width="512" height="480" srcset="https://www.burns-stat.com/wp-content/uploads/2015/04/perceived_programming_difficulty2.png 512w, https://www.burns-stat.com/wp-content/uploads/2015/04/perceived_programming_difficulty2-300x281.png 300w" sizes="(max-width: 512px) 100vw, 512px" /></a><a href="https://www.burns-stat.com/wp-content/uploads/2015/04/perceived_programming_difficulty1.png"><br />
+</a><a href="https://www.burns-stat.com/wp-content/uploads/2015/04/perceived_programming_difficulty.png"><br />
+</a></p>
+<p>Why is programming so arduous? <a href="https://www.burns-stat.com/the-wings-of-a-programmer/" class="more-link">Read more  &rarr;</a></p>
+				
+				
+				
+				<div class='blog-inner-meta extralight-border'>
+	        	
+					<div class='post-meta-infos'>
+												
+						<span class='comment-container minor-meta'><a href="https://www.burns-stat.com/the-wings-of-a-programmer/#comments" class="comments-link" > <span>3 Comments</span></a></span><span class='text-sep comment-container-sep'>/</span><div class="like-count minor-meta"><a data-post_id='1476' data-json='http://api.facebook.com/restserver.php?method=links.getStats&urls=https%3A%2F%2Fwww.burns-stat.com%2Fthe-wings-of-a-programmer%2F' class='avia_social_link avia_facebook_likes' href="https://www.facebook.com/sharer/sharer.php?t=The+wings+of+a+programmer&amp;u=https%3A%2F%2Fwww.burns-stat.com%2Fthe-wings-of-a-programmer%2F"><span class='avia_count'>Array</span> Likes</a><div class="avia-facebook-like"><div class="fb-like" data-href="https%3A%2F%2Fwww.burns-stat.com%2Fthe-wings-of-a-programmer%2F" data-send="false" data-layout="box_count" data-width="250" data-show-faces="false" data-font="arial"></div></div></div><span class="text-sep like-count-sep">/</span><span class="tweets-count minor-meta"><a data-post_id='1476' data-json='http://urls.api.twitter.com/1/urls/count.json?url=https%3A%2F%2Fwww.burns-stat.com%2Fthe-wings-of-a-programmer%2F' class='avia_social_link avia_retweet_link' href='https://twitter.com/intent/tweet?text=The+wings+of+a+programmer&amp;url=https%3A%2F%2Fwp.me%2Fp35Y1V-nO'><span class='avia_count'>32</span> Tweets</a></span><span class="text-sep tweets-count-sep">/</span><span class="blog-categories minor-meta">posted in <a href="https://www.burns-stat.com/category/programming/" rel="category tag">Programming</a>, <a href="https://www.burns-stat.com/category/r-language/" rel="category tag">R language</a> </span>					
+					</div>	
+					
+				</div>
+
+								
+			</div>	
+			
+
+		</div><!--end post-entry-->
+
+		<div class='post-entry post-entry-type-standard post-entry-1441'>
+		
+			<span class='entry-border-overflow extralight-border'></span>
+			
+			
+			<h1 class='post-title offset-by-one '>
+					<a href="https://www.burns-stat.com/experience-earl/" rel="bookmark" title="Permanent Link: An experience of EARL">An experience of EARL					<span class='post-format-icon minor-meta'></span>
+					</a>
+			</h1>
+			
+			<!--meta info-->
+	        <div class="one unit alpha blog-meta">
+	        	
+	        	<div class='side-container side-container-date'>
+	        		
+	        		<div class='side-container-inner'>
+	        		
+	        			<span class='date-day'>02</span>
+   						<span class='date-month'>Jan</span>
+   						<span class='date-year date-day'>2015</span>
+   						
+	        		</div>
+	        		
+	        	</div>
+				
+			</div><!--end meta info-->	
+			
+
+			<div class="seven units entry-content">	
+			
+			 <span class='date-container minor-meta meta-color'>2015/01/02</span>	
+				<p>Coordinates: 2014 September 15-17 in the London borough of #rstats.</p>
+<h2>15th, evening</h2>
+<p>I had just the right number of R bugs so that I could walk to the drinks and arrive fashionably late.  On the way, I realized that I hadn&#8217;t been near the <a href="http://www.hrp.org.uk/TowerOfLondon/" target="_blank">Tower of London</a> since the first year I moved to London even though I live within walking distance.</p>
+<p>Once arriving and receiving my Mango the cat, I got into the mix.</p>
+<p>Figure 1: Mango the cat with friend (courtesy of <a href="http://rfordummies.com/" target="_blank">Andrie de Vries</a>). <a href="https://www.burns-stat.com/wp-content/uploads/2014/10/norrpa_mango_20140915_235934.jpg"><img loading="lazy" class="aligncenter size-full wp-image-1461" src="https://www.burns-stat.com/wp-content/uploads/2014/10/norrpa_mango_20140915_235934.jpg" alt="norrpa_mango_20140915_235934" width="3264" height="2448" srcset="https://www.burns-stat.com/wp-content/uploads/2014/10/norrpa_mango_20140915_235934.jpg 3264w, https://www.burns-stat.com/wp-content/uploads/2014/10/norrpa_mango_20140915_235934-300x225.jpg 300w, https://www.burns-stat.com/wp-content/uploads/2014/10/norrpa_mango_20140915_235934-1024x768.jpg 1024w, https://www.burns-stat.com/wp-content/uploads/2014/10/norrpa_mango_20140915_235934-930x697.jpg 930w, https://www.burns-stat.com/wp-content/uploads/2014/10/norrpa_mango_20140915_235934-765x573.jpg 765w" sizes="(max-width: 3264px) 100vw, 3264px" /></a></p>
+<h4>exciting</h4>
+<p>I was asked, &#8220;What do you think is new and exciting in R?&#8221; <a href="https://www.burns-stat.com/experience-earl/" class="more-link">Read more  &rarr;</a></p>
+				
+				
+				
+				<div class='blog-inner-meta extralight-border'>
+	        	
+					<div class='post-meta-infos'>
+												
+						<span class='comment-container minor-meta'><a href="https://www.burns-stat.com/experience-earl/#comments" class="comments-link" > <span>1 Comment</span></a></span><span class='text-sep comment-container-sep'>/</span><div class="like-count minor-meta"><a data-post_id='1441' data-json='http://api.facebook.com/restserver.php?method=links.getStats&urls=https%3A%2F%2Fwww.burns-stat.com%2Fexperience-earl%2F' class='avia_social_link avia_facebook_likes' href="https://www.facebook.com/sharer/sharer.php?t=An+experience+of+EARL&amp;u=https%3A%2F%2Fwww.burns-stat.com%2Fexperience-earl%2F"><span class='avia_count'>Array</span> Likes</a><div class="avia-facebook-like"><div class="fb-like" data-href="https%3A%2F%2Fwww.burns-stat.com%2Fexperience-earl%2F" data-send="false" data-layout="box_count" data-width="250" data-show-faces="false" data-font="arial"></div></div></div><span class="text-sep like-count-sep">/</span><span class="tweets-count minor-meta"><a data-post_id='1441' data-json='http://urls.api.twitter.com/1/urls/count.json?url=https%3A%2F%2Fwww.burns-stat.com%2Fexperience-earl%2F' class='avia_social_link avia_retweet_link' href='https://twitter.com/intent/tweet?text=An+experience+of+EARL&amp;url=https%3A%2F%2Fwp.me%2Fp35Y1V-nf'><span class='avia_count'>5</span> Tweets</a></span><span class="text-sep tweets-count-sep">/</span><span class="blog-categories minor-meta">posted in <a href="https://www.burns-stat.com/category/r-language/" rel="category tag">R language</a> </span>					
+					</div>	
+					
+				</div>
+
+								
+			</div>	
+			
+
+		</div><!--end post-entry-->
+
+		<div class='post-entry post-entry-type-standard post-entry-1349'>
+		
+			<span class='entry-border-overflow extralight-border'></span>
+			
+			
+			<h1 class='post-title offset-by-one '>
+					<a href="https://www.burns-stat.com/r-navigation-tools/" rel="bookmark" title="Permanent Link: 21 R navigation tools">21 R navigation tools					<span class='post-format-icon minor-meta'></span>
+					</a>
+			</h1>
+			
+			<!--meta info-->
+	        <div class="one unit alpha blog-meta">
+	        	
+	        	<div class='side-container side-container-date'>
+	        		
+	        		<div class='side-container-inner'>
+	        		
+	        			<span class='date-day'>17</span>
+   						<span class='date-month'>Aug</span>
+   						<span class='date-year date-day'>2014</span>
+   						
+	        		</div>
+	        		
+	        	</div>
+				
+			</div><!--end meta info-->	
+			
+
+			<div class="seven units entry-content">	
+			
+			 <span class='date-container minor-meta meta-color'>2014/08/17</span>	
+				<p>Navigation gets you from where you are to where you want to be.</p>
+<p>Speaking of navigation, you can jump to selected sections of this post: <a href="https://www.burns-stat.com/r-navigation-tools/#navigation">Navigation</a>; <a href="https://www.burns-stat.com/r-navigation-tools/#rbloggers">R-bloggers</a>; <a href="https://www.burns-stat.com/r-navigation-tools/#taskviews">Task views</a>; <a href="https://www.burns-stat.com/r-navigation-tools/#rdocumentation">Rdocumentation.org</a>; <a href="https://www.burns-stat.com/r-navigation-tools/#sospackage"><code>sos</code> package</a>; <a href="https://www.burns-stat.com/r-navigation-tools/#quesques"><code>??</code></a>; <a href="https://www.burns-stat.com/r-navigation-tools/#apropos"><code>apropos</code></a>; <a href="https://www.burns-stat.com/r-navigation-tools/#ls"><code>ls</code></a>; <a href="https://www.burns-stat.com/r-navigation-tools/#methods"><code>methods</code></a>; <a href="https://www.burns-stat.com/r-navigation-tools/#getanywhere"><code>getAnywhere</code></a>; <a href="https://www.burns-stat.com/r-navigation-tools/#coloncoloncolon"><code>:::</code></a>; <a href="https://www.burns-stat.com/r-navigation-tools/#find"><code>find</code></a>; <a href="https://www.burns-stat.com/r-navigation-tools/#args"><code>args</code></a>; <a href="https://www.burns-stat.com/r-navigation-tools/#grep"><code>grep</code></a>; <a href="https://www.burns-stat.com/r-navigation-tools/#perinper"><code>%in%</code></a>; <a href="https://www.burns-stat.com/r-navigation-tools/#str"><code>str</code></a>; <a href="https://www.burns-stat.com/r-navigation-tools/#getwd"><code>getwd</code></a>; <a href="https://www.burns-stat.com/r-navigation-tools/#filechoose"><code>file.choose</code></a>; <a href="https://www.burns-stat.com/r-navigation-tools/#spyglasssummary">Spyglass summary</a>; <a href="https://www.burns-stat.com/r-navigation-tools/#browser"><code>browser</code></a>; <a href="https://www.burns-stat.com/r-navigation-tools/#seealso">See also</a>.</p>
+<h2>Overview</h2>
+<p>Figure 1: A map of the R world. <a href="https://www.burns-stat.com/wp-content/uploads/2014/07/Rmap.png"><img loading="lazy" class="aligncenter size-full wp-image-1350" src="https://www.burns-stat.com/wp-content/uploads/2014/07/Rmap.png" alt="Rmap" width="512" height="512" srcset="https://www.burns-stat.com/wp-content/uploads/2014/07/Rmap.png 512w, https://www.burns-stat.com/wp-content/uploads/2014/07/Rmap-80x80.png 80w, https://www.burns-stat.com/wp-content/uploads/2014/07/Rmap-300x300.png 300w, https://www.burns-stat.com/wp-content/uploads/2014/07/Rmap-36x36.png 36w" sizes="(max-width: 512px) 100vw, 512px" /></a> Each R session has a workspace specific to it. Ironically this is called the <em>global environment</em>.  You can see what objects are in it with the command: <a href="https://www.burns-stat.com/r-navigation-tools/" class="more-link">Read more  &rarr;</a></p>
+				
+				
+				
+				<div class='blog-inner-meta extralight-border'>
+	        	
+					<div class='post-meta-infos'>
+												
+						<span class='comment-container minor-meta'><a href="https://www.burns-stat.com/r-navigation-tools/#comments" class="comments-link" > <span>5 Comments</span></a></span><span class='text-sep comment-container-sep'>/</span><div class="like-count minor-meta"><a data-post_id='1349' data-json='http://api.facebook.com/restserver.php?method=links.getStats&urls=https%3A%2F%2Fwww.burns-stat.com%2Fr-navigation-tools%2F' class='avia_social_link avia_facebook_likes' href="https://www.facebook.com/sharer/sharer.php?t=21+R+navigation+tools&amp;u=https%3A%2F%2Fwww.burns-stat.com%2Fr-navigation-tools%2F"><span class='avia_count'>Array</span> Likes</a><div class="avia-facebook-like"><div class="fb-like" data-href="https%3A%2F%2Fwww.burns-stat.com%2Fr-navigation-tools%2F" data-send="false" data-layout="box_count" data-width="250" data-show-faces="false" data-font="arial"></div></div></div><span class="text-sep like-count-sep">/</span><span class="tweets-count minor-meta"><a data-post_id='1349' data-json='http://urls.api.twitter.com/1/urls/count.json?url=https%3A%2F%2Fwww.burns-stat.com%2Fr-navigation-tools%2F' class='avia_social_link avia_retweet_link' href='https://twitter.com/intent/tweet?text=21+R+navigation+tools&amp;url=https%3A%2F%2Fwp.me%2Fp35Y1V-lL'><span class='avia_count'>56</span> Tweets</a></span><span class="text-sep tweets-count-sep">/</span><span class="blog-categories minor-meta">posted in <a href="https://www.burns-stat.com/category/r-language/" rel="category tag">R language</a> </span>					
+					</div>	
+					
+				</div>
+
+								
+			</div>	
+			
+
+		</div><!--end post-entry-->
+
+		<div class='post-entry post-entry-type-standard post-entry-1315'>
+		
+			<span class='entry-border-overflow extralight-border'></span>
+			
+			
+			<h1 class='post-title offset-by-one '>
+					<a href="https://www.burns-stat.com/taoteprogramming-r-package/" rel="bookmark" title="Permanent Link: The TaoTeProgramming R package">The TaoTeProgramming R package					<span class='post-format-icon minor-meta'></span>
+					</a>
+			</h1>
+			
+			<!--meta info-->
+	        <div class="one unit alpha blog-meta">
+	        	
+	        	<div class='side-container side-container-date'>
+	        		
+	        		<div class='side-container-inner'>
+	        		
+	        			<span class='date-day'>29</span>
+   						<span class='date-month'>Jun</span>
+   						<span class='date-year date-day'>2014</span>
+   						
+	        		</div>
+	        		
+	        	</div>
+				
+			</div><!--end meta info-->	
+			
+
+			<div class="seven units entry-content">	
+			
+			 <span class='date-container minor-meta meta-color'>2014/06/29</span>	
+				<p style="padding-left: 30px;"><em>I&#8217;d like to do a song of great social and political import.</em></p>
+<p>The code that created the illustrations in <a href="https://www.burns-stat.com/documents/books/tao-te-programming/"><em>Tao Te Programming</em></a> is now available as the <a href="https://cran.r-project.org/web/packages/TaoTeProgramming/index.html" target="_blank">TaoTeProgramming package on CRAN</a>.</p>
+<h2>The sea is just flat hills</h2>
+<p><a href="https://www.burns-stat.com/wp-content/uploads/2014/06/sea51.png"><img loading="lazy" class="aligncenter size-full wp-image-1316" src="https://www.burns-stat.com/wp-content/uploads/2014/06/sea51.png" alt="sea51" width="512" height="480" srcset="https://www.burns-stat.com/wp-content/uploads/2014/06/sea51.png 512w, https://www.burns-stat.com/wp-content/uploads/2014/06/sea51-300x281.png 300w" sizes="(max-width: 512px) 100vw, 512px" /></a><a href="https://www.burns-stat.com/wp-content/uploads/2014/06/hills5.png"><img loading="lazy" class="aligncenter size-full wp-image-1317" src="https://www.burns-stat.com/wp-content/uploads/2014/06/hills5.png" alt="hills5" width="512" height="480" srcset="https://www.burns-stat.com/wp-content/uploads/2014/06/hills5.png 512w, https://www.burns-stat.com/wp-content/uploads/2014/06/hills5-300x281.png 300w" sizes="(max-width: 512px) 100vw, 512px" /></a> And they are both just smooth mountains.</p>
+<p> <a href="https://www.burns-stat.com/taoteprogramming-r-package/" class="more-link">Read more  &rarr;</a></p>
+				
+				
+				
+				<div class='blog-inner-meta extralight-border'>
+	        	
+					<div class='post-meta-infos'>
+												
+						<span class='comment-container minor-meta'><a href="https://www.burns-stat.com/taoteprogramming-r-package/#comments" class="comments-link" > <span>1 Comment</span></a></span><span class='text-sep comment-container-sep'>/</span><div class="like-count minor-meta"><a data-post_id='1315' data-json='http://api.facebook.com/restserver.php?method=links.getStats&urls=https%3A%2F%2Fwww.burns-stat.com%2Ftaoteprogramming-r-package%2F' class='avia_social_link avia_facebook_likes' href="https://www.facebook.com/sharer/sharer.php?t=The+TaoTeProgramming+R+package&amp;u=https%3A%2F%2Fwww.burns-stat.com%2Ftaoteprogramming-r-package%2F"><span class='avia_count'>Array</span> Likes</a><div class="avia-facebook-like"><div class="fb-like" data-href="https%3A%2F%2Fwww.burns-stat.com%2Ftaoteprogramming-r-package%2F" data-send="false" data-layout="box_count" data-width="250" data-show-faces="false" data-font="arial"></div></div></div><span class="text-sep like-count-sep">/</span><span class="tweets-count minor-meta"><a data-post_id='1315' data-json='http://urls.api.twitter.com/1/urls/count.json?url=https%3A%2F%2Fwww.burns-stat.com%2Ftaoteprogramming-r-package%2F' class='avia_social_link avia_retweet_link' href='https://twitter.com/intent/tweet?text=The+TaoTeProgramming+R+package&amp;url=https%3A%2F%2Fwp.me%2Fp35Y1V-ld'><span class='avia_count'>18</span> Tweets</a></span><span class="text-sep tweets-count-sep">/</span><span class="blog-categories minor-meta">posted in <a href="https://www.burns-stat.com/category/programming/" rel="category tag">Programming</a>, <a href="https://www.burns-stat.com/category/r-language/" rel="category tag">R language</a> </span>					
+					</div>	
+					
+				</div>
+
+								
+			</div>	
+			
+
+		</div><!--end post-entry-->
+
+		<div class='post-entry post-entry-type-standard post-entry-1273'>
+		
+			<span class='entry-border-overflow extralight-border'></span>
+			
+			
+			<h1 class='post-title offset-by-one '>
+					<a href="https://www.burns-stat.com/xts-r-inferno-ism/" rel="bookmark" title="Permanent Link: An xts R Inferno-ism">An xts R Inferno-ism					<span class='post-format-icon minor-meta'></span>
+					</a>
+			</h1>
+			
+			<!--meta info-->
+	        <div class="one unit alpha blog-meta">
+	        	
+	        	<div class='side-container side-container-date'>
+	        		
+	        		<div class='side-container-inner'>
+	        		
+	        			<span class='date-day'>07</span>
+   						<span class='date-month'>Feb</span>
+   						<span class='date-year date-day'>2014</span>
+   						
+	        		</div>
+	        		
+	        	</div>
+				
+			</div><!--end meta info-->	
+			
+
+			<div class="seven units entry-content">	
+			
+			 <span class='date-container minor-meta meta-color'>2014/02/07</span>	
+				<p>Another of the <a href="https://www.burns-stat.com/documents/books/the-r-inferno/">all ye entering here</a>.</p>
+<h2>Issue</h2>
+<p>When subscripting an <code>xts</code> object, columns that don&#8217;t exist in the object are silently ignored.</p>
+<h2>Example</h2>
+<p>First, create an <code>xts</code> object:</p>
+<pre>xtx &lt;- xts(cbind(a=1:4, b=11:14, c=21:24), order=Sys.Date() + 1:4)</pre>
+<p>which looks like: <a href="https://www.burns-stat.com/xts-r-inferno-ism/" class="more-link">Read more  &rarr;</a></p>
+				
+				
+				
+				<div class='blog-inner-meta extralight-border'>
+	        	
+					<div class='post-meta-infos'>
+												
+						<span class='comment-container minor-meta'><a href="https://www.burns-stat.com/xts-r-inferno-ism/#comments" class="comments-link" > <span>10 Comments</span></a></span><span class='text-sep comment-container-sep'>/</span><div class="like-count minor-meta"><a data-post_id='1273' data-json='http://api.facebook.com/restserver.php?method=links.getStats&urls=https%3A%2F%2Fwww.burns-stat.com%2Fxts-r-inferno-ism%2F' class='avia_social_link avia_facebook_likes' href="https://www.facebook.com/sharer/sharer.php?t=An+xts+R+Inferno-ism&amp;u=https%3A%2F%2Fwww.burns-stat.com%2Fxts-r-inferno-ism%2F"><span class='avia_count'>Array</span> Likes</a><div class="avia-facebook-like"><div class="fb-like" data-href="https%3A%2F%2Fwww.burns-stat.com%2Fxts-r-inferno-ism%2F" data-send="false" data-layout="box_count" data-width="250" data-show-faces="false" data-font="arial"></div></div></div><span class="text-sep like-count-sep">/</span><span class="tweets-count minor-meta"><a data-post_id='1273' data-json='http://urls.api.twitter.com/1/urls/count.json?url=https%3A%2F%2Fwww.burns-stat.com%2Fxts-r-inferno-ism%2F' class='avia_social_link avia_retweet_link' href='https://twitter.com/intent/tweet?text=An+xts+R+Inferno-ism&amp;url=https%3A%2F%2Fwp.me%2Fp35Y1V-kx'><span class='avia_count'>2</span> Tweets</a></span><span class="text-sep tweets-count-sep">/</span><span class="blog-categories minor-meta">posted in <a href="https://www.burns-stat.com/category/r-language/" rel="category tag">R language</a> </span>					
+					</div>	
+					
+				</div>
+
+								
+			</div>	
+			
+
+		</div><!--end post-entry-->
+
+		<div class='post-entry post-entry-type-standard post-entry-1113'>
+		
+			<span class='entry-border-overflow extralight-border'></span>
+			
+			
+			<h1 class='post-title offset-by-one '>
+					<a href="https://www.burns-stat.com/spreadsheet-r-vector/" rel="bookmark" title="Permanent Link: From spreadsheet thinking to R thinking">From spreadsheet thinking to R thinking					<span class='post-format-icon minor-meta'></span>
+					</a>
+			</h1>
+			
+			<!--meta info-->
+	        <div class="one unit alpha blog-meta">
+	        	
+	        	<div class='side-container side-container-date'>
+	        		
+	        		<div class='side-container-inner'>
+	        		
+	        			<span class='date-day'>07</span>
+   						<span class='date-month'>Jan</span>
+   						<span class='date-year date-day'>2014</span>
+   						
+	        		</div>
+	        		
+	        	</div>
+				
+			</div><!--end meta info-->	
+			
+
+			<div class="seven units entry-content">	
+			
+			 <span class='date-container minor-meta meta-color'>2014/01/07</span>	
+				<p>Towards the basic R mindset.</p>
+<h2>Previously</h2>
+<p>The post <a href="https://www.burns-stat.com/first-step-towards-r-spreadsheets/">&#8220;A first step towards R from spreadsheets&#8221;</a> provides an introduction to switching from spreadsheets to R.  It also includes a list of additional posts (like this one) on the transition.</p>
+<h2>Add two columns</h2>
+<p>Figure 1 shows some numbers in two columns and the start of adding those two columns to each other in a third column.</p>
+<p>Figure 1: Adding two columns in a spreadsheet. <a href="https://www.burns-stat.com/wp-content/uploads/2013/11/spread_ABadd.png"><img loading="lazy" class="aligncenter size-full wp-image-1115" src="https://www.burns-stat.com/wp-content/uploads/2013/11/spread_ABadd.png" alt="spread_ABadd" width="512" height="255" srcset="https://www.burns-stat.com/wp-content/uploads/2013/11/spread_ABadd.png 512w, https://www.burns-stat.com/wp-content/uploads/2013/11/spread_ABadd-300x149.png 300w" sizes="(max-width: 512px) 100vw, 512px" /></a></p>
+<p>The next step is to fill the addition formula down the column. <a href="https://www.burns-stat.com/spreadsheet-r-vector/" class="more-link">Read more  &rarr;</a></p>
+				
+				
+				
+				<div class='blog-inner-meta extralight-border'>
+	        	
+					<div class='post-meta-infos'>
+												
+						<span class='comment-container minor-meta'><a href="https://www.burns-stat.com/spreadsheet-r-vector/#comments" class="comments-link" > <span>9 Comments</span></a></span><span class='text-sep comment-container-sep'>/</span><div class="like-count minor-meta"><a data-post_id='1113' data-json='http://api.facebook.com/restserver.php?method=links.getStats&urls=https%3A%2F%2Fwww.burns-stat.com%2Fspreadsheet-r-vector%2F' class='avia_social_link avia_facebook_likes' href="https://www.facebook.com/sharer/sharer.php?t=From+spreadsheet+thinking+to+R+thinking&amp;u=https%3A%2F%2Fwww.burns-stat.com%2Fspreadsheet-r-vector%2F"><span class='avia_count'>Array</span> Likes</a><div class="avia-facebook-like"><div class="fb-like" data-href="https%3A%2F%2Fwww.burns-stat.com%2Fspreadsheet-r-vector%2F" data-send="false" data-layout="box_count" data-width="250" data-show-faces="false" data-font="arial"></div></div></div><span class="text-sep like-count-sep">/</span><span class="tweets-count minor-meta"><a data-post_id='1113' data-json='http://urls.api.twitter.com/1/urls/count.json?url=https%3A%2F%2Fwww.burns-stat.com%2Fspreadsheet-r-vector%2F' class='avia_social_link avia_retweet_link' href='https://twitter.com/intent/tweet?text=From+spreadsheet+thinking+to+R+thinking&amp;url=https%3A%2F%2Fwp.me%2Fp35Y1V-hX'><span class='avia_count'>34</span> Tweets</a></span><span class="text-sep tweets-count-sep">/</span><span class="blog-categories minor-meta">posted in <a href="https://www.burns-stat.com/category/r-language/" rel="category tag">R language</a> </span>					
+					</div>	
+					
+				</div>
+
+								
+			</div>	
+			
+
+		</div><!--end post-entry-->
+
+		<div class='post-entry post-entry-type-standard post-entry-1141'>
+		
+			<span class='entry-border-overflow extralight-border'></span>
+			
+			
+			<h1 class='post-title offset-by-one '>
+					<a href="https://www.burns-stat.com/blog-recap-2013/" rel="bookmark" title="Permanent Link: Blog recap of 2013">Blog recap of 2013					<span class='post-format-icon minor-meta'></span>
+					</a>
+			</h1>
+			
+			<!--meta info-->
+	        <div class="one unit alpha blog-meta">
+	        	
+	        	<div class='side-container side-container-date'>
+	        		
+	        		<div class='side-container-inner'>
+	        		
+	        			<span class='date-day'>31</span>
+   						<span class='date-month'>Dec</span>
+   						<span class='date-year date-day'>2013</span>
+   						
+	        		</div>
+	        		
+	        	</div>
+				
+			</div><!--end meta info-->	
+			
+
+			<div class="seven units entry-content">	
+			
+			 <span class='date-container minor-meta meta-color'>2013/12/31</span>	
+				<h2>Posts by page views</h2>
+<ol>
+<li><a href="https://www.burns-stat.com/interview-with-a-forced-convert-from-matlab-to-r/">Interview with a forced convert to R from Matlab</a></li>
+<li><a href="https://www.burns-stat.com/first-step-towards-r-spreadsheets/">A first step towards R from spreadsheets</a></li>
+<li><a href="https://www.burns-stat.com/plot-ranges-of-data-in-r/">Plot ranges of data in R</a></li>
+<li><a href="https://www.burns-stat.com/review-thinking-fast-slow-daniel-kahneman/">A statistical review of &#8216;Thinking, Fast and Slow&#8217; by Daniel Kahneman</a></li>
+<li><a href="https://www.burns-stat.com/the-three-dots-construct-in-r/">The 3 dots construct in R</a></li>
+<li><a href="https://www.burns-stat.com/translating-r-sql-basics/">Translating between R and SQL: the basics</a></li>
+<li><a href="https://www.burns-stat.com/an-r-debugging-example/">An R debugging example</a></li>
+<li><a href="https://www.burns-stat.com/r-database-interfaces/">R database interfaces</a></li>
+<li><a href="https://www.burns-stat.com/r-and-social-media/">R and social media</a></li>
+<li><a href="https://www.burns-stat.com/on-the-acceptance-of-r/">On the acceptance of R</a></li>
+<li><a href="https://www.burns-stat.com/joy-data-analysis/">The joy of data analysis</a></li>
+<li><a href="https://www.burns-stat.com/the-options-mechanism-in-r/">The options mechanism in R</a></li>
+<li><a href="https://www.burns-stat.com/a-corner-on-convenient-data-analysis/">A corner on convenient data analysis</a></li>
+<li><a href="https://www.burns-stat.com/living-it-up-with-computational-errors/">Living it up with computational errors</a></li>
+<li><a href="https://www.burns-stat.com/bricks-not-monoliths/">Bricks not monoliths</a></li>
+<li><a href="https://www.burns-stat.com/100-savvy-sites-on-statistics/">100 savvy sites on statistics</a></li>
+<li><a href="https://www.burns-stat.com/the-alltrials-campaign/">The AllTrials campaign</a></li>
+</ol>
+<p>Views at other sites are not included &#8212; that is, views at <a href="http://www.r-bloggers.com/" target="_blank">R-bloggers</a> and <a href="http://www.statsblogs.com/" target="_blank">statsblogs</a>.</p>
+<p>This ordering gives an unfair advantage to posts that were written early in the year. <a href="https://www.burns-stat.com/blog-recap-2013/" class="more-link">Read more  &rarr;</a></p>
+				
+				
+				
+				<div class='blog-inner-meta extralight-border'>
+	        	
+					<div class='post-meta-infos'>
+												
+						<span class='comment-container minor-meta'><a href="https://www.burns-stat.com/blog-recap-2013/#respond" class="comments-link" > <span>0 Comments</span></a></span><span class='text-sep comment-container-sep'>/</span><div class="like-count minor-meta"><a data-post_id='1141' data-json='http://api.facebook.com/restserver.php?method=links.getStats&urls=https%3A%2F%2Fwww.burns-stat.com%2Fblog-recap-2013%2F' class='avia_social_link avia_facebook_likes' href="https://www.facebook.com/sharer/sharer.php?t=Blog+recap+of+2013&amp;u=https%3A%2F%2Fwww.burns-stat.com%2Fblog-recap-2013%2F"><span class='avia_count'>Array</span> Likes</a><div class="avia-facebook-like"><div class="fb-like" data-href="https%3A%2F%2Fwww.burns-stat.com%2Fblog-recap-2013%2F" data-send="false" data-layout="box_count" data-width="250" data-show-faces="false" data-font="arial"></div></div></div><span class="text-sep like-count-sep">/</span><span class="tweets-count minor-meta"><a data-post_id='1141' data-json='http://urls.api.twitter.com/1/urls/count.json?url=https%3A%2F%2Fwww.burns-stat.com%2Fblog-recap-2013%2F' class='avia_social_link avia_retweet_link' href='https://twitter.com/intent/tweet?text=Blog+recap+of+2013&amp;url=https%3A%2F%2Fwp.me%2Fp35Y1V-ip'><span class='avia_count'>2</span> Tweets</a></span><span class="text-sep tweets-count-sep">/</span><span class="blog-categories minor-meta">posted in <a href="https://www.burns-stat.com/category/programming/" rel="category tag">Programming</a>, <a href="https://www.burns-stat.com/category/r-language/" rel="category tag">R language</a>, <a href="https://www.burns-stat.com/category/statistics/" rel="category tag">Statistics</a> </span>					
+					</div>	
+					
+				</div>
+
+								
+			</div>	
+			
+
+		</div><!--end post-entry--><div class='pagination'><span class='pagination-meta'>Page 1 of 3</span><span class='current'>1</span><a href='https://www.burns-stat.com/blog-2/page/2/' class='inactive next_page' >2</a><a href='https://www.burns-stat.com/blog-2/page/3/' class='inactive' >3</a></div>
+				
+				
+				<!--end content-->
+				</div>
+				
+				
+				
+			</div><!--end inner_container-->
+
+	</div>
+	<!-- ####### END MAIN CONTAINER ####### -->
+	
+	
+</div> <!--end primary-->	
+			
+			
+			
+			<div id='secondary'><div class='sidebar'><div class='inner_sidebar extralight-border'><div id="text-2" class="widget widget_text"><h3 class="widgettitle">Books</h3>			<div class="textwidget"><div id="books-widget">
+<a href="/documents/books/s-poetry/" title="S Poetry" class="third first" ><img src="/wp-content/uploads/2012/11/S_Poetry_cover.jpg" alt="S Poetry" /></a>
+<a href="/documents/books/the-r-inferno/" title="R Inferno" class="third" ><img src="/wp-content/uploads/2012/11/R_inferno_cover.jpg" alt="R Inferno" /></a>
+<a href="/documents/books/tao-te-programming" title="Tao Te Programming" class="third" ><img src="/wp-content/uploads/2012/11/Tao_Te_Programming.jpg" alt="Tao Te Programming" /></a>
+</div></div>
+		<span class="seperator extralight-border"></span></div><div class='main_menu main_menu' data-selectname='Select a page'><div class="menu-main-menu-container"><ul id="menu-main-menu" class="menu"><li id="menu-item-408" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home"><a href="https://www.burns-stat.com/"><strong>Home</strong></a></li>
+<li id="menu-item-409" class="menu-item menu-item-type-post_type menu-item-object-page"><a href="https://www.burns-stat.com/about-burns-statistics/"><strong>About Burns Statistics</strong></a></li>
+<li id="menu-item-437" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children"><a href="https://www.burns-stat.com/documents/"><strong>Documents</strong></a>
+<ul class="sub-menu">
+	<li id="menu-item-438" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children"><a href="https://www.burns-stat.com/documents/books/">Books</a>
+	<ul class="sub-menu">
+		<li id="menu-item-480" class="menu-item menu-item-type-post_type menu-item-object-page"><a href="https://www.burns-stat.com/documents/books/tao-te-programming/">Tao Te Programming</a></li>
+		<li id="menu-item-479" class="menu-item menu-item-type-post_type menu-item-object-page"><a href="https://www.burns-stat.com/documents/books/the-r-inferno/">The R Inferno</a></li>
+		<li id="menu-item-415" class="menu-item menu-item-type-post_type menu-item-object-page"><a href="https://www.burns-stat.com/documents/books/s-poetry/">S Poetry</a></li>
+	</ul>
+</li>
+	<li id="menu-item-414" class="menu-item menu-item-type-post_type menu-item-object-page"><a href="https://www.burns-stat.com/documents/public-domain-code/">Code</a></li>
+	<li id="menu-item-478" class="menu-item menu-item-type-post_type menu-item-object-page"><a href="https://www.burns-stat.com/documents/presentations/">Presentations</a></li>
+	<li id="menu-item-419" class="menu-item menu-item-type-post_type menu-item-object-page"><a href="https://www.burns-stat.com/documents/tutorials/">Tutorials</a></li>
+	<li id="menu-item-420" class="menu-item menu-item-type-post_type menu-item-object-page"><a href="https://www.burns-stat.com/documents/working-papers/">Working Papers</a></li>
+</ul>
+</li>
+<li id="menu-item-417" class="menu-item menu-item-type-post_type menu-item-object-page"><a href="https://www.burns-stat.com/products/"><strong>Products</strong></a></li>
+<li id="menu-item-658" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children"><a href="https://www.burns-stat.com/services/"><strong>Services</strong></a>
+<ul class="sub-menu">
+	<li id="menu-item-410" class="menu-item menu-item-type-post_type menu-item-object-page"><a href="https://www.burns-stat.com/services/consulting/">Consulting</a></li>
+	<li id="menu-item-659" class="menu-item menu-item-type-post_type menu-item-object-page"><a href="https://www.burns-stat.com/services/training/">Training</a></li>
+</ul>
+</li>
+<li id="menu-item-660" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children"><a href="https://www.burns-stat.com/applications/"><strong>Applications</strong></a>
+<ul class="sub-menu">
+	<li id="menu-item-412" class="menu-item menu-item-type-post_type menu-item-object-page"><a href="https://www.burns-stat.com/applications/finance/">Finance</a></li>
+</ul>
+</li>
+<li id="menu-item-411" class="menu-item menu-item-type-post_type menu-item-object-page"><a href="https://www.burns-stat.com/contact-details/"><strong>Contact Details</strong></a></li>
+<li id="menu-item-837" class="menu-item menu-item-type-post_type menu-item-object-page"><a href="https://www.burns-stat.com/favorite-pages/"><strong>Favorite pages</strong></a></li>
+<li id="menu-item-662" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-661 current_page_item current_page_parent"><a href="https://www.burns-stat.com/blog-2/"><strong>Blog</strong></a></li>
+</ul></div></div><div id="search-3" class="widget widget_search"><h3 class="widgettitle">Search</h3><form action="https://www.burns-stat.com/" id="searchform" method="get">
+	<div>
+		<input type="submit" value="" id="searchsubmit" class="button"/>
+		<input type="text" id="s" name="s" value="Search site"/>
+	</div>
+</form><!-- end searchform--><span class="seperator extralight-border"></span></div>
+		<div id="recent-posts-2" class="widget widget_recent_entries">
+		<h3 class="widgettitle">Blog</h3>
+		<ul>
+											<li>
+					<a href="https://www.burns-stat.com/probably-useful-r-function-ive-ever-written/">Probably the most useful R function I&#8217;ve ever written</a>
+									</li>
+											<li>
+					<a href="https://www.burns-stat.com/source-marketagent-r-package/">Source for the marketAgent R package</a>
+									</li>
+											<li>
+					<a href="https://www.burns-stat.com/review-of-advanced-r-by-hadley-wickham/">Review of &#8216;Advanced R&#8217; by Hadley Wickham</a>
+									</li>
+											<li>
+					<a href="https://www.burns-stat.com/the-wings-of-a-programmer/">The wings of a programmer</a>
+									</li>
+											<li>
+					<a href="https://www.burns-stat.com/experience-earl/">An experience of EARL</a>
+									</li>
+					</ul>
+
+		<span class="seperator extralight-border"></span></div></div></div></div>	          
+	</div>
+	
+
+
+
+			
+			
+			<!-- ####### FOOTER CONTAINER ####### -->
+			<div id='footer' class='container_wrap '>
+				<div class='container'>
+				
+					<div class='one_fourth first'><div id="linkcat-2" class="widget widget_links"><h3 class="widgettitle">Blogroll</h3>
+	<ul class='xoxo blogroll'>
+<li><a href="http://www.badscience.net/" title="Ben Goldacre takes on the world" target="_blank">Bad Science</a></li>
+<li><a href="http://datasciencelondon.org/" title="The data science community. Share, Learn, Enjoy Data Science." target="_blank">Data Science London</a></li>
+<li><a href="http://www.decisionsciencenews.com/" title="Decision reseearch in a wide range of areas" target="_blank">Decision Science News</a></li>
+<li><a href="https://flowingdata.com/" title="highlights how designers, programmers and statisticians are putting data to good use" target="_blank">FlowingData</a></li>
+<li><a href="http://www.getstats.org.uk/" title="for a society enriched by a better understanding of numbers" target="_blank">getstats</a></li>
+<li><a href="http://robjhyndman.com/hyndsight/" title="Rob Hyndman on forecasting and more" target="_blank">Hyndsight</a></li>
+<li><a href="https://www.bbc.co.uk/programmes/b006qshd" title="BBC radio does statistics and such" target="_blank">More or Less</a></li>
+<li><a href="http://www.portfolioprobe.com/blog/" title="quantitative finance and more" target="_blank">Portfolio Probe</a></li>
+<li><a href="http://www.r-bloggers.com/" title="Aggregation of blogs about the R language" target="_blank">R Bloggers</a></li>
+<li><a href="https://sciencecorgi.blogspot.co.uk/" title="by a team of super-smart scientist corgis" target="_blank">Science Corgi</a></li>
+<li><a href="http://www.significancemagazine.org/details/section/868393/Web-Exclusive-Articles.html" title="Statistics making sense" target="_blank">Significance Magazine</a></li>
+<li><a href="http://simplystatistics.org/" title="simply statistics (what did you expect?)" target="_blank">Simply Statistics</a></li>
+<li><a href="http://www.stat.columbia.edu/~cook/movabletype/mlm/" title="Andrew Gelman&#8217;s blog" target="_blank">Statistical Modeling, Causal Inference, and Social Science</a></li>
+<li><a href="http://www.statschat.org.nz/" title="Thomas Lumley&#8217;s blog" target="_blank">Stats Chat</a></li>
+<li><a href="https://statswithcats.wordpress.com/" title="&#8230; for when you can&#8217;t solve life&#8217;s problems with statistics alone" target="_blank">Stats with Cats</a></li>
+<li><a href="http://www.statsblogs.com/" title="Aggregator for blogs about statistics" target="_blank">statsblogs</a></li>
+<li><a href="http://blogs.wsj.com/numbersguy/" title="Carl Bialik examines the way numbers are used, and abused" target="_blank">The numbers guy</a></li>
+<li><a href="https://statisticsforum.wordpress.com/" title="brought to you by the American Statistical Association and CHANCE magazine" target="_blank">The Statistics Forum</a></li>
+<li><a href="http://understandinguncertainty.org/blog/" title="David Spiegelhalter and associates on risk and uncertainty" target="_blank">Understanding Uncertainty</a></li>
+<li><a href="http://www.win-vector.com/blog/" title="The applied theorist&#8217;s point of view" target="_blank">Win-Vector</a></li>
+
+	</ul>
+<span class="seperator extralight-border"></span></div>
+</div><div class='one_fourth '><div id="twitter_timeline-2" class="widget widget_twitter_timeline"><h3 class="widgettitle">Latest Tweets</h3><a class="twitter-timeline" data-width="225" data-height="400" data-theme="dark" data-border-color="#e8e8e8" data-tweet-limit="3" data-lang="EN" data-partner="jetpack" data-chrome="noheader nofooter noborders transparent" data-widget-id="469065071411204097" href="https://twitter.com/469065071411204097">My Tweets</a><span class="seperator extralight-border"></span></div></div><div class='one_fourth '><div class='widget widget_categories'><h3 class='widgettitle'>Categories</h3><ul>	<li class="cat-item cat-item-38"><a href="https://www.burns-stat.com/category/book-review/">Book review</a>
+</li>
+	<li class="cat-item cat-item-24"><a href="https://www.burns-stat.com/category/programming/">Programming</a>
+</li>
+	<li class="cat-item cat-item-21"><a href="https://www.burns-stat.com/category/r-language/">R language</a>
+</li>
+	<li class="cat-item cat-item-22"><a href="https://www.burns-stat.com/category/statistics/">Statistics</a>
+</li>
+	<li class="cat-item cat-item-1"><a href="https://www.burns-stat.com/category/uncategorized/">Uncategorized</a>
+</li>
+</ul><span class='seperator extralight-border'></span></div></div><div class='one_fourth '><div class='widget widget_archive'><h3 class='widgettitle'>Archive</h3><ul>	<li><a href='https://www.burns-stat.com/2016/08/'>August 2016</a></li>
+	<li><a href='https://www.burns-stat.com/2016/05/'>May 2016</a></li>
+	<li><a href='https://www.burns-stat.com/2015/05/'>May 2015</a></li>
+	<li><a href='https://www.burns-stat.com/2015/04/'>April 2015</a></li>
+	<li><a href='https://www.burns-stat.com/2015/01/'>January 2015</a></li>
+	<li><a href='https://www.burns-stat.com/2014/08/'>August 2014</a></li>
+	<li><a href='https://www.burns-stat.com/2014/06/'>June 2014</a></li>
+	<li><a href='https://www.burns-stat.com/2014/02/'>February 2014</a></li>
+	<li><a href='https://www.burns-stat.com/2014/01/'>January 2014</a></li>
+	<li><a href='https://www.burns-stat.com/2013/12/'>December 2013</a></li>
+	<li><a href='https://www.burns-stat.com/2013/11/'>November 2013</a></li>
+	<li><a href='https://www.burns-stat.com/2013/10/'>October 2013</a></li>
+	<li><a href='https://www.burns-stat.com/2013/05/'>May 2013</a></li>
+	<li><a href='https://www.burns-stat.com/2013/04/'>April 2013</a></li>
+	<li><a href='https://www.burns-stat.com/2013/03/'>March 2013</a></li>
+	<li><a href='https://www.burns-stat.com/2013/02/'>February 2013</a></li>
+	<li><a href='https://www.burns-stat.com/2013/01/'>January 2013</a></li>
+</ul><span class='seperator extralight-border'></span></div></div>
+					
+				</div>
+				
+			</div>
+		<!-- ####### END FOOTER CONTAINER ####### -->
+
+		
+		
+		<!-- ####### SOCKET CONTAINER ####### -->
+			<div id='socket' class='container_wrap '>
+				<div class='container'>
+					<span class='copyright'>&copy; Copyright - <a href='https://www.burns-stat.com/'>Burns Statistics</a></span>
+								
+				</div>
+			</div>
+			<!-- ####### END SOCKET CONTAINER ####### -->
+			
+			
+			
+			
+			
+			
+			
+		
+	
+	</div><!--end container_wrap-->
+			
+
+		</div><!-- end wrap_all -->
+		
+		
+		
+				
+
+
+ <script type='text/javascript'>
+ /* <![CDATA[ */  
+var avia_framework_globals = avia_framework_globals || {};
+    avia_framework_globals.frameworkUrl = 'https://www.burns-stat.com/wp-content/themes/sentence/framework/';
+    avia_framework_globals.installedAt = 'https://www.burns-stat.com/wp-content/themes/sentence/';
+    avia_framework_globals.ajaxurl = 'https://www.burns-stat.com/wp-admin/admin-ajax.php';
+/* ]]> */ 
+</script>
+ 
+ <script type='text/javascript' src='https://www.burns-stat.com/wp-content/themes/sentence/js/prettyPhoto/js/jquery.prettyPhoto.js?ver=3.0.1' id='avia-prettyPhoto-js'></script>
+<script type='text/javascript' src='https://www.burns-stat.com/wp-content/themes/sentence/js/aviapoly.js?ver=1.1.0' id='aviapoly-slider-js'></script>
+<script type='text/javascript' src='https://www.burns-stat.com/wp-content/plugins/jetpack/_inc/build/twitter-timeline.min.js?ver=4.0.0' id='jetpack-twitter-timeline-js'></script>
+<script type='text/javascript' src='https://www.burns-stat.com/wp-content/themes/sentence/framework/js/conditional_load/avia_google_maps_front.js?ver=2.1.1' id='avia_google_maps_front_script-js'></script>
+<script type='text/javascript' src='https://www.burns-stat.com/wp-includes/js/wp-embed.min.js?ver=5.5.1' id='wp-embed-js'></script>
+<script type='text/javascript' src='https://stats.wp.com/e-202037.js' async='async' defer='defer'></script>
+<script type='text/javascript'>
+	_stq = window._stq || [];
+	_stq.push([ 'view', {v:'ext',j:'1:8.9',blog:'45751407',post:'661',tz:'1',srv:'www.burns-stat.com'} ]);
+	_stq.push([ 'clickTrackerInit', '45751407', '661' ]);
+</script>
+<script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","licenseKey":"52c0c7a266","applicationID":"8495806","transactionName":"MwABNUUHV0pQBkFdWQpKIgJDD1ZXHgxbUFMc","queueTime":0,"applicationTime":1620,"atts":"H0cCQw0dREQ=","errorBeacon":"bam.nr-data.net","agent":""}</script></body>
+</html>

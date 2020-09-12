@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>start to {explore} – explore R – by Roland Krasser</title>
+
+        <meta charset="utf-8" />
+    <meta content='text/html; charset=utf-8' http-equiv='Content-Type'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
+
+    
+    <meta name="description" content="What if exploring data in R is just one line of code?
+
+" />
+    <meta property="og:description" content="What if exploring data in R is just one line of code?
+
+" />
+    
+    <meta name="author" content="explore R" />
+
+    
+    <meta property="og:title" content="start to {explore}" />
+    <meta property="twitter:title" content="start to {explore}" />
+    
+
+    <!--[if lt IE 9]>
+      <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <link rel="stylesheet" type="text/css" href="/style.css" />
+    <link rel="alternate" type="application/rss+xml" title="explore R - by Roland Krasser" href="/feed.xml" />
+
+    <!-- Created with Jekyll Now - http://github.com/barryclark/jekyll-now -->
+  </head>
+
+  <body>
+    <div class="wrapper-masthead">
+      <div class="container">
+        <header class="masthead clearfix">
+          <a href="/" class="site-avatar"><img src="https://avatars1.githubusercontent.com/u/31808268?s=460&u=84df224acc4e3bade7537ccceb1fb5243caec57f&v=4" /></a>
+
+          <div class="site-info">
+            <h1 class="site-name"><a href="/">explore R</a></h1>
+            <p class="site-description">by Roland Krasser</p>
+          </div>
+
+          <nav>
+            <a href="/">Blog</a>
+            <a href="/about">About</a>
+          </nav>
+        </header>
+      </div>
+    </div>
+
+    <div id="main" role="main" class="container">
+      <article class="post">
+  <h1>start to {explore}</h1>
+
+  <div class="entry">
+    <p>What if exploring data in R is just one line of code?</p>
+
+<div class="language-R highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">explore</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<p><strong>R would be so much more attractive to people that are used to do data analytics with Excel or a GUI based statistic tool!</strong></p>
+
+<p>I really apprechiate the power of coding, but for fresh new R users stepping into coding is not easy. If you start RStudio for the first time, there is not much you can do by just “playing around”. You may be able to import a dataset by using the “Import Dataset” button at the Environment pane. But then if you want to do some basic statistics or create some basic plots, you fail because the IDE is not offering any direct support.</p>
+
+<p><img src="../images/RStudio-empty.png" alt="RStudio start" /></p>
+
+<p>In a typical introduction to data exploration in R for beginners, you are confronted with more than 25 function names:</p>
+
+<p><code class="language-plaintext highlighter-rouge">library()</code>, <code class="language-plaintext highlighter-rouge">getwd()</code>, <code class="language-plaintext highlighter-rouge">setwd()</code>, <code class="language-plaintext highlighter-rouge">c()</code>, <code class="language-plaintext highlighter-rouge">data()</code>, <code class="language-plaintext highlighter-rouge">data.frame()</code>, <code class="language-plaintext highlighter-rouge">read.csv()</code>, <code class="language-plaintext highlighter-rouge">str()</code>, <code class="language-plaintext highlighter-rouge">head()</code>, <code class="language-plaintext highlighter-rouge">tail()</code>, <code class="language-plaintext highlighter-rouge">summary()</code>, <code class="language-plaintext highlighter-rouge">table()</code>, <code class="language-plaintext highlighter-rouge">ggplot()</code>, <code class="language-plaintext highlighter-rouge">aes()</code>, <code class="language-plaintext highlighter-rouge">geom_point()</code>, <code class="language-plaintext highlighter-rouge">geom_bar()</code>, <code class="language-plaintext highlighter-rouge">geom_boxplot()</code>, <code class="language-plaintext highlighter-rouge">geom_density()</code>, <code class="language-plaintext highlighter-rouge">coord_flip()</code>, <code class="language-plaintext highlighter-rouge">labs()</code>, <code class="language-plaintext highlighter-rouge">theme_light()</code>, <code class="language-plaintext highlighter-rouge">select()</code>, <code class="language-plaintext highlighter-rouge">filter()</code>, <code class="language-plaintext highlighter-rouge">mutate()</code>, <code class="language-plaintext highlighter-rouge">summarize()</code>, <code class="language-plaintext highlighter-rouge">group_by()</code>, <code class="language-plaintext highlighter-rouge">arrange()</code>, …</p>
+
+<p>But cognitive psychology proved, that humans can only keep about 7 new objects in memory (<a href="https://en.wikipedia.org/wiki/The_Magical_Number_Seven,_Plus_or_Minus_Two">The magical number 7, by George A. Miller</a>)
+So you are not able to do the very basic stuff without learning quite a number of different concepts and functions the hard way first. That may be frustrating and feels like a “step backwards” coming from a GUI.</p>
+
+<p><strong>I believe using R for the first time should feel like getting new exciting toys you instantly want to use and play with</strong>.</p>
+
+<p>Thats why I wrote the {explore} package!</p>
+
+<h2 id="interactive-data-science">Interactive Data Science</h2>
+
+<p>For example, to explore the penguins dataset you just need 3 easy to understand lines of code:</p>
+
+<div class="language-R highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">library</span><span class="p">(</span><span class="n">palmerpenguins</span><span class="p">)</span><span class="w">
+</span><span class="n">library</span><span class="p">(</span><span class="n">explore</span><span class="p">)</span><span class="w">
+</span><span class="n">explore</span><span class="p">(</span><span class="n">penguins</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<p>This will launch a Shiny App that enables you to explore data with just a few mouse clicks!</p>
+
+<p>The <strong>variable tab</strong> lets you explore a variable and its relation to a target 
+<img src="../images/explore-penguins-flipper-species.png" alt="explore penguins" /></p>
+
+<p>The <strong>explain tab</strong> shows a decision tree explaining the target 
+<img src="../images/explore-penguins-explain-species.png" alt="explore penguins tree" /></p>
+
+<p>The <strong>overview tab</strong> describes all variables, their type, NA-values, min, max …
+<img src="../images/explore-penguins-overview.png" alt="explore penguins overview" /></p>
+
+<p>The <strong>data tab</strong> view the raw data
+<img src="../images/explore-penguins-data.png" alt="explore penguins data" /></p>
+
+<h2 id="automated-reports">Automated Reports</h2>
+
+<p>Furthermore you can create different types of rich HTML-reports of your data by clicking the “report all” button.</p>
+
+<p>If no target is defined, you get a report of all the variables</p>
+
+<p><img src="../images/explore-penguins-report-variables.png" alt="explore penguins report variables" /></p>
+
+<p>If a target is defined, you get a report of the relation between all variables and the target.</p>
+
+<p><img src="../images/explore-penguins-report-target.png" alt="explore penguins report variables" /></p>
+
+<h2 id="reproducible-data-science">Reproducible Data Science</h2>
+
+<p>Of course you can unleash the full power of R only using code, so the {explore} package offers all functionality of the GUI as extremely easy to use R functions to step into coding:
+<code class="language-plaintext highlighter-rouge">explore()</code>, <code class="language-plaintext highlighter-rouge">describe()</code>, <code class="language-plaintext highlighter-rouge">report()</code>, <code class="language-plaintext highlighter-rouge">explain_tree()</code>, …</p>
+
+<div class="language-R highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># prepare</span><span class="w">
+</span><span class="n">library</span><span class="p">(</span><span class="n">dplyr</span><span class="p">)</span><span class="w">
+</span><span class="n">library</span><span class="p">(</span><span class="n">explore</span><span class="p">)</span><span class="w">
+</span><span class="n">library</span><span class="p">(</span><span class="n">palmerpenguins</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<p>Describe data: (output is a tibble)</p>
+
+<div class="language-R highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">describe</span><span class="p">(</span><span class="n">penguins</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># A tibble: 8 x 8
+  variable          type     na na_pct unique    min   mean    max
+  &lt;chr&gt;             &lt;chr&gt; &lt;int&gt;  &lt;dbl&gt;  &lt;int&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;
+1 species           fct       0    0        3   NA     NA     NA  
+2 island            fct       0    0        3   NA     NA     NA  
+3 bill_length_mm    dbl       2    0.6    165   32.1   43.9   59.6
+4 bill_depth_mm     dbl       2    0.6     81   13.1   17.2   21.5
+5 flipper_length_mm int       2    0.6     56  172    201.   231  
+6 body_mass_g       int       2    0.6     95 2700   4202.  6300  
+7 sex               fct      11    3.2      3   NA     NA     NA  
+8 year              int       0    0        3 2007   2008.  2009  
+</code></pre></div></div>
+
+<p>Explore variables: (output is a plot)</p>
+
+<div class="language-R highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># explore variable</span><span class="w">
+</span><span class="n">penguins</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="n">explore</span><span class="p">(</span><span class="n">island</span><span class="p">)</span><span class="w">
+</span><span class="n">penguins</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="n">explore</span><span class="p">(</span><span class="n">flipper_length_mm</span><span class="p">)</span><span class="w">
+
+</span><span class="c1"># explore relationship with target</span><span class="w">
+</span><span class="n">penguins</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="n">explore</span><span class="p">(</span><span class="n">island</span><span class="p">,</span><span class="w"> </span><span class="n">target</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">species</span><span class="p">)</span><span class="w">
+</span><span class="n">penguins</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="n">explore</span><span class="p">(</span><span class="n">flipper_length_mm</span><span class="p">,</span><span class="w"> </span><span class="n">target</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">species</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<p>Create a Decision Tree: (output is the tree plot)</p>
+<div class="language-R highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">penguins</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="n">explain_tree</span><span class="p">(</span><span class="n">target</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">species</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>Interactive Data Exploration helps new users to step into R.</p>
+
+<p>To get more options and possibilities these users will switch to coding using just a handful of simple functions of the {explore} package.</p>
+
+<p>After a while these new R users will naturally go into the direction of reproducible datascience with rmarkdown and will discover new packages like {dplyr}, {ggplot2}, {tidyr}</p>
+
+<p><strong>So I believe the {explore} package offers an easy learning path, specially for people coming from a GUI, to have a successful start with R and stay with it in the long run.</strong></p>
+
+<p>Let’s explore!
+<a href="https://github.com/rolkra/explore">https://github.com/rolkra/explore</a></p>
+
+
+  </div>
+
+  <div class="date">
+    Written on July 30, 2020
+  </div>
+
+  
+</article>
+
+    </div>
+
+    <div class="wrapper-footer">
+      <div class="container">
+        <footer class="footer">
+          
+
+
+
+<a href="https://github.com/rolkra"><i class="svg-icon github"></i></a>
+
+
+
+
+
+
+
+
+        </footer>
+      </div>
+    </div>
+
+    
+
+  </body>
+</html>

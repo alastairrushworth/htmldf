@@ -1,0 +1,2041 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+		<!--[if lt IE 9]>
+	<script src="https://adventuresinmachinelearning.com/wp-content/themes/pressive/js/html5/dist/html5shiv.js"></script>
+	<script src="//css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
+	<![endif]-->
+	<!--[if IE 8]>
+	<link rel="stylesheet" type="text/css" href="https://adventuresinmachinelearning.com/wp-content/themes/pressive/css/ie8.css"/>
+	<![endif]-->
+	<!--[if IE 7]>
+	<link rel="stylesheet" type="text/css" href="https://adventuresinmachinelearning.com/wp-content/themes/pressive/css/ie7.css"/>
+	<![endif]-->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	<meta charset="UTF-8">
+	
+	
+		
+<script>
+MathJax = {tex: {inlineMath: [['$','$'],['\\(','\\)']], processEscapes: true}};
+
+</script>
+
+	<!-- This site is optimized with the Yoast SEO plugin v14.0.4 - https://yoast.com/wordpress/plugins/seo/ -->
+	<title>Python TensorFlow Tutorial - Build a Neural Network - Adventures in Machine Learning</title>
+	<meta name="description" content="Learn how to build a neural network in TensorFlow. Learn the basics of TensorFlow in this tutorial to set you up for deep learning." />
+	<meta name="robots" content="index, follow" />
+	<meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+	<meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+	<link rel="canonical" href="https://adventuresinmachinelearning.com/python-tensorflow-tutorial/" />
+	<meta property="og:locale" content="en_US" />
+	<meta property="og:type" content="article" />
+	<meta property="og:title" content="Python TensorFlow Tutorial - Build a Neural Network - Adventures in Machine Learning" />
+	<meta property="og:description" content="Learn how to build a neural network in TensorFlow. Learn the basics of TensorFlow in this tutorial to set you up for deep learning." />
+	<meta property="og:url" content="https://adventuresinmachinelearning.com/python-tensorflow-tutorial/" />
+	<meta property="og:site_name" content="Adventures in Machine Learning" />
+	<meta property="article:published_time" content="2017-04-08T04:53:48+00:00" />
+	<meta property="article:modified_time" content="2020-01-18T06:30:17+00:00" />
+	<meta property="og:image" content="https://i2.wp.com/adventuresinmachinelearning.com/wp-content/uploads/2017/04/google-tensor-flow-logo-black-S-1024x768.jpg?fit=1024%2C768&#038;ssl=1" />
+	<meta property="og:image:width" content="1024" />
+	<meta property="og:image:height" content="768" />
+	<meta name="twitter:card" content="summary_large_image" />
+	<script type="application/ld+json" class="yoast-schema-graph">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://adventuresinmachinelearning.com/#website","url":"https://adventuresinmachinelearning.com/","name":"Adventures in Machine Learning","description":"Learn and explore machine learning","potentialAction":[{"@type":"SearchAction","target":"https://adventuresinmachinelearning.com/?s={search_term_string}","query-input":"required name=search_term_string"}],"inLanguage":"en-US"},{"@type":"ImageObject","@id":"https://adventuresinmachinelearning.com/python-tensorflow-tutorial/#primaryimage","inLanguage":"en-US","url":"https://i2.wp.com/adventuresinmachinelearning.com/wp-content/uploads/2017/04/google-tensor-flow-logo-black-S-1024x768.jpg?fit=1024%2C768&ssl=1","width":1024,"height":768,"caption":""},{"@type":"WebPage","@id":"https://adventuresinmachinelearning.com/python-tensorflow-tutorial/#webpage","url":"https://adventuresinmachinelearning.com/python-tensorflow-tutorial/","name":"Python TensorFlow Tutorial - Build a Neural Network - Adventures in Machine Learning","isPartOf":{"@id":"https://adventuresinmachinelearning.com/#website"},"primaryImageOfPage":{"@id":"https://adventuresinmachinelearning.com/python-tensorflow-tutorial/#primaryimage"},"datePublished":"2017-04-08T04:53:48+00:00","dateModified":"2020-01-18T06:30:17+00:00","author":{"@id":"https://adventuresinmachinelearning.com/#/schema/person/0552886be69cda2dfb475e8a97fc5545"},"description":"Learn how to build a neural network in TensorFlow. Learn the basics of TensorFlow in this tutorial to set you up for deep learning.","inLanguage":"en-US","potentialAction":[{"@type":"ReadAction","target":["https://adventuresinmachinelearning.com/python-tensorflow-tutorial/"]}]},{"@type":["Person"],"@id":"https://adventuresinmachinelearning.com/#/schema/person/0552886be69cda2dfb475e8a97fc5545","name":"Andy","image":{"@type":"ImageObject","@id":"https://adventuresinmachinelearning.com/#personlogo","inLanguage":"en-US","url":"https://secure.gravatar.com/avatar/f5719e19cb378721901c75dcb34803d7?s=96&d=mm&r=g","caption":"Andy"}}]}</script>
+	<!-- / Yoast SEO plugin. -->
+
+
+<link rel='dns-prefetch' href='//cdn.jsdelivr.net' />
+<link rel='dns-prefetch' href='//secure.gravatar.com' />
+<link rel='dns-prefetch' href='//s.w.org' />
+<!-- This site uses the Google Analytics by MonsterInsights plugin v7.10.4 - Using Analytics tracking - https://www.monsterinsights.com/ -->
+<script type="text/javascript" data-cfasync="false">
+	var mi_version         = '7.10.4';
+	var mi_track_user      = true;
+	var mi_no_track_reason = '';
+	
+	var disableStr = 'ga-disable-UA-93928649-1';
+
+	/* Function to detect opted out users */
+	function __gaTrackerIsOptedOut() {
+		return document.cookie.indexOf(disableStr + '=true') > -1;
+	}
+
+	/* Disable tracking if the opt-out cookie exists. */
+	if ( __gaTrackerIsOptedOut() ) {
+		window[disableStr] = true;
+	}
+
+	/* Opt-out function */
+	function __gaTrackerOptout() {
+	  document.cookie = disableStr + '=true; expires=Thu, 31 Dec 2099 23:59:59 UTC; path=/';
+	  window[disableStr] = true;
+	}
+	
+	if ( mi_track_user ) {
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','//www.google-analytics.com/analytics.js','__gaTracker');
+
+		__gaTracker('create', 'UA-93928649-1', 'auto');
+		__gaTracker('set', 'forceSSL', true);
+		__gaTracker('require', 'displayfeatures');
+		__gaTracker('send','pageview');
+	} else {
+		console.log( "" );
+		(function() {
+			/* https://developers.google.com/analytics/devguides/collection/analyticsjs/ */
+			var noopfn = function() {
+				return null;
+			};
+			var noopnullfn = function() {
+				return null;
+			};
+			var Tracker = function() {
+				return null;
+			};
+			var p = Tracker.prototype;
+			p.get = noopfn;
+			p.set = noopfn;
+			p.send = noopfn;
+			var __gaTracker = function() {
+				var len = arguments.length;
+				if ( len === 0 ) {
+					return;
+				}
+				var f = arguments[len-1];
+				if ( typeof f !== 'object' || f === null || typeof f.hitCallback !== 'function' ) {
+					console.log( 'Not running function __gaTracker(' + arguments[0] + " ....) because you are not being tracked. " + mi_no_track_reason );
+					return;
+				}
+				try {
+					f.hitCallback();
+				} catch (ex) {
+
+				}
+			};
+			__gaTracker.create = function() {
+				return new Tracker();
+			};
+			__gaTracker.getByName = noopnullfn;
+			__gaTracker.getAll = function() {
+				return [];
+			};
+			__gaTracker.remove = noopfn;
+			window['__gaTracker'] = __gaTracker;
+					})();
+		}
+</script>
+<!-- / Google Analytics by MonsterInsights -->
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/13.0.0\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/13.0.0\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/adventuresinmachinelearning.com\/wp-includes\/js\/wp-emoji-release.min.js?ver=5.5.1"}};
+			!function(e,a,t){var r,n,o,i,p=a.createElement("canvas"),s=p.getContext&&p.getContext("2d");function c(e,t){var a=String.fromCharCode;s.clearRect(0,0,p.width,p.height),s.fillText(a.apply(this,e),0,0);var r=p.toDataURL();return s.clearRect(0,0,p.width,p.height),s.fillText(a.apply(this,t),0,0),r===p.toDataURL()}function l(e){if(!s||!s.fillText)return!1;switch(s.textBaseline="top",s.font="600 32px Arial",e){case"flag":return!c([127987,65039,8205,9895,65039],[127987,65039,8203,9895,65039])&&(!c([55356,56826,55356,56819],[55356,56826,8203,55356,56819])&&!c([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]));case"emoji":return!c([55357,56424,8205,55356,57212],[55357,56424,8203,55356,57212])}return!1}function d(e){var t=a.createElement("script");t.src=e,t.defer=t.type="text/javascript",a.getElementsByTagName("head")[0].appendChild(t)}for(i=Array("flag","emoji"),t.supports={everything:!0,everythingExceptFlag:!0},o=0;o<i.length;o++)t.supports[i[o]]=l(i[o]),t.supports.everything=t.supports.everything&&t.supports[i[o]],"flag"!==i[o]&&(t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&t.supports[i[o]]);t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&!t.supports.flag,t.DOMReady=!1,t.readyCallback=function(){t.DOMReady=!0},t.supports.everything||(n=function(){t.readyCallback()},a.addEventListener?(a.addEventListener("DOMContentLoaded",n,!1),e.addEventListener("load",n,!1)):(e.attachEvent("onload",n),a.attachEvent("onreadystatechange",function(){"complete"===a.readyState&&t.readyCallback()})),(r=t.source||{}).concatemoji?d(r.concatemoji):r.wpemoji&&r.twemoji&&(d(r.twemoji),d(r.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+	<link rel='stylesheet' id='wp-block-library-css'  href='https://c0.wp.com/c/5.5.1/wp-includes/css/dist/block-library/style.min.css' type='text/css' media='all' />
+<style id='wp-block-library-inline-css' type='text/css'>
+.has-text-align-justify{text-align:justify;}
+</style>
+<link rel='stylesheet' id='cookie-notice-front-css'  href='https://adventuresinmachinelearning.com/wp-content/plugins/cookie-notice/css/front.min.css?ver=5.5.1' type='text/css' media='all' />
+<link rel='stylesheet' id='tve_style_family_tve_flt-css'  href='https://adventuresinmachinelearning.com/wp-content/plugins/thrive-visual-editor/editor/css/thrive_flat.css?ver=2.5.3.3' type='text/css' media='all' />
+<link rel='stylesheet' id='tve_leads_forms-css'  href='//adventuresinmachinelearning.com/wp-content/plugins/thrive-leads/editor-layouts/css/frontend.css?ver=2.2.14.3' type='text/css' media='all' />
+<link rel='stylesheet' id='SFSImainCss-css'  href='https://adventuresinmachinelearning.com/wp-content/plugins/ultimate-social-media-icons/css/sfsi-style.css?ver=5.5.1' type='text/css' media='all' />
+<link rel='stylesheet' id='pressive-style-css'  href='https://adventuresinmachinelearning.com/wp-content/themes/pressive/style.css?ver=5.5.1' type='text/css' media='all' />
+<link rel='stylesheet' id='thrive-reset-css'  href='https://adventuresinmachinelearning.com/wp-content/themes/pressive/css/reset.css?ver=20120208' type='text/css' media='all' />
+<link rel='stylesheet' id='thrive-main-style-css'  href='https://adventuresinmachinelearning.com/wp-content/themes/pressive/css/main_green.css?ver=2014123' type='text/css' media='all' />
+<link rel='stylesheet' id='enlighterjs-css'  href='https://adventuresinmachinelearning.com/wp-content/plugins/enlighter/cache/enlighterjs.min.css?ver=ebksiXAPhPqEpHW' type='text/css' media='all' />
+<link rel='stylesheet' id='tva-checkout-css-css'  href='https://adventuresinmachinelearning.com/wp-content/plugins/thrive-apprentice/css/checkout.css?ver=2.2.14.3' type='text/css' media='all' />
+<link rel='stylesheet' id='tcm-front-styles-css-css'  href='https://adventuresinmachinelearning.com/wp-content/plugins/thrive-comments/assets/css/styles.css?ver=1.4.1' type='text/css' media='all' />
+<link rel='stylesheet' id='dashicons-css'  href='https://c0.wp.com/c/5.5.1/wp-includes/css/dashicons.min.css' type='text/css' media='all' />
+<link rel='stylesheet' id='wp-auth-check-css'  href='https://c0.wp.com/c/5.5.1/wp-includes/css/wp-auth-check.min.css' type='text/css' media='all' />
+<link rel='stylesheet' id='jetpack_css-css'  href='https://c0.wp.com/p/jetpack/8.4.2/css/jetpack.css' type='text/css' media='all' />
+<link rel='stylesheet' id='codecolorer-css'  href='https://adventuresinmachinelearning.com/wp-content/plugins/codecolorer/codecolorer.css?ver=0.9.16' type='text/css' media='screen' />
+<script type='text/javascript' id='monsterinsights-frontend-script-js-extra'>
+/* <![CDATA[ */
+var monsterinsights_frontend = {"js_events_tracking":"true","download_extensions":"doc,pdf,ppt,zip,xls,docx,pptx,xlsx","inbound_paths":"[]","home_url":"https:\/\/adventuresinmachinelearning.com","hash_tracking":"false"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://adventuresinmachinelearning.com/wp-content/plugins/google-analytics-for-wordpress/assets/js/frontend.min.js?ver=7.10.4' id='monsterinsights-frontend-script-js'></script>
+<script type='text/javascript' id='cookie-notice-front-js-extra'>
+/* <![CDATA[ */
+var cnArgs = {"ajaxUrl":"https:\/\/adventuresinmachinelearning.com\/wp-admin\/admin-ajax.php","nonce":"3a14234639","hideEffect":"fade","position":"bottom","onScroll":"0","onScrollOffset":"100","onClick":"0","cookieName":"cookie_notice_accepted","cookieTime":"2592000","cookieTimeRejected":"2592000","cookiePath":"\/","cookieDomain":"","redirection":"0","cache":"1","refuse":"0","revokeCookies":"0","revokeCookiesOpt":"automatic","secure":"1","coronabarActive":"0"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://adventuresinmachinelearning.com/wp-content/plugins/cookie-notice/js/front.min.js?ver=1.3.1' id='cookie-notice-front-js'></script>
+<script type='text/javascript' id='tho-header-js-js-extra'>
+/* <![CDATA[ */
+var THO_Head = {"variations":[],"post_id":"148","element_tag":"thrive_headline","woo_tag":"tho_woo"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://adventuresinmachinelearning.com/wp-content/plugins/thrive-headline-optimizer/frontend/js/header.min.js?ver=1.2.7' id='tho-header-js-js'></script>
+<script type='text/javascript' src='https://c0.wp.com/c/5.5.1/wp-includes/js/jquery/jquery.js' id='jquery-core-js'></script>
+<script type='text/javascript' src='https://c0.wp.com/c/5.5.1/wp-includes/js/jquery/jquery-migrate.min.js' id='jquery-migrate-js'></script>
+<script type='text/javascript' src='https://adventuresinmachinelearning.com/wp-content/plugins/thrive-comments/assets/js/libs-frontend.min.js?ver=1.4.1' id='libs-frontend-js'></script>
+<link rel="https://api.w.org/" href="https://adventuresinmachinelearning.com/wp-json/" /><link rel="alternate" type="application/json" href="https://adventuresinmachinelearning.com/wp-json/wp/v2/posts/148" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://adventuresinmachinelearning.com/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://adventuresinmachinelearning.com/wp-includes/wlwmanifest.xml" /> 
+<meta name="generator" content="WordPress 5.5.1" />
+<link rel='shortlink' href='https://adventuresinmachinelearning.com/?p=148' />
+<link rel="alternate" type="application/json+oembed" href="https://adventuresinmachinelearning.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fadventuresinmachinelearning.com%2Fpython-tensorflow-tutorial%2F" />
+<link rel="alternate" type="text/xml+oembed" href="https://adventuresinmachinelearning.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fadventuresinmachinelearning.com%2Fpython-tensorflow-tutorial%2F&#038;format=xml" />
+<style>
+
+	/* for unique landing page accent color values,  put any new css added here inside tcb-bridge/js/editor */
+
+	/* accent color */
+	#thrive-comments .tcm-color-ac,
+	#thrive-comments .tcm-color-ac span {
+		color: #03a9f4;
+	}
+
+	/* accent color background */
+	#thrive-comments .tcm-background-color-ac,
+	#thrive-comments .tcm-background-color-ac-h:hover span,
+	#thrive-comments .tcm-background-color-ac-active:active {
+		background-color: #03a9f4	}
+
+	/* accent color border */
+	#thrive-comments .tcm-border-color-ac {
+		border-color: #03a9f4;
+		outline: none;
+	}
+
+	#thrive-comments .tcm-border-color-ac-h:hover {
+		border-color: #03a9f4;
+	}
+
+	#thrive-comments .tcm-border-bottom-color-ac {
+		border-bottom-color: #03a9f4;
+	}
+
+	/* accent color fill*/
+	#thrive-comments .tcm-svg-fill-ac {
+		fill: #03a9f4;
+	}
+
+	/* accent color for general elements */
+
+	/* inputs */
+	#thrive-comments textarea:focus,
+	#thrive-comments input:focus {
+		border-color: #03a9f4;
+		box-shadow: inset 0 0 3px #03a9f4;
+	}
+
+	/* links */
+	#thrive-comments a {
+		color: #03a9f4;
+	}
+
+	/*
+	* buttons and login links
+	* using id to override the default css border-bottom
+	*/
+	#thrive-comments button,
+	#thrive-comments #tcm-login-up,
+	#thrive-comments #tcm-login-down {
+		color: #03a9f4;
+		border-color: #03a9f4;
+	}
+
+	/* general buttons hover and active functionality */
+	#thrive-comments button:hover,
+	#thrive-comments button:focus,
+	#thrive-comments button:active {
+		background-color: #03a9f4	}
+
+</style>
+<style type="text/css" id="tve_global_variables">:root{}</style><meta name="follow.it-verification-code-V3F6MFpEbW1yeWt6N3JFQlRPcGR3Y1BTSHk2aE5TZkR1S2FTSmFEZG1lNFNMUCtFRit1dXh5eUlRNFd4QURib1JMV2VNS3RZZXFwR1I3WlZ5cllWTlozZEZhUWh1RWJHRkdzb2h4WlRrM2FLQmxSOG84TG82alVrLzhYQ0x6RGV8dUxJUVIzYmpudzRLb0pQd2NCdVZGZERkRFlJaGRvbStOUzRZQzRpRnJEOD0=" content="Krhcp3923LPq7zlPCTKK"/>
+<link rel='dns-prefetch' href='//i0.wp.com'/>
+<link rel='dns-prefetch' href='//i1.wp.com'/>
+<link rel='dns-prefetch' href='//i2.wp.com'/>
+<link rel='dns-prefetch' href='//c0.wp.com'/>
+		<style type="text/css">.wp-video-shortcode {
+				max-width: 100% !important;
+			}body { background:#; }.cnt article h1.entry-title a { color:#000; }.cnt article h2.entry-title a { color:#000; }.bSe h1, .b-tt h1 { color:#000; }.bSe h2, .b-tt h2 { color:#000; }.bSe h3, .b-tt h3 { color:#000; }.bSe h4, .b-tt h4 { color:#000; }.bSe h5, .b-tt h5 { color:#000; }.bSe h6, .b-tt h6 { color:#000; }.cnt article p, .b-tt p { color:#666; }.cnt .bSe article, .cnt .bSe .tve-c p { color:#666; }.cnt article h1 a, .tve-woocommerce .bSe .awr .entry-title, .tve-woocommerce .bSe .awr .page-title{font-family:Raleway,sans-serif;}.bSe h1, .b-tt h1{font-family:Raleway,sans-serif;}.bSe h2,.tve-woocommerce .bSe h2, .b-tt h2{font-family:Raleway,sans-serif;}.bSe h3,.tve-woocommerce .bSe h3, .b-tt h3{font-family:Raleway,sans-serif;}.bSe h4, .b-tt h4{font-family:Raleway,sans-serif;}.bSe h5, .b-tt h5{font-family:Raleway,sans-serif;}.bSe h6, .b-tt h6{font-family:Raleway,sans-serif;}#text_logo{font-family:Raleway,sans-serif;}.cnt article h1 a { font-weight:500; }.bSe h1, .b-tt h1 { font-weight:500; }.bSe h2, .b-tt h2 { font-weight:500; }.bSe h3, .b-tt h3 { font-weight:500; }.bSe h4, .b-tt h4 { font-weight:500; }.bSe h5, .b-tt h5 { font-weight:500; }.bSe h6, .b-tt h6 { font-weight:500; }.cnt, .bp-t, .b-tt p, .b-tt, .tve-woocommerce .product p, .tve-woocommerce .products p{font-family:Raleway,sans-serif;font-weight:500;}article strong {font-weight: bold;}.bSe h1, .b-tt .entry-title, .ind .bSe .awr .awr-i .entry-title { font-size:47px; }.cnt, .b-tt p, .b-tt { font-size:16px; }.thrivecb { font-size:16px; }.out { font-size:16px; }.aut p { font-size:16px; }.cnt p, .tve-c { line-height:1.75em; }.thrivecb { line-height:1.75em; }.bSe a, .cnt article a { color:#7dad85; }.bSe .faq h4{font-family:Raleway,sans-serif;font-weight:500;}article strong {font-weight: bold;}header nav > ul.menu > li > a { color:#000; }header nav > ul.menu > li >  a:hover { color:#7dad85; }header nav > ul > li.current_page_item > a:hover { color:#7dad85; }header nav > ul > li.current_menu_item > a:hover { color:#7dad85; }header nav > ul > li.current_menu_item > a:hover { color:#7dad85; }header nav > ul > li > a:active { color:#7dad85; }header #logo > a > img { max-width:200px; }header ul.menu > li.h-cta > a { color:#329640!important; }header ul.menu > li.h-cta > a { background:#transparent; }header ul.menu > li.h-cta > a { border-color:#329640; }header ul.menu > li.h-cta > a:hover { color:#FFFFFF!important; }header ul.menu > li.h-cta > a:hover { background:#329640; }</style>
+		
+<!-- Facebook Pixel Code -->
+<script type='text/javascript'>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+document,'script','https://connect.facebook.net/en_US/fbevents.js');
+</script>
+<!-- End Facebook Pixel Code -->
+<script type='text/javascript'>
+  fbq('init', '386219465479342', {}, {
+    "agent": "wordpress-5.5.1-2.0.2"
+});
+</script><script type='text/javascript'>
+  fbq('track', 'PageView', []);
+</script>
+<!-- Facebook Pixel Code -->
+<noscript>
+<img height="1" width="1" style="display:none" alt="fbpx"
+src="https://www.facebook.com/tr?id=386219465479342&ev=PageView&noscript=1" />
+</noscript>
+<!-- End Facebook Pixel Code -->
+<style type="text/css" id="thrive-default-styles"></style>		
+</head>
+<body class="post-template-default single single-post postid-148 single-format-standard cookies-not-set">
+
+
+
+
+
+
+<div class="h-b c-c"
+     style="background-color: #ffcc00;">
+	<div class="c-ti" style="">
+	</div>
+	<div class="h-bi">
+		<div id="floating_menu" >
+			<header
+				class="side "
+				style="">
+								<div class="h-i">
+					<div class="wrp">
+						
+						<div class="hsm"
+						     >
+							<span>Menu</span>
+						</div>
+						<div class="m-s"
+						     >
+							<div class="m-si">
+																	<!-- Cart Dropdown -->
+									<nav class="menu-menu-1-container"><ul id="menu-menu-1" class="menu"><li  id="menu-item-1405" class="menu-item menu-item-type-custom menu-item-object-custom toplvl"><a  href="https://www.adventuresinmachinelearning.com">Home</a></li>
+<li  id="menu-item-1362" class="menu-item menu-item-type-post_type menu-item-object-page toplvl"><a  title="						" href="https://adventuresinmachinelearning.com/about/">About</a></li>
+<li  id="menu-item-1368" class="menu-item menu-item-type-post_type menu-item-object-page toplvl"><a  title="						" href="https://adventuresinmachinelearning.com/coding-deep-learning-ebook/">Coding the Deep Learning Revolution eBook</a></li>
+<li  id="menu-item-1363" class="menu-item menu-item-type-post_type menu-item-object-page toplvl"><a  title="						" href="https://adventuresinmachinelearning.com/contact/">Contact</a></li>
+<li  id="menu-item-1364" class="menu-item menu-item-type-post_type menu-item-object-page toplvl"><a  title="						" href="https://adventuresinmachinelearning.com/ebook-newsletter-sign/">Ebook / newsletter sign-up</a></li>
+</ul></nav>																								<div class="s-b clearfix">
+									<form action="https://adventuresinmachinelearning.com/" method="get">
+										<label for="search">SEARCH: </label>
+										<input type="text" name="s" id="search"/>
+
+										<div class="clear"></div>
+									</form>
+									<span class="s-bb"></span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</header>
+		</div>
+	</div>
+
+			<div class="b-tt b-tl">
+			<div class="wrp">
+				
+				<h1 class="entry-title">Python TensorFlow Tutorial &#8211; Build a Neural Network</h1>
+		
+		<p>
+					By						<a href="https://adventuresinmachinelearning.com/author/andyt81/">Andy</a>
+							<span class="sep">|</span>
+								<a href="https://adventuresinmachinelearning.com/category/deep-learning/">Deep learning</a>
+						</p>
+
+
+
+
+
+
+
+
+
+
+
+			</div>
+		</div>
+	
+</div>
+
+
+
+			
+		<div class="wrp cnt">
+				<section class="brd">
+					<ul>
+				<li> You are here:</li>
+				<li typeof='v:Breadcrumb'><a rel='v:url' property='v:title' class='home' href='https://adventuresinmachinelearning.com'> Home<span></span></a></li><li typeof='v:Breadcrumb'><a rel='v:url' property='v:title' href='https://adventuresinmachinelearning.com/category/deep-learning/'>Deep learning</a></li><li typeof='v:Breadcrumb'><a class='no-link' rel='v:url' property='v:title' href='https://adventuresinmachinelearning.com/python-tensorflow-tutorial/'><span></span>Python TensorFlow Tutorial &#8211; Build a Neural Network</a></li>			</ul>
+			</section>
+
+
+			
+						<div class="bSeCont">
+								<section class="bSe left">
+
+					
+					
+					
+					
+
+					<div
+						class="awr h-me">
+						<div class="meta">
+															<div class="met-d">
+									Apr									<span>08</span>
+								</div>
+														<div class="met-c"
+							     style='display:none;'>
+								<div>
+									<a href="#comments"><span></span> 0</a>
+								</div>
+							</div>
+						</div>
+						<div class="awr-i">
+
+																							<div class="fwit">
+									<img src="https://adventuresinmachinelearning.com/wp-content/uploads/2017/04/google-tensor-flow-logo-black-S-1024x768.jpg"
+									     alt=""
+									     title="TensorFlow logo"/>
+								</div>
+							
+														<div class="tve-c">
+								<p>&nbsp;</p>
+<p style="text-align: left;">Google&#8217;s TensorFlow has been a hot topic in deep learning recently.  The open source software, designed to allow efficient computation of data flow graphs, is especially suited to deep learning tasks.  It is designed to be executed on single or multiple CPUs and GPUs, making it a good option for complex deep learning tasks.  In it&#8217;s most recent incarnation &#8211; version 1.0 &#8211; it can even be run on certain mobile operating systems.  This introductory tutorial to TensorFlow will give an overview of some of the basic concepts of TensorFlow in Python.  These will be a good stepping stone to building more complex deep learning networks, such as <a href="https://adventuresinmachinelearning.com/convolutional-neural-networks-tutorial-tensorflow/" target="_blank" rel="noopener noreferrer">Convolution Neural Networks</a>, <a href="https://adventuresinmachinelearning.com/word2vec-tutorial-tensorflow/" target="_blank" rel="noopener noreferrer">natural language models</a> and <a href="https://adventuresinmachinelearning.com/recurrent-neural-networks-lstm-tutorial-tensorflow/" target="_blank" rel="noopener noreferrer">Recurrent Neural Networks</a> in the package.  We&#8217;ll be creating a simple three-layer neural network to classify the MNIST dataset.  This tutorial assumes that you are familiar with the basics of neural networks, which you can get up to scratch with in the <a href="https://adventuresinmachinelearning.com/neural-networks-tutorial/" target="_blank" rel="noopener noreferrer">neural networks tutorial</a> if required.  To install TensorFlow, follow the instructions <a href="https://www.tensorflow.org/install/" target="_blank" rel="noopener noreferrer">here</a>. The code for this tutorial can be found in <a href="https://github.com/adventuresinML/adventures-in-ml-code" target="_blank" rel="noopener noreferrer">this site&#8217;s GitHub repository</a>.  Once you&#8217;re done, you also might want to check out a higher level deep learning library that sits on top of TensorFlow called Keras &#8211; see <a href="https://adventuresinmachinelearning.com/keras-tutorial-cnn-11-lines/" target="_blank" rel="noopener noreferrer">my Keras tutorial</a>.</p>
+<hr />
+<h3 style="text-align: center;">Eager to build deep learning systems in TensorFlow 2? Get the book <a href="https://adventuresinmachinelearning.com/coding-deep-learning-ebook/"><strong>here</strong></a></h3>
+<p><img loading="lazy" class="wp-image-1169 aligncenter" src="https://i0.wp.com/adventuresinmachinelearning.com/wp-content/uploads/2019/01/1a.jpg?resize=553%2C369&#038;ssl=1" alt="" width="553" height="369" srcset="https://i0.wp.com/adventuresinmachinelearning.com/wp-content/uploads/2019/01/1a.jpg?w=2560&amp;ssl=1 2560w, https://i0.wp.com/adventuresinmachinelearning.com/wp-content/uploads/2019/01/1a.jpg?resize=300%2C200&amp;ssl=1 300w, https://i0.wp.com/adventuresinmachinelearning.com/wp-content/uploads/2019/01/1a.jpg?resize=768%2C512&amp;ssl=1 768w, https://i0.wp.com/adventuresinmachinelearning.com/wp-content/uploads/2019/01/1a.jpg?resize=1024%2C683&amp;ssl=1 1024w, https://i0.wp.com/adventuresinmachinelearning.com/wp-content/uploads/2019/01/1a.jpg?resize=1568%2C1045&amp;ssl=1 1568w, https://i0.wp.com/adventuresinmachinelearning.com/wp-content/uploads/2019/01/1a.jpg?w=2000&amp;ssl=1 2000w" sizes="(max-width: 553px) 100vw, 553px" data-recalc-dims="1" /></p>
+<hr />
+<p>First, let&#8217;s have a look at the main ideas of TensorFlow.</p>
+<h1>1.0 TensorFlow graphs</h1>
+<p>TensorFlow is based on graph based computation &#8211; &#8220;what on earth is that?&#8221;, you might say.  It&#8217;s an alternative way of conceptualising mathematical calculations.  Consider the following expression $a = (b + c) * (c + 2)$.  We can break this function down into the following components:</p>
+<p>\begin{align}<br />
+d &amp;= b + c \\<br />
+e &amp;= c + 2 \\<br />
+a &amp;= d * e<br />
+\end{align}</p>
+<p>Now we can represent these operations graphically as:</p>
+<div id="attachment_158" style="width: 270px" class="wp-caption aligncenter"><img aria-describedby="caption-attachment-158" loading="lazy" class="wp-image-158 size-medium" src="https://i0.wp.com/adventuresinmachinelearning.com/wp-content/uploads/2017/03/Simple-graph-example-260x300.png?resize=260%2C300&#038;ssl=1" alt="TensorFlow tutorial - simple computational graph" width="260" height="300" srcset="https://i1.wp.com/adventuresinmachinelearning.com/wp-content/uploads/2017/03/Simple-graph-example.png?resize=260%2C300&amp;ssl=1 260w, https://i1.wp.com/adventuresinmachinelearning.com/wp-content/uploads/2017/03/Simple-graph-example.png?w=296&amp;ssl=1 296w" sizes="(max-width: 260px) 100vw, 260px" data-recalc-dims="1" /><p id="caption-attachment-158" class="wp-caption-text">Simple computational graph</p></div>
+<p>This may seem like a silly example &#8211; but notice a powerful idea in expressing the equation this way: two of the computations ($d=b+c$ and $e=c+2$) can be performed in parallel.  By splitting up these calculations across CPUs or GPUs, this can give us significant gains in computational times.  These gains are a <em>must</em> for big data applications and deep learning &#8211; especially for complicated neural network architectures such as Convolutional Neural Networks (CNNs) and Recurrent Neural Networks (RNNs).  The idea behind TensorFlow is to ability to create these computational graphs in code and allow significant performance improvements via parallel operations and other efficiency gains.</p>
+<p>We can look at a similar graph in TensorFlow below, which shows the computational graph of a three-layer neural network.</p>
+<div id="attachment_205" style="width: 262px" class="wp-caption aligncenter"><img aria-describedby="caption-attachment-205" loading="lazy" class="wp-image-205 size-full" src="https://i1.wp.com/adventuresinmachinelearning.com/wp-content/uploads/2017/03/TensorFlow-data-flow-graph.gif?resize=252%2C448&#038;ssl=1" alt="TensorFlow tutorial - data flow graph" width="252" height="448" data-recalc-dims="1" /><p id="caption-attachment-205" class="wp-caption-text">TensorFlow data flow graph</p></div>
+<p>The animated data flows between different nodes in the graph are <em>tensors</em> which are multi-dimensional data arrays.  For instance, the input data tensor may be 5000 x 64 x 1, which represents a 64 node input layer with 5000 training samples.  After the input layer there is a hidden layer with <a href="https://en.wikipedia.org/wiki/Rectifier_(neural_networks)" target="_blank" rel="noopener noreferrer">rectified linear units </a>as the activation function.  There is a final output layer (called a &#8220;logit layer&#8221; in the above graph) which uses cross entropy as a cost/loss function.  At each point we see the relevant tensors flowing to the &#8220;Gradients&#8221; block which finally flow to the <a href="https://adventuresinmachinelearning.com/stochastic-gradient-descent/" target="_blank" rel="noopener noreferrer">Stochastic Gradient Descent</a> optimiser which performs the back-propagation and gradient descent.</p>
+<p>Here we can see how computational graphs can be used to represent the calculations in neural networks, and this, of course, is what TensorFlow excels at.  Let&#8217;s see how to perform some basic mathematical operations in TensorFlow to get a feel for how it all works.</p>
+<h1>2.0 A Simple TensorFlow example</h1>
+<p>Let&#8217;s first make TensorFlow perform our little example calculation above &#8211; $a = (b + c) * (c + 2)$.  First we need to introduce ourselves to TensorFlow <em>variables</em> and <em>constants</em>.  Let&#8217;s declare some then I&#8217;ll explain the syntax:</p>
+<div class="code-embed-wrapper"> <pre class="language-python code-embed-pre"  data-start="1" data-line-offset="0"><code class="language-python code-embed-code">import tensorflow as tf
+
+# first, create a TensorFlow constant
+const = tf.constant(2.0, name=&quot;const&quot;)
+    
+# create TensorFlow variables
+b = tf.Variable(2.0, name=&#039;b&#039;)
+c = tf.Variable(1.0, name=&#039;c&#039;)</code></pre> <div class="code-embed-infos"> </div> </div>
+<p>As can be observed above, TensorFlow constants can be declared using the <em>tf.constant</em> function, and variables with the <em>tf.Variable</em> function.  The first element in both is the value to be assigned the constant / variable when it is initialised.  The second is an optional name string which can be used to label the constant / variable &#8211; this is handy for when you want to do visualisations (as will be discussed briefly later).  TensorFlow will infer the type of the constant / variable from the initialised value, but it can also be set explicitly using the optional <em>dtype </em>argument.  TensorFlow has many of its own types like<em> tf.float32</em>, <em>tf.int32</em> etc. &#8211; see them all <a href="https://www.tensorflow.org/api_docs/python/tf/DType" target="_blank" rel="noopener noreferrer">here</a>.</p>
+<p>It&#8217;s important to note that, as the Python code runs through these commands, the variables haven&#8217;t actually been declared as they would have been if you just had a standard Python declaration (i.e. b = 2.0).  Instead, all the constants, variables, operations and the computational graph are only created when the initialisation commands are run.</p>
+<p>Next, we create the TensorFlow <em>operations</em>:</p>
+<div class="code-embed-wrapper"> <pre class="language-python code-embed-pre"  data-start="1" data-line-offset="0"><code class="language-python code-embed-code"># now create some operations
+d = tf.add(b, c, name=&#039;d&#039;)
+e = tf.add(c, const, name=&#039;e&#039;)
+a = tf.multiply(d, e, name=&#039;a&#039;)</code></pre> <div class="code-embed-infos"> </div> </div>
+<p>TensorFlow has a wealth of operations available to perform all sorts of interactions between variables, some of which we&#8217;ll get to later in the tutorial.  The operations above are pretty obvious, and they instantiate the operations $b+c$, $c+2.0$ and $d*e$.</p>
+<p>The next step is to setup an object to initialise the variables and the graph structure:</p>
+<div class="code-embed-wrapper"> <pre class="language-python code-embed-pre"  data-start="1" data-line-offset="0"><code class="language-python code-embed-code"># setup the variable initialisation
+init_op = tf.global_variables_initializer()</code></pre> <div class="code-embed-infos"> </div> </div>
+<p>Ok, so now we are all set to go.  To run the operations between the variables, we need to start a TensorFlow session &#8211; <em>tf.Session.  </em>The TensorFlow session is an object where all operations are run. TensorFlow was initially created in a <em>static </em>graph paradigm &#8211; in other words, first all the operations and variables are defined (the graph structure) and then these are compiled within the <em>tf.Session</em> object. There is now the option to build graphs on the fly using the TensorFlow Eager framework, to check this out see my <a href="https://adventuresinmachinelearning.com/tensorflow-eager-tutorial/">TensorFlow Eager tutorial</a>.</p>
+<p>However, there are still advantages in building static graphs using the <em>tf.Session</em> object. You can do this by using the <em>with</em> Python syntax, to run the graph like so:</p>
+<div class="code-embed-wrapper"> <pre class="language-python code-embed-pre"  data-start="1" data-line-offset="0"><code class="language-python code-embed-code"># start the session
+with tf.Session() as sess:
+    # initialise the variables
+    sess.run(init_op)
+    # compute the output of the graph
+    a_out = sess.run(a)
+    print(&quot;Variable a is {}&quot;.format(a_out))</code></pre> <div class="code-embed-infos"> </div> </div>
+<p>The first command within the <em>with</em> block is the initialisation, which is run with the, well, <em>run</em> command.  Next we want to figure out what the variable <em>a</em> should be.  All we have to do is run the operation which calculates <em>a</em> i.e. <em>a = tf.multiply(d, e, name=&#8217;a&#8217;).  </em>Note that <em>a</em> is an <em>operation</em>, not a variable and therefore it can be <em>run</em>.  We do just that with the <em>sess.run(a)</em> command and assign the output to <em>a_out, </em>the value of which we then print out.</p>
+<p>Note something cool &#8211; we defined operations <em>d</em> and <em>e</em> which need to be calculated before we can figure out what <em>a</em> is.  However, we don&#8217;t have to explicitly run <em>those</em> operations, as TensorFlow knows what other operations and variables the operation <em>a</em> depends on, and therefore runs the necessary operations on its own.  It does this through its data flow graph which shows it all the required dependencies. Using the TensorBoard functionality, we can see the graph that TensorFlow created in this little program:</p>
+<div id="attachment_214" style="width: 1045px" class="wp-caption aligncenter"><img aria-describedby="caption-attachment-214" loading="lazy" class="wp-image-214 size-full" src="https://i2.wp.com/adventuresinmachinelearning.com/wp-content/uploads/2017/04/Simple-TensorFlow-graph.png?resize=1035%2C379&#038;ssl=1" alt="TensorFlow tutorial - simple graph" width="1035" height="379" srcset="https://i2.wp.com/adventuresinmachinelearning.com/wp-content/uploads/2017/04/Simple-TensorFlow-graph.png?w=1035&amp;ssl=1 1035w, https://i2.wp.com/adventuresinmachinelearning.com/wp-content/uploads/2017/04/Simple-TensorFlow-graph.png?resize=300%2C110&amp;ssl=1 300w, https://i2.wp.com/adventuresinmachinelearning.com/wp-content/uploads/2017/04/Simple-TensorFlow-graph.png?resize=768%2C281&amp;ssl=1 768w, https://i2.wp.com/adventuresinmachinelearning.com/wp-content/uploads/2017/04/Simple-TensorFlow-graph.png?resize=1024%2C375&amp;ssl=1 1024w" sizes="(max-width: 1000px) 100vw, 1000px" data-recalc-dims="1" /><p id="caption-attachment-214" class="wp-caption-text">Simple TensorFlow graph</p></div>
+<p>Now that&#8217;s obviously a trivial example &#8211; what if we had an array of <em>b</em> values that we wanted to calculate the value of <em>a</em> over?</p>
+<h2>2.1 The TensorFlow placeholder</h2>
+<p>Let&#8217;s also say that we didn&#8217;t know what the value of the array <em>b</em> would be during the declaration phase of the TensorFlow problem (i.e. before the <em>with tf.Session() as sess</em>) stage.  In this case, TensorFlow requires us to declare the basic structure of the data by using the <em>tf.placeholder </em>variable declaration.  Let&#8217;s use it for <em>b</em>:</p>
+<div class="code-embed-wrapper"> <pre class="language-python code-embed-pre"  data-start="1" data-line-offset="0"><code class="language-python code-embed-code"># create TensorFlow variables
+b = tf.placeholder(tf.float32, [None, 1], name=&#039;b&#039;)</code></pre> <div class="code-embed-infos"> </div> </div>
+<p>Because we aren&#8217;t providing an initialisation in this declaration, we need to tell TensorFlow what data type each element within the <em>tensor </em>is going to be.  In this case, we want to use <em>tf.float32</em>.  The second argument is the shape of the data that will be &#8220;injected&#8221; into this variable.  In this case, we want to use a (? x 1) sized array &#8211; because we are being cagey about how much data we are supplying to this variable (hence the &#8220;?&#8221;), the placeholder is willing to accept a <em>None</em> argument in the size declaration.  Now we can inject as much 1-dimensional data that we want into the <em>b </em>variable.</p>
+<p>The only other change we need to make to our program is in the <em>sess.run(a,&#8230;)</em> command:</p>
+<div class="code-embed-wrapper"> <pre class="language-python code-embed-pre"  data-start="1" data-line-offset="0"><code class="language-python code-embed-code">a_out = sess.run(a, feed_dict={b: np.arange(0, 10)[:, np.newaxis]})</code></pre> <div class="code-embed-infos"> </div> </div>
+<p>Note that we have added the <em>feed_dict</em> argument to the <em>sess.run(a,&#8230;) </em>command.  Here we remove the mystery and specify exactly what the variable <em>b</em> is to be &#8211; a one-dimensional range from 0 to 10.  As suggested by the argument name, <em>feed_dict, </em>the input to be supplied is a Python dictionary, with each key being the name of the <em>placeholder</em> that we are filling.</p>
+<p>When we run the program again this time we get:</p>
+<div class="code-embed-wrapper"> <pre class="language-python code-embed-pre"  data-start="1" data-line-offset="0"><code class="language-python code-embed-code">Variable a is [[  3.]
+ [  6.]
+ [  9.]
+ [ 12.]
+ [ 15.]
+ [ 18.]
+ [ 21.]
+ [ 24.]
+ [ 27.]
+ [ 30.]]</code></pre> <div class="code-embed-infos"> </div> </div>
+<p>Notice how TensorFlow adapts naturally from a scalar output (i.e. a singular output when <em>a=9.0</em>) to a <em>tensor</em> (i.e. an array/matrix)?  This is based on its understanding of how the data will flow through the graph.</p>
+<p>Now we are ready to build a basic MNIST predicting neural network.</p>
+<h1>3.0 A Neural Network Example</h1>
+<p>Now we&#8217;ll go through an example in TensorFlow of creating a simple three layer neural network.  In future articles, we&#8217;ll show how to build more complicated neural network structures such as convolution neural networks and recurrent neural networks.  For this example though, we&#8217;ll keep it simple.  If you need to scrub up on your neural network basics, check out my <a href="https://adventuresinmachinelearning.com/neural-networks-tutorial/">popular tutorial on the subject</a>.  In this example, we&#8217;ll be using the MNIST dataset (and its associated loader) that the TensorFlow package provides.  This MNIST dataset is a set of 28&#215;28 pixel grayscale images which represent hand-written digits.  It has 55,000 training rows, 10,000 testing rows and 5,000 validation rows.</p>
+<p>We can load the data by running:</p>
+<div class="code-embed-wrapper"> <pre class="language-python code-embed-pre"  data-start="1" data-line-offset="0"><code class="language-python code-embed-code">from tensorflow.examples.tutorials.mnist import input_data
+mnist = input_data.read_data_sets(&quot;MNIST_data/&quot;, one_hot=True)</code></pre> <div class="code-embed-infos"> </div> </div>
+<p>The <em>one_hot=True</em> argument specifies that instead of the labels associated with each image being the digit itself i.e. &#8220;4&#8221;, it is a vector with &#8220;one hot&#8221; node and all the other nodes being zero i.e. [0, 0, 0, 0, 1, 0, 0, 0, 0, 0].  This lets us easily feed it into the output layer of our neural network.</p>
+<h2>3.1 Setting things up</h2>
+<p>Next, we can set-up the placeholder variables for the training data (and some training parameters):</p>
+<p><!--?prettify linenums=true?--></p>
+<div class="code-embed-wrapper"> <pre class="language-python code-embed-pre"  data-start="1" data-line-offset="0"><code class="language-python code-embed-code"># Python optimisation variables
+learning_rate = 0.5
+epochs = 10
+batch_size = 100
+
+# declare the training data placeholders
+# input x - for 28 x 28 pixels = 784
+x = tf.placeholder(tf.float32, [None, 784])
+# now declare the output data placeholder - 10 digits
+y = tf.placeholder(tf.float32, [None, 10])</code></pre> <div class="code-embed-infos"> </div> </div>
+<p>Notice the <em>x </em>input layer is 784 nodes corresponding to the 28 x 28 (=784) pixels, and the <em>y</em> output layer is 10 nodes corresponding to the 10 possible digits.  Again, the size of <em>x </em>is (? x 784), where the ? stands for an as yet unspecified number of samples to be input &#8211; this is the function of the <em>placeholder</em> variable.</p>
+<p>Now we need to setup the weight and bias variables for the three layer neural network.  There are always <em>L-1</em> number of weights/bias tensors, where <em>L</em> is the number of layers.  So in this case, we need to setup two tensors for each:</p>
+<div class="code-embed-wrapper"> <pre class="language-python code-embed-pre"  data-start="1" data-line-offset="0"><code class="language-python code-embed-code"># now declare the weights connecting the input to the hidden layer
+W1 = tf.Variable(tf.random_normal([784, 300], stddev=0.03), name=&#039;W1&#039;)
+b1 = tf.Variable(tf.random_normal([300]), name=&#039;b1&#039;)
+# and the weights connecting the hidden layer to the output layer
+W2 = tf.Variable(tf.random_normal([300, 10], stddev=0.03), name=&#039;W2&#039;)
+b2 = tf.Variable(tf.random_normal([10]), name=&#039;b2&#039;)</code></pre> <div class="code-embed-infos"> </div> </div>
+<p>Ok, so let&#8217;s unpack the above code a little.  First, we declare some variables for W1 and b1, the weights and bias for the connections between the input and hidden layer.  This neural network will have 300 nodes in the hidden layer, so the size of the weight tensor W1 is [784, 300].  We initialise the values of the weights using a random normal distribution with a mean of zero and a standard deviation of 0.03.  TensorFlow has a replicated version of the <a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.random.normal.html" target="_blank" rel="noopener noreferrer">numpy random normal function</a>, which allows you to create a matrix of a given size populated with random samples drawn from a given distribution.  Likewise, we create W2 and b2 variables to connect the hidden layer to the output layer of the neural network.</p>
+<p>Next, we have to setup node inputs and activation functions of the hidden layer nodes:</p>
+<div class="code-embed-wrapper"> <pre class="language-python code-embed-pre"  data-start="1" data-line-offset="0"><code class="language-python code-embed-code"># calculate the output of the hidden layer
+hidden_out = tf.add(tf.matmul(x, W1), b1)
+hidden_out = tf.nn.relu(hidden_out)</code></pre> <div class="code-embed-infos"> </div> </div>
+<p>In the first line, we execute the standard matrix multiplication of the weights (<em>W1</em>) by the input vector <em>x </em>and we add the bias <em>b1</em>.  The matrix multiplication is executed using the <em>tf.matmul</em> operation.  Next, we finalise the <em>hidden_out</em> operation by applying a <a href="https://en.wikipedia.org/wiki/Rectifier_(neural_networks)" target="_blank" rel="noopener noreferrer">rectified linear unit </a>activation function to the matrix multiplication plus bias.  Note that TensorFlow has a rectified linear unit activation already setup for us, <em>tf.nn.relu</em>.</p>
+<p>This is to execute the following equations, as detailed in the <a href="https://adventuresinmachinelearning.com/neural-networks-tutorial/" target="_blank" rel="noopener noreferrer">neural networks tutorial</a>:</p>
+<p>\begin{align}<br />
+z^{(l+1)} &amp;= W^{(l)} x + b^{(l)} \\<br />
+h^{(l+1)} &amp;= f(z^{(l+1)})<br />
+\end{align}</p>
+<p>Now, let&#8217;s setup the output layer, <em>y_</em>:</p>
+<div class="code-embed-wrapper"> <pre class="language-python code-embed-pre"  data-start="1" data-line-offset="0"><code class="language-python code-embed-code"># now calculate the hidden layer output - in this case, let&#039;s use a softmax activated
+# output layer
+y_ = tf.nn.softmax(tf.add(tf.matmul(hidden_out, W2), b2))</code></pre> <div class="code-embed-infos"> </div> </div>
+<p>Again we perform the weight multiplication with the output from the hidden layer (<em>hidden_out</em>) and add the bias, <em>b2</em>.  In this case, we are going to use a <a href="https://en.wikipedia.org/wiki/Softmax_function" target="_blank" rel="noopener noreferrer">softmax activation</a> for the output layer &#8211; we can use the included TensorFlow softmax function <em>tf.nn.softmax</em>.</p>
+<p>We also have to include a cost or loss function for the optimisation / backpropagation to work on. Here we&#8217;ll use the cross entropy cost function, represented by:</p>
+<p>$$J = -\frac{1}{m} \sum_{i=1}^m \sum_{j=1}^n y_j^{(i)}log(y_j\_^{(i)}) + (1 &#8211; y_j^{(i)})log(1 &#8211; y_j\_^{(i)})$$</p>
+<p>Where $y_j^{(i)}$ is the ith training label for output node <em>j</em>, $y_j\_^{(i)}$ is the ith predicted label for output node <em>j, </em><em>m </em>is the number of training / batch samples and <em>n </em>is the number .  There are two operations occurring in the above equation.  The first is the summation of the logarithmic products and additions <em>across all the output nodes</em>.  The second is taking a mean of this summation <em>across all the training samples</em>.  We can implement this cross entropy cost function in TensorFlow with the following code:</p>
+<div class="code-embed-wrapper"> <pre class="language-python code-embed-pre"  data-start="1" data-line-offset="0"><code class="language-python code-embed-code">y_clipped = tf.clip_by_value(y_, 1e-10, 0.9999999)
+cross_entropy = -tf.reduce_mean(tf.reduce_sum(y * tf.log(y_clipped)
+                         + (1 - y) * tf.log(1 - y_clipped), axis=1))</code></pre> <div class="code-embed-infos"> </div> </div>
+<p>Some explanation is required.  The first line is an operation converting the output <em>y_</em> to a clipped version, limited between 1e-10 to 0.999999.  This is to make sure that we never get a case were we have<em> </em>a <em>log(0) </em>operation occurring during training &#8211; this would return NaN and break the training process.  The second line is the cross entropy calculation.</p>
+<p>To perform this calculation, first we use TensorFlow&#8217;s <em>tf.reduce_sum </em>function &#8211; this function basically takes the sum of a given axis of the tensor you supply.  In this case, the tensor that is supplied is the element-wise cross-entropy calculation for a single node and training sample i.e.: $y_j^{(i)}log(y_j\_^{(i)}) + (1 &#8211; y_j^{(i)})log(1 &#8211; y_j\_^{(i)})$.  Remember that <em>y</em> and <em>y_clipped</em> in the above calculation are (<em>m</em> x<em> 10</em>) tensors &#8211; therefore we need to perform the first sum over the second axis.  This is specified using the axis=1 argument, where &#8220;1&#8221; actually refers to the second axis when we have a zero-based indices system like Python.</p>
+<p>After this operation, we have an (<em>m</em> x <em>1</em>) tensor.  To take the mean of this tensor and complete our cross entropy cost calculation (i.e. execute this part $\frac{1}{m} \sum_{i=1}^m$), we use TensorFlow&#8217;s <em>tf.reduce_mean</em> function.  This function simply takes the mean of whatever tensor you provide it.  So now we have a cost function that we can use in the training process.</p>
+<p>Let&#8217;s setup the optimiser in TensorFlow:</p>
+<div class="code-embed-wrapper"> <pre class="language-python code-embed-pre"  data-start="1" data-line-offset="0"><code class="language-python code-embed-code"># add an optimiser
+optimiser = tf.train.GradientDescentOptimizer(learning_rate=learning_rate).minimize(cross_entropy)</code></pre> <div class="code-embed-infos"> </div> </div>
+<p>Here we are just using the gradient descent optimiser provided by TensorFlow.  We initialize it with a learning rate, then specify what we want it to do &#8211; i.e. minimise the cross entropy cost operation we created.  This function will then perform the gradient descent (for more details on gradient descent see <a href="https://adventuresinmachinelearning.com/neural-networks-tutorial/" target="_blank" rel="noopener noreferrer">here</a> and <a href="https://adventuresinmachinelearning.com/stochastic-gradient-descent/" target="_blank" rel="noopener noreferrer">here</a>) and the <a href="https://adventuresinmachinelearning.com/neural-networks-tutorial/" target="_blank" rel="noopener noreferrer">backpropagation</a> for you.  How easy is that?  TensorFlow has a library of popular neural network training optimisers, see <a href="https://www.tensorflow.org/api_guides/python/train" target="_blank" rel="noopener noreferrer">here</a>.</p>
+<p>Finally, before we move on to the main show, were we actually run the operations, let&#8217;s setup the variable initialisation operation and an operation to measure the accuracy of our predictions:</p>
+<div class="code-embed-wrapper"> <pre class="language-python code-embed-pre"  data-start="1" data-line-offset="0"><code class="language-python code-embed-code"># finally setup the initialisation operator
+init_op = tf.global_variables_initializer()
+
+# define an accuracy assessment operation
+correct_prediction = tf.equal(tf.argmax(y, 1), tf.argmax(y_, 1))
+accuracy = tf.reduce_mean(tf.cast(correct_prediction, tf.float32))</code></pre> <div class="code-embed-infos"> </div> </div>
+<p>The correct prediction operation <em>correct_prediction</em> makes use of the TensorFlow <em>tf.equal</em> function which returns <em>True</em> or <em>False </em>depending on whether to arguments supplied to it are equal.  The <em>tf.argmax</em> function is the same as the <a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.argmax.html" target="_blank" rel="noopener noreferrer">numpy argmax function</a>, which returns the index of the maximum value in a vector / tensor.  Therefore, the <em>correct_prediction</em> operation returns a tensor of size (<em>m</em> x <em>1</em>) of <em>True</em> and <em>False</em> values designating whether the neural network has correctly predicted the digit.  We then want to calculate the mean accuracy from this tensor &#8211; first we have to cast the type of the <em>correct_prediction </em>operation from a Boolean to a TensorFlow float in order to perform the <em>reduce_mean</em> operation.  Once we&#8217;ve done that, we now have an <em>accuracy</em> operation ready to assess the performance of our neural network.</p>
+<h2>3.2 Setting up the training</h2>
+<p>We now have everything we need to setup the training process of our neural network.  I&#8217;m going to show the full code below, then talk through it:</p>
+<div class="code-embed-wrapper"> <pre class="language-python code-embed-pre"  data-start="1" data-line-offset="0"><code class="language-python code-embed-code"> # start the session
+ with tf.Session() as sess:
+    # initialise the variables
+    sess.run(init_op)
+    total_batch = int(len(mnist.train.labels) / batch_size)
+    for epoch in range(epochs):
+         avg_cost = 0
+         for i in range(total_batch):
+             batch_x, batch_y = mnist.train.next_batch(batch_size=batch_size)
+              _, c = sess.run([optimiser, cross_entropy], 
+                          feed_dict={x: batch_x, y: batch_y})
+             avg_cost += c / total_batch
+         print(&quot;Epoch:&quot;, (epoch + 1), &quot;cost =&quot;, &quot;{:.3f}&quot;.format(avg_cost))
+    print(sess.run(accuracy, feed_dict={x: mnist.test.images, y: mnist.test.labels}))</code></pre> <div class="code-embed-infos"> </div> </div>
+<p>Stepping through the lines above, the first couple relate to setting up the <em>with</em> statement and running the initialisation operation.  The third line relates to our mini-batch training scheme that we are going to run for this neural network.  If you want to know about mini-batch gradient descent, check out this <a href="https://adventuresinmachinelearning.com/stochastic-gradient-descent/" target="_blank" rel="noopener noreferrer">post</a>.  In the third line, we are calculating the number of batches to run through in each training epoch.  After that, we loop through each training epoch and initialise an <em>avg_cost</em> variable to keep track of the average cross entropy cost for each epoch.  The next line is where we extract a randomised batch of samples, <em>batch_x </em>and <em>batch_y</em>, from the MNIST training dataset.  The TensorFlow provided MNIST dataset has a handy utility function, <em>next_batch, </em>that makes it easy to extract batches of data for training.</p>
+<p>The following line is where we run two operations.  Notice that <em>sess.run</em> is capable of taking a list of operations to run as its first argument.  In this case, supplying <em>[optimiser, cross_entropy]</em> as the list means that both these operations will be performed.  As such, we get two outputs, which we have assigned to the variables <em>_</em> and <em>c</em>.  We don&#8217;t really care too much about the output from the <em>optimiser</em> operation but we want to know the output from the <em>cross_entropy</em> operation &#8211; which we have assigned to the variable <em>c</em>.  Note, we run the <em>optimiser</em> (and <em>cross_entropy</em>) operation on the batch samples.  In the following line, we use <em>c </em>to calculate the average cost for the epoch.</p>
+<p>Finally, we print out our progress in the average cost, and after the training is complete, we run the <em>accuracy</em> operation to print out the accuracy of our trained network on the test set.  Running this program produces the following output:</p>
+<div class="code-embed-wrapper"> <pre class="language-markdown code-embed-pre"  data-start="1" data-line-offset="0"><code class="language-markdown code-embed-code">Epoch: 1 cost = 0.586
+Epoch: 2 cost = 0.213
+Epoch: 3 cost = 0.150
+Epoch: 4 cost = 0.113
+Epoch: 5 cost = 0.094
+Epoch: 6 cost = 0.073
+Epoch: 7 cost = 0.058
+Epoch: 8 cost = 0.045
+Epoch: 9 cost = 0.036
+Epoch: 10 cost = 0.027
+
+Training complete!
+0.9787</code></pre> <div class="code-embed-infos"> </div> </div>
+<p>There we go &#8211; approximately 98% accuracy on the test set, not bad.  We could do a number of things to improve the model, such as regularisation (see this <a href="https://adventuresinmachinelearning.com/improve-neural-networks-part-1/">tips and tricks post</a>), but here we are just interested in exploring TensorFlow.  You can also use TensorBoard visualisation to look at things like the increase in accuracy over the epochs:</p>
+<div id="attachment_242" style="width: 1317px" class="wp-caption aligncenter"><img aria-describedby="caption-attachment-242" loading="lazy" class="wp-image-242 size-full" src="https://i2.wp.com/adventuresinmachinelearning.com/wp-content/uploads/2017/04/TensorBoard-increase-in-accuracy-NN.png?resize=1307%2C615&#038;ssl=1" alt="TensorFlow tutorial - TensorBoard accuracy plot" width="1307" height="615" srcset="https://i2.wp.com/adventuresinmachinelearning.com/wp-content/uploads/2017/04/TensorBoard-increase-in-accuracy-NN.png?w=1307&amp;ssl=1 1307w, https://i2.wp.com/adventuresinmachinelearning.com/wp-content/uploads/2017/04/TensorBoard-increase-in-accuracy-NN.png?resize=300%2C141&amp;ssl=1 300w, https://i2.wp.com/adventuresinmachinelearning.com/wp-content/uploads/2017/04/TensorBoard-increase-in-accuracy-NN.png?resize=768%2C361&amp;ssl=1 768w, https://i2.wp.com/adventuresinmachinelearning.com/wp-content/uploads/2017/04/TensorBoard-increase-in-accuracy-NN.png?resize=1024%2C482&amp;ssl=1 1024w" sizes="(max-width: 1000px) 100vw, 1000px" data-recalc-dims="1" /><p id="caption-attachment-242" class="wp-caption-text">TensorBoard plot of the increase in accuracy over 10 epochs</p></div>
+<p>In a future article, I&#8217;ll introduce you to TensorBoard visualisation, which is a really nice feature of TensorFlow.  For now, I hope this tutorial was instructive and helps get you going on the TensorFlow journey.  Just a reminder, you can check out the code for this post <a href="https://github.com/adventuresinML/adventures-in-ml-code" target="_blank" rel="noopener noreferrer">here</a>.  I&#8217;ve also written an article that shows you how to build more complex neural networks such as <a href="https://adventuresinmachinelearning.com/convolutional-neural-networks-tutorial-tensorflow/" target="_blank" rel="noopener noreferrer">convolution neural networks</a>, <a href="https://adventuresinmachinelearning.com/recurrent-neural-networks-lstm-tutorial-tensorflow/" target="_blank" rel="noopener noreferrer">recurrent neural networks</a> and <a href="https://adventuresinmachinelearning.com/word2vec-tutorial-tensorflow/" target="_blank" rel="noopener noreferrer">Word2Vec natural language models</a> in TensorFlow.  You also might want to check out a higher level deep learning library that sits on top of TensorFlow called Keras &#8211; see <a href="https://adventuresinmachinelearning.com/keras-tutorial-cnn-11-lines/" target="_blank" rel="noopener noreferrer">my Keras tutorial</a>.</p>
+<p>Have fun!</p>
+[ebook_store ebook_id=&#8221;653&#8243;]
+<hr />
+<h3 style="text-align: center;">Eager to build deep learning systems in TensorFlow 2? Get the book <a href="https://adventuresinmachinelearning.com/coding-deep-learning-ebook/"><strong>here</strong></a></h3>
+<p><img loading="lazy" class="wp-image-1169 aligncenter" src="https://i0.wp.com/adventuresinmachinelearning.com/wp-content/uploads/2019/01/1a.jpg?resize=553%2C369&#038;ssl=1" alt="" width="553" height="369" srcset="https://i0.wp.com/adventuresinmachinelearning.com/wp-content/uploads/2019/01/1a.jpg?w=2560&amp;ssl=1 2560w, https://i0.wp.com/adventuresinmachinelearning.com/wp-content/uploads/2019/01/1a.jpg?resize=300%2C200&amp;ssl=1 300w, https://i0.wp.com/adventuresinmachinelearning.com/wp-content/uploads/2019/01/1a.jpg?resize=768%2C512&amp;ssl=1 768w, https://i0.wp.com/adventuresinmachinelearning.com/wp-content/uploads/2019/01/1a.jpg?resize=1024%2C683&amp;ssl=1 1024w, https://i0.wp.com/adventuresinmachinelearning.com/wp-content/uploads/2019/01/1a.jpg?resize=1568%2C1045&amp;ssl=1 1568w, https://i0.wp.com/adventuresinmachinelearning.com/wp-content/uploads/2019/01/1a.jpg?w=2000&amp;ssl=1 2000w" sizes="(max-width: 553px) 100vw, 553px" data-recalc-dims="1" /></p>
+<hr />
+<p>&nbsp;</p>
+<span id="tho-end-content" style="display: block; visibility: hidden;"></span><span id="tve_leads_end_content" style="display: block; visibility: hidden; border: 1px solid transparent;"></span><div class='sfsi_responsive_icons' style='display:inline-block;margin-top:px; margin-bottom: px; width:100%' data-icon-width-type='Fully responsive' data-icon-width-size='240' data-edge-type='Round' data-edge-radius='5'  >				<div class="sfsi_responsive_icons_count sfsi_responsive_count_container sfsi_medium_button"  style='display:none;text-align:center; background-color:#fff;color:#aaaaaa;  border-radius:5px; ;' >
+					<h3 style="color:#aaaaaa; " >60</h3>
+					<h6 style="color:#aaaaaa;" >SHARES</h6>
+				</div>
+			<div class='sfsi_icons_container sfsi_responsive_without_counter_icons sfsi_medium_button_container sfsi_icons_container_box_fully_container ' style='width:100%;display:flex; ; text-align:center;' >		<a target='_blank' href='https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fadventuresinmachinelearning.com%2Fpython-tensorflow-tutorial%2F' style='display:block;text-align:center;margin-left:10px;  flex-basis:100%;' class=sfsi_responsive_fluid >
+			<div class='sfsi_responsive_icon_item_container sfsi_responsive_icon_facebook_container sfsi_medium_button sfsi_responsive_icon_gradient sfsi_centered_icon' style=' border-radius:5px;  width:100%; ' >
+				<img style='max-height: 25px;display:unset;margin:0' class='sfsi_wicon' src='https://adventuresinmachinelearning.com/wp-content/plugins/ultimate-social-media-icons/images/responsive-icon/facebook.svg'>
+				<span style='color:#fff' >Share on Facebook</span>
+			</div>
+		</a>
+
+		<a target='_blank' href='https://twitter.com/intent/tweet?text=Hey%2C+check+out+this+cool+site+I+found%3A+www.yourname.com+%23Topic+via%40my_twitter_name&url=https%3A%2F%2Fadventuresinmachinelearning.com%2Fpython-tensorflow-tutorial%2F' style='display:block;text-align:center;margin-left:10px;  flex-basis:100%;' class=sfsi_responsive_fluid >
+			<div class='sfsi_responsive_icon_item_container sfsi_responsive_icon_twitter_container sfsi_medium_button sfsi_responsive_icon_gradient sfsi_centered_icon' style=' border-radius:5px;  width:100%; ' >
+				<img style='max-height: 25px;display:unset;margin:0' class='sfsi_wicon' src='https://adventuresinmachinelearning.com/wp-content/plugins/ultimate-social-media-icons/images/responsive-icon/Twitter.svg'>
+				<span style='color:#fff' >Tweet</span>
+			</div>
+		</a>
+
+		<a target='_blank' href='https://www.specificfeeds.com/widgets/emailSubscribeEncFeed/V3F6MFpEbW1yeWt6N3JFQlRPcGR3Y1BTSHk2aE5TZkR1S2FTSmFEZG1lNFNMUCtFRit1dXh5eUlRNFd4QURib1JMV2VNS3RZZXFwR1I3WlZ5cllWTlozZEZhUWh1RWJHRkdzb2h4WlRrM2FLQmxSOG84TG82alVrLzhYQ0x6RGV8dUxJUVIzYmpudzRLb0pQd2NCdVZGZERkRFlJaGRvbStOUzRZQzRpRnJEOD0=/OA==/' style='display:none;text-align:center;margin-left:10px;  flex-basis:100%;' class=sfsi_responsive_fluid >
+			<div class='sfsi_responsive_icon_item_container sfsi_responsive_icon_follow_container sfsi_medium_button sfsi_responsive_icon_gradient sfsi_centered_icon' style=' border-radius:5px;  width:100%; ' >
+				<img style='max-height: 25px;display:unset;margin:0' class='sfsi_wicon' src='https://i2.wp.com/adventuresinmachinelearning.com/wp-content/plugins/ultimate-social-media-icons/images/responsive-icon/Follow.png?ssl=1' data-recalc-dims="1">
+				<span style='color:#fff' >Follow us</span>
+			</div>
+		</a>
+
+		<a target='_blank' href='' style='display:none;text-align:center;margin-left:10px;  flex-basis:100%;' class=sfsi_responsive_fluid  >
+			<div class='sfsi_responsive_icon_item_container sfsi_responsive_custom_icon sfsi_responsive_icon_0_container sfsi_medium_button sfsi_centered_icon sfsi_responsive_icon_gradient' style=' border-radius:5px;  width:100%; background-color:#729fcf' >
+				<img style='max-height: 25px' src=''>
+				<span style='color:#fff' >Share</span>
+			</div>
+		</a>
+
+		<a target='_blank' href='' style='display:none;text-align:center;margin-left:10px;  flex-basis:100%;' class=sfsi_responsive_fluid  >
+			<div class='sfsi_responsive_icon_item_container sfsi_responsive_custom_icon sfsi_responsive_icon_1_container sfsi_medium_button sfsi_centered_icon sfsi_responsive_icon_gradient' style=' border-radius:5px;  width:100%; background-color:#729fcf' >
+				<img style='max-height: 25px' src=''>
+				<span style='color:#fff' >Share</span>
+			</div>
+		</a>
+
+		<a target='_blank' href='' style='display:none;text-align:center;margin-left:10px;  flex-basis:100%;' class=sfsi_responsive_fluid  >
+			<div class='sfsi_responsive_icon_item_container sfsi_responsive_custom_icon sfsi_responsive_icon_2_container sfsi_medium_button sfsi_centered_icon sfsi_responsive_icon_gradient' style=' border-radius:5px;  width:100%; background-color:#729fcf' >
+				<img style='max-height: 25px' src=''>
+				<span style='color:#fff' >Share</span>
+			</div>
+		</a>
+
+		<a target='_blank' href='' style='display:none;text-align:center;margin-left:10px;  flex-basis:100%;' class=sfsi_responsive_fluid  >
+			<div class='sfsi_responsive_icon_item_container sfsi_responsive_custom_icon sfsi_responsive_icon_3_container sfsi_medium_button sfsi_centered_icon sfsi_responsive_icon_gradient' style=' border-radius:5px;  width:100%; background-color:#729fcf' >
+				<img style='max-height: 25px' src=''>
+				<span style='color:#fff' >Share</span>
+			</div>
+		</a>
+
+		<a target='_blank' href='' style='display:none;text-align:center;margin-left:10px;  flex-basis:100%;' class=sfsi_responsive_fluid  >
+			<div class='sfsi_responsive_icon_item_container sfsi_responsive_custom_icon sfsi_responsive_icon_4_container sfsi_medium_button sfsi_centered_icon sfsi_responsive_icon_gradient' style=' border-radius:5px;  width:100%; background-color:#729fcf' >
+				<img style='max-height: 25px' src=''>
+				<span style='color:#fff' >Share</span>
+			</div>
+		</a>
+
+</div></div><!--end responsive_icons--><span class="tve-leads-two-step-trigger tl-2step-trigger-0"></span><span class="tve-leads-two-step-trigger tl-2step-trigger-0"></span>															</div>
+
+							
+							<div class="clear"></div>
+
+							
+															
+<div class="aut">
+		<div class="ta">
+		<div class="left tai">
+			<a href="https://adventuresinmachinelearning.com/author/andyt81/" class="auti"
+			   style="background-image: url('https://secure.gravatar.com/avatar/f5719e19cb378721901c75dcb34803d7?s=180&#038;d=mm&#038;r=g')"></a>
+		</div>
+		<div class="left tat">
+			<h4>About the Author</h4>
+
+			<p></p>
+		</div>
+		<div class="clear"></div>
+	</div>
+</div>							
+							
+															<div id="comments" class="comments-compat-pressive">
+	<div id="thrive-comments" class="clearfix">
+		<div class="tcm-dot-loader">
+			<span class="inner1"></span>
+			<span class="inner2"></span>
+			<span class="inner3"></span>
+		</div>
+		<div class="thrive-comments-content">
+			<div class="tcm-comments-filter"></div>
+			<div class="tcm-comments-create" id="respond"></div>
+			<div class="tcm-comments-list">
+						<li class="comment even thread-even depth-1 parent" id="comment-163">
+				<div id="div-comment-163" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt='' src='https://secure.gravatar.com/avatar/fc68eba88a4a08e52495bd34fdcc4067?s=32&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/fc68eba88a4a08e52495bd34fdcc4067?s=64&#038;d=mm&#038;r=g 2x' class='avatar avatar-32 photo' height='32' width='32' loading='lazy'/>			<cite class="fn">tomas</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="https://adventuresinmachinelearning.com/python-tensorflow-tutorial/#comments/163">
+			April 14, 2017 at 8:28 am				</a>
+						</div>
+
+		<p>hi, Iike the idea of explaining using the simple equation, great idea. I didn&#8217;t get the tensor/array output could you past all the code. Also the code for the tensorboard visualization would be nice (I know you are planning to go into that in more detail in another tutorial, but would be great to take a look at now.</p>
+
+		
+				</div>
+				<ul class="children">
+		<li class="comment byuser comment-author-andyt81 bypostauthor odd alt depth-2" id="comment-164">
+				<div id="div-comment-164" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt='' src='https://secure.gravatar.com/avatar/f5719e19cb378721901c75dcb34803d7?s=32&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/f5719e19cb378721901c75dcb34803d7?s=64&#038;d=mm&#038;r=g 2x' class='avatar avatar-32 photo' height='32' width='32' loading='lazy'/>			<cite class="fn">Andy</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="https://adventuresinmachinelearning.com/python-tensorflow-tutorial/#comments/164">
+			April 15, 2017 at 5:51 am				</a>
+						</div>
+
+		<p>Hi Tomas &#8211; no problems, you can find the code here : <a href="https://github.com/adventuresinML/adventures-in-ml-code" rel="nofollow ugc">https://github.com/adventuresinML/adventures-in-ml-code</a>.  I&#8217;ve put another link to this repository in the article to make it clearer.  Thanks for the feedback</p>
+
+		
+				</div>
+				</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+		<li class="comment even thread-odd thread-alt depth-1" id="comment-165">
+				<div id="div-comment-165" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt='' src='https://secure.gravatar.com/avatar/7abbdeb7bbf0cfb647cb2235d474a117?s=32&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/7abbdeb7bbf0cfb647cb2235d474a117?s=64&#038;d=mm&#038;r=g 2x' class='avatar avatar-32 photo' height='32' width='32' loading='lazy'/>			<cite class="fn"><a href='https://bablofil.ru' rel='external nofollow ugc' class='url'>Bablofil</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="https://adventuresinmachinelearning.com/python-tensorflow-tutorial/#comments/165">
+			April 19, 2017 at 3:19 am				</a>
+						</div>
+
+		<p>Thanks, great article.</p>
+
+		
+				</div>
+				</li><!-- #comment-## -->
+		<li class="comment odd alt thread-even depth-1" id="comment-168">
+				<div id="div-comment-168" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt='' src='https://secure.gravatar.com/avatar/f39474c4e306baf68b810a50390b41f9?s=32&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/f39474c4e306baf68b810a50390b41f9?s=64&#038;d=mm&#038;r=g 2x' class='avatar avatar-32 photo' height='32' width='32' loading='lazy'/>			<cite class="fn"><a href='http://intelligentonlinetools.com/cgi-bin/nn/neural_networks_with_python.cgi' rel='external nofollow ugc' class='url'>Lwebzem</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="https://adventuresinmachinelearning.com/python-tensorflow-tutorial/#comments/168">
+			May 5, 2017 at 1:16 am				</a>
+						</div>
+
+		<p>I used the code from this post and it worked instantly. This is a great article and great code so I added the link to the collection of neural networks with python.</p>
+
+		
+				</div>
+				</li><!-- #comment-## -->
+		<li class="comment even thread-odd thread-alt depth-1" id="comment-304">
+				<div id="div-comment-304" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt='' src='https://secure.gravatar.com/avatar/34df2c71ad1ff90dbf0f2dbf019dde5d?s=32&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/34df2c71ad1ff90dbf0f2dbf019dde5d?s=64&#038;d=mm&#038;r=g 2x' class='avatar avatar-32 photo' height='32' width='32' loading='lazy'/>			<cite class="fn">dtdzung</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="https://adventuresinmachinelearning.com/python-tensorflow-tutorial/#comments/304">
+			July 17, 2017 at 1:02 pm				</a>
+						</div>
+
+		<p>great article. Thank you</p>
+
+		
+				</div>
+				</li><!-- #comment-## -->
+		<li class="comment odd alt thread-even depth-1" id="comment-321">
+				<div id="div-comment-321" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt='' src='https://secure.gravatar.com/avatar/6d69f8f338523ec4ecd982e1a25b8a23?s=32&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/6d69f8f338523ec4ecd982e1a25b8a23?s=64&#038;d=mm&#038;r=g 2x' class='avatar avatar-32 photo' height='32' width='32' loading='lazy'/>			<cite class="fn"><a href='https://google.com' rel='external nofollow ugc' class='url'>xxx</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="https://adventuresinmachinelearning.com/python-tensorflow-tutorial/#comments/321">
+			July 21, 2017 at 10:21 am				</a>
+						</div>
+
+		<p>Asking գueѕtions are really fastіdious thing if you are not understandіng anything completely, but this piece of ѡriting presents nice understanding ｙet.</p>
+
+		
+				</div>
+				</li><!-- #comment-## -->
+		<li class="comment even thread-odd thread-alt depth-1 parent" id="comment-348">
+				<div id="div-comment-348" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt='' src='https://secure.gravatar.com/avatar/64c3cf6e5614bbaf533ea2d4f9252ee3?s=32&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/64c3cf6e5614bbaf533ea2d4f9252ee3?s=64&#038;d=mm&#038;r=g 2x' class='avatar avatar-32 photo' height='32' width='32' loading='lazy'/>			<cite class="fn">Lucian</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="https://adventuresinmachinelearning.com/python-tensorflow-tutorial/#comments/348">
+			July 28, 2017 at 11:10 am				</a>
+						</div>
+
+		<p>Hi</p>
+<p>Great tutorial, one of the (few..) best explained on the web. </p>
+<p>I have a question: it is possible to give an image path to the model so it can recognize the content of the image (a number in this case) and print accuracy ?</p>
+<p>I alredy have a Tensorflow model which predict given numbers (based on MNIST) but it fails a bit. I would like to print the accuracy or, better, use a model like this with TF deeply integrated to predict these numbers.</p>
+<p>Thank you</p>
+
+		
+				</div>
+				<ul class="children">
+		<li class="comment byuser comment-author-andyt81 bypostauthor odd alt depth-2" id="comment-350">
+				<div id="div-comment-350" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt='' src='https://secure.gravatar.com/avatar/f5719e19cb378721901c75dcb34803d7?s=32&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/f5719e19cb378721901c75dcb34803d7?s=64&#038;d=mm&#038;r=g 2x' class='avatar avatar-32 photo' height='32' width='32' loading='lazy'/>			<cite class="fn">Andy</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="https://adventuresinmachinelearning.com/python-tensorflow-tutorial/#comments/350">
+			July 28, 2017 at 7:44 pm				</a>
+						</div>
+
+		<p>Hi Lucian, thanks for the comment.  I&#8217;m sorry, I&#8217;m not quite sure what you mean by image path?  The code given here does predict the MNIST numbers and prints the accuracy.  Are you asking whether there is a more accurate deep learning model to predict numbers and other image content?  If so, there is &#8211; a convolutional neural network.  Check out this post to learn how to implement in TensorFlow: <a href="https://adventuresinmachinelearning.com/convolutional-neural-networks-tutorial-tensorflow/" rel="nofollow">Convolutional Neural Networks Tutorial in TensorFlow</a></p>
+<p>I hope this helps</p>
+
+		
+				</div>
+				</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+		<li class="comment even thread-even depth-1 parent" id="comment-432">
+				<div id="div-comment-432" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt='' src='https://secure.gravatar.com/avatar/126c7712ccc5349da382fc5fcac636c2?s=32&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/126c7712ccc5349da382fc5fcac636c2?s=64&#038;d=mm&#038;r=g 2x' class='avatar avatar-32 photo' height='32' width='32' loading='lazy'/>			<cite class="fn">John McDonald</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="https://adventuresinmachinelearning.com/python-tensorflow-tutorial/#comments/432">
+			August 10, 2017 at 10:38 pm				</a>
+						</div>
+
+		<p>Shouldn&#8217;t<br />
+a=d*e in the 1st paragraph breakdown?  Not a=d*c</p>
+
+		
+				</div>
+				<ul class="children">
+		<li class="comment byuser comment-author-andyt81 bypostauthor odd alt depth-2 parent" id="comment-433">
+				<div id="div-comment-433" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt='' src='https://secure.gravatar.com/avatar/f5719e19cb378721901c75dcb34803d7?s=32&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/f5719e19cb378721901c75dcb34803d7?s=64&#038;d=mm&#038;r=g 2x' class='avatar avatar-32 photo' height='32' width='32' loading='lazy'/>			<cite class="fn">Andy</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="https://adventuresinmachinelearning.com/python-tensorflow-tutorial/#comments/433">
+			August 11, 2017 at 7:22 pm				</a>
+						</div>
+
+		<p>Hi John, yes it should &#8211; thanks for picking this up.  I&#8217;ve fixed it</p>
+
+		
+				</div>
+				<ul class="children">
+		<li class="comment even depth-3" id="comment-434">
+				<div id="div-comment-434" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt='' src='https://secure.gravatar.com/avatar/126c7712ccc5349da382fc5fcac636c2?s=32&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/126c7712ccc5349da382fc5fcac636c2?s=64&#038;d=mm&#038;r=g 2x' class='avatar avatar-32 photo' height='32' width='32' loading='lazy'/>			<cite class="fn">John McDonald</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="https://adventuresinmachinelearning.com/python-tensorflow-tutorial/#comments/434">
+			August 12, 2017 at 12:58 pm				</a>
+						</div>
+
+		<p>No problem &#8211; I initially thought I might have missed a new way to break down functions!!</p>
+
+		
+				</div>
+				</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+		<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-445">
+				<div id="div-comment-445" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt='' src='https://secure.gravatar.com/avatar/38be27ecc82938edf85845a5cd5ed558?s=32&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/38be27ecc82938edf85845a5cd5ed558?s=64&#038;d=mm&#038;r=g 2x' class='avatar avatar-32 photo' height='32' width='32' loading='lazy'/>			<cite class="fn">Pasindu Tennage</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="https://adventuresinmachinelearning.com/python-tensorflow-tutorial/#comments/445">
+			August 17, 2017 at 5:17 pm				</a>
+						</div>
+
+		<p>Thank you very much for posting this. Very informative. Keep up the good work 🙂</p>
+
+		
+				</div>
+				</li><!-- #comment-## -->
+		<li class="comment even thread-even depth-1" id="comment-589">
+				<div id="div-comment-589" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt='' src='https://secure.gravatar.com/avatar/80365673cd69143489ee51facc5a6449?s=32&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/80365673cd69143489ee51facc5a6449?s=64&#038;d=mm&#038;r=g 2x' class='avatar avatar-32 photo' height='32' width='32' loading='lazy'/>			<cite class="fn">Mauro</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="https://adventuresinmachinelearning.com/python-tensorflow-tutorial/#comments/589">
+			October 18, 2017 at 9:06 am				</a>
+						</div>
+
+		<p>Hi Andy,</p>
+<p>Amazing tutorial, I&#8217;d say the best I&#8217;ve found in 2 days of google searches!</p>
+<p>As an aside, would you be able to write a similar tutorial for a Regression example? Or using different training methods?</p>
+<p>I know that it is just a matter of changing the softmax to maybe relu or something like that, and changing the number of output neurons. However I feel like it would be really helpful for someone who is just getting started, as there is really NO tutorial on how to build a NN using TF for a regression problem.  If you don&#8217;t have the time, would you be able to just post some code? I reckon you could re-use most of the code written here.</p>
+<p>Great job anyway!</p>
+
+		
+				</div>
+				</li><!-- #comment-## -->
+		<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-595">
+				<div id="div-comment-595" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt='' src='https://secure.gravatar.com/avatar/7ac4040cd1da84c5b45da9c51cf01e8d?s=32&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/7ac4040cd1da84c5b45da9c51cf01e8d?s=64&#038;d=mm&#038;r=g 2x' class='avatar avatar-32 photo' height='32' width='32' loading='lazy'/>			<cite class="fn">Rouahi</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="https://adventuresinmachinelearning.com/python-tensorflow-tutorial/#comments/595">
+			October 20, 2017 at 1:26 pm				</a>
+						</div>
+
+		<p>Hi Andy,<br />
+Thank you very much for posting this tutorial.<br />
+I tried to run the convolutional_neural_network_tutorial.py code, but my computer crashes.<br />
+The characteristics of my Computer are the following:</p>
+<p>Processor: Intel i5-7200 CPU 2.50GHz, 2.70GHz<br />
+RAM: 4 GB<br />
+Operating System: Windows 10</p>
+<p>Is the size of my RAM is insufficient to execute this code?<br />
+ Thank you.</p>
+
+		
+				</div>
+				</li><!-- #comment-## -->
+		<li class="comment even thread-even depth-1" id="comment-611">
+				<div id="div-comment-611" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt='' src='https://secure.gravatar.com/avatar/0347c49a5c0ea32d1a9f8d91701afe9f?s=32&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/0347c49a5c0ea32d1a9f8d91701afe9f?s=64&#038;d=mm&#038;r=g 2x' class='avatar avatar-32 photo' height='32' width='32' loading='lazy'/>			<cite class="fn">gee m</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="https://adventuresinmachinelearning.com/python-tensorflow-tutorial/#comments/611">
+			March 16, 2018 at 3:27 pm				</a>
+						</div>
+
+		<p>Really great article, thank you very much for the good work!</p>
+
+		
+				</div>
+				</li><!-- #comment-## -->
+		<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-612">
+				<div id="div-comment-612" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt='' src='https://secure.gravatar.com/avatar/7f2188c40b511b83bba7d789e324aa0f?s=32&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/7f2188c40b511b83bba7d789e324aa0f?s=64&#038;d=mm&#038;r=g 2x' class='avatar avatar-32 photo' height='32' width='32' loading='lazy'/>			<cite class="fn">Oz F</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="https://adventuresinmachinelearning.com/python-tensorflow-tutorial/#comments/612">
+			March 27, 2018 at 8:44 pm				</a>
+						</div>
+
+		<p>Great Article.  The code worked perfectly.  I used TensorFlow running on Docker and had no issues following up.  Thanks a lot.</p>
+
+		
+				</div>
+				</li><!-- #comment-## -->
+		<li class="comment even thread-even depth-1" id="comment-614">
+				<div id="div-comment-614" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt='' src='https://secure.gravatar.com/avatar/07187dfbc20fab7efe3b513e0fe6e151?s=32&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/07187dfbc20fab7efe3b513e0fe6e151?s=64&#038;d=mm&#038;r=g 2x' class='avatar avatar-32 photo' height='32' width='32' loading='lazy'/>			<cite class="fn">Eli</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="https://adventuresinmachinelearning.com/python-tensorflow-tutorial/#comments/614">
+			April 29, 2018 at 5:39 pm				</a>
+						</div>
+
+		<p>Thank you so much.</p>
+
+		
+				</div>
+				</li><!-- #comment-## -->
+		<li class="comment odd alt thread-odd thread-alt depth-1 parent" id="comment-617">
+				<div id="div-comment-617" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt='' src='https://secure.gravatar.com/avatar/cd10cfd7f6f7b02a2d6284a57bace781?s=32&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/cd10cfd7f6f7b02a2d6284a57bace781?s=64&#038;d=mm&#038;r=g 2x' class='avatar avatar-32 photo' height='32' width='32' loading='lazy'/>			<cite class="fn">Shashank</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="https://adventuresinmachinelearning.com/python-tensorflow-tutorial/#comments/617">
+			May 20, 2018 at 10:58 am				</a>
+						</div>
+
+		<p>This blog is the best way to dive into TF for the first timers. Appreciate your work</p>
+
+		
+				</div>
+				<ul class="children">
+		<li class="comment byuser comment-author-andyt81 bypostauthor even depth-2" id="comment-618">
+				<div id="div-comment-618" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt='' src='https://secure.gravatar.com/avatar/f5719e19cb378721901c75dcb34803d7?s=32&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/f5719e19cb378721901c75dcb34803d7?s=64&#038;d=mm&#038;r=g 2x' class='avatar avatar-32 photo' height='32' width='32' loading='lazy'/>			<cite class="fn">Andy</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="https://adventuresinmachinelearning.com/python-tensorflow-tutorial/#comments/618">
+			May 20, 2018 at 9:34 pm				</a>
+						</div>
+
+		<p>Glad it is a help for you</p>
+
+		
+				</div>
+				</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+			</div>
+			<div class="tcm-lazy-comments"></div>
+		</div>
+	</div>
+</div>
+							
+													</div>
+					</div>
+
+				</section>
+							</div>
+		
+								<div class="sAsCont">
+				<aside class="sAs right">
+							<section id="search-2"><div class="scn"><!--<section class="widget search_widget clear">-->
+<form action="https://adventuresinmachinelearning.com/" method="get" class="srh">
+	<input type="text" id="search-field" class="search-field" placeholder="Search..."
+	       name="s"/>
+	<button type="submit" id="search-button" class="search-button sBn"></button>
+</form>
+<!--</section>--></div></section>
+		<section id="recent-posts-2"><div class="scn">
+		<p class="ttl">Recent Posts</p>
+		<ul>
+											<li>
+					<a href="https://adventuresinmachinelearning.com/policy-gradient-tensorflow-2/">Policy Gradient Reinforcement Learning in TensorFlow 2</a>
+									</li>
+											<li>
+					<a href="https://adventuresinmachinelearning.com/prioritised-experience-replay/">Prioritised Experience Replay in Deep Q Learning</a>
+									</li>
+											<li>
+					<a href="https://adventuresinmachinelearning.com/sumtree-introduction-python/">SumTree introduction in Python</a>
+									</li>
+											<li>
+					<a href="https://adventuresinmachinelearning.com/atari-space-invaders-dueling-q/">Atari Space Invaders and Dueling Q RL in TensorFlow 2</a>
+									</li>
+											<li>
+					<a href="https://adventuresinmachinelearning.com/dueling-q-networks-tensorflow-2/">Dueling Q networks in TensorFlow 2</a>
+									</li>
+					</ul>
+
+		</div></section><section id="sfsi-widget-2"><div class="scn"><p class="ttl">Share this post</p>		<div class="sfsi_widget" data-position="widget" style="display:flex;flex-wrap:wrap;justify-content: left">
+			<div id='sfsi_wDiv'></div>
+			<div class="norm_row sfsi_wDiv "  style="width:225px;position:absolute;;text-align:left"><div style='width:40px; height:40px;margin-left:5px;margin-bottom:5px; ' class='sfsi_wicons shuffeldiv ' ><div class='inerCnt'><a class=' sficn' data-effect='' target='_blank'  href='https://adventuresinmachinelearning.com/feed/' id='sfsiid_rss' style='opacity:1'  ><img data-pin-nopin='true' alt='RSS' title='RSS' src='https://adventuresinmachinelearning.com/wp-content/plugins/ultimate-social-media-icons/images/icons_theme/flat/flat_rss.png' width='40' height='40' style='' class='sfcm sfsi_wicon ' data-effect=''   /></a></div></div><div style='width:40px; height:40px;margin-left:5px;margin-bottom:5px; ' class='sfsi_wicons shuffeldiv ' ><div class='inerCnt'><a class=' sficn' data-effect='' target='_blank'  href='' id='sfsiid_facebook' style='opacity:1'  ><img data-pin-nopin='true' alt='Facebook' title='Facebook' src='https://adventuresinmachinelearning.com/wp-content/plugins/ultimate-social-media-icons/images/icons_theme/flat/flat_facebook.png' width='40' height='40' style='' class='sfcm sfsi_wicon ' data-effect=''   /></a><div class="sfsi_tool_tip_2 fb_tool_bdr sfsiTlleft" style="width:62px ;opacity:0;z-index:-1;margin-left:-47.5px;" id="sfsiid_facebook"><span class="bot_arow bot_fb_arow"></span><div class="sfsi_inside"><div  class='icon3'><a target='_blank' href='https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fadventuresinmachinelearning.com%2Fpython-tensorflow-tutorial' style='display:inline-block;'  > <img class='sfsi_wicon'  data-pin-nopin='true' width='auto' height='auto' alt='fb-share-icon' title='Facebook Share' src='https://adventuresinmachinelearning.com/wp-content/plugins/ultimate-social-media-icons/images/visit_icons/fbshare_bck.png'  /></a></div></div></div></div></div><div style='width:40px; height:40px;margin-left:5px;margin-bottom:5px; ' class='sfsi_wicons shuffeldiv ' ><div class='inerCnt'><a class=' sficn' data-effect='' target='_blank'  href='' id='sfsiid_twitter' style='opacity:1'  ><img data-pin-nopin='true' alt='Twitter' title='Twitter' src='https://adventuresinmachinelearning.com/wp-content/plugins/ultimate-social-media-icons/images/icons_theme/flat/flat_twitter.png' width='40' height='40' style='' class='sfcm sfsi_wicon ' data-effect=''   /></a><div class="sfsi_tool_tip_2 twt_tool_bdr sfsiTlleft" style="width:59px ;opacity:0;z-index:-1;margin-left:-46px;" id="sfsiid_twitter"><span class="bot_arow bot_twt_arow"></span><div class="sfsi_inside"><div  class='icon2'><div class='sf_twiter' style='display: inline-block;vertical-align: middle;width: auto;'>
+						<a target='_blank' href='https://twitter.com/intent/tweet?text=Hey%2C+check+out+this+cool+site+I+found%3A+www.yourname.com+%23Topic+via%40my_twitter_name+https://adventuresinmachinelearning.com/python-tensorflow-tutorial' style='display:inline-block' >
+							<img data-pin-nopin= true width='auto' class='sfsi_wicon' src='https://adventuresinmachinelearning.com/wp-content/plugins/ultimate-social-media-icons/images/visit_icons/en_US_Tweet.svg' alt='Tweet' title='Tweet' >
+						</a>
+					</div></div></div></div></div></div></div ><div id="sfsi_holder" class="sfsi_holders" style="position: relative; float: left;width:100%;z-index:-1;"></div ><script>window.addEventListener("sfsi_functions_loaded", function() 
+			{
+				if (typeof sfsi_widget_set == "function") {
+					sfsi_widget_set();
+				}
+			}); </script>			<div style="clear: both;"></div>
+		</div>
+	</div></section><section id="custom_html-2"><div class="widget_text scn"><p class="ttl">Follow the Adventures In Machine Learning Facebook page</p><div class="textwidget custom-html-widget"><div class="fb-page" data-href="https://www.facebook.com/adventuresinml/" data-tabs="timeline" data-width="" data-height="" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/adventuresinml/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/adventuresinml/">Adventures in Machine Learning</a></blockquote></div></div></div></section><section id="categories-2"><div class="scn"><p class="ttl">Categories</p>
+			<ul>
+					<li class="cat-item cat-item-41"><a href="https://adventuresinmachinelearning.com/category/algorithms-data-structures/">Algorithms / data structures</a>
+</li>
+	<li class="cat-item cat-item-2"><a href="https://adventuresinmachinelearning.com/category/amazon-aws/">Amazon AWS</a>
+</li>
+	<li class="cat-item cat-item-40"><a href="https://adventuresinmachinelearning.com/category/reinforcement-learning/atari/">Atari</a>
+</li>
+	<li class="cat-item cat-item-17"><a href="https://adventuresinmachinelearning.com/category/deep-learning/cntk/">CNTK</a>
+</li>
+	<li class="cat-item cat-item-18"><a href="https://adventuresinmachinelearning.com/category/deep-learning/convolutional-neural-networks/">Convolutional Neural Networks</a>
+</li>
+	<li class="cat-item cat-item-35"><a href="https://adventuresinmachinelearning.com/category/loss-functions/cross-entropy/">Cross entropy</a>
+</li>
+	<li class="cat-item cat-item-3"><a href="https://adventuresinmachinelearning.com/category/deep-learning/">Deep learning</a>
+</li>
+	<li class="cat-item cat-item-38"><a href="https://adventuresinmachinelearning.com/category/reinforcement-learning/double-q/">Double Q</a>
+</li>
+	<li class="cat-item cat-item-39"><a href="https://adventuresinmachinelearning.com/category/reinforcement-learning/dueling-q/">Dueling Q</a>
+</li>
+	<li class="cat-item cat-item-19"><a href="https://adventuresinmachinelearning.com/category/nlp/gensim/">gensim</a>
+</li>
+	<li class="cat-item cat-item-4"><a href="https://adventuresinmachinelearning.com/category/deep-learning/gpus/">GPUs</a>
+</li>
+	<li class="cat-item cat-item-5"><a href="https://adventuresinmachinelearning.com/category/deep-learning/keras/">Keras</a>
+</li>
+	<li class="cat-item cat-item-34"><a href="https://adventuresinmachinelearning.com/category/loss-functions/">Loss functions</a>
+</li>
+	<li class="cat-item cat-item-6"><a href="https://adventuresinmachinelearning.com/category/deep-learning/lstms/">LSTMs</a>
+</li>
+	<li class="cat-item cat-item-36"><a href="https://adventuresinmachinelearning.com/category/deep-learning/tensorflow/metrics-and-summaries/">Metrics and summaries</a>
+</li>
+	<li class="cat-item cat-item-7"><a href="https://adventuresinmachinelearning.com/category/deep-learning/neural-networks/">Neural networks</a>
+</li>
+	<li class="cat-item cat-item-8"><a href="https://adventuresinmachinelearning.com/category/nlp/">NLP</a>
+</li>
+	<li class="cat-item cat-item-9"><a href="https://adventuresinmachinelearning.com/category/optimisation/">Optimisation</a>
+</li>
+	<li class="cat-item cat-item-43"><a href="https://adventuresinmachinelearning.com/category/reinforcement-learning/policy-gradient/">Policy Gradient</a>
+</li>
+	<li class="cat-item cat-item-42"><a href="https://adventuresinmachinelearning.com/category/reinforcement-learning/prioritised-experience-replay/">Prioritised Experience Replay</a>
+</li>
+	<li class="cat-item cat-item-10"><a href="https://adventuresinmachinelearning.com/category/deep-learning/pytorch/">PyTorch</a>
+</li>
+	<li class="cat-item cat-item-11"><a href="https://adventuresinmachinelearning.com/category/deep-learning/recurrent-neural-networks/">Recurrent neural networks</a>
+</li>
+	<li class="cat-item cat-item-12"><a href="https://adventuresinmachinelearning.com/category/reinforcement-learning/">Reinforcement learning</a>
+</li>
+	<li class="cat-item cat-item-20"><a href="https://adventuresinmachinelearning.com/category/deep-learning/tensorflow/tensorboard/">TensorBoard</a>
+</li>
+	<li class="cat-item cat-item-13"><a href="https://adventuresinmachinelearning.com/category/deep-learning/tensorflow/">TensorFlow</a>
+</li>
+	<li class="cat-item cat-item-14"><a href="https://adventuresinmachinelearning.com/category/deep-learning/tensorflow/tensorflow-2-0/">TensorFlow 2.0</a>
+</li>
+	<li class="cat-item cat-item-37"><a href="https://adventuresinmachinelearning.com/category/deep-learning/transfer-learning/">Transfer learning</a>
+</li>
+	<li class="cat-item cat-item-15"><a href="https://adventuresinmachinelearning.com/category/deep-learning/weight-initialization/">Weight initialization</a>
+</li>
+	<li class="cat-item cat-item-16"><a href="https://adventuresinmachinelearning.com/category/nlp/word2vec/">Word2Vec</a>
+</li>
+			</ul>
+
+			</div></section>			
+		</aside>
+			</div>
+						<div class="clear"></div>
+
+		</div>
+
+
+		</div>
+</div> <!-- Close the wrapper div -->
+
+<footer class="f-hw">
+	<div class="f-i">
+						<div class="fmm">
+			<div class="wrp">
+				<p>
+											Copyright text 2020 by Adventures in Machine Learning. 																&nbsp;&nbsp;-&nbsp;&nbsp;Designed by <a href="https://www.thrivethemes.com" target="_blank"
+						                                        style="text-decoration: underline;">Thrive Themes</a>
+						| Powered by <a style="text-decoration: underline;" href="//www.wordpress.org" target="_blank">WordPress</a>
+									</p>
+				<div class="fm-m">
+									</div>
+				<div class="clear"></div>
+			</div>
+		</div>
+			</div>
+</footer>
+
+<script type="text/template" id="comments-conversion"><# if ( html_switch === 'tcm_live_update' ) { #>
+	<div class="tcm-thank-you-submited tcm-border-color-ac">
+		<#= custom_message #>
+	</div>
+<# } #>
+<# if ( html_switch === 'tcm_related_posts' ) { #>
+	<div class="tcm-posts tcm-border-color-ac">
+	        <#= custom_message #>
+	        <div class="tcm-posts-list <# if ( ! show_featured_image ) { #> no-featured-image <# } #> clear-this posts-length-<#= ThriveComments.related_posts.length #>">
+		        <# ThriveComments.related_posts.forEach( function ( value ) { #>
+			        <div class="tcm-post tcm-color-ac <# if ( ! show_featured_image ) { #> tcm-border-bottom-color-ac <# } #>">
+				        <# if ( show_featured_image ) { #>
+				            <div>
+		                         <a href="<#= value.guid #>" style="background-image: url(<#= value.featured_image #>)" class="tcm-related-thumbnail <# if ( ! value.featured_image ) { #>tcm-no-featured-image<# } #>">
+	                            </a>
+				            </div>
+					    <# } #>
+				        <h3><a href="<#= value.guid #>">
+
+								<span>
+									<svg class="related-posts-arrow tcm-svg-fill-ac"><use xlink:href="#tcm-related-posts-arrow"></use></svg>								</span>
+
+
+								<#= value.post_title #>
+
+								</#></a></h3>
+			        </div>
+		        <# } ) #>
+	        </div>
+	</div>
+<# } #>
+<# if ( html_switch === 'tcm_social_share' ) { #>
+	<div class="tcm-share-post tcm-border-color-ac">
+		<#= custom_message #>
+		<div class="share-buttons">
+			<# if ( share_btns.fb_share ) { #><div class="fb-button" data-href="http://www.facebook.com/share.php"></div><# } #>
+			<# if ( share_btns.tw_share ) { #><div class="tw-button" data-href="https://twitter.com/intent/tweet"></div><# } #>
+			<# if ( share_btns.lk_share ) { #><div class="in-button" data-href="https://www.linkedin.com/cws/share"></div><# } #>
+			<# if ( share_btns.pt_share ) { #><div class="pt-button" data-href="http://pinterest.com/pin/create/button"></div><# } #>
+			<# if ( share_btns.gg_share ) { #><div class="gm-button" data-href="https://plus.google.com/share"></div><# } #>
+			<# if ( share_btns.xi_share ) { #><div class="xi-button" data-href="https://www.xing.com/spi/shares/new"></div><# } #>
+		</div>
+	</div>
+<# } #>
+</script><script type="text/template" id="comments-create"><# if ( ! current_user_id && comment_registration ) { #>
+<div class="tcm-error-heading">
+	<p><#= ThriveComments.util.render_label('login_submit_comment') #></p>
+</div>
+<# } #>
+<div class="tcm-comment-wrapper">
+	<# if ( ! close_comments ) { #>
+	<div class="tcm-create-post-container comment-id-<#= id #>" data-position="<#= position #>" data-comment-id="<#= id #>">
+		<# if ( gravatarActive ) { #>
+		<div class="left">
+			<div class="tcm-client-avatar"
+			<# if(typeof (ThriveComments.social_user) !== 'undefined'){#>style="background-image: url('<#= ThriveComments.social_user.picture #>')"<#}else{#>style="background-image: url('<#= photo_src #>')"<#}#>></div>
+	</div>
+	<# } #>
+	<div class="right">
+		<div class="tcm-post-input-container">
+			<div class="tcm-error-message"></div>
+			<textarea tabindex="1" <# if ( mainInput ) { #> class='mainInput' <# } #> id='tcm-post-content' name="tcm-post-content" placeholder="<#= ThriveComments.util.render_label('enter_comment') #>"><#= comment_content #></textarea>
+		</div>
+		<div class="tcm-comment-additional-fields">
+			<div class="inner clear-this">
+				<# if ( ThriveComments.current_user.ID || typeof (ThriveComments.social_user) !== 'undefined') { #>
+				<div class="tcm-comment-as">
+					<div class="tcm-comment-as-label">
+						<p><#= ThriveComments.util.render_label('commenting_as',ThriveComments.current_user.display_name || ( ThriveComments.social_user && ThriveComments.social_user.name ) ) #></p>
+					</div>
+					<div class="tcm-logout-label">
+						<a <# if(ThriveComments.current_user.ID){#>href="https://adventuresinmachinelearning.com/wp-login.php?action=logout&amp;_wpnonce=6c57302395"<#}#>><#= ThriveComments.util.render_label('logout_change') #></a>
+					</div>
+				</div>
+
+				<div class="tcm-btn-div">
+					<button tabindex="1" class="tcm-save-btn tcm-save-btn-right tcm-truncate tcm-transparent tcm-border-color-ac-h " id="tcm-submit-comment" data-parent="<#= id #>" data-level="<#= level #>" type="submit">
+						<#= ThriveComments.util.render_label('submit_comment') #>
+					</button>
+				</div>
+
+				<# if ( ! ThriveComments.close_comments && ThriveComments.email_services.length !== 0  ) { #>
+					<label class="tcm_receive_notif_container">
+						<#= ThriveComments.util.render_label('tcm_receive_notifications') #>
+						<# if ( ThriveComments.settings.tcm_moderators_notifications && ThriveComments.current_user.is_moderator ) { #>
+							<input id="tcm_receive_notifications" class="form-input" type="checkbox" name="tcm_receive_notifications" checked/>
+						<# } else { #>
+							<input id="tcm_receive_notifications" class="form-input" type="checkbox" name="tcm_receive_notifications" />
+						<# } #>
+						<span class="checkmark"></span>
+					</label>
+				<# } #>
+
+				<# if ( ThriveComments.settings.remember_me === '1' ) { #>
+				<label class="tcm_remember_me">
+					<#= ThriveComments.util.render_label('remember_me') #>
+					<input id="tcm_remember_me" class="form-input" type="checkbox" name="tcm_remember_me"/>
+					<span class="checkmark"></span>
+				</label>
+				<# } #>
+
+				<# } else if( ThriveComments.settings.comment_registration && !ThriveComments.current_user.ID) { #>
+
+				<# if ( ! current_user_id ) { #>
+					<# if ( ! ThriveComments.close_comments && ThriveComments.email_services.length !== 0 ) { #>
+						<label class="tcm_receive_notif_container">
+							<#= ThriveComments.util.render_label('tcm_receive_notifications') #>
+							<input id="tcm_receive_notifications" class="form-input" type="checkbox" name="tcm_receive_notifications"/>
+							<span class="checkmark"></span>
+						</label>
+					<# } #>
+				<button class="tcm-show-login tcm-save-btn-center" id="tcm-login-up" data-parent="<#= id #>" data-level="<#= level #>" type="submit">
+					<#= ThriveComments.util.render_label('login_on_website') #>
+				</button>
+				<# } #>
+				<# } else {#>
+				<div class="tcm-guest">
+					<# if ( !ThriveComments.settings.comment_registration && !ThriveComments.current_user.ID ) {#>
+						<p><#= ThriveComments.util.render_label('guest_comment') #></p>
+						<div class="tcm-error-message"></div>
+						<input tabindex="1" id="tcm-guest-name" class="form-input" type="text" name="name" placeholder="<#= ThriveComments.util.render_label('name') #>"/>
+						<div class="tcm-error-message"></div>
+						<input tabindex="1" id="tcm-guest-email" class="form-input" type="text" name="email" placeholder="<#= ThriveComments.util.render_label('email') #>"/>
+						<# if(ThriveComments.settings.tcm_show_url == 1){#>
+							<div class="tcm-error-message"></div>
+							<input tabindex="1" id="tcm-author-url" class="form-input" type="text" name="url" placeholder="<#= ThriveComments.util.render_label('website') #>"/>
+						<# } #>
+					<# } #>
+
+
+					<# if ( ! ThriveComments.close_comments && ThriveComments.email_services.length !== 0 ) { #>
+						<label class="tcm_receive_notif_container">
+							<#= ThriveComments.util.render_label('tcm_receive_notifications') #>
+							<input id="tcm_receive_notifications" class="form-input" type="checkbox" name="tcm_receive_notifications"/>
+							<span class="checkmark"></span>
+						</label>
+					<# } #>
+
+					<# if ( ThriveComments.settings.remember_me === '1' ) { #>
+						<label class="tcm_remember_me">
+							<#= ThriveComments.util.render_label('remember_me') #>
+							<input id="tcm_remember_me" class="form-input" type="checkbox" name="tcm_remember_me"/>
+							<span class="checkmark"></span>
+						</label>
+					<# } #>
+
+					<# if ( ThriveComments.settings.storing_consent === '1' && !ThriveComments.current_user.ID ) { #>
+						<label class="tcm_remember_me tcm_last_label">
+							<span class="tcm-consent-text"><#= ThriveComments.util.render_label('storing_consent') #></span>
+							<div class="tcm-error-message"></div>
+							<input id="tcm_storing_consent" class="form-input" type="checkbox" name="tcm_storing_consent"/>
+							<span class="checkmark"></span>
+						</label>
+					<# } #>
+
+					<button tabindex="1" class="tcm-save-btn tcm-truncate tcm-transparent tcm-border-color-ac-h" id="tcm-submit-comment" data-parent="<#= id #>" data-level="<#= level #>" type="submit">
+						<#= ThriveComments.util.render_label('submit_comment') #>
+					</button>
+				</div>
+
+				<# if ( ( ! current_user_id && ThriveComments.settings.login_activation ) || ( ThriveComments.settings.tcm_enable_social_signin === '1' &&
+						( ( ThriveComments.settings.tcm_api_status.google === 1 && ThriveComments.settings.tcm_api_status.google_api === 1 ) ||
+						( ThriveComments.settings.tcm_api_status.facebook === 1 && ThriveComments.settings.tcm_api_status.facebook_api === 1 ) ) ) ) { #>
+				<div class="tcm-separator">
+					<span>or</span>
+				</div>
+				<# } #>
+				<div class="tcm-user-details">
+					<# if ( ! current_user_id && ThriveComments.settings.tcm_enable_social_signin === '1' && ( ThriveComments.social_user === undefined &&
+							( ThriveComments.settings.tcm_api_status.google === 1 && ThriveComments.settings.tcm_api_status.google_api === 1 ) ||
+							( ThriveComments.settings.tcm_api_status.facebook === 1 && ThriveComments.settings.tcm_api_status.facebook_api === 1 ) ) ) { #>
+					<div class="tcm-social-accounts">
+						<p>
+							<#= ThriveComments.util.render_label('social_account') #>
+						</p>
+						<# if(ThriveComments.settings.tcm_api_status.facebook === 1 && ThriveComments.settings.tcm_api_status.facebook_api === 1){#>
+						<a href="javascript:void(0)" id="tcm-fb-logo" class="tcm-social-share-logo">
+						                                            <span class="tcm-share-info">
+							                                            <#= ThriveComments.util.render_label('signin_facebook') #>
+						                                            </span>
+						</a>
+						<# } #>
+						<# if(ThriveComments.settings.tcm_api_status.google === 1 && ThriveComments.settings.tcm_api_status.google_api === 1){#>
+						<a href="javascript:void(0)" id="tcm-gp-logo" class="tcm-social-share-logo">
+						                                            <span class="tcm-share-info">
+							                                            <#= ThriveComments.util.render_label('signin_google') #>
+						                                            </span>
+						</a>
+						<# } #>
+					</div>
+					<# } #>
+					<# if ( ! current_user_id && ThriveComments.settings.login_activation ) { #>
+
+					<button class="tcm-show-login tcm-truncate" id="tcm-login-down" data-parent="<#= id #>" data-level="<#= level #>" type="submit"
+					<# if(ThriveComments.settings.tcm_enable_social_signin == 1){#>style="margin-top: 20px;"<#}#>>
+					<#= ThriveComments.util.render_label('login_on_website') #>
+					</button>
+					<# } #>
+				</div>
+				<# }#>
+			</div>
+		</div>
+	</div>
+	<div class="clear"></div>
+</div>
+
+<# } #>
+</div>
+</script><script type="text/template" id="comments-deleted"><div class="tcm-deleted-comment clear-this">
+	<div class="deleted-header">
+		<div class="moderation-img no-image" data-social-avatar="<#= comment.get('social_avatar') #>" data-email="<#= comment.get('comment_author_email') #>" data-src="<#= comment.get('photo_src') #>" style="background-image: url(<#= comment.get('author_avatar_urls') #>);"></div>
+		<div class="deleted-header-text">
+			<strong>
+				<#= comment.get('author_name') #>
+			</strong>
+			<span>
+				<#= comment.get('formatted_date') #>
+			</span>
+		</div>
+	</div>
+	<div class="deleted-text">
+		<p class="deleted-info-text tcm-color-ac">
+			<# if ( comment.get('status') === 'spam' ) { #>
+			<span>This comment was marked as spam</span>
+			<# } else { #>
+			<span>This comment was marked as trash</span>
+			<# } #>
+			<a href="#" data-key="z" class="undo-action">Undo</a>
+		</p>
+
+		<p>
+			<#= comment.get('comment_content') #>
+		</p>
+	</div>
+</div>
+</script><script type="text/template" id="comments-item"><div class="deleted-state"></div>
+<div class="tcm-comment-content <# if ( parseInt( comment.get('tcm_featured') ) === 1 ) { #> tcm-featured <# } #><# if ( comment.get('comment_approved') == 0 )  { #> tcm-comment-awaiting-moderation <# } #> level-<#= comment.get('level') #>"
+	 data-comment-id="<#= comment.get('comment_ID') #>">
+	<div id="tcm-moderate-front" class="tcm-moderate-front"></div>
+
+	<#  if ( comment.isPostAuthor() ) { #>
+	<svg class="author-icon-svg"><use xlink:href="#tcm-author-icon"></use></svg>	<# } #>
+	<div class="tcm-comment-header">
+		<# if ( gravatarActive ) { #>
+		<div class="tcm-comment-author-img no-image" title="Comment Author Image" data-social-avatar="<#= comment.get('social_avatar') #>" data-email-hash="<#= comment.get('email_hash') #>" data-comment-id="<#= comment.get('comment_ID') #>" data-src="<#= comment.get('photo_src') #>"
+			 style="background-image: url(<#= comment.get('photo_src') #>)"></div>
+		<# } #>
+		<div class="tcm-author-content">
+			<div class="tcm-user-info">
+				<div class="tcm-comment-author-name">
+					<strong>
+						<#= comment.get('display_name') #>
+					</strong>
+					<# if ( comment.get('show_badge') ) { #>
+					<# var badges_object = comment.get('user_achieved_badges');#>
+					<# if(badges_object != undefined && badges_object.length === undefined && ThriveComments.settings.tcm_badges_option == '1'){#>
+					<div class="tcm-author-badges">
+						<# _.each(badges_object,function(badge,key){
+								if(badge.image_url.indexOf('all_badges.svg') !== -1){#>
+														<span class="tcm-badge svg-badge">
+															<span class="text"><#= badge.name #></span>
+															<svg><use xlink:href="<#= badge.image_url #>"/></svg>
+														</span>
+														<#}else{#>
+														<span class="tcm-badge" style="background-image: url('<#= badge.image_url #>')">
+															<span class="text"><#= badge.name #></span>
+														</span>
+														<#}#>
+														<# });#>
+					</div>
+					<# } #>
+					<# } #>
+				</div>
+
+				<# if ( ThriveComments.settings['comment_date'] != 0) { #>
+				<div class="tcm-date-container">
+											<span>
+												<#= comment.get('formatted_date') #>
+											</span>
+				</div>
+				<# } #>
+			</div>
+		</div>
+	</div>
+
+	<div class="tcm-comment-text">
+		<p class="tcm-moderation tcm-color-ac">This comment is awaiting moderation</p>
+		<div class="tcm-comment-text-content">
+			<#= comment.get('comment_content') #>
+		</div>
+	</div>
+
+	<div class="clearfix" style="position: relative;">
+		<div class="tcm-left">
+			<#  var can_vote = true;
+					if(ThriveComments.current_user.display_name == undefined && ThriveComments.settings.tcm_voting_only_register == 1){
+					can_vote = false;
+					}
+					if(ThriveComments.settings.tcm_vote_type != 'no_vote' && (comment.get('comment_approved') == 1) && can_vote){#>
+			<div class="tcm-voting-container">
+                <span>
+                    <#= ThriveComments.util.render_label('vote') #>
+                </span>
+				<button class="tcm-voting-input tcm-upvote <# if(last_vote == 'upvote'){#> active <# } #>" data-type="upvote">
+					<div class="tcm-thumb_up">
+						<svg class=""><use xlink:href="#tcm-icon-thumb_up"></use></svg>					</div>
+					<span class="tcm-votes-count"><#= comment.get('upvote') #></span>
+				</button>
+				<# if(ThriveComments.settings.tcm_vote_type != 'up_only'){#>
+				<button class="tcm-voting-input tcm-downvote <# if(last_vote == 'downvote'){#> active <# } #>" data-type="downvote">
+					<div class="tcm-thumb_down">
+						<svg class=""><use xlink:href="#tcm-icon-thumb_down"></use></svg>					</div>
+					<span class="tcm-votes-count"><#= comment.get('downvote') #> </span>
+				</button>
+				<# } #>
+			</div>
+			<# } #>
+			<# if ( share_individual_comments && (comment.get('comment_approved') == 1 ) ) { #>
+			<div class="tcm-dropdown tcm-share-dropdown">
+                    <span class="tcm-toggle-button">
+                        <#= ThriveComments.util.render_label('share') #>
+
+						<svg class="bulk-action-arrow-svg"><use xlink:href="#tcm-bulk-action-arrow"></use></svg>
+                    </span>
+				<div class="tcm-dropdown-content">
+					<div class="tcm-dropdown-element">
+						<a href="http://www.facebook.com/share.php" class="tcm-fb-icon tcm-share-facebook"
+						   data-url="https://adventuresinmachinelearning.com/python-tensorflow-tutorial/#comments/<#= comment.get('comment_ID') #>">
+							Facebook						</a>
+					</div>
+					<div class="tcm-dropdown-element">
+						<a href="https://twitter.com/intent/tweet" class="tcm-tw-icon tcm-share-twitter"
+						   data-url="https://adventuresinmachinelearning.com/python-tensorflow-tutorial/#comments/<#= comment.get('comment_ID') #>">
+							Twitter						</a>
+					</div>
+					<div class="tcm-dropdown-element tcm-copy-input-content">
+						<a id="tcm-click-to-copy"
+						   class="tcm-left  tcm-copy-url tcm-cu-icon"
+						   href="javascript:void(0)" data-clipboard-text="https://adventuresinmachinelearning.com/python-tensorflow-tutorial/#comments/<#= comment.get('comment_ID') #>">
+							<#= ThriveComments.util.render_label('copy_url') #>
+						</a>
+					</div>
+				</div>
+			</div>
+			<# } #>
+		</div>
+		<# if ( ! close_comments ) { #>
+			<# if ( comment.get('comment_approved') == 1 || ( ThriveComments.current_user.is_moderator && comment.get('comment_approved') !== 1 ) ) { #>
+			<div class="tcm-reply-container">
+				<button class='tcm-reply-btn tcm-right tcm-truncate tcm-border-color-ac' data-id="<#= comment.get('comment_ID') #>"
+						data-level="<#= comment.get('level') #>" type="submit"><span class="reply-icon-container">
+						<svg class="tcm-svg-fill-ac"><use xlink:href="#tcm-reply"></use></svg>					</span>
+					<#= ThriveComments.util.render_label('reply_to_user', comment.get('comment_author')) #>
+				</button>
+				<div class="clear"></div>
+				<div class="tcm-create-comment-fields"></div>
+			</div>
+			<# } #>
+		<# } #>
+	</div>
+
+	<div class="clear"></div>
+
+</div>
+</script><script type="text/template" id="comments-lazy-loading"><button class="tcm-loader">
+	<div style="display: inline-block" class="tcm-dot-loader done">
+		<span class="inner1"></span>
+		<span class="inner2"></span>
+		<span class="inner3"></span>
+	</div>
+	<p>
+		<#= ThriveComments.util.render_label('load_comments') #>
+	</p>
+</button>
+<# if ( comments_rendered > 2 && ! ThriveComments.close_comments ) { #>
+<div class="add-comment tcm-background-color-ac">
+	<p>
+			<span class="add-comment-icon">
+				<svg class="add-comment-svg"><use xlink:href="#tcm-add-comment"></use></svg>			</span>
+		<#= ThriveComments.util.render_label('add_comment') #></#></p>
+</div>
+<# } #>
+<# if ( showPoweredBy ) { #>
+<div class="tcm-powered-by">
+    	<a href="https://thrivethemes.com/comments/" title="Powered by Thrive Comments" target="_blank">
+			<span class="tcm-footer-logo">
+				<svg class="logo-footer-svg"><use xlink:href="#tcm-logo-footer"></use></svg>			</span>
+
+		<span>
+			Powered by 		</span>
+		<span>
+			Thrive Comments		</span>
+	</a>
+</div>
+<# } #>
+
+<# if ( ! ThriveComments.close_comments && ThriveComments.email_services.length !== 0 ) { #>
+	<div class="tcm-align-right">
+
+		<a href="javascript:void(0)" class="tcm-link-unsubscribe" title="<#= ThriveComments.util.render_label('unsubscribe') #>"
+		<# if ( - 1 === ThriveComments.util.get_cookie( 'subscribed_posts' ).indexOf( ThriveComments.post.ID ) || ( typeof ThriveComments.current_user.ID === 'undefined' ) ) { #> hidden <# } #> >
+		<#= ThriveComments.util.render_label('unsubscribe') #></a>
+
+		<a href="javascript:void(0)" class="tcm-link-subscribe" title="<#= ThriveComments.util.render_label('subscribe') #>"
+		<# if ( - 1 !== ThriveComments.util.get_cookie( 'subscribed_posts' ).indexOf( ThriveComments.post.ID ) ) { #> hidden <# } #> >
+		<#= ThriveComments.util.render_label('subscribe') #></a>
+
+		<div id="tcm-subscribe-form" class="tcm-subscribe-form" hidden>
+			<div class="tcm-error-message"></div>
+			<input class="form-input tcm-subscriber-email" type="text" name="Email" placeholder="<#= ThriveComments.util.render_label('email') #>"/>
+			<button class="submit-subscribe-post"><#= ThriveComments.util.render_label('subscribe') #></a></button>
+		</div>
+
+		<# if ( typeof ThriveComments.current_user.ID === 'undefined' ) { #>
+			<div id="tcm-unsubscribe-form" class="tcm-subscribe-form"
+			<# if ( - 1 === ThriveComments.util.get_cookie( 'subscribed_posts' ).indexOf( ThriveComments.post.ID )  ) { #> hidden <# } #> >
+				<div class="tcm-error-message"></div>
+				<input class="form-input tcm-unsubscriber-email" type="text" name="Email" placeholder="<#= ThriveComments.util.render_label('email') #>"/>
+				<button class="submit-unsubscribe-post"><#= ThriveComments.util.render_label('unsubscribe') #></a></button>
+			</div>
+		<# } #>
+        <p class="tcm-already-subscribed" hidden> Already subscribed! </p>
+
+    </div>
+<# } #>
+<div class="clear"></div>
+</script><script type="text/template" id="comments-list"><div id="tcm-comments-filter" class="tcm-comments-filter">
+	<div class="tcm-lazy-loader"></div>
+</div></script><script type="text/template" id="comments-moderation"><div class="tcm-moderate-dots tcm-background-color-ac-h">
+	<span class="moderate-dot"></span>
+	<span class="moderate-dot"></span>
+	<span class="moderate-dot"></span>
+</div>
+
+<div class="tcm-dropdown-moderate">
+	<# _.each( actions, function( action, key ){ #>
+	<div class="tcm-dropdown-moderate-element" data-fn="<#= action.fn #>" data-value="<#= action.value #>"><#= action.text #></div>
+	<# }) #>
+</div></script><script type="text/template" id="comments-sort"><div class="tcm-comments-filters">
+	<div class="left">
+		<div class="tcm-comments-number">
+			<#= ThriveComments.util.render_label( 'number_of_comments', 'comment_count' ) #>
+		</div>
+	</div>
+	<div class="right">
+		<label for="sort-by">
+			<#= ThriveComments.util.render_label('show_comments_first','','before') #>
+		</label>
+		<div name="sort-by" id="tcm-sort-by" class="tcm-dropdown tcm-filter-dropdown tcm-really-random">
+            <span class="tcm-toggle-button current-sorting">
+                <# if ( ThriveComments.settings.comment_order === 'desc') { #>
+					<#= ThriveComments.util.render_label( 'newest') #>
+					<# } else if( ThriveComments.settings.comment_order === 'asc') { #>
+					<#= ThriveComments.util.render_label( 'oldest') #>
+					<# } else {#>
+				<# if( ThriveComments.settings.tcm_vote_type != 'no_vote' ) {#>
+					<#= ThriveComments.util.render_label( 'top_rated') #>
+					<# } #>
+				<# } #>
+			</span>
+
+			<span class="dropdown-arrow-comments">
+						<svg class="sort-by-dropdown-svg"><use xlink:href="#tcm-sort-by-dropdown"></use></svg>			</span>
+
+			<div class="tcm-dropdown-content">
+
+				<div data-value="desc" class="tcm-dropdown-element tcm-sort-by">
+					<#= ThriveComments.util.render_label( 'newest') #>
+				</div>
+				<div data-value="asc" class="tcm-dropdown-element tcm-sort-by">
+					<#= ThriveComments.util.render_label( 'oldest') #>
+				</div>
+				<# if(ThriveComments.settings.tcm_vote_type != 'no_vote'){#>
+				<div data-value="top-rated" class="tcm-dropdown-element tcm-sort-by">
+					<#= ThriveComments.util.render_label( 'top_rated') #>
+				</div>
+
+				<# } #>
+
+			</div>
+		</div>
+		<label for="sort-by">
+			<#= ThriveComments.util.render_label('show_comments_first','','after') #>
+		</label>
+	</div>
+</div>
+<div class="clear"></div>
+<# if ( ThriveComments.close_comments ) { #>
+<div class="tcm-closed-comments" style="text-align: center">
+	<p>
+		<#= ThriveComments.util.render_label('close_comments') #>
+	</p>
+</div>
+<# } #></script>	<div id="wp-auth-check-wrap" class="hidden">
+	<div id="wp-auth-check-bg"></div>
+	<div id="wp-auth-check">
+	<button type="button" class="wp-auth-check-close button-link"><span class="screen-reader-text">Close dialog</span></button>
+			<div id="wp-auth-check-form" class="loading" data-src="https://adventuresinmachinelearning.com/wp-login.php?interim-login=1&#038;wp_lang=en_US"></div>
+			<div class="wp-auth-fallback">
+		<p><b class="wp-auth-fallback-expired" tabindex="0">Session expired</b></p>
+		<p><a href="https://adventuresinmachinelearning.com/wp-login.php" target="_blank">Please log in again.</a>
+		The login page will open in a new tab. After logging in you can close it and return to this page.</p>
+	</div>
+	</div>
+	</div>
+	<div style="display: none;">
+    <svg style="position: absolute; width: 0; height: 0; overflow: hidden;" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"xml:space="preserve">
+	<defs>
+
+	<symbol id="tcm-reply" viewBox="0 0 100 100">
+			<g>
+				<path d="M69.9,38.1L69.9,38.1c-1.5-3.7-4.7-6.4-7.4-9.2c-2.8-2.8-6.3-4.7-9.9-6.3c-3.7-1.6-7.7-2.4-11.7-2.4h-11
+					l4.7-4.8c3.4-3.4,3.4-9,0-12.4c-3.4-3.4-8.9-3.4-12.2,0L2.8,22.7c-3.4,3.4-3.4,9,0,12.4l19.4,19.7c1.7,1.7,3.9,2.6,6.1,2.6
+					c2.2,0,4.4-0.9,6.1-2.6c3.4-3.4,3.4-9,0-12.4l-4.6-4.6h10.9c3.4,0,6.6,1.4,9.1,3.8l4.8,4.8c1.2,2,3,3.4,5.1,4.1
+					c2.1,0.6,4.5,0.4,6.6-0.7C70.5,47.5,72,42.3,69.9,38.1z"/>
+				<ellipse cx="81.1" cy="60.8" rx="8.5" ry="8.6"/>
+			</g>
+	</symbol>
+
+	<symbol id="tcm-icon-thumb_down" viewBox="0 0 24 24">
+		<g>
+			<path d="M18.984 3h4.031v12h-4.031v-12zM15 3c1.078 0 2.016 0.938 2.016 2.016v9.984c0 0.563-0.234 1.031-0.609
+			1.406l-6.563 6.609-1.078-1.078c-0.281-0.281-0.422-0.609-0.422-1.031v-0.328l0.984-4.594h-6.328c-1.078 0-2.016-0.891-2.016-1.969l0.047-0.094h-0.047v-1.922c0-0.281
+			0.047-0.516 0.141-0.75l3.047-7.031c0.281-0.703 0.984-1.219 1.828-1.219h9z" />
+		</g>
+	</symbol>
+
+	<symbol id="tcm-icon-thumb_up" viewBox="0 0 24 24">
+		<g>
+			<path d="M23.016 9.984l-0.047 0.094h0.047v1.922c0 0.281-0.047 0.516-0.141 0.75l-3.047 7.031c-0.281 0.703-0.984
+			1.219-1.828 1.219h-9c-1.078 0-2.016-0.938-2.016-2.016v-9.984c0-0.563 0.234-1.031 0.609-1.406l6.563-6.609 1.078
+			1.078c0.281 0.281 0.422 0.609 0.422 1.031v0.328l-0.984 4.594h6.328c1.078 0 2.016 0.891 2.016 1.969zM0.984 21v-12h4.031v12h-4.031z" />
+		</g>>
+
+	</symbol>
+
+	<symbol id="tcm-add-comment" viewBox="0 0 267.3 245">
+		<path style="fill:#FFFFFF;" class="st0" d="M265.7,61C259.6,27.5,230.3,2,195.1,2H72.5C33,2,0.8,34.2,0.8,73.8v77c0,0.1,0,0.1,0,0.2v81.6
+			c0,0-1.8,11.1,9.7,11.1c0,0,4.2,1,13.1-4.6l46.8-43.2h124.6c39.5,0,71.7-32.2,71.7-71.7V83.8L265.7,61z M78.4,114
+			c-8.1,0-14.6-6.5-14.6-14.6c0-8.1,6.5-14.6,14.6-14.6S93,91.4,93,99.5C93,107.5,86.5,114,78.4,114z M137.5,114
+			c-8.1,0-14.6-6.5-14.6-14.6c0-8.1,6.5-14.6,14.6-14.6c8.1,0,14.6,6.5,14.6,14.6C152.1,107.5,145.5,114,137.5,114z M196.5,114
+			c-8.1,0-14.6-6.5-14.6-14.6c0-8.1,6.5-14.6,14.6-14.6c8.1,0,14.6,6.5,14.6,14.6C211.1,107.5,204.6,114,196.5,114z"/>
+	</symbol>
+
+	<symbol id="tcm-logo-footer" viewBox="0 0 130 100">
+		<path style="fill:#434343;" class="st0" d="M108.8,26.5C106.7,14.9,96.5,6.1,84.4,6.1H41.9C28.2,6.1,17,17.2,17,30.9v26.7c0,0,0,0,0,0.1v28.2
+			c0,0-0.6,3.8,3.4,3.8c0,0,1.5,0.4,4.6-1.6l16.2-14.9h12.1c0.1-0.2,0.3-0.4,0.4-0.6l2.2-3.1c0.4-0.6,1.9-2.3,3.1-3.6H37.6
+			c-1.1,0-2.1,0.6-2.8,1.4l0,0L24.1,78.6V58.2c0-0.2,0.1-0.4,0.1-0.6V30.9c0-9.7,7.9-17.6,17.6-17.6h42.5c9.7,0,17.6,7.9,17.6,17.6
+			v16.9c2.6-0.4,5.3-0.6,7.2-0.7V34.4L108.8,26.5z"/>
+		<path style="fill:#57A245;" class="st1" d="M43.7,39.9c-3.3,0-6-2.7-6-6c0-3.3,2.7-6,6-6h38.9c3.3,0,6,2.7,6,6c0,3.3-2.7,6-6,6H43.7z"/>
+		<path style="fill:#434343;" class="st0" d="M43.7,52.2h38.9c2.4,0,4.3-1.9,4.3-4.3s-1.9-4.3-4.3-4.3H43.7c-2.4,0-4.3,1.9-4.3,4.3S41.3,52.2,43.7,52.2"/>
+		<path style="fill-rule:evenodd;clip-rule:evenodd;fill:#57A245;" class="st2" d="M118.2,52.4c-1.2,0-1.6,0.2-2.4,0.5c-0.9,0.3-1.9,1-2.6,1.7l-1.8,1.7c-0.2,0.2-0.2,0.2-0.3,0.4
+			c-3.4,4.2-4.1,4.9-6.8,10.2c-1.2,2.5-2.7,4.8-4.2,7.1c-1,1.6-2,3.2-3.2,4.6c-0.1,0.2-0.2,0.2-0.3,0.4c-0.7,0.9-1.7,1.7-2.5,2.5
+			c-0.6,0.5-1.3,1-1.9,1.5c-0.6,0.4-1.1,0.8-1.7,1.1l-0.9,0.5c-0.2,0.1-0.3,0.2-0.5,0.3c-0.1,0-0.3,0.2-0.4,0.2
+			c-0.2,0.1-0.4,0.2-0.5,0.2c-3.7,1.8-8.5,3-12.7,3.4L72.7,89c-0.8,0.1-2.8,0.2-4.7,0.2c-1.6,0-3,0-3.5-0.2l0.3-0.7
+			c0.6-1.4,1.3-2.8,2.1-4.1c0.1-0.2,0.2-0.4,0.4-0.6l1.5-2.6l3.9-5.3l3.5-3.6l0.2-0.2c0.2-0.1,0.2-0.1,0.3-0.2l0.8-0.7
+			c0.1-0.1,0.2-0.1,0.3-0.2c0.2-0.2,0.3-0.3,0.5-0.4l3.7-2.5c1.3-0.8,2.6-1.6,3.8-2.3l4-2.1c1.5-0.8,4-2.1,5.5-2.7l4.1-1.9
+			c-0.6,0.1-1.4,0.4-1.9,0.6c-0.6,0.2-1.3,0.4-1.9,0.6l-3.8,1.3c-1.8,0.6-3.6,1.4-5.5,2.1l-3.5,1.5c-1.3,0.5-3.3,1.6-4.7,2.3
+			c-1.5,0.8-2.9,1.8-4.3,2.6l-4.8,3.4c-0.1,0.1-0.2,0.2-0.4,0.3l-2.7,2.3c-0.8,0.8-1.8,1.7-2.5,2.5c-0.2,0.2-0.2,0.2-0.3,0.4
+			c-0.7,0.7-1.3,1.6-1.9,2.4c-0.9,1.2-1.8,2.5-2.5,3.8l-1.3,2.5c-0.5,1-2.7,6-2.8,7.4h-0.2c0-0.2-0.5-2.5-0.7-4.4v-1.6
+			c0-0.1,0-0.1,0-0.2c0.2-1.1,0.1-1.8,0.3-3.1c0.6-3.6,2.2-7.4,4.2-10.4l2.1-3c0.6-0.8,2.8-3.4,3.5-3.8c0.6-0.5,1.2-1.3,1.9-1.8
+			c0.3-0.2,0.6-0.5,0.9-0.8c0.4-0.2,0.6-0.5,1-0.8l2-1.5c2-1.5,4.2-2.8,6.4-3.8c2.4-1.2,4.7-2.1,7.2-3.1c3.2-1.3,7.6-2.2,10.9-2.9
+			c3.5-0.7,12.3-2.3,16.6-2.3h0.9C114,51.2,117.4,51.2,118.2,52.4z"/>
+		<path style="fill:none;" class="st3" d="M99.5,58.5c0.4,0,0.2,0,0.2-0.1C99.4,58.4,99.6,58.4,99.5,58.5z M99.5,58.5c0.1-0.1-0.1-0.1,0.2-0.1
+			C99.7,58.5,99.9,58.5,99.5,58.5 M99.9,58.3l-0.1,0.1 M99.5,58.5c-0.6,0.1-1.4,0.4-1.9,0.6c-0.6,0.2-1.3,0.4-1.9,0.6l-3.8,1.3
+			c-1.8,0.6-3.6,1.4-5.5,2.1l-3.5,1.5c-1.3,0.5-3.3,1.6-4.7,2.3c-1.5,0.8-2.9,1.8-4.3,2.6l-4.8,3.4c-0.1,0.1-0.2,0.2-0.4,0.3l-2.7,2.3
+			c-0.8,0.8-1.8,1.7-2.5,2.5c-0.2,0.2-0.2,0.2-0.3,0.4c-0.7,0.7-1.3,1.6-1.9,2.4c-0.9,1.2-1.8,2.5-2.5,3.8l-1.3,2.5
+			c-0.5,1-2.7,6-2.8,7.4h-0.2c0-0.2-0.5-2.5-0.7-4.4v-1.6c0-0.1,0-0.1,0-0.2c0.2-1.1,0.1-1.8,0.3-3.1c0.6-3.6,2.2-7.4,4.2-10.4l2.1-3
+			c0.6-0.8,2.8-3.4,3.5-3.8c0.6-0.5,1.2-1.3,1.9-1.8c0.3-0.2,0.6-0.5,0.9-0.8c0.4-0.2,0.6-0.5,1-0.8l2-1.5c2-1.5,4.2-2.8,6.4-3.8
+			c2.4-1.2,4.7-2.1,7.2-3.1c3.2-1.3,7.6-2.2,10.9-2.9c3.5-0.7,12.3-2.3,16.6-2.3h0h0.2h0.6c2.2,0,5.6,0.1,6.4,1.3
+			c-1.2,0-1.6,0.2-2.4,0.5c-0.9,0.3-1.9,1-2.6,1.7l-1.8,1.7c-0.2,0.2-0.2,0.2-0.3,0.4c-3.4,4.2-4.1,4.9-6.8,10.2
+			c-1.2,2.5-2.7,4.8-4.2,7.1c-1,1.6-2,3.2-3.2,4.6c-0.1,0.2-0.2,0.2-0.3,0.4c-0.7,0.9-1.7,1.7-2.5,2.5c-0.6,0.5-1.3,1-1.9,1.5
+			c-0.6,0.4-1.1,0.8-1.7,1.1l-0.9,0.5c-0.2,0.1-0.3,0.2-0.5,0.3c-0.1,0-0.3,0.2-0.4,0.2c-0.2,0.1-0.4,0.2-0.5,0.2
+			c-3.7,1.8-8.5,3-12.7,3.4L72.7,89c-0.8,0.1-2.8,0.2-4.7,0.2c-1.6,0-3,0-3.5-0.2l0.3-0.7c0.6-1.4,1.3-2.8,2.1-4.1
+			c0.1-0.2,0.2-0.4,0.4-0.6l1.5-2.6l3.9-5.3l3.5-3.6c0.1-0.1,0.2-0.2,0.2-0.2c0.2-0.1,0.2-0.1,0.3-0.2l0.8-0.7
+			c0.1-0.1,0.2-0.1,0.3-0.2c0.2-0.2,0.3-0.3,0.5-0.4l3.7-2.5c1.3-0.8,2.6-1.6,3.8-2.3l4-2.1c1.5-0.8,4-2.1,5.5-2.7L99.5,58.5"/>
+	</symbol>
+
+	<symbol id="tcm-related-posts-arrow" viewBox="0 0 16 16">
+		<path class="st0" d="M8,15.9c-4.4,0-7.9-3.5-7.9-7.9S3.6,0.1,8,0.1s7.9,3.5,7.9,7.9S12.4,15.9,8,15.9z M8,2.4C4.9,2.4,2.4,4.9,2.4,8
+			s2.5,5.6,5.6,5.6s5.6-2.5,5.6-5.6S11.1,2.4,8,2.4z M11.9,8.3l-3.3,3.3c-0.1,0.1-0.2,0.1-0.2,0.1c-0.2,0-0.3-0.2-0.3-0.3v-2H4.4
+			C4.2,9.3,4.1,9.2,4.1,9V7c0-0.2,0.2-0.3,0.3-0.3H8v-2c0-0.2,0.1-0.3,0.3-0.3c0.1,0,0.2,0,0.2,0.1l3.3,3.3C11.9,7.9,12,7.9,12,8
+			S11.9,8.2,11.9,8.3z"/>
+	</symbol>
+
+	<symbol id="tcm-sort-by-dropdown" viewBox="0 0 12 7">
+		<path style="fill:#6E767D;" class="st0" d="M0.3,1.5l5.2,5.2c0,0,0.5,0.5,1.1,0l5.2-5.2c0,0,0.4-0.4,0.2-0.9c0,0-0.1-0.4-0.7-0.4H0.8c0,0-0.5,0-0.7,0.4
+			C0.1,0.5-0.2,1,0.3,1.5z"/>
+	</symbol>
+
+	<symbol id="tcm-author-icon" viewBox="0 0 1020 1080">
+		<polygon style="fill:#474F57" class="st0" points="44.5,882.9 251.4,1081 251.4,889.8 "/>
+		<path style="fill:#6E767D" class="st1" d="M937.8,891.8H81.2c-44.3,0-80.6-36.3-80.6-80.6V82.7c0-44.3,36.3-80.6,80.6-80.6h856.6
+			c44.3,0,80.6,36.3,80.6,80.6v728.5C1018.4,855.5,982.1,891.8,937.8,891.8z"/>
+		<g>
+			<path style="fill:#6E767D" class="st2" d="M732,688.3c-0.5,0.1-2.7,0.5-6.3,1.1c-142.4,25.4-168.6,29.8-171.6,30.1c-7,0.8-12.3,0.4-16-1.3
+				c-2.4-1-3.6-2.3-4-2.8c0.2-1,1.4-3.3,2.2-4.7c0.7-1.4,1.6-3,2.3-4.6c4.9-11.1,1.5-22.4-8.9-29.5c-7.8-5.3-18.1-7.4-30.6-6.3
+				c-7.5,0.6-138.9,22.6-211.1,34.7l-35.4,27.7c82.6-13.9,240.1-40.2,248.4-41c7.4-0.6,13.2,0.3,16.7,2.7c2,1.4,1.8,1.8,1.3,3.1
+				c-0.4,0.9-1,2-1.6,3.2c-2.4,4.4-5.6,10.5-4.5,18c1.2,8.2,7.3,15.3,16.7,19.4c5.3,2.3,11.4,3.5,18.4,3.5c2.8,0,5.7-0.2,8.8-0.5
+				c5.7-0.7,63.8-10.9,172.9-30.3c3.6-0.6,5.8-1,6.3-1.1c5.9-1,9.8-6.6,8.7-12.5C743.4,691.2,737.8,687.3,732,688.3L732,688.3z
+				 M732,688.3"/>
+			<path style="fill:#FFFFFF" class="st2" d="M349.8,583.9l-91.7,95.5c-10.1,10.5-17.2,23.5-20.6,37.7l130.2-102c40.8,18,73.3,23.7,98.3,23.7
+				c43.8,0,64.2-17.7,64.2-17.7c-40.8-21.2-46.6-60.6-46.6-60.6c31.3,13.2,96.4,28.7,96.4,28.7c86.5-57.5,131.7-181.9,131.7-181.9
+				c-9,2.5-17.5,3.5-25.6,3.5c-40.6,0-68.5-25.9-68.5-25.9l113-24.5c37.6-76.7,41.2-211.1,41.2-211.1L428.2,453.5
+				C389.2,487.9,361.9,533.4,349.8,583.9L349.8,583.9z M349.8,583.9"/>
+		</g>
+	</symbol>
+
+	<symbol id="tcm-bulk-action-arrow" viewBox="0 0 12 7">
+		<path style="fill:#6E767D" class="st0" d="M0.3,1.5l5.2,5.2c0,0,0.5,0.5,1.1,0l5.2-5.2c0,0,0.4-0.4,0.2-0.9c0,0-0.1-0.4-0.7-0.4H0.8c0,0-0.5,0-0.7,0.4
+			C0.1,0.5-0.2,1,0.3,1.5z"/>
+	</symbol>
+
+
+	</defs>
+	</svg>
+</div><script type='text/javascript'>
+/* <![CDATA[ */
+var TVE_Ult_Data = {"ajaxurl":"https:\/\/adventuresinmachinelearning.com\/wp-admin\/admin-ajax.php","ajax_load_action":"tve_ult_ajax_load","conversion_events_action":"tve_ult_conversion_event","shortcode_campaign_ids":[],"matched_display_settings":[1409],"campaign_ids":[1409],"post_id":148,"is_singular":true,"tu_em":""};
+/* ]]> */
+</script>
+		<script type="text/javascript" src="https://adventuresinmachinelearning.com/wp-content/plugins/thrive-ultimatum/js/dist/frontend.min.js?v=2.2.13.3"></script><script>
+window.addEventListener('sfsi_functions_loaded', function() {
+    if (typeof sfsi_responsive_toggle == 'function') {
+        sfsi_responsive_toggle(0);
+        // console.log('sfsi_responsive_toggle');
+
+    }
+})
+</script>
+    <script>
+        window.addEventListener('sfsi_functions_loaded', function() {
+            if (typeof sfsi_plugin_version == 'function') {
+                sfsi_plugin_version(2.55);
+            }
+        });
+
+        function sfsi_processfurther(ref) {
+            var feed_id = 'V3F6MFpEbW1yeWt6N3JFQlRPcGR3Y1BTSHk2aE5TZkR1S2FTSmFEZG1lNFNMUCtFRit1dXh5eUlRNFd4QURib1JMV2VNS3RZZXFwR1I3WlZ5cllWTlozZEZhUWh1RWJHRkdzb2h4WlRrM2FLQmxSOG84TG82alVrLzhYQ0x6RGV8dUxJUVIzYmpudzRLb0pQd2NCdVZGZERkRFlJaGRvbStOUzRZQzRpRnJEOD0=';
+            var feedtype = 8;
+            var email = jQuery(ref).find('input[name="email"]').val();
+            var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+            if ((email != "Enter your email") && (filter.test(email))) {
+                if (feedtype == "8") {
+                    var url = "https://api.follow.it/subscription-form/" + feed_id + "/" + feedtype;
+                    window.open(url, "popupwindow", "scrollbars=yes,width=1080,height=760");
+                    return true;
+                }
+            } else {
+                alert("Please enter email address");
+                jQuery(ref).find('input[name="email"]').focus();
+                return false;
+            }
+        }
+    </script>
+    <style type="text/css" aria-selected="true">
+        .sfsi_subscribe_Popinner {
+            width: 100% !important;
+
+            height: auto !important;
+
+            padding: 18px 0px !important;
+
+            background-color: #ffffff !important;
+
+        }
+
+        .sfsi_subscribe_Popinner form {
+
+            margin: 0 20px !important;
+
+        }
+
+        .sfsi_subscribe_Popinner h5 {
+
+            font-family: Helvetica,Arial,sans-serif !important;
+
+            font-weight: bold !important;
+
+            color: #000000 !important;
+
+            font-size: 16px !important;
+
+            text-align: center !important;
+
+            margin: 0 0 10px !important;
+
+            padding: 0 !important;
+
+        }
+
+        .sfsi_subscription_form_field {
+
+            margin: 5px 0 !important;
+
+            width: 100% !important;
+
+            display: inline-flex;
+
+            display: -webkit-inline-flex;
+
+        }
+
+        .sfsi_subscription_form_field input {
+
+            width: 100% !important;
+
+            padding: 10px 0px !important;
+
+        }
+
+        .sfsi_subscribe_Popinner input[type=email] {
+
+            font-family: Helvetica,Arial,sans-serif !important;
+
+            font-style: normal !important;
+
+            color: #000000 !important;
+
+            font-size: 14px !important;
+
+            text-align: center !important;
+
+        }
+
+        .sfsi_subscribe_Popinner input[type=email]::-webkit-input-placeholder {
+
+            font-family: Helvetica,Arial,sans-serif !important;
+
+            font-style: normal !important;
+
+            color: #000000 !important;
+
+            font-size: 14px !important;
+
+            text-align: center !important;
+
+        }
+
+        .sfsi_subscribe_Popinner input[type=email]:-moz-placeholder {
+            /* Firefox 18- */
+
+            font-family: Helvetica,Arial,sans-serif !important;
+
+            font-style: normal !important;
+
+            color: #000000 !important;
+
+            font-size: 14px !important;
+
+            text-align: center !important;
+
+        }
+
+        .sfsi_subscribe_Popinner input[type=email]::-moz-placeholder {
+            /* Firefox 19+ */
+
+            font-family: Helvetica,Arial,sans-serif !important;
+
+            font-style: normal !important;
+
+            color: #000000 !important;
+
+            font-size: 14px !important;
+
+            text-align: center !important;
+
+        }
+
+        .sfsi_subscribe_Popinner input[type=email]:-ms-input-placeholder {
+
+            font-family: Helvetica,Arial,sans-serif !important;
+
+            font-style: normal !important;
+
+            color: #000000 !important;
+
+            font-size: 14px !important;
+
+            text-align: center !important;
+
+        }
+
+        .sfsi_subscribe_Popinner input[type=submit] {
+
+            font-family: Helvetica,Arial,sans-serif !important;
+
+            font-weight: bold !important;
+
+            color: #000000 !important;
+
+            font-size: 16px !important;
+
+            text-align: center !important;
+
+            background-color: #dedede !important;
+
+        }
+
+        .sfsi_shortcode_container {
+            float: left;
+        }
+
+        .sfsi_shortcode_container .norm_row .sfsi_wDiv {
+            position: relative !important;
+        }
+
+        .sfsi_shortcode_container .sfsi_holders {
+            display: none;
+        }
+
+            </style>
+
+	<div style="display:none">
+	<div class="grofile-hash-map-f5719e19cb378721901c75dcb34803d7">
+	</div>
+	<div class="grofile-hash-map-fc68eba88a4a08e52495bd34fdcc4067">
+	</div>
+	<div class="grofile-hash-map-f5719e19cb378721901c75dcb34803d7">
+	</div>
+	<div class="grofile-hash-map-7abbdeb7bbf0cfb647cb2235d474a117">
+	</div>
+	<div class="grofile-hash-map-f39474c4e306baf68b810a50390b41f9">
+	</div>
+	<div class="grofile-hash-map-34df2c71ad1ff90dbf0f2dbf019dde5d">
+	</div>
+	<div class="grofile-hash-map-6d69f8f338523ec4ecd982e1a25b8a23">
+	</div>
+	<div class="grofile-hash-map-64c3cf6e5614bbaf533ea2d4f9252ee3">
+	</div>
+	<div class="grofile-hash-map-126c7712ccc5349da382fc5fcac636c2">
+	</div>
+	<div class="grofile-hash-map-38be27ecc82938edf85845a5cd5ed558">
+	</div>
+	<div class="grofile-hash-map-80365673cd69143489ee51facc5a6449">
+	</div>
+	<div class="grofile-hash-map-7ac4040cd1da84c5b45da9c51cf01e8d">
+	</div>
+	<div class="grofile-hash-map-0347c49a5c0ea32d1a9f8d91701afe9f">
+	</div>
+	<div class="grofile-hash-map-7f2188c40b511b83bba7d789e324aa0f">
+	</div>
+	<div class="grofile-hash-map-07187dfbc20fab7efe3b513e0fe6e151">
+	</div>
+	<div class="grofile-hash-map-cd10cfd7f6f7b02a2d6284a57bace781">
+	</div>
+	</div>
+<span style="display:none" class="tl-placeholder-f-type-lightbox"></span><link rel='stylesheet' id='prismcss-css'  href='https://adventuresinmachinelearning.com/wp-content/plugins/pastacode/css/prism.css?ver=2.1' type='text/css' media='all' />
+<script type='text/javascript' src='https://c0.wp.com/p/jetpack/8.4.2/_inc/build/photon/photon.min.js' id='jetpack-photon-js'></script>
+<script type='text/javascript' src='//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js?ver=5.5.1' id='mathjax-js'></script>
+<script type='text/javascript' src='https://adventuresinmachinelearning.com/wp-content/plugins/thrive-headline-optimizer/frontend/js/triggers.min.js?ver=1.2.7' id='tho-footer-js-js'></script>
+<script type='text/javascript' src='https://c0.wp.com/c/5.5.1/wp-includes/js/imagesloaded.min.js' id='imagesloaded-js'></script>
+<script type='text/javascript' src='https://c0.wp.com/c/5.5.1/wp-includes/js/masonry.min.js' id='masonry-js'></script>
+<script type='text/javascript' src='https://c0.wp.com/c/5.5.1/wp-includes/js/jquery/jquery.masonry.min.js' id='jquery-masonry-js'></script>
+<script type='text/javascript' id='tve_frontend-js-extra'>
+/* <![CDATA[ */
+var tve_frontend_options = {"is_editor_page":"","page_events":[],"is_single":"1","ajaxurl":"https:\/\/adventuresinmachinelearning.com\/wp-admin\/admin-ajax.php","social_fb_app_id":"","dash_url":"https:\/\/adventuresinmachinelearning.com\/wp-content\/plugins\/thrive-visual-editor\/thrive-dashboard","translations":{"Copy":"Copy"},"post_id":"148","ip":"2.121.2.140","current_user":[],"post_title":"Python TensorFlow Tutorial \u2013 Build a Neural Network","post_type":"post","post_url":"https:\/\/adventuresinmachinelearning.com\/python-tensorflow-tutorial\/","is_lp":"","post_request_data":[]};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://adventuresinmachinelearning.com/wp-content/plugins/thrive-visual-editor/editor/js/dist/frontend.min.js?ver=2.5.3.3' id='tve_frontend-js'></script>
+<script type='text/javascript' src='//adventuresinmachinelearning.com/wp-content/plugins/thrive-leads/js/frontend.min.js?ver=2.2.14.3' id='tve_leads_frontend-js'></script>
+<script type='text/javascript' src='https://c0.wp.com/c/5.5.1/wp-includes/js/jquery/ui/core.min.js' id='jquery-ui-core-js'></script>
+<script type='text/javascript' src='https://adventuresinmachinelearning.com/wp-content/plugins/ultimate-social-media-icons/js/shuffle/modernizr.custom.min.js?ver=5.5.1' id='SFSIjqueryModernizr-js'></script>
+<script type='text/javascript' src='https://adventuresinmachinelearning.com/wp-content/plugins/ultimate-social-media-icons/js/shuffle/jquery.shuffle.min.js' id='SFSIjqueryShuffle-js'></script>
+<script type='text/javascript' src='https://adventuresinmachinelearning.com/wp-content/plugins/ultimate-social-media-icons/js/shuffle/random-shuffle-min.js?ver=5.5.1' id='SFSIjqueryrandom-shuffle-js'></script>
+<script type='text/javascript' id='SFSICustomJs-js-extra'>
+/* <![CDATA[ */
+var sfsi_icon_ajax_object = {"ajax_url":"https:\/\/adventuresinmachinelearning.com\/wp-admin\/admin-ajax.php"};
+var sfsi_icon_ajax_object = {"ajax_url":"https:\/\/adventuresinmachinelearning.com\/wp-admin\/admin-ajax.php","plugin_url":"https:\/\/adventuresinmachinelearning.com\/wp-content\/plugins\/ultimate-social-media-icons\/"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://adventuresinmachinelearning.com/wp-content/plugins/ultimate-social-media-icons/js/custom.js?ver=5.5.1' id='SFSICustomJs-js'></script>
+<script type='text/javascript' src='https://secure.gravatar.com/js/gprofiles.js?ver=202037' id='grofiles-cards-js'></script>
+<script type='text/javascript' id='wpgroho-js-extra'>
+/* <![CDATA[ */
+var WPGroHo = {"my_hash":""};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://c0.wp.com/p/jetpack/8.4.2/modules/wpgroho.js' id='wpgroho-js'></script>
+<script type='text/javascript' id='thrive-main-script-js-extra'>
+/* <![CDATA[ */
+var ThriveApp = {"ajax_url":"https:\/\/adventuresinmachinelearning.com\/wp-admin\/admin-ajax.php","is_singular":"1","post_type":"post","lazy_load_comments":"0","comments_loaded":"0","theme_uri":"https:\/\/adventuresinmachinelearning.com\/wp-content\/themes\/pressive","translations":{"ProductDetails":"Product Details"}};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://adventuresinmachinelearning.com/wp-content/themes/pressive/js/script.min.js?ver=5.5.1' id='thrive-main-script-js'></script>
+<script type='text/javascript' id='tve-dash-frontend-js-extra'>
+/* <![CDATA[ */
+var tve_dash_front = {"ajaxurl":"https:\/\/adventuresinmachinelearning.com\/wp-admin\/admin-ajax.php","force_ajax_send":"1","is_crawler":""};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://adventuresinmachinelearning.com/wp-content/plugins/thrive-visual-editor/thrive-dashboard/js/dist/frontend.min.js?ver=2.2.15.3' id='tve-dash-frontend-js'></script>
+<script type='text/javascript' src='https://adventuresinmachinelearning.com/wp-content/plugins/enlighter/resources/enlighterjs/enlighterjs.min.js?ver=4.2' id='enlighterjs-js'></script>
+<script type='text/javascript' id='enlighterjs-js-after'>
+!function(n,o){"undefined"!=typeof EnlighterJS?(n.EnlighterJSINIT=function(){EnlighterJS.init("pre.EnlighterJSRAW", "code.EnlighterJSRAW", {"indent":4,"ampersandCleanup":true,"linehover":true,"rawcodeDbclick":false,"textOverflow":"break","linenumbers":true,"theme":"enlighter","language":"generic","retainCssClasses":false,"collapse":false,"toolbarOuter":"","toolbarTop":"{BTN_RAW}{BTN_COPY}{BTN_WINDOW}{BTN_WEBSITE}","toolbarBottom":""})})():(o&&(o.error||o.log)||function(){})("Error: EnlighterJS resources not loaded yet!")}(window,console);
+</script>
+<script type='text/javascript' src='https://c0.wp.com/c/5.5.1/wp-includes/js/underscore.min.js' id='underscore-js'></script>
+<script type='text/javascript' src='https://c0.wp.com/c/5.5.1/wp-includes/js/backbone.min.js' id='backbone-js'></script>
+<script type='text/javascript' id='tcm-frontend-js-js-extra'>
+/* <![CDATA[ */
+var ThriveComments = {"current_user":{"photo_url":"https:\/\/adventuresinmachinelearning.com\/wp-content\/plugins\/thrive-comments\/assets\/images\/placeholder_avatar_icon.svg","is_admin":false},"translations":{"isRequired":"Please enter a valid email address","author_name_required":"Please add your name before submitting the comment","comment_content_missing":"Please add your comment text in the field below","choose_avatar":"Choose an avatar","choose_avatar_button":"Select","settings_saved_success_toast":"Settings saved successfully.","settings_saved_fail_toast":"There seems to be a problem in changing the settings. Please, try again and if the error persists contact our support team.","options_saved_success_toast":"Option changed successfully.","options_saved_fail_toast":"There seems to be a problem in changing this option. Please, try again and if the error persists contact our support team.","comments_saved_error":"There was a problem in saving your comment. Please, try again!.","tcm_duplicate_comment_error":"Duplicate comment detected, it looks as though you've already said that!","tcm_get_comments_error":"The comments could not be retrieved","change_image":"Change image","choose_image":"Choose image","default_avatar":"Selected image: default placeholder","selected_image":"Selected image","comment_to_fast":"You are posting comments too quickly. Slow down.","link_copied":"Link copied to clipboard","conversion_leads_availabe":"Option available only if you have ","conversion_leads_installed":"installed","badge_default_title":"Badge title","badge_no_empty_name":"Badge name field can't be empty","badge_reaches_only_number":"Reaches input can only be a positive number and can't be empty.","badge_select_image":"Please select a badge image before saving","badge_same_settings":"You have already set a badge with the same conditions.","approved":"Approved","unapproved":"Unapproved","reply_needed":"Reply Needed","not_reply_needed":"No Reply Needed","spam":"spam","trash":"trash","entire_website":"Entire Website","reply_failed":"Failed to submit reply!","label_enabled":"Enabled","label_disabled":"Disabled","invalid_website_url":"Invalid website url","accept_privacy_checkbox":"Please accept the privacy checkbox","email_copied":"Email copied to clipboard","autolink_added":"Auto-Link added successfully!","autolink_changed":"Changes on Auto-Link were saved successfully!","autolink_error":"Error while creating Auto-Link!","copy_input":"Copied","tcb_prevent_insert_element":"You cannot add two Thrive Comments sections on the same page","comment_by":"Comment by","moderation_approved":"was approved","moderation_unapproved":"was unapproved","moderation_no_replied":"was marked as No Reply Needed","moderation_replied":"was replied","moderation_featured":"was marked as Featured comment","moderation_no_featured":"is no longer featured","moderation_delegate":"was delegated to","moderation_not_spam":"is not spam","moderation_spam":"was marked as spam","moderation_trash":"was marked as trash","moderation_restored":"was restored","approve_text":"Approve","unapprove_text":"Unapprove","feature_text":"Feature","stop_feature_text":"Stop Featuring","spam_text":"Mark as Spam","trash_text":"Mark as Trash","comment_sending":"Sending...","comment_pending":"Pending...","nr_votes":"Number of Votes","nr_comments":"Number of Comments","moderation_expand":"Expand","moderation_error":"Error encountered for the following action","edit":"Edit","delegate":"Delegate","reply":"Reply","no_reply_needed":"No Reply Needed","error":"Error","see_comment_reply":"Click here to see the reply.","see_comment_edit":"Click here to see the edited comment."},"nonce":"9bca2c9632","routes":{"comments":"https:\/\/adventuresinmachinelearning.com\/wp-json\/tcm\/v1\/comments","gravatar":"https:\/\/adventuresinmachinelearning.com\/wp-json\/tcm\/v1\/comments\/gravatar","live_update":"https:\/\/adventuresinmachinelearning.com\/wp-json\/tcm\/v1\/comments\/live_update","update_post_subscriber":"https:\/\/adventuresinmachinelearning.com\/wp-json\/tcm\/v1\/comments\/update_post_subscriber","generate_nonce":"https:\/\/adventuresinmachinelearning.com\/wp-admin\/admin-ajax.php"},"post":{"ID":148,"post_author":"2","post_date":"2017-04-08 04:53:48","post_title":"Python TensorFlow Tutorial - Build a Neural Network","post_excerpt":"\t\t\t\t\t\t","post_status":"publish","comment_status":"closed","post_name":"python-tensorflow-tutorial","to_ping":"","pinged":"","post_parent":0,"guid":"https:\/\/adventuresinmachinelearning.com\/?p=148","menu_order":0,"post_type":"post","post_mime_type":"","comment_count":"0","filter":"raw","featured_image":"https:\/\/adventuresinmachinelearning.com\/wp-content\/uploads\/2017\/04\/google-tensor-flow-logo-black-S-1024x768.jpg","permalink":"https:\/\/adventuresinmachinelearning.com\/python-tensorflow-tutorial\/","ancestors":[],"post_category":[3,7,13],"tags_input":[]},"related_posts":[{"post_id":1704,"post_title":"Policy Gradient Reinforcement Learning in TensorFlow 2","guid":"https:\/\/adventuresinmachinelearning.com\/?p=1704","featured_image":"https:\/\/adventuresinmachinelearning.com\/wp-content\/uploads\/2020\/02\/Screen-Shot-2020-02-21-at-3.36.33-pm.png"},{"post_id":1654,"post_title":"Prioritised Experience Replay in Deep Q Learning","guid":"https:\/\/adventuresinmachinelearning.com\/?p=1654","featured_image":""},{"post_id":1549,"post_title":"Atari Space Invaders and Dueling Q RL in TensorFlow 2","guid":"https:\/\/adventuresinmachinelearning.com\/?p=1549","featured_image":"https:\/\/adventuresinmachinelearning.com\/wp-content\/uploads\/2019\/11\/Screen-Shot-2019-11-15-at-11.42.36-am.png"},{"post_id":1570,"post_title":"Dueling Q networks in TensorFlow 2","guid":"https:\/\/adventuresinmachinelearning.com\/?p=1570","featured_image":"https:\/\/adventuresinmachinelearning.com\/wp-content\/uploads\/2019\/10\/Dueling-Q-architecture.jpg"}],"const":{"toast_timeout":4000,"wp_content":"https:\/\/adventuresinmachinelearning.com\/wp-content\/","ajax_dash":["tcm_ajax_dash"],"site_url":"https:\/\/adventuresinmachinelearning.com","post_url":"https:\/\/adventuresinmachinelearning.com\/python-tensorflow-tutorial\/","moderation":{"approve":"approved","unapprove":"hold","spam":"spam","unspam":"unspam","trash":"trash","untrash":"untrash","unreplied":"tcm_unreplied","tcm_delegate":"tcm_delegate","tcm_featured":"tcm_featured","tcm_keyboard_tooltip":"tcm_display_keyboard_notification_tooltip","featured":1,"not_featured":0}},"settings":{"activate_comments":1,"comment_registration":"","close_comments_for_old_posts":"1","close_comments_days_old":"28","comments_per_page":"20","page_comments":"","is_dynamic":0,"comment_order":"asc","gravatar_active":1,"tcm_default_picture":"","powered_by":1,"comment_date":"1","share_individual_comments":1,"comment_style_template":1,"lazy_load":1,"lazy_load_avatar":0,"tcm_labels_option":{"number_of_comments":{"default":"{number_of_comments} comments","text":"{number_of_comments} comments"},"show_comments_first":{"default":"{dropdown_option} comments first","text":"{dropdown_option} comments first"},"newest":{"default":"Newest","text":"Newest"},"oldest":{"default":"Oldest","text":"Oldest"},"top_rated":{"default":"Top rated","text":"Top rated"},"enter_comment":{"default":"Enter your comment...","text":"Enter your comment..."},"load_comments":{"default":"Load more comments","text":"Load more comments"},"add_comment":{"default":"Add your comment...","text":"Add your comment..."},"reply_to_user":{"default":"Reply to {username}","text":"Reply to {username}"},"commenting_as":{"default":"Commenting as {username}","text":"Commenting as {username}"},"social_account":{"default":"Log in with:","text":"Log in with:"},"guest_comment":{"default":"Comment as a guest:","text":"Comment as a guest:"},"name":{"default":"Name","text":"Name"},"email":{"default":"Email (not displayed publicly)","text":"Email (not displayed publicly)"},"website":{"default":"Website","text":"Website"},"submit_comment":{"default":"Submit comment","text":"Submit comment"},"vote":{"default":"Vote:","text":"Vote:"},"share":{"default":"Share","text":"Share"},"copy_url":{"default":"Click to copy URL","text":"Click to copy URL"},"close_comments":{"default":"Comments are closed","text":"Comments are closed"},"email_address":{"default":"Email address","text":"Email address"},"subscribe":{"default":"Subscribe to comments","text":"Subscribe to comments"},"unsubscribe":{"default":"Unsubscribe","text":"Unsubscribe"},"logout_change":{"default":"Logout\/Change","text":"Logout\/Change"},"login_on_website":{"default":"Login on website","text":"Login on website"},"signin_facebook":{"default":"Sign in with Facebook","text":"Sign in with Facebook"},"signin_google":{"default":"Sign in with Google","text":"Sign in with Google"},"comment_content_missing":{"default":"Please add your comment text in the field below","text":"Please add your comment text in the field below"},"author_name_required":{"default":"Please add your name before submitting the comment","text":"Please add your name before submitting the comment"},"isRequired":{"default":"Please enter a valid email address","text":"Please enter a valid email address"},"need_register":{"default":"The comment could not be saved. You must be registered in order to comment","text":"The comment could not be saved. You must be registered in order to comment"},"login_submit_comment":{"default":"You need to be logged in to submit a comment","text":"You need to be logged in to submit a comment"},"comment_duplicate":{"default":"Duplicate comment detected, it looks as though you've already said that!","text":"Duplicate comment detected, it looks as though you've already said that!"},"comment_flood":{"default":"You are posting comments too quickly. Slow down.","text":"You are posting comments too quickly. Slow down."},"spam_comment":{"default":"Your comment was marked as spam","text":"Your comment was marked as spam"},"rest_cookie_invalid_nonce":{"default":"Cookie nonce is invalid","text":"Cookie nonce is invalid"},"tcm_receive_notifications":{"default":"Notify me when someone replies to my comment","text":"Notify me when someone replies to my comment"},"remember_me":{"default":"Save the details above in this browser for the next time I comment","text":"Save the details above in this browser for the next time I comment"},"storing_consent":{"default":"By using this form you agree with the storage and handling of your data by this website","text":"By using this form you agree with the storage and handling of your data by this website"}},"tcm_color_picker_value":"","tcm_notification_labels":"","tcm_keywords":"","tcm_live_update":0,"tcm_live_update_refresh_rate":20,"tcm_enable_social_signin":0,"tcm_show_url":1,"login_activation":0,"tcm_badges":"","tcm_badges_option":false,"tcm_badges_custom_images":"","tcm_voting_only_register":false,"tcm_conversion":"","tcm_roles":"","tcm_mod_administrator":"1","tcm_mod_editor":"1","tcm_mod_author":"1","tcm_mod_contributor":"0","tcm_mod_subscriber":"0","tcm_exclude_moderators":0,"tcm_vote_type":"no_vote","tcm_email_service":"","tcm_api_status":{"facebook":1,"google":1,"facebook_api":0,"google_api":0},"badges_to_moderators":1,"tcm_mark_upvoted":1,"comment_moderation":"1","comment_whitelist":"1","comment_max_links":"2","moderation_keys":"","blacklist_keys":"","tcm_meta_tags":0,"tcm_moderators_notifications":1,"remember_me":0,"storing_consent":0},"close_comments":"1","sorting":{"sort_name":"oldest","sort_field":"comment_ID","order":1},"tcm_customize_labels":{"number_of_comments":{"default":"{number_of_comments} comments","text":"{number_of_comments} comments"},"show_comments_first":{"default":"{dropdown_option} comments first","text":"{dropdown_option} comments first"},"newest":{"default":"Newest","text":"Newest"},"oldest":{"default":"Oldest","text":"Oldest"},"top_rated":{"default":"Top rated","text":"Top rated"},"enter_comment":{"default":"Enter your comment...","text":"Enter your comment..."},"load_comments":{"default":"Load more comments","text":"Load more comments"},"add_comment":{"default":"Add your comment...","text":"Add your comment..."},"reply_to_user":{"default":"Reply to {username}","text":"Reply to {username}"},"commenting_as":{"default":"Commenting as {username}","text":"Commenting as {username}"},"social_account":{"default":"Log in with:","text":"Log in with:"},"guest_comment":{"default":"Comment as a guest:","text":"Comment as a guest:"},"name":{"default":"Name","text":"Name"},"email":{"default":"Email (not displayed publicly)","text":"Email (not displayed publicly)"},"website":{"default":"Website","text":"Website"},"submit_comment":{"default":"Submit comment","text":"Submit comment"},"vote":{"default":"Vote:","text":"Vote:"},"share":{"default":"Share","text":"Share"},"copy_url":{"default":"Click to copy URL","text":"Click to copy URL"},"close_comments":{"default":"Comments are closed","text":"Comments are closed"},"email_address":{"default":"Email address","text":"Email address"},"subscribe":{"default":"Subscribe to comments","text":"Subscribe to comments"},"unsubscribe":{"default":"Unsubscribe","text":"Unsubscribe"},"logout_change":{"default":"Logout\/Change","text":"Logout\/Change"},"login_on_website":{"default":"Login on website","text":"Login on website"},"signin_facebook":{"default":"Sign in with Facebook","text":"Sign in with Facebook"},"signin_google":{"default":"Sign in with Google","text":"Sign in with Google"},"comment_content_missing":{"default":"Please add your comment text in the field below","text":"Please add your comment text in the field below"},"author_name_required":{"default":"Please add your name before submitting the comment","text":"Please add your name before submitting the comment"},"isRequired":{"default":"Please enter a valid email address","text":"Please enter a valid email address"},"need_register":{"default":"The comment could not be saved. You must be registered in order to comment","text":"The comment could not be saved. You must be registered in order to comment"},"login_submit_comment":{"default":"You need to be logged in to submit a comment","text":"You need to be logged in to submit a comment"},"comment_duplicate":{"default":"Duplicate comment detected, it looks as though you've already said that!","text":"Duplicate comment detected, it looks as though you've already said that!"},"comment_flood":{"default":"You are posting comments too quickly. Slow down.","text":"You are posting comments too quickly. Slow down."},"spam_comment":{"default":"Your comment was marked as spam","text":"Your comment was marked as spam"},"rest_cookie_invalid_nonce":{"default":"Cookie nonce is invalid","text":"Cookie nonce is invalid"},"tcm_receive_notifications":{"default":"Notify me when someone replies to my comment","text":"Notify me when someone replies to my comment"},"remember_me":{"default":"Save the details above in this browser for the next time I comment","text":"Save the details above in this browser for the next time I comment"},"storing_consent":{"default":"By using this form you agree with the storage and handling of your data by this website","text":"By using this form you agree with the storage and handling of your data by this website"}},"tcm_social_apis":{"facebook":[],"google":[]},"email_services":[],"tcm_accent_color":"","has_plugin_cache":"wp-super-cache"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://adventuresinmachinelearning.com/wp-content/plugins/thrive-comments/assets/js/frontend.min.js?ver=1.4.1' id='tcm-frontend-js-js'></script>
+<script type='text/javascript' src='https://c0.wp.com/c/5.5.1/wp-includes/js/wp-embed.min.js' id='wp-embed-js'></script>
+<script type='text/javascript' src='https://adventuresinmachinelearning.com/wp-content/plugins/pastacode/js/prism.js?ver=2.1' id='prismjs-js'></script>
+<script type='text/javascript' src='https://adventuresinmachinelearning.com/wp-content/plugins/pastacode/plugins/normalize-whitespace/prism-normalize-whitespace.min.js?ver=2.1' id='prism-normalize-whitespace-js'></script>
+<script type="text/javascript">/*<![CDATA[*/var THO_Front = THO_Front || {}; THO_Front.data = {"end_of_content_id":"tho-end-content","is_single":true,"log_url":"https:\/\/adventuresinmachinelearning.com\/wp-json\/tho\/v1\/logs","active_triggers":{"viewport":"thrive_headline"},"log_engagements":[],"post_id":148,"test_id":0,"const":{"_e_click":1,"_e_scroll":2,"_e_time":3,"_impression":1,"_engagement":2}}/*]]> */</script><script type="text/javascript">var tcb_post_lists=JSON.parse('[]');</script><script type="text/javascript">/*<![CDATA[*/if ( !window.TL_Const ) {var TL_Const={"security":"2727088af5","ajax_url":"https:\/\/adventuresinmachinelearning.com\/wp-admin\/admin-ajax.php","forms":[],"action_conversion":"tve_leads_ajax_conversion","action_impression":"tve_leads_ajax_impression","ajax_load":1,"main_group_id":1407,"display_options":{"allowed_post_types":[],"flag_url_match":false},"custom_post_data":[],"current_screen":{"screen_type":4,"screen_id":148},"ignored_fields":["email","_captcha_size","_captcha_theme","_captcha_type","_submit_option","_use_captcha","g-recaptcha-response","__tcb_lg_fc","__tcb_lg_msg","_state","_form_type","_error_message_option","_back_url","_submit_option","url","_asset_group","_asset_option","mailchimp_optin"]};} else {ThriveGlobal.$j.extend(true, TL_Const, {"security":"2727088af5","ajax_url":"https:\/\/adventuresinmachinelearning.com\/wp-admin\/admin-ajax.php","forms":[],"action_conversion":"tve_leads_ajax_conversion","action_impression":"tve_leads_ajax_impression","ajax_load":1,"main_group_id":1407,"display_options":{"allowed_post_types":[],"flag_url_match":false},"custom_post_data":[],"current_screen":{"screen_type":4,"screen_id":148},"ignored_fields":["email","_captcha_size","_captcha_theme","_captcha_type","_submit_option","_use_captcha","g-recaptcha-response","__tcb_lg_fc","__tcb_lg_msg","_state","_form_type","_error_message_option","_back_url","_submit_option","url","_asset_group","_asset_option","mailchimp_optin"]})} /*]]> */</script><div></div>
+		<!-- Cookie Notice plugin v1.3.1 by Digital Factory https://dfactory.eu/ -->
+		<div id="cookie-notice" role="banner" class="cookie-notice-hidden cookie-revoke-hidden cn-position-bottom" aria-label="Cookie Notice" style="background-color: rgba(0,0,0,1);"><div class="cookie-notice-container" style="color: #fff;"><span id="cn-notice-text" class="cn-text-container">We use cookies to ensure that we give you the best experience on our website. If you continue to use this site we will assume that you are happy with it.</span><span id="cn-notice-buttons" class="cn-buttons-container"><a href="#" id="cn-accept-cookie" data-cookie-set="accept" class="cn-set-cookie cn-button bootstrap button">Ok</a></span><a href="javascript:void(0);" id="cn-close-notice" data-cookie-set="accept" class="cn-close-icon"></a></div>
+			
+		</div>
+		<!-- / Cookie Notice plugin --></body>
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v5.0"></script>
+</html>
+<!-- Dynamic page generated in 5.625 seconds. -->
+<!-- Cached page generated by WP-Super-Cache on 2020-09-12 14:10:04 -->
+
+<!-- super cache -->

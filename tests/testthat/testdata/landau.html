@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>The targets R Package User Manual</title>
+  <meta name="description" content="In-depth discussion of the major functionality of targets." />
+  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="The targets R Package User Manual" />
+  <meta property="og:type" content="book" />
+  <meta property="og:url" content="https://wlandau.github.io/targets-manual" />
+  <meta property="og:image" content="https://wlandau.github.io/targets-manual/images/logo.png" />
+  <meta property="og:description" content="In-depth discussion of the major functionality of targets." />
+  <meta name="github-repo" content="wlandau/targets-manual" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="The targets R Package User Manual" />
+  
+  <meta name="twitter:description" content="In-depth discussion of the major functionality of targets." />
+  <meta name="twitter:image" content="https://wlandau.github.io/targets-manual/images/logo.png" />
+
+<meta name="author" content="Will Landau" />
+<meta name="author" content="Copyright Eli Lilly and Company" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  <link rel="apple-touch-icon-precomposed" sizes="120x120" href="images/apple-touch-icon.png" />
+  <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
+
+<link rel="next" href="walkthrough.html"/>
+<script src="libs/header-attrs-2.3/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/htmlwidgets-1.5.1/htmlwidgets.js"></script>
+<link href="libs/vis-4.20.1/vis.css" rel="stylesheet" />
+<script src="libs/vis-4.20.1/vis.min.js"></script>
+<script src="libs/visNetwork-binding-2.0.9/visNetwork.js"></script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-150843595-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-150843595-1');
+</script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#motivation"><i class="fa fa-check"></i><b>1.1</b> Motivation</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#pipeline-toolkits"><i class="fa fa-check"></i><b>1.2</b> Pipeline toolkits</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#the-targets-package"><i class="fa fa-check"></i><b>1.3</b> The <code>targets</code> package</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#what-about-drake"><i class="fa fa-check"></i><b>1.4</b> What about <code>drake</code>?</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="walkthrough.html"><a href="walkthrough.html"><i class="fa fa-check"></i><b>2</b> Walkthrough</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="walkthrough.html"><a href="walkthrough.html#goal-of-the-analysis"><i class="fa fa-check"></i><b>2.1</b> Goal of the analysis</a></li>
+<li class="chapter" data-level="2.2" data-path="walkthrough.html"><a href="walkthrough.html#file-structure"><i class="fa fa-check"></i><b>2.2</b> File structure</a></li>
+<li class="chapter" data-level="2.3" data-path="walkthrough.html"><a href="walkthrough.html#inspect-the-pipeline"><i class="fa fa-check"></i><b>2.3</b> Inspect the pipeline</a></li>
+<li class="chapter" data-level="2.4" data-path="walkthrough.html"><a href="walkthrough.html#run-the-pipeline"><i class="fa fa-check"></i><b>2.4</b> Run the pipeline</a></li>
+<li class="chapter" data-level="2.5" data-path="walkthrough.html"><a href="walkthrough.html#changes"><i class="fa fa-check"></i><b>2.5</b> Changes</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="walkthrough.html"><a href="walkthrough.html#change-code"><i class="fa fa-check"></i><b>2.5.1</b> Change code</a></li>
+<li class="chapter" data-level="2.5.2" data-path="walkthrough.html"><a href="walkthrough.html#change-data"><i class="fa fa-check"></i><b>2.5.2</b> Change data</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="walkthrough.html"><a href="walkthrough.html#read-your-data"><i class="fa fa-check"></i><b>2.6</b> Read your data</a></li>
+<li class="chapter" data-level="2.7" data-path="walkthrough.html"><a href="walkthrough.html#read-metadata"><i class="fa fa-check"></i><b>2.7</b> Read metadata</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="practice.html"><a href="practice.html"><i class="fa fa-check"></i><b>3</b> Best practices for <code>targets</code>-powered projects</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="practice.html"><a href="practice.html#a-move-away-from-imperative-scripts"><i class="fa fa-check"></i><b>3.1</b> A move away from imperative scripts</a></li>
+<li class="chapter" data-level="3.2" data-path="practice.html"><a href="practice.html#functions"><i class="fa fa-check"></i><b>3.2</b> Functions</a></li>
+<li class="chapter" data-level="3.3" data-path="practice.html"><a href="practice.html#targets"><i class="fa fa-check"></i><b>3.3</b> Targets</a></li>
+<li class="chapter" data-level="3.4" data-path="practice.html"><a href="practice.html#dependencies"><i class="fa fa-check"></i><b>3.4</b> Dependencies</a></li>
+<li class="chapter" data-level="3.5" data-path="practice.html"><a href="practice.html#debugging"><i class="fa fa-check"></i><b>3.5</b> Debugging</a>
+<ul>
+<li class="chapter" data-level="3.5.1" data-path="practice.html"><a href="practice.html#workspaces"><i class="fa fa-check"></i><b>3.5.1</b> Workspaces</a></li>
+<li class="chapter" data-level="3.5.2" data-path="practice.html"><a href="practice.html#interactive-debugging"><i class="fa fa-check"></i><b>3.5.2</b> Interactive debugging</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="practice.html"><a href="practice.html#performance"><i class="fa fa-check"></i><b>3.6</b> Performance</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="files.html"><a href="files.html"><i class="fa fa-check"></i><b>4</b> External files and literate programming</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="files.html"><a href="files.html#internal-files"><i class="fa fa-check"></i><b>4.1</b> Internal files</a></li>
+<li class="chapter" data-level="4.2" data-path="files.html"><a href="files.html#external-input-files"><i class="fa fa-check"></i><b>4.2</b> External input files</a></li>
+<li class="chapter" data-level="4.3" data-path="files.html"><a href="files.html#external-output-files"><i class="fa fa-check"></i><b>4.3</b> External output files</a></li>
+<li class="chapter" data-level="4.4" data-path="files.html"><a href="files.html#literate-programming"><i class="fa fa-check"></i><b>4.4</b> Literate programming</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="dynamic.html"><a href="dynamic.html"><i class="fa fa-check"></i><b>5</b> Dynamic branching</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="dynamic.html"><a href="dynamic.html#patterns"><i class="fa fa-check"></i><b>5.1</b> Patterns</a></li>
+<li class="chapter" data-level="5.2" data-path="dynamic.html"><a href="dynamic.html#pattern-types"><i class="fa fa-check"></i><b>5.2</b> Pattern types</a></li>
+<li class="chapter" data-level="5.3" data-path="dynamic.html"><a href="dynamic.html#dynamic-branching-over-files"><i class="fa fa-check"></i><b>5.3</b> Dynamic branching over files</a></li>
+<li class="chapter" data-level="5.4" data-path="dynamic.html"><a href="dynamic.html#iteration"><i class="fa fa-check"></i><b>5.4</b> Iteration</a>
+<ul>
+<li class="chapter" data-level="5.4.1" data-path="dynamic.html"><a href="dynamic.html#vector"><i class="fa fa-check"></i><b>5.4.1</b> Vector</a></li>
+<li class="chapter" data-level="5.4.2" data-path="dynamic.html"><a href="dynamic.html#list"><i class="fa fa-check"></i><b>5.4.2</b> List</a></li>
+<li class="chapter" data-level="5.4.3" data-path="dynamic.html"><a href="dynamic.html#group"><i class="fa fa-check"></i><b>5.4.3</b> Group</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="dynamic.html"><a href="dynamic.html#batching"><i class="fa fa-check"></i><b>5.5</b> Batching</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="static.html"><a href="static.html"><i class="fa fa-check"></i><b>6</b> Static branching</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="static.html"><a href="static.html#map"><i class="fa fa-check"></i><b>6.1</b> Map</a></li>
+<li class="chapter" data-level="6.2" data-path="static.html"><a href="static.html#combine"><i class="fa fa-check"></i><b>6.2</b> Combine</a></li>
+<li class="chapter" data-level="6.3" data-path="static.html"><a href="static.html#metaprogram"><i class="fa fa-check"></i><b>6.3</b> Metaprogram</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="hpc.html"><a href="hpc.html"><i class="fa fa-check"></i><b>7</b> High-performance computing</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="hpc.html"><a href="hpc.html#clustermq"><i class="fa fa-check"></i><b>7.1</b> Clustermq</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="hpc.html"><a href="hpc.html#clustermq-installation"><i class="fa fa-check"></i><b>7.1.1</b> Clustermq installation</a></li>
+<li class="chapter" data-level="7.1.2" data-path="hpc.html"><a href="hpc.html#clustermq-locally"><i class="fa fa-check"></i><b>7.1.2</b> Clustermq locally</a></li>
+<li class="chapter" data-level="7.1.3" data-path="hpc.html"><a href="hpc.html#clustermq-remotely"><i class="fa fa-check"></i><b>7.1.3</b> Clustermq remotely</a></li>
+<li class="chapter" data-level="7.1.4" data-path="hpc.html"><a href="hpc.html#clustermq-configuration"><i class="fa fa-check"></i><b>7.1.4</b> Clustermq configuration</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="hpc.html"><a href="hpc.html#future"><i class="fa fa-check"></i><b>7.2</b> Future</a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="hpc.html"><a href="hpc.html#future-installation"><i class="fa fa-check"></i><b>7.2.1</b> Future installation</a></li>
+<li class="chapter" data-level="7.2.2" data-path="hpc.html"><a href="hpc.html#future-locally"><i class="fa fa-check"></i><b>7.2.2</b> Future locally</a></li>
+<li class="chapter" data-level="7.2.3" data-path="hpc.html"><a href="hpc.html#future-remotely"><i class="fa fa-check"></i><b>7.2.3</b> Future remotely</a></li>
+<li class="chapter" data-level="7.2.4" data-path="hpc.html"><a href="hpc.html#future-configuration"><i class="fa fa-check"></i><b>7.2.4</b> Future configuration</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="hpc.html"><a href="hpc.html#advanced"><i class="fa fa-check"></i><b>7.3</b> Advanced</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">The targets R Package User Manual</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="header">
+<h1 class="title">The targets R Package User Manual</h1>
+<p class="author"><em>Will Landau</em></p>
+<p class="author"><em>Copyright Eli Lilly and Company</em></p>
+</div>
+<div id="intro" class="section level1" number="1">
+<h1><span class="header-section-number">Chapter 1</span> Introduction</h1>
+<p>The <a href="https://github.com/wlandau/targets"><code>targets</code></a> package is a <a href="https://www.gnu.org/software/make/">Make</a>-like pipeline toolkit for Statistics and data science in R. With <a href="https://github.com/wlandau/targets"><code>targets</code></a>, you can maintain a reproducible workflow without repeating yourself. <a href="https://github.com/wlandau/targets"><code>targets</code></a> learns how your pipeline fits together, skips costly runtime for tasks that are already up to date, runs only the necessary computation, supports implicit parallel computing, abstracts files as R objects, and shows tangible evidence that the results match the underlying code and data.</p>
+<p>This manual is a step-by-step written guide to <a href="https://github.com/wlandau/targets"><code>targets</code></a>. The current chapter elaborates on the role and benefits of <a href="https://github.com/wlandau/targets"><code>targets</code></a>, and subsequent chapters walk through the major functionality. See the <a href="https://wlandau.github.io/targets/index.html">documentation website</a> for most other major resources, including <a href="https://wlandau.github.io/targets/index.html#installation">installation instructions</a>, links to <a href="https://wlandau.github.io/targets/index.html#examples">example projects</a>, and a <a href="https://wlandau.github.io/targets/reference/index.html">reference page with all user-side functions</a>.</p>
+<div id="motivation" class="section level2" number="1.1">
+<h2><span class="header-section-number">1.1</span> Motivation</h2>
+<p>Data analysis can be slow. A round of scientific computation can take several minutes, hours, or even days to complete. After it finishes, if you update your code or data, your hard-earned results may no longer be valid. Unchecked, this invalidation creates chronic <a href="https://en.wikipedia.org/wiki/Sisyphus">Sisyphean</a> loop:</p>
+<ol style="list-style-type: decimal">
+<li>Launch the code.</li>
+<li>Wait while it runs.</li>
+<li>Discover an issue.</li>
+<li>Restart from scratch.</li>
+</ol>
+</div>
+<div id="pipeline-toolkits" class="section level2" number="1.2">
+<h2><span class="header-section-number">1.2</span> Pipeline toolkits</h2>
+<p><a href="https://github.com/pditommaso/awesome-pipeline">Pipeline toolkits</a> like <a href="https://www.gnu.org/software/make/">GNU Make</a> break the cycle. They watch the dependency graph of the whole workflow and skip steps, or “targets”, whose code, data, and upstream dependencies have not changed since the last run of the pipeline. When all targets are up to date, this is evidence that the results match the underlying code and data, which helps us trust the results and confirm the computation is reproducible.</p>
+</div>
+<div id="the-targets-package" class="section level2" number="1.3">
+<h2><span class="header-section-number">1.3</span> The <code>targets</code> package</h2>
+<p>Unlike most <a href="https://github.com/pditommaso/awesome-pipeline">pipeline toolkits</a>, which are language agnostic or Python-focused, the <a href="https://github.com/wlandau/targets"><code>targets</code></a> package allows data scientists and researchers to work entirely within R. <a href="https://github.com/wlandau/targets"><code>targets</code></a> implicitly nudges users toward a clean, function-oriented programming style that fits the intent of the R language and helps practitioners maintain their data analysis projects.</p>
+</div>
+<div id="what-about-drake" class="section level2" number="1.4">
+<h2><span class="header-section-number">1.4</span> What about <code>drake</code>?</h2>
+<p>The <a href="https://github.com/ropensci/drake"><code>drake</code></a> package is an older and
+more established R-focused pipeline toolkit. It is has become a key
+piece of the R ecosystem, and development will continue. However, years
+of community feedback have exposed major user-side limitations regarding
+data management, collaboration, parallel efficiency, and pipeline
+archetypes. Unfortunately, these limitations are permanent. Solutions in
+<a href="https://github.com/ropensci/drake"><code>drake</code></a> itself would make the
+package incompatible with existing projects that use it. That is why
+<code>targets</code> was created. The <code>targets</code> package borrows from past learnings
+and attempts to advance the user experience beyond
+<a href="https://github.com/ropensci/drake"><code>drake</code></a>’s potential capabilities.
+Please see the <a href="https://wlandau.github.io/targets/articles/need.html">statement of
+need</a> for technical details.</p>
+<p>If you know <a href="https://github.com/ropensci/drake"><code>drake</code></a>, then you already almost know <code>targets</code>. The programming style is similar, and most functions in <code>targets</code> have counterparts in <a href="https://github.com/ropensci/drake"><code>drake</code></a>.</p>
+<table>
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Functions in <code>drake</code></th>
+<th>Counterparts in <code>targets</code></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><a href="https://docs.ropensci.org/drake/reference/use_drake.html"><code>use_drake()</code></a>, <a href="https://docs.ropensci.org/drake/reference/drake_script.html"><code>drake_script()</code></a></td>
+<td><a href="https://wlandau.github.io/targets/reference/tar_script.html"><code>tar_script()</code></a></td>
+</tr>
+<tr class="even">
+<td><a href="https://docs.ropensci.org/drake/reference/drake_plan.html"><code>drake_plan()</code></a></td>
+<td><a href="https://wlandau.github.io/targets/reference/tar_pipeline.html"><code>tar_pipeline()</code></a>, <a href="https://wlandau.github.io/targets/reference/tar_manifest.html"><code>tar_manifest()</code></a></td>
+</tr>
+<tr class="odd">
+<td><a href="https://docs.ropensci.org/drake/reference/target.html"><code>target()</code></a></td>
+<td><a href="https://wlandau.github.io/targets/reference/tar_target.html"><code>tar_target()</code></a>, <a href="https://wlandau.github.io/targets/reference/tar_target_raw.html"><code>tar_target_raw()</code></a></td>
+</tr>
+<tr class="even">
+<td><a href="https://docs.ropensci.org/drake/reference/drake_config.html"><code>drake_config()</code></a></td>
+<td><a href="https://wlandau.github.io/targets/reference/tar_option_set.html"><code>tar_option_set()</code></a></td>
+</tr>
+<tr class="odd">
+<td><a href="https://docs.ropensci.org/drake/reference/outdated.html"><code>outdated()</code></a>, <a href="https://docs.ropensci.org/drake/reference/r_make.html"><code>r_outdated()</code></a></td>
+<td><a href="https://wlandau.github.io/targets/reference/tar_outdated.html"><code>tar_outdated()</code></a></td>
+</tr>
+<tr class="even">
+<td><a href="https://docs.ropensci.org/drake/reference/vis_drake_graph.html"><code>vis_drake_graph()</code></a>, <a href="https://docs.ropensci.org/drake/reference/r_make.html"><code>r_vis_drake_graph()</code></a></td>
+<td><a href="https://wlandau.github.io/targets/reference/tar_visnetwork.html"><code>tar_visnetwork()</code></a>, <a href="https://wlandau.github.io/targets/reference/tar_glimpse.html"><code>tar_glimpse()</code></a></td>
+</tr>
+<tr class="odd">
+<td><a href="https://docs.ropensci.org/drake/reference/drake_graph_info.html"><code>drake_graph_info()</code></a>, <a href="https://docs.ropensci.org/drake/reference/r_make.html"><code>r_drake_graph_info()</code></a></td>
+<td><a href="https://wlandau.github.io/targets/reference/tar_network.html"><code>tar_network()</code></a></td>
+</tr>
+<tr class="even">
+<td><a href="https://docs.ropensci.org/drake/reference/make.html"><code>make()</code></a>, <a href="https://docs.ropensci.org/drake/reference/r_make.html"><code>r_make()</code></a></td>
+<td><a href="https://wlandau.github.io/targets/reference/tar_make.html"><code>tar_make()</code></a>, <a href="https://wlandau.github.io/targets/reference/tar_make_clustermq.html"><code>tar_make_clustermq()</code></a>, <a href="https://wlandau.github.io/targets/reference/tar_make_future.html"><code>tar_make_future()</code></a></td>
+</tr>
+<tr class="odd">
+<td><a href="https://docs.ropensci.org/drake/reference/readd.html"><code>loadd()</code></a></td>
+<td><a href="https://wlandau.github.io/targets/reference/tar_load.html"><code>tar_load()</code></a></td>
+</tr>
+<tr class="even">
+<td><a href="https://docs.ropensci.org/drake/reference/readd.html"><code>readd()</code></a></td>
+<td><a href="https://wlandau.github.io/targets/reference/tar_read.html"><code>tar_read()</code></a></td>
+</tr>
+<tr class="odd">
+<td><a href="https://docs.ropensci.org/drake/reference/diagnose.html"><code>diagnose()</code></a>, <a href="https://docs.ropensci.org/drake/reference/build_times.html"><code>build_times()</code></a>, <a href="https://docs.ropensci.org/drake/reference/cached.html"><code>cached()</code></a>, <a href="https://docs.ropensci.org/drake/reference/drake_cache_log.html"><code>drake_cache_log()</code></a></td>
+<td><a href="https://wlandau.github.io/targets/reference/tar_meta.html"><code>tar_meta()</code></a></td>
+</tr>
+<tr class="even">
+<td><a href="https://docs.ropensci.org/drake/reference/drake_progress.html"><code>drake_progress()</code></a>, <a href="https://docs.ropensci.org/drake/reference/drake_running.html"><code>drake_running()</code></a>, <a href="https://docs.ropensci.org/drake/reference/drake_done.html"><code>drake_done()</code></a>, <a href="https://docs.ropensci.org/drake/reference/drake_failed.html"><code>drake_failed()</code></a>, <a href="https://docs.ropensci.org/drake/reference/drake_cancelled.html"><code>drake_cancelled()</code></a></td>
+<td><a href="https://wlandau.github.io/targets/reference/tar_progress.html"><code>tar_progress()</code></a></td>
+</tr>
+<tr class="odd">
+<td><a href="https://docs.ropensci.org/drake/reference/clean.html"><code>clean()</code></a></td>
+<td><a href="https://wlandau.github.io/targets/reference/tar_deduplicate.html"><code>tar_deduplicate()</code></a>, <a href="https://wlandau.github.io/targets/reference/tar_delete.html"><code>tar_delete()</code></a>, <a href="https://wlandau.github.io/targets/reference/tar_destroy.html"><code>tar_destroy()</code></a>, <a href="https://wlandau.github.io/targets/reference/tar_invalidate.html"><code>tar_invalidate()</code></a></td>
+</tr>
+<tr class="even">
+<td><a href="https://docs.ropensci.org/drake/reference/drake_gc.html"><code>drake_gc()</code></a></td>
+<td><a href="https://wlandau.github.io/targets/reference/tar_prune.html"><code>tar_prune()</code></a></td>
+</tr>
+<tr class="odd">
+<td><a href="https://docs.ropensci.org/drake/reference/id_chr.html"><code>id_chr()</code></a></td>
+<td><a href="https://wlandau.github.io/targets/reference/tar_name.html"><code>tar_name()</code></a>, <a href="https://wlandau.github.io/targets/reference/tar_path.html"><code>tar_path()</code></a></td>
+</tr>
+<tr class="even">
+<td><a href="https://docs.ropensci.org/drake/reference/knitr_in.html"><code>knitr_in()</code></a></td>
+<td><a href="https://wlandau.github.io/tarchetypes/reference/tar_render.html"><code>tarchetypes::tar_render()</code></a></td>
+</tr>
+<tr class="odd">
+<td><a href="https://docs.ropensci.org/drake/reference/cancel.html"><code>cancel()</code></a>, <a href="https://docs.ropensci.org/drake/reference/cancel_if.html"><code>cancel_if()</code></a></td>
+<td><a href="https://wlandau.github.io/targets/reference/tar_cancel.html"><code>tar_cancel()</code></a></td>
+</tr>
+<tr class="even">
+<td><a href="https://docs.ropensci.org/drake/reference/trigger.html"><code>trigger()</code></a></td>
+<td><a href="https://wlandau.github.io/targets/reference/tar_cue.html"><code>tar_cue()</code></a></td>
+</tr>
+<tr class="odd">
+<td><a href="https://docs.ropensci.org/drake/reference/drake_example.html"><code>drake_example()</code></a>, <a href="https://docs.ropensci.org/drake/reference/drake_examples.html"><code>drake_example()</code></a>, <a href="https://docs.ropensci.org/drake/reference/load_mtcars_example.html"><code>load_mtcars_example()</code></a>, <a href="https://docs.ropensci.org/drake/reference/clean_mtcars_example.html"><code>clean_mtcars_example()</code></a></td>
+<td>Unsupported. Example <code>targets</code> pipelines are in indivdual repositories <a href="https://wlandau.github.io/targets/index.html#examples">linked from here</a>.</td>
+</tr>
+<tr class="even">
+<td><a href="https://docs.ropensci.org/drake/reference/drake_build.html"><code>drake_build()</code></a></td>
+<td>Unsupported in <code>targets</code> to ensure coherence with dynamic branching.</td>
+</tr>
+<tr class="odd">
+<td><a href="https://docs.ropensci.org/drake/reference/drake_debug.html"><code>drake_debug()</code></a></td>
+<td><a href="https://wlandau.github.io/targets-manual/practice.html#debugging">Read here</a> to learn about interactive debugging in <code>targets</code>.</td>
+</tr>
+<tr class="even">
+<td><a href="https://docs.ropensci.org/drake/reference/drake_history.html"><code>drake_history()</code></a>, <a href="https://docs.ropensci.org/drake/reference/recoverable.html"><code>recoverable()</code></a></td>
+<td>Unsupported in <code>targets</code>. Instead of trying to manage history and data recovery directly, <a href="https://wlandau.github.io/targets/articles/need.html#lighter-friendlier-data-management"><code>targets</code> maintains a much lighter/friendlier data store</a> to make it easier to use external data versioning tools instead.</td>
+</tr>
+<tr class="odd">
+<td><a href="https://docs.ropensci.org/drake/reference/missed.html"><code>missed()</code></a>, <a href="https://docs.ropensci.org/drake/reference/tracked.html"><code>tracked()</code></a>, <a href="https://docs.ropensci.org/drake/reference/deps_code.html"><code>deps_code()</code></a>, <a href="https://docs.ropensci.org/drake/reference/deps_target.html"><code>deps_target()</code></a>, <a href="https://docs.ropensci.org/drake/reference/deps_knitr.html"><code>deps_knitr()</code></a>, <a href="https://docs.ropensci.org/drake/reference/deps_profile.html"><code>deps_profile()</code></a></td>
+<td>Unsupported in <code>targets</code> because dependency detection is <a href="https://wlandau.github.io/targets-manual/practice.html#dependencies">far easier to understand than in <code>drake</code></a>.</td>
+</tr>
+<tr class="even">
+<td><a href="https://docs.ropensci.org/drake/reference/drake_hpc_template_file.html"><code>drake_hpc_template_file()</code></a>, <a href="https://docs.ropensci.org/drake/reference/drake_hpc_template_files.html"><code>drake_hpc_template_files()</code></a></td>
+<td>Deemed out of scope for <code>targets</code>.</td>
+</tr>
+<tr class="odd">
+<td><a href="https://docs.ropensci.org/drake/reference/drake_cache.html"><code>drake_cache()</code></a>, <a href="https://docs.ropensci.org/drake/reference/new_cache.html"><code>new_cache()</code></a>, <a href="https://docs.ropensci.org/drake/reference/find_cache.html"><code>find_cache()</code></a>.</td>
+<td>Unsupported because <a href="https://wlandau.github.io/targets/articles/need.html#better-guardrails-by-design"><code>targets</code> is far more strict and paternalistic about data/file management</a>.</td>
+</tr>
+<tr class="even">
+<td><a href="https://docs.ropensci.org/drake/reference/rescue_cache.html"><code>rescue_cache()</code></a>, <a href="https://docs.ropensci.org/drake/reference/which_clean.html"><code>which_clean()</code></a>, <a href="https://docs.ropensci.org/drake/reference/cached_planned.html"><code>cache_planned()</code></a>, <a href="https://docs.ropensci.org/drake/reference/cached_unplanned.html"><code>cache_unplanned()</code></a></td>
+<td>Unsupported due to the simplified data management system and storage cleaning functions.</td>
+</tr>
+<tr class="odd">
+<td><a href="https://docs.ropensci.org/drake/reference/drake_get_session_info.html"><code>drake_get_session_info()</code></a></td>
+<td>Deemed superfluous and a potential bottleneck. Discarded for <code>targets</code>.</td>
+</tr>
+<tr class="even">
+<td><a href="https://docs.ropensci.org/drake/reference/read_drake_seed.html"><code>read_drake_seed()</code></a></td>
+<td>Superfluous because <code>targets</code> always uses the same global seed. <a href="https://wlandau.github.io/targets/reference/tar_meta.html"><code>tar_meta()</code></a> shows all the target-level seeds.</td>
+</tr>
+<tr class="odd">
+<td><a href="https://docs.ropensci.org/drake/reference/show_source.html"><code>show_source()</code></a></td>
+<td>Deemed superfluous. Discareded in <code>targets</code> to conserve storage space in <code>_targets/meta/meta</code>.</td>
+</tr>
+<tr class="even">
+<td><a href="https://docs.ropensci.org/drake/reference/drake_tempfile.html"><code>drake_tempfile()</code></a></td>
+<td>Superfluous in <code>targets</code> because there is no special <code>disk.frame</code> storage format. (<a href="https://wlandau.github.io/targets-manual/files.html#external-output-files">Dynamic file targets</a> are much better for managing <code>disk.frame</code>s.)</td>
+</tr>
+<tr class="odd">
+<td><a href="https://docs.ropensci.org/drake/reference/file_store.html"><code>file_store()</code></a></td>
+<td>Superfluous in <code>targets</code> because <a href="https://wlandau.github.io/targets-manual/files.html">all files are dynamic files</a> and there is no longer a need to Base32-encode any file names.</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+<div style = "background: #1C356D; color: white; padding: 10px 10px 10px 25px; font-size: 1em; width: 100%;">
+  Copyright Eli Lilly and Company
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+
+<a href="walkthrough.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": null,
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,754 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" id="typepad-standard" xmlns:fb="http://www.facebook.com/2008/fbml">
+<head>
+        <!-- head-common-individual -->
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="generator" content="http://www.typepad.com/" />
+    <script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML">
+</script>
+
+        
+        <meta name="description" content="The AzureVision package is an R frontend to Azure Computer Vision and Azure Custom Vision. These services let you leverage Microsoft’s Azure cloud to carry out visual recognition tasks using advanced image processing models, with minimal machine learning expertise. The basic idea behind Custom Vision is to take a pre-built image recognition model supplied by Azure, and customise it for your needs by supplying a set of images with which to update it. All model training and prediction is done in the cloud, so you don’t need a powerful machine of your own. Similarly, since you are starting with a..." />
+
+    <link rel="canonical" href="https://blog.revolutionanalytics.com/2020/05/azurevision.html" />
+
+
+
+
+        <link rel="stylesheet" href="https://blog.revolutionanalytics.com/styles.css?v=6" type="text/css" media="screen" />
+        <link rel="stylesheet" href="https://static.typepad.com/.shared/themes/common/print.css" type="text/css" media="print" />
+
+
+<link rel="stylesheet" href="https://static.typepad.com/.shared/css/featherlight-gallery.css">
+
+        <link rel="alternate" type="application/atom+xml" title="Posts on 'Revolutions' (Atom)" href="https://blog.revolutionanalytics.com/atom.xml" />
+        <link rel="alternate" type="application/rss+xml" title="Posts on 'Revolutions' (RSS 1.0)" href="https://blog.revolutionanalytics.com/index.rdf" />
+        <link rel="alternate" type="application/rss+xml" title="Posts on 'Revolutions' (RSS 2.0)" href="https://blog.revolutionanalytics.com/rss.xml" />
+        <script type="text/javascript">
+                var TPApp = {};
+                TPApp.app_uri = "https://www.typepad.com/";
+        </script>
+        <script type="text/javascript" src="https://static.typepad.com/.shared/js/yui/yahoo-dom-event.js,/js/app/thumbnail-gallery-min.js"></script>
+
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-225723-36', 'auto', {'name': 'Typepad'}, {'allowLinker': true} );  // Separate tracker for Typepad.
+ga('Typepad.require', 'linker');
+ga('Typepad.linker:autoLink', ['none']);
+ga('Typepad.set', 'dimension1', '6a010534b1db25970b010536040741970b');
+ga('Typepad.set', 'dimension2', 'Individual');
+ga('Typepad.send', 'pageview');
+</script>
+
+
+
+<meta property="og:title" content="Create and deploy a Custom Vision predictive service in R with AzureVision" />
+<meta property="og:site_name" content="Revolutions" />
+<meta property="og:type" content="blog" />
+<meta property="og:url" content="https://blog.revolutionanalytics.com/2020/05/azurevision.html" />
+<meta property="og:description" content="The AzureVision package is an R frontend to Azure Computer Vision and Azure Custom Vision. These services let you leverage Microsoft’s Azure cloud to carry out visual recognition tasks using advanced image processing models, with minimal machine learning expertise. The basic idea behind Custom Vision is to take a pre-built image recognition model supplied by Azure, and customise it for your needs by supplying a set of images with which to update it. All model training and prediction is done in the cloud, so you don’t need a powerful machine of your own. Similarly, since you are starting with a..." />
+<meta property="fb:admins" content="" />
+
+
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="">
+<meta name="twitter:creator" content="">
+<meta name="twitter:title" content="Create and deploy a Custom Vision predictive service in R with AzureVision">
+<meta name="twitter:description" content="The AzureVision package is an R frontend to Azure Computer Vision and Azure Custom Vision. These services let you leverage Microsoft’s Azure cloud to carry out visual recognition tasks using advanced image processing models, with minimal machine learning expertise. The basic idea behind Custom Vision is to take a pre-built image recognition model supplied by Azure, and customise it for your needs by supplying a set of images with which to update it. All model training and prediction is done in the cloud, so you don’t need a powerful machine of your own. Similarly, since you are starting with a...">
+
+
+
+        <link rel="alternate" type="application/atom+xml" title="Comments on 'Create and deploy a Custom Vision predictive service in R with AzureVision' (Atom)" href="https://blog.revolutionanalytics.com/2020/05/azurevision/comments/atom.xml" />
+        <link rel="alternate" type="application/rss+xml" title="Comments on 'Create and deploy a Custom Vision predictive service in R with AzureVision' (RSS 2.0)" href="https://blog.revolutionanalytics.com/2020/05/azurevision/comments/rss.xml" />
+        <title>Create and deploy a Custom Vision predictive service in R with AzureVision (Revolutions)</title>
+        <link rel="start" href="https://blog.revolutionanalytics.com/" title="Home" />
+        <link rel="prev" href="https://blog.revolutionanalytics.com/2020/05/azureqstor-r-interface-to-azure-queue-storage.html?no_prefetch=1" title="AzureQstor: R interface to Azure Queue Storage now on GitHub" />
+        <link rel="next" href="https://blog.revolutionanalytics.com/2020/05/custom-package-repositories-in-r.html?no_prefetch=1" title="Custom Package Repositories in R" />
+
+    <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+</head>
+
+
+
+<body class="layout-two-column-right post">
+	
+	<div id="container" class="container">
+		<div id="container-inner" class="pkg">
+			
+                <div class="row">
+     
+
+
+<a id="home"></a>
+   
+
+<!-- banner -->
+<div id="banner">
+	<div id="banner-inner" class="pkg">
+		
+		<h1 id="banner-header"><a href="https://blog.revolutionanalytics.com/" accesskey="1">Revolutions</a></h1>
+		<h2 id="banner-description">
+			Milestones in AI, Machine Learning, Data Science, and visualization with R and Python since 2008
+		</h2>
+	</div>
+</div>
+
+
+
+
+
+
+			<div id="pagebody">
+
+
+				<div id="pagebody-inner" class="pkg">
+                                        <div id="alpha">
+						<div id="alpha-inner" class="pkg">
+							<!-- the plain version removes the extra jquery -->
+<!-- content nav -->
+<p class="content-nav">
+	<a class="content-nav-prev" href="https://blog.revolutionanalytics.com/2020/05/azureqstor-r-interface-to-azure-queue-storage.html">&laquo; AzureQstor: R interface to Azure Queue Storage now on GitHub</a> |
+	<a class="content-nav-main" href="https://blog.revolutionanalytics.com/">Main</a>
+	| <a class="content-nav-next" href="https://blog.revolutionanalytics.com/2020/05/custom-package-repositories-in-r.html">Custom Package Repositories in R &raquo;</a>
+</p>
+<script type="text/javascript">
+   $(function(){
+       var query = window.location.search.substring(1);
+       if( query == "pintix=1" ) {
+          var e=document.createElement('script');e.setAttribute('type','text/javascript');e.setAttribute('charset','UTF-8');e.setAttribute('src','https://static.typepad.com/.shared//js/pinmarklet.js?r='+Math.random()*99999999);document.body.appendChild(e);
+       }
+   });
+</script>
+<!-- entry -->
+
+	<h2 class="date-header">May 13, 2020</h2>
+
+
+<div class="entry-category-ai entry-category-microsoft entry-category-packages entry-category-r entry-author-hong_ooi entry-type-post entry" id="entry-6a010534b1db25970b0240a4fdaec2200d">
+   <div class="entry-inner">
+			<h3 class="entry-header">Create and deploy a Custom Vision predictive service in R with AzureVision</h3>
+	
+
+
+
+	<div class="entry-content">
+		<div class="entry-body">
+			<p>The <a href="https://github.com/Azure/AzureVision">AzureVision package</a> is an R frontend to <a href="https://docs.microsoft.com/azure/cognitive-services/computer-vision/home?WT.mc_id=Revolutions-blog-davidsmi">Azure Computer Vision</a> and <a href="https://docs.microsoft.com/azure/cognitive-services/Custom-Vision-Service/home?WT.mc_id=Revolutions-blog-davidsmi">Azure Custom Vision</a>. These services let you leverage Microsoft’s Azure cloud to carry out visual recognition tasks using advanced image processing models, with minimal machine learning expertise.</p>
+<p>The basic idea behind Custom Vision is to take a pre-built image recognition model supplied by Azure, and customise it for your needs by supplying a set of images with which to update it. All model training and prediction is done in the cloud, so you don’t need a powerful machine of your own. Similarly, since you are starting with a model that has already been trained, you don’t need a very large dataset or long training times to obtain good predictions (ideally).</p>
+<p>This article walks you through how to create, train and deploy a Custom Vision model in R, using AzureVision.</p>
+<div class="section level2" id="creating-the-resources">
+<h2>Creating the resources</h2>
+<p>You can create the Custom Vision resources via the Azure portal, or in R using the facilities provided by AzureVision. Note that Custom Vision requires at least <em>two</em> resources to be created: one for training, and one for prediction. The available service tiers for Custom Vision are <code>F0</code> (free, limited to 2 projects for training and 10k transactions/month for prediction) and <code>S0</code>. Here is the R code for creating the resources:</p>
+<div class="sourceCode" id="cb1">
+<pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw">library</span>(AzureVision)</span>
+<span id="cb1-2"><a href="#cb1-2"></a></span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="co"># insert your tenant, subscription, resgroup name and location here</span></span>
+<span id="cb1-4"><a href="#cb1-4"></a>rg &lt;- AzureRMR<span class="op">::</span><span class="kw">get_azure_login</span>(tenant)<span class="op">$</span></span>
+<span id="cb1-5"><a href="#cb1-5"></a>    <span class="kw">get_subscription</span>(sub_id)<span class="op">$</span></span>
+<span id="cb1-6"><a href="#cb1-6"></a>    <span class="kw">create_resource_group</span>(rg_name, <span class="dt">location=</span>rg_location)</span>
+<span id="cb1-7"><a href="#cb1-7"></a></span>
+<span id="cb1-8"><a href="#cb1-8"></a><span class="co"># insert your desired Custom Vision resource names here</span></span>
+<span id="cb1-9"><a href="#cb1-9"></a>res &lt;- rg<span class="op">$</span><span class="kw">create_cognitive_service</span>(custvis_resname,</span>
+<span id="cb1-10"><a href="#cb1-10"></a>    <span class="dt">service_type=</span><span class="st">&quot;CustomVision.Training&quot;</span>, <span class="dt">service_tier=</span><span class="st">&quot;S0&quot;</span>)</span>
+<span id="cb1-11"><a href="#cb1-11"></a>pred_res &lt;- rg<span class="op">$</span><span class="kw">create_cognitive_service</span>(custvis_predresname,</span>
+<span id="cb1-12"><a href="#cb1-12"></a>    <span class="dt">service_type=</span><span class="st">&quot;CustomVision.Prediction&quot;</span>, <span class="dt">service_tier=</span><span class="st">&quot;S0&quot;</span>)</span></code></pre>
+</div>
+</div>
+<div class="section level2" id="training">
+<h2>Training</h2>
+<p>Custom Vision defines two different types of endpoint: a training endpoint, and a prediction endpoint. Somewhat confusingly, they can both use the same hostname, but with different URL paths and authentication keys. To start, call the <code>customvision_training_endpoint</code> function with the service URL and key.</p>
+<div class="sourceCode" id="cb2">
+<pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>url &lt;- res<span class="op">$</span>properties<span class="op">$</span>endpoint</span>
+<span id="cb2-2"><a href="#cb2-2"></a>key &lt;- res<span class="op">$</span><span class="kw">list_keys</span>()[<span class="dv">1</span>]</span>
+<span id="cb2-3"><a href="#cb2-3"></a></span>
+<span id="cb2-4"><a href="#cb2-4"></a>endp &lt;- <span class="kw">customvision_training_endpoint</span>(<span class="dt">url=</span>url, <span class="dt">key=</span>key)</span></code></pre>
+</div>
+<p>Custom Vision is organised hierarchically. At the top level, we have a <em>project</em>, which represents the data and model for a specific task. Within a project, we have one or more <em>iterations</em> of the model, built on different sets of training images. Each iteration in a project is independent: you can create (train) an iteration, deploy it, and delete it without affecting other iterations.</p>
+<p>In turn, there are three different types of projects:</p>
+<ul>
+<li>A <em>multiclass classification</em> project is for classifying images into a set of <em>tags</em>, or target labels. An image can be assigned to one tag only.</li>
+<li>A <em>multilabel classification</em> project is similar, but each image can have multiple tags assigned to it.</li>
+<li>An <em>object detection</em> project is for detecting which objects, if any, from a set of candidates are present in an image.</li>
+</ul>
+<p>Let’s create a classification project:</p>
+<div class="sourceCode" id="cb3">
+<pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>testproj &lt;- <span class="kw">create_classification_project</span>(endp, <span class="st">&quot;testproj&quot;</span>,</span>
+<span id="cb3-2"><a href="#cb3-2"></a>    <span class="dt">export_target=</span><span class="st">&quot;standard&quot;</span>)</span></code></pre>
+</div>
+<p>Here, we specify the export target to be <code>standard</code> to support exporting the final model to one of various standalone formats, eg TensorFlow, CoreML or ONNX. The default is <code>none</code>, in which case the model stays on the Custom Vision server. The advantage of <code>none</code> is that the model can be more complex, resulting in potentially better accuracy.</p>
+<div class="section level3" id="adding-and-tagging-images">
+<h3>Adding and tagging images</h3>
+<p>Since a Custom Vision model is trained in Azure and not locally, we need to upload some images. The data we’ll use comes from the Microsoft <a href="https://github.com/microsoft/ComputerVision">Computer Vision Best Practices</a> project. This is a simple set of images containing 4 kinds of objects one might find in a fridge: cans, cartons, milk bottles, and water bottles.</p>
+<div class="sourceCode" id="cb4">
+<pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="kw">download.file</span>(</span>
+<span id="cb4-2"><a href="#cb4-2"></a>    <span class="st">&quot;https://cvbp.blob.core.windows.net/public/datasets/image_classification/fridgeObjects.zip&quot;</span>,</span>
+<span id="cb4-3"><a href="#cb4-3"></a>    <span class="st">&quot;fridgeObjects.zip&quot;</span></span>
+<span id="cb4-4"><a href="#cb4-4"></a>)</span>
+<span id="cb4-5"><a href="#cb4-5"></a><span class="kw">unzip</span>(<span class="st">&quot;fridgeObjects.zip&quot;</span>)</span></code></pre>
+</div>
+<p>The generic function to add images to a project is <code>add_images</code>, which takes a vector of filenames, Internet URLs or raw vectors as the images to upload. It returns a vector of <em>image IDs</em>, which are how Custom Vision keeps track of the images it uses.</p>
+<p>Let’s upload the fridge objects to the project. The method for classification projects has a <code>tags</code> argument which can be used to assign labels to the images as they are uploaded. We’ll keep aside 5 images from each class of object to use as validation data.</p>
+<div class="sourceCode" id="cb5">
+<pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>cans &lt;- <span class="kw">dir</span>(<span class="st">&quot;fridgeObjects/can&quot;</span>, <span class="dt">full.names=</span><span class="ot">TRUE</span>)</span>
+<span id="cb5-2"><a href="#cb5-2"></a>cartons &lt;- <span class="kw">dir</span>(<span class="st">&quot;fridgeObjects/carton&quot;</span>, <span class="dt">full.names=</span><span class="ot">TRUE</span>)</span>
+<span id="cb5-3"><a href="#cb5-3"></a>milk &lt;- <span class="kw">dir</span>(<span class="st">&quot;fridgeObjects/milk_bottle&quot;</span>, <span class="dt">full.names=</span><span class="ot">TRUE</span>)</span>
+<span id="cb5-4"><a href="#cb5-4"></a>water &lt;- <span class="kw">dir</span>(<span class="st">&quot;fridgeObjects/water_bottle&quot;</span>, <span class="dt">full.names=</span><span class="ot">TRUE</span>)</span>
+<span id="cb5-5"><a href="#cb5-5"></a></span>
+<span id="cb5-6"><a href="#cb5-6"></a><span class="co"># upload all but 5 images from cans and cartons, and tag them</span></span>
+<span id="cb5-7"><a href="#cb5-7"></a>can_ids &lt;- <span class="kw">add_images</span>(testproj, cans[<span class="op">-</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>)], <span class="dt">tags=</span><span class="st">&quot;can&quot;</span>)</span>
+<span id="cb5-8"><a href="#cb5-8"></a>carton_ids &lt;- <span class="kw">add_images</span>(testproj, cartons[<span class="op">-</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>)], <span class="dt">tags=</span><span class="st">&quot;carton&quot;</span>)</span></code></pre>
+</div>
+<p>If you don’t tag the images at upload time, you can do so later with <code>add_image_tags</code>:</p>
+<div class="sourceCode" id="cb6">
+<pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="co"># upload all but 5 images from milk and water bottles</span></span>
+<span id="cb6-2"><a href="#cb6-2"></a>milk_ids &lt;- <span class="kw">add_images</span>(testproj, milk[<span class="op">-</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>)])</span>
+<span id="cb6-3"><a href="#cb6-3"></a>water_ids &lt;- <span class="kw">add_images</span>(testproj, water[<span class="op">-</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>)])</span>
+<span id="cb6-4"><a href="#cb6-4"></a></span>
+<span id="cb6-5"><a href="#cb6-5"></a><span class="kw">add_image_tags</span>(testproj, milk_ids, <span class="dt">tags=</span><span class="st">&quot;milk_bottle&quot;</span>)</span>
+<span id="cb6-6"><a href="#cb6-6"></a><span class="kw">add_image_tags</span>(testproj, water_ids, <span class="dt">tags=</span><span class="st">&quot;water_bottle&quot;</span>)</span></code></pre>
+</div>
+<p>Other image functions to be aware of include <code>list_images</code>, <code>remove_images</code>, and <code>add_image_regions</code> (which is for object detection projects). A useful one is <code>browse_images</code>, which takes a vector of IDs and displays the corresponding images in your browser.</p>
+<div class="sourceCode" id="cb7">
+<pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="kw">browse_images</span>(testproj, water_ids[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>])</span></code></pre>
+</div>
+</div>
+<div class="section level3" id="training-the-model">
+<h3>Training the model</h3>
+<p>Having uploaded the data, we can train the Custom Vision model with <code>train_model</code>. This trains the model on the server and returns a <em>model iteration</em>, which is the result of running the training algorithm on the current set of images. Each time you call <code>train_model</code>, for example to update the model after adding or removing images, you will obtain a different model iteration. In general, you can rely on AzureVision to keep track of the iterations for you, and automatically return the relevant results for the latest iteration.</p>
+<div class="sourceCode" id="cb8">
+<pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a>mod &lt;- <span class="kw">train_model</span>(testproj)</span></code></pre>
+</div>
+<p>We can examine the model performance on the training data with the <code>summary</code> method. For this toy problem, the model manages to obtain a perfect fit.</p>
+<div class="sourceCode" id="cb9">
+<pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="kw">summary</span>(mod)</span></code></pre>
+</div>
+<p>Obtaining predictions from the trained model is done with the <code>predict</code> method. By default, this returns the predicted tag (class label) for the image, but you can also get the predicted class probabilities by specifying <code>type=&quot;prob&quot;</code>.</p>
+<div class="sourceCode" id="cb10">
+<pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a>validation_imgs &lt;- <span class="kw">c</span>(cans[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>], cartons[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>], milk[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>], water[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>])</span>
+<span id="cb10-2"><a href="#cb10-2"></a>validation_tags &lt;- <span class="kw">rep</span>(<span class="kw">c</span>(<span class="st">&quot;can&quot;</span>, <span class="st">&quot;carton&quot;</span>, <span class="st">&quot;milk_bottle&quot;</span>, <span class="st">&quot;water_bottle&quot;</span>), <span class="dt">each=</span><span class="dv">5</span>)</span>
+<span id="cb10-3"><a href="#cb10-3"></a></span>
+<span id="cb10-4"><a href="#cb10-4"></a>predicted_tags &lt;- <span class="kw">predict</span>(mod, validation_imgs)</span>
+<span id="cb10-5"><a href="#cb10-5"></a></span>
+<span id="cb10-6"><a href="#cb10-6"></a><span class="kw">table</span>(predicted_tags, validation_tags)</span></code></pre>
+</div>
+<pre><code>##               validation_tags
+## predicted_tags can carton milk_bottle water_bottle
+##   can            4      0           0            0
+##   carton         0      5           0            0
+##   milk_bottle    1      0           5            0
+##   water_bottle   0      0           0            5</code></pre>
+<p>This shows that the model got 19 out of 20 predictions correct on the validation data, misclassifying one of the cans as a milk bottle.</p>
+</div>
+</div>
+<div class="section level2" id="deployment">
+<h2>Deployment</h2>
+<div class="section level3" id="publishing-to-a-prediction-resource">
+<h3>Publishing to a prediction resource</h3>
+<p>The code above demonstrates using the training endpoint to obtain predictions, which is really meant only for model testing and validation. In a production setting, we would normally <em>publish</em> a trained model to a Custom Vision prediction resource. Among other things, a user with access to the training endpoint has complete freedom to modify the model and the data, whereas access to the prediction endpoint only allows getting predictions.</p>
+<p>Publishing a model requires knowing the Azure resource ID of the prediction resource. Here, we’ll use the resource object that we created earlier; you can also obtain this information from the Azure Portal.</p>
+<div class="sourceCode" id="cb12">
+<pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a><span class="co"># publish to the prediction resource we created above</span></span>
+<span id="cb12-2"><a href="#cb12-2"></a><span class="kw">publish_model</span>(mod, <span class="st">&quot;iteration1&quot;</span>, pred_res)</span></code></pre>
+</div>
+<p>Once a model has been published, we can obtain predictions from the prediction endpoint in a manner very similar to previously. We create a predictive service object with <code>classification_service</code>, and then call the <code>predict</code> method. Note that a required input is the project ID; you can supply this directly or via the project object. It may also take some time before a published model shows up on the prediction endpoint.</p>
+<div class="sourceCode" id="cb13">
+<pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a><span class="kw">Sys.sleep</span>(<span class="dv">60</span>)  <span class="co"># wait for Azure to finish publishing</span></span>
+<span id="cb13-2"><a href="#cb13-2"></a></span>
+<span id="cb13-3"><a href="#cb13-3"></a>pred_url &lt;- pred_res<span class="op">$</span>properties<span class="op">$</span>endpoint</span>
+<span id="cb13-4"><a href="#cb13-4"></a>pred_key &lt;- pred_res<span class="op">$</span><span class="kw">list_keys</span>()[<span class="dv">1</span>]</span>
+<span id="cb13-5"><a href="#cb13-5"></a></span>
+<span id="cb13-6"><a href="#cb13-6"></a>pred_endp &lt;- <span class="kw">customvision_prediction_endpoint</span>(<span class="dt">url=</span>pred_url, <span class="dt">key=</span>pred_key)</span>
+<span id="cb13-7"><a href="#cb13-7"></a></span>
+<span id="cb13-8"><a href="#cb13-8"></a>project_id &lt;- testproj<span class="op">$</span>project<span class="op">$</span>id</span>
+<span id="cb13-9"><a href="#cb13-9"></a>pred_svc &lt;- <span class="kw">classification_service</span>(pred_endp, project_id, <span class="st">&quot;iteration1&quot;</span>)</span>
+<span id="cb13-10"><a href="#cb13-10"></a></span>
+<span id="cb13-11"><a href="#cb13-11"></a><span class="co"># predictions from prediction endpoint -- same as before</span></span>
+<span id="cb13-12"><a href="#cb13-12"></a>predsvc_tags &lt;- <span class="kw">predict</span>(pred_svc, validation_imgs)</span>
+<span id="cb13-13"><a href="#cb13-13"></a><span class="kw">table</span>(predsvc_tags, validation_tags)</span></code></pre>
+</div>
+<pre><code>##               validation_tags
+## predsvc_tags   can carton milk_bottle water_bottle
+##   can            4      0           0            0
+##   carton         0      5           0            0
+##   milk_bottle    1      0           5            0
+##   water_bottle   0      0           0            5</code></pre>
+</div>
+<div class="section level3" id="exporting-as-standalone">
+<h3>Exporting as standalone</h3>
+<p>As an alternative to deploying the model to an online predictive service resource, for example if you want to create a custom deployment solution, you can also export the model as a standalone object. This is only possible if the project was created to support exporting. The formats supported include:</p>
+<ul>
+<li>ONNX 1.2</li>
+<li>CoreML</li>
+<li>TensorFlow or TensorFlow Lite</li>
+<li>A Docker image for either the Linux, Windows or Raspberry Pi environment</li>
+<li>Vision AI Development Kit (VAIDK)</li>
+</ul>
+<p>To export the model, simply call <code>export_model</code> and specify the target format. This will download the model to your local machine.</p>
+<div class="sourceCode" id="cb15">
+<pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="kw">export_model</span>(mod, <span class="st">&quot;tensorflow&quot;</span>)</span></code></pre>
+</div>
+</div>
+</div>
+<div class="section level2" id="more-information">
+<h2>More information</h2>
+<p>AzureVision is part of the <a href="https://github.com/Azure/AzureR">AzureR</a> family of packages. This provides a range of tools to facilitate access to Azure services for data scientists working in R, such as AAD authentication, blob and file storage, Resource Manager, container services, Data Explorer (Kusto), and more.</p>
+<p>If you are interested in Custom Vision, you may also want to check out <a href="https://www.customvision.ai/?WT.mc_id=Revolutions-blog-davidsmi">CustomVision.ai</a>, which is an interactive frontend for building Custom Vision models.</p>
+</div>
+		</div>
+		
+
+                        <!-- SIGNATURE -->
+                        
+
+		
+	</div>
+
+	<div class="entry-footer">
+			<p class="entry-footer-info">
+				<span class="post-footers">Posted by <a rel="author" href="https://profile.typepad.com/6p01b8d158cece970c">Hong Ooi</a> at 09:30 in <a href="https://blog.revolutionanalytics.com/ai/">AI</a>, <a href="https://blog.revolutionanalytics.com/microsoft/">Microsoft</a>, <a href="https://blog.revolutionanalytics.com/packages/">packages</a>, <a href="https://blog.revolutionanalytics.com/r/">R</a> </span> <span class="separator">|</span> <a class="permalink" href="https://blog.revolutionanalytics.com/2020/05/azurevision.html">Permalink</a>
+			</p>
+		
+		<!-- technorati tags -->
+
+
+		<!-- post footer links -->
+	<p class="entry-footer-share">
+		<span class="entry-footer-links-favorite"></span>
+	</p>
+
+
+	</div>
+   </div>
+</div>
+
+
+
+        
+        
+        <a id="comments"></a>
+	<div class="comments" id="all-comments">
+		<h3 class="comments-header">Comments</h3>
+					<div class="comments-info">
+				<p><a href="https://blog.revolutionanalytics.com/2020/05/azurevision/comments/atom.xml"><img src="https://static.typepad.com/.shared/images/feed.png" alt="Feed" width="10" height="10" /></a> You can follow this conversation by subscribing to the <a href="https://blog.revolutionanalytics.com/2020/05/azurevision/comments/atom.xml">comment feed</a> for this post.</p>
+			</div>
+		
+		<div class="comments-content" id="comments-content">
+                <!-- comment list -->
+
+		</div>
+        
+	</div>
+<script type="text/javascript">var c943723d42e77e9214eb884a1d898ea="</form>";</script>
+<script type="text/javascript">var ffe51c373e0873b7778b6324a0b5533 = '<form id="comment-form" action="';</script>
+<script type="text/javascript">var c943723d42e77e9214eb884a1d898za = '" method="post"><input type="hidden" name="entry_xid" id="comment-entry-xid" value="6a010534b1db25970b0240a4fdaec2200d" \/><input type="hidden" name="token" value="1599919822-419075a1522b0efb91d1e91665fc3671f85e7fd2:gEQzQee2PhTCDNw7" \/>';</script>
+<script type="text/javascript">var OOcd55d4dc47109d7b462b01c7dd4dab = "aHR0cHM6Ly9ibG9nLnJldm9sdXRpb25hbmFseXRpY3MuY29tLy5zZXJ2aWNlcy9jb21tZW50cw";</script>
+<script type="text/javascript">var bad4dd7c10b264b7d90174cd4d55dc00 = atob(OOcd55d4dc47109d7b462b01c7dd4dab);</script>
+
+<!-- comment-form-atp -->
+
+
+<p class="comments-closed font-entrybody">
+	The comments to this entry are closed.
+</p>
+
+
+
+
+
+    
+    
+
+
+
+
+						</div>
+					</div>
+                                        <div id="beta">
+						<div id="beta-inner" class="pkg">
+							
+<!-- sidebar -->
+
+
+	<div class="module-archives module">
+		<h2 class="module-header">Information</h2>
+		<div class="module-content">
+			<ul class="module-list">
+				
+				<li class="module-list-item"><a href="https://blog.revolutionanalytics.com/about.html">About this blog</a></li>
+				
+				<li class="module-list-item"><a href="https://blog.revolutionanalytics.com/comments-policy.html">Comments Policy</a></li>
+				
+				<li class="module-list-item"><a href="https://blog.revolutionanalytics.com/categories.html">About Categories</a></li>
+				
+				<li class="module-list-item"><a href="https://blog.revolutionanalytics.com/authors.html">About the Authors</a></li>
+				
+				<li class="module-list-item"><a href="https://blog.revolutionanalytics.com/local-r-groups.html">Local R User Group Directory</a></li>
+				
+				<li class="module-list-item"><a href="https://blog.revolutionanalytics.com/tips-on-starting-an-r-user-group.html">Tips on Starting an R User Group</a></li>
+				
+			</ul>
+		</div>
+	</div>
+<!-- list_inlcude.tt  -->
+<div id="search_revolutions_blog" class="module-typelist module">
+<h2 class="module-header">Search Revolutions Blog</h2>
+	<div class="typelist-plain module-content">
+		<ul class="module-list">
+							<li class="module-list-item"><div class="typelist-note"><form method="get" action="https://www.google.com/search">
+  <input type="hidden" name="ie" value="UTF-8" /> 
+  <input type="hidden" name="oe" value="UTF-8" />
+  <div style="background-color:white;"></div>
+   <input type="text" name="q" size="18" maxlength="255" value="" />
+  <input type="submit" name="btnG" value=" Search Blog " />
+   <br />
+<small>
+    <input type="hidden" name="domains" value="blog.revolutionanalytics.com" />
+<br />
+    <input type="hidden" name="sitesearch" value="blog.revolutionanalytics.com" checked="checked" />
+   <br /></small>
+</form>
+ <!-- SiteSearch Google --></div></li>
+			
+		</ul><!-- last /ul -->
+	</div>
+</div>
+<!-- end list_include.tt -->
+
+<!-- custom_code.tt --><div class="module-custom_html module">
+    <div class="module-content">
+Got comments or suggestions for the blog editor? <br>
+Email <a href="mailto:davidsmi@microsoft.com">David Smith</a>.
+    </div>
+</div>
+<!-- end custom_code.tt -->
+<!-- custom_code.tt --><div class="module-custom_html module">
+    <div class="module-content">
+<a href="https://www.twitter.com/revodavid"><img src="https://twitter-badges.s3.amazonaws.com/t_small-b.png" alt="Follow revodavid on Twitter" /></a> Follow David on Twitter: <a href="https://twitter.com/revodavid">@revodavid</a>
+    </div>
+</div>
+<!-- end custom_code.tt -->
+<!-- custom_code.tt --><div class="module-custom_html module">
+    <div class="module-content">
+Get this blog via email with <a href="https://blogtrottr.com/?subscribe=http://blog.revolutionanalytics.com" title='Get this feed delivered by email'><img src='https://blogtrottr.com/images/icons/blogtrottr-button-91x17px.gif' alt='Blogtrottr' /></a>
+    </div>
+</div>
+<!-- end custom_code.tt -->
+<div class="module-categories module">
+	<h2 class="module-header"><a href="https://blog.revolutionanalytics.com/archives.html">Categories</a></h2>
+	<div class="module-content">
+                   <ul class="module-list">
+
+
+                        <li class="module-list-item"><a href="https://blog.revolutionanalytics.com/academia/">academia</a></li>
+
+
+
+                        <li class="module-list-item"><a href="https://blog.revolutionanalytics.com/advanced-tips/">advanced tips</a></li>
+
+
+
+                        <li class="module-list-item"><a href="https://blog.revolutionanalytics.com/ai/">AI</a></li>
+
+
+
+                        <li class="module-list-item"><a href="https://blog.revolutionanalytics.com/airoundups/">airoundups</a></li>
+
+
+
+                        <li class="module-list-item"><a href="https://blog.revolutionanalytics.com/announcements/">announcements</a></li>
+
+
+
+                        <li class="module-list-item"><a href="https://blog.revolutionanalytics.com/applications/">applications</a></li>
+
+
+
+                        <li class="module-list-item"><a href="https://blog.revolutionanalytics.com/beginner-tips/">beginner tips</a></li>
+
+
+
+                        <li class="module-list-item"><a href="https://blog.revolutionanalytics.com/big-data/">big data</a></li>
+
+
+
+                        <li class="module-list-item"><a href="https://blog.revolutionanalytics.com/courses/">courses</a></li>
+
+
+
+                        <li class="module-list-item"><a href="https://blog.revolutionanalytics.com/current-events/">current events</a></li>
+
+
+
+                        <li class="module-list-item"><a href="https://blog.revolutionanalytics.com/data-science/">data science</a></li>
+
+
+
+                        <li class="module-list-item"><a href="https://blog.revolutionanalytics.com/developers/">developer tips</a></li>
+
+
+
+                        <li class="module-list-item"><a href="https://blog.revolutionanalytics.com/events/">events</a></li>
+
+
+
+                        <li class="module-list-item"><a href="https://blog.revolutionanalytics.com/finance/">finance</a></li>
+
+
+
+                        <li class="module-list-item"><a href="https://blog.revolutionanalytics.com/government/">government</a></li>
+
+
+
+                        <li class="module-list-item"><a href="https://blog.revolutionanalytics.com/graphics/">graphics</a></li>
+
+
+
+                        <li class="module-list-item"><a href="https://blog.revolutionanalytics.com/high-performance-computing/">high-performance computing</a></li>
+
+
+
+                        <li class="module-list-item"><a href="https://blog.revolutionanalytics.com/life-sciences/">life sciences</a></li>
+
+
+
+                        <li class="module-list-item"><a href="https://blog.revolutionanalytics.com/microsoft/">Microsoft</a></li>
+
+
+
+                        <li class="module-list-item"><a href="https://blog.revolutionanalytics.com/mlops/">mlops</a></li>
+
+
+
+                        <li class="module-list-item"><a href="https://blog.revolutionanalytics.com/open-source/">open source</a></li>
+
+
+
+                        <li class="module-list-item"><a href="https://blog.revolutionanalytics.com/other-industry/">other industry</a></li>
+
+
+
+                        <li class="module-list-item"><a href="https://blog.revolutionanalytics.com/packages/">packages</a></li>
+
+
+
+                        <li class="module-list-item"><a href="https://blog.revolutionanalytics.com/popularity/">popularity</a></li>
+
+
+
+                        <li class="module-list-item"><a href="https://blog.revolutionanalytics.com/predictive-analytics/">predictive analytics</a></li>
+
+
+
+                        <li class="module-list-item"><a href="https://blog.revolutionanalytics.com/profiles/">profiles</a></li>
+
+
+
+                        <li class="module-list-item"><a href="https://blog.revolutionanalytics.com/python/">python</a></li>
+
+
+
+                        <li class="module-list-item"><a href="https://blog.revolutionanalytics.com/r/">R</a></li>
+
+
+
+                        <li class="module-list-item"><a href="https://blog.revolutionanalytics.com/r-is-hot/">R is Hot</a></li>
+
+
+
+                        <li class="module-list-item"><a href="https://blog.revolutionanalytics.com/random/">random</a></li>
+
+
+
+                        <li class="module-list-item"><a href="https://blog.revolutionanalytics.com/reviews/">reviews</a></li>
+
+
+
+                        <li class="module-list-item"><a href="https://blog.revolutionanalytics.com/revolution/">Revolution</a></li>
+
+
+
+                        <li class="module-list-item"><a href="https://blog.revolutionanalytics.com/rmedia/">Rmedia</a></li>
+
+
+
+                        <li class="module-list-item"><a href="https://blog.revolutionanalytics.com/roundups/">roundups</a></li>
+
+
+
+                        <li class="module-list-item"><a href="https://blog.revolutionanalytics.com/sports-1/">sports</a></li>
+
+
+
+                        <li class="module-list-item"><a href="https://blog.revolutionanalytics.com/statistics/">statistics</a></li>
+
+
+
+                        <li class="module-list-item"><a href="https://blog.revolutionanalytics.com/user-groups/">user groups</a></li>
+</span>
+		</ul>
+
+<a style="font-size:85%;display:none;" class="cat-more" href="https://blog.revolutionanalytics.com/archives.html">See More</a>
+	</div>
+</div>
+<!-- list_inlcude.tt  -->
+<div id="r_links" class="module-typelist module">
+<h2 class="module-header">R links</h2>
+	<div class="module-content">
+		<ul class="module-list">
+							<li class="module-list-item"><a href="https://docs.microsoft.com/azure/machine-learning/r-developers-guide?WT.mc_id=RevolutionsSidebar-blog-davidsmi" >R on Azure</a><br />Developer's guide and documentation</li>
+							<li class="module-list-item"><a href="https://mran.microsoft.com/packages/" >Find R packages</a><br />CRAN package directory at MRAN</li>
+							<li class="module-list-item"><a href="https://mran.microsoft.com/download" >Download Microsoft R Open</a><br />Free, high-performance R</li>
+							<li class="module-list-item"><a href="https://www.r-project.org">R Project site</a><br />Information about the R project</li>
+			
+		</ul><!-- last /ul -->
+	</div>
+</div>
+<!-- end list_include.tt -->
+
+<!-- list_inlcude.tt  -->
+<div id="recommended_sites" class="module-typelist module">
+<h2 class="module-header">Recommended Sites</h2>
+	<div class="module-content">
+		<ul class="module-list">
+							<li class="module-list-item"><a href="https://twitter.com/rlangtip" >@RLangTip</a><br />Daily tips on using R</li>
+							<li class="module-list-item"><a href="https://flowingdata.com">FlowingData</a><br />Modern data visualization</li>
+							<li class="module-list-item"><a href="http://www.statisticsblog.com/" >Probability and statistics blog</a><br />Monte Carlo simulations in R</li>
+							<li class="module-list-item"><a href="http://www.r-bloggers.com" >R Bloggers</a><br />Daily news and tutorials about R, contributed by R bloggers worldwide.</li>
+							<li class="module-list-item"><a href="http://www.analyticbridge.com/group/rprojectandotherfreesoftwaretools" >R Project group on analyticbridge.com</a><br />Community and discussion forum</li>
+							<li class="module-list-item"><a href="http://www.stat.columbia.edu/~cook/movabletype/mlm/" >Statistical Modeling, Causal Inference, and Social Science</a><br />Andrew Gelman's statistics blog</li>
+			
+		</ul><!-- last /ul -->
+	</div>
+</div>
+<!-- end list_include.tt -->
+
+<!-- archives -->
+
+	<div class="module-archives module">
+		<h2 class="module-header"><a href="https://blog.revolutionanalytics.com/archives.html">Archives</a></h2>
+		<div class="module-content">
+			<ul class="module-list">
+				
+					
+					<li class="module-list-item"><a href="https://blog.revolutionanalytics.com/2020/08/index.html">August 2020</a></li>
+				
+					
+					<li class="module-list-item"><a href="https://blog.revolutionanalytics.com/2020/07/index.html">July 2020</a></li>
+				
+					
+					<li class="module-list-item"><a href="https://blog.revolutionanalytics.com/2020/06/index.html">June 2020</a></li>
+				
+					
+					<li class="module-list-item"><a href="https://blog.revolutionanalytics.com/2020/05/index.html">May 2020</a></li>
+				
+					
+					<li class="module-list-item"><a href="https://blog.revolutionanalytics.com/2020/04/index.html">April 2020</a></li>
+				
+					
+					<li class="module-list-item"><a href="https://blog.revolutionanalytics.com/2020/03/index.html">March 2020</a></li>
+				
+					
+					<li class="module-list-item"><a href="https://blog.revolutionanalytics.com/2020/02/index.html">February 2020</a></li>
+				
+					
+					<li class="module-list-item"><a href="https://blog.revolutionanalytics.com/2020/01/index.html">January 2020</a></li>
+				
+					
+					<li class="module-list-item"><a href="https://blog.revolutionanalytics.com/2019/12/index.html">December 2019</a></li>
+				
+					
+					<li class="module-list-item"><a href="https://blog.revolutionanalytics.com/2019/11/index.html">November 2019</a></li>
+				
+			</ul>
+		</div>
+	</div>
+
+<div class="module-syndicate module">
+	<div class="module-content">
+	<a href="https://blog.revolutionanalytics.com/atom.xml"><i class="fas fa-rss"></i> Subscribe to this blog's feed</a>
+	</div>
+</div>
+<!-- custom_code.tt --><div class="module-custom_html module">
+    <div class="module-content">
+<script type="text/javascript">
+  var varAutoFirePV = 1;
+  var varClickTracking = 1;
+  var varCustomerTracking = 1;
+  var Route = "123865";
+  var Ctrl = "";
+  document.write("<script type='text/javascript' src='" + (window.location.protocol) + "//c.microsoft.com/ms.js'" + "'><\/script>");
+</script>​
+    </div>
+</div>
+<!-- end custom_code.tt -->
+<!-- custom_code.tt --><div class="module-custom_html module">
+    <div class="module-content">
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var firstTracker = _gat._getTracker("UA-6984166-10");
+firstTracker._setDomainName(".revolutionanalytics.com");
+firstTracker._setAllowLinker(true);
+firstTracker._setAllowHash(false);
+firstTracker._trackPageview();
+var secondTracker = _gat._getTracker("UA-6984166-9");
+secondTracker._setDomainName(".revolutionanalytics.com");
+secondTracker._setAllowLinker(true);
+secondTracker._setAllowHash(false);
+secondTracker._trackPageview();
+} catch (err) { }
+</script>
+    </div>
+</div>
+<!-- end custom_code.tt -->
+
+
+
+
+
+						</div>
+					</div>
+				</div>
+			</div>
+</div> <!-- row -->
+			
+
+
+
+		</div>
+	</div>
+	
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+<!--
+var extra_happy = Math.floor(1000000000 * Math.random());
+document.write('<img src="https://www.typepad.com/t/stats?blog_id=1774446&amp;user_id=3164880&amp;page=' + escape(location.href) + '&amp;referrer=' + escape(document.referrer) + '&amp;i=' + extra_happy + '" width="1" height="1" alt="" style="position: absolute; top: 0; left: 0;" />');
+// -->
+</script>
+
+
+
+
+<!-- Begin disqus Tag -->
+
+<!-- End disqus Tag -->
+</body>
+</html>
+
+<!-- ph=1 -->

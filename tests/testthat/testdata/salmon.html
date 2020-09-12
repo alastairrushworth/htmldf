@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Maëlle Salmon&#39;s personal website">
+  <meta name="generator" content="Hugo 0.72.0" />
+
+  <title>Maëlle&#39;s R blog &middot; Maëlle Salmon&#39;s personal website</title>
+
+    
+
+  
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/1.0.0/pure-min.css">
+
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/1.0.0/grids-responsive-old-ie-min.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/1.0.0/grids-responsive-min.css">
+  <!--<![endif]-->
+
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="https://masalmon.eu/css/side-menu-old-ie.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="https://masalmon.eu/css/side-menu.css">
+  <!--<![endif]-->
+
+  <link rel="stylesheet" href="https://masalmon.eu/css/blackburn.css">
+
+  
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.0/css/all.css">
+
+  
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+ 
+  
+  <link rel="alternate" type="application/rss+xml" title="Maëlle Salmon&#39;s personal website"
+    href='https://masalmon.eu/post/index.xml' />
+  
+
+  <link rel="shortcut icon" href="https://masalmon.eu/img/favicon.ico" type="image/x-icon" />
+
+  
+    
+        <link rel="stylesheet" href="https://masalmon.eu/css/paper-button.css">
+    
+  
+    
+        <link rel="stylesheet" href="https://masalmon.eu/css/salmon.css">
+    
+  
+  
+    
+        <script src="https://masalmon.eu/js/display.js"></script>
+    
+  
+
+</head>
+
+
+<body>
+<div id="layout">
+
+  
+<a href="#menu" id="menuLink" class="menu-link">
+  
+  <span></span>
+</a>
+<div id="menu">
+
+  
+  <a class="pure-menu-heading brand" href="https://masalmon.eu/">Maëlle Salmon</a>
+
+
+  <div class="pure-menu">
+    <ul class="pure-menu-list">
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="https://masalmon.eu/"><i class='fa fa-home fa-fw'></i>Home</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="https://masalmon.eu/post/"><i class='far fa-sticky-note'></i> Blog</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="https://masalmon.eu/talks/"><i class='fa fa-microphone fa-fw'></i>Talks</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="https://masalmon.eu/all/"><i class='fa fa-list fa-fw'></i>Content by date</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="https://masalmon.eu/tags/"><i class='fa fa-tags fa-fw'></i>Posts by tag</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="https://masalmon.eu/bio/"><i class='fa fa-id-card fa-fw'></i>Bio</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="https://masalmon.eu/papers/"><i class='fa fa-file fa-fw'></i>Publications</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="https://masalmon.eu/privacy/"><i class='fa fa-user-secret fa-fw'></i>Privacy policy</a>
+      
+        </li>
+      
+    </ul>
+  </div>
+
+  <div class="pure-menu social">
+  <ul class="pure-menu-list">
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href='https://masalmon.eu/post/index.xml'><i
+          class="fa fa-rss fa-fw"></i>RSS</a>
+    </li>
+    
+
+    
+<li class="pure-menu-item">
+    </li>
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://twitter.com/ma_salmon" rel="me" target="_blank"><i class="fab fa-twitter-square"></i> Twitter</a>
+    </li>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="mailto:maelle.salmon@yahoo.se" target="_blank"><i class="fa fa-envelope fa-fw"></i>Email</a>
+    </li>
+    
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://github.com/maelle" rel="me" target="_blank"><i class="fab fa-github-square"></i> GitHub</a>
+    </li>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://keybase.io/maelle_salmon" rel="me" target="_blank"><i class="fa fa-key fa-fw"></i>Keybase</a>
+    </li>
+    
+    
+        
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="http://orcid.org/0000-0002-2815-0399" target="_blank"><i class="fab fa-orcid"></i>ORCID</a>
+    </li>
+    
+    
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://www.researchgate.net/profile/Maelle_Salmon" target="_blank"><i class="fa fa-flask fa-fw"></i>ResearchGate</a>
+    </li>
+    
+
+    
+
+  </ul>
+</div>
+
+
+  <div>
+  <div class="small-print">
+    <small>Licence: <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC BY-SA</a></small>
+  </div>
+  <div class="small-print">
+    <small>Built with <a href="https://github.com/rstudio/blogdown" target="_blank">blogdown</a> and <a href="https://gohugo.io/" target="_blank">Hugo</a>. Theme <a href="https://github.com/yoshiharuyamashita/blackburn" target="_blank">Blackburn</a>. <a href="https://github.com/maelle/simplymaelle">Source of the website</a>.</small>
+  </div>
+</div>
+</div>
+
+
+  <div id="main">
+
+
+<div class="header">
+  <h1>Maëlle&#39;s R blog</h1>
+  <h2>Showcase of my (mostly R) work/fun</h2>
+</div>
+
+<div class="content">
+  
+    <article>
+  <header>
+    <h2><a href="https://masalmon.eu/2020/07/08/rmd-blogging-course/">How I Taught Scientific Blogging with R Markdown, Online</a></h2>
+
+    <div class="post-meta">
+
+  <div>
+    <i class="fa fa-calendar fa-fw"></i>
+    <time>2020/07/08</time>
+  </div>
+
+  
+
+  
+
+  
+  
+  
+  <div>
+    <i class="fa fa-tags fa-fw"></i>
+    
+      <a class="post-taxonomy-tag" href="https://masalmon.eu/tags/css">css</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="https://masalmon.eu/tags/hugo">hugo</a>
+    
+  </div>
+  
+  
+
+
+  
+
+
+
+
+
+  
+
+
+    
+  <div>
+    <i class="fab fa-github"></i>
+    <a href="https://github.com/maelle/simplymaelle/blob/master/content/post/2020-07-08-rmd-blogging-course.md" target="_blank">View source</a>&nbsp
+
+
+
+</div>
+
+  </header>
+
+  <p>
+  Last week I had the pleasure to lead an online course about &ldquo;Scientific Blogging with R Markdown&rdquo;, invited by Najko Jahn and Anne Hobert from SUB Göttingen. To follow the example set by the incredible Alison Hill, I&rsquo;ll write a summary of what I&rsquo;ve learnt and would like to do better next time.
+The topic The topic of the course was &ldquo;Scientific Blogging with R Markdown&rdquo;. For months I would sometimes write down some ideas, from &ldquo;present distill&rdquo; to &ldquo;show web developer console&rdquo;, that I had whilst reading things online.
+  </p>
+
+  
+  <footer>
+    <a href="https://masalmon.eu/2020/07/08/rmd-blogging-course/">Read more<i class="fa fa-angle-double-right fa-fw"></i></a>
+  </footer>
+  
+</article>
+
+  
+    <article>
+  <header>
+    <h2><a href="https://masalmon.eu/2020/04/21/css-snippet/">How to showcase CSS&#43;JS&#43;HTML snippets with Hugo?</a></h2>
+
+    <div class="post-meta">
+
+  <div>
+    <i class="fa fa-calendar fa-fw"></i>
+    <time>2020/04/21</time>
+  </div>
+
+  
+
+  
+
+  
+  
+  
+  <div>
+    <i class="fa fa-tags fa-fw"></i>
+    
+      <a class="post-taxonomy-tag" href="https://masalmon.eu/tags/css">css</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="https://masalmon.eu/tags/hugo">hugo</a>
+    
+  </div>
+  
+  
+
+
+  
+
+
+
+
+
+  
+
+
+    
+  <div>
+    <i class="fab fa-github"></i>
+    <a href="https://github.com/maelle/simplymaelle/blob/master/content/post/2020-04-21-css-snippet.md" target="_blank">View source</a>&nbsp
+
+
+
+</div>
+
+  </header>
+
+  <p>
+  I&rsquo;ve recently found myself having to write a bit of CSS or JS for websites made with Hugo. Note for usual readers: it is a topic not directly related to R, but you might have played with either or both CSS and JS for your R blog or Shiny app. On a scale from Peter Griffin programming CSS window blinds to making art with CSS, I&rsquo;m sadly much closer to the former; my JS knowledge is not better.
+  </p>
+
+  
+  <footer>
+    <a href="https://masalmon.eu/2020/04/21/css-snippet/">Read more<i class="fa fa-angle-double-right fa-fw"></i></a>
+  </footer>
+  
+</article>
+
+  
+    <article>
+  <header>
+    <h2><a href="https://masalmon.eu/2020/02/29/hugo-maintenance/">What to know before you adopt Hugo/blogdown</a></h2>
+
+    <div class="post-meta">
+
+  <div>
+    <i class="fa fa-calendar fa-fw"></i>
+    <time>2020/02/29</time>
+  </div>
+
+  
+
+  
+
+  
+  
+  
+  <div>
+    <i class="fa fa-tags fa-fw"></i>
+    
+      <a class="post-taxonomy-tag" href="https://masalmon.eu/tags/admin">admin</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="https://masalmon.eu/tags/hugo">hugo</a>
+    
+  </div>
+  
+  
+
+
+  
+
+
+
+
+
+  
+
+
+    
+  <div>
+    <i class="fab fa-github"></i>
+    <a href="https://github.com/maelle/simplymaelle/blob/master/content/post/2020-02-29-hugo-maintenance.md" target="_blank">View source</a>&nbsp
+
+
+
+</div>
+
+  </header>
+
+  <p>
+  Fancy (re-)creating your website using Hugo, with or without blogdown? Feeling a bit anxious? This post is aimed at being the Hugo equivalent of &ldquo;What to know before you adopt a pet&rdquo;. We shall go through things that can/will break in the future, and what you can do to prevent future pain.
+I&rsquo;m writing this post with R users in mind, which means I shall use R analogies and mentioning blogdown, but I hope some aspects are generalizable to other potential Hugo adopters.
+  </p>
+
+  
+  <footer>
+    <a href="https://masalmon.eu/2020/02/29/hugo-maintenance/">Read more<i class="fa fa-angle-double-right fa-fw"></i></a>
+  </footer>
+  
+</article>
+
+  
+    <article>
+  <header>
+    <h2><a href="https://masalmon.eu/2019/10/02/disqus/">Goodbye, Disqus! Hello, Utterances!</a></h2>
+
+    <div class="post-meta">
+
+  <div>
+    <i class="fa fa-calendar fa-fw"></i>
+    <time>2019/10/02</time>
+  </div>
+
+  
+
+  
+
+  
+  
+  
+  <div>
+    <i class="fa fa-tags fa-fw"></i>
+    
+      <a class="post-taxonomy-tag" href="https://masalmon.eu/tags/disqus">disqus</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="https://masalmon.eu/tags/utterances">utterances</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="https://masalmon.eu/tags/admin">admin</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="https://masalmon.eu/tags/hugo">hugo</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="https://masalmon.eu/tags/xml2">xml2</a>
+    
+  </div>
+  
+  
+
+
+  
+
+
+
+
+
+  
+
+
+    
+  <div>
+    <i class="fab fa-github"></i>
+    <a href="https://github.com/maelle/simplymaelle/blob/master/content/post/2019-10-02-disqus.md" target="_blank">View source</a>&nbsp
+
+
+
+</div>
+
+  </header>
+
+  <p>
+  <p>Removing Disqus from my blogdown blog had been on my mind for a while,
+ever since I saw <a href="https://twitter.com/hrbrmstr/status/1135915244532822018">Bob Rudis’ tweet enjoining Noam Ross to <em>not</em> use
+it</a> for <a href="https://www.noamross.net/2019/08/09/a-new-website/">his
+brand-new website</a>.
+The same Twitter thread introduced me to
+<a href="https://github.com/utterance/utterances">Utterances</a>, a “lightweight
+comments widget built on GitHub issues”, which I have at last installed
+to my blog in lieu of Disqus. How did I manage to not lose anything of
+value? How easy was it to switch tools? Read on to learn more!</p>
+  </p>
+
+  
+  <footer>
+    <a href="https://masalmon.eu/2019/10/02/disqus/">Read more<i class="fa fa-angle-double-right fa-fw"></i></a>
+  </footer>
+  
+</article>
+
+  
+    <article>
+  <header>
+    <h2><a href="https://masalmon.eu/2019/02/11/trump-schedule/">How did Axios rectangle Trump&#39;s PDF schedule? A try with R</a></h2>
+
+    <div class="post-meta">
+
+  <div>
+    <i class="fa fa-calendar fa-fw"></i>
+    <time>2019/02/11</time>
+  </div>
+
+  
+
+  
+
+  
+  
+  
+  <div>
+    <i class="fa fa-tags fa-fw"></i>
+    
+      <a class="post-taxonomy-tag" href="https://masalmon.eu/tags/pdftools">pdftools</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="https://masalmon.eu/tags/pdf">pdf</a>
+    
+  </div>
+  
+  
+
+
+  
+
+
+
+
+
+  
+
+
+    
+  <div>
+    <i class="fab fa-github"></i>
+    <a href="https://github.com/maelle/simplymaelle/blob/master/content/post/2019-02-11-trump-schedule.md" target="_blank">View source</a>&nbsp
+
+
+
+</div>
+
+  </header>
+
+  <p>
+  <p>Last week, <a href="https://www.axios.com/donald-trump-private-schedules-leak-executive-time-34e67fbb-3af6-48df-aefb-52e02c334255.html">Axios published a very interesting piece reporting on
+Trump’s private schedule thanks to an insider’s
+leak</a>.
+The headlines all were about Trump’s spending more than 60% of his time
+in “executive time” which admittedly was indeed the most important
+aspect of the story. I, however, also got curious about Axios’ work to
+go from the PDF schedules to the spreadsheet they made public. In this
+post, I’ll have a got at using rOpenSci’s Jeroen Ooms’ <code>pdftools</code>
+package and some data-wrangling stubborness of mine to try and rectangle
+Trump’s PDF schedules.</p>
+  </p>
+
+  
+  <footer>
+    <a href="https://masalmon.eu/2019/02/11/trump-schedule/">Read more<i class="fa fa-angle-double-right fa-fw"></i></a>
+  </footer>
+  
+</article>
+
+  
+
+  
+
+
+<nav class="pagination" role="pagination">
+  
+  <i class="fa fa-chevron-left"></i>
+  
+  <span>&nbsp;1 / 14&nbsp;</span>
+  
+  <a href="https://masalmon.eu/post/page/2/"><i class="fa fa-chevron-right"></i></a>
+  
+</nav>
+
+
+
+</div>
+
+</div>
+</div>
+<script src="https://masalmon.eu/js/ui.js"></script>
+<script src="https://masalmon.eu/js/menus.js"></script>
+
+
+
+
+
+
+</body>
+</html>
+

@@ -1,0 +1,253 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>Variance Explained</title>
+<meta name="description" content="Blog on R, statistics, and education">
+<meta name="keywords" content="blog">
+
+
+<!-- Twitter Cards -->
+<meta name="twitter:title" content="Variance Explained">
+<meta name="twitter:description" content="Blog on R, statistics, and education">
+<meta name="twitter:site" content="@drob">
+<meta name="twitter:creator" content="@drob">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://varianceexplained.org/images/default-thumb.png">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Variance Explained">
+<meta property="og:description" content="Blog on R, statistics, and education">
+<meta property="og:url" content="http://varianceexplained.org/">
+<meta property="og:site_name" content="Variance Explained">
+
+
+
+
+
+<link rel="canonical" href="http://varianceexplained.org/">
+<link href="http://varianceexplained.org/feed.xml" type="application/atom+xml" rel="alternate" title="Variance Explained Feed">
+
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://varianceexplained.org/assets/css/main.css">
+
+<meta http-equiv="cleartype" content="on">
+
+<!-- HTML5 Shiv and Media Query Support -->
+<!--[if lt IE 9]>
+	<script src="http://varianceexplained.org/assets/js/vendor/html5shiv.min.js"></script>
+	<script src="http://varianceexplained.org/assets/js/vendor/respond.min.js"></script>
+<![endif]-->
+
+<!-- Modernizr -->
+<script src="http://varianceexplained.org/assets/js/vendor/modernizr-2.7.1.custom.min.js"></script>
+
+<!-- MathJax -->
+<script type="text/javascript"
+  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+<link href='//fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700%7CPT+Serif:400,700,400italic' rel='stylesheet' type='text/css'>
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="http://varianceexplained.org/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="http://varianceexplained.org/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="http://varianceexplained.org/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://varianceexplained.org/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://varianceexplained.org/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://varianceexplained.org/images/apple-touch-icon-144x144-precomposed.png">
+
+<!-- Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-57723549-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+</head>
+
+<body class="home">
+
+<!--[if lt IE 9]><div class="browser-upgrade alert alert-info">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</div><![endif]-->
+
+<div class="navigation-wrapper">
+	<div class="site-name">
+		<a href="http://varianceexplained.org">Variance Explained</a>
+	</div><!-- /.site-name -->
+	<div class="top-navigation">
+		<nav role="navigation" id="site-nav" class="nav">
+		    <ul>
+		        
+					    
+					    <li><a href="http://varianceexplained.org/about/" >About Me</a></li>
+					  
+					    
+					    <li><a href="http://varianceexplained.org/posts/" >Posts</a></li>
+					  
+					    
+					    <li><a href="https://www.tidytextmining.com/" target="_blank">Text Mining in R</a></li>
+					  
+					    
+					    <li><a href="http://varianceexplained.org/r/empirical-bayes-book/" >Introduction to Empirical Bayes</a></li>
+					  
+		    </ul>
+		</nav>
+	</div><!-- /.top-navigation -->
+</div><!-- /.navigation-wrapper -->
+
+
+
+<div id="main" role="main"> 
+  <div class="article-author-side">
+    
+
+
+	<img src="http://varianceexplained.org/images/david_robinson_picture2.jpg" class="bio-photo" alt="David Robinson bio photo">
+
+<h3>David Robinson</h3>
+<p>Principal Data Scientist at Heap, works in R and Python.</p>
+<a href="mailto:admiral.david@gmail.com" class="author-social" target="_blank"><i class="fa fa-envelope-square"></i> Email</a>
+<a href="http://twitter.com/drob" class="author-social" target="_blank"><i class="fa fa-twitter-square"></i> Twitter</a>
+
+
+
+
+
+<a href="http://github.com/dgrtwo" class="author-social" target="_blank"><i class="fa fa-github"></i> Github</a>
+<a href="http://stackoverflow.com/users/712603" class="author-social" target="_blank"><i class="fa fa-stack-overflow"></i> Stack Overflow</a>
+
+
+
+
+
+
+<h4>Subscribe</h4>
+
+<form method='post' action='http://blogtrottr.com'>
+    <input type='text' name='btr_email' placeholder = 'Your email'/><br />
+    <input type='hidden' name='btr_url' value='http://varianceexplained.org/feed.xml' />
+    <input type='hidden' name='schedule_type' value='0' />
+    <input type='submit' class="styled-button-4" value='Subscribe to this blog' />
+</form>
+
+<style type="text/css"> 
+.styled-button-4 {
+	-webkit-box-shadow:rgba(0,0,0,0.98) 0 1px 0 0;
+	-moz-box-shadow:rgba(0,0,0,0.98) 0 1px 0 0;
+	box-shadow:rgba(0,0,0,0.98) 0 1px 0 0;
+	background-color:#EEE;
+	border-radius:0;
+	-webkit-border-radius:0;
+	-moz-border-radius:0;
+	border:1px solid #999;
+	color:#666;
+	font-family:'Lucida Grande',Tahoma,Verdana,Arial,Sans-serif;
+	font-size:11px;
+	font-weight:700;
+	padding:2px 6px;
+	height:28px
+}
+</style>
+
+
+<h4>Recommended Blogs</h4>
+<ul>
+    <li><a href="http://www.r-bloggers.com/">R Bloggers</a></li>
+    <li><a href="http://blog.rstudio.org/">RStudio Blog</a></li>
+    <li><a href="http://r4stats.com/">R4Stats</a></li>
+    <li><a href="http://simplystatistics.org/">Simply Statistics</a></li>
+</ul>
+
+  </div>
+  <div id="index">
+    <p>This is the homepage and blog of David Robinson. For more about me, <a href="/about" style="text-decoration: underline">see here</a>.</p>
+
+    <h3><a href="http://varianceexplained.org/posts/">Recent Posts</a></h3>
+        
+    <article>
+      
+        <h2><a href="http://varianceexplained.org/r/riddler-prisoner-flip/" title="The 'prisoner coin flipping' puzzle: tidy simulation in R">The 'prisoner coin flipping' puzzle: tidy simulation in R</a>
+        <p class = "dateline">May 04, 2020</span>
+</h2>
+        <p>Solving a puzzle from 538's the Riddler column: if N prisoners have a choice to flip a coin, and go free as long as one coin is flipped and all coins are heads, what strategy should they take to maximize their chances? Another demonstration of probabilistic reasoning and tidy simulation.</p>
+      
+    </article>
+        
+    <article>
+      
+        <h2><a href="http://varianceexplained.org/r/spam-simulation/" title="The 'spam comments' puzzle: tidy simulation of stochastic processes in R">The 'spam comments' puzzle: tidy simulation of stochastic processes in R</a>
+        <p class = "dateline">April 13, 2020</span>
+</h2>
+        <p>Solving a puzzle from 538's The Riddler column: if new spam comments appear at an average rate of one per day, including on other spam comments, how many can we expect after three days?</p>
+      
+    </article>
+        
+    <article>
+      
+        <h2><a href="http://varianceexplained.org/r/feller-coins/" title="Feller's coin-tossing puzzle: tidy simulation in R">Feller's coin-tossing puzzle: tidy simulation in R</a>
+        <p class = "dateline">January 17, 2020</span>
+</h2>
+        <p>If you toss n coins, what's the probability there are no streaks of k heads?</p>
+      
+    </article>
+        
+    <article>
+      
+        <h2><a href="http://varianceexplained.org/r/honeycomb-puzzle/" title="The 'Spelling Bee Honeycomb' puzzle: efficient computation in R">The 'Spelling Bee Honeycomb' puzzle: efficient computation in R</a>
+        <p class = "dateline">January 06, 2020</span>
+</h2>
+        <p>Solving a puzzle from 538's The Riddler column: what is the honeycomb (from the New York Times's Spelling Bee puzzle) that scores the highest?</p>
+      
+    </article>
+        
+    <article>
+      
+        <h2><a href="http://varianceexplained.org/r/birthday-problem/" title="The birthday paradox puzzle: tidy simulation in R">The birthday paradox puzzle: tidy simulation in R</a>
+        <p class = "dateline">January 03, 2020</span>
+</h2>
+        <p>A demonstration of a tidy approach to simulating the classic birthday paradox problem.</p>
+      
+    </article>
+    
+  </div><!-- /#index -->
+</div><!-- /#main -->
+
+<div class="footer-wrap">
+  <footer>
+    
+
+<span>&copy; 2020 David Robinson. Powered by <a href="http://jekyllrb.com">Jekyll</a> using the <a href="http://mademistakes.com/minimal-mistakes/">Minimal Mistakes</a> theme.</span>
+
+  </footer>
+</div><!-- /.footer-wrap -->
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="http://varianceexplained.org/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script src="http://varianceexplained.org/assets/js/scripts.min.js"></script>
+
+
+  
+</body>
+</html>

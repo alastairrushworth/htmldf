@@ -1,0 +1,1183 @@
+<!DOCTYPE html>
+<!--[if IE 6]>
+<html id="ie6" lang="de-DE" prefix="og: http://ogp.me/ns#">
+<![endif]-->
+<!--[if IE 7]>
+<html id="ie7" lang="de-DE" prefix="og: http://ogp.me/ns#">
+<![endif]-->
+<!--[if IE 8]>
+<html id="ie8" lang="de-DE" prefix="og: http://ogp.me/ns#">
+<![endif]-->
+<!--[if !(IE 6) | !(IE 7) | !(IE 8)  ]><!-->
+<html lang="de-DE" prefix="og: http://ogp.me/ns#">
+<!--<![endif]-->
+<head>
+	<meta charset="UTF-8" />
+	
+			
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<link rel="pingback" href="https://databraineo.com/xmlrpc.php" />
+	
+	<link rel=”preload” href=”https://databraineo.de/wp-content/plugins/bloom/css/fonts/ET-Bloom.woff?gd6mr8” as=”font” crossorigin=”anonymous”>
+	<link rel=”preload” href=”https://databraineo.de/wp-content/themes/Extra/core/admin/fonts/modules.ttf” as=”font” crossorigin=”anonymous”> 
+	
+		<!--[if lt IE 9]>
+	<script src="https://databraineo.com/wp-content/themes/Extra/scripts/ext/html5.js" type="text/javascript"></script>
+	<![endif]-->
+
+	<script type="text/javascript">
+		document.documentElement.className = 'js';
+	</script>
+
+	<script>var et_site_url='https://databraineo.com';var et_post_id='1403';function et_core_page_resource_fallback(a,b){"undefined"===typeof b&&(b=a.sheet.cssRules&&0===a.sheet.cssRules.length);b&&(a.onerror=null,a.onload=null,a.href?a.href=et_site_url+"/?et_core_page_resource="+a.id+et_post_id:a.src&&(a.src=et_site_url+"/?et_core_page_resource="+a.id+et_post_id))}
+</script><style type="text/css">
+/**
+ * GeSHi Dynamically Generated Stylesheet
+ * --------------------------------------
+ * Dynamically generated stylesheet for rsplus
+ * CSS class: , CSS id: 
+ * GeSHi (C) 2004 - 2007 Nigel McNie, 2007 - 2014 Benny Baumann
+ * (http://qbnz.com/highlighter/ and http://geshi.org/)
+ * --------------------------------------
+ */
+.rsplus .de1, .rsplus .de2 {}
+.rsplus  {font-family:monospace;}
+.rsplus .imp {font-weight: bold; color: red;}
+.rsplus li, .rsplus .li1 {font-weight: normal; vertical-align:top;}
+.rsplus .ln {width:1px;text-align:right;margin:0;padding:0 2px;vertical-align:top;}
+.rsplus .li2 {font-weight: bold; vertical-align:top;}
+.rsplus .kw1 {color: #0000FF; font-weight: bold;}
+.rsplus .kw2 {color: #0000FF; font-weight: bold;}
+.rsplus .kw3 {color: #CC9900; font-weight: bold;}
+.rsplus .kw4 {color: #0000FF; font-weight: bold;}
+.rsplus .kw5 {color: #0000FF; font-weight: bold;}
+.rsplus .kw6 {color: #0000FF; font-weight: bold;}
+.rsplus .kw7 {color: #0000FF; font-weight: bold;}
+.rsplus .kw8 {color: #0000FF; font-weight: bold;}
+.rsplus .co1 {color: #228B22;}
+.rsplus .es0 {color: #000099; font-weight: bold;}
+.rsplus .br0 {color: #080;}
+.rsplus .sy0 {color: #080;}
+.rsplus .st0 {color: #ff0000;}
+.rsplus .nu0 {color: #ff0000;}
+.rsplus .re0 {color:#A020F0;}
+.rsplus .ln-xtra, .rsplus li.ln-xtra, .rsplus div.ln-xtra {background-color: #ffc;}
+.rsplus span.xtra { display:block; }
+</style>
+
+<!-- Suchmaschinenoptimierung von Rank Math - https://s.rankmath.com/home -->
+<title>Die Basis-Datentypen in R - einfach erklärt</title>
+<meta name="description" content="Du bist neu in R und brauchst Grundlagen? Hier erkläre ich Dir die Datentypen in R, natürlich so einfach wie möglich und mit vielen Beispielen ..."/>
+<meta name="robots" content="follow, index, max-snippet:-1, max-video-preview:-1, max-image-preview:large"/>
+<link rel="canonical" href="https://databraineo.com/ki-training-resources/r-programmierung/datentypen-in-r-einfach-erklaert/" />
+<meta property="og:locale" content="de_DE">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Die Basis-Datentypen in R - einfach erklärt">
+<meta property="og:description" content="Du bist neu in R und brauchst Grundlagen? Hier erkläre ich Dir die Datentypen in R, natürlich so einfach wie möglich und mit vielen Beispielen ...">
+<meta property="og:url" content="https://databraineo.com/ki-training-resources/r-programmierung/datentypen-in-r-einfach-erklaert/">
+<meta property="og:site_name" content="DataBraineo - Data Science Blog">
+<meta property="article:publisher" content="https://www.facebook.com/databraineo">
+<meta property="article:author" content="https://www.facebook.com/profile.php?id=1336915249">
+<meta property="article:tag" content="boolean">
+<meta property="article:tag" content="datentyp">
+<meta property="article:tag" content="double">
+<meta property="article:tag" content="integer">
+<meta property="article:tag" content="logical">
+<meta property="article:tag" content="numeric">
+<meta property="article:tag" content="R">
+<meta property="article:tag" content="string">
+<meta property="article:tag" content="variable">
+<meta property="article:section" content="R">
+<meta property="article:published_time" content="2020-03-06T09:35:41+01:00">
+<meta property="article:modified_time" content="2020-03-11T15:53:48+01:00">
+<meta property="og:updated_time" content="2020-03-11T15:53:48+01:00">
+<meta property="og:image" content="https://databraineo.com/wp-content/uploads/2020/03/r-datentypen-tutorial-teil-1.jpg">
+<meta property="og:image:secure_url" content="https://databraineo.com/wp-content/uploads/2020/03/r-datentypen-tutorial-teil-1.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="676">
+<meta property="og:image:alt" content="datentypen in R">
+<meta property="og:image:type" content="image/jpeg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Die Basis-Datentypen in R - einfach erklärt">
+<meta name="twitter:description" content="Du bist neu in R und brauchst Grundlagen? Hier erkläre ich Dir die Datentypen in R, natürlich so einfach wie möglich und mit vielen Beispielen ...">
+<meta name="twitter:site" content="@databraineo">
+<meta name="twitter:creator" content="@databraineo">
+<meta name="twitter:image" content="https://databraineo.com/wp-content/uploads/2020/03/r-datentypen-tutorial-teil-1.jpg">
+<script type="application/ld+json">{"@context":"https:\/\/schema.org","@graph":[{"@type":"BlogPosting","headline":"Die Basis-Datentypen in R - einfach erkl\u00e4rt","datePublished":"2020-03-06T09:35:41+01:00","dateModified":"2020-03-11T15:53:48+01:00","publisher":{"@type":"Organization","name":"Holger","logo":{"@type":"ImageObject","url":"https:\/\/databraineo.com\/wp-content\/uploads\/2018\/06\/Icon-Databraineo-neu-1000x1000.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https:\/\/databraineo.com\/ki-training-resources\/r-programmierung\/datentypen-in-r-einfach-erklaert\/"},"author":{"@type":"Person","name":"Holger"},"description":"Du bist neu in R und brauchst Grundlagen? Hier erkl\u00e4re ich Dir die Datentypen in R, nat\u00fcrlich so einfach wie m\u00f6glich und mit vielen Beispielen ...","image":{"@type":"ImageObject","url":"https:\/\/databraineo.com\/wp-content\/uploads\/2020\/03\/r-datentypen-tutorial-teil-1.jpg","width":1200,"height":676}}]}</script>
+<!-- /Rank Math WordPress SEO Plugin -->
+
+<link rel='dns-prefetch' href='//www.google.com' />
+<link rel='dns-prefetch' href='//secure.gravatar.com' />
+<link rel='dns-prefetch' href='//fonts.googleapis.com' />
+<link rel='dns-prefetch' href='//s.w.org' />
+<link rel='dns-prefetch' href='//v0.wordpress.com' />
+<link rel="alternate" type="application/rss+xml" title="DataBraineo - Data Science Blog &raquo; Feed" href="https://databraineo.com/feed/" />
+<link rel="alternate" type="application/rss+xml" title="DataBraineo - Data Science Blog &raquo; Kommentar-Feed" href="https://databraineo.com/comments/feed/" />
+<link rel="alternate" type="text/calendar" title="DataBraineo - Data Science Blog &raquo; iCal Feed" href="https://databraineo.com/events/?ical=1" />
+<link rel="alternate" type="application/rss+xml" title="DataBraineo - Data Science Blog &raquo; Datentypen in R – einfach erklärt Kommentar-Feed" href="https://databraineo.com/ki-training-resources/r-programmierung/datentypen-in-r-einfach-erklaert/feed/" />
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/13.0.0\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/13.0.0\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/databraineo.com\/wp-includes\/js\/wp-emoji-release.min.js?ver=5.5.1"}};
+			!function(e,a,t){var r,n,o,i,p=a.createElement("canvas"),s=p.getContext&&p.getContext("2d");function c(e,t){var a=String.fromCharCode;s.clearRect(0,0,p.width,p.height),s.fillText(a.apply(this,e),0,0);var r=p.toDataURL();return s.clearRect(0,0,p.width,p.height),s.fillText(a.apply(this,t),0,0),r===p.toDataURL()}function l(e){if(!s||!s.fillText)return!1;switch(s.textBaseline="top",s.font="600 32px Arial",e){case"flag":return!c([127987,65039,8205,9895,65039],[127987,65039,8203,9895,65039])&&(!c([55356,56826,55356,56819],[55356,56826,8203,55356,56819])&&!c([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]));case"emoji":return!c([55357,56424,8205,55356,57212],[55357,56424,8203,55356,57212])}return!1}function d(e){var t=a.createElement("script");t.src=e,t.defer=t.type="text/javascript",a.getElementsByTagName("head")[0].appendChild(t)}for(i=Array("flag","emoji"),t.supports={everything:!0,everythingExceptFlag:!0},o=0;o<i.length;o++)t.supports[i[o]]=l(i[o]),t.supports.everything=t.supports.everything&&t.supports[i[o]],"flag"!==i[o]&&(t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&t.supports[i[o]]);t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&!t.supports.flag,t.DOMReady=!1,t.readyCallback=function(){t.DOMReady=!0},t.supports.everything||(n=function(){t.readyCallback()},a.addEventListener?(a.addEventListener("DOMContentLoaded",n,!1),e.addEventListener("load",n,!1)):(e.attachEvent("onload",n),a.attachEvent("onreadystatechange",function(){"complete"===a.readyState&&t.readyCallback()})),(r=t.source||{}).concatemoji?d(r.concatemoji):r.wpemoji&&r.twemoji&&(d(r.twemoji),d(r.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+		<meta content="Extra Child Theme v.0.0.1" name="generator"/><style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+	<link rel='stylesheet' id='wp-quicklatex-format-css'  href='https://databraineo.com/wp-content/plugins/wp-quicklatex/css/quicklatex-format.css?ver=5.5.1' type='text/css' media='all' />
+<link rel='stylesheet' id='tribe-common-skeleton-style-css'  href='https://databraineo.com/wp-content/plugins/the-events-calendar/common/src/resources/css/common-skeleton.min.css?ver=4.12.7' type='text/css' media='all' />
+<link rel='stylesheet' id='tribe-tooltip-css'  href='https://databraineo.com/wp-content/plugins/the-events-calendar/common/src/resources/css/tooltip.min.css?ver=4.12.7' type='text/css' media='all' />
+<link rel='stylesheet' id='wp-block-library-css'  href='https://databraineo.com/wp-includes/css/dist/block-library/style.min.css?ver=5.5.1' type='text/css' media='all' />
+<style id='wp-block-library-inline-css' type='text/css'>
+.has-text-align-justify{text-align:justify;}
+</style>
+<link rel='stylesheet' id='contact-form-7-css'  href='https://databraineo.com/wp-content/plugins/contact-form-7/includes/css/styles.css?ver=5.2.2' type='text/css' media='all' />
+<link rel='stylesheet' id='cookie-notice-front-css'  href='https://databraineo.com/wp-content/plugins/cookie-notice/css/front.min.css?ver=5.5.1' type='text/css' media='all' />
+<link rel='stylesheet' id='wtfdivi-user-css-css'  href='https://databraineo.com/wp-content/uploads/wtfdivi/wp_head.css?ver=1561816723' type='text/css' media='all' />
+<style id='spai-fadein-inline-css' type='text/css'>
+img[data-spai]{opacity: 0;} div.woocommerce-product-gallery img[data-spai]{opacity: 1;} img[data-spai-eager],img[data-spai-upd] {transition: opacity .5s linear .2s;-webkit-transition: opacity .5s linear .2s;-moz-transition: opacity .5s linear .2s;-o-transition: opacity .5s linear .2s; opacity: 1;}
+</style>
+<link rel='stylesheet' id='ez-icomoon-css'  href='https://databraineo.com/wp-content/plugins/easy-table-of-contents/vendor/icomoon/style.min.css?ver=2.0.11' type='text/css' media='all' />
+<link rel='stylesheet' id='ez-toc-css'  href='https://databraineo.com/wp-content/plugins/easy-table-of-contents/assets/css/screen.min.css?ver=2.0.11' type='text/css' media='all' />
+<style id='ez-toc-inline-css' type='text/css'>
+div#ez-toc-container p.ez-toc-title {font-size: 120%;}div#ez-toc-container p.ez-toc-title {font-weight: 500;}div#ez-toc-container ul li {font-size: 95%;}
+</style>
+<link rel='stylesheet' id='et_monarch-css-css'  href='https://databraineo.com/wp-content/plugins/monarch/css/style.css?ver=1.4.12' type='text/css' media='all' />
+<link rel='stylesheet' id='et-gf-open-sans-css'  href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' type='text/css' media='all' />
+<link rel='stylesheet' id='extra-css'  href='https://databraineo.com/wp-content/themes/Extra/style.css?ver=5.5.1' type='text/css' media='all' />
+<link rel='stylesheet' id='extra-fonts-css'  href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800&#038;subset=latin,latin-ext' type='text/css' media='all' />
+<link rel='stylesheet' id='extra-style-css'  href='https://databraineo.com/wp-content/themes/extra-child-theme-init-master/style.css?ver=4.6.1' type='text/css' media='all' />
+<link rel='stylesheet' id='opentip_css-css'  href='https://databraineo.com/wp-content/plugins/cm-tooltip-glossary-skins/views/assets/css/opentip.css?ver=5.5.1' type='text/css' media='all' />
+<style id='opentip_css-inline-css' type='text/css'>
+.mobile-link:before{content: " "}
+</style>
+<link rel='stylesheet' id='tablepress-default-css'  href='https://databraineo.com/wp-content/plugins/tablepress/css/default.min.css?ver=1.12' type='text/css' media='all' />
+<link rel='stylesheet' id='wpgeshi-wp-geshi-highlight-css'  href='https://databraineo.com/wp-content/plugins/wp-geshi-highlight/wp-geshi-highlight.css?ver=5.5.1' type='text/css' media='all' />
+<link rel='stylesheet' id='dashicons-css'  href='https://databraineo.com/wp-includes/css/dashicons.min.css?ver=5.5.1' type='text/css' media='all' />
+<link rel='stylesheet' id='jetpack_css-css'  href='https://databraineo.com/wp-content/plugins/jetpack/css/jetpack.css?ver=8.9' type='text/css' media='all' />
+<script type='text/javascript' src='https://databraineo.com/wp-includes/js/jquery/jquery.js?ver=1.12.4-wp' id='jquery-core-js'></script>
+<script type='text/javascript' id='cookie-notice-front-js-extra'>
+/* <![CDATA[ */
+var cnArgs = {"ajaxUrl":"https:\/\/databraineo.com\/wp-admin\/admin-ajax.php","nonce":"052cbf0921","hideEffect":"fade","position":"bottom","onScroll":"0","onScrollOffset":"100","onClick":"0","cookieName":"cookie_notice_accepted","cookieTime":"2592000","cookieTimeRejected":"2592000","cookiePath":"\/","cookieDomain":"","redirection":"0","cache":"0","refuse":"0","revokeCookies":"0","revokeCookiesOpt":"automatic","secure":"1","coronabarActive":"0"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://databraineo.com/wp-content/plugins/cookie-notice/js/front.min.js?ver=1.3.2' id='cookie-notice-front-js'></script>
+<script type='text/javascript' src='https://databraineo.com/wp-content/themes/Extra/core/admin/js/es6-promise.auto.min.js?ver=5.5.1' id='es6-promise-js'></script>
+<script type='text/javascript' id='et-core-api-spam-recaptcha-js-extra'>
+/* <![CDATA[ */
+var et_core_api_spam_recaptcha = {"site_key":"","page_action":{"action":"datentypen_in_r_einfach_erklaert"}};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://databraineo.com/wp-content/themes/Extra/core/admin/js/recaptcha.js?ver=5.5.1' id='et-core-api-spam-recaptcha-js'></script>
+<script type='text/javascript' src='https://databraineo.com/wp-content/plugins/wp-quicklatex/js/wp-quicklatex-frontend.js?ver=1.0' id='wp-quicklatex-frontend-js'></script>
+<link rel="https://api.w.org/" href="https://databraineo.com/wp-json/" /><link rel="alternate" type="application/json" href="https://databraineo.com/wp-json/wp/v2/posts/1403" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://databraineo.com/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://databraineo.com/wp-includes/wlwmanifest.xml" /> 
+<meta name="generator" content="WordPress 5.5.1" />
+<link rel='shortlink' href='https://wp.me/p9MhCn-mD' />
+<link rel="alternate" type="application/json+oembed" href="https://databraineo.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fdatabraineo.com%2Fki-training-resources%2Fr-programmierung%2Fdatentypen-in-r-einfach-erklaert%2F" />
+<link rel="alternate" type="text/xml+oembed" href="https://databraineo.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fdatabraineo.com%2Fki-training-resources%2Fr-programmierung%2Fdatentypen-in-r-einfach-erklaert%2F&#038;format=xml" />
+        <style>
+            ul.glossary_latestterms_widget li {
+                margin: 10px 0;
+            }
+            ul.glossary_latestterms_widget li .title {
+                font-weight: bold;
+                font-size: 11pt;
+            }
+            ul.glossary_latestterms_widget li div.description {
+                font-size: 10pt;
+            }
+        </style>
+        <style>
+/* Display the team member icons */
+.db_pb_team_member_website_icon:before{content:"\e0e3";}
+.db_pb_team_member_email_icon:before{content:"\e010";}
+.db_pb_team_member_instagram_icon:before{content:"\e09a";}
+
+/* Fix email icon hidden by Email Address Encoder plugin */
+ul.et_pb_member_social_links li > span { 
+	display: inline-block !important; 
+}
+</style>
+<style>
+@media only screen and (min-width: 981px) {
+    .et_pb_module.db_inline_form .et_pb_newsletter_fields > p { 
+        flex: auto !important;
+    }
+    .et_pb_module.db_inline_form .et_pb_newsletter_fields p.et_pb_newsletter_field {
+        margin-right: 2%; 
+    }
+}
+</style>
+<link rel="preload" href="https://databraineo.com/wp-content/plugins/divi-booster/core/icons/socicon/fonts/Socicon.woff2?87visu" as="font" crossorigin>
+<style>
+@font-face {
+  font-family: 'Socicon';
+  src:  url('https://databraineo.com/wp-content/plugins/divi-booster/core/icons/socicon/fonts/Socicon.eot?87visu');
+  src:  url('https://databraineo.com/wp-content/plugins/divi-booster/core/icons/socicon/fonts/Socicon.eot?87visu#iefix') format('embedded-opentype'),
+	url('https://databraineo.com/wp-content/plugins/divi-booster/core/icons/socicon/fonts/Socicon.woff2?87visu') format('woff2'),
+	url('https://databraineo.com/wp-content/plugins/divi-booster/core/icons/socicon/fonts/Socicon.ttf?87visu') format('truetype'),
+	url('https://databraineo.com/wp-content/plugins/divi-booster/core/icons/socicon/fonts/Socicon.woff?87visu') format('woff'),
+	url('https://databraineo.com/wp-content/plugins/divi-booster/core/icons/socicon/fonts/Socicon.svg?87visu#Socicon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+</style>
+		<meta name="tec-api-version" content="v1"><meta name="tec-api-origin" content="https://databraineo.com"><link rel="https://theeventscalendar.com/" href="https://databraineo.com/wp-json/tribe/events/v1/" /><style type="text/css" id="et-bloom-custom-css">
+					.et_bloom .et_bloom_optin_1 .et_bloom_form_content { background-color: #273038 !important; } .et_bloom .et_bloom_optin_1 .et_bloom_form_container .et_bloom_form_header { background-color: #3e5062 !important; } .et_bloom .et_bloom_optin_1 .wedge_edge .triangle { fill: #3e5062} .et_bloom .et_bloom_optin_1 .et_bloom_form_content button { background-color: #1da7d8 !important; } .et_bloom .et_bloom_optin_1 .et_bloom_form_content .et_bloom_fields i { color: #1da7d8 !important; } .et_bloom .et_bloom_optin_1 .et_bloom_form_content .et_bloom_custom_field_radio i:before { background: #1da7d8 !important; } .et_bloom .et_bloom_optin_1 .et_bloom_border_solid { border-color: #e8a869 !important } .et_bloom .et_bloom_optin_1 .et_bloom_form_content button { background-color: #1da7d8 !important; } .et_bloom .et_bloom_optin_1 .et_bloom_form_container h2, .et_bloom .et_bloom_optin_1 .et_bloom_form_container h2 span, .et_bloom .et_bloom_optin_1 .et_bloom_form_container h2 strong { font-family: "Oswald", Helvetica, Arial, Lucida, sans-serif; }.et_bloom .et_bloom_optin_1 .et_bloom_form_container p, .et_bloom .et_bloom_optin_1 .et_bloom_form_container p span, .et_bloom .et_bloom_optin_1 .et_bloom_form_container p strong, .et_bloom .et_bloom_optin_1 .et_bloom_form_container form input, .et_bloom .et_bloom_optin_1 .et_bloom_form_container form button span { font-family: "Raleway", Helvetica, Arial, Lucida, sans-serif; } 
+				</style><style type="text/css" id="et-social-custom-css">
+				 
+			</style><style type='text/css'>img#wpstats{display:none}</style><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=1" /><link rel="shortcut icon" href="https://cdn.shortpixel.ai/spai/q_lossy+ret_img/https://databraineo.com/wp-content/uploads/2018/06/Icon-Databraineo-neu-1000x1000.png" data-spai-eager="1" /><script>
+jQuery(function($){
+  $('.featured-posts-slider-module .et_pb_slide').click(function(){
+    var url=$(this).find('h3.entry-title a').attr('href');
+    if (url) {
+      document.location = url;
+    }
+  });
+});
+</script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-40974937-8"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-40974937-8');
+</script>
+
+<!-- Fontawesome für Icons -->
+<script src="https://kit.fontawesome.com/5101504dd8.js" crossorigin="anonymous"></script><link rel="stylesheet" id="et-extra-customizer-global-cached-inline-styles" href="https://databraineo.com/wp-content/et-cache/global/et-extra-customizer-global-15997394656027.min.css" onerror="et_core_page_resource_fallback(this, true)" onload="et_core_page_resource_fallback(this)" /><link href="https://cdn.shortpixel.ai" rel="preconnect" crossorigin></head>
+<body class="post-template-default single single-post postid-1403 single-format-standard cookies-not-set desktop tribe-no-js et_bloom et_monarch et_extra et_fullwidth_nav et_fullwidth_secondary_nav et_fixed_nav et_pb_gutters3 et_primary_nav_dropdown_animation_Default et_secondary_nav_dropdown_animation_Default with_sidebar with_sidebar_right et_includes_sidebar et-db et_minified_js et_minified_css">
+	<div id="page-container" class="page-container">
+				<!-- Header -->
+		<header class="header centered">
+			
+			<!-- Main Header -->
+			<div id="main-header-wrapper">
+				<div id="main-header" data-fixed-height="80">
+					<div class="container">
+					<!-- ET Ad -->
+						
+						
+						<!-- Logo -->
+						<a class="logo" href="https://databraineo.com/" data-fixed-height="84">
+							<img src="data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMTQ0MiA0MjEiIHdpZHRoPSIxNDQyIiBoZWlnaHQ9IjQyMSIgZGF0YS11PSJodHRwcyUzQSUyRiUyRmRhdGFicmFpbmVvLmNvbSUyRndwLWNvbnRlbnQlMkZ1cGxvYWRzJTJGMjAxOCUyRjA2JTJGRGF0YWJyYWluZW8tbG9nby1uZXUucG5nIiBkYXRhLXc9IjE0NDIiIGRhdGEtaD0iNDIxIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjwvc3ZnPg==" data-spai="1" alt="DataBraineo - Data Science Blog" id="logo" />
+						</a>
+
+						
+						<!-- ET Navigation -->
+						<div id="et-navigation" class="">
+							<ul id="et-menu" class="nav"><li id="menu-item-588" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-588"><a href="https://databraineo.com/category/ki-training-resources/r-programmierung/">R</a></li>
+<li id="menu-item-589" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-589"><a href="https://databraineo.com/category/ki-training-resources/python/">Python</a></li>
+<li id="menu-item-1028" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1028"><a href="https://databraineo.com/category/ask-the-doc/">Ask the Doc</a></li>
+<li id="menu-item-586" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-586"><a href="https://databraineo.com/library/">Library</a>
+<ul class="sub-menu">
+	<li id="menu-item-593" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-593"><a href="https://databraineo.com/category/data-science-buecher/">Bücher</a></li>
+	<li id="menu-item-287" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-287"><a href="https://databraineo.com/r-befehle/">R-Glossar</a></li>
+	<li id="menu-item-960" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-960"><a href="https://databraineo.com/data-science-begriffe/">Data Science Lexikon</a></li>
+</ul>
+</li>
+<li id="menu-item-151" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-151"><a href="https://databraineo.com/about/">About</a></li>
+<li id="menu-item-594" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-594"><a href="https://databraineo.com/events">Events</a></li>
+</ul>							<div id="et-mobile-navigation">
+			<span class="show-menu">
+				<div class="show-menu-button">
+					<span></span>
+					<span></span>
+					<span></span>
+				</div>
+				<p>Seite auswählen</p>
+			</span>
+			<nav>
+			</nav>
+		</div> <!-- /#et-mobile-navigation -->						</div><!-- /#et-navigation -->
+					</div><!-- /.container -->
+				</div><!-- /#main-header -->
+			</div><!-- /#main-header-wrapper -->
+
+		</header>
+
+				<div id="main-content">
+		<div class="container">
+		<div id="content-area" class="clearfix">
+			<div class="et_pb_extra_column_main">
+																<article id="post-1403" class="module single-post-module post-1403 post type-post status-publish format-standard has-post-thumbnail hentry category-r-programmierung tag-boolean tag-datentyp tag-double tag-integer tag-logical tag-numeric tag-r tag-string tag-variable et-has-post-format-content et_post_format-et-post-format-standard">
+														<div class="post-header">
+								<h1 class="entry-title">Datentypen in R – einfach erklärt</h1>
+								<div class="post-meta vcard">
+									<p><span class="updated">6. Mrz 2020</span> | <a href="https://databraineo.com/category/ki-training-resources/r-programmierung/" rel="tag">R</a></p>
+								</div>
+							</div>
+							
+														<div class="post-thumbnail header">
+								<img src="data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMTIwMCA2NDAiIHdpZHRoPSIxMjAwIiBoZWlnaHQ9IjY0MCIgZGF0YS11PSJodHRwcyUzQSUyRiUyRmRhdGFicmFpbmVvLmNvbSUyRndwLWNvbnRlbnQlMkZ1cGxvYWRzJTJGMjAyMCUyRjAzJTJGci1kYXRlbnR5cGVuLXR1dG9yaWFsLXRlaWwtMS0xMjAweDY0MC5qcGciIGRhdGEtdz0iMTIwMCIgZGF0YS1oPSI2NDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PC9zdmc+" data-spai="1" alt="Datentypen in R – einfach erklärt" />							</div>
+							
+														
+							<div class="post-wrap">
+															<div class="post-content entry-content">
+									<p>Liebe Brainies,</p>
+<p>hier kommt ein Grundlagen-Artikel, es geht um Datentypen in <a aria-describedby="tt" href="https://databraineo.com/data-science/r-programmiersprache/" class="glossaryLink cmtt_Data Science Lexikon" data-cmtooltip="R ist eine Interpreter-Programmiersprache, die im Data Science Umfeld neben Python die gr&ouml;&szlig;te Verbreitung hat. Urspr&uuml;nglich von und f&uuml;r Statistikern entwickelt, hat R seine St&auml;rken in der Datenanalyse und -Datenvisualisierung. Durch zahlreiche Erweiterungen (Packages) kann R mittlerweile vieles mehr wie z.B. dynamische Reports, interaktive Dashboards, APIs, usw.<div class=&quot;glossaryTooltipMoreLinkWrapper&quot;><a class=&quot;glossaryTooltipMoreLink&quot; href=&quot;https://databraineo.com/data-science/r-programmiersprache/&quot;target=&quot; _blank &quot;>... mehr</a></div>" >R</a>. F&uuml;r Anf&auml;nger besonders geeignet, aber die eine oder andere Variante, mit den Variablen umzugehen, findet auch der fortgeschrittene <a aria-describedby="tt" href="https://databraineo.com/data-science/r-programmiersprache/" class="glossaryLink cmtt_Data Science Lexikon" data-cmtooltip="R ist eine Interpreter-Programmiersprache, die im Data Science Umfeld neben Python die gr&ouml;&szlig;te Verbreitung hat. Urspr&uuml;nglich von und f&uuml;r Statistikern entwickelt, hat R seine St&auml;rken in der Datenanalyse und -Datenvisualisierung. Durch zahlreiche Erweiterungen (Packages) kann R mittlerweile vieles mehr wie z.B. dynamische Reports, interaktive Dashboards, APIs, usw.<div class=&quot;glossaryTooltipMoreLinkWrapper&quot;><a class=&quot;glossaryTooltipMoreLink&quot; href=&quot;https://databraineo.com/data-science/r-programmiersprache/&quot;target=&quot; _blank &quot;>... mehr</a></div>" >R</a>-Programmierer. Teil 2 besch&auml;ftigt sich dann mit <a href="https://databraineo.com/ki-training-resources/r-programmierung/datentypen-in-r-einfach-erklaert-teil-2/">zusammengesetzten Datentypen wie Vektoren, Listen, Tabellen</a> usw.</p>
+<div id="ez-toc-container" class="ez-toc-v2_0_11 counter-hierarchy counter-decimal ez-toc-grey">
+<div class="ez-toc-title-container">
+<p class="ez-toc-title">Inhalt</p>
+<span class="ez-toc-title-toggle"><a class="ez-toc-pull-right ez-toc-btn ez-toc-btn-xs ez-toc-btn-default ez-toc-toggle"><i class="ez-toc-glyphicon ez-toc-icon-toggle"></i></a></span></div>
+<nav><ul class="ez-toc-list ez-toc-list-level-1"><li class="ez-toc-page-1 ez-toc-heading-level-2"><a class="ez-toc-link ez-toc-heading-1" href="#Was_sind_ueberhaupt_Datentypen" title="Was sind &uuml;berhaupt Datentypen?">Was sind &uuml;berhaupt Datentypen?</a></li><li class="ez-toc-page-1 ez-toc-heading-level-2"><a class="ez-toc-link ez-toc-heading-2" href="#Der_Zuweisungsoperator" title="Der Zuweisungsoperator &lt;- oder =">Der Zuweisungsoperator &lt;- oder =</a></li><li class="ez-toc-page-1 ez-toc-heading-level-2"><a class="ez-toc-link ez-toc-heading-3" href="#Einfache_Datentypen" title="Einfache Datentypen">Einfache Datentypen</a><ul class="ez-toc-list-level-3"><li class="ez-toc-heading-level-3"><a class="ez-toc-link ez-toc-heading-4" href="#Ganze_Zahl_%E2%80%93_Der_Datentyp_INTEGER" title="Ganze Zahl &ndash; Der Datentyp INTEGER">Ganze Zahl &ndash; Der Datentyp INTEGER</a></li><li class="ez-toc-page-1 ez-toc-heading-level-3"><a class="ez-toc-link ez-toc-heading-5" href="#Kommazahlen_%E2%80%93_Der_Datentyp_NUMERIC" title="Kommazahlen &ndash; Der Datentyp NUMERIC">Kommazahlen &ndash; Der Datentyp NUMERIC</a></li><li class="ez-toc-page-1 ez-toc-heading-level-3"><a class="ez-toc-link ez-toc-heading-6" href="#Wahr_oder_Falsch_%E2%80%93_Der_Datentyp_LOGICAL" title="Wahr oder Falsch &ndash; Der Datentyp LOGICAL">Wahr oder Falsch &ndash; Der Datentyp LOGICAL</a></li><li class="ez-toc-page-1 ez-toc-heading-level-3"><a class="ez-toc-link ez-toc-heading-7" href="#Woerter_/_Zeichenketten_%E2%80%93_Der_Datentyp_CHARACTER" title="W&ouml;rter / Zeichenketten &ndash; Der Datentyp CHARACTER">W&ouml;rter / Zeichenketten &ndash; Der Datentyp CHARACTER</a></li><li class="ez-toc-page-1 ez-toc-heading-level-3"><a class="ez-toc-link ez-toc-heading-8" href="#Datum_und_Zeitstempel_%E2%80%93_Die_Datentypen_DATE_und_POSIXCT" title="Datum und Zeitstempel &ndash; Die Datentypen DATE und POSIXCT">Datum und Zeitstempel &ndash; Die Datentypen DATE und POSIXCT</a></li></ul></li></ul></nav></div>
+<h2><span class="ez-toc-section" id="Was_sind_ueberhaupt_Datentypen"></span>Was sind &uuml;berhaupt Datentypen?<span class="ez-toc-section-end"></span></h2>
+<p>Das ist tats&auml;chlich gar nicht so einfach zu erkl&auml;ren, ohne in Fachsprache abzugleiten. Im Prinzip kategorisiert es die Art einer Variablen. Also zum Beispiel ob diese Variable eine ganze Zahl, eine Kommazahl, eine Zeichenkette oder auch ein komplexerer Typ wie Matrix oder Liste ist. Wenn man also einen Wert, einen Text, eine Tabelle oder andere Strukturen sp&auml;ter wieder verwenden will, legt man diese Struktur im Arbeitsspeicher ab. Das passiert, indem man einen St&uuml;ck vom Speicher reserviert, diesem St&uuml;ck einen Namen zuweist und dann die Daten dort ablegt. Dieses Speicherst&uuml;ck hei&szlig;t dann Variable. Die Gr&ouml;&szlig;e des Speicherst&uuml;cks h&auml;ngt vom Datentyp ab. Ein Text braucht mehr Speicher als eine Wahr/Falsch-Variable.</p>
+<p>Zum Gl&uuml;ck ist das in <a aria-describedby="tt" href="https://databraineo.com/data-science/r-programmiersprache/" class="glossaryLink cmtt_Data Science Lexikon" data-cmtooltip="R ist eine Interpreter-Programmiersprache, die im Data Science Umfeld neben Python die gr&ouml;&szlig;te Verbreitung hat. Urspr&uuml;nglich von und f&uuml;r Statistikern entwickelt, hat R seine St&auml;rken in der Datenanalyse und -Datenvisualisierung. Durch zahlreiche Erweiterungen (Packages) kann R mittlerweile vieles mehr wie z.B. dynamische Reports, interaktive Dashboards, APIs, usw.<div class=&quot;glossaryTooltipMoreLinkWrapper&quot;><a class=&quot;glossaryTooltipMoreLink&quot; href=&quot;https://databraineo.com/data-science/r-programmiersprache/&quot;target=&quot; _blank &quot;>... mehr</a></div>" >R</a> ganz einfach und intuitiv. Man muss in <a aria-describedby="tt" href="https://databraineo.com/data-science/r-programmiersprache/" class="glossaryLink cmtt_Data Science Lexikon" data-cmtooltip="R ist eine Interpreter-Programmiersprache, die im Data Science Umfeld neben Python die gr&ouml;&szlig;te Verbreitung hat. Urspr&uuml;nglich von und f&uuml;r Statistikern entwickelt, hat R seine St&auml;rken in der Datenanalyse und -Datenvisualisierung. Durch zahlreiche Erweiterungen (Packages) kann R mittlerweile vieles mehr wie z.B. dynamische Reports, interaktive Dashboards, APIs, usw.<div class=&quot;glossaryTooltipMoreLinkWrapper&quot;><a class=&quot;glossaryTooltipMoreLink&quot; href=&quot;https://databraineo.com/data-science/r-programmiersprache/&quot;target=&quot; _blank &quot;>... mehr</a></div>" >R</a> h&auml;ufig sogar nicht den Datentyp angeben, sondern durch eine Zuweisung wie x = 3 erkennt <a aria-describedby="tt" href="https://databraineo.com/data-science/r-programmiersprache/" class="glossaryLink cmtt_Data Science Lexikon" data-cmtooltip="R ist eine Interpreter-Programmiersprache, die im Data Science Umfeld neben Python die gr&ouml;&szlig;te Verbreitung hat. Urspr&uuml;nglich von und f&uuml;r Statistikern entwickelt, hat R seine St&auml;rken in der Datenanalyse und -Datenvisualisierung. Durch zahlreiche Erweiterungen (Packages) kann R mittlerweile vieles mehr wie z.B. dynamische Reports, interaktive Dashboards, APIs, usw.<div class=&quot;glossaryTooltipMoreLinkWrapper&quot;><a class=&quot;glossaryTooltipMoreLink&quot; href=&quot;https://databraineo.com/data-science/r-programmiersprache/&quot;target=&quot; _blank &quot;>... mehr</a></div>" >R</a> automatisch, dass es sich um eine Zahl handelt. Das hat aber manchmal auch seine T&uuml;cken, denn so wird hier die 3 als Datentyp Kommazahl und nicht als ganze Zahl definiert. Bei vielen Programmiersprachen muss man daher den Typ immer mit angeben. In <a aria-describedby="tt" href="https://databraineo.com/data-science/r-programmiersprache/" class="glossaryLink cmtt_Data Science Lexikon" data-cmtooltip="R ist eine Interpreter-Programmiersprache, die im Data Science Umfeld neben Python die gr&ouml;&szlig;te Verbreitung hat. Urspr&uuml;nglich von und f&uuml;r Statistikern entwickelt, hat R seine St&auml;rken in der Datenanalyse und -Datenvisualisierung. Durch zahlreiche Erweiterungen (Packages) kann R mittlerweile vieles mehr wie z.B. dynamische Reports, interaktive Dashboards, APIs, usw.<div class=&quot;glossaryTooltipMoreLinkWrapper&quot;><a class=&quot;glossaryTooltipMoreLink&quot; href=&quot;https://databraineo.com/data-science/r-programmiersprache/&quot;target=&quot; _blank &quot;>... mehr</a></div>" >R</a> f&auml;hrt man aber ziemlich gut mit der automatischen Erkennung, nur in einigen F&auml;llen muss man aufpassen.</p>
+<p>Die meisten Programmiersprachen bieten einige Standard-Datentypen an, <a aria-describedby="tt" href="https://databraineo.com/data-science/r-programmiersprache/" class="glossaryLink cmtt_Data Science Lexikon" data-cmtooltip="R ist eine Interpreter-Programmiersprache, die im Data Science Umfeld neben Python die gr&ouml;&szlig;te Verbreitung hat. Urspr&uuml;nglich von und f&uuml;r Statistikern entwickelt, hat R seine St&auml;rken in der Datenanalyse und -Datenvisualisierung. Durch zahlreiche Erweiterungen (Packages) kann R mittlerweile vieles mehr wie z.B. dynamische Reports, interaktive Dashboards, APIs, usw.<div class=&quot;glossaryTooltipMoreLinkWrapper&quot;><a class=&quot;glossaryTooltipMoreLink&quot; href=&quot;https://databraineo.com/data-science/r-programmiersprache/&quot;target=&quot; _blank &quot;>... mehr</a></div>" >R</a> ist da nat&uuml;rlich keine Ausnahme.</p>
+<h2><span class="ez-toc-section" id="Der_Zuweisungsoperator"></span>Der Zuweisungsoperator &lt;- oder =<span class="ez-toc-section-end"></span></h2>
+<p>Um einen Wert in einer Variablen zu speichern, benutzt man in <a aria-describedby="tt" href="https://databraineo.com/data-science/r-programmiersprache/" class="glossaryLink cmtt_Data Science Lexikon" data-cmtooltip="R ist eine Interpreter-Programmiersprache, die im Data Science Umfeld neben Python die gr&ouml;&szlig;te Verbreitung hat. Urspr&uuml;nglich von und f&uuml;r Statistikern entwickelt, hat R seine St&auml;rken in der Datenanalyse und -Datenvisualisierung. Durch zahlreiche Erweiterungen (Packages) kann R mittlerweile vieles mehr wie z.B. dynamische Reports, interaktive Dashboards, APIs, usw.<div class=&quot;glossaryTooltipMoreLinkWrapper&quot;><a class=&quot;glossaryTooltipMoreLink&quot; href=&quot;https://databraineo.com/data-science/r-programmiersprache/&quot;target=&quot; _blank &quot;>... mehr</a></div>" >R</a> entweder den Pfeil nach links &lt;- oder das Gleichheitszeichen =. Es funktioniert sogar der Pfeil nach recht -&gt;. Was man verwendet, macht in den allermeisten Situationen keinen Unterschied. Im <a href="https://style.tidyverse.org/syntax.html#assignment" target="_blank" rel="noopener"><a aria-describedby="tt" href="https://databraineo.com/data-science/r-programmiersprache/" class="glossaryLink cmtt_Data Science Lexikon" data-cmtooltip="R ist eine Interpreter-Programmiersprache, die im Data Science Umfeld neben Python die gr&ouml;&szlig;te Verbreitung hat. Urspr&uuml;nglich von und f&uuml;r Statistikern entwickelt, hat R seine St&auml;rken in der Datenanalyse und -Datenvisualisierung. Durch zahlreiche Erweiterungen (Packages) kann R mittlerweile vieles mehr wie z.B. dynamische Reports, interaktive Dashboards, APIs, usw.<div class=&quot;glossaryTooltipMoreLinkWrapper&quot;><a class=&quot;glossaryTooltipMoreLink&quot; href=&quot;https://databraineo.com/data-science/r-programmiersprache/&quot;target=&quot; _blank &quot;>... mehr</a></div>" >R</a> tidyverse styleguide</a> wird allerdings der Linkspfeil dem Gleichheitszeichen vorgezogen. Es ist aber so, dass fast alle Programmiersprachen nur das Gleichheitszeichen kennen und somit <a aria-describedby="tt" href="https://databraineo.com/data-science/r-programmiersprache/" class="glossaryLink cmtt_Data Science Lexikon" data-cmtooltip="R ist eine Interpreter-Programmiersprache, die im Data Science Umfeld neben Python die gr&ouml;&szlig;te Verbreitung hat. Urspr&uuml;nglich von und f&uuml;r Statistikern entwickelt, hat R seine St&auml;rken in der Datenanalyse und -Datenvisualisierung. Durch zahlreiche Erweiterungen (Packages) kann R mittlerweile vieles mehr wie z.B. dynamische Reports, interaktive Dashboards, APIs, usw.<div class=&quot;glossaryTooltipMoreLinkWrapper&quot;><a class=&quot;glossaryTooltipMoreLink&quot; href=&quot;https://databraineo.com/data-science/r-programmiersprache/&quot;target=&quot; _blank &quot;>... mehr</a></div>" >R</a>-Code f&uuml;r andere schwerer lesbar ist.</p>
+<p>Tats&auml;chlich waren fr&uuml;her nur die Pfeile m&ouml;glich, das Gleichheitszeichen kam erst 2001 dazu. Die Pfeil-Zuordnung hat in erster Linie historische Gr&uuml;nde, denn <a aria-describedby="tt" href="https://databraineo.com/data-science/r-programmiersprache/" class="glossaryLink cmtt_Data Science Lexikon" data-cmtooltip="R ist eine Interpreter-Programmiersprache, die im Data Science Umfeld neben Python die gr&ouml;&szlig;te Verbreitung hat. Urspr&uuml;nglich von und f&uuml;r Statistikern entwickelt, hat R seine St&auml;rken in der Datenanalyse und -Datenvisualisierung. Durch zahlreiche Erweiterungen (Packages) kann R mittlerweile vieles mehr wie z.B. dynamische Reports, interaktive Dashboards, APIs, usw.<div class=&quot;glossaryTooltipMoreLinkWrapper&quot;><a class=&quot;glossaryTooltipMoreLink&quot; href=&quot;https://databraineo.com/data-science/r-programmiersprache/&quot;target=&quot; _blank &quot;>... mehr</a></div>0" >R</a> stammt von S ab und S wiederum ist inspiriert von <a href="https://de.wikipedia.org/wiki/APL_(Programmiersprache)" target="_blank" rel="noopener">APL</a>. APL wurde in den 1960ern f&uuml;r IBM-Rechner entwickelt und die hatten diese Pfeile als Tasten auf der Tastatur.</p>
+<p>Aus mathematischer Sicht sch&ouml;ner ist der Pfeil, denn er macht die Richtung der Zuordnungsrichtung klar. Shortcut f&uuml;r den Linkspfeil in <a aria-describedby="tt" href="https://databraineo.com/data-science/r-programmiersprache/" class="glossaryLink cmtt_Data Science Lexikon" data-cmtooltip="R ist eine Interpreter-Programmiersprache, die im Data Science Umfeld neben Python die gr&ouml;&szlig;te Verbreitung hat. Urspr&uuml;nglich von und f&uuml;r Statistikern entwickelt, hat R seine St&auml;rken in der Datenanalyse und -Datenvisualisierung. Durch zahlreiche Erweiterungen (Packages) kann R mittlerweile vieles mehr wie z.B. dynamische Reports, interaktive Dashboards, APIs, usw.<div class=&quot;glossaryTooltipMoreLinkWrapper&quot;><a class=&quot;glossaryTooltipMoreLink&quot; href=&quot;https://databraineo.com/data-science/r-programmiersprache/&quot;target=&quot; _blank &quot;>... mehr</a></div>1" >R</a>-Studio ist &uuml;brigens Alt + &ndash; (siehe auch <a href="https://databraineo.com/ki-training-resources/r-programmierung/meine-15-nuetzlichsten-rstudio-shortcuts/">Shortcuts in <a aria-describedby="tt" href="https://databraineo.com/data-science/rstudio/" class="glossaryLink cmtt_Data Science Lexikon" data-cmtooltip="R ist eine Interpreter-Programmiersprache, die im Data Science Umfeld neben Python die gr&ouml;&szlig;te Verbreitung hat. Urspr&uuml;nglich von und f&uuml;r Statistikern entwickelt, hat R seine St&auml;rken in der Datenanalyse und -Datenvisualisierung. Durch zahlreiche Erweiterungen (Packages) kann R mittlerweile vieles mehr wie z.B. dynamische Reports, interaktive Dashboards, APIs, usw.<div class=&quot;glossaryTooltipMoreLinkWrapper&quot;><a class=&quot;glossaryTooltipMoreLink&quot; href=&quot;https://databraineo.com/data-science/r-programmiersprache/&quot;target=&quot; _blank &quot;>... mehr</a></div>2" >RStudio</a></a>).</p>
+<p>In dem Post <a href="https://www.r-bloggers.com/why-do-we-use-arrow-as-an-assignment-operator/" target="_blank" rel="noopener">Why do we use arrow as an assignment operator?</a> von Colin Fay findet ihr auch Beispiele, wann nur der Pfeil funktioniert.</p>
+<p>Ein Beispiel (zugegebenerma&szlig;en kein sauberer Programmierstil) ist die Zuordnung einer Variable innerhalb einer Funktion.</p>
+
+
+<div class="wp-geshi-highlight-wrap5"><div class="wp-geshi-highlight-wrap4"><div class="wp-geshi-highlight-wrap3"><div class="wp-geshi-highlight-wrap2"><div class="wp-geshi-highlight-wrap"><div class="wp-geshi-highlight"><div class="rsplus"><pre class="de1"><span class="kw2"><a aria-describedby="tt" href="https://databraineo.com/data-science/mean/" class="glossaryLink cmtt_R-Befehle" data-cmtooltip="R ist eine Interpreter-Programmiersprache, die im Data Science Umfeld neben Python die gr&ouml;&szlig;te Verbreitung hat. Urspr&uuml;nglich von und f&uuml;r Statistikern entwickelt, hat R seine St&auml;rken in der Datenanalyse und -Datenvisualisierung. Durch zahlreiche Erweiterungen (Packages) kann R mittlerweile vieles mehr wie z.B. dynamische Reports, interaktive Dashboards, APIs, usw.<div class=&quot;glossaryTooltipMoreLinkWrapper&quot;><a class=&quot;glossaryTooltipMoreLink&quot; href=&quot;https://databraineo.com/data-science/r-programmiersprache/&quot;target=&quot; _blank &quot;>... mehr</a></div>3" >mean</a></span><span class="br0">(</span>y <span class="sy0">=</span> <span class="nu0">1</span><span class="sy0">:</span><span class="nu0">5</span><span class="br0">)</span>
+<span class="co1">#Fehler in <a aria-describedby="tt" href="https://databraineo.com/data-science/mean/" class="glossaryLink cmtt_R-Befehle" data-cmtooltip="R ist eine Interpreter-Programmiersprache, die im Data Science Umfeld neben Python die gr&ouml;&szlig;te Verbreitung hat. Urspr&uuml;nglich von und f&uuml;r Statistikern entwickelt, hat R seine St&auml;rken in der Datenanalyse und -Datenvisualisierung. Durch zahlreiche Erweiterungen (Packages) kann R mittlerweile vieles mehr wie z.B. dynamische Reports, interaktive Dashboards, APIs, usw.<div class=&quot;glossaryTooltipMoreLinkWrapper&quot;><a class=&quot;glossaryTooltipMoreLink&quot; href=&quot;https://databraineo.com/data-science/r-programmiersprache/&quot;target=&quot; _blank &quot;>... mehr</a></div>4" >mean</a>.default(y = 1:5) : Argument &quot;x&quot; fehlt (ohne Standardwert)</span>
+&nbsp;
+<span class="kw2"><a aria-describedby="tt" href="https://databraineo.com/data-science/mean/" class="glossaryLink cmtt_R-Befehle" data-cmtooltip="R ist eine Interpreter-Programmiersprache, die im Data Science Umfeld neben Python die gr&ouml;&szlig;te Verbreitung hat. Urspr&uuml;nglich von und f&uuml;r Statistikern entwickelt, hat R seine St&auml;rken in der Datenanalyse und -Datenvisualisierung. Durch zahlreiche Erweiterungen (Packages) kann R mittlerweile vieles mehr wie z.B. dynamische Reports, interaktive Dashboards, APIs, usw.<div class=&quot;glossaryTooltipMoreLinkWrapper&quot;><a class=&quot;glossaryTooltipMoreLink&quot; href=&quot;https://databraineo.com/data-science/r-programmiersprache/&quot;target=&quot; _blank &quot;>... mehr</a></div>5" >mean</a></span><span class="br0">(</span>y <span class="sy0">&lt;-</span> <span class="nu0">1</span><span class="sy0">:</span><span class="nu0">5</span><span class="br0">)</span>
+<span class="co1">#[1] 3</span></pre></div></div></div></div></div></div></div>
+
+
+<p>Die Lesbarkeit erh&ouml;ht sich aber durch Verwendung des Pfeils, wenn ein Vergleich gemacht wird.</p>
+
+
+<div class="wp-geshi-highlight-wrap5"><div class="wp-geshi-highlight-wrap4"><div class="wp-geshi-highlight-wrap3"><div class="wp-geshi-highlight-wrap2"><div class="wp-geshi-highlight-wrap"><div class="wp-geshi-highlight"><div class="rsplus"><pre class="de1">a <span class="sy0">=</span> <span class="nu0">5</span>
+b <span class="sy0">=</span> <span class="nu0">5.1</span>
+gleich <span class="sy0">=</span> a <span class="sy0">==</span> b
+gleich <span class="sy0">&lt;-</span> a <span class="sy0">==</span> b</pre></div></div></div></div></div></div></div>
+
+
+<p>&nbsp;</p>
+<h2><span class="ez-toc-section" id="Einfache_Datentypen"></span>Einfache Datentypen<span class="ez-toc-section-end"></span></h2>
+<h3><span class="ez-toc-section" id="Ganze_Zahl_%E2%80%93_Der_Datentyp_INTEGER"></span>Ganze Zahl &ndash; Der Datentyp INTEGER<span class="ez-toc-section-end"></span></h3>
+<p>Die &Uuml;berschrift sagt eigentlich schon alles. Es geht um positive und negative ganze Zahlen, in den meisten Programmiersprache integer oder int genannt. Wie oben geschrieben ist es in <a aria-describedby="tt" href="https://databraineo.com/data-science/r-programmiersprache/" class="glossaryLink cmtt_Data Science Lexikon" data-cmtooltip="R ist eine Interpreter-Programmiersprache, die im Data Science Umfeld neben Python die gr&ouml;&szlig;te Verbreitung hat. Urspr&uuml;nglich von und f&uuml;r Statistikern entwickelt, hat R seine St&auml;rken in der Datenanalyse und -Datenvisualisierung. Durch zahlreiche Erweiterungen (Packages) kann R mittlerweile vieles mehr wie z.B. dynamische Reports, interaktive Dashboards, APIs, usw.<div class=&quot;glossaryTooltipMoreLinkWrapper&quot;><a class=&quot;glossaryTooltipMoreLink&quot; href=&quot;https://databraineo.com/data-science/r-programmiersprache/&quot;target=&quot; _blank &quot;>... mehr</a></div>6" >R</a> etwas t&uuml;ckisch, denn mit x = 3 erzeugt man keinen integer, sondern eine Gleitkommazahl (numeric). Um explizit einen integer zu generieren, muss man noch ein L hinter der Zahl erg&auml;nzen. Mit is.integer pr&uuml;ft man, ob eine Variable vom Typ integer ist, sie gibt TRUE oder FALSE zur&uuml;ck. Solche Funktionen is.XXX gibt es f&uuml;r jeden Datentyp, also zum Beispiel auch <em>is.numeric</em>. Die Funktion class gibt mir den Datentyp zur&uuml;ck.</p>
+
+
+<div class="wp-geshi-highlight-wrap5"><div class="wp-geshi-highlight-wrap4"><div class="wp-geshi-highlight-wrap3"><div class="wp-geshi-highlight-wrap2"><div class="wp-geshi-highlight-wrap"><div class="wp-geshi-highlight"><div class="rsplus"><pre class="de1">x <span class="sy0">&lt;-</span> <span class="nu0">3</span>
+<span class="kw2">is.<span class="me1">integer</span></span><span class="br0">(</span>x<span class="br0">)</span>
+<span class="kw2">is.<span class="me1">numeric</span></span><span class="br0">(</span>x<span class="br0">)</span>
+<span class="kw2">class</span><span class="br0">(</span>x<span class="br0">)</span>
+&nbsp;
+x <span class="sy0">&lt;-</span> 3L
+<span class="kw2">is.<span class="me1">integer</span></span><span class="br0">(</span>x<span class="br0">)</span>
+<span class="co1"># Besonderheit: Jeder integer ist gleichzeitig auch numeric</span>
+<span class="kw2">is.<span class="me1">numeric</span></span><span class="br0">(</span>x<span class="br0">)</span>
+<span class="kw2">class</span><span class="br0">(</span>x<span class="br0">)</span></pre></div></div></div></div></div></div></div>
+
+
+<p>Achtung: Jede Zahl ist in <a aria-describedby="tt" href="https://databraineo.com/data-science/r-programmiersprache/" class="glossaryLink cmtt_Data Science Lexikon" data-cmtooltip="R ist eine Interpreter-Programmiersprache, die im Data Science Umfeld neben Python die gr&ouml;&szlig;te Verbreitung hat. Urspr&uuml;nglich von und f&uuml;r Statistikern entwickelt, hat R seine St&auml;rken in der Datenanalyse und -Datenvisualisierung. Durch zahlreiche Erweiterungen (Packages) kann R mittlerweile vieles mehr wie z.B. dynamische Reports, interaktive Dashboards, APIs, usw.<div class=&quot;glossaryTooltipMoreLinkWrapper&quot;><a class=&quot;glossaryTooltipMoreLink&quot; href=&quot;https://databraineo.com/data-science/r-programmiersprache/&quot;target=&quot; _blank &quot;>... mehr</a></div>7" >R</a> gleichzeitig auch ein Vektor der L&auml;nge 1. D.h. is.integer pr&uuml;ft nicht, ob es sich um eine einzelne Zahl handelt, sondern gibt auch TRUE zur&uuml;ck, wenn es sich um eine Folge von ganzen Zahlen handelt.</p>
+
+
+<div class="wp-geshi-highlight-wrap5"><div class="wp-geshi-highlight-wrap4"><div class="wp-geshi-highlight-wrap3"><div class="wp-geshi-highlight-wrap2"><div class="wp-geshi-highlight-wrap"><div class="wp-geshi-highlight"><div class="rsplus"><pre class="de1">x <span class="sy0">&lt;-</span> 3L
+<span class="kw2">is.<span class="me1">vector</span></span><span class="br0">(</span>x<span class="br0">)</span>
+<span class="co1"># Vektor (1, 2, 3) erzeugen</span>
+x <span class="sy0">=</span> <span class="kw2">c</span><span class="br0">(</span>1L, 2L, 3L<span class="br0">)</span>
+<span class="kw2">is.<span class="me1">integer</span></span><span class="br0">(</span>x<span class="br0">)</span>
+<span class="kw2">is.<span class="me1">numeric</span></span><span class="br0">(</span>x<span class="br0">)</span>
+<span class="kw2">class</span><span class="br0">(</span>x<span class="br0">)</span></pre></div></div></div></div></div></div></div>
+
+
+<p>Mit <em>as.integer</em> lassen sich andere Datentypen in integer verwandeln</p>
+
+
+<div class="wp-geshi-highlight-wrap5"><div class="wp-geshi-highlight-wrap4"><div class="wp-geshi-highlight-wrap3"><div class="wp-geshi-highlight-wrap2"><div class="wp-geshi-highlight-wrap"><div class="wp-geshi-highlight"><div class="rsplus"><pre class="de1"><span class="kw2">as.<span class="me1">integer</span></span><span class="br0">(</span><span class="nu0">3</span><span class="br0">)</span>
+<span class="kw2">as.<span class="me1">integer</span></span><span class="br0">(</span><span class="nu0">3.14</span><span class="br0">)</span>
+<span class="kw2">as.<span class="me1">integer</span></span><span class="br0">(</span>&bdquo;<span class="nu0">3</span>&ldquo;<span class="br0">)</span>
+<span class="kw2">as.<span class="me1">integer</span></span><span class="br0">(</span>&bdquo;<span class="nu0">3.14</span>&ldquo;<span class="br0">)</span></pre></div></div></div></div></div></div></div>
+
+
+<p>Das L steht &uuml;brigens f&uuml;r long, was in der Programmiersprache C einem 32-bit integer entspricht (int ist dort 16-bit integer). Wer sich weiter verwirren m&ouml;chte, in Java bezeichnet long einen 64-bit integer.</p>
+<p>Das hei&szlig;t also, dass f&uuml;r jede Zahl 32 Bit im Speicher reserviert sind, also 32 Nullen und Einsen. Da wir sowohl positive als auch negative Zahlen darstellen k&ouml;nnen, brauchen wir schon mal ein Bit f&uuml;r das Vorzeichen. Man spricht von einem signed int. Mit den restlichen 31 Bits k&ouml;nnen wir 2^31-1 Zahlen darstellen, d.h. der Wertebereich des integers in <a aria-describedby="tt" href="https://databraineo.com/data-science/r-programmiersprache/" class="glossaryLink cmtt_Data Science Lexikon" data-cmtooltip="R ist eine Interpreter-Programmiersprache, die im Data Science Umfeld neben Python die gr&ouml;&szlig;te Verbreitung hat. Urspr&uuml;nglich von und f&uuml;r Statistikern entwickelt, hat R seine St&auml;rken in der Datenanalyse und -Datenvisualisierung. Durch zahlreiche Erweiterungen (Packages) kann R mittlerweile vieles mehr wie z.B. dynamische Reports, interaktive Dashboards, APIs, usw.<div class=&quot;glossaryTooltipMoreLinkWrapper&quot;><a class=&quot;glossaryTooltipMoreLink&quot; href=&quot;https://databraineo.com/data-science/r-programmiersprache/&quot;target=&quot; _blank &quot;>... mehr</a></div>8" >R</a> reicht von -2147483647 bis +2147483647. In der System-Variablen .Machine$integer.max ist der maximale Wert gespeichert. Wollen wir dazu noch 1 addieren, dann erzeugen wir einen &Uuml;berlauf und bekommen NA (not available) zur&uuml;ck.</p>
+
+
+<div class="wp-geshi-highlight-wrap5"><div class="wp-geshi-highlight-wrap4"><div class="wp-geshi-highlight-wrap3"><div class="wp-geshi-highlight-wrap2"><div class="wp-geshi-highlight-wrap"><div class="wp-geshi-highlight"><div class="rsplus"><pre class="de1"><span class="nu0">2</span><span class="sy0">^</span><span class="nu0">31</span><span class="sy0">-</span><span class="nu0">1</span>
+.<span class="me1">Machine</span>$integer.<span class="me1">max</span>
+<span class="kw2">as.<span class="me1">integer</span></span><span class="br0">(</span><span class="sy0">-</span>.<span class="me1">Machine</span>$integer.<span class="me1">max</span><span class="br0">)</span>
+<span class="kw2">as.<span class="me1">integer</span></span><span class="br0">(</span>.<span class="me1">Machine</span>$integer.<span class="me1">max</span><span class="br0">)</span> <span class="sy0">+</span> 1L</pre></div></div></div></div></div></div></div>
+
+
+<p>Der Datentyp numeric benutzt 64 Bit und kann daher gr&ouml;&szlig;ere Zahlen darstellen.</p>
+
+
+<div class="wp-geshi-highlight-wrap5"><div class="wp-geshi-highlight-wrap4"><div class="wp-geshi-highlight-wrap3"><div class="wp-geshi-highlight-wrap2"><div class="wp-geshi-highlight-wrap"><div class="wp-geshi-highlight"><div class="rsplus"><pre class="de1">.<span class="me1">Machine</span>$integer.<span class="me1">max</span> <span class="sy0">+</span> <span class="nu0">1</span>
+.<span class="me1">Machine</span>$double.<span class="me1">xmax</span></pre></div></div></div></div></div></div></div>
+
+
+<p>Aber auch hier ist etwas Vorsicht geboten. numeric repr&auml;sentiert eine Zahl n&auml;mlich intern als <a href="https://de.wikipedia.org/wiki/Gleitkommazahl" target="_blank" rel="noopener">Gleitkommazahl</a>, welche aufgrund der Darstellung mit Mantisse und Exponent manchmal komische Resultate liefert. Mehr dazu im n&auml;chsten Abschnitt.</p>
+<p>Echte 64-Bit Ganzzahlen gibt es standardm&auml;&szlig;ig in <a aria-describedby="tt" href="https://databraineo.com/data-science/r-programmiersprache/" class="glossaryLink cmtt_Data Science Lexikon" data-cmtooltip="R ist eine Interpreter-Programmiersprache, die im Data Science Umfeld neben Python die gr&ouml;&szlig;te Verbreitung hat. Urspr&uuml;nglich von und f&uuml;r Statistikern entwickelt, hat R seine St&auml;rken in der Datenanalyse und -Datenvisualisierung. Durch zahlreiche Erweiterungen (Packages) kann R mittlerweile vieles mehr wie z.B. dynamische Reports, interaktive Dashboards, APIs, usw.<div class=&quot;glossaryTooltipMoreLinkWrapper&quot;><a class=&quot;glossaryTooltipMoreLink&quot; href=&quot;https://databraineo.com/data-science/r-programmiersprache/&quot;target=&quot; _blank &quot;>... mehr</a></div>9" >R</a> noch nicht (siehe auch <a href="https://www.r-bloggers.com/r-in-a-64-bit-world/" target="_blank" rel="noopener"><a aria-describedby="tt" href="https://databraineo.com/data-science/r-programmiersprache/" class="glossaryLink cmtt_Data Science Lexikon" data-cmtooltip="R ist eine Interpreter-Programmiersprache, die im Data Science Umfeld neben Python die gr&ouml;&szlig;te Verbreitung hat. Urspr&uuml;nglich von und f&uuml;r Statistikern entwickelt, hat R seine St&auml;rken in der Datenanalyse und -Datenvisualisierung. Durch zahlreiche Erweiterungen (Packages) kann R mittlerweile vieles mehr wie z.B. dynamische Reports, interaktive Dashboards, APIs, usw.<div class=&quot;glossaryTooltipMoreLinkWrapper&quot;><a class=&quot;glossaryTooltipMoreLink&quot; href=&quot;https://databraineo.com/data-science/r-programmiersprache/&quot;target=&quot; _blank &quot;>... mehr</a></div>0" >R</a> in a 64-Bit World</a> auf <a aria-describedby="tt" href="https://databraineo.com/data-science/r-programmiersprache/" class="glossaryLink cmtt_Data Science Lexikon" data-cmtooltip="R ist eine Interpreter-Programmiersprache, die im Data Science Umfeld neben Python die gr&ouml;&szlig;te Verbreitung hat. Urspr&uuml;nglich von und f&uuml;r Statistikern entwickelt, hat R seine St&auml;rken in der Datenanalyse und -Datenvisualisierung. Durch zahlreiche Erweiterungen (Packages) kann R mittlerweile vieles mehr wie z.B. dynamische Reports, interaktive Dashboards, APIs, usw.<div class=&quot;glossaryTooltipMoreLinkWrapper&quot;><a class=&quot;glossaryTooltipMoreLink&quot; href=&quot;https://databraineo.com/data-science/r-programmiersprache/&quot;target=&quot; _blank &quot;>... mehr</a></div>1" >R</a>-Blogger). Es gibt aber alternativen. F&uuml;r echte 64 Bit Ganzzahlen kann man das Package bit64 verwenden. Damit erweitert man den Wertebereich auf -9.223.372.036.854.775.807 bis +9.223.372.036.854.775.807 (=2^63 &ndash; 1). Man st&ouml;&szlig;t tats&auml;chlich schneller an die integer-Beschr&auml;nkung als man so denkt. Zum Beispiel bei Datenbank-Tabellen, die die Zeilen durchnummerieren. Die Tabellen m&uuml;ssen noch nicht einmal besonders &bdquo;gro&szlig;&ldquo; sein, sondern sind vielleicht im L&auml;ngsformat, bei der jedes Attribut eine eigene Zeile bekommt. In meinem Artikel &uuml;ber <a href="https://databraineo.com/ki-training-resources/excel/datensatzformat-quer-vs-laengs-konvertierung-in-excel-und-r/">das L&auml;ngs- und Querformat und wie man diese in <a aria-describedby="tt" href="https://databraineo.com/data-science/r-programmiersprache/" class="glossaryLink cmtt_Data Science Lexikon" data-cmtooltip="R ist eine Interpreter-Programmiersprache, die im Data Science Umfeld neben Python die gr&ouml;&szlig;te Verbreitung hat. Urspr&uuml;nglich von und f&uuml;r Statistikern entwickelt, hat R seine St&auml;rken in der Datenanalyse und -Datenvisualisierung. Durch zahlreiche Erweiterungen (Packages) kann R mittlerweile vieles mehr wie z.B. dynamische Reports, interaktive Dashboards, APIs, usw.<div class=&quot;glossaryTooltipMoreLinkWrapper&quot;><a class=&quot;glossaryTooltipMoreLink&quot; href=&quot;https://databraineo.com/data-science/r-programmiersprache/&quot;target=&quot; _blank &quot;>... mehr</a></div>2" >R</a> ineinander &uuml;berf&uuml;hrt</a> k&ouml;nnt ihr dar&uuml;ber mehr erfahren.</p>
+<h3><span class="ez-toc-section" id="Kommazahlen_%E2%80%93_Der_Datentyp_NUMERIC"></span>Kommazahlen &ndash; Der Datentyp NUMERIC<span class="ez-toc-section-end"></span></h3>
+<p>Wie wir schon im vorherigen Abschnitt gesehen haben, ist Numeric der Standard-Datentyp in <a aria-describedby="tt" href="https://databraineo.com/data-science/r-programmiersprache/" class="glossaryLink cmtt_Data Science Lexikon" data-cmtooltip="R ist eine Interpreter-Programmiersprache, die im Data Science Umfeld neben Python die gr&ouml;&szlig;te Verbreitung hat. Urspr&uuml;nglich von und f&uuml;r Statistikern entwickelt, hat R seine St&auml;rken in der Datenanalyse und -Datenvisualisierung. Durch zahlreiche Erweiterungen (Packages) kann R mittlerweile vieles mehr wie z.B. dynamische Reports, interaktive Dashboards, APIs, usw.<div class=&quot;glossaryTooltipMoreLinkWrapper&quot;><a class=&quot;glossaryTooltipMoreLink&quot; href=&quot;https://databraineo.com/data-science/r-programmiersprache/&quot;target=&quot; _blank &quot;>... mehr</a></div>3" >R</a> f&uuml;r Zahlen aller Art. Dieser entspricht dem C-Datentyp double, ist also eine Gleitkommazahl mit 64 Bit.</p>
+<p>So eine Gleitkommazahl setzt sich aus Vorzeichen s, Mantisse m, Basis b und Exponent e zusammen:</p>
+<p>x = (-1)^s * m * b^e</p>
+<p>Intern wird als Basis 2 gew&auml;hlt, auf dem Bin&auml;rsystem basieren schlie&szlig;lich unsere Computer. Wenn man sich aber so eine Zahl anzeigen l&auml;sst, dann wird die Basis 10 gew&auml;hlt.</p>
+
+
+<div class="wp-geshi-highlight-wrap5"><div class="wp-geshi-highlight-wrap4"><div class="wp-geshi-highlight-wrap3"><div class="wp-geshi-highlight-wrap2"><div class="wp-geshi-highlight-wrap"><div class="wp-geshi-highlight"><div class="rsplus"><pre class="de1"><span class="kw2">print</span><span class="br0">(</span><span class="nu0">23476132999423</span><span class="br0">)</span>
+<span class="co1">#[1] 2.347613e+13</span></pre></div></div></div></div></div></div></div>
+
+
+<p>Diese Darstellung ist eine Kurzform f&uuml;r 2,347613 * 10^13 = 23476130000000. Aber das ist nur die Darstellung, nicht die interne Genauigkeit. Mittels format oder sprintf kann man die Anzahl Stellen setzen, mit der eine Zahl ausgedruckt wird.</p>
+
+
+<div class="wp-geshi-highlight-wrap5"><div class="wp-geshi-highlight-wrap4"><div class="wp-geshi-highlight-wrap3"><div class="wp-geshi-highlight-wrap2"><div class="wp-geshi-highlight-wrap"><div class="wp-geshi-highlight"><div class="rsplus"><pre class="de1"><span class="kw2">format</span><span class="br0">(</span>x, digits<span class="sy0">=</span><span class="nu0">14</span><span class="br0">)</span>
+<span class="co1">#[1] &quot;23476132999423&quot;</span>
+<span class="kw2">sprintf</span><span class="br0">(</span><span class="st0">&quot;%.0f&quot;</span>,x<span class="br0">)</span>
+<span class="co1">#[1] &quot;23476132999423&quot;</span>
+<span class="kw2">sprintf</span><span class="br0">(</span><span class="st0">&quot;%.1f&quot;</span>,x<span class="br0">)</span>
+<span class="co1">#[1] &quot;23476132999423.0&quot;</span>
+<span class="kw2">sprintf</span><span class="br0">(</span><span class="st0">&quot;%.2f&quot;</span>,x<span class="br0">)</span>
+<span class="co1">#[1] &quot;23476132999423.00&quot;</span>
+<span class="kw2">sprintf</span><span class="br0">(</span><span class="st0">&quot;%.6f&quot;</span>,x<span class="br0">)</span>
+<span class="co1">#[1] &quot;23476132999423.000000&quot;</span></pre></div></div></div></div></div></div></div>
+
+
+<p>Alternativ kann man in <a aria-describedby="tt" href="https://databraineo.com/data-science/r-programmiersprache/" class="glossaryLink cmtt_Data Science Lexikon" data-cmtooltip="R ist eine Interpreter-Programmiersprache, die im Data Science Umfeld neben Python die gr&ouml;&szlig;te Verbreitung hat. Urspr&uuml;nglich von und f&uuml;r Statistikern entwickelt, hat R seine St&auml;rken in der Datenanalyse und -Datenvisualisierung. Durch zahlreiche Erweiterungen (Packages) kann R mittlerweile vieles mehr wie z.B. dynamische Reports, interaktive Dashboards, APIs, usw.<div class=&quot;glossaryTooltipMoreLinkWrapper&quot;><a class=&quot;glossaryTooltipMoreLink&quot; href=&quot;https://databraineo.com/data-science/r-programmiersprache/&quot;target=&quot; _blank &quot;>... mehr</a></div>4" >R</a> eine &bdquo;Bestrafung&ldquo; f&uuml;r diese Exponentialschreibweise einstellen:</p>
+
+
+<div class="wp-geshi-highlight-wrap5"><div class="wp-geshi-highlight-wrap4"><div class="wp-geshi-highlight-wrap3"><div class="wp-geshi-highlight-wrap2"><div class="wp-geshi-highlight-wrap"><div class="wp-geshi-highlight"><div class="rsplus"><pre class="de1"><span class="kw2">options</span><span class="br0">(</span>scipen<span class="sy0">=</span><span class="nu0">999</span><span class="br0">)</span>
+<span class="kw2">print</span><span class="br0">(</span>x<span class="br0">)</span>
+<span class="co1">#[1] 23476132999423</span></pre></div></div></div></div></div></div></div>
+
+
+<p>Wie gesagt, damit &auml;ndert man aber nur die Darstellung bei der Anzeige in der Konsole. Die tats&auml;chliche Genauigkeit ist durch die 64 Bit gegeben. Diese 64 Bit werden so f&uuml;r eine Gleitkommazahl genutzt, wie es der Standard <a href="https://de.wikipedia.org/wiki/IEEE_754" target="_blank" rel="noopener">IEEE 754</a> festlegt: 1 Bit f&uuml;r das Vorzeichen, 52 Bit f&uuml;r die Mantisse und 11 Bit f&uuml;r den Exponenten. Um noch ein bisschen mehr aus den Bits herauszuholen, soll die Mantisse gr&ouml;&szlig;er oder gleich 1 und kleiner als 2 sein, also 1,XXX. Das kann man durch Normalisierung erreichen. Da jetzt also die Mantisse nun immer mit einer 1 beginnt, kann diese 1 einfach weggelassen werden.</p>
+<p>Der genaue Aufbau kann uns als <a aria-describedby="tt" href="https://databraineo.com/data-science/r-programmiersprache/" class="glossaryLink cmtt_Data Science Lexikon" data-cmtooltip="R ist eine Interpreter-Programmiersprache, die im Data Science Umfeld neben Python die gr&ouml;&szlig;te Verbreitung hat. Urspr&uuml;nglich von und f&uuml;r Statistikern entwickelt, hat R seine St&auml;rken in der Datenanalyse und -Datenvisualisierung. Durch zahlreiche Erweiterungen (Packages) kann R mittlerweile vieles mehr wie z.B. dynamische Reports, interaktive Dashboards, APIs, usw.<div class=&quot;glossaryTooltipMoreLinkWrapper&quot;><a class=&quot;glossaryTooltipMoreLink&quot; href=&quot;https://databraineo.com/data-science/r-programmiersprache/&quot;target=&quot; _blank &quot;>... mehr</a></div>5" >R</a>-Nutzer aber recht egal sein. Man sollte sich nur bewusst sein, dass diese Darstellung Grenzen hat. Das liegt aber nicht an <a aria-describedby="tt" href="https://databraineo.com/data-science/r-programmiersprache/" class="glossaryLink cmtt_Data Science Lexikon" data-cmtooltip="R ist eine Interpreter-Programmiersprache, die im Data Science Umfeld neben Python die gr&ouml;&szlig;te Verbreitung hat. Urspr&uuml;nglich von und f&uuml;r Statistikern entwickelt, hat R seine St&auml;rken in der Datenanalyse und -Datenvisualisierung. Durch zahlreiche Erweiterungen (Packages) kann R mittlerweile vieles mehr wie z.B. dynamische Reports, interaktive Dashboards, APIs, usw.<div class=&quot;glossaryTooltipMoreLinkWrapper&quot;><a class=&quot;glossaryTooltipMoreLink&quot; href=&quot;https://databraineo.com/data-science/r-programmiersprache/&quot;target=&quot; _blank &quot;>... mehr</a></div>6" >R</a>, sondern an der Definition der Gleitkommazahlen. So l&auml;sst sich 0,1 zum Beispiel nicht exakt als Gleitkommazahl darstellen, so dass das folgende passiert:</p>
+
+
+<div class="wp-geshi-highlight-wrap5"><div class="wp-geshi-highlight-wrap4"><div class="wp-geshi-highlight-wrap3"><div class="wp-geshi-highlight-wrap2"><div class="wp-geshi-highlight-wrap"><div class="wp-geshi-highlight"><div class="rsplus"><pre class="de1"><span class="nu0">0.1</span> <span class="sy0">*</span> <span class="nu0">0.1</span>
+<span class="co1">#[1] 0.01</span>
+<span class="nu0">0.1</span> <span class="sy0">*</span> <span class="nu0">0.1</span> <span class="sy0">==</span> <span class="nu0">0.01</span>
+<span class="co1">#[1] FALSE</span></pre></div></div></div></div></div></div></div>
+
+
+<p>Bei sehr gro&szlig;en Zahlen rundet <a aria-describedby="tt" href="https://databraineo.com/data-science/r-programmiersprache/" class="glossaryLink cmtt_Data Science Lexikon" data-cmtooltip="R ist eine Interpreter-Programmiersprache, die im Data Science Umfeld neben Python die gr&ouml;&szlig;te Verbreitung hat. Urspr&uuml;nglich von und f&uuml;r Statistikern entwickelt, hat R seine St&auml;rken in der Datenanalyse und -Datenvisualisierung. Durch zahlreiche Erweiterungen (Packages) kann R mittlerweile vieles mehr wie z.B. dynamische Reports, interaktive Dashboards, APIs, usw.<div class=&quot;glossaryTooltipMoreLinkWrapper&quot;><a class=&quot;glossaryTooltipMoreLink&quot; href=&quot;https://databraineo.com/data-science/r-programmiersprache/&quot;target=&quot; _blank &quot;>... mehr</a></div>7" >R</a> automatisch, ohne das eine Warnung ausgegeben wird</p>
+
+
+<div class="wp-geshi-highlight-wrap5"><div class="wp-geshi-highlight-wrap4"><div class="wp-geshi-highlight-wrap3"><div class="wp-geshi-highlight-wrap2"><div class="wp-geshi-highlight-wrap"><div class="wp-geshi-highlight"><div class="rsplus"><pre class="de1">x <span class="sy0">&lt;-</span> <span class="nu0">999999999999456781</span>
+<span class="kw2">format</span><span class="br0">(</span>x, digits<span class="sy0">=</span><span class="nu0">14</span><span class="br0">)</span>
+<span class="co1">#[1] &quot;999999999999456768&quot;</span>
+&nbsp;
+x <span class="sy0">&lt;-</span> <span class="nu0">999999999999456500</span>
+<span class="kw2">format</span><span class="br0">(</span>x, digits<span class="sy0">=</span><span class="nu0">14</span><span class="br0">)</span>
+<span class="co1">#[1] &quot;999999999999456512&quot;</span></pre></div></div></div></div></div></div></div>
+
+
+<h3><span class="ez-toc-section" id="Wahr_oder_Falsch_%E2%80%93_Der_Datentyp_LOGICAL"></span>Wahr oder Falsch &ndash; Der Datentyp LOGICAL<span class="ez-toc-section-end"></span></h3>
+<p>1 oder 0, wahr oder falsch, darauf basiert alles digitale. Genau diese zwei Werte, n&auml;mlich TRUE oder FALSE kann eine Variable vom Typ logical annehmen. Andere Programmiersprachen nennen diesen Datentyp auch bool oder eine Variable von dem Typ boolsche Variable.</p>
+<p>In <a aria-describedby="tt" href="https://databraineo.com/data-science/r-programmiersprache/" class="glossaryLink cmtt_Data Science Lexikon" data-cmtooltip="R ist eine Interpreter-Programmiersprache, die im Data Science Umfeld neben Python die gr&ouml;&szlig;te Verbreitung hat. Urspr&uuml;nglich von und f&uuml;r Statistikern entwickelt, hat R seine St&auml;rken in der Datenanalyse und -Datenvisualisierung. Durch zahlreiche Erweiterungen (Packages) kann R mittlerweile vieles mehr wie z.B. dynamische Reports, interaktive Dashboards, APIs, usw.<div class=&quot;glossaryTooltipMoreLinkWrapper&quot;><a class=&quot;glossaryTooltipMoreLink&quot; href=&quot;https://databraineo.com/data-science/r-programmiersprache/&quot;target=&quot; _blank &quot;>... mehr</a></div>8" >R</a> erzeugt man eine boolsche Variable, indem man den Wert TRUE oder FALSE zuweist.</p>
+
+
+<div class="wp-geshi-highlight-wrap5"><div class="wp-geshi-highlight-wrap4"><div class="wp-geshi-highlight-wrap3"><div class="wp-geshi-highlight-wrap2"><div class="wp-geshi-highlight-wrap"><div class="wp-geshi-highlight"><div class="rsplus"><pre class="de1">b <span class="sy0">&lt;-</span> TRUE
+<span class="kw2">class</span><span class="br0">(</span>b<span class="br0">)</span>
+<span class="co1">#[1] &quot;logical&quot;</span>
+<span class="kw2">is.<span class="me1">integer</span></span><span class="br0">(</span>b<span class="br0">)</span>
+<span class="co1">#[1] FALSE</span>
+<span class="kw2">is.<span class="me1">numeric</span></span><span class="br0">(</span>b<span class="br0">)</span>
+<span class="co1">#[1] FALSE</span>
+<span class="kw2">as.<span class="me1">integer</span></span><span class="br0">(</span>b<span class="br0">)</span>
+<span class="co1">#[1] 1</span>
+<span class="kw2">as.<span class="me1">numeric</span></span><span class="br0">(</span>FALSE<span class="br0">)</span>
+<span class="co1">#[1] 0</span>
+<span class="kw2">as.<span class="me1">character</span></span><span class="br0">(</span>b<span class="br0">)</span>
+<span class="co1">#[1] &quot;TRUE&quot;</span></pre></div></div></div></div></div></div></div>
+
+
+<p>Auch wenn der Test auf integer oder numeric falsch ergibt, kann man doch ganz normal damit rechnen. So steht TRUE f&uuml;r 1, FALSE f&uuml;r 0.</p>
+
+
+<div class="wp-geshi-highlight-wrap5"><div class="wp-geshi-highlight-wrap4"><div class="wp-geshi-highlight-wrap3"><div class="wp-geshi-highlight-wrap2"><div class="wp-geshi-highlight-wrap"><div class="wp-geshi-highlight"><div class="rsplus"><pre class="de1"><span class="nu0">3</span> <span class="sy0">*</span> TRUE <span class="sy0">-</span> <span class="nu0">3</span> <span class="sy0">*</span> FALSE
+<span class="co1">#[1] 3</span></pre></div></div></div></div></div></div></div>
+
+
+<h3><span class="ez-toc-section" id="Woerter_/_Zeichenketten_%E2%80%93_Der_Datentyp_CHARACTER"></span>W&ouml;rter / Zeichenketten &ndash; Der Datentyp CHARACTER<span class="ez-toc-section-end"></span></h3>
+<p>Nun brauchen wir noch einen Datentyp, in dem wir Text speichern k&ouml;nnen. Statt Text spricht man von Zeichenketten oder englisch <em>strings</em>, einzelne Zeichen hei&szlig;en <em>character</em> oder <em>char</em>. Der <a aria-describedby="tt" href="https://databraineo.com/data-science/r-programmiersprache/" class="glossaryLink cmtt_Data Science Lexikon" data-cmtooltip="R ist eine Interpreter-Programmiersprache, die im Data Science Umfeld neben Python die gr&ouml;&szlig;te Verbreitung hat. Urspr&uuml;nglich von und f&uuml;r Statistikern entwickelt, hat R seine St&auml;rken in der Datenanalyse und -Datenvisualisierung. Durch zahlreiche Erweiterungen (Packages) kann R mittlerweile vieles mehr wie z.B. dynamische Reports, interaktive Dashboards, APIs, usw.<div class=&quot;glossaryTooltipMoreLinkWrapper&quot;><a class=&quot;glossaryTooltipMoreLink&quot; href=&quot;https://databraineo.com/data-science/r-programmiersprache/&quot;target=&quot; _blank &quot;>... mehr</a></div>9" >R</a>-Datentyp f&uuml;r Strings hei&szlig;t character.</p>
+<p>Die Definition einer character-Variable in <a aria-describedby="tt" href="https://databraineo.com/data-science/r-programmiersprache/" class="glossaryLink cmtt_Data Science Lexikon" data-cmtooltip="R ist eine Interpreter-Programmiersprache, die im Data Science Umfeld neben Python die gr&ouml;&szlig;te Verbreitung hat. Urspr&uuml;nglich von und f&uuml;r Statistikern entwickelt, hat R seine St&auml;rken in der Datenanalyse und -Datenvisualisierung. Durch zahlreiche Erweiterungen (Packages) kann R mittlerweile vieles mehr wie z.B. dynamische Reports, interaktive Dashboards, APIs, usw.<div class=&quot;glossaryTooltipMoreLinkWrapper&quot;><a class=&quot;glossaryTooltipMoreLink&quot; href=&quot;https://databraineo.com/data-science/r-programmiersprache/&quot;target=&quot; _blank &quot;>... mehr</a></div>0" >R</a> ist einfach. Man stellt daf&uuml;r den Text in Anf&uuml;hrungsstriche (einfache oder doppelte). Mit nchar bekommt man die Anzahl Zeichen zur&uuml;ck (Achtung: length macht etwas anderes, siehe Vektoren)</p>
+
+
+<div class="wp-geshi-highlight-wrap5"><div class="wp-geshi-highlight-wrap4"><div class="wp-geshi-highlight-wrap3"><div class="wp-geshi-highlight-wrap2"><div class="wp-geshi-highlight-wrap"><div class="wp-geshi-highlight"><div class="rsplus"><pre class="de1">a <span class="sy0">=</span> <span class="st0">&quot;Hallo&quot;</span>
+<span class="kw2">class</span><span class="br0">(</span>a<span class="br0">)</span>
+<span class="co1">#[1] &quot;character&quot;</span>
+<span class="kw2">is.<span class="me1">character</span></span><span class="br0">(</span>a<span class="br0">)</span>
+<span class="co1">#[1] TRUE</span>
+<span class="kw2">nchar</span><span class="br0">(</span>a<span class="br0">)</span>
+<span class="co1">#[1] 5</span></pre></div></div></div></div></div></div></div>
+
+
+<p>Mit Strings kann oder muss man viele Dinge machen. Die wichtigsten sind:</p>
+<ul>
+<li>Strings verbinden mittels <a aria-describedby="tt" href="https://databraineo.com/data-science/r-befehl-paste/" class="glossaryLink cmtt_R-Befehle" data-cmtooltip="R ist eine Interpreter-Programmiersprache, die im Data Science Umfeld neben Python die gr&ouml;&szlig;te Verbreitung hat. Urspr&uuml;nglich von und f&uuml;r Statistikern entwickelt, hat R seine St&auml;rken in der Datenanalyse und -Datenvisualisierung. Durch zahlreiche Erweiterungen (Packages) kann R mittlerweile vieles mehr wie z.B. dynamische Reports, interaktive Dashboards, APIs, usw.<div class=&quot;glossaryTooltipMoreLinkWrapper&quot;><a class=&quot;glossaryTooltipMoreLink&quot; href=&quot;https://databraineo.com/data-science/r-programmiersprache/&quot;target=&quot; _blank &quot;>... mehr</a></div>1" >paste</a> und <a aria-describedby="tt" href="https://databraineo.com/data-science/r-befehl-paste/" class="glossaryLink cmtt_R-Befehle" data-cmtooltip="R ist eine Interpreter-Programmiersprache, die im Data Science Umfeld neben Python die gr&ouml;&szlig;te Verbreitung hat. Urspr&uuml;nglich von und f&uuml;r Statistikern entwickelt, hat R seine St&auml;rken in der Datenanalyse und -Datenvisualisierung. Durch zahlreiche Erweiterungen (Packages) kann R mittlerweile vieles mehr wie z.B. dynamische Reports, interaktive Dashboards, APIs, usw.<div class=&quot;glossaryTooltipMoreLinkWrapper&quot;><a class=&quot;glossaryTooltipMoreLink&quot; href=&quot;https://databraineo.com/data-science/r-programmiersprache/&quot;target=&quot; _blank &quot;>... mehr</a></div>2" >paste0</a></li>
+<li>Teile von Strings extrahieren oder &auml;ndern mittels substring bzw. substr</li>
+<li>Filtern mittels regul&auml;rer Ausdr&uuml;cke. Regul&auml;re Ausdr&uuml;cke sind m&auml;chtig und bei allem, was mit Text zu tun hat, kaum wegzudenken. Es ist allerdings kein ganz leichtes Thema. Daher habe ich f&uuml;r Euch einen ganzen Blogpost &uuml;ber <a href="https://databraineo.com/ki-training-resources/r-programmierung/regulaere-ausdruecke-in-r-erklaert/">regul&auml;re Ausdr&uuml;cke in <a aria-describedby="tt" href="https://databraineo.com/data-science/r-programmiersprache/" class="glossaryLink cmtt_Data Science Lexikon" data-cmtooltip="R ist eine Interpreter-Programmiersprache, die im Data Science Umfeld neben Python die gr&ouml;&szlig;te Verbreitung hat. Urspr&uuml;nglich von und f&uuml;r Statistikern entwickelt, hat R seine St&auml;rken in der Datenanalyse und -Datenvisualisierung. Durch zahlreiche Erweiterungen (Packages) kann R mittlerweile vieles mehr wie z.B. dynamische Reports, interaktive Dashboards, APIs, usw.<div class=&quot;glossaryTooltipMoreLinkWrapper&quot;><a class=&quot;glossaryTooltipMoreLink&quot; href=&quot;https://databraineo.com/data-science/r-programmiersprache/&quot;target=&quot; _blank &quot;>... mehr</a></div>3" >R</a></a> geschrieben</li>
+</ul>
+
+
+<div class="wp-geshi-highlight-wrap5"><div class="wp-geshi-highlight-wrap4"><div class="wp-geshi-highlight-wrap3"><div class="wp-geshi-highlight-wrap2"><div class="wp-geshi-highlight-wrap"><div class="wp-geshi-highlight"><div class="rsplus"><pre class="de1"><span class="kw2">substr</span><span class="br0">(</span>a,<span class="nu0">1</span>,<span class="nu0">2</span><span class="br0">)</span>
+<span class="co1">#[1] &quot;Ha&quot;</span>
+<span class="kw2">substring</span><span class="br0">(</span>a,<span class="nu0">2</span><span class="br0">)</span> <span class="sy0">&lt;-</span> <span class="st0">&quot;ey&quot;</span>
+<span class="kw2">toupper</span><span class="br0">(</span>a<span class="br0">)</span>
+<span class="co1">#[1] &quot;HEYLO&quot;</span>
+<span class="kw2">tolower</span><span class="br0">(</span>a<span class="br0">)</span>
+<span class="co1">#[1] &quot;heylo&quot;</span>
+<span class="kw2"><a aria-describedby="tt" href="https://databraineo.com/data-science/r-befehl-paste/" class="glossaryLink cmtt_R-Befehle" data-cmtooltip="R ist eine Interpreter-Programmiersprache, die im Data Science Umfeld neben Python die gr&ouml;&szlig;te Verbreitung hat. Urspr&uuml;nglich von und f&uuml;r Statistikern entwickelt, hat R seine St&auml;rken in der Datenanalyse und -Datenvisualisierung. Durch zahlreiche Erweiterungen (Packages) kann R mittlerweile vieles mehr wie z.B. dynamische Reports, interaktive Dashboards, APIs, usw.<div class=&quot;glossaryTooltipMoreLinkWrapper&quot;><a class=&quot;glossaryTooltipMoreLink&quot; href=&quot;https://databraineo.com/data-science/r-programmiersprache/&quot;target=&quot; _blank &quot;>... mehr</a></div>4" >paste</a></span><span class="br0">(</span>a, <span class="st0">&quot;Du da&quot;</span><span class="br0">)</span>
+<span class="co1">#[1] &quot;Heylo Du da&quot;</span>
+<span class="kw2"><a aria-describedby="tt" href="https://databraineo.com/data-science/r-befehl-paste/" class="glossaryLink cmtt_R-Befehle" data-cmtooltip="R ist eine Interpreter-Programmiersprache, die im Data Science Umfeld neben Python die gr&ouml;&szlig;te Verbreitung hat. Urspr&uuml;nglich von und f&uuml;r Statistikern entwickelt, hat R seine St&auml;rken in der Datenanalyse und -Datenvisualisierung. Durch zahlreiche Erweiterungen (Packages) kann R mittlerweile vieles mehr wie z.B. dynamische Reports, interaktive Dashboards, APIs, usw.<div class=&quot;glossaryTooltipMoreLinkWrapper&quot;><a class=&quot;glossaryTooltipMoreLink&quot; href=&quot;https://databraineo.com/data-science/r-programmiersprache/&quot;target=&quot; _blank &quot;>... mehr</a></div>5" >paste</a></span><span class="br0">(</span>a, <span class="st0">&quot; Du da&quot;</span>,sep<span class="sy0">=</span><span class="st0">&quot;,&quot;</span><span class="br0">)</span>
+<span class="co1">#[1] &quot;Heylo, Du da&quot;</span>
+<span class="kw2">grepl</span><span class="br0">(</span><span class="st0">&quot;e.l&quot;</span>,a<span class="br0">)</span>
+<span class="co1">#[1] TRUE</span></pre></div></div></div></div></div></div></div>
+
+
+<p>Neben den Standard-Funktionen in <a aria-describedby="tt" href="https://databraineo.com/data-science/r-programmiersprache/" class="glossaryLink cmtt_Data Science Lexikon" data-cmtooltip="R ist eine Interpreter-Programmiersprache, die im Data Science Umfeld neben Python die gr&ouml;&szlig;te Verbreitung hat. Urspr&uuml;nglich von und f&uuml;r Statistikern entwickelt, hat R seine St&auml;rken in der Datenanalyse und -Datenvisualisierung. Durch zahlreiche Erweiterungen (Packages) kann R mittlerweile vieles mehr wie z.B. dynamische Reports, interaktive Dashboards, APIs, usw.<div class=&quot;glossaryTooltipMoreLinkWrapper&quot;><a class=&quot;glossaryTooltipMoreLink&quot; href=&quot;https://databraineo.com/data-science/r-programmiersprache/&quot;target=&quot; _blank &quot;>... mehr</a></div>6" >R</a> helfen vor allem die Packages <a href="http://www.gagolewski.com/software/stringi/" target="_blank" rel="noopener">stringi</a> und <a href="https://stringr.tidyverse.org/" target="_blank" rel="noopener">stringr</a> weiter, wobei stringr auf stringi aufbaut.</p>
+<h3><span class="ez-toc-section" id="Datum_und_Zeitstempel_%E2%80%93_Die_Datentypen_DATE_und_POSIXCT"></span>Datum und Zeitstempel &ndash; Die Datentypen DATE und POSIXCT<span class="ez-toc-section-end"></span></h3>
+<p>Um die Basis-Datentypen zu vervollst&auml;ndigen, d&uuml;rfen Datum und Uhrzeit nicht fehlen. Tats&auml;chlich ist der Umgang mit diesen beiden Typen ein wenig komplizierter. Am besten schaut ihr mal in <a href="https://databraineo.com/ki-training-resources/r-programmierung/datum-und-zeitstempel-in-r-lubridate/">mein <a aria-describedby="tt" href="https://databraineo.com/data-science/r-programmiersprache/" class="glossaryLink cmtt_Data Science Lexikon" data-cmtooltip="R ist eine Interpreter-Programmiersprache, die im Data Science Umfeld neben Python die gr&ouml;&szlig;te Verbreitung hat. Urspr&uuml;nglich von und f&uuml;r Statistikern entwickelt, hat R seine St&auml;rken in der Datenanalyse und -Datenvisualisierung. Durch zahlreiche Erweiterungen (Packages) kann R mittlerweile vieles mehr wie z.B. dynamische Reports, interaktive Dashboards, APIs, usw.<div class=&quot;glossaryTooltipMoreLinkWrapper&quot;><a class=&quot;glossaryTooltipMoreLink&quot; href=&quot;https://databraineo.com/data-science/r-programmiersprache/&quot;target=&quot; _blank &quot;>... mehr</a></div>7" >R</a>-Tutorial zu Datum und Uhrzeit</a>.</p>
+
+
+<div class="wp-geshi-highlight-wrap5"><div class="wp-geshi-highlight-wrap4"><div class="wp-geshi-highlight-wrap3"><div class="wp-geshi-highlight-wrap2"><div class="wp-geshi-highlight-wrap"><div class="wp-geshi-highlight"><div class="rsplus"><pre class="de1"><span class="co1"># aktuelles Datum</span>
+d <span class="sy0">&lt;-</span> <span class="kw2">Sys.<span class="me1">Date</span></span><span class="br0">(</span><span class="br0">)</span>
+<span class="kw2">class</span><span class="br0">(</span>d<span class="br0">)</span>
+<span class="kw2">format</span><span class="br0">(</span>d,<span class="st0">&quot;%Y&quot;</span><span class="br0">)</span>
+<span class="kw2">as.<span class="me1">Date</span></span><span class="br0">(</span><span class="st0">&quot;2020-03-11&quot;</span><span class="br0">)</span>
+<span class="kw2">as.<span class="me1">Date</span></span><span class="br0">(</span><span class="st0">&quot;11.03.2020&quot;</span>, <span class="kw2">format</span> <span class="sy0">=</span> <span class="st0">&quot;%d.%m.%Y&quot;</span><span class="br0">)</span>
+&nbsp;
+<span class="co1"># aktueller Zeitstempel</span>
+<span class="kw7">ts</span> <span class="sy0">&lt;-</span> <span class="kw2">Sys.<span class="me1">time</span></span><span class="br0">(</span><span class="br0">)</span>
+<span class="kw2">class</span><span class="br0">(</span><span class="kw7">ts</span><span class="br0">)</span>
+<span class="kw2">format</span><span class="br0">(</span><span class="kw7">ts</span>,<span class="st0">&quot;%Y&quot;</span><span class="br0">)</span></pre></div></div></div></div></div></div></div>
+
+
+<p>So, damit haben wir die Basis-Datentypen INTEGER, NUMERIC, LOGICAL, CHARACTER, DATE und POSIXCT durch. Aber damit fangen wir gerade erst an, denn nun lassen sich diese Datentypen zu Vektoren, Matrizen, Tabellen und Listen zusammensetzen. Dazu findet ihr <a href="https://databraineo.com/ki-training-resources/r-programmierung/datentypen-in-r-einfach-erklaert-teil-2/">hier in Teil 2 Erkl&auml;rungen und Code-Beispiele</a>.</p>
+<p>Happy coding,</p>
+<p>Euer Holger</p>
+<div class="et_social_inline et_social_mobile_on et_social_inline_bottom">
+				<div class="et_social_networks et_social_4col et_social_darken et_social_circle et_social_top et_social_no_animation et_social_withnetworknames et_social_outer_dark">
+					
+					<ul class="et_social_icons_container"><li class="et_social_twitter">
+									<a href="http://twitter.com/share?text=Datentypen%20in%20R%20%E2%80%93%20einfach%20erkl%C3%A4rt&#038;url=https%3A%2F%2Fdatabraineo.com%2Fki-training-resources%2Fr-programmierung%2Fdatentypen-in-r-einfach-erklaert%2F" class="et_social_share" rel="nofollow" data-social_name="twitter" data-post_id="1403" data-social_type="share" data-location="inline">
+										<i class="et_social_icon et_social_icon_twitter"></i><div class="et_social_network_label"><div class="et_social_networkname">Twitter</div></div><span class="et_social_overlay"></span>
+									</a>
+								</li><li class="et_social_facebook">
+									<a href="http://www.facebook.com/sharer.php?u=https%3A%2F%2Fdatabraineo.com%2Fki-training-resources%2Fr-programmierung%2Fdatentypen-in-r-einfach-erklaert%2F&#038;t=Datentypen%20in%20R%20%E2%80%93%20einfach%20erkl%C3%A4rt" class="et_social_share" rel="nofollow" data-social_name="facebook" data-post_id="1403" data-social_type="share" data-location="inline">
+										<i class="et_social_icon et_social_icon_facebook"></i><div class="et_social_network_label"><div class="et_social_networkname">Facebook</div></div><span class="et_social_overlay"></span>
+									</a>
+								</li><li class="et_social_linkedin">
+									<a href="http://www.linkedin.com/shareArticle?mini=true&#038;url=https%3A%2F%2Fdatabraineo.com%2Fki-training-resources%2Fr-programmierung%2Fdatentypen-in-r-einfach-erklaert%2F&#038;title=Datentypen%20in%20R%20%E2%80%93%20einfach%20erkl%C3%A4rt" class="et_social_share" rel="nofollow" data-social_name="linkedin" data-post_id="1403" data-social_type="share" data-location="inline">
+										<i class="et_social_icon et_social_icon_linkedin"></i><div class="et_social_network_label"><div class="et_social_networkname">LinkedIn</div></div><span class="et_social_overlay"></span>
+									</a>
+								</li><li class="et_social_reddit">
+									<a href="http://www.reddit.com/submit?url=https%3A%2F%2Fdatabraineo.com%2Fki-training-resources%2Fr-programmierung%2Fdatentypen-in-r-einfach-erklaert%2F&#038;title=Datentypen%20in%20R%20%E2%80%93%20einfach%20erkl%C3%A4rt" class="et_social_share" rel="nofollow" data-social_name="reddit" data-post_id="1403" data-social_type="share" data-location="inline">
+										<i class="et_social_icon et_social_icon_reddit"></i><div class="et_social_network_label"><div class="et_social_networkname">reddit</div></div><span class="et_social_overlay"></span>
+									</a>
+								</li></ul>
+				</div>
+			</div><span class="et_bloom_bottom_trigger"></span><div class="cmtt_related_linked_terms_wrapper"><div class="cmtt_related_title cmtt_related_linked_terms_title">Glossar:</div><ul class="cmtt_related cmtt_related_terms"><li><a href="https://databraineo.com/data-science/r-programmiersprache/"> R (Programmiersprache)</a></li><li><a href="https://databraineo.com/data-science/rstudio/"> RStudio</a></li><li><a href="https://databraineo.com/data-science/mean/"> mean</a></li><li><a href="https://databraineo.com/data-science/r-befehl-paste/"> paste</a></li></ul></div>																	</div>
+														</div>
+														<div class="post-footer">
+								<div class="social-icons ed-social-share-icons">
+									<p class="share-title">Aktie:</p>
+																	</div>
+																<style type="text/css" id="rating-stars">
+									.post-footer .rating-stars #rated-stars img.star-on,
+									.post-footer .rating-stars #rating-stars img.star-on {
+										background-color: #8e6ecf;
+									}
+								</style>
+							</div>
+
+																				</article>
+
+						<nav class="post-nav">
+							<div class="nav-links clearfix">
+								<div class="nav-link nav-link-prev">
+									<a href="https://databraineo.com/ki-training-resources/python/lineare-regression-in-python/" rel="prev"><span class="button">Vorheriger</span> <span class="title">Lineare Regression in Python</span></a>								</div>
+								<div class="nav-link nav-link-next">
+									<a href="https://databraineo.com/ki-training-resources/r-programmierung/datentypen-in-r-einfach-erklaert-teil-2/" rel="next"><span class="button">Nächster</span> <span class="title">Datentypen in R &#8211; einfach erklärt (Teil 2)</span></a>								</div>
+							</div>
+						</nav>
+						
+												<div class="et_extra_other_module related-posts">
+							<div class="related-posts-header">
+								<h3>zusammenhängende Posts</h3>
+							</div>
+							<div class="related-posts-content clearfix">
+																<div class="related-post">
+									<div class="featured-image"><a href="https://databraineo.com/maschinelles-lernen/support-vector-maschines-engl/" title="Support Vector Maschines (engl.)" class="post-thumbnail">
+				<img src="data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgNDQwIDI2NCIgd2lkdGg9IjQ0MCIgaGVpZ2h0PSIyNjQiIGRhdGEtdT0iaHR0cHMlM0ElMkYlMkZkYXRhYnJhaW5lby5jb20lMkZ3cC1jb250ZW50JTJGdXBsb2FkcyUyRjIwMTglMkYwMyUyRkV4YW1wbGUyLW9yaWdpbmFsLWRhdGFzZXQtNDQweDI2NC5qcGVnIiBkYXRhLXc9IjQ0MCIgZGF0YS1oPSIyNjQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PC9zdmc+" data-spai="1" alt="Support Vector Maschines (engl.)" /><span class="et_pb_extra_overlay"></span>
+			</a></div>
+									<h4 class="title"><a href="https://databraineo.com/maschinelles-lernen/support-vector-maschines-engl/">Support Vector Maschines (engl.)</a></h4>
+									<p class="date"><span class="updated">26. März 2018</span></p>
+								</div>
+																<div class="related-post">
+									<div class="featured-image"><a href="https://databraineo.com/ki-training-resources/r-programmierung/das-r-package-dplyr-eine-ausfuehrliche-anleitung-mit-vielen-beispielen/" title="Das R-Package dplyr: Eine ausführliche Anleitung (mit vielen Beispielen)" class="post-thumbnail">
+				<img src="data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgNDQwIDI2NCIgd2lkdGg9IjQ0MCIgaGVpZ2h0PSIyNjQiIGRhdGEtdT0iaHR0cHMlM0ElMkYlMkZkYXRhYnJhaW5lby5jb20lMkZ3cC1jb250ZW50JTJGdXBsb2FkcyUyRjIwMTklMkYwNSUyRnItcGFja2FnZS1kcGx5ci1maWx0ZXItc2VsZWN0LWpvaW4tNDQweDI2NC5qcGciIGRhdGEtdz0iNDQwIiBkYXRhLWg9IjI2NCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48L3N2Zz4=" data-spai="1" alt="Das R-Package dplyr: Eine ausführliche Anleitung (mit vielen Beispielen)" /><span class="et_pb_extra_overlay"></span>
+			</a></div>
+									<h4 class="title"><a href="https://databraineo.com/ki-training-resources/r-programmierung/das-r-package-dplyr-eine-ausfuehrliche-anleitung-mit-vielen-beispielen/">Das R-Package dplyr: Eine ausführliche Anleitung (mit vielen Beispielen)</a></h4>
+									<p class="date"><span class="updated">17. Mai 2019</span></p>
+								</div>
+																<div class="related-post">
+									<div class="featured-image"><a href="https://databraineo.com/ki-training-resources/r-programmierung/meine-15-nuetzlichsten-rstudio-shortcuts/" title="Meine 15 nützlichsten RStudio Shortcuts" class="post-thumbnail">
+				<img src="data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgNDQwIDI2NCIgd2lkdGg9IjQ0MCIgaGVpZ2h0PSIyNjQiIGRhdGEtdT0iaHR0cHMlM0ElMkYlMkZkYXRhYnJhaW5lby5jb20lMkZ3cC1jb250ZW50JTJGdXBsb2FkcyUyRjIwMTglMkYxMSUyRk1laW5lLTE1LXdpY2h0aWdzdGVuLVJTdHVkaW8tU2hvcnRjdXRzLTQ0MHgyNjQuanBnIiBkYXRhLXc9IjQ0MCIgZGF0YS1oPSIyNjQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PC9zdmc+" data-spai="1" alt="Meine 15 nützlichsten RStudio Shortcuts" /><span class="et_pb_extra_overlay"></span>
+			</a></div>
+									<h4 class="title"><a href="https://databraineo.com/ki-training-resources/r-programmierung/meine-15-nuetzlichsten-rstudio-shortcuts/">Meine 15 nützlichsten RStudio Shortcuts</a></h4>
+									<p class="date"><span class="updated">21. November 2018</span></p>
+								</div>
+																<div class="related-post">
+									<div class="featured-image"><a href="https://databraineo.com/ki-training-resources/r-programmierung/high-noon-python-vs-r/" title="High Noon – Python vs. R" class="post-thumbnail">
+				<img src="data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgNDQwIDI2NCIgd2lkdGg9IjQ0MCIgaGVpZ2h0PSIyNjQiIGRhdGEtdT0iaHR0cHMlM0ElMkYlMkZkYXRhYnJhaW5lby5jb20lMkZ3cC1jb250ZW50JTJGdXBsb2FkcyUyRjIwMTglMkYwNCUyRmFybS13cmVzdGxpbmctYmFyLWJldC00NDE3LTQ0MHgyNjQuanBnIiBkYXRhLXc9IjQ0MCIgZGF0YS1oPSIyNjQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PC9zdmc+" data-spai="1" alt="High Noon – Python vs. R" /><span class="et_pb_extra_overlay"></span>
+			</a></div>
+									<h4 class="title"><a href="https://databraineo.com/ki-training-resources/r-programmierung/high-noon-python-vs-r/">High Noon – Python vs. R</a></h4>
+									<p class="date"><span class="updated">14. April 2018</span></p>
+								</div>
+																							</div>
+						</div>
+										
+				<!-- You can start editing here. -->
+
+<section id="comment-wrap">
+			<div id="comments" class="nocomments">
+			 <!-- If comments are open, but there are no comments. -->
+
+					</div>
+					<div id="respond" class="comment-respond">
+		<h3 id="reply-title" class="comment-reply-title"><span>Hinterlasse eine Antwort</span> <small><a rel="nofollow" id="cancel-comment-reply-link" href="/ki-training-resources/r-programmierung/datentypen-in-r-einfach-erklaert/#respond" style="display:none;">Antworten abbrechen</a></small></h3><form action="https://databraineo.com/wp-comments-post.php" method="post" id="commentform" class="comment-form"><p class="comment-notes"><span id="email-notes">Deine E-Mail-Adresse wird nicht veröffentlicht.</span> Erforderliche Felder sind mit <span class="required">*</span> markiert.</p><p class="comment-form-comment"><label for="comment">KOMMENTAR</label><textarea autocomplete="new-password"  id="de27fed64f"  name="de27fed64f"   cols="45" rows="8" aria-required="true"></textarea><textarea id="comment" aria-hidden="true" name="comment" autocomplete="new-password" style="padding:0;clip:rect(1px, 1px, 1px, 1px);position:absolute !important;white-space:nowrap;height:1px;width:1px;overflow:hidden;" tabindex="-1"></textarea><script data-noptimize type="text/javascript">document.getElementById("comment").setAttribute( "id", "af3f1bb7de2ec6914792c0633d1572bc" );document.getElementById("de27fed64f").setAttribute( "id", "comment" );</script></p><p class="comment-form-author"><label for="author">Name <span class="required">*</span></label> <input id="author" name="author" type="text" value="" size="30" maxlength="245" required='required' /></p>
+<p class="comment-form-email"><label for="email">E-Mail <span class="required">*</span></label> <input id="email" name="email" type="text" value="" size="30" maxlength="100" aria-describedby="email-notes" required='required' /></p>
+<p class="comment-form-url"><label for="url">Website</label> <input id="url" name="url" type="text" value="" size="30" maxlength="200" /></p>
+<p class="comment-subscription-form"><input type="checkbox" name="subscribe_comments" id="subscribe_comments" value="subscribe" style="width: auto; -moz-appearance: checkbox; -webkit-appearance: checkbox;" /> <label class="subscribe-label" id="subscribe-label" for="subscribe_comments">Benachrichtige mich über nachfolgende Kommentare via E-Mail.</label></p><p class="comment-subscription-form"><input type="checkbox" name="subscribe_blog" id="subscribe_blog" value="subscribe" style="width: auto; -moz-appearance: checkbox; -webkit-appearance: checkbox;" /> <label class="subscribe-label" id="subscribe-blog-label" for="subscribe_blog">Benachrichtige mich über neue Beiträge via E-Mail.</label></p><p class="form-submit"><input name="submit" type="submit" id="submit" class="submit" value="Kommentar posten" /> <input type='hidden' name='comment_post_ID' value='1403' id='comment_post_ID' />
+<input type='hidden' name='comment_parent' id='comment_parent' value='0' />
+</p></form>	</div><!-- #respond -->
+		</section>
+			</div><!-- /.et_pb_extra_column.et_pb_extra_column_main -->
+
+			<div class="et_pb_extra_column_sidebar">
+	<div id="search-2" class="et_pb_widget widget_search"><h4 class="widgettitle"> </h4><form role="search" method="get" class="search-form" action="https://databraineo.com/">
+				<label>
+					<span class="screen-reader-text">Suche nach:</span>
+					<input type="search" class="search-field" placeholder="Suche&#160;&hellip;" value="" name="s" />
+				</label>
+				<input type="submit" class="search-submit" value="Suche" />
+			</form></div> <!-- end .et_pb_widget --><div id="bloomwidget-4" class="et_pb_widget widget_bloomwidget"><h4 class="widgettitle">Gratis für Dich</h4>
+				<div class='et_bloom_widget_content et_bloom_make_form_visible et_bloom_optin et_bloom_optin_2' style='display: none;'>
+					<style type="text/css">.et_bloom .et_bloom_optin_2 .et_bloom_form_content { background-color: #8ea7a7 !important; } .et_bloom .et_bloom_optin_2 .et_bloom_form_container .et_bloom_form_header { background-color: #ffffff !important; } .et_bloom .et_bloom_optin_2 .wedge_edge .triangle { fill: #ffffff} .et_bloom .et_bloom_optin_2 .et_bloom_form_content button { background-color: #1da7d8 !important; } .et_bloom .et_bloom_optin_2 .et_bloom_form_content .et_bloom_fields i { color: #1da7d8 !important; } .et_bloom .et_bloom_optin_2 .et_bloom_form_content .et_bloom_custom_field_radio i:before { background: #1da7d8 !important; } .et_bloom .et_bloom_optin_2 .et_bloom_form_content button { background-color: #1da7d8 !important; } .et_bloom .et_bloom_optin_2 .et_bloom_form_container h2, .et_bloom .et_bloom_optin_2 .et_bloom_form_container h2 span, .et_bloom .et_bloom_optin_2 .et_bloom_form_container h2 strong { font-family: "Open Sans", Helvetica, Arial, Lucida, sans-serif; }.et_bloom .et_bloom_optin_2 .et_bloom_form_container p, .et_bloom .et_bloom_optin_2 .et_bloom_form_container p span, .et_bloom .et_bloom_optin_2 .et_bloom_form_container p strong, .et_bloom .et_bloom_optin_2 .et_bloom_form_container form input, .et_bloom .et_bloom_optin_2 .et_bloom_form_container form button span { font-family: "Open Sans", Helvetica, Arial, Lucida, sans-serif; } </style>
+					<div class='et_bloom_form_container with_edge wedge_edge et_bloom_rounded et_bloom_form_text_dark'>
+						
+			<div class="et_bloom_form_container_wrapper clearfix">
+				<div class="et_bloom_header_outer">
+					<div class="et_bloom_form_header et_bloom_header_text_dark">
+						
+						<div class="et_bloom_form_text">
+						<p>Ich habe für Dich <span style="font-weight: 900;">die wichtigsten Machine-Learning Algorithmen</span> übersichtlich zusammengefasst.</p>
+<p>Trage jetzt Deine Email ein und Du kannst sofort das kostenlose Ebook downloaden.</p>
+					</div>
+						
+					</div>
+				</div>
+				<div class="et_bloom_form_content et_bloom_2_fields et_bloom_bottom_stacked">
+					
+					<svg class="triangle et_bloom_default_edge" xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="20" viewBox="0 0 100 100" preserveAspectRatio="none">
+						<path d="M0 0 L50 100 L100 0 Z" fill=""></path>
+					</svg>
+					<form method="post" class="clearfix">
+						<div class="et_bloom_fields">
+							<p class="et_bloom_popup_input et_bloom_subscribe_name">
+								<input placeholder="Name" maxlength="50">
+							</p>
+							<p class="et_bloom_popup_input et_bloom_subscribe_email">
+								<input placeholder="Email">
+							</p>
+							
+							<button data-optin_id="optin_2" data-service="mailerlite" data-list_id="90350438" data-page_id="1403" data-account="holger" data-ip_address="false" class="et_bloom_submit_subscription">
+								<span class="et_bloom_subscribe_loader"></span>
+								<span class="et_bloom_button_text et_bloom_button_text_color_light">Abschicken</span>
+							</button>
+						</div>
+					</form>
+					<div class="et_bloom_success_container">
+						<span class="et_bloom_success_checkmark"></span>
+					</div>
+					<h2 class="et_bloom_success_message">Eine Email an Dich ist schon unterwegs!</h2>
+					<div class="et_bloom_form_footer"><p>Du kannst deine Einwilligung zum Empfang jederzeit widerrufen. Dazu befindet sich am Ende jeder E-Mail ein Abmeldelink. Der Versand erfolgt gemäß unserer <a href="../datenschutzerklaerung/" target="_blank">Datenschutzerklärung.</a></p></div>
+				</div>
+			</div>
+			<span class="et_bloom_close_button"></span>
+					</div>
+				</div></div> <!-- end .et_pb_widget --><div id="et_social_followers-2" class="et_pb_widget widget_et_social_followers"><h4 class="widgettitle">Folgen</h4>
+		<div class="widget_content">
+			<ul class="widget_list">
+								<li>
+						<a class="et-extra-icon et-extra-icon-facebook et-extra-icon-background social-icon" href="https://www.facebook.com/databraineo/"></a>
+						<a href="https://www.facebook.com/databraineo/" class="widget_list_social">
+							<h3 class="title">Facebook</h3>
+													</a>
+					</li>
+										<li>
+						<a class="et-extra-icon et-extra-icon-twitter et-extra-icon-background social-icon" href="https://twitter.com/databraineo"></a>
+						<a href="https://twitter.com/databraineo" class="widget_list_social">
+							<h3 class="title">Twitter</h3>
+													</a>
+					</li>
+								</ul>
+		</div>
+		</div> <!-- end .et_pb_widget --><div id="categories-2" class="et_pb_widget widget_categories"><h4 class="widgettitle">Kategorien</h4>
+			<ul>
+					<li class="cat-item cat-item-1"><a href="https://databraineo.com/category/allgemein/">Allgemein</a>
+</li>
+	<li class="cat-item cat-item-174"><a href="https://databraineo.com/category/ask-the-doc/">Ask the Doc</a>
+</li>
+	<li class="cat-item cat-item-8"><a href="https://databraineo.com/category/data-science-buecher/">Bücher</a>
+</li>
+	<li class="cat-item cat-item-153"><a href="https://databraineo.com/category/data-science-news/">Data Science News</a>
+</li>
+	<li class="cat-item cat-item-103"><a href="https://databraineo.com/category/datenvisualisierung/">Datenvisualisierung</a>
+</li>
+	<li class="cat-item cat-item-5"><a href="https://databraineo.com/category/ki-training-resources/excel/">Excel</a>
+</li>
+	<li class="cat-item cat-item-155"><a href="https://databraineo.com/category/jobs-karriere/">Jobs &amp; Karriere</a>
+</li>
+	<li class="cat-item cat-item-7"><a href="https://databraineo.com/category/maschinelles-lernen/">Maschinelles Lernen</a>
+</li>
+	<li class="cat-item cat-item-9"><a href="https://databraineo.com/category/predictive-analytics/">Predictive Analytics</a>
+</li>
+	<li class="cat-item cat-item-150"><a href="https://databraineo.com/category/professional-news/">Professional News</a>
+</li>
+	<li class="cat-item cat-item-35"><a href="https://databraineo.com/category/ki-training-resources/python/">Python</a>
+</li>
+	<li class="cat-item cat-item-104"><a href="https://databraineo.com/category/ki-training-resources/qlik/">Qlik</a>
+</li>
+	<li class="cat-item cat-item-6"><a href="https://databraineo.com/category/ki-training-resources/r-programmierung/">R</a>
+</li>
+	<li class="cat-item cat-item-47"><a href="https://databraineo.com/category/ki-training-resources/sql/">SQL</a>
+</li>
+	<li class="cat-item cat-item-10"><a href="https://databraineo.com/category/statistik/">Statistik</a>
+</li>
+	<li class="cat-item cat-item-11"><a href="https://databraineo.com/category/ki-training-resources/">Training &amp; Resources</a>
+</li>
+			</ul>
+
+			</div> <!-- end .et_pb_widget --><div id="tag_cloud-2" class="et_pb_widget widget_tag_cloud"><h4 class="widgettitle">Schlagwörter</h4><div class="tagcloud"><a href="https://databraineo.com/tag/anaconda/" class="tag-cloud-link tag-link-38 tag-link-position-1" style="font-size: 14.913580246914pt;" aria-label="anaconda (4 Einträge)">anaconda</a>
+<a href="https://databraineo.com/tag/automatisierung/" class="tag-cloud-link tag-link-14 tag-link-position-2" style="font-size: 8pt;" aria-label="Automatisierung (1 Eintrag)">Automatisierung</a>
+<a href="https://databraineo.com/tag/coding/" class="tag-cloud-link tag-link-12 tag-link-position-3" style="font-size: 8pt;" aria-label="Coding (1 Eintrag)">Coding</a>
+<a href="https://databraineo.com/tag/commit/" class="tag-cloud-link tag-link-33 tag-link-position-4" style="font-size: 8pt;" aria-label="commit (1 Eintrag)">commit</a>
+<a href="https://databraineo.com/tag/csv/" class="tag-cloud-link tag-link-28 tag-link-position-5" style="font-size: 8pt;" aria-label="csv (1 Eintrag)">csv</a>
+<a href="https://databraineo.com/tag/data-frame/" class="tag-cloud-link tag-link-44 tag-link-position-6" style="font-size: 11.111111111111pt;" aria-label="data.frame (2 Einträge)">data.frame</a>
+<a href="https://databraineo.com/tag/datenexport/" class="tag-cloud-link tag-link-24 tag-link-position-7" style="font-size: 8pt;" aria-label="datenexport (1 Eintrag)">datenexport</a>
+<a href="https://databraineo.com/tag/datentyp/" class="tag-cloud-link tag-link-344 tag-link-position-8" style="font-size: 11.111111111111pt;" aria-label="datentyp (2 Einträge)">datentyp</a>
+<a href="https://databraineo.com/tag/datenvisualisierung/" class="tag-cloud-link tag-link-106 tag-link-position-9" style="font-size: 11.111111111111pt;" aria-label="Datenvisualisierung (2 Einträge)">Datenvisualisierung</a>
+<a href="https://databraineo.com/tag/datum/" class="tag-cloud-link tag-link-137 tag-link-position-10" style="font-size: 11.111111111111pt;" aria-label="Datum (2 Einträge)">Datum</a>
+<a href="https://databraineo.com/tag/deep-learning/" class="tag-cloud-link tag-link-147 tag-link-position-11" style="font-size: 13.185185185185pt;" aria-label="deep learning (3 Einträge)">deep learning</a>
+<a href="https://databraineo.com/tag/excel/" class="tag-cloud-link tag-link-15 tag-link-position-12" style="font-size: 13.185185185185pt;" aria-label="Excel (3 Einträge)">Excel</a>
+<a href="https://databraineo.com/tag/formel/" class="tag-cloud-link tag-link-16 tag-link-position-13" style="font-size: 8pt;" aria-label="Formel (1 Eintrag)">Formel</a>
+<a href="https://databraineo.com/tag/git/" class="tag-cloud-link tag-link-29 tag-link-position-14" style="font-size: 8pt;" aria-label="git (1 Eintrag)">git</a>
+<a href="https://databraineo.com/tag/index/" class="tag-cloud-link tag-link-17 tag-link-position-15" style="font-size: 8pt;" aria-label="Index (1 Eintrag)">Index</a>
+<a href="https://databraineo.com/tag/jupyter-notebook/" class="tag-cloud-link tag-link-41 tag-link-position-16" style="font-size: 13.185185185185pt;" aria-label="jupyter notebook (3 Einträge)">jupyter notebook</a>
+<a href="https://databraineo.com/tag/list/" class="tag-cloud-link tag-link-245 tag-link-position-17" style="font-size: 11.111111111111pt;" aria-label="list (2 Einträge)">list</a>
+<a href="https://databraineo.com/tag/maschinelles-lernen/" class="tag-cloud-link tag-link-96 tag-link-position-18" style="font-size: 11.111111111111pt;" aria-label="maschinelles Lernen (2 Einträge)">maschinelles Lernen</a>
+<a href="https://databraineo.com/tag/meetup/" class="tag-cloud-link tag-link-265 tag-link-position-19" style="font-size: 11.111111111111pt;" aria-label="meetup (2 Einträge)">meetup</a>
+<a href="https://databraineo.com/tag/neuronale-netze/" class="tag-cloud-link tag-link-148 tag-link-position-20" style="font-size: 16.296296296296pt;" aria-label="neuronale netze (5 Einträge)">neuronale netze</a>
+<a href="https://databraineo.com/tag/numpy/" class="tag-cloud-link tag-link-111 tag-link-position-21" style="font-size: 11.111111111111pt;" aria-label="numpy (2 Einträge)">numpy</a>
+<a href="https://databraineo.com/tag/pandas/" class="tag-cloud-link tag-link-169 tag-link-position-22" style="font-size: 11.111111111111pt;" aria-label="pandas (2 Einträge)">pandas</a>
+<a href="https://databraineo.com/tag/paper/" class="tag-cloud-link tag-link-149 tag-link-position-23" style="font-size: 11.111111111111pt;" aria-label="paper (2 Einträge)">paper</a>
+<a href="https://databraineo.com/tag/programmierung/" class="tag-cloud-link tag-link-13 tag-link-position-24" style="font-size: 8pt;" aria-label="Programmierung (1 Eintrag)">Programmierung</a>
+<a href="https://databraineo.com/tag/python/" class="tag-cloud-link tag-link-36 tag-link-position-25" style="font-size: 21.481481481481pt;" aria-label="python (11 Einträge)">python</a>
+<a href="https://databraineo.com/tag/python-user-group/" class="tag-cloud-link tag-link-264 tag-link-position-26" style="font-size: 11.111111111111pt;" aria-label="python user group (2 Einträge)">python user group</a>
+<a href="https://databraineo.com/tag/qlikview/" class="tag-cloud-link tag-link-105 tag-link-position-27" style="font-size: 11.111111111111pt;" aria-label="QlikView (2 Einträge)">QlikView</a>
+<a href="https://databraineo.com/tag/qlikview-tutorial/" class="tag-cloud-link tag-link-119 tag-link-position-28" style="font-size: 11.111111111111pt;" aria-label="QLikView-Tutorial (2 Einträge)">QLikView-Tutorial</a>
+<a href="https://databraineo.com/tag/r/" class="tag-cloud-link tag-link-20 tag-link-position-29" style="font-size: 22pt;" aria-label="R (12 Einträge)">R</a>
+<a href="https://databraineo.com/tag/read-xlsx/" class="tag-cloud-link tag-link-22 tag-link-position-30" style="font-size: 8pt;" aria-label="read.xlsx (1 Eintrag)">read.xlsx</a>
+<a href="https://databraineo.com/tag/repository/" class="tag-cloud-link tag-link-32 tag-link-position-31" style="font-size: 8pt;" aria-label="repository (1 Eintrag)">repository</a>
+<a href="https://databraineo.com/tag/rstudio/" class="tag-cloud-link tag-link-128 tag-link-position-32" style="font-size: 11.111111111111pt;" aria-label="rstudio (2 Einträge)">rstudio</a>
+<a href="https://databraineo.com/tag/sas/" class="tag-cloud-link tag-link-25 tag-link-position-33" style="font-size: 8pt;" aria-label="SAS (1 Eintrag)">SAS</a>
+<a href="https://databraineo.com/tag/select/" class="tag-cloud-link tag-link-256 tag-link-position-34" style="font-size: 11.111111111111pt;" aria-label="select (2 Einträge)">select</a>
+<a href="https://databraineo.com/tag/spss/" class="tag-cloud-link tag-link-26 tag-link-position-35" style="font-size: 8pt;" aria-label="SPSS (1 Eintrag)">SPSS</a>
+<a href="https://databraineo.com/tag/spyder/" class="tag-cloud-link tag-link-40 tag-link-position-36" style="font-size: 11.111111111111pt;" aria-label="spyder (2 Einträge)">spyder</a>
+<a href="https://databraineo.com/tag/sql/" class="tag-cloud-link tag-link-48 tag-link-position-37" style="font-size: 11.111111111111pt;" aria-label="SQL (2 Einträge)">SQL</a>
+<a href="https://databraineo.com/tag/stata/" class="tag-cloud-link tag-link-27 tag-link-position-38" style="font-size: 8pt;" aria-label="STATA (1 Eintrag)">STATA</a>
+<a href="https://databraineo.com/tag/string/" class="tag-cloud-link tag-link-244 tag-link-position-39" style="font-size: 13.185185185185pt;" aria-label="string (3 Einträge)">string</a>
+<a href="https://databraineo.com/tag/teilergebnis/" class="tag-cloud-link tag-link-19 tag-link-position-40" style="font-size: 8pt;" aria-label="Teilergebnis (1 Eintrag)">Teilergebnis</a>
+<a href="https://databraineo.com/tag/vcs/" class="tag-cloud-link tag-link-30 tag-link-position-41" style="font-size: 8pt;" aria-label="vcs (1 Eintrag)">vcs</a>
+<a href="https://databraineo.com/tag/vergleich/" class="tag-cloud-link tag-link-18 tag-link-position-42" style="font-size: 8pt;" aria-label="Vergleich (1 Eintrag)">Vergleich</a>
+<a href="https://databraineo.com/tag/versionskontrollsystem/" class="tag-cloud-link tag-link-31 tag-link-position-43" style="font-size: 8pt;" aria-label="versionskontrollsystem (1 Eintrag)">versionskontrollsystem</a>
+<a href="https://databraineo.com/tag/write-xlsx/" class="tag-cloud-link tag-link-23 tag-link-position-44" style="font-size: 8pt;" aria-label="write.xlsx (1 Eintrag)">write.xlsx</a>
+<a href="https://databraineo.com/tag/xlsx/" class="tag-cloud-link tag-link-21 tag-link-position-45" style="font-size: 8pt;" aria-label="xlsx (1 Eintrag)">xlsx</a></div>
+</div> <!-- end .et_pb_widget --></div>
+
+		</div> <!-- #content-area -->
+	</div> <!-- .container -->
+	</div> <!-- #main-content -->
+
+	
+	<footer id="footer" class="footer_columns_3">
+		<div class="container">
+	<div class="et_pb_extra_row container-width-change-notify">
+						<div class="et_pb_extra_column odd column-1">
+					<div id="bloomwidget-3" class="et_pb_widget widget_bloomwidget">
+				<div class='et_bloom_widget_content et_bloom_make_form_visible et_bloom_optin et_bloom_optin_3' style='display: none;'>
+					<style type="text/css">.et_bloom .et_bloom_optin_3 .et_bloom_form_content { background-color: #8ea7a7 !important; } .et_bloom .et_bloom_optin_3 .et_bloom_form_container .et_bloom_form_header { background-color: #ffffff !important; } .et_bloom .et_bloom_optin_3 .wedge_edge .triangle { fill: #ffffff} .et_bloom .et_bloom_optin_3 .et_bloom_form_content button { background-color: #1da7d8 !important; } .et_bloom .et_bloom_optin_3 .et_bloom_form_content .et_bloom_fields i { color: #1da7d8 !important; } .et_bloom .et_bloom_optin_3 .et_bloom_form_content .et_bloom_custom_field_radio i:before { background: #1da7d8 !important; } .et_bloom .et_bloom_optin_3 .et_bloom_form_content button { background-color: #1da7d8 !important; } .et_bloom .et_bloom_optin_3 .et_bloom_form_container h2, .et_bloom .et_bloom_optin_3 .et_bloom_form_container h2 span, .et_bloom .et_bloom_optin_3 .et_bloom_form_container h2 strong { font-family: "Open Sans", Helvetica, Arial, Lucida, sans-serif; }.et_bloom .et_bloom_optin_3 .et_bloom_form_container p, .et_bloom .et_bloom_optin_3 .et_bloom_form_container p span, .et_bloom .et_bloom_optin_3 .et_bloom_form_container p strong, .et_bloom .et_bloom_optin_3 .et_bloom_form_container form input, .et_bloom .et_bloom_optin_3 .et_bloom_form_container form button span { font-family: "Open Sans", Helvetica, Arial, Lucida, sans-serif; } </style>
+					<div class='et_bloom_form_container with_edge wedge_edge et_bloom_rounded et_bloom_form_text_dark'>
+						
+			<div class="et_bloom_form_container_wrapper clearfix">
+				<div class="et_bloom_header_outer">
+					<div class="et_bloom_form_header et_bloom_header_text_dark">
+						
+						<div class="et_bloom_form_text">
+						<h2>Gratis für Dich</h2><p>Ich habe für Dich eine Übersicht über <span style="font-weight: 900;">die wichtigsten Machine-Learning Algorithmen erstellt</span>.</p>
+<p>Trage jetzt Deine Email ein und Du kannst sofort das kostenlose Ebook downloaden.</p>
+					</div>
+						
+					</div>
+				</div>
+				<div class="et_bloom_form_content et_bloom_2_fields et_bloom_bottom_stacked">
+					
+					<svg class="triangle et_bloom_default_edge" xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="20" viewBox="0 0 100 100" preserveAspectRatio="none">
+						<path d="M0 0 L50 100 L100 0 Z" fill=""></path>
+					</svg>
+					<form method="post" class="clearfix">
+						<div class="et_bloom_fields">
+							<p class="et_bloom_popup_input et_bloom_subscribe_name">
+								<input placeholder="Name" maxlength="50">
+							</p>
+							<p class="et_bloom_popup_input et_bloom_subscribe_email">
+								<input placeholder="Email">
+							</p>
+							
+							<button data-optin_id="optin_3" data-service="mailerlite" data-list_id="90350438" data-page_id="1403" data-account="holger" data-ip_address="false" class="et_bloom_submit_subscription">
+								<span class="et_bloom_subscribe_loader"></span>
+								<span class="et_bloom_button_text et_bloom_button_text_color_light">Abschicken</span>
+							</button>
+						</div>
+					</form>
+					<div class="et_bloom_success_container">
+						<span class="et_bloom_success_checkmark"></span>
+					</div>
+					<h2 class="et_bloom_success_message">Eine Email an Dich ist schon unterwegs!</h2>
+					<div class="et_bloom_form_footer"><p style="font-weight: 100;">Du kannst deine Einwilligung zum Empfang jederzeit widerrufen. Dazu befindet sich am Ende jeder E-Mail ein Abmeldelink. Der Versand erfolgt gemäß unserer <a href="../datenschutzerklaerung/" target="_blank">Datenschutzerklärung.</a></p></div>
+				</div>
+			</div>
+			<span class="et_bloom_close_button"></span>
+					</div>
+				</div></div> <!-- end .et_pb_widget -->				</div>
+								<div class="et_pb_extra_column even column-2">
+					<div id="tribe-events-list-widget-2" class="et_pb_widget tribe-events-list-widget"><h4 class="widgettitle">Termine</h4>
+	<ol class="tribe-list-widget">
+					<li class="tribe-events-list-widget-events type-tribe_events post-1356 tribe-clearfix tribe-events-venue-1358 tribe-events-organizer-553">
+				
+								<!-- Event Title -->
+				<h4 class="tribe-event-title">
+					<a href="https://databraineo.com/event/odsc-europe-dublin/" rel="bookmark">ODSC Europe, Dublin</a>
+				</h4>
+
+								<!-- Event Time -->
+
+				
+				<div class="tribe-event-duration">
+					<span class="tribe-event-date-start">14. September</span> - <span class="tribe-event-date-end">18. September</span>				</div>
+
+							</li>
+					<li class="tribe-events-list-widget-events type-tribe_events post-1350 tribe-clearfix tribe-events-venue-1352">
+				
+								<!-- Event Title -->
+				<h4 class="tribe-event-title">
+					<a href="https://databraineo.com/event/data2day-2020/" rel="bookmark">data2day 2020</a>
+				</h4>
+
+								<!-- Event Time -->
+
+				
+				<div class="tribe-event-duration">
+					<span class="tribe-event-date-start">19. Oktober</span> - <span class="tribe-event-date-end">21. Oktober</span>				</div>
+
+							</li>
+			</ol><!-- .tribe-list-widget -->
+
+	<p class="tribe-events-widget-link">
+		<a href="https://databraineo.com/events/" rel="bookmark">Alle Veranstaltungen anzeigen</a>
+	</p>
+
+</div> <!-- end .et_pb_widget --><script type="application/ld+json">
+[{"@context":"http://schema.org","@type":"Event","name":"ODSC Europe, Dublin","description":"","url":"https://databraineo.com/event/odsc-europe-dublin/","startDate":"2020-09-14T00:00:00+02:00","endDate":"2020-09-18T23:59:59+02:00","location":{"@type":"Place","name":"Dublin","description":"","url":"","address":{"@type":"PostalAddress","addressLocality":"Dublin","addressCountry":"Irland"},"telephone":"","sameAs":""},"organizer":{"@type":"Person","name":"ODSC","description":"","url":"","telephone":"","email":"","sameAs":"http://www.odsc.com"},"performer":"Organization"},{"@context":"http://schema.org","@type":"Event","name":"data2day 2020","description":"&lt;p&gt;Die data2day ist eine Konferenz zum Thema Big Data, Data Science und Maschinelles Lernen und ist vor allem auf IT-Praktiker in Unternehmen ausgerichtet.&lt;/p&gt;\\n","url":"https://databraineo.com/event/data2day-2020/","startDate":"2020-10-19T00:00:00+02:00","endDate":"2020-10-21T23:59:59+02:00","location":{"@type":"Place","name":"Ludwigshafen","description":"","url":"","address":{"@type":"PostalAddress"},"telephone":"","sameAs":""},"performer":"Organization"}]
+</script>				</div>
+					</div>
+</div>
+		<div id="footer-bottom">
+			<div class="container">
+
+				<!-- Footer Info -->
+				<p id="footer-info">Entworfen von <a href="http://www.elegantthemes.com" title="Premium WordPress Themes">Elegant Themes</a> | Angetrieben von <a href="http://www.wordpress.org">WordPress</a></p>
+
+				<!-- Footer Navigation -->
+								<div id="footer-nav">
+					<ul id="footer-menu" class="bottom-nav"><li id="menu-item-587" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-587"><a href="https://databraineo.com/kontakt/">Kontakt</a></li>
+<li id="menu-item-71" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-71"><a href="https://databraineo.com/impressum/">Impressum</a></li>
+<li id="menu-item-245" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-privacy-policy menu-item-245"><a href="https://databraineo.com/datenschutzerklaerung/">Datenschutzerklärung</a></li>
+</ul>						<ul class="et-extra-social-icons" style="">
+																																								<li class="et-extra-social-icon facebook">
+								<a href="https://www.facebook.com/databraineo/" class="et-extra-icon et-extra-icon-background-none et-extra-icon-facebook"></a>
+							</li>
+																																									<li class="et-extra-social-icon twitter">
+								<a href="https://twitter.com/databraineo" class="et-extra-icon et-extra-icon-background-none et-extra-icon-twitter"></a>
+							</li>
+																																																																																																																																																																																																																																																																	<li class="et-extra-social-icon linkedin">
+								<a href="https://www.linkedin.com/in/holger-aust/" class="et-extra-icon et-extra-icon-background-none et-extra-icon-linkedin"></a>
+							</li>
+																																									<li class="et-extra-social-icon rss">
+								<a href="https://databraineo.com/feed/" class="et-extra-icon et-extra-icon-background-none et-extra-icon-rss"></a>
+							</li>
+																																																																																																																										<li class="et-extra-social-icon youtube">
+								<a href="https://www.youtube.com/channel/UCpJnJ2pc6A3LrdnfgPFdt8Q" class="et-extra-icon et-extra-icon-background-none et-extra-icon-youtube"></a>
+							</li>
+																																																																																																																																																										</ul>
+									</div> <!-- /#et-footer-nav -->
+				
+			</div>
+		</div>
+	</footer>
+	</div> <!-- #page-container -->
+
+	
+		<style>
+	.et_pb_slide.db_background_url:hover{
+		cursor:pointer;
+	}
+	</style>
+		<script>
+	jQuery(function($){
+		$(".db_background_url").click(function(){
+			var url = $(this).data('db_background_url');
+			if (url.indexOf('#') == 0 || url.indexOf('.') == 0) {
+				et_pb_smooth_scroll($(url), false, 800);
+			} else {
+				document.location=url;
+			}
+		});
+	});
+	</script>
+	
+		<script>
+		( function ( body ) {
+			'use strict';
+			body.className = body.className.replace( /\btribe-no-js\b/, 'tribe-js' );
+		} )( document.body );
+		</script>
+		<div class="et_bloom_flyin et_bloom_optin et_bloom_resize et_bloom_flyin_left et_bloom_optin_1 et_bloom_auto_popup et_bloom_trigger_bottom" data-delay="2" data-cookie_duration="2">
+							<div class="et_bloom_form_container et_bloom_form_bottom with_edge wedge_edge et_bloom_with_border et_bloom_border_solid et_bloom_border_position_full et_bloom_rounded et_bloom_form_text_dark et_bloom_animation_slideup et_flyin_2_fields et_bloom_flyin_bottom_inline">
+								
+			<div class="et_bloom_form_container_wrapper clearfix">
+				<div class="et_bloom_header_outer">
+					<div class="et_bloom_form_header split et_bloom_header_text_light">
+						<img width="581" height="800" src="data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgNTgxIDgwMCIgd2lkdGg9IjU4MSIgaGVpZ2h0PSI4MDAiIGRhdGEtdT0iaHR0cHMlM0ElMkYlMkZkYXRhYnJhaW5lby5jb20lMkZ3cC1jb250ZW50JTJGdXBsb2FkcyUyRjIwMTklMkYwNiUyRkZyYXUtbWl0LUJ1Y2gtbGFlbmdzLmpwZyIgZGF0YS13PSI1ODEiIGRhdGEtaD0iODAwIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjwvc3ZnPg==" data-spai="1" class=" et_bloom_image_no_animation et_bloom_image" alt="" />
+						<div class="et_bloom_form_text">
+						<h2>Gratis für Dich</h2><p>Ich habe für Dich <span style="font-weight: 900; color: #ffffff;">die wichtigsten Machine-Learning Algorithmen</span> übersichtlich zusammengefasst.</p>
+<p>Trage jetzt Deine Email ein und Du kannst sofort das kostenlose Ebook downloaden.</p>
+					</div>
+						
+					</div>
+				</div>
+				<div class="et_bloom_form_content et_bloom_2_fields et_bloom_bottom_inline">
+					
+					<svg class="triangle et_bloom_default_edge" xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="20" viewBox="0 0 100 100" preserveAspectRatio="none">
+						<path d="M0 0 L50 100 L100 0 Z" fill=""></path>
+					</svg>
+					<form method="post" class="clearfix">
+						<div class="et_bloom_fields">
+							<p class="et_bloom_popup_input et_bloom_subscribe_name">
+								<input placeholder="Name" maxlength="50">
+							</p>
+							<p class="et_bloom_popup_input et_bloom_subscribe_email">
+								<input placeholder="Email">
+							</p>
+							
+							<button data-optin_id="optin_1" data-service="mailerlite" data-list_id="90350438" data-page_id="1403" data-account="holger" data-ip_address="false" class="et_bloom_submit_subscription">
+								<span class="et_bloom_subscribe_loader"></span>
+								<span class="et_bloom_button_text et_bloom_button_text_color_light">Abschicken</span>
+							</button>
+						</div>
+					</form>
+					<div class="et_bloom_success_container">
+						<span class="et_bloom_success_checkmark"></span>
+					</div>
+					<h2 class="et_bloom_success_message">Du bist noch einen Schritt vom Ebook entfernt. Ich habe Dir soeben eine Email geschickt. Bitte klicke auf den dort hinterlegten Link.</h2>
+					<div class="et_bloom_form_footer"><p><span style="color: #dddd; font-size: 0.8em; font-weight: 100;">Du kannst deine Einwilligung zum Empfang jederzeit widerrufen. Dazu befindet sich am Ende jeder E-Mail ein Abmeldelink. Der Newsletterversand erfolgt gemäß unserer <a style="color: #ffffff; text-decoration: underline;" href="../datenschutzerklaerung/" target="_blank">Datenschutzerklärung.</a></span></p></div>
+				</div>
+			</div>
+			<span class="et_bloom_close_button"></span>
+							</div>
+						</div><script> /* <![CDATA[ */var tribe_l10n_datatables = {"aria":{"sort_ascending":": aktivieren, um Spalte aufsteigend zu sortieren","sort_descending":": aktivieren, um Spalte absteigend zu sortieren"},"length_menu":"Show _MENU_ entries","empty_table":"Keine Daten verf\u00fcgbar in der Tabelle","info":"Zeige von _START_ bis _END_ von ingesamt _TOTAL_ Eintr\u00e4gen","info_empty":"Zeige 0 bis 0 von 0 Eintr\u00e4gen","info_filtered":"(gefiltert von _MAX_ Gesamt Eintr\u00e4gen)","zero_records":"Keine Zeilen gefunden","search":"Suche:","all_selected_text":"Alle Objekte auf dieser Seite wurden selektiert. ","select_all_link":"Alle Seiten selektieren","clear_selection":"Auswahl aufheben.","pagination":{"all":"Alle","next":"N\u00e4chste","previous":"Vorherige"},"select":{"rows":{"0":"","_":": Ausgew\u00e4hlte %d Zeilen","1":": Ausgew\u00e4hlte 1 Zeile"}},"datepicker":{"dayNames":["Sonntag","Montag","Dienstag","Mittwoch","Donnerstag","Freitag","Samstag"],"dayNamesShort":["So","Mo","Di","Mi","Do","Fr","Sa"],"dayNamesMin":["S","M","D","M","D","F","S"],"monthNames":["Januar","Februar","M\u00e4rz","April","Mai","Juni","Juli","August","September","Oktober","November","Dezember"],"monthNamesShort":["Januar","Februar","M\u00e4rz","April","Mai","Juni","Juli","August","September","Oktober","November","Dezember"],"monthNamesMin":["Jan","Feb","Mrz","Apr","Mai","Jun","Jul","Aug","Sep","Okt","Nov","Dez"],"nextText":"Weiter","prevText":"Zur\u00fcck","currentText":"Heute","closeText":"Erledigt","today":"Heute","clear":"Leeren"}};/* ]]> */ </script><link rel='stylesheet' id='et-gf-oswald-css'  href='https://fonts.googleapis.com/css?family=Oswald:400,300,700&#038;subset=latin,latin-ext' type='text/css' media='all' />
+<link rel='stylesheet' id='et-gf-raleway-css'  href='https://fonts.googleapis.com/css?family=Raleway:400,100,200,300,600,500,700,800,900&#038;subset=latin' type='text/css' media='all' />
+<link rel='stylesheet' id='et_bloom-css-css'  href='https://databraineo.com/wp-content/plugins/bloom/css/style.css?ver=1.3.10' type='text/css' media='all' />
+<link rel='stylesheet' id='tribe-events-custom-jquery-styles-css'  href='https://databraineo.com/wp-content/plugins/the-events-calendar/vendor/jquery/smoothness/jquery-ui-1.8.23.custom.css?ver=5.1.6' type='text/css' media='all' />
+<link rel='stylesheet' id='tribe-events-bootstrap-datepicker-css-css'  href='https://databraineo.com/wp-content/plugins/the-events-calendar/vendor/bootstrap-datepicker/css/bootstrap-datepicker.standalone.min.css?ver=5.1.6' type='text/css' media='all' />
+<link rel='stylesheet' id='tribe-events-calendar-style-css'  href='https://databraineo.com/wp-content/plugins/the-events-calendar/src/resources/css/tribe-events-theme.min.css?ver=5.1.6' type='text/css' media='all' />
+<link rel='stylesheet' id='cmtooltip-css'  href='https://databraineo.com/wp-content/plugins/TooltipProEcommerce/assets/css/tooltip.min.css?ver=5.5.1' type='text/css' media='all' />
+<style id='cmtooltip-inline-css' type='text/css'>
+#tt {}
+
+        
+        
+                    #tt #ttcont div.glossaryItemTitle {
+            font-size: 13px !important;
+            }
+        
+        #tt #ttcont div.glossaryItemBody {
+        padding: 0 !important;
+                    font-size: 13px !important;
+                }
+
+        .mobile-link a.glossaryLink {
+        color: #fff !important;
+        }
+        .mobile-link:before{content: " "}
+
+        
+        
+        .tiles ul.glossaryList a { min-width: 85px; width:85px;  }
+        .tiles ul.glossaryList span { min-width:85px; width:85px;  }
+        .cm-glossary.tiles.big ul.glossaryList a { min-width:179px; width:179px }
+        .cm-glossary.tiles.big ul.glossaryList span { min-width:179px; width:179px; }
+
+        span.glossaryLink, a.glossaryLink {
+        border-bottom: dotted 1px  !important;
+        color:  !important;
+        }
+        span.glossaryLink:hover, a.glossaryLink:hover {
+        border-bottom: solid 1px  !important;
+        color: !important;
+        }
+
+                    #tt #tt-btn-close{ color: #222 !important}
+        
+        .cm-glossary.grid ul.glossaryList li[class^='ln']  { width: 200px !important}
+
+                    #tt #tt-btn-close{
+            direction: rtl;
+            font-size: 20px !important
+            }
+        
+        
+        
+                    #tt #ttcont a{color: #84c2d8 !important}
+        
+                    #tt #ttcont .glossaryItemEditlink a{color: #a2cad8 !important}
+        
+                    #tt #ttcont .mobile-link a{color: #9ec9d8 !important}
+        
+                    #ttcont {
+            box-shadow: #666666 0px 0px 20px;
+            }
+                    .fadeIn,.zoomIn,.flipInY,.in{
+        animation-duration:0.5s !important;
+        }
+        .fadeOut,.zoomOut,.flipOutY,.out{
+        animation-duration:0.5s !important;
+        }
+</style>
+<link rel='stylesheet' id='animate-css-css'  href='https://databraineo.com/wp-content/plugins/TooltipProEcommerce/assets/css/animate.css?ver=5.5.1' type='text/css' media='all' />
+<script type='text/javascript' id='contact-form-7-js-extra'>
+/* <![CDATA[ */
+var wpcf7 = {"apiSettings":{"root":"https:\/\/databraineo.com\/wp-json\/contact-form-7\/v1","namespace":"contact-form-7\/v1"}};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://databraineo.com/wp-content/plugins/contact-form-7/includes/js/scripts.js?ver=5.2.2' id='contact-form-7-js'></script>
+<script type='text/javascript' id='spai-scripts-js-extra'>
+/* <![CDATA[ */
+var spai_settings = {"api_url":"https:\/\/cdn.shortpixel.ai\/spai\/w_%WIDTH%+q_lossy+ret_img","api_short_url":"https:\/\/cdn.shortpixel.ai\/spai\/ret_img","method":"src","crop":"","native_lazy":"","serve_svg":"1","hover_handling":"","debug":"","site_url":"https:\/\/databraineo.com","plugin_url":"https:\/\/databraineo.com\/wp-content\/plugins\/shortpixel-adaptive-images","version":"2.0.5","excluded_selectors":[],"eager_selectors":[],"noresize_selectors":[],"excluded_paths":["cmVnZXg6L1wvXC8oW15cL10qXC58KWdyYXZhdGFyLmNvbVwvLw=="],"active_integrations":{"nextgen":false,"modula":false,"elementor":false,"elementor-addons":false,"viba-portfolio":false,"envira":false,"everest":false,"wp-bakery":false,"woocommerce":false,"foo":false,"oxygen":false,"slider-revolution":false,"smart-slider":true,"wp-grid-builder":false,"social-pug":false,"content-views":false,"wp-rocket":{"lazyload":false,"css-filter":false,"minify-css":false,"defer-all-js":false},"swift-performance":false,"imagify":{"active":false},"wp-fastest-cache":false,"w3-total-cache":false,"wp-optimize":false,"theme":"Extra Child Theme"},"parse_css_files":"","backgrounds_max_width":"1920","sep":"+","webp":"1","extensions_to_webp":{"png":true,"jpg":true,"gif":true},"sniper":"https:\/\/databraineo.com\/wp-content\/plugins\/shortpixel-adaptive-images\/img\/target.cur","affected_tags":"{\"link\":1}","ajax_url":"https:\/\/databraineo.com\/wp-admin\/admin-ajax.php"};
+/* ]]> */
+</script>
+<script data-cfasync="false" type='text/javascript' src='https://databraineo.com/wp-content/plugins/shortpixel-adaptive-images/assets/js/ai.min.js?ver=2.0.5' id='spai-scripts-js'></script>
+<script type='text/javascript' src='https://www.google.com/recaptcha/api.js?render=6LdOorwZAAAAAB4gmqaQRLi-KxCLnD0LJB4LniDL&#038;ver=3.0' id='google-recaptcha-js'></script>
+<script type='text/javascript' id='wpcf7-recaptcha-js-extra'>
+/* <![CDATA[ */
+var wpcf7_recaptcha = {"sitekey":"6LdOorwZAAAAAB4gmqaQRLi-KxCLnD0LJB4LniDL","actions":{"homepage":"homepage","contactform":"contactform"}};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://databraineo.com/wp-content/plugins/contact-form-7/modules/recaptcha/script.js?ver=5.2.2' id='wpcf7-recaptcha-js'></script>
+<script type='text/javascript' src='https://databraineo.com/wp-content/plugins/monarch/js/idle-timer.min.js?ver=1.4.12' id='et_monarch-idle-js'></script>
+<script type='text/javascript' id='et_monarch-custom-js-js-extra'>
+/* <![CDATA[ */
+var monarchSettings = {"ajaxurl":"https:\/\/databraineo.com\/wp-admin\/admin-ajax.php","pageurl":"https:\/\/databraineo.com\/ki-training-resources\/r-programmierung\/datentypen-in-r-einfach-erklaert\/","stats_nonce":"641496c5aa","share_counts":"8131449f08","follow_counts":"cb60f62601","total_counts":"127decd462","media_single":"54e6a100d4","media_total":"82f68ca613","generate_all_window_nonce":"b5e5ebbba5","no_img_message":"No images available for sharing on this page"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://databraineo.com/wp-content/plugins/monarch/js/custom.js?ver=1.4.12' id='et_monarch-custom-js-js'></script>
+<script type='text/javascript' src='https://databraineo.com/wp-includes/js/masonry.min.js?ver=4.2.2' id='masonry-js'></script>
+<script type='text/javascript' id='extra-scripts-js-extra'>
+/* <![CDATA[ */
+var EXTRA = {"images_uri":"https:\/\/databraineo.com\/wp-content\/themes\/Extra\/images\/","ajaxurl":"https:\/\/databraineo.com\/wp-admin\/admin-ajax.php","your_rating":"Deine Bewertung:","item_in_cart_count":"%d Item in Cart","items_in_cart_count":" %d Artikel im Warenkorb","item_count":"%d Item","items_count":" %d Elemente","rating_nonce":"5ac72c9c47","timeline_nonce":"642b716148","blog_feed_nonce":"891a680003","error":"Es gab ein Problem, bitte versuchen Sie es erneut.","contact_error_name_required":"Namensfeld darf nicht leer sein.","contact_error_email_required":"Das E-Mail-Feld darf nicht leer sein.","contact_error_email_invalid":"Bitte geben Sie eine g\u00fcltige E-Mail-Adresse ein.","is_ab_testing_active":"","is_cache_plugin_active":"no"};
+var et_shortcodes_strings = {"previous":"Previous","next":"Next"};
+var et_pb_custom = {"ajaxurl":"https:\/\/databraineo.com\/wp-admin\/admin-ajax.php","images_uri":"https:\/\/databraineo.com\/wp-content\/themes\/Extra\/images","builder_images_uri":"https:\/\/databraineo.com\/wp-content\/themes\/Extra\/includes\/builder\/images","et_frontend_nonce":"3a21515bfe","subscription_failed":"Bitte \u00fcberpr\u00fcfen Sie die Felder unten aus, um sicherzustellen, dass Sie die richtigen Informationen eingegeben.","et_ab_log_nonce":"0c838b4cbb","fill_message":"Bitte f\u00fcllen Sie die folgenden Felder aus:","contact_error_message":"Bitte folgende Fehler beheben:","invalid":"Ung\u00fcltige E-Mail","captcha":"Captcha","prev":"Vorherige","previous":"Vorherige","next":"Weiter","wrong_captcha":"Sie haben die falsche Zahl im Captcha eingegeben.","wrong_checkbox":"Checkbox","ignore_waypoints":"no","is_divi_theme_used":"","widget_search_selector":".widget_search","ab_tests":[],"is_ab_testing_active":"","page_id":"1403","unique_test_id":"","ab_bounce_rate":"5","is_cache_plugin_active":"no","is_shortcode_tracking":"","tinymce_uri":""}; var et_builder_utils_params = {"condition":{"diviTheme":false,"extraTheme":true},"scrollLocations":["app","top"],"builderScrollLocations":{"desktop":"app","tablet":"app","phone":"app"},"onloadScrollLocation":"app","builderType":"fe"}; var et_frontend_scripts = {"builderCssContainerPrefix":"#et-boc","builderCssLayoutPrefix":"#et-boc .et-l"};
+var et_pb_box_shadow_elements = [];
+var et_pb_motion_elements = {"desktop":[],"tablet":[],"phone":[]};
+var et_pb_sticky_elements = [];
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://databraineo.com/wp-content/themes/Extra/scripts/scripts.unified.js?ver=4.6.1' id='extra-scripts-js'></script>
+<script type='text/javascript' src='https://databraineo.com/wp-includes/js/comment-reply.min.js?ver=5.5.1' id='comment-reply-js'></script>
+<script type='text/javascript' id='opentip_js-js-extra'>
+/* <![CDATA[ */
+var cmtts_data = {"tooltip":{"titleTextColor":"#9ec9d8","color":"#ffffff","internalLinkColor":"#84c2d8","editLinkColor":"#a2cad8","mobileLinkColor":"#9ec9d8","paddingTop":"10px","paddingLeft":"10px","paddingBottom":"10px","paddingRight":"10px","backgroundHex":"#1855a0","backgroundAlpha":"0.9","background":"rgba(24,85,160,0.9)","className":"[object Window]","varName":"[object Window]","extends":"cloudy","style":"custom","hideTriggers":["tip","target"],"borderRadius":"5","borderColor":"#3e5062","stemBase":"15","borderWidth":"1","stemLength":"20"},"tooltip_skin":"custom","ajaxurl":"https:\/\/databraineo.com\/wp-admin\/admin-ajax.php","mobile_support":"1","mobile_support_label":""};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://databraineo.com/wp-content/plugins/cm-tooltip-glossary-skins/views/assets/js/opentip-jquery.js?ver=5.5.1' id='opentip_js-js'></script>
+<script type='text/javascript' src='https://databraineo.com/wp-content/plugins/cm-tooltip-glossary-skins/views/assets/js/modernizr.min.js?ver=5.5.1' id='cm-modernizr-js-js'></script>
+<script type='text/javascript' src='https://databraineo.com/wp-content/plugins/cm-tooltip-glossary-skins/views/assets/js/skins.js?ver=5.5.1' id='skins_js-js'></script>
+<script type='text/javascript' src='https://databraineo.com/wp-content/themes/Extra/core/admin/js/common.js?ver=4.6.1' id='et-core-common-js'></script>
+<script type='text/javascript' src='https://databraineo.com/wp-content/uploads/wtfdivi/wp_footer.js?ver=1561816723' id='wtfdivi-user-js-js'></script>
+<script type='text/javascript' src='https://databraineo.com/wp-includes/js/wp-embed.min.js?ver=5.5.1' id='wp-embed-js'></script>
+<script type='text/javascript' src='https://databraineo.com/wp-content/plugins/easy-table-of-contents/vendor/smooth-scroll/jquery.smooth-scroll.min.js?ver=2.2.0' id='jquery-smooth-scroll-js'></script>
+<script type='text/javascript' src='https://databraineo.com/wp-content/plugins/easy-table-of-contents/vendor/js-cookie/js.cookie.min.js?ver=2.2.1' id='js-cookie-js'></script>
+<script type='text/javascript' src='https://databraineo.com/wp-content/plugins/easy-table-of-contents/vendor/sticky-kit/jquery.sticky-kit.min.js?ver=1.9.2' id='jquery-sticky-kit-js'></script>
+<script type='text/javascript' id='ez-toc-js-js-extra'>
+/* <![CDATA[ */
+var ezTOC = {"smooth_scroll":"1","visibility_hide_by_default":"","width":"auto","scroll_offset":"30"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://databraineo.com/wp-content/plugins/easy-table-of-contents/assets/js/front.min.js?ver=2.0.11-1588408931' id='ez-toc-js-js'></script>
+<script type='text/javascript' src='https://databraineo.com/wp-content/plugins/bloom/js/jquery.uniform.min.js?ver=1.3.10' id='et_bloom-uniform-js-js'></script>
+<script type='text/javascript' id='et_bloom-custom-js-js-extra'>
+/* <![CDATA[ */
+var bloomSettings = {"ajaxurl":"https:\/\/databraineo.com\/wp-admin\/admin-ajax.php","pageurl":"https:\/\/databraineo.com\/ki-training-resources\/r-programmierung\/datentypen-in-r-einfach-erklaert\/","stats_nonce":"9165fc2049","subscribe_nonce":"4393b108ea","is_user_logged_in":"not_logged"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://databraineo.com/wp-content/plugins/bloom/js/custom.js?ver=1.3.10' id='et_bloom-custom-js-js'></script>
+<script type='text/javascript' src='https://databraineo.com/wp-content/plugins/bloom/js/idle-timer.min.js?ver=1.3.10' id='et_bloom-idle-timer-js-js'></script>
+<script type='text/javascript' src='https://databraineo.com/wp-includes/js/jquery/ui/core.min.js?ver=1.11.4' id='jquery-ui-core-js'></script>
+<script type='text/javascript' src='https://databraineo.com/wp-content/plugins/TooltipProEcommerce/assets/js/jquery.flip.min.js?ver=5.5.1' id='jquery-flipjs-js'></script>
+<script type='text/javascript' id='mediaelement-core-js-before'>
+var mejsL10n = {"language":"de","strings":{"mejs.download-file":"Datei herunterladen","mejs.install-flash":"Du verwendest einen Browser, der nicht den Flash-Player aktiviert oder installiert hat. Bitte aktiviere dein Flash-Player-Plugin oder lade die neueste Version von https:\/\/get.adobe.com\/flashplayer\/ herunter.","mejs.fullscreen":"Vollbild","mejs.play":"Abspielen","mejs.pause":"Pause","mejs.time-slider":"Zeit-Schieberegler","mejs.time-help-text":"Benutze die Pfeiltasten Links\/Rechts, um 1 Sekunde vorzuspringen, und die Pfeiltasten Hoch\/Runter, um 10 Sekunden vorzuspringen.","mejs.live-broadcast":"Live-\u00dcbertragung","mejs.volume-help-text":"Pfeiltasten Hoch\/Runter benutzen, um die Lautst\u00e4rke zu regeln.","mejs.unmute":"Laut schalten","mejs.mute":"Stumm","mejs.volume-slider":"Lautst\u00e4rkeregler","mejs.video-player":"Video-Player","mejs.audio-player":"Audio-Player","mejs.captions-subtitles":"Beschriftungen\/Untertitel","mejs.captions-chapters":"Kapitel","mejs.none":"Keine","mejs.afrikaans":"Afrikaans","mejs.albanian":"Albanisch","mejs.arabic":"Arabisch","mejs.belarusian":"Wei\u00dfrussisch","mejs.bulgarian":"Bulgarisch","mejs.catalan":"Katalanisch","mejs.chinese":"Chinesisch","mejs.chinese-simplified":"Chinesisch (Vereinfacht)","mejs.chinese-traditional":"Chinesisch (Traditionell)","mejs.croatian":"Kroatisch","mejs.czech":"Tschechisch","mejs.danish":"D\u00e4nisch","mejs.dutch":"Niederl\u00e4ndisch","mejs.english":"Englisch","mejs.estonian":"Estnisch","mejs.filipino":"Filipino","mejs.finnish":"Finnisch","mejs.french":"Franz\u00f6sisch","mejs.galician":"Galicisch","mejs.german":"Deutsch","mejs.greek":"Griechisch","mejs.haitian-creole":"Haitianisches Kreolisch","mejs.hebrew":"Hebr\u00e4isch","mejs.hindi":"Hindi","mejs.hungarian":"Ungarisch","mejs.icelandic":"Isl\u00e4ndisch","mejs.indonesian":"Indonesisch","mejs.irish":"Irisch","mejs.italian":"Italienisch","mejs.japanese":"Japanisch","mejs.korean":"Koreanisch","mejs.latvian":"Lettisch","mejs.lithuanian":"Litauisch","mejs.macedonian":"Mazedonisch","mejs.malay":"Malaiisch","mejs.maltese":"Maltesisch","mejs.norwegian":"Norwegisch","mejs.persian":"Persisch","mejs.polish":"Polnisch","mejs.portuguese":"Portugiesisch","mejs.romanian":"Rum\u00e4nisch","mejs.russian":"Russisch","mejs.serbian":"Serbisch","mejs.slovak":"Slowakisch","mejs.slovenian":"Slowenisch","mejs.spanish":"Spanisch","mejs.swahili":"Suaheli","mejs.swedish":"Schwedisch","mejs.tagalog":"Tagalog","mejs.thai":"Thail\u00e4ndisch","mejs.turkish":"T\u00fcrkisch","mejs.ukrainian":"Ukrainisch","mejs.vietnamese":"Vietnamesisch","mejs.welsh":"Walisisch","mejs.yiddish":"Jiddisch"}};
+</script>
+<script type='text/javascript' src='https://databraineo.com/wp-includes/js/mediaelement/mediaelement-and-player.min.js?ver=4.2.13-9993131' id='mediaelement-core-js'></script>
+<script type='text/javascript' src='https://databraineo.com/wp-includes/js/mediaelement/mediaelement-migrate.min.js?ver=5.5.1' id='mediaelement-migrate-js'></script>
+<script type='text/javascript' id='mediaelement-js-extra'>
+/* <![CDATA[ */
+var _wpmejsSettings = {"pluginPath":"\/wp-includes\/js\/mediaelement\/","classPrefix":"mejs-","stretching":"responsive"};
+/* ]]> */
+</script>
+<script type='text/javascript' id='tooltip-frontend-js-js-extra'>
+/* <![CDATA[ */
+var cmtt_data = {"cmtooltip":{"placement":"horizontal","clickable":false,"close_on_moveout":true,"only_on_button":false,"touch_anywhere":true,"delay":0,"timer":0,"minw":200,"maxw":400,"top":5,"left":25,"endalpha":95,"borderStyle":"none","borderWidth":"0px","borderColor":"#000000","background":"#666666","foreground":"#ffffff","fontSize":"13px","padding":"2px 12px 3px 7px","borderRadius":"6px","tooltipDisplayanimation":false,"tooltipHideanimation":false,"close_button":false,"close_symbol":"dashicons-no"},"ajaxurl":"https:\/\/databraineo.com\/wp-admin\/admin-ajax.php","post_id":"1403","mobile_disable_tooltips":"0","tooltip_on_click":"0","mobile_support":"1","doubleclick_api":"","cmtooltip_definitions":[]};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://databraineo.com/wp-content/plugins/TooltipProEcommerce/assets/js/tooltip.min.js?ver=5.5.1' id='tooltip-frontend-js-js'></script>
+<script type='text/javascript' src='https://stats.wp.com/e-202037.js' async='async' defer='defer'></script>
+<script type='text/javascript'>
+	_stq = window._stq || [];
+	_stq.push([ 'view', {v:'ext',j:'1:8.9',blog:'144494495',post:'1403',tz:'2',srv:'databraineo.com'} ]);
+	_stq.push([ 'clickTrackerInit', '144494495', '1403' ]);
+</script>
+
+		<!-- Cookie Notice plugin v1.3.2 by Digital Factory https://dfactory.eu/ -->
+		<div id="cookie-notice" role="banner" class="cookie-notice-hidden cookie-revoke-hidden cn-position-bottom" aria-label="Cookie Notice" style="background-color: rgba(0,0,0,1);"><div class="cookie-notice-container" style="color: #fff;"><span id="cn-notice-text" class="cn-text-container">Diese Website benutzt Cookies. Wenn du die Website weiter nutzt, gehen wir von deinem Einverständnis aus.</span><span id="cn-notice-buttons" class="cn-buttons-container"><a href="#" id="cn-accept-cookie" data-cookie-set="accept" class="cn-set-cookie cn-button bootstrap button" aria-label="Na gut!">Na gut!</a><a href="https://databraineo.com/datenschutzerklaerung/" target="_blank" id="cn-more-info" class="cn-more-info cn-button bootstrap button" aria-label="Informationen zum Datenschutz">Informationen zum Datenschutz</a></span><a href="javascript:void(0);" id="cn-close-notice" data-cookie-set="accept" class="cn-close-icon" aria-label="Na gut!"></a></div>
+			
+		</div>
+		<!-- / Cookie Notice plugin --><div id="tt" role="tooltip" class=""></div></body>
+</html>

@@ -1,14 +1,16 @@
 context("Natural language inference")
 
+# gather the names of all of the test files
+test_html <- 
+  list.files(normalizePath('testdata'), pattern = '\\.html', full.names = TRUE) %>%
+  paste0('file://', .)
 
-test_that("html_df works", {
-  urlx <- c("https://github.com/alastairrushworth/inspectdf",
-            "https://ropensci.org/blog/2020/02/21/ropensci-leadership/",
-            "https://es.wikipedia.org/wiki/Wikipedia_en_espa%C3%B1ol",
-            'www.sjdhjshf.com')
-  z <- html_df(urlx)
-  expect_equal(z$lang[3], 'es')
-  expect_that(is.na(z$lang[4]), equals(TRUE))
+
+test_that("Spanish language", {
+  z <- html_df(test_html, show_progress = FALSE)
+  expect_equal(z$lang, c("en", "en", "en", "en", "en", "en", "en", "en", NA,
+                         "en", "en", "en", "en", "en", "en", NA,  "en", "en",
+                         "en", "en", "en", "en", "en", "en", "en", NA,  "en", 
+                         "en", "es"))
 })
-
 

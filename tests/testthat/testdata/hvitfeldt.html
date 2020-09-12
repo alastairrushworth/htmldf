@@ -1,0 +1,1299 @@
+<!DOCTYPE html><html lang="en-us" >
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Source Themes Academic 4.8.0">
+
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="Emil Hvitfeldt">
+
+  
+  
+  
+    
+  
+  <meta name="description" content="This is the fifth blog post in the textrecipes series where I go over the various text preprocessing workflows you can do with textrecipes. This post will be showcasing how to use pretrained word embeddings.">
+
+  
+  <link rel="alternate" hreflang="en-us" href="/blog/textrecipes-series-pretrained-word-embeddings/">
+
+  
+
+
+  
+  
+  
+  <meta name="theme-color" content="#00d1b2">
+  
+
+  
+  
+
+  
+  
+  
+  
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-1/css/all.min.css" integrity="sha256-4w9DunooKSr3MFXHXWyFER38WmPdm361bQS/2KUWZbU=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/github.min.css" crossorigin="anonymous" title="hl-light">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" disabled>
+        
+      
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.5.1/leaflet.css" integrity="sha256-SHMGCYmST46SoyGgo4YR/9AlK1vf3ff84Aq9yK4hdqM=" crossorigin="anonymous">
+    
+
+    
+
+    
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.1.2/lazysizes.min.js" integrity="sha256-Md1qLToewPeKjfAHU1zyPwOutccPAm5tahnaw7Osw0A=" crossorigin="anonymous" async></script>
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+        
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat%7CRoboto+Mono&display=swap">
+  
+
+  
+  
+  
+  
+  <link rel='stylesheet' href='https://d33wubrfki0l68.cloudfront.net/css/8ffb9879ed4a5f26ad61369980cd88d76798ca4e/css/academic.min.0605ab2154c2e1f989122145f7336cbf.css'/>
+
+  
+
+
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-98238582-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+
+  function gtag() {
+      dataLayer.push(arguments);
+  }
+
+  function trackOutboundLink(url, target) {
+    gtag('event', 'click', {
+         'event_category': 'outbound',
+         'event_label': url,
+         'transport_type': 'beacon',
+         'event_callback': function () {
+           if (target !== '_blank') {
+             document.location = url;
+           }
+         }
+    });
+    console.debug("Outbound link clicked: " + url);
+  }
+
+  function onClickCallback(event) {
+    if ((event.target.tagName !== 'A') || (event.target.host === window.location.host)) {
+      return;
+    }
+    trackOutboundLink(event.target, event.target.getAttribute('target'));  
+  }
+
+  gtag('js', new Date());
+  gtag('config', 'UA-98238582-1', { 'anonymize_ip': true });
+
+  
+  document.addEventListener('click', onClickCallback, false);
+</script>
+
+
+  
+
+
+  
+  
+
+  
+
+  <link rel="manifest" href="/index.webmanifest">
+  <link rel="icon" type="image/png" href="/images/icon_hubeb46313a19f58647ca8c9fa0005237d_1612012_32x32_fill_lanczos_center_2.png">
+  <link rel="apple-touch-icon" type="image/png" href="/images/icon_hubeb46313a19f58647ca8c9fa0005237d_1612012_192x192_fill_lanczos_center_2.png">
+
+  <link rel="canonical" href="/blog/textrecipes-series-pretrained-word-embeddings/">
+
+  
+  
+  
+  
+  
+  
+  
+    
+  
+  
+  <meta property="twitter:card" content="summary_large_image">
+  
+  <meta property="twitter:site" content="@Emil_Hvitfeldt">
+  <meta property="twitter:creator" content="@Emil_Hvitfeldt">
+  
+  <meta property="og:site_name" content="Emil Hvitfeldt">
+  <meta property="og:url" content="/blog/textrecipes-series-pretrained-word-embeddings/">
+  <meta property="og:title" content="Textrecipes series: Pretrained Word Embedding | Emil Hvitfeldt">
+  <meta property="og:description" content="This is the fifth blog post in the textrecipes series where I go over the various text preprocessing workflows you can do with textrecipes. This post will be showcasing how to use pretrained word embeddings."><meta property="og:image" content="/blog/textrecipes-series-pretrained-word-embeddings/featured.jpg">
+  <meta property="twitter:image" content="/blog/textrecipes-series-pretrained-word-embeddings/featured.jpg"><meta property="og:locale" content="en-us">
+  
+    
+      <meta property="article:published_time" content="2020-08-07T00:00:00&#43;00:00">
+    
+    <meta property="article:modified_time" content="2020-08-06T23:31:29-07:00">
+  
+
+  
+
+
+    
+
+
+
+
+
+
+  
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "/blog/textrecipes-series-pretrained-word-embeddings/"
+  },
+  "headline": "Textrecipes series: Pretrained Word Embedding",
+  
+  "image": [
+    "/blog/textrecipes-series-pretrained-word-embeddings/featured.jpg"
+  ],
+  
+  "datePublished": "2020-08-07T00:00:00Z",
+  "dateModified": "2020-08-06T23:31:29-07:00",
+  
+  "author": {
+    "@type": "Person",
+    "name": "Emil Hvitfeldt"
+  },
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "Emil Hvitfeldt",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "/images/icon_hubeb46313a19f58647ca8c9fa0005237d_1612012_192x192_fill_lanczos_center_2.png"
+    }
+  },
+  "description": "This is the fifth blog post in the textrecipes series where I go over the various text preprocessing workflows you can do with textrecipes. This post will be showcasing how to use pretrained word embeddings."
+}
+</script>
+
+  
+
+  
+
+
+  
+  
+  
+  
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.1/cookieconsent.min.js" integrity="sha256-5VhCqFam2Cn+yjw61zbBNrbHVJ6SRydPeKopYlngbiQ=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.1/cookieconsent.min.css" integrity="sha256-zQ0LblD/Af8vOppw18+2anxsuaz3pWYyVWi+bTvTH8Q=" crossorigin="anonymous">
+  
+  <script>
+  window.addEventListener("load", function(){
+    window.cookieconsent.initialise({
+      "palette": {
+        "popup": {
+          "background": "#00d1b2",
+          "text": "#FDFCF9FF"
+        },
+        "button": {
+          "background": "#FDFCF9FF",
+          "text": "#00d1b2"
+        }
+      },
+      "theme": "classic",
+      "content": {
+        "message": "This website uses cookies to ensure you get the best experience on our website.",
+        "dismiss": "Got it!",
+        "link": "Learn more",
+        "href": "https://www.cookiesandyou.com"
+      }
+    })});
+  </script>
+
+
+
+  
+
+
+
+
+
+  <title>Textrecipes series: Pretrained Word Embedding | Emil Hvitfeldt</title>
+
+</head>
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" >
+
+  <aside class="search-results" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search">
+        
+      </div>
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+  
+
+
+
+
+
+
+
+<nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
+  <div class="container">
+
+    
+    <div class="d-none d-lg-inline-flex">
+      <a class="navbar-brand" href="/">Emil Hvitfeldt</a>
+    </div>
+    
+
+    
+    <button type="button" class="navbar-toggler" data-toggle="collapse"
+            data-target="#navbar-content" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+    <span><i class="fas fa-bars"></i></span>
+    </button>
+    
+
+    
+    <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+      <a class="navbar-brand" href="/">Emil Hvitfeldt</a>
+    </div>
+    
+
+    
+    
+    <div class="navbar-collapse main-menu-item collapse justify-content-end" id="navbar-content">
+
+      
+      <ul class="navbar-nav d-md-inline-flex">
+        
+
+        
+
+        
+        
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/post"><span>Blog</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/project"><span>Projects</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/talk"><span>Talks</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/art"><span>Art</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/About"><span>About</span></a>
+        </li>
+
+        
+        
+
+      
+
+        
+      </ul>
+    </div>
+
+    <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+      
+      <li class="nav-item">
+        <a class="nav-link js-search" href="#"><i class="fas fa-search" aria-hidden="true"></i></a>
+      </li>
+      
+
+      
+
+      
+
+    </ul>
+
+  </div>
+</nav>
+
+
+  <article class="article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+<div class="article-container pt-3">
+  <h1>Textrecipes series: Pretrained Word Embedding</h1>
+
+  
+
+  
+    
+
+
+<div class="article-metadata">
+
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+          Last updated on
+      
+    
+    Aug 6, 2020
+  </span>
+  
+
+  
+
+  
+
+  
+  
+  
+
+  
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fas fa-folder mr-1"></i><a href="/categories/tidymodels/">tidymodels</a>, <a href="/categories/textrecipes/">textrecipes</a>, <a href="/categories/textrecipes-series/">textrecipes series</a></span>
+  
+
+</div>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style">
+      
+<script src='https://d33wubrfki0l68.cloudfront.net/js/3c12c2213dac4c5af427a317c8ac923d323bcc8b/rmarkdown-libs/header-attrs/header-attrs.js'></script>
+
+
+<p>This is the fifth blog post in the <a href="https://github.com/tidymodels/textrecipes">textrecipes</a> series where I go over the various text preprocessing workflows you can do with textrecipes. This post will be showcasing how to use <a href="https://www.analyticsvidhya.com/blog/2020/03/pretrained-word-embeddings-nlp/#:~:text=Pretrained%20Word%20Embeddings%20are%20the,a%20form%20of%20Transfer%20Learning">pretrained word embeddings</a>.</p>
+<div id="packages" class="section level2">
+<h2>Packages 📦</h2>
+<p>We will be using <a href="https://www.tidymodels.org/">tidymodels</a> for modeling, tidyverse for EDA, <a href="https://textrecipes.tidymodels.org/">textrecipes</a> for text preprocessing, and <a href="https://emilhvitfeldt.github.io/textdata/">textdata</a> to load the pretrained word embedding.</p>
+<pre class="r"><code>library(tidymodels)
+library(tidyverse)
+library(textrecipes)
+library(textdata)
+theme_set(theme_minimal())</code></pre>
+</div>
+<div id="exploring-the-data" class="section level2">
+<h2>Exploring the data ⛏</h2>
+<p>We will the same data from the previous <a href="https://www.hvitfeldt.me/blog/textrecipes-series-featurehashing/">blogpost</a>. This data comes from <a href="https://www.kaggle.com/">Kaggle</a> and contains English<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> <a href="https://www.kaggle.com/nicapotato/womens-ecommerce-clothing-reviews">Women’s E-Commerce Clothing Reviews</a>.</p>
+<div class="note">
+<p>The following section is unchanged from the last post, if you are already familiar with this section then skip to the modeling section.</p>
+</div>
+<pre class="r"><code>reviews &lt;- read_csv(&quot;Womens Clothing E-Commerce Reviews.csv&quot;)
+## Warning: Missing column names filled in: &#39;X1&#39; [1]</code></pre>
+<p>We start by a quick <code>glimpse()</code> of the data.</p>
+<pre class="r"><code>glimpse(reviews)
+## Rows: 23,486
+## Columns: 11
+## $ X1                        &lt;dbl&gt; 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 1…
+## $ `Clothing ID`             &lt;dbl&gt; 767, 1080, 1077, 1049, 847, 1080, 858, 858,…
+## $ Age                       &lt;dbl&gt; 33, 34, 60, 50, 47, 49, 39, 39, 24, 34, 53,…
+## $ Title                     &lt;chr&gt; NA, NA, &quot;Some major design flaws&quot;, &quot;My favo…
+## $ `Review Text`             &lt;chr&gt; &quot;Absolutely wonderful - silky and sexy and …
+## $ Rating                    &lt;dbl&gt; 4, 5, 3, 5, 5, 2, 5, 4, 5, 5, 3, 5, 5, 5, 3…
+## $ `Recommended IND`         &lt;dbl&gt; 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1…
+## $ `Positive Feedback Count` &lt;dbl&gt; 0, 4, 0, 0, 6, 4, 1, 4, 0, 0, 14, 2, 2, 0, …
+## $ `Division Name`           &lt;chr&gt; &quot;Initmates&quot;, &quot;General&quot;, &quot;General&quot;, &quot;General…
+## $ `Department Name`         &lt;chr&gt; &quot;Intimate&quot;, &quot;Dresses&quot;, &quot;Dresses&quot;, &quot;Bottoms&quot;…
+## $ `Class Name`              &lt;chr&gt; &quot;Intimates&quot;, &quot;Dresses&quot;, &quot;Dresses&quot;, &quot;Pants&quot;,…</code></pre>
+<p>We have a good split between text variables, numeric and categorical values.
+Let us also take a look at the distribution of the <code>Rating</code> variable</p>
+<pre class="r"><code>reviews %&gt;%
+  ggplot(aes(Rating)) +
+  geom_bar()</code></pre>
+<p><img src="https://d33wubrfki0l68.cloudfront.net/1785c4c591b1eac99f5e5d1c9bde337a9096fa55/6f0b4/post/2020-08-07-textrecipes-series-pretrained-embeddings/index_files/figure-html/unnamed-chunk-4-1.png" width="700px" style="display: block; margin: auto;" /></p>
+<p>Which is quite right-skewed.
+Let us collapse the ratings into 2 groups, 5 and less-then-5.
+Before we go on will I remove the row number variable <code>X1</code> and clean the column names with the <a href="https://garthtarr.github.io/meatR/janitor.html">janitor</a> package to remove cases and spaces.</p>
+<pre class="r"><code>reviews &lt;- reviews %&gt;%
+  select(-X1) %&gt;%
+  janitor::clean_names() %&gt;%
+  mutate(rating = factor(rating == 5, c(TRUE, FALSE), c(&quot;5&quot;, &quot;&lt;5&quot;)))</code></pre>
+<p>Before we do some exploratory analysis we will split the data into training and testing datasets.
+We do this to avoid learning this about the data that would only be available in the testing data set.</p>
+<pre class="r"><code>set.seed(1234)
+
+reviews_split &lt;- initial_split(reviews)
+
+reviews_train &lt;- training(reviews_split)</code></pre>
+<p>Our main objective is to predict the rating based on the text review.
+This will naturally exclude variables such as <code>Recommended IND</code> and <code>Positive Feedback Count</code> as that information is unlikely to be known before the rating is given.
+We will mostly be using the text variables (<code>Review Text</code> and <code>Title</code>) but I am going to take a look at some of the other variables before we move on in case they would be easy inclusions.</p>
+<p>The ratings were pretty highly right-skewed and even when we collapsed them there are still more 5s.</p>
+<pre class="r"><code>reviews_train %&gt;%
+  ggplot(aes(rating)) +
+  geom_bar()</code></pre>
+<p><img src="https://d33wubrfki0l68.cloudfront.net/e430d1408b52e416374bb492f01c94e94399c6dc/58865/post/2020-08-07-textrecipes-series-pretrained-embeddings/index_files/figure-html/unnamed-chunk-7-1.png" width="700px" style="display: block; margin: auto;" />
+Since we have the age let us take a look to make sure it has a reasonable range.</p>
+<pre class="r"><code>reviews_train %&gt;%
+  ggplot(aes(age)) +
+  geom_bar()</code></pre>
+<p><img src="https://d33wubrfki0l68.cloudfront.net/23f9cc46a2bb21ba2849ca2e8d43f62bccfc1439/0912f/post/2020-08-07-textrecipes-series-pretrained-embeddings/index_files/figure-html/unnamed-chunk-8-1.png" width="700px" style="display: block; margin: auto;" /></p>
+<p>Nothing too out of the ordinary, we have some young people and old people but nothing weird.
+Out of curiosity let us take a look at that one age that is above the pack.</p>
+<pre class="r"><code>reviews_train %&gt;%
+  count(age, sort = TRUE)
+## # A tibble: 77 x 2
+##      age     n
+##    &lt;dbl&gt; &lt;int&gt;
+##  1    39   987
+##  2    35   674
+##  3    36   623
+##  4    34   595
+##  5    38   590
+##  6    37   574
+##  7    41   570
+##  8    33   541
+##  9    46   533
+## 10    32   489
+## # … with 67 more rows</code></pre>
+<p>Since we have the clothing id, then I want to know if any of the reviews apply to the same articles of clothing.</p>
+<pre class="r"><code>reviews_train %&gt;%
+  count(clothing_id, sort = TRUE) 
+## # A tibble: 1,074 x 2
+##    clothing_id     n
+##          &lt;dbl&gt; &lt;int&gt;
+##  1        1078   780
+##  2         862   615
+##  3        1094   553
+##  4        1081   438
+##  5         872   409
+##  6         829   403
+##  7        1110   359
+##  8         868   312
+##  9         895   293
+## 10         936   266
+## # … with 1,064 more rows</code></pre>
+<p>So out of 17615 we have 1074 clothing articles.
+Let us see how the reviews are split between the variables</p>
+<pre class="r"><code>reviews_train %&gt;%
+  count(clothing_id, sort = TRUE) %&gt;%
+  mutate(x = row_number()) %&gt;%
+  ggplot(aes(x, n)) +
+  geom_point()</code></pre>
+<p><img src="https://d33wubrfki0l68.cloudfront.net/6056f782647f7fe6b820aa75c90986914eefe2f7/f61d2/post/2020-08-07-textrecipes-series-pretrained-embeddings/index_files/figure-html/unnamed-chunk-11-1.png" width="700px" style="display: block; margin: auto;" /></p>
+<p>And we see quite a fast drop-off.</p>
+<p>I’m trying to create a fairly simple model so I won’t be including much information.</p>
+</div>
+<div id="modeling-️" class="section level2">
+<h2>Modeling ⚙️</h2>
+<p>We will restrict ourselves to only use the two text fields and the age of the customer.
+We are doing this so we can compare results with previous results.</p>
+<p>Before we go on, let us take a look at the pre-trained word embeddings.
+The <code>embedding_glove6b()</code> function gives us access to the 6B tokens glove embedding from the <a href="https://nlp.stanford.edu/projects/glove/">Stanford NLP Group</a>.</p>
+<div class="note">
+<p>You will get a prompt the first time you use this function. This is expected and done to make sure that the user agrees to the license and agreements of any given resource.</p>
+</div>
+<p>I have specified <code>dimensions = 100</code> to get word vectors with 100 dimensions.</p>
+<pre class="r"><code>glove6b &lt;- textdata::embedding_glove6b(dimensions = 100)
+glove6b
+## # A tibble: 400,000 x 101
+##    token      d1      d2      d3      d4      d5      d6      d7      d8      d9
+##    &lt;chr&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
+##  1 &quot;the&quot; -0.0382 -0.245   0.728  -0.400   0.0832  0.0440 -0.391   0.334  -0.575 
+##  2 &quot;,&quot;   -0.108   0.111   0.598  -0.544   0.674   0.107   0.0389  0.355   0.0635
+##  3 &quot;.&quot;   -0.340   0.209   0.463  -0.648  -0.384   0.0380  0.171   0.160   0.466 
+##  4 &quot;of&quot;  -0.153  -0.243   0.898   0.170   0.535   0.488  -0.588  -0.180  -1.36  
+##  5 &quot;to&quot;  -0.190   0.0500  0.191  -0.0492 -0.0897  0.210  -0.550   0.0984 -0.201 
+##  6 &quot;and&quot; -0.0720  0.231   0.0237 -0.506   0.339   0.196  -0.329   0.184  -0.181 
+##  7 &quot;in&quot;   0.0857 -0.222   0.166   0.134   0.382   0.354   0.0129  0.225  -0.438 
+##  8 &quot;a&quot;   -0.271   0.0440 -0.0203 -0.174   0.644   0.712   0.355   0.471  -0.296 
+##  9 &quot;\&quot;&quot;  -0.305  -0.236   0.176  -0.729  -0.283  -0.256   0.266   0.0253 -0.0748
+## 10 &quot;&#39;s&quot;   0.589  -0.202   0.735  -0.683  -0.197  -0.180  -0.392   0.342  -0.606 
+## # … with 399,990 more rows, and 91 more variables: d10 &lt;dbl&gt;, d11 &lt;dbl&gt;,
+## #   d12 &lt;dbl&gt;, d13 &lt;dbl&gt;, d14 &lt;dbl&gt;, d15 &lt;dbl&gt;, d16 &lt;dbl&gt;, d17 &lt;dbl&gt;,
+## #   d18 &lt;dbl&gt;, d19 &lt;dbl&gt;, d20 &lt;dbl&gt;, d21 &lt;dbl&gt;, d22 &lt;dbl&gt;, d23 &lt;dbl&gt;,
+## #   d24 &lt;dbl&gt;, d25 &lt;dbl&gt;, d26 &lt;dbl&gt;, d27 &lt;dbl&gt;, d28 &lt;dbl&gt;, d29 &lt;dbl&gt;,
+## #   d30 &lt;dbl&gt;, d31 &lt;dbl&gt;, d32 &lt;dbl&gt;, d33 &lt;dbl&gt;, d34 &lt;dbl&gt;, d35 &lt;dbl&gt;,
+## #   d36 &lt;dbl&gt;, d37 &lt;dbl&gt;, d38 &lt;dbl&gt;, d39 &lt;dbl&gt;, d40 &lt;dbl&gt;, d41 &lt;dbl&gt;,
+## #   d42 &lt;dbl&gt;, d43 &lt;dbl&gt;, d44 &lt;dbl&gt;, d45 &lt;dbl&gt;, d46 &lt;dbl&gt;, d47 &lt;dbl&gt;,
+## #   d48 &lt;dbl&gt;, d49 &lt;dbl&gt;, d50 &lt;dbl&gt;, d51 &lt;dbl&gt;, d52 &lt;dbl&gt;, d53 &lt;dbl&gt;,
+## #   d54 &lt;dbl&gt;, d55 &lt;dbl&gt;, d56 &lt;dbl&gt;, d57 &lt;dbl&gt;, d58 &lt;dbl&gt;, d59 &lt;dbl&gt;,
+## #   d60 &lt;dbl&gt;, d61 &lt;dbl&gt;, d62 &lt;dbl&gt;, d63 &lt;dbl&gt;, d64 &lt;dbl&gt;, d65 &lt;dbl&gt;,
+## #   d66 &lt;dbl&gt;, d67 &lt;dbl&gt;, d68 &lt;dbl&gt;, d69 &lt;dbl&gt;, d70 &lt;dbl&gt;, d71 &lt;dbl&gt;,
+## #   d72 &lt;dbl&gt;, d73 &lt;dbl&gt;, d74 &lt;dbl&gt;, d75 &lt;dbl&gt;, d76 &lt;dbl&gt;, d77 &lt;dbl&gt;,
+## #   d78 &lt;dbl&gt;, d79 &lt;dbl&gt;, d80 &lt;dbl&gt;, d81 &lt;dbl&gt;, d82 &lt;dbl&gt;, d83 &lt;dbl&gt;,
+## #   d84 &lt;dbl&gt;, d85 &lt;dbl&gt;, d86 &lt;dbl&gt;, d87 &lt;dbl&gt;, d88 &lt;dbl&gt;, d89 &lt;dbl&gt;,
+## #   d90 &lt;dbl&gt;, d91 &lt;dbl&gt;, d92 &lt;dbl&gt;, d93 &lt;dbl&gt;, d94 &lt;dbl&gt;, d95 &lt;dbl&gt;,
+## #   d96 &lt;dbl&gt;, d97 &lt;dbl&gt;, d98 &lt;dbl&gt;, d99 &lt;dbl&gt;, d100 &lt;dbl&gt;</code></pre>
+<p>The format of these word vectors is perfectly tailored to work with textrecipes. The first column has the tokens, and the remaining numerical columns are the word vectors.</p>
+<p>we need to specify a tokenizer that closely matches the tokenizer that was used in the pre-trained word embedding. Otherwise, will you get mismatches between words.
+I was not able to find the same tokenizer used in this case. but I found that the default <code>tokenizers::tokenize_words()</code> with <code>strip_punct = FALSE</code> gives very similar results.</p>
+<div class="note">
+<p>we can pass arguments to the underlying tokenizer in <code>step_tokenize()</code> by passing a named list to the <code>options =</code> argument.</p>
+</div>
+<p>We will be using the default method of aggregating the vectors within each observation which is to sum them together. This can be changed using the <code>aggregation =</code> argument.</p>
+<pre class="r"><code>rec_spec &lt;- recipe(rating ~ age + title + review_text, data = reviews_train) %&gt;%
+  step_tokenize(title, review_text, options = list(strip_punct = FALSE)) %&gt;%
+  step_tokenmerge(title, review_text, prefix = &quot;text&quot;) %&gt;%
+  step_word_embeddings(text, embeddings = glove6b)</code></pre>
+<div class="note">
+<p>We are using <code>step_tokenmerge()</code> to combine the tokens created in <code>title</code> and <code>review_text</code> into one list of tokens. There aren’t that many tokens in <code>title</code> alone for it to warrant treating it as a separate list of tokens.</p>
+</div>
+<p>Next, we specify a lasso model.</p>
+<pre class="r"><code>lasso_spec &lt;- logistic_reg(penalty = tune(), mixture = 1) %&gt;%
+  set_engine(&quot;glmnet&quot;)</code></pre>
+<p>I have specified <code>penalty = tune()</code> because I want to use <a href="https://tune.tidymodels.org/">tune</a> to find the best value of the penalty by doing hyperparameter tuning.</p>
+<p>We set up a parameter grid using <code>grid_regular()</code></p>
+<pre class="r"><code>param_grid &lt;- grid_regular(penalty(), levels = 50)</code></pre>
+<div class="note">
+<p>searching over 50 levels might seem like a lot. But remember that glmnet can calculate them all at once.
+This is because it relies on its warms starts for speed and it is often faster to fit a whole path than compute a single fit.</p>
+</div>
+<p>We will also set up some bootstraps of the data so we can evaluate the performance multiple times for each level.</p>
+<pre class="r"><code>reviews_boot &lt;- bootstraps(reviews_train, times = 10)</code></pre>
+<p>the last thing we need to use is to create a workflow object to combine the preprocessing step with the model.
+This is important because we want the preprocessing steps to happen in the bootstraps.</p>
+<pre class="r"><code>wf_fh &lt;- workflow() %&gt;%
+  add_recipe(rec_spec) %&gt;%
+  add_model(lasso_spec)</code></pre>
+<p>now we are ready to perform the parameter tuning.</p>
+<pre class="r"><code>set.seed(42)
+lasso_grid &lt;- tune_grid(
+  wf_fh,
+  resamples = reviews_boot,
+  grid = param_grid
+) </code></pre>
+<p>Once we have finished parameter tuning we can use the <code>autoplot()</code> function on the tuning results to get a nice chart showing the performance for different values of the penalty.</p>
+<pre class="r"><code>lasso_grid %&gt;%
+  autoplot()</code></pre>
+<p><img src="https://d33wubrfki0l68.cloudfront.net/eb71f59967e8c74662170b7181046e8c81a5cbd2/74195/post/2020-08-07-textrecipes-series-pretrained-embeddings/index_files/figure-html/unnamed-chunk-19-1.png" width="700px" style="display: block; margin: auto;" /></p>
+<p>It appears that the best value for the penalty for this workflow is on the low end.</p>
+<p>It is worth noting that this data coming out of recipes is dense since we are using word vectors. We will only be having 100 predictors in this model (since we choose <code>dimensions = 100</code>). This is an order of magnitude less than the last time where we had 1024 sparse predictors.
+This more dense data representation also allows us to use models that we normally can’t use when doing count-based preprocessing since some models don’t handle sparseness that well.</p>
+<p>Similarly, can we use the <code>show_best()</code> function from tune to show to the best performing hyperparameter.</p>
+<pre class="r"><code>lasso_grid %&gt;%
+  show_best(&quot;roc_auc&quot;)
+## # A tibble: 5 x 7
+##     penalty .metric .estimator  mean     n  std_err .config
+##       &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;      &lt;dbl&gt; &lt;int&gt;    &lt;dbl&gt; &lt;chr&gt;  
+## 1 0.000133  roc_auc binary     0.820    10 0.00103  Model31
+## 2 0.000212  roc_auc binary     0.820    10 0.00104  Model32
+## 3 0.0000829 roc_auc binary     0.820    10 0.00101  Model30
+## 4 0.0000518 roc_auc binary     0.820    10 0.000999 Model29
+## 5 0.0000324 roc_auc binary     0.820    10 0.00100  Model28</code></pre>
+<p>We will use the <code>select_best()</code> function to extract the best performing penalty and finalize the workflow with that value of penalty.</p>
+<pre class="r"><code>wf_fh_final &lt;- wf_fh %&gt;%
+  finalize_workflow(parameters = select_best(lasso_grid, &quot;roc_auc&quot;))</code></pre>
+<p>Now we can run <code>last_fit()</code> on our training/testing split to fit our final model.</p>
+<pre class="r"><code>final_res &lt;- last_fit(wf_fh_final, reviews_split)</code></pre>
+<p>With our final model can we create a ROC curve of our final model.</p>
+<pre class="r"><code>final_res %&gt;%
+  collect_predictions() %&gt;%
+  roc_curve(rating, .pred_5) %&gt;%
+  autoplot()</code></pre>
+<p><img src="https://d33wubrfki0l68.cloudfront.net/ec7cdc2f1bffbd9c8e8cc11f2c4bae89c82b3659/2901a/post/2020-08-07-textrecipes-series-pretrained-embeddings/index_files/figure-html/unnamed-chunk-23-1.png" width="700px" style="display: block; margin: auto;" /></p>
+</div>
+<div id="thoughts" class="section level2">
+<h2>Thoughts 🤔</h2>
+<p>This example is mostly a showcase of how to use pre-trained word embeddings.
+We are not getting as good performance as we did with feature hashing of simple term frequencies from the last post.</p>
+<p>We can improve the performance in a couple of ways. The first way is to use bigger embeddings. We can increase the number of dimensions we are using. This embedding comes with as many as 300 dimensions. We can also use an embedding with a larger vocabulary. I used the smallest pre-trained glove embedding, but bigger ones are <a href="https://emilhvitfeldt.github.io/textdata/reference/embedding_glove.html">available too</a>.</p>
+<p>Another way to get improved performance is to use word vectors that more closely matched the target domain you are working in. Many pre-trained word vectors and trained on text for the general web, Wikipedia and, news articles. The more removed your text is from these kinds of text, the less likely it is that the embedding will be helpful.</p>
+<p>I will showcase in a later post how you can train your own word embedding.</p>
+<p>If you want to know more about word embeddings, <a href="https://twitter.com/juliasilge">Julia Silge</a> and I have a chapter in our upcoming book <a href="https://smltar.com/">Supervised Machine Learning for Text Analysis in R</a> which goes more in dept on <a href="https://smltar.com/embeddings.html">Word Embeddings</a>.</p>
+</div>
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p><a href="https://thegradient.pub/the-benderrule-on-naming-the-languages-we-study-and-why-it-matters/">#benderrule</a><a href="#fnref1" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
+
+    </div>
+
+    
+
+
+
+
+
+
+
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=/blog/textrecipes-series-pretrained-word-embeddings/&amp;text=Textrecipes%20series:%20Pretrained%20Word%20Embedding" target="_blank" rel="noopener" class="share-btn-twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=/blog/textrecipes-series-pretrained-word-embeddings/&amp;t=Textrecipes%20series:%20Pretrained%20Word%20Embedding" target="_blank" rel="noopener" class="share-btn-facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=Textrecipes%20series:%20Pretrained%20Word%20Embedding&amp;body=/blog/textrecipes-series-pretrained-word-embeddings/" target="_blank" rel="noopener" class="share-btn-email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=/blog/textrecipes-series-pretrained-word-embeddings/&amp;title=Textrecipes%20series:%20Pretrained%20Word%20Embedding" target="_blank" rel="noopener" class="share-btn-linkedin">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://web.whatsapp.com/send?text=Textrecipes%20series:%20Pretrained%20Word%20Embedding%20/blog/textrecipes-series-pretrained-word-embeddings/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=/blog/textrecipes-series-pretrained-word-embeddings/&amp;title=Textrecipes%20series:%20Pretrained%20Word%20Embedding" target="_blank" rel="noopener" class="share-btn-weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+  
+    
+    
+    
+      
+    
+    
+    
+    <div class="media author-card content-widget-hr">
+      
+        
+        <img class="avatar mr-3 avatar-circle" src="https://d33wubrfki0l68.cloudfront.net/e7a623454909492d9c2eaea0d3f88eebfcbacf8f/4e2c8/authors/admin/avatar_hu8dc44e414d3950ee227c062cafae1e65_306692_270x270_fill_lanczos_center_2.png" alt="Emil Hvitfeldt">
+      
+
+      <div class="media-body">
+        <h5 class="card-title"><a href="/">Emil Hvitfeldt</a></h5>
+        <h6 class="card-subtitle">Research Programmer</h6>
+        
+        <ul class="network-icon" aria-hidden="true">
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="/#contact" >
+        <i class="fas fa-envelope"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://twitter.com/Emil_Hvitfeldt" target="_blank" rel="noopener">
+        <i class="fab fa-twitter"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://github.com/EmilHvitfeldt" target="_blank" rel="noopener">
+        <i class="fab fa-github"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="http://orcid.org/0000-0002-0679-1945" target="_blank" rel="noopener">
+        <i class="ai ai-orcid"></i>
+      </a>
+    </li>
+  
+</ul>
+
+      </div>
+    </div>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+  </div>
+</article>
+
+      
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+
+      
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js" integrity="sha256-eOgo0OtLL4cdq7RdwRUiGKLX9XsIJ7nGhWEKbohmVAQ=" crossorigin="anonymous"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/languages/r.min.js"></script>
+        
+      
+
+    
+
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.5.1/leaflet.js" integrity="sha256-EErZamuLefUnbMBQbsEqu1USa+btR2oIlCpBJbyD4/g=" crossorigin="anonymous"></script>
+    
+
+    
+    
+    <script>const code_highlighting = true;</script>
+    
+
+    
+    
+    <script>const isSiteThemeDark = false;</script>
+    
+
+    
+    
+    
+    
+    
+    
+    <script>
+      const search_config = {"indexURI":"/index.json","minLength":1,"threshold":0.3};
+      const i18n = {"no_results":"No results found","placeholder":"Search...","results":"results found"};
+      const content_type = {
+        'post': "Posts",
+        'project': "Projects",
+        'publication' : "Publications",
+        'talk' : "Talks"
+        };
+    </script>
+    
+
+    
+    
+
+    
+    
+    <script id="search-hit-fuse-template" type="text/x-template">
+      <div class="search-hit" id="summary-{{key}}">
+      <div class="search-hit-content">
+        <div class="search-hit-name">
+          <a href="{{relpermalink}}">{{title}}</a>
+          <div class="article-metadata search-hit-type">{{type}}</div>
+          <p class="search-hit-description">{{snippet}}</p>
+        </div>
+      </div>
+      </div>
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    
+    
+    
+    <script src='https://d33wubrfki0l68.cloudfront.net/js/5c7c16f72d2e1698d15a294e05cbcb918c6ebf19/js/academic.min.37431be2d92d7fb0160054761ab79602.js'></script>
+
+    
+
+
+
+
+
+
+  
+  
+  <div class="container">
+    <footer class="site-footer">
+  
+
+  <p class="powered-by">
+    
+
+    Powered by the
+    <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for
+    <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>.
+
+    
+    <span class="float-right" aria-hidden="true">
+      <a href="#" class="back-to-top">
+        <span class="button_icon">
+          <i class="fas fa-chevron-up fa-2x"></i>
+        </span>
+      </a>
+    </span>
+    
+  </p>
+</footer>
+
+  </div>
+  
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,354 @@
+<!doctype html><html lang=en itemscope itemtype=http://schema.org/WebPage><head><meta charset=utf-8><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1"><title>How to Use Lightgbm with Tidymodels</title><meta property="og:title" content="How to Use Lightgbm with Tidymodels"><meta name=twitter:title content="How to Use Lightgbm with Tidymodels"><meta name=description content="Treesnip standardizes everything"><meta property="og:description" content="Treesnip standardizes everything"><meta name=twitter:description content="Treesnip standardizes everything"><meta name=author content="Roel M. Hogervorst"><link href=https://blog.rmhogervorst.nl/img/favicon.ico rel=icon type=image/x-icon><meta property="og:image" content="https://blog.rmhogervorst.nl/treesnip_hugging.png"><meta name=twitter:image content="https://blog.rmhogervorst.nl/treesnip_hugging.png"><meta name=twitter:card content="summary"><meta name=twitter:site content="@RoelMHogervorst"><meta name=twitter:creator content="@RoelMHogervorst"><meta property="og:url" content="https://blog.rmhogervorst.nl/blog/2020/08/27/how-to-use-lightgbm-with-tidymodels-framework/"><meta property="og:type" content="website"><meta property="og:site_name" content="Roel's R-tefacts"><meta name=generator content="Hugo 0.69.0"><link rel=canonical href=https://blog.rmhogervorst.nl/blog/2020/08/27/how-to-use-lightgbm-with-tidymodels-framework/><link rel=alternate href=https://blog.rmhogervorst.nl/index.xml type=application/rss+xml title="Roel's R-tefacts"><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/katex.min.css integrity="sha512-SBL9R0mkYbWGuy/0DLHNxYHPScUMar9Y55t8vrnN42ZYfLZ4SnjXqCFfEhPTnj9pedAs5F+WZkzjq1qGS8+VGg==" crossorigin=anonymous><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin=anonymous><link rel=stylesheet href=https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css integrity=sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z crossorigin=anonymous><link rel=stylesheet href=https://blog.rmhogervorst.nl/css/main.css><link rel=stylesheet href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic"><link rel=stylesheet href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800"><link rel=stylesheet href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic"><link rel=stylesheet href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800"><link rel=stylesheet href=https://blog.rmhogervorst.nl/css/highlight.min.css><link rel=stylesheet href=https://blog.rmhogervorst.nl/css/codeblock.css><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.3/photoswipe.min.css integrity="sha512-yxWNfGm+7EK+hqP2CMJ13hsUNCQfHmOuCuLmOq2+uv/AVQtFAjlAJO8bHzpYGQnBghULqnPuY8NEr7f5exR3Qw==" crossorigin=anonymous><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.3/photoswipe.min.css integrity="sha512-yxWNfGm+7EK+hqP2CMJ13hsUNCQfHmOuCuLmOq2+uv/AVQtFAjlAJO8bHzpYGQnBghULqnPuY8NEr7f5exR3Qw==" crossorigin=anonymous><div class=pswp tabindex=-1 role=dialog aria-hidden=true><div class=pswp__bg></div><div class=pswp__scroll-wrap><div class=pswp__container><div class=pswp__item></div><div class=pswp__item></div><div class=pswp__item></div></div><div class="pswp__ui pswp__ui--hidden"><div class=pswp__top-bar><div class=pswp__counter></div><button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+<button class="pswp__button pswp__button--share" title=Share></button>
+<button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+<button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button><div class=pswp__preloader><div class=pswp__preloader__icn><div class=pswp__preloader__cut><div class=pswp__preloader__donut></div></div></div></div></div><div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap"><div class=pswp__share-tooltip></div></div><button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
+<button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button><div class=pswp__caption><div class=pswp__caption__center></div></div></div></div></div></head><body><nav class="navbar navbar-default navbar-fixed-top navbar-custom"><div class=container-fluid><div class=navbar-header><button type=button class=navbar-toggle data-toggle=collapse data-target=#main-navbar>
+<span class=sr-only>Toggle navigation</span>
+<span class=icon-bar></span><span class=icon-bar></span><span class=icon-bar></span></button>
+<a class=navbar-brand href=https://blog.rmhogervorst.nl/>Roel's R-tefacts</a></div><div class="collapse navbar-collapse" id=main-navbar><ul class="nav navbar-nav navbar-right"><li><a title=Blog href=/>Blog</a></li><li><a title=About href=/about/>About</a></li><li><a title="Getting updates" href=/subscribing>Getting updates</a></li><li><a title="search and more" href=/search_and_more/>search and more</a></li></ul></div><div class=avatar-container><div class=avatar-img-border><a title="Roel's R-tefacts" href=https://blog.rmhogervorst.nl/><img class=avatar-img src=https://blog.rmhogervorst.nl/img/avatar-icon.png alt="Roel's R-tefacts"></a></div></div></div></nav><div class=pswp tabindex=-1 role=dialog aria-hidden=true><div class=pswp__bg></div><div class=pswp__scroll-wrap><div class=pswp__container><div class=pswp__item></div><div class=pswp__item></div><div class=pswp__item></div></div><div class="pswp__ui pswp__ui--hidden"><div class=pswp__top-bar><div class=pswp__counter></div><button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+<button class="pswp__button pswp__button--share" title=Share></button>
+<button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+<button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button><div class=pswp__preloader><div class=pswp__preloader__icn><div class=pswp__preloader__cut><div class=pswp__preloader__donut></div></div></div></div></div><div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap"><div class=pswp__share-tooltip></div></div><button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
+<button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button><div class=pswp__caption><div class=pswp__caption__center></div></div></div></div></div><header class=header-section><div class="intro-header no-img"><div class=container><div class=row><div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1"><div class=post-heading><h1>How to Use Lightgbm with Tidymodels</h1><h2 class=post-subheading>Treesnip standardizes everything</h2><span class=post-meta><i class="fa fa-calendar-o"></i>&nbsp;Posted on August 27, 2020
+&nbsp;|&nbsp;
+<i class="fa fa-clock-o"></i>11 minutes (2321 words)</span></div></div></div></div></div></header><div class=container role=main><div class=row><div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1"><article role=main class=blog-post><p>So you want to compete in a kaggle competition with R and you want to use
+<a href=https://www.tidymodels.org/>tidymodels</a>. In this howto I show how you can use lightgbm (LGBM) with tidymodels. I give very terse descriptions
+of what the steps do, because I believe you read this post for implementation, not background on how the elements work.</p><p>Why tidymodels? It is a unified machine learning framework that uses sane
+defaults, keeps model definitions andimplementation separate and allows you
+to easily swap models or change parts of the processing.
+<em>In this howto I signify r packages by using the {packagename} convention, f.e.: {ggplot2}</em> Tidymodels already works with XGBoost and many many other machine learning
+algorithms. However it doesn&rsquo;t yet work with the successors of XGBoost: lightgbm
+and catboost. There is an experimental package called <a href=https://curso-r.github.io/treesnip/>{treesnip}</a> that lets you use lightgbm and catboost with tidymodels.
+This is a howto based on a very sound example of tidymodels with xgboost by <a href=https://www.tychobra.com/posts/2020-05-19-xgboost-with-tidymodels/>Andy Merlino and Nick Merlino on tychobra.com</a>
+from may 2020. In their example and in this one we use the <a href="https://cran.r-project.org/package=AmesHousing">AmesHousing</a> dataset
+about house prices in Ames, Iowa, USA. The model will predict sale price.
+Andy and Nick give a great explanation for all the steps and what to think about.
+I highly recommend their tuturial and all tutorials created by
+<a href=https://juliasilge.com/>Julia Silge</a>.
+<strong>TL;DR: With treesnip you can just start using lightgbm and catboost in tidymodels without big changes to your workflow, it is awesome! It brings the state of the art models into the tidymodels framework.</strong>
+The template I&rsquo;m using can also be found on <a href=https://github.com/RMHogervorst/templates_ml/blob/master/R/example_lightgbm.R>this github project</a></p><p><img src=treesnip_hugging.png alt></p><p>Some basics before we go on:
+Normally I would do an extensive exploration of the data to see how the variables
+interact and influence the house price. In this example I want to focus on
+how you can use lightgbm with tidymodels, so I skip this part and use Andy and
+Nick&rsquo;s feature engineering with a small change.</p><h2 id=basic-steps-for-machine-learning-projects>Basic steps for machine learning projects</h2><p>The steps in most machine learning projects are as follows:</p><ul><li>Loading necessary packages and data</li><li>split data into train and test ({rsample})</li><li>light preprocessing ({recipes})</li><li>find the best hyperparameters by<ul><li>creating crossvalidation folds ({rsample})</li><li>creating a model specification ({tune, parsnip, treesnip, dials})</li><li>creating a grid of values ({dials})</li><li>using a workflow to contain the model and formula ({workflows})</li><li>tune the model ({tune})</li></ul></li><li>find the best model from tuning</li><li>retrain on entire test data</li><li>evaluate on test data ({yardstick})</li><li>check residuals and model diagnostics</li></ul><h2 id=loading-necessary-packages-and-data>Loading necessary packages and data</h2><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-r data-lang=r><span style=color:#998;font-style:italic># data</span>
+<span style=color:#900;font-weight:700>library</span>(AmesHousing)
+
+<span style=color:#998;font-style:italic># data cleaning</span>
+<span style=color:#900;font-weight:700>library</span>(janitor)
+
+<span style=color:#998;font-style:italic># data prep</span>
+<span style=color:#900;font-weight:700>library</span>(dplyr)
+
+<span style=color:#998;font-style:italic># visualisation</span>
+<span style=color:#900;font-weight:700>library</span>(ggplot2)
+
+<span style=color:#998;font-style:italic># tidymodels</span>
+<span style=color:#900;font-weight:700>library</span>(rsample)
+<span style=color:#900;font-weight:700>library</span>(recipes)
+<span style=color:#900;font-weight:700>library</span>(parsnip)
+<span style=color:#900;font-weight:700>library</span>(tune)
+<span style=color:#900;font-weight:700>library</span>(dials)
+<span style=color:#900;font-weight:700>library</span>(workflows)
+<span style=color:#900;font-weight:700>library</span>(yardstick)
+<span style=color:#900;font-weight:700>library</span>(treesnip)
+</code></pre></div><p>Setting up some settings, this is optional but can help speed things
+up.</p><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-r data-lang=r><span style=color:#998;font-style:italic>## </span>
+<span style=color:#998;font-style:italic># speed up computation with parallel processing</span>
+<span style=color:#900;font-weight:700>library</span>(doParallel)
+all_cores <span style=font-weight:700>&lt;-</span> parallel<span style=font-weight:700>::</span><span style=color:#900;font-weight:700>detectCores</span>(logical <span style=font-weight:700>=</span> <span style=font-weight:700>FALSE</span>) 
+<span style=color:#900;font-weight:700>registerDoParallel</span>(cores <span style=font-weight:700>=</span> all_cores) 
+</code></pre></div><p>And setting up data:</p><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-r data-lang=r><span style=color:#998;font-style:italic># set the random seed so we can reproduce any simulated results.</span>
+<span style=color:#900;font-weight:700>set.seed</span>(<span style=color:#099>1234</span>)
+
+<span style=color:#998;font-style:italic># load the housing data and clean names</span>
+ames_data <span style=font-weight:700>&lt;-</span> <span style=color:#900;font-weight:700>make_ames</span>() <span style=font-weight:700>%&gt;%</span>
+    janitor<span style=font-weight:700>::</span><span style=color:#900;font-weight:700>clean_names</span>()
+</code></pre></div><h2 id=split-data-into-train-and-test>Split data into train and test</h2><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-r data-lang=r>ames_split <span style=font-weight:700>&lt;-</span> rsample<span style=font-weight:700>::</span><span style=color:#900;font-weight:700>initial_split</span>(
+    ames_data, 
+    prop <span style=font-weight:700>=</span> <span style=color:#099>0.8</span>, 
+    strata <span style=font-weight:700>=</span> sale_price
+)
+</code></pre></div><h2 id=some-light-preprocessing>Some light preprocessing</h2><p>Many models require careful and extensive variable preprocessing to produce
+accurate predictions.
+Boosted tree models like XGBoost,lightgbm, and catboost are quite robust against
+highly skewed and/or correlated data, so the amount of preprocessing required
+is minimal. In contrast to XGBoost, both lightgbm and catboost are very capable
+of handling categorical variables (factors) and so you don&rsquo;t need to turn
+variables into dummies (one hot encode), in fact you shouldn&rsquo;t do it, it makes
+everything slower and might give you worse performance.</p><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-r data-lang=r>preprocessing_recipe <span style=font-weight:700>&lt;-</span> 
+    recipes<span style=font-weight:700>::</span><span style=color:#900;font-weight:700>recipe</span>(sale_price <span style=font-weight:700>~</span> ., data <span style=font-weight:700>=</span> <span style=color:#900;font-weight:700>training</span>(ames_split)) <span style=font-weight:700>%&gt;%</span>
+    <span style=color:#998;font-style:italic># combine low frequency factor levels</span>
+    recipes<span style=font-weight:700>::</span><span style=color:#900;font-weight:700>step_other</span>(<span style=color:#900;font-weight:700>all_nominal</span>(), threshold <span style=font-weight:700>=</span> <span style=color:#099>0.01</span>) <span style=font-weight:700>%&gt;%</span>
+    <span style=color:#998;font-style:italic># remove no variance predictors which provide no predictive information </span>
+    recipes<span style=font-weight:700>::</span><span style=color:#900;font-weight:700>step_nzv</span>(<span style=color:#900;font-weight:700>all_nominal</span>()) <span style=font-weight:700>%&gt;%</span>
+    <span style=color:#998;font-style:italic># prep the recipe so it can be used on other data</span>
+    <span style=color:#900;font-weight:700>prep</span>()
+</code></pre></div><h2 id=find-the-best-hyperparameters>Find the best hyperparameters</h2><p>Create crossvalidation folds. This means the data is split into 5 chunks, the model trained on four of them and predicts on the fifth chunk. This
+is done five times (predicting every time on a different chunk) and the
+metrics will be averaged over the chunks as a measure of out of sample performance.</p><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-r data-lang=r>ames_cv_folds <span style=font-weight:700>&lt;-</span> 
+    recipes<span style=font-weight:700>::</span><span style=color:#900;font-weight:700>bake</span>(
+        preprocessing_recipe, 
+        new_data <span style=font-weight:700>=</span> <span style=color:#900;font-weight:700>training</span>(ames_split)
+    ) <span style=font-weight:700>%&gt;%</span>  
+    rsample<span style=font-weight:700>::</span><span style=color:#900;font-weight:700>vfold_cv</span>(v <span style=font-weight:700>=</span> <span style=color:#099>5</span>)
+</code></pre></div><p>Create a model specification for lightgbm
+The treesnip package makes sure that boost_tree understands what engine
+lightgbm is, and how the parameters are translated internaly.
+We don&rsquo;t know yet what the ideal parameter values are for
+this lightgbm model. So we have to tune the parameters.</p><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-r data-lang=r>lightgbm_model<span style=font-weight:700>&lt;-</span> 
+    parsnip<span style=font-weight:700>::</span><span style=color:#900;font-weight:700>boost_tree</span>(
+        mode <span style=font-weight:700>=</span> <span style=color:#b84>&#34;regression&#34;</span>,
+        trees <span style=font-weight:700>=</span> <span style=color:#099>1000</span>,
+        min_n <span style=font-weight:700>=</span> <span style=color:#900;font-weight:700>tune</span>(),
+        tree_depth <span style=font-weight:700>=</span> <span style=color:#900;font-weight:700>tune</span>(),
+    ) <span style=font-weight:700>%&gt;%</span>
+    <span style=color:#900;font-weight:700>set_engine</span>(<span style=color:#b84>&#34;lightgbm&#34;</span>, objective <span style=font-weight:700>=</span> <span style=color:#b84>&#34;reg:squarederror&#34;</span>,verbose<span style=font-weight:700>=</span><span style=color:#099>-1</span>)
+</code></pre></div><p>Grid specification by dials package to fill in the model above
+This specification automates the min and max values of these
+parameters.</p><p>According to the <a href=https://lightgbm.readthedocs.io/en/latest/Parameters-Tuning.html>lightgbm parameter tuning guide</a>
+the hyperparameters <code>number of leaves</code>, <code>min_data_in_leaf</code>, and <code>max_depth</code> are the most important features.
+Currently implemented for lightgbm in <a href=https://github.com/curso-r/treesnip>(treesnip)</a> are:</p><ul><li>feature_fraction (mtry)</li><li>num_iterations (trees)</li><li>min_data_in_leaf (min_n)</li><li>max_depth (tree_depth)</li><li>learning_rate (learn_rate)</li><li>min_gain_to_split (loss_reduction)</li><li>bagging_fraction (sample_size)</li></ul><p>(so we do not yet have number of leaves).</p><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-r data-lang=r>lightgbm_params <span style=font-weight:700>&lt;-</span> 
+    dials<span style=font-weight:700>::</span><span style=color:#900;font-weight:700>parameters</span>(
+      <span style=color:#998;font-style:italic># The parameters have sane defaults, but if you have some knowledge </span>
+      <span style=color:#998;font-style:italic># of the process you can set upper and lower limits to these parameters.</span>
+        <span style=color:#900;font-weight:700>min_n</span>(), <span style=color:#998;font-style:italic># 2nd important</span>
+        <span style=color:#900;font-weight:700>tree_depth</span>() <span style=color:#998;font-style:italic># 3rd most important</span>
+    )
+</code></pre></div><p>And finally construct a grid with actual values to search for.</p><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-r data-lang=r>lgbm_grid <span style=font-weight:700>&lt;-</span> 
+    dials<span style=font-weight:700>::</span><span style=color:#900;font-weight:700>grid_max_entropy</span>(
+        lightgbm_params, 
+        size <span style=font-weight:700>=</span> <span style=color:#099>30</span> <span style=color:#998;font-style:italic># set this to a higher number to get better results</span>
+        <span style=color:#998;font-style:italic># I don&#39;t want to run this all night, so I set it to 30</span>
+    )
+<span style=color:#900;font-weight:700>head</span>(lgbm_grid)
+</code></pre></div><pre><code># A tibble: 6 x 2
+  min_n tree_depth
+  &lt;int&gt;      &lt;int&gt;
+1    10          9
+2    19         11
+3    40          8
+4    12          1
+5    19          5
+6    31          8
+</code></pre><p>To tune our model, we perform grid search over our lightgbm_grid’s grid space
+to identify the hyperparameter values that have the lowest prediction error.</p><p>Actual workflow object</p><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-r data-lang=r>lgbm_wf <span style=font-weight:700>&lt;-</span> 
+    workflows<span style=font-weight:700>::</span><span style=color:#900;font-weight:700>workflow</span>() <span style=font-weight:700>%&gt;%</span>
+    <span style=color:#900;font-weight:700>add_model</span>(lightgbm_model
+             ) <span style=font-weight:700>%&gt;%</span> 
+    <span style=color:#900;font-weight:700>add_formula</span>(sale_price <span style=font-weight:700>~</span> .)
+</code></pre></div><p><strong>so far little to no computation has been performed except for preprocessing calculations</strong>
+But the machine will start to run hot in the next step, where we call tune_grid.
+If you look at the process for xgboost and in the next tutorial for catboost
+the steps remain the same, with a few details different but mostly the same!</p><p>We call tune_grid with:</p><ul><li>“object”: lgbm_wf which is a workflow that we defined by the parsnip and
+workflows packages</li><li>“resamples”: ames_cv_folds as defined by rsample and
+recipes packages</li><li>“grid”: lgbm_grid our grid space as defined by the dials
+package</li><li>“metric”: the yardstick package defines the metric set used to
+evaluate model performance</li></ul><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-r data-lang=r>lgbm_tuned <span style=font-weight:700>&lt;-</span> tune<span style=font-weight:700>::</span><span style=color:#900;font-weight:700>tune_grid</span>(
+    object <span style=font-weight:700>=</span> lgbm_wf,
+    resamples <span style=font-weight:700>=</span> ames_cv_folds,
+    grid <span style=font-weight:700>=</span> lgbm_grid,
+    metrics <span style=font-weight:700>=</span> yardstick<span style=font-weight:700>::</span><span style=color:#900;font-weight:700>metric_set</span>(rmse, rsq, mae),
+    control <span style=font-weight:700>=</span> tune<span style=font-weight:700>::</span><span style=color:#900;font-weight:700>control_grid</span>(verbose <span style=font-weight:700>=</span> <span style=font-weight:700>FALSE</span>) <span style=color:#998;font-style:italic># set this to TRUE to see</span>
+    <span style=color:#998;font-style:italic># in what step of the process you are. But that doesn&#39;t look that well in</span>
+    <span style=color:#998;font-style:italic># a blog.</span>
+)
+</code></pre></div><h2 id=find-the-best-model-from-tuning-results>Find the best model from tuning results</h2><p>hyperparameter values which performed best at minimizing RMSE.</p><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-r data-lang=r>lgbm_tuned <span style=font-weight:700>%&gt;%</span>
+    tune<span style=font-weight:700>::</span><span style=color:#900;font-weight:700>show_best</span>(metric <span style=font-weight:700>=</span> <span style=color:#b84>&#34;rmse&#34;</span>,n <span style=font-weight:700>=</span> <span style=color:#099>5</span>) 
+</code></pre></div><pre><code># A tibble: 5 x 8
+  min_n tree_depth .metric .estimator   mean     n std_err .config
+  &lt;int&gt;      &lt;int&gt; &lt;chr&gt;   &lt;chr&gt;       &lt;dbl&gt; &lt;int&gt;   &lt;dbl&gt; &lt;chr&gt;  
+1     8          3 rmse    standard   24555.     5   1192. Model30
+2    13          4 rmse    standard   24647.     5   1042. Model29
+3    12          1 rmse    standard   25195.     5   1281. Model04
+4    19          5 rmse    standard   25206.     5   1079. Model05
+5     6          5 rmse    standard   25382.     5    858. Model18
+</code></pre><p>plot the performance per parameter.</p><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-r data-lang=r>lgbm_tuned <span style=font-weight:700>%&gt;%</span>  
+  tune<span style=font-weight:700>::</span><span style=color:#900;font-weight:700>show_best</span>(metric <span style=font-weight:700>=</span> <span style=color:#b84>&#34;rmse&#34;</span>,n <span style=font-weight:700>=</span> <span style=color:#099>10</span>) <span style=font-weight:700>%&gt;%</span> 
+  tidyr<span style=font-weight:700>::</span><span style=color:#900;font-weight:700>pivot_longer</span>(min_n<span style=font-weight:700>:</span>tree_depth, names_to<span style=font-weight:700>=</span><span style=color:#b84>&#34;variable&#34;</span>,values_to<span style=font-weight:700>=</span><span style=color:#b84>&#34;value&#34;</span> ) <span style=font-weight:700>%&gt;%</span> 
+  <span style=color:#900;font-weight:700>ggplot</span>(<span style=color:#900;font-weight:700>aes</span>(value,mean)) <span style=font-weight:700>+</span> 
+  <span style=color:#900;font-weight:700>geom_line</span>(alpha<span style=font-weight:700>=</span><span style=color:#099>1</span><span style=font-weight:700>/</span><span style=color:#099>2</span>)<span style=font-weight:700>+</span> 
+  <span style=color:#900;font-weight:700>geom_point</span>()<span style=font-weight:700>+</span> 
+  <span style=color:#900;font-weight:700>facet_wrap</span>(<span style=font-weight:700>~</span>variable,scales <span style=font-weight:700>=</span> <span style=color:#b84>&#34;free&#34;</span>)<span style=font-weight:700>+</span>
+  <span style=color:#900;font-weight:700>ggtitle</span>(<span style=color:#b84>&#34;Best parameters for RMSE&#34;</span>)
+</code></pre></div><p><link rel=stylesheet href=https://blog.rmhogervorst.nl/css/hugo-easy-gallery.css><div class=box><figure itemprop=associatedMedia itemscope itemtype=http://schema.org/ImageObject><div class=img><img itemprop=thumbnail src=unnamed-chunk-13-1.png alt=unnamed-chunk-13-1.png></div><a href=unnamed-chunk-13-1.png itemprop=contentUrl></a></figure></div>Since we asked for multiple metrics we can see the best performance for different
+metrics too.</p><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-r data-lang=r>lgbm_tuned <span style=font-weight:700>%&gt;%</span>  
+  tune<span style=font-weight:700>::</span><span style=color:#900;font-weight:700>show_best</span>(metric <span style=font-weight:700>=</span> <span style=color:#b84>&#34;mae&#34;</span>,n <span style=font-weight:700>=</span> <span style=color:#099>10</span>) <span style=font-weight:700>%&gt;%</span> 
+  tidyr<span style=font-weight:700>::</span><span style=color:#900;font-weight:700>pivot_longer</span>(min_n<span style=font-weight:700>:</span>tree_depth, names_to<span style=font-weight:700>=</span><span style=color:#b84>&#34;variable&#34;</span>,values_to<span style=font-weight:700>=</span><span style=color:#b84>&#34;value&#34;</span> ) <span style=font-weight:700>%&gt;%</span> 
+  <span style=color:#900;font-weight:700>ggplot</span>(<span style=color:#900;font-weight:700>aes</span>(value,mean)) <span style=font-weight:700>+</span> 
+  <span style=color:#900;font-weight:700>geom_line</span>(alpha<span style=font-weight:700>=</span><span style=color:#099>1</span><span style=font-weight:700>/</span><span style=color:#099>2</span>)<span style=font-weight:700>+</span> 
+  <span style=color:#900;font-weight:700>geom_point</span>()<span style=font-weight:700>+</span> 
+  <span style=color:#900;font-weight:700>facet_wrap</span>(<span style=font-weight:700>~</span>variable,scales <span style=font-weight:700>=</span> <span style=color:#b84>&#34;free&#34;</span>)<span style=font-weight:700>+</span>
+  <span style=color:#900;font-weight:700>ggtitle</span>(<span style=color:#b84>&#34;Best parameters for MAE&#34;</span>)
+</code></pre></div><div class=box><figure itemprop=associatedMedia itemscope itemtype=http://schema.org/ImageObject><div class=img><img itemprop=thumbnail src=unnamed-chunk-14-1.png alt=unnamed-chunk-14-1.png></div><a href=unnamed-chunk-14-1.png itemprop=contentUrl></a></figure></div><p>Than we can select the best parameter combination for a metric, or do it manually.</p><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-r data-lang=r>lgbm_best_params <span style=font-weight:700>&lt;-</span> 
+  lgbm_tuned <span style=font-weight:700>%&gt;%</span>
+    tune<span style=font-weight:700>::</span><span style=color:#900;font-weight:700>select_best</span>(<span style=color:#b84>&#34;rmse&#34;</span>)
+</code></pre></div><p>Finalize the lgbm model to use the best tuning parameters.</p><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-r data-lang=r>lgbm_model_final <span style=font-weight:700>&lt;-</span> 
+  lightgbm_model<span style=font-weight:700>%&gt;%</span> 
+  <span style=color:#900;font-weight:700>finalize_model</span>(lgbm_best_params)
+</code></pre></div><p>The finalized model is filled in:</p><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-r data-lang=r><span style=color:#998;font-style:italic># empty</span>
+lightgbm_model
+</code></pre></div><pre><code>Boosted Tree Model Specification (regression)
+
+Main Arguments:
+  trees = 1000
+  min_n = tune()
+  tree_depth = tune()
+
+Engine-Specific Arguments:
+  objective = reg:squarederror
+  verbose = -1
+
+Computational engine: lightgbm 
+</code></pre><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-r data-lang=r><span style=color:#998;font-style:italic># filled in</span>
+lgbm_model_final
+</code></pre></div><pre><code>Boosted Tree Model Specification (regression)
+
+Main Arguments:
+  trees = 1000
+  min_n = 8
+  tree_depth = 3
+
+Engine-Specific Arguments:
+  objective = reg:squarederror
+  verbose = -1
+
+Computational engine: lightgbm 
+</code></pre><h2 id=retrain-on-entire-training-data>Retrain on entire training data</h2><details><summary>This is giving me a lot of warnings and lgbm isn't giving us the warnings in warning type, so I've hidden this ugly part. <b>click to unhide</b> But I fit the finalized model again on new data.</summary></details><h2 id=and-evaluate-on-test-data-yardstick>And evaluate on test data (yardstick)</h2><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-r data-lang=r>test_processed  <span style=font-weight:700>&lt;-</span> <span style=color:#900;font-weight:700>bake</span>(preprocessing_recipe, new_data <span style=font-weight:700>=</span> <span style=color:#900;font-weight:700>testing</span>(ames_split))
+test_prediction <span style=font-weight:700>&lt;-</span> 
+    trained_model_all_data <span style=font-weight:700>%&gt;%</span> 
+    <span style=color:#998;font-style:italic># use the training model fit to predict the test data</span>
+    <span style=color:#900;font-weight:700>predict</span>(new_data <span style=font-weight:700>=</span> test_processed) <span style=font-weight:700>%&gt;%</span>
+    <span style=color:#900;font-weight:700>bind_cols</span>(<span style=color:#900;font-weight:700>testing</span>(ames_split))
+</code></pre></div><p>measure the accuracy of our model on training set (overestimation)</p><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-r data-lang=r>train_prediction <span style=font-weight:700>%&gt;%</span>
+    yardstick<span style=font-weight:700>::</span><span style=color:#900;font-weight:700>metrics</span>(sale_price, .pred) <span style=font-weight:700>%&gt;%</span> 
+  <span style=color:#900;font-weight:700>mutate</span>(.estimate <span style=font-weight:700>=</span> <span style=color:#900;font-weight:700>format</span>(<span style=color:#900;font-weight:700>round</span>(.estimate, <span style=color:#099>2</span>), big.mark <span style=font-weight:700>=</span> <span style=color:#b84>&#34;,&#34;</span>)) <span style=font-weight:700>%&gt;%</span> 
+  knitr<span style=font-weight:700>::</span><span style=color:#900;font-weight:700>kable</span>()
+</code></pre></div><table><thead><tr><th align=left>.metric</th><th align=left>.estimator</th><th align=left>.estimate</th></tr></thead><tbody><tr><td align=left>rmse</td><td align=left>standard</td><td align=left>17,575.38</td></tr><tr><td align=left>rsq</td><td align=left>standard</td><td align=left>0.95</td></tr><tr><td align=left>mae</td><td align=left>standard</td><td align=left>12,473.87</td></tr></tbody></table><p>measure the accuracy of our model on data it hasn&rsquo;t seen before (testset)</p><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-r data-lang=r>test_prediction <span style=font-weight:700>%&gt;%</span>
+    yardstick<span style=font-weight:700>::</span><span style=color:#900;font-weight:700>metrics</span>(sale_price, .pred) <span style=font-weight:700>%&gt;%</span> 
+  <span style=color:#900;font-weight:700>mutate</span>(.estimate <span style=font-weight:700>=</span> <span style=color:#900;font-weight:700>format</span>(<span style=color:#900;font-weight:700>round</span>(.estimate, <span style=color:#099>2</span>), big.mark <span style=font-weight:700>=</span> <span style=color:#b84>&#34;,&#34;</span>)) <span style=font-weight:700>%&gt;%</span> 
+  knitr<span style=font-weight:700>::</span><span style=color:#900;font-weight:700>kable</span>()
+</code></pre></div><table><thead><tr><th align=left>.metric</th><th align=left>.estimator</th><th align=left>.estimate</th></tr></thead><tbody><tr><td align=left>rmse</td><td align=left>standard</td><td align=left>33,966.76</td></tr><tr><td align=left>rsq</td><td align=left>standard</td><td align=left>0.83</td></tr><tr><td align=left>mae</td><td align=left>standard</td><td align=left>18,040.51</td></tr></tbody></table><p>Not a bad score.</p><h2 id=look-at-residuals>look at residuals</h2><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-r data-lang=r>house_prediction_residual <span style=font-weight:700>&lt;-</span> test_prediction <span style=font-weight:700>%&gt;%</span>
+    <span style=color:#900;font-weight:700>arrange</span>(.pred) <span style=font-weight:700>%&gt;%</span>
+    <span style=color:#900;font-weight:700>mutate</span>(residual_pct <span style=font-weight:700>=</span> (sale_price <span style=font-weight:700>-</span> .pred) <span style=font-weight:700>/</span> .pred) <span style=font-weight:700>%&gt;%</span>
+    <span style=color:#900;font-weight:700>select</span>(.pred, residual_pct)
+</code></pre></div><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-r data-lang=r><span style=color:#900;font-weight:700>ggplot</span>(house_prediction_residual, <span style=color:#900;font-weight:700>aes</span>(x <span style=font-weight:700>=</span> .pred, y <span style=font-weight:700>=</span> residual_pct)) <span style=font-weight:700>+</span>
+    <span style=color:#900;font-weight:700>geom_point</span>() <span style=font-weight:700>+</span>
+    <span style=color:#900;font-weight:700>xlab</span>(<span style=color:#b84>&#34;Predicted Sale Price&#34;</span>) <span style=font-weight:700>+</span>
+    <span style=color:#900;font-weight:700>ylab</span>(<span style=color:#b84>&#34;Residual (%)&#34;</span>) <span style=font-weight:700>+</span>
+    <span style=color:#900;font-weight:700>scale_x_continuous</span>(labels <span style=font-weight:700>=</span> scales<span style=font-weight:700>::</span><span style=color:#900;font-weight:700>dollar_format</span>()) <span style=font-weight:700>+</span>
+    <span style=color:#900;font-weight:700>scale_y_continuous</span>(labels <span style=font-weight:700>=</span> scales<span style=font-weight:700>::</span>percent)
+</code></pre></div><div class=box><figure itemprop=associatedMedia itemscope itemtype=http://schema.org/ImageObject><div class=img><img itemprop=thumbnail src=unnamed-chunk-24-1.png alt=unnamed-chunk-24-1.png></div><a href=unnamed-chunk-24-1.png itemprop=contentUrl></a></figure></div><p>So that works quite well, there are some outliers in low price. And we can probably discover what cases are doing badly and maybe add more information to the model to discover and distinguish.</p><h1 id=other-stuff>Other stuff</h1><p>Installing lightgbm can be done following the <a href=https://lightgbm.readthedocs.io/en/latest/R/index.html>official instructions</a> or see this post
+on my <a href=https://notes.rmhogervorst.nl/post/2020/07/16/installing-lightgbm-on-macos-catalina/>other blog for macos specific instructions</a></p><p>Find the original tutorial for tidymodels with xgboost <a href=https://www.tychobra.com/posts/2020-05-19-xgboost-with-tidymodels/>here</a>.</p><h3 id=reproducibility>Reproducibility</h3><details><summary>At the moment of creation (when I knitted this document ) this was the state of my machine: <b>click to expand</b></summary><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-r data-lang=r>sessioninfo<span style=font-weight:700>::</span><span style=color:#900;font-weight:700>session_info</span>()
+</code></pre></div><pre><code>─ Session info ───────────────────────────────────────────────────────────────
+ setting  value                       
+ version  R version 4.0.2 (2020-06-22)
+ os       macOS Catalina 10.15.6      
+ system   x86_64, darwin17.0          
+ ui       X11                         
+ language (EN)                        
+ collate  en_US.UTF-8                 
+ ctype    en_US.UTF-8                 
+ tz       Europe/Amsterdam            
+ date     2020-08-27                  
+
+─ Packages ───────────────────────────────────────────────────────────────────
+ package     * version    date       lib source                           
+ AmesHousing * 0.0.4      2020-06-23 [1] CRAN (R 4.0.2)                   
+ assertthat    0.2.1      2019-03-21 [1] CRAN (R 4.0.0)                   
+ class         7.3-17     2020-04-26 [1] CRAN (R 4.0.2)                   
+ cli           2.0.2      2020-02-28 [1] CRAN (R 4.0.0)                   
+ codetools     0.2-16     2018-12-24 [1] CRAN (R 4.0.2)                   
+ colorspace    1.4-1      2019-03-18 [1] CRAN (R 4.0.0)                   
+ crayon        1.3.4      2017-09-16 [1] CRAN (R 4.0.0)                   
+ data.table    1.13.0     2020-07-24 [1] CRAN (R 4.0.2)                   
+ dials       * 0.0.8      2020-07-08 [1] CRAN (R 4.0.2)                   
+ DiceDesign    1.8-1      2019-07-31 [1] CRAN (R 4.0.0)                   
+ digest        0.6.25     2020-02-23 [1] CRAN (R 4.0.0)                   
+ doParallel  * 1.0.15     2019-08-02 [1] CRAN (R 4.0.2)                   
+ dplyr       * 1.0.2      2020-08-18 [1] CRAN (R 4.0.2)                   
+ ellipsis      0.3.1      2020-05-15 [1] CRAN (R 4.0.1)                   
+ evaluate      0.14       2019-05-28 [1] CRAN (R 4.0.0)                   
+ fansi         0.4.1      2020-01-08 [1] CRAN (R 4.0.0)                   
+ farver        2.0.3      2020-01-16 [1] CRAN (R 4.0.0)                   
+ foreach     * 1.5.0      2020-03-30 [1] CRAN (R 4.0.1)                   
+ furrr         0.1.0      2018-05-16 [1] CRAN (R 4.0.0)                   
+ future        1.18.0     2020-07-09 [1] CRAN (R 4.0.2)                   
+ generics      0.0.2      2018-11-29 [1] CRAN (R 4.0.0)                   
+ ggplot2     * 3.3.2      2020-06-19 [1] CRAN (R 4.0.1)                   
+ globals       0.12.5     2019-12-07 [1] CRAN (R 4.0.0)                   
+ glue          1.4.1      2020-05-13 [1] CRAN (R 4.0.1)                   
+ gower         0.2.2      2020-06-23 [1] CRAN (R 4.0.1)                   
+ GPfit         1.0-8      2019-02-08 [1] CRAN (R 4.0.0)                   
+ gtable        0.3.0      2019-03-25 [1] CRAN (R 4.0.0)                   
+ highr         0.8        2019-03-20 [1] CRAN (R 4.0.0)                   
+ htmltools     0.5.0      2020-06-16 [1] CRAN (R 4.0.1)                   
+ ipred         0.9-9      2019-04-28 [1] CRAN (R 4.0.0)                   
+ iterators   * 1.0.12     2019-07-26 [1] CRAN (R 4.0.0)                   
+ janitor     * 2.0.1      2020-04-12 [1] CRAN (R 4.0.2)                   
+ jsonlite      1.7.0      2020-06-25 [1] CRAN (R 4.0.1)                   
+ knitr         1.29       2020-06-23 [1] CRAN (R 4.0.1)                   
+ labeling      0.3        2014-08-23 [1] CRAN (R 4.0.0)                   
+ lattice       0.20-41    2020-04-02 [1] CRAN (R 4.0.2)                   
+ lava          1.6.7      2020-03-05 [1] CRAN (R 4.0.0)                   
+ lhs           1.0.2      2020-04-13 [1] CRAN (R 4.0.2)                   
+ lifecycle     0.2.0      2020-03-06 [1] CRAN (R 4.0.0)                   
+ lightgbm      3.0.0-1    2020-08-26 [1] url                              
+ listenv       0.8.0      2019-12-05 [1] CRAN (R 4.0.0)                   
+ lubridate     1.7.9      2020-06-08 [1] CRAN (R 4.0.2)                   
+ magrittr      1.5        2014-11-22 [1] CRAN (R 4.0.0)                   
+ MASS          7.3-51.6   2020-04-26 [1] CRAN (R 4.0.2)                   
+ Matrix        1.2-18     2019-11-27 [1] CRAN (R 4.0.2)                   
+ munsell       0.5.0      2018-06-12 [1] CRAN (R 4.0.0)                   
+ nnet          7.3-14     2020-04-26 [1] CRAN (R 4.0.2)                   
+ parsnip     * 0.1.3      2020-08-04 [1] CRAN (R 4.0.2)                   
+ pillar        1.4.6      2020-07-10 [1] CRAN (R 4.0.2)                   
+ pkgconfig     2.0.3      2019-09-22 [1] CRAN (R 4.0.0)                   
+ plyr          1.8.6      2020-03-03 [1] CRAN (R 4.0.0)                   
+ pROC          1.16.2     2020-03-19 [1] CRAN (R 4.0.0)                   
+ prodlim       2019.11.13 2019-11-17 [1] CRAN (R 4.0.0)                   
+ purrr         0.3.4      2020-04-17 [1] CRAN (R 4.0.1)                   
+ R6            2.4.1      2019-11-12 [1] CRAN (R 4.0.0)                   
+ Rcpp          1.0.5      2020-07-06 [1] CRAN (R 4.0.2)                   
+ recipes     * 0.1.13     2020-06-23 [1] CRAN (R 4.0.1)                   
+ rlang         0.4.7      2020-07-09 [1] CRAN (R 4.0.2)                   
+ rmarkdown     2.3        2020-06-18 [1] CRAN (R 4.0.1)                   
+ rpart         4.1-15     2019-04-12 [1] CRAN (R 4.0.2)                   
+ rsample     * 0.0.7      2020-06-04 [1] CRAN (R 4.0.1)                   
+ scales      * 1.1.1      2020-05-11 [1] CRAN (R 4.0.1)                   
+ sessioninfo   1.1.1      2018-11-05 [1] CRAN (R 4.0.1)                   
+ snakecase     0.11.0     2019-05-25 [1] CRAN (R 4.0.2)                   
+ stringi       1.4.6      2020-02-17 [1] CRAN (R 4.0.0)                   
+ stringr       1.4.0      2019-02-10 [1] CRAN (R 4.0.0)                   
+ survival      3.2-3      2020-06-13 [1] CRAN (R 4.0.1)                   
+ tibble        3.0.3      2020-07-10 [1] CRAN (R 4.0.2)                   
+ tidyr         1.1.1      2020-07-31 [1] CRAN (R 4.0.2)                   
+ tidyselect    1.1.0      2020-05-11 [1] CRAN (R 4.0.1)                   
+ timeDate      3043.102   2018-02-21 [1] CRAN (R 4.0.0)                   
+ treesnip    * 0.1.0      2020-08-26 [1] Github (curso-r/treesnip@8a87e8c)
+ tune        * 0.1.1      2020-07-08 [1] CRAN (R 4.0.2)                   
+ utf8          1.1.4      2018-05-24 [1] CRAN (R 4.0.0)                   
+ vctrs         0.3.2      2020-07-15 [1] CRAN (R 4.0.2)                   
+ withr         2.2.0      2020-04-20 [1] CRAN (R 4.0.2)                   
+ workflows   * 0.1.2      2020-07-07 [1] CRAN (R 4.0.2)                   
+ xfun          0.15       2020-06-21 [1] CRAN (R 4.0.2)                   
+ yaml          2.2.1      2020-02-01 [1] CRAN (R 4.0.0)                   
+ yardstick   * 0.0.7      2020-07-13 [1] CRAN (R 4.0.2)                   
+
+[1] /Library/Frameworks/R.framework/Versions/4.0/Resources/library
+</code></pre></details><div class=blog-tags><a href=https://blog.rmhogervorst.nl//tags/advanced/>advanced</a>&nbsp;
+<a href=https://blog.rmhogervorst.nl//tags/boostedtreemethods/>boostedtreemethods</a>&nbsp;
+<a href=https://blog.rmhogervorst.nl//tags/dials/>dials</a>&nbsp;
+<a href=https://blog.rmhogervorst.nl//tags/howto/>howto</a>&nbsp;
+<a href=https://blog.rmhogervorst.nl//tags/lightgbm/>lightgbm</a>&nbsp;
+<a href=https://blog.rmhogervorst.nl//tags/parsnip/>parsnip</a>&nbsp;
+<a href=https://blog.rmhogervorst.nl//tags/recipes/>recipes</a>&nbsp;
+<a href=https://blog.rmhogervorst.nl//tags/rsample/>rsample</a>&nbsp;
+<a href=https://blog.rmhogervorst.nl//tags/tidymodels/>tidymodels</a>&nbsp;
+<a href=https://blog.rmhogervorst.nl//tags/treesnip/>treesnip</a>&nbsp;
+<a href=https://blog.rmhogervorst.nl//tags/tune/>tune</a>&nbsp;
+<a href=https://blog.rmhogervorst.nl//tags/workflows/>workflows</a>&nbsp;
+<a href=https://blog.rmhogervorst.nl//tags/yardstick/>yardstick</a>&nbsp;</div></article><ul class="pager blog-pager"><li class=previous><a href=https://blog.rmhogervorst.nl/blog/2020/07/22/how-does-catboost-deal-with-factors/ data-toggle=tooltip data-placement=top title="How Does Catboost Deal with Factors in loading?">&larr; Previous Post</a></li><li class=next><a href=https://blog.rmhogervorst.nl/blog/2020/08/28/how-to-use-catboost-with-tidymodels/ data-toggle=tooltip data-placement=top title="How to Use Catboost with Tidymodels">Next Post &rarr;</a></li></ul></div></div></div><footer><div class=container><div class=row><div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1"><ul class="list-inline text-center footer-links"><li><a href=mailto:hogervorst.rm@gmail.com title="Email me"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x"></i><i class="fas fa-envelope fa-stack-1x fa-inverse"></i></span></a></li><li><a href=https://github.com/RMHogervorst title=GitHub><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x"></i><i class="fab fa-github fa-stack-1x fa-inverse"></i></span></a></li><li><a href=https://gitlab.com/rmhogervorst title=GitLab><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x"></i><i class="fab fa-gitlab fa-stack-1x fa-inverse"></i></span></a></li><li><a href=https://bitbucket.org/RMHogervorst title=Bitbucket><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x"></i><i class="fab fa-bitbucket fa-stack-1x fa-inverse"></i></span></a></li><li><a href=https://twitter.com/RoelMHogervorst title=Twitters><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x"></i><i class="fab fa-twitter fa-stack-1x fa-inverse"></i></span></a></li><li><a href=https://linkedin.com/in/rmhogervorst title=LinkedIn><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x"></i><i class="fab fa-linkedin fa-stack-1x fa-inverse"></i></span></a></li><li><a href=https://stackoverflow.com/users/5573955/roel-hogervorst title=StackOverflow><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x"></i><i class="fab fa-stack-overflow fa-stack-1x fa-inverse"></i></span></a></li><li><a href=https://keybase.io/rmhogervorst title=Keybase><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x"></i><i class="fab fa-keybase fa-stack-1x fa-inverse"></i></span></a></li><li><a href=https://mastodon.technology/@rmhogervorst title=Mastodon><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x"></i><i class="fab fa-mastodon fa-stack-1x fa-inverse"></i></span></a></li><li><a href=https://dev.to/rmhogervorst title="Dev.to profile"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x"></i><i class="fab fa-dev fa-stack-1x fa-inverse"></i></span></a></li><li><a href=https://blog.rmhogervorst.nl/index.xml title=RSS><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x"></i><i class="fa fa-rss fa-stack-1x fa-inverse"></i></span></a></li></ul><p class="credits copyright text-muted"><a href=rmhogervorst.nl>Roel M. Hogervorst</a>
+&nbsp;&bull;&nbsp;
+2020
+&nbsp;&bull;&nbsp;
+<a href=https://blog.rmhogervorst.nl/>Roel's R-tefacts</a></p><p class="credits theme-by text-muted"><a href=https://gohugo.io>Hugo v0.69.0</a> powered &nbsp;&bull;&nbsp; Theme <a href=https://github.com/halogenica/beautifulhugo>Beautiful Hugo</a> adapted from <a href=https://deanattali.com/beautiful-jekyll/>Beautiful Jekyll</a><br>See anything wrong? Click to add them to <a href=https://github.com/RMHogervorst/blog/issues>the issue tracker</a><br><a href=https://github.com/RMHogervorst/blog/tree/master/content/post/2020-08-27-how-to-use-lightgbm-with-tidymodels-framework/index.Rmd>or edit this page on github.</a></p></div></div></div></footer><script src=https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/katex.min.js integrity="sha512-2k+W+3OGhtd3whnGt33ek/oA1M/aqB6Mir+WIcCrSuIC2yD6iTX6IuPf5q1oEJGQT06jma5K6ca7Xqb4u7Urow==" crossorigin=anonymous></script><script src=https://code.jquery.com/jquery-3.5.1.slim.min.js integrity=sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj crossorigin=anonymous></script><script src=https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js integrity=sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV crossorigin=anonymous></script><script src=https://blog.rmhogervorst.nl/js/main.js></script><script src=https://blog.rmhogervorst.nl/js/highlight.min.js></script><script>hljs.initHighlightingOnLoad();</script><script>$(document).ready(function(){$("pre.chroma").css("padding","0");});</script><script src=https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.js integrity=sha384-QELNnmcmU8IR9ZAykt67vGr9/rZJdHbiWi64V88fCPaOohUlHCqUD/unNN0BXSqy crossorigin=anonymous></script><script src=https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe-ui-default.min.js integrity=sha384-m67o7SkQ1ALzKZIFh4CiTA8tmadaujiTa9Vu+nqPSwDOqHrDmxLezTdFln8077+q crossorigin=anonymous></script><script src=https://blog.rmhogervorst.nl/js/load-photoswipe.js></script></body></html>

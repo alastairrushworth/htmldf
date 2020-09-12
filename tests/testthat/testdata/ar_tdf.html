@@ -1,0 +1,831 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.4.1 by Michael Rose
+  Copyright 2017 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE.txt
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin SEO -->
+
+
+
+
+
+
+
+
+
+<title>Visualising Tour De France Data In R -</title>
+
+
+
+
+<meta name="description" content="">
+
+
+
+
+<meta name="author" content="Alastair Rushworth">
+
+<meta property="og:locale" content="en">
+<meta property="og:site_name" content="">
+<meta property="og:title" content="Visualising Tour De France Data In R">
+
+
+  <link rel="canonical" href="https://alastairrushworth.github.io/Visualising-Tour-de-France-data-in-R/">
+  <meta property="og:url" content="https://alastairrushworth.github.io/Visualising-Tour-de-France-data-in-R/">
+
+
+
+  <meta property="og:description" content="">
+
+
+
+
+
+
+
+
+
+  <meta property="og:type" content="article">
+  <meta property="article:published_time" content="2019-11-24T00:00:00+00:00">
+
+
+
+
+
+
+
+
+  <script type="application/ld+json">
+    {
+      "@context" : "http://schema.org",
+      "@type" : "Person",
+      "name" : "Alastair Rushworth",
+      "url" : "https://alastairrushworth.github.io",
+      "sameAs" : null
+    }
+  </script>
+
+
+
+  <meta name="google-site-verification" content="bGmJ_l-feY0oqCX5pvJAPgr-JlZfcHPt5TJd2RQdAf8" />
+
+
+
+
+<!-- end SEO -->
+
+
+<link href="https://alastairrushworth.github.io/feed.xml" type="application/atom+xml" rel="alternate" title=" Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="https://alastairrushworth.github.io/assets/css/main.css">
+
+<!--[if lte IE 9]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+<meta http-equiv="cleartype" content="on">
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use http://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+  </head>
+
+  <body class="layout--single">
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+    <div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        <a class="site-title" href="https://alastairrushworth.github.io/"></a>
+        <ul class="visible-links">
+          
+            
+            <li class="masthead__menu-item"><a href="https://alastairrushworth.github.io/aboutme/">About me</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="https://alastairrushworth.github.io/papers/">Publications</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="https://alastairrushworth.github.io/blogs/">Blogs</a></li>
+          
+        </ul>
+        <button><div class="navicon"></div></button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+    
+
+
+  
+    
+
+
+
+<nav class="breadcrumbs">
+  <ol itemscope itemtype="http://schema.org/BreadcrumbList">
+    
+    
+    
+      
+        <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+          <a href="https://alastairrushworth.github.io/" itemprop="item"><span itemprop="name">Home</span></a>
+          <meta itemprop="position" content="1" />
+        </li>
+        <span class="sep">/</span>
+      
+      
+        <li class="current">Visualising Tour De France Data In R</li>
+      
+    
+  </ol>
+</nav>
+  
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+<div itemscope itemtype="http://schema.org/Person">
+
+  
+    <div class="author__avatar">
+      
+        <img src="https://alastairrushworth.github.io/assets/images/bio-photo.jpg" class="author__avatar" alt="Alastair Rushworth" itemprop="image">
+      
+    </div>
+  
+
+  <div class="author__content">
+    <h3 class="author__name" itemprop="name">Alastair Rushworth</h3>
+    
+      <p class="author__bio" itemprop="description">
+        Data scientist
+      </p>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="http://schema.org/Place">
+          <i class="fa fa-fw fa-map-marker" aria-hidden="true"></i> <span itemprop="name">Edinburgh, UK</span>
+        </li>
+      
+
+      
+
+      
+        <li>
+          <a href="mailto:alastairmrushworth@gmail.com">
+            <meta itemprop="email" content="alastairmrushworth@gmail.com" />
+            <i class="fa fa-fw fa-envelope-square" aria-hidden="true"></i> Email
+          </a>
+        </li>
+      
+
+      
+
+      
+        <li>
+          <a href="https://twitter.com/rushworth_a" itemprop="sameAs">
+            <i class="fa fa-fw fa-twitter-square" aria-hidden="true"></i> Twitter
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+        <li>
+          <a href="https://www.linkedin.com/in/alastair-rushworth-253137143" itemprop="sameAs">
+            <i class="fa fa-fw fa-linkedin-square" aria-hidden="true"></i> LinkedIn
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+        <li>
+          <a href="https://github.com/alastairrushworth" itemprop="sameAs">
+            <i class="fa fa-fw fa-github" aria-hidden="true"></i> GitHub
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs">
+      <i class="fa fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+  <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Visualising Tour De France Data In R">
+    <meta itemprop="description" content="">
+    <meta itemprop="datePublished" content="November 24, 2019">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 class="page__title" itemprop="headline">Visualising Tour De France Data In R
+</h1>
+          
+            <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+
+
+  9 minute read
+</p>
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+<figure>
+
+<img src="/assets/images/tdf_logo.jpg" alt="drawing" style="width: 50%" />
+
+</figure>
+
+<h3 id="the-tour-de-france---a-short-primer">The Tour de France - a short primer</h3>
+
+<p>The <a href="https://en.wikipedia.org/wiki/Tour_de_France">Tour de France</a> (‘Le
+Tour’) is the world’s biggest and most prestigious cycling event with a
+long history spanning back as far as 1903. Each annual ‘edition’ of the
+race is composed of around 21 stages that traverse the French nation,
+each stage is a standalone race by itself. The racing is complex, with
+each team of 9 riders competing for any combination of individual stage
+wins, sprint points, mountain climbing, aggressive riding and team
+ability. The most coveted prize of all is the ‘Generale Classification’
+(GC) which is awarded to the rider with the lowest aggregate time at the
+end of the race. Each day, the rider with the lowest aggregate time
+following the previous stage wears the ‘Maillot Jaune’ (yellow jersey)
+indicating that they are the current race leader.</p>
+
+<h4 id="tdf-an-r-package-for-tour-de-france-data"><code class="language-plaintext highlighter-rouge">tdf</code> an R package for Tour de France data</h4>
+
+<p>The <code class="language-plaintext highlighter-rouge">tdf</code> package is hosted on
+<a href="https://github.com/alastairrushworth/tdf">github</a> and contains
+information about the overall winning rider for each edition of the
+race, the winner’s biographical information and the results for each
+stage in each edition. To install the package, use</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">library</span><span class="p">(</span><span class="n">remotes</span><span class="p">)</span><span class="w">
+</span><span class="n">install_github</span><span class="p">(</span><span class="s2">"alastairrushworth/tdf"</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<p>The package is just a container for the dataframe <code class="language-plaintext highlighter-rouge">editions</code>:</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">library</span><span class="p">(</span><span class="n">tdf</span><span class="p">)</span><span class="w">
+</span><span class="n">library</span><span class="p">(</span><span class="n">tidyverse</span><span class="p">)</span><span class="w">
+
+</span><span class="c1"># visualise contents tdf::editions</span><span class="w">
+</span><span class="n">glimpse</span><span class="p">(</span><span class="n">editions</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>## Observations: 106
+## Variables: 20
+## $ edition       &lt;int&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, …
+## $ start_date    &lt;date&gt; 1903-07-01, 1904-07-02, 1905-07-09, 1906-07-04, 1907-0…
+## $ winner_name   &lt;chr&gt; "Maurice Garin", "Henri Cornet", "Louis Trousselier", "…
+## $ winner_team   &lt;chr&gt; "La Française", "Conte", "Peugeot–Wolber", "Peugeot–Wol…
+## $ distance      &lt;dbl&gt; 2428, 2428, 2994, 4637, 4488, 4497, 4498, 4734, 5343, 5…
+## $ time_overall  &lt;dbl&gt; 94.55389, 96.09861, NA, NA, NA, NA, NA, NA, NA, NA, 197…
+## $ time_margin   &lt;dbl&gt; 2.98916667, 2.27055556, NA, NA, NA, NA, NA, NA, NA, NA,…
+## $ stage_wins    &lt;dbl&gt; 3, 1, 5, 5, 2, 5, 6, 4, 2, 3, 1, 1, 1, 4, 2, 0, 3, 4, 4…
+## $ stages_led    &lt;dbl&gt; 6, 3, 10, 12, 5, 13, 13, 3, 13, 13, 8, 15, 2, 14, 14, 3…
+## $ height        &lt;dbl&gt; 1.62, NA, NA, NA, NA, NA, 1.78, NA, NA, NA, NA, NA, NA,…
+## $ weight        &lt;dbl&gt; 60, NA, NA, NA, NA, NA, 88, NA, NA, NA, NA, NA, NA, NA,…
+## $ age           &lt;int&gt; 32, 19, 24, 27, 24, 25, 22, 22, 26, 23, 23, 24, 33, 30,…
+## $ born          &lt;date&gt; 1871-03-03, 1884-08-04, 1881-06-29, 1879-06-05, 1882-1…
+## $ died          &lt;date&gt; 1957-02-19, 1941-03-18, 1939-04-24, 1907-01-25, 1917-1…
+## $ full_name     &lt;chr&gt; NA, NA, NA, NA, "Lucien Georges Mazan", "Lucien Georges…
+## $ nickname      &lt;chr&gt; "The Little Chimney-sweep", "Le rigolo (The joker)", "L…
+## $ birth_town    &lt;chr&gt; "Arvier", "Desvres", "Paris", "Moret-sur-Loing", "Pless…
+## $ birth_country &lt;chr&gt; "Italy", "France", "France", "France", "France", "Franc…
+## $ nationality   &lt;chr&gt; " France", " France", " France", " France", " France", …
+## $ stage_results &lt;named list&gt; [[&lt;tbl_df[37 x 7]&gt;, &lt;tbl_df[35 x 7]&gt;, &lt;tbl_df[27…
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">editions</code> is a tibble whose rows each correspond to a single edition of
+the Tour de France. The columns contain information about the race
+itself and the overall winner, including:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">distance</code> is the aggregate distance in kilometres covered by the
+entire race.</li>
+  <li><code class="language-plaintext highlighter-rouge">time_overall</code> is the time in hours taken by the winner to complete
+the race</li>
+  <li><code class="language-plaintext highlighter-rouge">time_margin</code> is the difference in finishing times between the race
+winner and the first runner up.</li>
+  <li><code class="language-plaintext highlighter-rouge">stage_wins</code> is the number of stages won by the eventual winner
+during the edition (note that it is possible to win the GC without
+winning any stages at all).</li>
+  <li><code class="language-plaintext highlighter-rouge">stages_led</code> is the number of stages spent as the race leader
+(wearing the yellow jersey) by the eventual winner.</li>
+  <li><code class="language-plaintext highlighter-rouge">weight</code> is the winner’s body weight in kilograms.</li>
+  <li><code class="language-plaintext highlighter-rouge">height</code> is the winner’s height in meters.</li>
+  <li><code class="language-plaintext highlighter-rouge">stage_results</code> is a column containing a list of lists. Each element
+contains a list of stage results for a particular edition of the
+Tour de France.</li>
+</ul>
+
+<h4 id="how-has-the-race-changed-over-time">How has the race changed over time?</h4>
+
+<p>Forget ultra-marathons and tough mudder, early editions of Le Tour were
+<strong>really tough</strong>. Riders were mostly self-supported, rode in woollen
+jerseys for hundreds of miles per day on steel-framed bicycles. The
+longest stage in Tour history was 482 kilometres (Stage 5, 1919) - the
+stage winner, Jean Alavoine, took almost 19 hours to complete the stage.</p>
+
+<figure>
+
+<img src="/assets/images/hosten.jpg" width="500" class="center" />
+
+<figcaption>
+
+*Robert Jacquinot taking a break from the 482km long Stage 5 during the
+1922 Tour de France. (Image source: Wikipedia.)*
+
+</figcaption>
+
+</figure>
+
+<p>To get a sense for how the length of the race has varied since 1903, we
+can visualise the total distance in the <code class="language-plaintext highlighter-rouge">editions</code> data:</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">library</span><span class="p">(</span><span class="n">ggplot2</span><span class="p">)</span><span class="w">
+</span><span class="n">editions</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">ggplot</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">start_date</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">distance</span><span class="p">,</span><span class="w"> 
+             </span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">edition</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">geom_point</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> 
+  </span><span class="n">xlab</span><span class="p">(</span><span class="s1">'Race start date'</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> 
+  </span><span class="n">ylab</span><span class="p">(</span><span class="s1">'Distance in kilometres'</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> 
+  </span><span class="n">ggtitle</span><span class="p">(</span><span class="s1">'Tour de France total distance covered over time'</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> 
+  </span><span class="n">theme</span><span class="p">(</span><span class="n">legend.position</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"none"</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<p><img src="/assets/images/distance_over_time-1.png" alt="" /><!-- --></p>
+
+<p>It’s pretty clear that over time, the distances covered have decreased
+dramatically, and have roughly stabilised at about 3500 kilometres
+during the last 2 decades (still a huge distance). You can see that the
+longest ever Tour de France edition was in 1926, with a total distance
+covered of 5,745 kilometres!</p>
+
+<p>On the face of it, it seems like the riders of today have it
+substantially easier compared to riders of the past. But how fast are
+today’s riders going?</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">library</span><span class="p">(</span><span class="n">ggrepel</span><span class="p">)</span><span class="w">
+</span><span class="n">editions</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">ggplot</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">start_date</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">distance</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">time_overall</span><span class="p">,</span><span class="w"> 
+             </span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">edition</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">geom_point</span><span class="p">(</span><span class="n">na.rm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> 
+  </span><span class="n">geom_label_repel</span><span class="p">(</span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">editions</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="n">sample_n</span><span class="p">(</span><span class="m">20</span><span class="p">),</span><span class="w"> 
+                  </span><span class="n">aes</span><span class="p">(</span><span class="n">label</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">winner_name</span><span class="p">),</span><span class="w"> </span><span class="n">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2.3</span><span class="p">,</span><span class="w">  
+                  </span><span class="n">nudge_y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">-9</span><span class="p">,</span><span class="w"> </span><span class="n">na.rm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">,</span><span class="w">
+                  </span><span class="n">segment.alpha</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.2</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> 
+  </span><span class="n">xlab</span><span class="p">(</span><span class="s1">'Edition start date'</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> 
+  </span><span class="n">ylab</span><span class="p">(</span><span class="s1">'Average speed km/h'</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> 
+  </span><span class="n">ggtitle</span><span class="p">(</span><span class="s1">'Tour de France winners average speed'</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> 
+  </span><span class="n">theme</span><span class="p">(</span><span class="n">legend.position</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"none"</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<p><img src="/assets/images/speed_over_time-1.png" alt="" /><!-- --></p>
+
+<p>They’re going pretty fast. It looks like while the race has been getting
+gradually shorter, the speeds have been getting much faster. The change
+also coincides with professionalisation of the sport, better equipment
+and smarter training so it’s hard to provide an exact account for the
+change in speed. It’s worth highlighting the top two fastest average
+speeds in Tour de France history:</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Top 5 average speeds of Tour de France winners</span><span class="w">
+</span><span class="n">editions</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">mutate</span><span class="p">(</span><span class="n">speed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">distance</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">time_overall</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">select</span><span class="p">(</span><span class="n">start_date</span><span class="p">,</span><span class="w"> </span><span class="n">winner_name</span><span class="p">,</span><span class="w"> </span><span class="n">speed</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">arrange</span><span class="p">(</span><span class="n">desc</span><span class="p">(</span><span class="n">speed</span><span class="p">))</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">print</span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>## # A tibble: 106 x 3
+##   start_date winner_name     speed
+##   &lt;date&gt;     &lt;chr&gt;           &lt;dbl&gt;
+## 1 1998-07-11 Marco Pantani    41.7
+## 2 2005-07-02 Lance Armstrong  41.7
+## # … with 104 more rows
+</code></pre></div></div>
+
+<p>The two fastest ever editions of the Tour de France were won by Marco
+Pantani (in 1998) and Lance Armstrong (in 2005), both of whom were later
+stripped of these (and other) wins for their use of banned
+performance-enhancing substances. The speed of doped riders in such Tour
+editions was so obviously faster than non-doped riders, that French
+media declared a culture of <em>“Cyclisme a deux vitesses”</em> (<em>“two-speed
+cycling”</em>). It is unknown how much riders still use banned substances
+for performance enhancement, but the average speeds of the Pantani /
+Armstrong years have not been reached in any edition since.</p>
+
+<p><strong>Note:</strong> the the data in the <code class="language-plaintext highlighter-rouge">tdf</code> package retains the winning times of
+banned, disqualified and otherwise sanctioned riders for the purposes of
+data analysis. The overall standings are as they would have appeared on
+the final day of the race - therefore please note that the officially
+recognised winner of a particular edition may not be the rider with the
+fastest time.</p>
+
+<h4 id="how-have-the-riders-changed-over-time">How have the riders changed over time?</h4>
+
+<p>France is a mountainous country, and a crucial ingredient for success in
+the Tour de France is a rider’s ability to climb hills quickly and
+efficiently. Hill climbing is a fight against gravity that pits a
+rider’s strength against their total weight (bike + equipment + body).
+The rider has two options to improve: get stronger and get leaner. Using
+the <code class="language-plaintext highlighter-rouge">editions</code> data we can explore the latter over time by using rider
+<code class="language-plaintext highlighter-rouge">height</code> and <code class="language-plaintext highlighter-rouge">weight</code> data to calculate body mass index (BMI), which is
+a (very rough) proxy for leanness.</p>
+
+<figure>
+
+<img src="/assets/images/tex_eq.png" alt="drawing" style="width: 50%" />
+
+</figure>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">library</span><span class="p">(</span><span class="n">ggrepel</span><span class="p">)</span><span class="w">
+</span><span class="n">editions</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">ggplot</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">start_date</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">weight</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">height</span><span class="o">^</span><span class="m">2</span><span class="p">,</span><span class="w"> 
+             </span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">edition</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">geom_point</span><span class="p">(</span><span class="n">na.rm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> 
+  </span><span class="n">geom_label_repel</span><span class="p">(</span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">editions</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="n">sample_n</span><span class="p">(</span><span class="m">20</span><span class="p">),</span><span class="w"> 
+                  </span><span class="n">aes</span><span class="p">(</span><span class="n">label</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">winner_name</span><span class="p">),</span><span class="w"> </span><span class="n">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1.8</span><span class="p">,</span><span class="w">  
+                  </span><span class="n">nudge_y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">4</span><span class="p">,</span><span class="w"> </span><span class="n">na.rm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">,</span><span class="w">
+                  </span><span class="n">segment.alpha</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.2</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> 
+  </span><span class="n">xlab</span><span class="p">(</span><span class="s1">'Edition start date'</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> 
+  </span><span class="n">ylab</span><span class="p">(</span><span class="s1">'Body mass index'</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> 
+  </span><span class="n">ggtitle</span><span class="p">(</span><span class="s1">'Tour de France winners body mass index'</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> 
+  </span><span class="n">theme</span><span class="p">(</span><span class="n">legend.position</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"none"</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<p><img src="/assets/images/bmi_over_time-1.png" alt="" /><!-- --></p>
+
+<p>It’s pretty clear that over time, the trend has been towards winners
+having lower BMI, and likely being leaner overall. Apart from the
+obvious issues with BMI as a metric (body shapes are more complex than
+just height and weight) it’s interesting to consider why this trend has
+occurred. It’s tempting to conclude that more careful dieting and
+preparation in recent years has lead to riders having lower body fat
+percentages, which can enhance a rider’s power to weight ratio and
+overall performance. However, it could also be due to changes in the
+race: if race winning becomes more dependent on performance in the
+mountains (for example, because the number of mountain stages has
+increased overall) this could result in the lighter and leaner athletes
+tending to excel overall.</p>
+
+<h4 id="stage-results">Stage results</h4>
+
+<p>The column <code class="language-plaintext highlighter-rouge">stage_results</code> contains the breakdown of results by stage
+for each edition of the Tour de France. For example, the results of the
+final stage of the 2019 Tour de France can be printed using</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">editions</span><span class="o">$</span><span class="n">stage_results</span><span class="o">$</span><span class="n">`2019`</span><span class="o">$</span><span class="n">`stage-21`</span><span class="w">
+</span></code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>## # A tibble: 155 x 8
+##     rank time     rider         bib_number   age team            points elapsed 
+##    &lt;int&gt; &lt;Period&gt; &lt;chr&gt;              &lt;int&gt; &lt;int&gt; &lt;chr&gt;            &lt;int&gt; &lt;Period&gt;
+##  1     1 3H 4M 8S Ewan Caleb           161    25 Lotto Soudal       100 3H 4M 8S
+##  2     2 0S       Groenewegen …         84    26 Team Jumbo-Vis…     70 3H 4M 8S
+##  3     3 0S       Bonifazio Ni…        172    25 Team Total Dir…     50 3H 4M 8S
+##  4     4 0S       Richeze Maxi…         27    36 Deceuninck - Q…     40 3H 4M 8S
+##  5     5 0S       Boasson Hage…        201    32 Team Dimension…     32 3H 4M 8S
+##  6     6 0S       Greipel André        215    37 Team Arkéa Sam…     26 3H 4M 8S
+##  7     7 0S       Trentin Matt…        107    29 Mitchelton-Sco…     22 3H 4M 8S
+##  8     8 0S       Stuyven Jasp…        138    27 Trek - Segafre…     18 3H 4M 8S
+##  9     9 0S       Arndt Nikias         142    27 Team Sunweb         14 3H 4M 8S
+## 10    10 0S       Sagan Peter           11    29 BORA - hansgro…     10 3H 4M 8S
+## # … with 145 more rows
+</code></pre></div></div>
+
+<p>The important columns for the stage data are</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">time</code> the finishing time of the stage winner and time difference to
+the winner.</li>
+  <li><code class="language-plaintext highlighter-rouge">rider</code> the rider name formatted as ‘Surname Forename’.</li>
+  <li><code class="language-plaintext highlighter-rouge">age</code> age of the rider at the start of the stage.</li>
+  <li><code class="language-plaintext highlighter-rouge">elapsed</code> the time taken to reach the finish line - this is stored
+as a <code class="language-plaintext highlighter-rouge">lubridate::period</code> object for easier printing and
+manipulation.</li>
+</ul>
+
+<p>In the case above, Caleb Ewan won the finish line sprint of the final
+stage. Since the first 53 riders were part of a contiguous group of
+riders, they were granted the same finishing time as Ewan, but their
+finishing order corresponds to the order they passed the finish line.</p>
+
+<figure>
+<img src="/assets/images/caleb.jpg" width="500" class="center" />
+
+<figcaption>
+
+*Caleb Ewan wins the sprint on stage 21 of the 2019 Tour de France.
+(Image source: AFP/Getty Images)*
+
+</figcaption>
+
+</figure>
+
+<h4 id="comments-suggestions-issues">Comments? Suggestions? Issues?</h4>
+
+<p>Any feedback is welcome! Find me on twitter at
+<a href="https://twitter.com/rushworth_a">rushworth_a</a> or <a href="https://github.com/alastairrushworth/tdf/issues">write a github
+issue</a>.</p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+        
+          <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Updated:</strong> <time datetime="2019-11-24T00:00:00+00:00">November 24, 2019</time></p>
+        
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=Visualising Tour De France Data In R https://alastairrushworth.github.io/Visualising-Tour-de-France-data-in-R/" class="btn btn--twitter" title="Share on Twitter"><i class="fa fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https://alastairrushworth.github.io/Visualising-Tour-de-France-data-in-R/" class="btn btn--facebook" title="Share on Facebook"><i class="fa fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://plus.google.com/share?url=https://alastairrushworth.github.io/Visualising-Tour-de-France-data-in-R/" class="btn btn--google-plus" title="Share on Google Plus"><i class="fa fa-fw fa-google-plus" aria-hidden="true"></i><span> Google+</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://alastairrushworth.github.io/Visualising-Tour-de-France-data-in-R/" class="btn btn--linkedin" title="Share on LinkedIn"><i class="fa fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="https://alastairrushworth.github.io/Analysing-Tour-de-France-data-in-R/" class="pagination--pager" title="Analysing Tour De France Data In R
+">Previous</a>
+    
+    
+      <a href="https://alastairrushworth.github.io/R-Posts-You-Might-Have-Missed!/" class="pagination--pager" title="R Posts You Might Have Missed!
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h4 class="page__related-title">You May Also Enjoy</h4>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="https://alastairrushworth.github.io/R-Posts-You-Might-Have-Missed!/" rel="permalink">R Posts You Might Have Missed!
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+
+
+  7 minute read
+</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">
+
+
+
+</p>
+  </article>
+</div>
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="https://alastairrushworth.github.io/Analysing-Tour-de-France-data-in-R/" rel="permalink">Analysing Tour De France Data In R
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+
+
+  9 minute read
+</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">
+
+
+
+</p>
+  </article>
+</div>
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="https://alastairrushworth.github.io/Missing-values-in-dataframes-with-inspectdf/" rel="permalink">Missing Values In Dataframes With Inspectdf
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+
+
+  3 minute read
+</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">
+Summarising NA by column in dataframes
+
+</p>
+  </article>
+</div>
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="https://alastairrushworth.github.io/Calculating-and-visualising-correlation-coefficients-with-inspectdf/" rel="permalink">Calculating And Visualising Correlation Coefficients With Inspectdf
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+
+
+  6 minute read
+</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">
+Calculating and visualising correlation coefficients with inspectdf (and why correlations matrices make life hard)
+
+</p>
+  </article>
+</div>
+        
+      </div>
+    </div>
+  
+</div>
+
+
+    <div class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+    
+    
+    
+      <li><a href="http://github.com/alastairrushworth"><i class="fa fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+    
+    
+    <li><a href="https://alastairrushworth.github.io/feed.xml"><i class="fa fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2020 Alastair Rushworth. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+      </footer>
+    </div>
+
+    <script src="https://alastairrushworth.github.io/assets/js/main.min.js"></script>
+
+
+
+
+
+  </body>
+</html>

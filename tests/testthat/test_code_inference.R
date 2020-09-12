@@ -4,20 +4,20 @@ context("Code language inference")
 # r tests
 test_that("Test R (1)", {
   # example
-  x <- html_df("https://alastairrushworth.github.io/Visualising-Tour-de-France-data-in-R/")
-  expect_equal(x$code_lang, 'r')
+  z    <- html_df(paste0('file://', normalizePath('testdata'), '/ar_tdf.html'))
+  expect_gt(z$code_lang, 0.6)
 })
 
 test_that("Test R (2)", {
   # example
-  x <- html_df("https://www.robertmylesmcdonnell.com/content/posts/mtcars/")
-  expect_equal(x$code_lang, 'r')
+  z    <- html_df(paste0('file://', normalizePath('testdata'), '/mcdonnell.html'))
+  expect_gt(z$code_lang, 0.6)
 })
 
 test_that("Test R (3)", {
   # example
-  x <- html_df("https://blog.revolutionanalytics.com/2020/05/azurevision.html")
-  expect_equal(x$code_lang, 'r')
+  z    <- html_df(paste0('file://', normalizePath('testdata'), '/revo.html'))
+  expect_gt(z$code_lang, 0.6)
 })
 
 
@@ -25,20 +25,20 @@ test_that("Test R (3)", {
 # python tests
 test_that("Test Python (1)", {
   # example
-  x <- html_df("https://www.tensorflow.org/tutorials/images/cnn")
-  expect_equal(x$code_lang, 'py')
+  z    <- html_df(paste0('file://', normalizePath('testdata'), '/tflow.html'))
+  expect_lt(z$code_lang, -0.6)
 })
 
 test_that("Test Python (2)", {
   # example
-  x <- html_df("https://www.machinelearningplus.com/plots/matplotlib-tutorial-complete-guide-python-plot-examples/")
-  expect_equal(x$code_lang, 'py')
+  z    <- html_df(paste0('file://', normalizePath('testdata'), '/mlplus.html'))
+  expect_lt(z$code_lang, -0.6)
 })
 
 test_that("Test Python (3)", {
   # example
-  x <- html_df("https://jakevdp.github.io/PythonDataScienceHandbook/02.02-the-basics-of-numpy-arrays.html")
-  expect_equal(x$code_lang, 'py')
+  z    <- html_df(paste0('file://', normalizePath('testdata'), '/vdp.html'))
+  expect_lt(z$code_lang, -0.5)
 })
 
 

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8">
+<meta name="author" content="Peter Meissner">
+<meta name="description" content="petermeissner: personal blog, stats, tech, and things between and beyond">
+<title> R treasures: modifyList() › petermeissner</title>
+<link rel="canonical" href="https://petermeissner.de/blog/2020/09/03/utils-treasures-moifyList/">
+<link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,300italic,400italic" rel="stylesheet">
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link href="https://petermeissner.de/basic.css" rel="stylesheet">
+<link href="https://petermeissner.de/highlight.css" rel="stylesheet">
+<link href="https://petermeissner.de/index.css" rel="stylesheet">
+<link type="application/atom+xml" rel="alternate" href="/https://petermeissner.de/feed.xml" title="petermeissner" />
+<script src="//petermeissner-de.disqus.com/embed.js" async></script>
+
+<header>
+  <h1><a href="https://petermeissner.de">petermeissner</a></h1>
+  <nav>
+    <div><a href="https://petermeissner.de/about/">about</a><a href="https://petermeissner.de/blog/">blog</a><a href="https://petermeissner.de/seealso/">seealso</a><a href="https://petermeissner.de/privacy/">privacy</a></div>
+    <div><a href="https://twitter.com/peterlovesdata"><i class="fa fa-twitter"></i></a><a href="https://github.com/petermeissner"><i class="fa fa-github"></i></a><a href="mailto:retep.meissner@gmail.com"><i class="fa fa-envelope"></i></a></div>
+  </nav>
+</header>
+<main>
+  <article>
+    <header>
+      <h1><a href="https://petermeissner.de/blog/2020/09/03/utils-treasures-moifyList/">R treasures: modifyList()</a></h1>
+      <time datetime="2020-09-03T00:00:00-05:00">September 3, 2020</time>
+      <p><tag>
+              [ rstats ]
+            </tag><tag>
+              [ treasures ]
+            </tag><tag>
+              [ utils ]
+            </tag></p>
+    </header>
+    <div>
+<p>Sometimes, more precisely quite often, the standard libraries hold treasures that we are not aware of.
+Maybe they have obscure names, have been reinvented and shadowed by the newest cutting edge convenience package or one simply does not expect those treasures to be there so they are hidden in plain sight.</p>
+
+<p>The <code class="highlighter-rouge">modifyList()</code> function is one of those treasures. Its part of the {utils} packages so it ships with every R version ready to use without further dependencies.</p>
+
+<p>The function offers a way to merge two lists into one similar to <code class="highlighter-rouge">c()</code>, the concatenate function.
+But other than with using <code class="highlighter-rouge">c()</code> items with the same keys will be updated instead of simply added. 
+Thus <code class="highlighter-rouge">modifyList()</code> presents the answer to the question:</p>
+
+<p><strong>In R, how to update items of a list with the values of another list?</strong></p>
+
+<p>Let’s first create two lists that will serve as example.</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">list_a</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span><span class="n">key_1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="m">3</span><span class="p">)</span><span class="w">
+</span><span class="n">list_a</span><span class="w">
+</span><span class="c1">## $key_1</span><span class="w">
+</span><span class="c1">## [1] 1 2 3</span><span class="w">
+
+
+</span><span class="n">list_b</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span><span class="n">key_1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">7</span><span class="o">:</span><span class="m">9</span><span class="p">,</span><span class="w"> </span><span class="n">key_2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"my_string"</span><span class="p">)</span><span class="w">
+</span><span class="n">list_b</span><span class="w">
+</span><span class="c1">## $key_1</span><span class="w">
+</span><span class="c1">## [1] 7 8 9</span><span class="w">
+</span><span class="c1">## </span><span class="w">
+</span><span class="c1">## $key_2</span><span class="w">
+</span><span class="c1">## [1] "my_string"</span><span class="w">
+</span></code></pre></div></div>
+
+<p>Now we can first look at what happens when using <code class="highlighter-rouge">c()</code> to combine the two lists.
+True to its name, the concatenate function, combines the two lists such that every 
+item is part of the newly created list.</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">c</span><span class="p">(</span><span class="n">list_a</span><span class="p">,</span><span class="w"> </span><span class="n">list_b</span><span class="p">)</span><span class="w">
+</span><span class="c1">## $key_1</span><span class="w">
+</span><span class="c1">## [1] 1 2 3</span><span class="w">
+</span><span class="c1">## </span><span class="w">
+</span><span class="c1">## $key_1</span><span class="w">
+</span><span class="c1">## [1] 7 8 9</span><span class="w">
+</span><span class="c1">## </span><span class="w">
+</span><span class="c1">## $key_2</span><span class="w">
+</span><span class="c1">## [1] "my_string"</span><span class="w">
+</span></code></pre></div></div>
+
+<p>Now let’s use <code class="highlighter-rouge">modifyList()</code> on our example data. Instead of three items we now only get two. 
+while the second item of <code class="highlighter-rouge">list_b</code> has simply been added to the new list, the first item 
+of <code class="highlighter-rouge">list_a</code> has been updated (modified) with the value of the item in <code class="highlighter-rouge">list_b</code>.</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">modifyList</span><span class="p">(</span><span class="n">list_a</span><span class="p">,</span><span class="w"> </span><span class="n">list_b</span><span class="p">)</span><span class="w">
+</span><span class="c1">## $key_1</span><span class="w">
+</span><span class="c1">## [1] 7 8 9</span><span class="w">
+</span><span class="c1">## </span><span class="w">
+</span><span class="c1">## $key_2</span><span class="w">
+</span><span class="c1">## [1] "my_string"</span><span class="w">
+</span></code></pre></div></div>
+
+<p><strong>Caveats</strong></p>
+
+<p>There are some caveats to note however. First, let us have a look at the function 
+documentation:</p>
+
+<blockquote>
+  <p>A modified version of x, with the modifications determined as follows (here, list elements are identified by their names). Elements in val which are missing from x are added to x. For elements that are common to both but are not both lists themselves, the component in x is replaced (or possibly deleted, depending on the value of keep.null) by the one in val. For common elements that are in both lists, x[[name]] is replaced by modifyList(x[[name]], val[[name]])</p>
+</blockquote>
+
+<p>The documentation basically describes the behavior we have already observed in our 
+example but it also mentions the <code class="highlighter-rouge">keep.null</code> parameter that per default is set 
+to <code class="highlighter-rouge">FALSE</code>. This parameter emulates the behavior we are used to when deleting items 
+from a list by assigning <code class="highlighter-rouge">NULL</code> to that item, e.g.: <code class="highlighter-rouge">list['key_1'] &lt;- NULL</code>.
+If we want to update a list with another list that has embedded <code class="highlighter-rouge">NULL</code> values 
+that we want to keep, the deletion of those items might come unexpected 
+(on the other hand the value of a none existent item will always be NULL anyways, e.g.: 
+<code class="highlighter-rouge">list()$a</code>, <code class="highlighter-rouge">list()[['a']]</code>).</p>
+
+<p>The second caveat is that <code class="highlighter-rouge">modifyList()</code> will not update unnamed items of a list. 
+This makes sense if you think of <code class="highlighter-rouge">modifyList()</code> as unnamed having no name to match
+values upon. Again, its mostly just a good idea to know, that’s that the way the 
+function works.</p>
+
+<p><strong>Use Cases</strong></p>
+
+<p>Now what is this useful for? I myself often use <code class="highlighter-rouge">modifyList()</code> when I want to 
+pass around whole sets of information which</p>
+
+<p>(1) which have a default set of values and
+(2) might get extended in the future.</p>
+
+<p>That way I can always add options while older versions of options will still 
+work by extending the default options and later on updating the default values 
+with those values I specifiacally want to differ from the defaults.</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">options_default</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> 
+    </span><span class="nf">list</span><span class="p">(</span><span class="w">
+        </span><span class="n">plots</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">,</span><span class="w">
+        </span><span class="n">font_face</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Comic Sans"</span><span class="p">,</span><span class="w">
+        </span><span class="n">author</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"No One In Particular"</span><span class="w">
+    </span><span class="p">)</span><span class="w">
+
+
+</span><span class="n">options_patch</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> 
+    </span><span class="nf">list</span><span class="p">(</span><span class="w">
+        </span><span class="n">author</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Me MySelf And I"</span><span class="w">
+    </span><span class="p">)</span><span class="w">
+    
+</span><span class="n">options_to_use</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">modifyList</span><span class="p">(</span><span class="n">options_default</span><span class="p">,</span><span class="w"> </span><span class="n">options_patch</span><span class="p">)</span><span class="w">
+</span><span class="n">options_to_use</span><span class="w">
+</span><span class="c1">## $plots</span><span class="w">
+</span><span class="c1">## [1] TRUE</span><span class="w">
+</span><span class="c1">## </span><span class="w">
+</span><span class="c1">## $font_face</span><span class="w">
+</span><span class="c1">## [1] "Comic Sans"</span><span class="w">
+</span><span class="c1">## </span><span class="w">
+</span><span class="c1">## $author</span><span class="w">
+</span><span class="c1">## [1] "Me MySelf And I"</span><span class="w">
+</span></code></pre></div></div>
+
+
+    </div>
+    
+    
+    <hr><div id="disqus_thread"></div>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+  </article>
+</main>
+
+
+<footer>
+    <a href="https://petermeissner.de/blog/2020/09/07/web-send-mail-windows/">« R Internet: Yet Another Way To Send Emails On Windows</a>
+    <a href="https://petermeissner.de/blog/2020/02/18/python_ipython_prompts/">Tuning the IPython Terminal Prompts »</a>
+</footer>
+

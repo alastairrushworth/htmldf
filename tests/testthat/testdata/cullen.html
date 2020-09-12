@@ -1,0 +1,1339 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Source Themes Academic 4.7.0">
+
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="Brendan Cullen">
+
+  
+  
+  
+    
+  
+  <meta name="description" content="The what Training Course  Technical Exam  Teaching Exam  Demonstration Lesson: Example Slides  Concept Map  Learner Persona  Formative Assessment     The why Surge in online teaching  Teaching resources galore  Tried and tested  A focus on inclusivity  Community of practice   Get in touch   A while back I wrote about how we need more data science training as grad students in psychology and that one of the best ways for us to get this training is to learn from each other.">
+
+  
+  <link rel="alternate" hreflang="en-us" href="https://bcullen.rbind.io/post/2020-09-03-reflections-on-rstudio-instructor-training/">
+
+  
+
+
+  
+  
+  
+  <meta name="theme-color" content="#88BDBC">
+  
+
+  
+  
+
+  
+  
+  
+  
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/github.min.css" crossorigin="anonymous" title="hl-light">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" disabled>
+        
+      
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.5.1/leaflet.css" integrity="sha256-SHMGCYmST46SoyGgo4YR/9AlK1vf3ff84Aq9yK4hdqM=" crossorigin="anonymous">
+    
+
+    
+
+    
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.1.2/lazysizes.min.js" integrity="sha256-Md1qLToewPeKjfAHU1zyPwOutccPAm5tahnaw7Osw0A=" crossorigin="anonymous" async></script>
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+        
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:100,200,300,400,600,700%7CSource+Code+Pro%7CRoboto%7CRaleway:100,200,300,400,500,600&display=swap">
+  
+
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/academic.min.a3606338dcd06da750a12cbdab3bb3f4.css">
+
+  
+
+
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-150600553-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+
+  function gtag() {
+      dataLayer.push(arguments);
+  }
+
+  function trackOutboundLink(url) {
+    gtag('event', 'click', {
+         'event_category': 'outbound',
+         'event_label': url,
+         'transport_type': 'beacon',
+         'event_callback': function () {
+           document.location = url;
+         }
+    });
+    console.debug("Outbound link clicked: " + url);
+  }
+
+  function onClickCallback(event) {
+    if ((event.target.tagName !== 'A') || (event.target.host === window.location.host)) {
+      return;
+    }
+    trackOutboundLink(event.target);  
+  }
+
+  gtag('js', new Date());
+  gtag('config', 'UA-150600553-1', {});
+
+  
+  document.addEventListener('click', onClickCallback, false);
+</script>
+
+
+  
+
+
+  
+
+  <link rel="manifest" href="/index.webmanifest">
+  <link rel="icon" type="image/png" href="/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_32x32_fill_lanczos_center_2.png">
+  <link rel="apple-touch-icon" type="image/png" href="/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_192x192_fill_lanczos_center_2.png">
+
+  <link rel="canonical" href="https://bcullen.rbind.io/post/2020-09-03-reflections-on-rstudio-instructor-training/">
+
+  
+  
+  
+  
+  
+    
+  
+  
+  <meta property="twitter:card" content="summary_large_image">
+  
+  <meta property="twitter:site" content="@_bcullen">
+  <meta property="twitter:creator" content="@_bcullen">
+  
+  <meta property="og:site_name" content="Brendan Cullen">
+  <meta property="og:url" content="https://bcullen.rbind.io/post/2020-09-03-reflections-on-rstudio-instructor-training/">
+  <meta property="og:title" content="Reflections on RStudio Instructor Training | Brendan Cullen">
+  <meta property="og:description" content="The what Training Course  Technical Exam  Teaching Exam  Demonstration Lesson: Example Slides  Concept Map  Learner Persona  Formative Assessment     The why Surge in online teaching  Teaching resources galore  Tried and tested  A focus on inclusivity  Community of practice   Get in touch   A while back I wrote about how we need more data science training as grad students in psychology and that one of the best ways for us to get this training is to learn from each other."><meta property="og:image" content="https://bcullen.rbind.io/post/2020-09-03-reflections-on-rstudio-instructor-training/featured.jpg">
+  <meta property="twitter:image" content="https://bcullen.rbind.io/post/2020-09-03-reflections-on-rstudio-instructor-training/featured.jpg"><meta property="og:locale" content="en-us">
+  
+    
+      <meta property="article:published_time" content="2020-09-03T00:00:00&#43;00:00">
+    
+    <meta property="article:modified_time" content="2020-09-09T19:34:13-07:00">
+  
+
+  
+
+
+    
+
+
+
+
+
+
+  
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://bcullen.rbind.io/post/2020-09-03-reflections-on-rstudio-instructor-training/"
+  },
+  "headline": "Reflections on RStudio Instructor Training",
+  
+  "image": [
+    "https://bcullen.rbind.io/post/2020-09-03-reflections-on-rstudio-instructor-training/featured.jpg"
+  ],
+  
+  "datePublished": "2020-09-03T00:00:00Z",
+  "dateModified": "2020-09-09T19:34:13-07:00",
+  
+  "author": {
+    "@type": "Person",
+    "name": "Brendan Cullen"
+  },
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "Brendan Cullen",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "img/https://bcullen.rbind.io/"
+    }
+  },
+  "description": "The what Training Course  Technical Exam  Teaching Exam  Demonstration Lesson: Example Slides  Concept Map  Learner Persona  Formative Assessment     The why Surge in online teaching  Teaching resources galore  Tried and tested  A focus on inclusivity  Community of practice   Get in touch   A while back I wrote about how we need more data science training as grad students in psychology and that one of the best ways for us to get this training is to learn from each other."
+}
+</script>
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+
+  <title>Reflections on RStudio Instructor Training | Brendan Cullen</title>
+
+</head>
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" >
+
+  <aside class="search-results" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search">
+        
+      </div>
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+  
+
+
+
+
+
+
+
+<nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
+  <div class="container">
+
+    
+    <div class="d-none d-lg-inline-flex">
+      <a class="navbar-brand" href="/">Brendan Cullen</a>
+    </div>
+    
+
+    
+    <button type="button" class="navbar-toggler" data-toggle="collapse"
+            data-target="#navbar-content" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+    <span><i class="fas fa-bars"></i></span>
+    </button>
+    
+
+    
+    <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+      <a class="navbar-brand" href="/">Brendan Cullen</a>
+    </div>
+    
+
+    
+    
+    <div class="navbar-collapse main-menu-item collapse justify-content-end" id="navbar-content">
+
+      
+      <ul class="navbar-nav d-md-inline-flex">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#about"><span>HOME</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/project_landing"><span>PROJECTS</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/courses/"><span>TEACHING</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link  active" href="/post"><span>BLOG</span></a>
+        </li>
+
+        
+        
+
+        
+        <li class="nav-item dropdown">
+          <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"><span>CV & RÉSUMÉ</span><span class="caret"></span>
+          </a>
+          <div class="dropdown-menu">
+            
+              <a class="dropdown-item" href="/cv/index.html"><span>CV</span></a>
+            
+              <a class="dropdown-item" href="/cv/resume.html"><span>RÉSUMÉ</span></a>
+            
+          </div>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/contact"><span>CONTACT</span></a>
+        </li>
+
+        
+        
+
+      
+
+        
+      </ul>
+    </div>
+
+    <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+      
+      <li class="nav-item">
+        <a class="nav-link js-search" href="#"><i class="fas fa-search" aria-hidden="true"></i></a>
+      </li>
+      
+
+      
+      <li class="nav-item">
+        <a class="nav-link js-dark-toggle" href="#"><i class="fas fa-moon" aria-hidden="true"></i></a>
+      </li>
+      
+
+      
+
+    </ul>
+
+  </div>
+</nav>
+
+
+  <article class="article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+
+<div class="article-container pt-3">
+  <h1>Reflections on RStudio Instructor Training</h1>
+
+  
+  <p class="page-subtitle">tl;dr You should definitely look into it.</p>
+  
+
+  
+
+
+<div class="article-metadata">
+
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+          Last updated on
+      
+    
+    Sep 9, 2020
+  </span>
+  
+
+  
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    10 min read
+  </span>
+  
+
+  
+  
+  
+
+  
+  
+
+</div>
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+<div class="article-header article-container featured-image-wrapper mt-4 mb-4" style="max-width: 720px; max-height: 481px;">
+  <div style="position: relative">
+    <img src="/post/2020-09-03-reflections-on-rstudio-instructor-training/featured_hu2d178527044c16342906a43e9935e301_60431_720x0_resize_q90_lanczos.jpg" alt="" class="featured-image">
+    <span class="article-header-caption"><span>Photo by <a href="https://www.istockphoto.com/portfolio/oatawa?assettype=image&mediatype=photography&sort=mostpopular">oatawa</a> on <a href="https://www.istockphoto.com/">iStock</a></span></span>
+  </div>
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style">
+      
+<script src="/rmarkdown-libs/fitvids/fitvids.min.js"></script>
+
+<div id="TOC">
+<ul>
+<li><a href="#the-what">The <em>what</em></a><ul>
+<li><a href="#training-course">Training Course <svg style="height:0.8em;top:.04em;position:relative;" viewBox="0 0 640 512"><path d="M208 352c-2.39 0-4.78.35-7.06 1.09C187.98 357.3 174.35 360 160 360c-14.35 0-27.98-2.7-40.95-6.91-2.28-.74-4.66-1.09-7.05-1.09C49.94 352-.33 402.48 0 464.62.14 490.88 21.73 512 48 512h224c26.27 0 47.86-21.12 48-47.38.33-62.14-49.94-112.62-112-112.62zm-48-32c53.02 0 96-42.98 96-96s-42.98-96-96-96-96 42.98-96 96 42.98 96 96 96zM592 0H208c-26.47 0-48 22.25-48 49.59V96c23.42 0 45.1 6.78 64 17.8V64h352v288h-64v-64H384v64h-76.24c19.1 16.69 33.12 38.73 39.69 64H592c26.47 0 48-22.25 48-49.59V49.59C640 22.25 618.47 0 592 0z"/></svg></a></li>
+<li><a href="#technical-exam">Technical Exam <svg style="height:0.8em;top:.04em;position:relative;" viewBox="0 0 640 512"><path d="M255.03 261.65c6.25 6.25 16.38 6.25 22.63 0l11.31-11.31c6.25-6.25 6.25-16.38 0-22.63L253.25 192l35.71-35.72c6.25-6.25 6.25-16.38 0-22.63l-11.31-11.31c-6.25-6.25-16.38-6.25-22.63 0l-58.34 58.34c-6.25 6.25-6.25 16.38 0 22.63l58.35 58.34zm96.01-11.3l11.31 11.31c6.25 6.25 16.38 6.25 22.63 0l58.34-58.34c6.25-6.25 6.25-16.38 0-22.63l-58.34-58.34c-6.25-6.25-16.38-6.25-22.63 0l-11.31 11.31c-6.25 6.25-6.25 16.38 0 22.63L386.75 192l-35.71 35.72c-6.25 6.25-6.25 16.38 0 22.63zM624 416H381.54c-.74 19.81-14.71 32-32.74 32H288c-18.69 0-33.02-17.47-32.77-32H16c-8.8 0-16 7.2-16 16v16c0 35.2 28.8 64 64 64h512c35.2 0 64-28.8 64-64v-16c0-8.8-7.2-16-16-16zM576 48c0-26.4-21.6-48-48-48H112C85.6 0 64 21.6 64 48v336h512V48zm-64 272H128V64h384v256z"/></svg></a></li>
+<li><a href="#teaching-exam">Teaching Exam <svg style="height:0.8em;top:.04em;position:relative;" viewBox="0 0 448 512"><path d="M319.4 320.6L224 416l-95.4-95.4C57.1 323.7 0 382.2 0 454.4v9.6c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48v-9.6c0-72.2-57.1-130.7-128.6-133.8zM13.6 79.8l6.4 1.5v58.4c-7 4.2-12 11.5-12 20.3 0 8.4 4.6 15.4 11.1 19.7L3.5 242c-1.7 6.9 2.1 14 7.6 14h41.8c5.5 0 9.3-7.1 7.6-14l-15.6-62.3C51.4 175.4 56 168.4 56 160c0-8.8-5-16.1-12-20.3V87.1l66 15.9c-8.6 17.2-14 36.4-14 57 0 70.7 57.3 128 128 128s128-57.3 128-128c0-20.6-5.3-39.8-14-57l96.3-23.2c18.2-4.4 18.2-27.1 0-31.5l-190.4-46c-13-3.1-26.7-3.1-39.7 0L13.6 48.2c-18.1 4.4-18.1 27.2 0 31.6z"/></svg></a><ul>
+<li><a href="#demonstration-lesson-example">Demonstration Lesson: Example</a><ul>
+<li><a href="#slides">Slides <svg style="height:0.8em;top:.04em;position:relative;" viewBox="0 0 512 512"><path d="M488 64h-8v20c0 6.6-5.4 12-12 12h-40c-6.6 0-12-5.4-12-12V64H96v20c0 6.6-5.4 12-12 12H44c-6.6 0-12-5.4-12-12V64h-8C10.7 64 0 74.7 0 88v336c0 13.3 10.7 24 24 24h8v-20c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v20h320v-20c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v20h8c13.3 0 24-10.7 24-24V88c0-13.3-10.7-24-24-24zM96 372c0 6.6-5.4 12-12 12H44c-6.6 0-12-5.4-12-12v-40c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40zm0-96c0 6.6-5.4 12-12 12H44c-6.6 0-12-5.4-12-12v-40c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40zm0-96c0 6.6-5.4 12-12 12H44c-6.6 0-12-5.4-12-12v-40c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40zm272 208c0 6.6-5.4 12-12 12H156c-6.6 0-12-5.4-12-12v-96c0-6.6 5.4-12 12-12h200c6.6 0 12 5.4 12 12v96zm0-168c0 6.6-5.4 12-12 12H156c-6.6 0-12-5.4-12-12v-96c0-6.6 5.4-12 12-12h200c6.6 0 12 5.4 12 12v96zm112 152c0 6.6-5.4 12-12 12h-40c-6.6 0-12-5.4-12-12v-40c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40zm0-96c0 6.6-5.4 12-12 12h-40c-6.6 0-12-5.4-12-12v-40c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40zm0-96c0 6.6-5.4 12-12 12h-40c-6.6 0-12-5.4-12-12v-40c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40z"/></svg></a></li>
+<li><a href="#concept-map">Concept Map <svg style="height:0.8em;top:.04em;position:relative;" viewBox="0 0 640 512"><path d="M128 352H32c-17.67 0-32 14.33-32 32v96c0 17.67 14.33 32 32 32h96c17.67 0 32-14.33 32-32v-96c0-17.67-14.33-32-32-32zm-24-80h192v48h48v-48h192v48h48v-57.59c0-21.17-17.23-38.41-38.41-38.41H344v-64h40c17.67 0 32-14.33 32-32V32c0-17.67-14.33-32-32-32H256c-17.67 0-32 14.33-32 32v96c0 17.67 14.33 32 32 32h40v64H94.41C73.23 224 56 241.23 56 262.41V320h48v-48zm264 80h-96c-17.67 0-32 14.33-32 32v96c0 17.67 14.33 32 32 32h96c17.67 0 32-14.33 32-32v-96c0-17.67-14.33-32-32-32zm240 0h-96c-17.67 0-32 14.33-32 32v96c0 17.67 14.33 32 32 32h96c17.67 0 32-14.33 32-32v-96c0-17.67-14.33-32-32-32z"/></svg></a></li>
+<li><a href="#learner-persona">Learner Persona <svg style="height:0.8em;top:.04em;position:relative;" viewBox="0 0 448 512"><path d="M224 256c70.7 0 128-57.3 128-128S294.7 0 224 0 96 57.3 96 128s57.3 128 128 128zm89.6 32h-16.7c-22.2 10.2-46.9 16-72.9 16s-50.6-5.8-72.9-16h-16.7C60.2 288 0 348.2 0 422.4V464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48v-41.6c0-74.2-60.2-134.4-134.4-134.4z"/></svg></a></li>
+<li><a href="#formative-assessment">Formative Assessment <svg style="height:0.8em;top:.04em;position:relative;" viewBox="0 0 640 512"><path d="M224 256c70.7 0 128-57.3 128-128S294.7 0 224 0 96 57.3 96 128s57.3 128 128 128zm89.6 32h-16.7c-22.2 10.2-46.9 16-72.9 16s-50.6-5.8-72.9-16h-16.7C60.2 288 0 348.2 0 422.4V464c0 26.5 21.5 48 48 48h274.9c-2.4-6.8-3.4-14-2.6-21.3l6.8-60.9 1.2-11.1 7.9-7.9 77.3-77.3c-24.5-27.7-60-45.5-99.9-45.5zm45.3 145.3l-6.8 61c-1.1 10.2 7.5 18.8 17.6 17.6l60.9-6.8 137.9-137.9-71.7-71.7-137.9 137.8zM633 268.9L595.1 231c-9.3-9.3-24.5-9.3-33.8 0l-37.8 37.8-4.1 4.1 71.8 71.7 41.8-41.8c9.3-9.4 9.3-24.5 0-33.9z"/></svg></a></li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li><a href="#the-why">The <em>why</em></a><ul>
+<li><a href="#surge-in-online-teaching">Surge in online teaching <svg style="height:0.8em;top:.04em;position:relative;" viewBox="0 0 640 512"><path d="M537.6 226.6c4.1-10.7 6.4-22.4 6.4-34.6 0-53-43-96-96-96-19.7 0-38.1 6-53.3 16.2C367 64.2 315.3 32 256 32c-88.4 0-160 71.6-160 160 0 2.7.1 5.4.2 8.1C40.2 219.8 0 273.2 0 336c0 79.5 64.5 144 144 144h368c70.7 0 128-57.3 128-128 0-61.9-44-113.6-102.4-125.4z"/></svg></a></li>
+<li><a href="#teaching-resources-galore">Teaching resources galore <svg style="height:0.8em;top:.04em;position:relative;" viewBox="0 0 576 512"><path d="M485.5 0L576 160H474.9L405.7 0h79.8zm-128 0l69.2 160H149.3L218.5 0h139zm-267 0h79.8l-69.2 160H0L90.5 0zM0 192h100.7l123 251.7c1.5 3.1-2.7 5.9-5 3.3L0 192zm148.2 0h279.6l-137 318.2c-1 2.4-4.5 2.4-5.5 0L148.2 192zm204.1 251.7l123-251.7H576L357.3 446.9c-2.3 2.7-6.5-.1-5-3.2z"/></svg></a></li>
+<li><a href="#tried-and-tested">Tried and tested <svg style="height:0.8em;top:.04em;position:relative;" viewBox="0 0 576 512"><path d="M416 192c0-88.4-93.1-160-208-160S0 103.6 0 192c0 34.3 14.1 65.9 38 92-13.4 30.2-35.5 54.2-35.8 54.5-2.2 2.3-2.8 5.7-1.5 8.7S4.8 352 8 352c36.6 0 66.9-12.3 88.7-25 32.2 15.7 70.3 25 111.3 25 114.9 0 208-71.6 208-160zm122 220c23.9-26 38-57.7 38-92 0-66.9-53.5-124.2-129.3-148.1.9 6.6 1.3 13.3 1.3 20.1 0 105.9-107.7 192-240 192-10.8 0-21.3-.8-31.7-1.9C207.8 439.6 281.8 480 368 480c41 0 79.1-9.2 111.3-25 21.8 12.7 52.1 25 88.7 25 3.2 0 6.1-1.9 7.3-4.8 1.3-2.9.7-6.3-1.5-8.7-.3-.3-22.4-24.2-35.8-54.5z"/></svg></a></li>
+<li><a href="#a-focus-on-inclusivity">A focus on inclusivity <svg style="height:0.8em;top:.04em;position:relative;" viewBox="0 0 640 512"><path d="M488 192H336v56c0 39.7-32.3 72-72 72s-72-32.3-72-72V126.4l-64.9 39C107.8 176.9 96 197.8 96 220.2v47.3l-80 46.2C.7 322.5-4.6 342.1 4.3 357.4l80 138.6c8.8 15.3 28.4 20.5 43.7 11.7L231.4 448H368c35.3 0 64-28.7 64-64h16c17.7 0 32-14.3 32-32v-64h8c13.3 0 24-10.7 24-24v-48c0-13.3-10.7-24-24-24zm147.7-37.4L555.7 16C546.9.7 527.3-4.5 512 4.3L408.6 64H306.4c-12 0-23.7 3.4-33.9 9.7L239 94.6c-9.4 5.8-15 16.1-15 27.1V248c0 22.1 17.9 40 40 40s40-17.9 40-40v-88h184c30.9 0 56 25.1 56 56v28.5l80-46.2c15.3-8.9 20.5-28.4 11.7-43.7z"/></svg></a></li>
+<li><a href="#community-of-practice">Community of practice <svg style="height:0.8em;top:.04em;position:relative;" viewBox="0 0 640 512"><path d="M96 224c35.3 0 64-28.7 64-64s-28.7-64-64-64-64 28.7-64 64 28.7 64 64 64zm448 0c35.3 0 64-28.7 64-64s-28.7-64-64-64-64 28.7-64 64 28.7 64 64 64zm32 32h-64c-17.6 0-33.5 7.1-45.1 18.6 40.3 22.1 68.9 62 75.1 109.4h66c17.7 0 32-14.3 32-32v-32c0-35.3-28.7-64-64-64zm-256 0c61.9 0 112-50.1 112-112S381.9 32 320 32 208 82.1 208 144s50.1 112 112 112zm76.8 32h-8.3c-20.8 10-43.9 16-68.5 16s-47.6-6-68.5-16h-8.3C179.6 288 128 339.6 128 403.2V432c0 26.5 21.5 48 48 48h288c26.5 0 48-21.5 48-48v-28.8c0-63.6-51.6-115.2-115.2-115.2zm-223.7-13.4C161.5 263.1 145.6 256 128 256H64c-35.3 0-64 28.7-64 64v32c0 17.7 14.3 32 32 32h65.9c6.3-47.4 34.9-87.3 75.2-109.4z"/></svg></a></li>
+</ul></li>
+<li><a href="#get-in-touch">Get in touch</a></li>
+</ul>
+</div>
+
+<p>A while back I wrote about how we <a href="https://bcullen.rbind.io/post/2020-03-08-data-science-training-needs-in-grad-school/">need more data science training</a> as grad students in psychology and that one of the best ways for us to get this training is to <a href="https://twitter.com/_bcullen/status/1237414725081653249">learn from each other</a>. This is just one of many reasons why I’m so humbled and excited to have recently become an <a href="https://education.rstudio.com/trainers/people/cullen+brendan/">RStudio Certified Instructor</a> in the tidyverse.</p>
+<p>I’m looking forward to start implementing and sharing what I learned with my fellow grad students, especially at the end of this month when I will be leading an introductory R workshop for the new cohort of first year PhD and master’s students in my department.</p>
+<p>As a small way of paying it forward, I wanted to offer a reflection on what I think makes this training so unique and worthwhile along with a summary of what’s involved and some resources for those who might be interested in knowing more.</p>
+<hr />
+<div id="the-what" class="section level1">
+<h1>The <em>what</em></h1>
+<div class="book">
+<p><br>
+The best place the start is to read about the RStudio Instructor Training and Certification Program <a href="https://education.rstudio.com/trainers/#info">here</a>. The <a href="https://education.rstudio.com/categories/certify/">RStudio Education Blog</a> also has lots of helpful posts about the program.</p>
+</div>
+<p>The process boils down to three steps.</p>
+<div id="training-course" class="section level2">
+<h2>Training Course <svg style="height:0.8em;top:.04em;position:relative;" viewBox="0 0 640 512"><path d="M208 352c-2.39 0-4.78.35-7.06 1.09C187.98 357.3 174.35 360 160 360c-14.35 0-27.98-2.7-40.95-6.91-2.28-.74-4.66-1.09-7.05-1.09C49.94 352-.33 402.48 0 464.62.14 490.88 21.73 512 48 512h224c26.27 0 47.86-21.12 48-47.38.33-62.14-49.94-112.62-112-112.62zm-48-32c53.02 0 96-42.98 96-96s-42.98-96-96-96-96 42.98-96 96 42.98 96 96 96zM592 0H208c-26.47 0-48 22.25-48 49.59V96c23.42 0 45.1 6.78 64 17.8V64h352v288h-64v-64H384v64h-76.24c19.1 16.69 33.12 38.73 39.69 64H592c26.47 0 48-22.25 48-49.59V49.59C640 22.25 618.47 0 592 0z"/></svg></h2>
+<p>The first step is to sign up for the training course, which will likely be held over Zoom and chunked into 3-4 hour segments across 2-3 days. You can access the training materials <a href="https://drive.google.com/drive/folders/13ohFt3D0EJ5PDbMaWTxnHH-hwA7G0IvY">here</a>.</p>
+<p>The training course is an interactive introduction to applying evidence-based teaching methods to data science education, such as <a href="https://docs.google.com/presentation/d/1aOnX-B9XlAzkrlIeZa5db3_X2Dk8cS27k3klvPn1SQI/edit">learner personas</a>, <a href="https://docs.google.com/presentation/d/1k45SqyM-w4DtK7dmedeX7pk_r8B9Aq0FKKCxC04pTRM/edit">concept maps</a>, and <a href="https://docs.google.com/presentation/d/1PBxBFpkB4w-C3_l2rWdGMtjxaxDeu8gVP0K0CHJfbdQ/edit">formative assessment</a> (i.e. short, diagnostic questions or exercises to figure out if learners are forming accurate mental models). The course also covers how to design teaching materials with <a href="https://docs.google.com/presentation/d/1PBxBFpkB4w-C3_l2rWdGMtjxaxDeu8gVP0K0CHJfbdQ/edit#slide=id.g5501944768_0_197">reverse instructional design</a> that takes into account <a href="https://docs.google.com/presentation/d/1t9QTkRfGP9WYQjiXoaVAuceFe3ySVe_wLT7j2MYC8bE/edit#slide=id.g39e398e252_0_14">cognitive load</a>, <a href="https://docs.google.com/presentation/d/1bq599QkDdaWXmw-B8JM5jwdl5In9O-NTxLPT2iES0vY/edit#slide=id.g5479673425_0_87">multiple learning strategies</a>, and issues of <a href="https://docs.google.com/presentation/d/1uYQCbs88aao7Ho4d4mUfYi6hOXhgHWV6noR_-jOaE50/edit">inclusivity and student motivation</a> in the classroom.</p>
+<p><br></p>
+</div>
+<div id="technical-exam" class="section level2">
+<h2>Technical Exam <svg style="height:0.8em;top:.04em;position:relative;" viewBox="0 0 640 512"><path d="M255.03 261.65c6.25 6.25 16.38 6.25 22.63 0l11.31-11.31c6.25-6.25 6.25-16.38 0-22.63L253.25 192l35.71-35.72c6.25-6.25 6.25-16.38 0-22.63l-11.31-11.31c-6.25-6.25-16.38-6.25-22.63 0l-58.34 58.34c-6.25 6.25-6.25 16.38 0 22.63l58.35 58.34zm96.01-11.3l11.31 11.31c6.25 6.25 16.38 6.25 22.63 0l58.34-58.34c6.25-6.25 6.25-16.38 0-22.63l-58.34-58.34c-6.25-6.25-16.38-6.25-22.63 0l-11.31 11.31c-6.25 6.25-6.25 16.38 0 22.63L386.75 192l-35.71 35.72c-6.25 6.25-6.25 16.38 0 22.63zM624 416H381.54c-.74 19.81-14.71 32-32.74 32H288c-18.69 0-33.02-17.47-32.77-32H16c-8.8 0-16 7.2-16 16v16c0 35.2 28.8 64 64 64h512c35.2 0 64-28.8 64-64v-16c0-8.8-7.2-16-16-16zM576 48c0-26.4-21.6-48-48-48H112C85.6 0 64 21.6 64 48v336h512V48zm-64 272H128V64h384v256z"/></svg></h2>
+<p>The technical exam assesses your proficiency in whatever topic for which you are attempting to become a certified instructor. Currently there are options to become a certified instructor in <a href="https://www.tidyverse.org/">tidyverse</a> and <a href="https://shiny.rstudio.com/">shiny</a>, and each has its own accompanying technical exam.</p>
+<p>I took the tidyverse exam, which, broadly speaking, consists of a series of live coding challenges related to using core tidyverse packages for data cleaning and wrangling, data visualization, string manipulation, functional programming, basic statistical modeling, and creating reproducible documents with R Markdown.</p>
+<p>As many others have suggested, a great way to prepare for this exam is to work through the exercises <a href="https://r4ds.had.co.nz/">R for Data Science</a>, particularly for topics that feel rusty to you, and review the community-contributed <a href="https://jrnold.github.io/r4ds-exercise-solutions/">solutions</a>.</p>
+<div class="note">
+<p>I highly recommend going through these sample exams from the RStudio Education Blog start to finish to get a sense of what you might need to review.</p>
+<ul>
+<li><a href="https://education.rstudio.com/blog/2020/02/instructor-certification-exams/#tidyverse-certification-exam">Sample Tidyverse Exam 1</a> | <a href="https://marlycormar.github.io/tidyverse_sample_exam/sample_exam_sols/sols.html">solutions</a></li>
+<li><a href="https://education.rstudio.com/blog/2020/08/more-example-exams/#tidyverse-exam">Sample Tidyverse Exam 2</a> | <a href="https://tidyverse-exam-v2-solutions.netlify.app/">solutions</a></li>
+</ul>
+</div>
+<p><br></p>
+</div>
+<div id="teaching-exam" class="section level2">
+<h2>Teaching Exam <svg style="height:0.8em;top:.04em;position:relative;" viewBox="0 0 448 512"><path d="M319.4 320.6L224 416l-95.4-95.4C57.1 323.7 0 382.2 0 454.4v9.6c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48v-9.6c0-72.2-57.1-130.7-128.6-133.8zM13.6 79.8l6.4 1.5v58.4c-7 4.2-12 11.5-12 20.3 0 8.4 4.6 15.4 11.1 19.7L3.5 242c-1.7 6.9 2.1 14 7.6 14h41.8c5.5 0 9.3-7.1 7.6-14l-15.6-62.3C51.4 175.4 56 168.4 56 160c0-8.8-5-16.1-12-20.3V87.1l66 15.9c-8.6 17.2-14 36.4-14 57 0 70.7 57.3 128 128 128s128-57.3 128-128c0-20.6-5.3-39.8-14-57l96.3-23.2c18.2-4.4 18.2-27.1 0-31.5l-190.4-46c-13-3.1-26.7-3.1-39.7 0L13.6 48.2c-18.1 4.4-18.1 27.2 0 31.6z"/></svg></h2>
+<p>The first certification exam assesses pedagogical skills related to teaching data science with R and requires giving a 15-minute demonstration lesson on a topic of your choice followed by a series of applied questions, which will likely involve creating formative assessments on unseen material (e.g. multiple choice questions and fill-in-the-blank coding exercises), developing concept maps on data science topics and giving feedback on example teaching based on pedagogical theory.</p>
+<div class="note">
+<p>There are also sample teaching exams available.</p>
+<ul>
+<li><a href="https://education.rstudio.com/blog/2020/02/instructor-certification-exams/#teaching-exam">Sample Teaching Exam 1</a></li>
+<li><a href="https://education.rstudio.com/blog/2020/08/more-example-exams/#teaching-exam">Sample Teaching Exam 2</a></li>
+</ul>
+</div>
+<div id="demonstration-lesson-example" class="section level3">
+<h3>Demonstration Lesson: Example</h3>
+<p><em>Column-wise operations with <code>dplyr</code>: Old and New</em></p>
+<p>If you’d like to see an example of a demonstration lesson, below are the materials I created for this portion of the teaching exam. I used <code>penguins</code> from the <a href="https://allisonhorst.github.io/palmerpenguins/"><code>{palmerpenguins}</code></a> package as an example data set. (why? because penguins 🐧 🐧 🐧).</p>
+<div class="github">
+<p><br>
+You can find all of the materials for this lesson and the accompanying code on <a href="https://github.com/brendanhcullen/rstudio-instructor-certification">Github</a>. Feel free to share, adapt and re-use for your own teaching.</p>
+</div>
+<div id="slides" class="section level4">
+<h4>Slides <svg style="height:0.8em;top:.04em;position:relative;" viewBox="0 0 512 512"><path d="M488 64h-8v20c0 6.6-5.4 12-12 12h-40c-6.6 0-12-5.4-12-12V64H96v20c0 6.6-5.4 12-12 12H44c-6.6 0-12-5.4-12-12V64h-8C10.7 64 0 74.7 0 88v336c0 13.3 10.7 24 24 24h8v-20c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v20h320v-20c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v20h8c13.3 0 24-10.7 24-24V88c0-13.3-10.7-24-24-24zM96 372c0 6.6-5.4 12-12 12H44c-6.6 0-12-5.4-12-12v-40c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40zm0-96c0 6.6-5.4 12-12 12H44c-6.6 0-12-5.4-12-12v-40c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40zm0-96c0 6.6-5.4 12-12 12H44c-6.6 0-12-5.4-12-12v-40c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40zm272 208c0 6.6-5.4 12-12 12H156c-6.6 0-12-5.4-12-12v-96c0-6.6 5.4-12 12-12h200c6.6 0 12 5.4 12 12v96zm0-168c0 6.6-5.4 12-12 12H156c-6.6 0-12-5.4-12-12v-96c0-6.6 5.4-12 12-12h200c6.6 0 12 5.4 12 12v96zm112 152c0 6.6-5.4 12-12 12h-40c-6.6 0-12-5.4-12-12v-40c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40zm0-96c0 6.6-5.4 12-12 12h-40c-6.6 0-12-5.4-12-12v-40c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40zm0-96c0 6.6-5.4 12-12 12h-40c-6.6 0-12-5.4-12-12v-40c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40z"/></svg></h4>
+<p>I made heavy use of <a href="https://yihui.org/en/about/">Yihui Xie</a>’s <a href="https://slides.yihui.org/xaringan/"><code>{xaringan}</code></a> 📦, <a href="https://www.garrickadenbuie.com/">Garrick Aden-Buie</a>’s <a href="https://pkg.garrickadenbuie.com/xaringanExtra/#/"><code>{xaringanExtra}</code></a> 📦, and <a href="https://www.kelly-bodwin.com/">Kelly Bodwin</a>’s <a href="https://kbodwin.github.io/flair/index.html"><code>{flair}</code></a> 📦, along with <a href="https://www.allisonhorst.com/">Allison Horst</a>’s unbeatable <a href="https://github.com/allisonhorst/stats-illustrations">artwork</a>. For an excellent <code>{xaringan}</code> tutorial, I recommend you check out <a href="https://arm.rbind.io/slides/xaringan.html#1">these slides</a>, from the R Markdown whisperer herself, <a href="https://alison.rbind.io/">Alison Hill</a>. Note: you absolutely do not have to use <code>{xaringan}</code> to make your slides, and if your lesson includes more images than code, another method for delivering your slides might be better.</p>
+<div class="shareagain" style="min-width:300px;margin:1em auto;">
+<iframe src="https://columnwise-operations-dplyr.netlify.app/" width="1600" height="900" style="border:2px solid currentColor;" loading="lazy" allowfullscreen></iframe>
+<script>fitvids('.shareagain', {players: 'iframe'});</script>
+</div>
+<p>Full slides available <a href="https://columnwise-operations-dplyr.netlify.app/">here</a>.</p>
+<center>
+<br>❖ ❖ ❖<br>
+</center>
+</div>
+<div id="concept-map" class="section level4">
+<h4>Concept Map <svg style="height:0.8em;top:.04em;position:relative;" viewBox="0 0 640 512"><path d="M128 352H32c-17.67 0-32 14.33-32 32v96c0 17.67 14.33 32 32 32h96c17.67 0 32-14.33 32-32v-96c0-17.67-14.33-32-32-32zm-24-80h192v48h48v-48h192v48h48v-57.59c0-21.17-17.23-38.41-38.41-38.41H344v-64h40c17.67 0 32-14.33 32-32V32c0-17.67-14.33-32-32-32H256c-17.67 0-32 14.33-32 32v96c0 17.67 14.33 32 32 32h40v64H94.41C73.23 224 56 241.23 56 262.41V320h48v-48zm264 80h-96c-17.67 0-32 14.33-32 32v96c0 17.67 14.33 32 32 32h96c17.67 0 32-14.33 32-32v-96c0-17.67-14.33-32-32-32zm240 0h-96c-17.67 0-32 14.33-32 32v96c0 17.67 14.33 32 32 32h96c17.67 0 32-14.33 32-32v-96c0-17.67-14.33-32-32-32z"/></svg></h4>
+<p><img src="columnwise_concept_map.png" width="1436" /></p>
+<p>For other community-contributed data science concept maps you can use in your teaching and/or lesson prep, see <a href="https://docs.google.com/presentation/d/1ForBjP0pVhljBLuqOyYfyHw_1rrwJzpWW1ZHzCqAJpU/edit#slide=id.p">here</a>.</p>
+<center>
+<br>❖ ❖ ❖<br>
+</center>
+</div>
+<div id="learner-persona" class="section level4">
+<h4>Learner Persona <svg style="height:0.8em;top:.04em;position:relative;" viewBox="0 0 448 512"><path d="M224 256c70.7 0 128-57.3 128-128S294.7 0 224 0 96 57.3 96 128s57.3 128 128 128zm89.6 32h-16.7c-22.2 10.2-46.9 16-72.9 16s-50.6-5.8-72.9-16h-16.7C60.2 288 0 348.2 0 422.4V464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48v-41.6c0-74.2-60.2-134.4-134.4-134.4z"/></svg></h4>
+<p><img src="learner_persona.png" width="865" /></p>
+<p>For a list of other example learner personas, see <a href="https://rstudio-education.github.io/learner-personas/">here</a>.</p>
+<center>
+<br>❖ ❖ ❖<br>
+</center>
+</div>
+<div id="formative-assessment" class="section level4">
+<h4>Formative Assessment <svg style="height:0.8em;top:.04em;position:relative;" viewBox="0 0 640 512"><path d="M224 256c70.7 0 128-57.3 128-128S294.7 0 224 0 96 57.3 96 128s57.3 128 128 128zm89.6 32h-16.7c-22.2 10.2-46.9 16-72.9 16s-50.6-5.8-72.9-16h-16.7C60.2 288 0 348.2 0 422.4V464c0 26.5 21.5 48 48 48h274.9c-2.4-6.8-3.4-14-2.6-21.3l6.8-60.9 1.2-11.1 7.9-7.9 77.3-77.3c-24.5-27.7-60-45.5-99.9-45.5zm45.3 145.3l-6.8 61c-1.1 10.2 7.5 18.8 17.6 17.6l60.9-6.8 137.9-137.9-71.7-71.7-137.9 137.8zM633 268.9L595.1 231c-9.3-9.3-24.5-9.3-33.8 0l-37.8 37.8-4.1 4.1 71.8 71.7 41.8-41.8c9.3-9.4 9.3-24.5 0-33.9z"/></svg></h4>
+<p>I created <a href="https://brendancullen.shinyapps.io/columnwise_operations_formative_assessment/">these interactive exercises</a> using the <a href="https://rstudio.github.io/learnr/"><code>learnr</code></a> package, which I highly recommend you check out. It’s quite powerful and versatile.</p>
+<p>Here’s a quick look.</p>
+<p><img src="columnwise_formative_assessment.gif" /></p>
+<hr />
+</div>
+</div>
+</div>
+</div>
+<div id="the-why" class="section level1">
+<h1>The <em>why</em></h1>
+<p>Ok, this might all seem like quite a bit of time and effort. Why go to the trouble of doing this training? In a word, <a href="https://third-bit.com/about/">Greg Wilson</a>.</p>
+<p>Greg, who co-founded the <a href="https://software-carpentry.org/">Software Carpentry</a>, has over 35 years of experience in education in data science and software engineering, and it shows. He is now part of the <a href="https://education.rstudio.com/">RStudio Education</a> team, where he runs the the instructor training and certification program. One of the reasons this program stands out is that it benefits from Greg’s unique expertise and careful curation of decades of research on evidence-based teaching methods that he has translated into clear and actionable advice. I can guarantee that you will learn a LOT from him.</p>
+<p>Greg’s most important <a href="https://third-bit.com/10rules/#teaching">advice for teaching</a>, in my opinion:</p>
+<blockquote>
+<p>“Be kind: all else is details.”</p>
+</blockquote>
+<p><strong>Now, here are some other reasons why you should do this training…</strong></p>
+<div id="surge-in-online-teaching" class="section level2">
+<h2>Surge in online teaching <svg style="height:0.8em;top:.04em;position:relative;" viewBox="0 0 640 512"><path d="M537.6 226.6c4.1-10.7 6.4-22.4 6.4-34.6 0-53-43-96-96-96-19.7 0-38.1 6-53.3 16.2C367 64.2 315.3 32 256 32c-88.4 0-160 71.6-160 160 0 2.7.1 5.4.2 8.1C40.2 219.8 0 273.2 0 336c0 79.5 64.5 144 144 144h368c70.7 0 128-57.3 128-128 0-61.9-44-113.6-102.4-125.4z"/></svg></h2>
+<p>Interest in data science education seems to be ever-increasing. The fact that COVID-19 has forced most education to go online might actually present an opportunity to meet this demand in a more scalable and (hopefully more accessible way that doesn’t incur the traditional limitations of travel costs or room capacity. Of course, online education comes with a host of inherent challenges. The training course includes a <a href="https://docs.google.com/presentation/d/1kbYaHv47Vt59JxqXF7U7pQl5XOwsctzpP740iVM7Bc8/edit#slide=id.g55ddde1eae_0_2">whole section</a> on this. I also recommend you check out this <a href="https://rstudio.com/resources/webinars/teaching-online-at-short-notice/">RStudio webinar</a> and accompanying <a href="https://education.rstudio.com/blog/2020/03/teaching-online-on-short-notice/">blog post</a> along with answers to some <a href="https://education.rstudio.com/blog/2020/03/online-teaching-qa/">frequently asked questions</a> about teaching online.</p>
+<p>As online data science education is becoming increasingly the norm, it seems natural to assume that there will be a need for more certified instructors to meet the growing demand.</p>
+<center>
+<br>❖ ❖ ❖<br>
+</center>
+</div>
+<div id="teaching-resources-galore" class="section level2">
+<h2>Teaching resources galore <svg style="height:0.8em;top:.04em;position:relative;" viewBox="0 0 576 512"><path d="M485.5 0L576 160H474.9L405.7 0h79.8zm-128 0l69.2 160H149.3L218.5 0h139zm-267 0h79.8l-69.2 160H0L90.5 0zM0 192h100.7l123 251.7c1.5 3.1-2.7 5.9-5 3.3L0 192zm148.2 0h279.6l-137 318.2c-1 2.4-4.5 2.4-5.5 0L148.2 192zm204.1 251.7l123-251.7H576L357.3 446.9c-2.3 2.7-6.5-.1-5-3.2z"/></svg></h2>
+<p>Another great reason to become a certified instructor is that, as a data science educator, you have a huge and ever-increasing bank of resources at your disposal. What’s more, as a certified instructor, you are eligible for free licenses to <a href="https://rstudio.com/products/">RStudio Pro products</a> and a significant discount for <a href="https://rstudio.cloud/">RStudio Cloud</a>. Here are just some of the great teaching tools from RStudio and the #rstats community.</p>
+<div class="bookmark">
+<p><br>
+The <a href="https://education.rstudio.com/blog/">RStudio Education Blog</a> is a 💎 TREASURE TROVE 💎 of resources. Add it to your bookmarks immediately.</p>
+</div>
+<p><strong>Teaching with RStudio Cloud</strong></p>
+<ul>
+<li><a href="https://rstudio.com/resources/webinars/teaching-r-online-with-rstudio-cloud/">webinar</a> and accompanying <a href="https://education.rstudio.com/blog/2020/04/teaching-with-rstudio-cloud-q-a/">blog post</a>, courtesy of <a href="https://www2.stat.duke.edu/~mc301/">Mine Çetinkaya-Rundel</a></li>
+</ul>
+<p><strong>Interactive lessons with <code>learnr</code></strong></p>
+<ul>
+<li><p><a href="https://education.rstudio.com/blog/2020/05/learnr-for-remote/">tutorial and demonstration</a>, courtesy of <a href="https://www.allisonhorst.com/">Allison Horst</a></p></li>
+<li><p><a href="https://education.rstudio.com/blog/2020/06/summer-camp-hs/">lessons learned</a> from using <code>learnr</code> to teach high schoolers, courtesy of <a href="https://www.ezgikaraesmen.com/">Ezgi Karaesmen</a></p></li>
+<li><p><a href="https://education.rstudio.com/blog/2020/07/learning-learnr/">a deep dive</a> into <code>learnr</code>, courtesy of <a href="http://nischalshrestha.me/">Nischal Shrestha</a></p></li>
+<li><p><a href="https://rstudio-education.github.io/gradethis/">{gradethis} package</a> for easily grading <code>learnr</code> exercises</p></li>
+</ul>
+<p><strong>Openly licensed teaching materials</strong></p>
+<ul>
+<li><p><a href="https://education.rstudio.com/blog/2020/05/remote-roundup/">a thorough summary</a> of recent online courses/workshops, courtesy of <a href="https://alison.rbind.io/">Alison Hill</a></p></li>
+<li><p><a href="https://datasciencebox.org/">Data Science in a Box</a>, courtesy of <a href="https://www2.stat.duke.edu/~mc301/">Mine Çetinkaya-Rundel</a></p></li>
+<li><p><a href="https://stat545.com/">STAT 545</a>, courtesy of <a href="https://jennybryan.org/about/">Jenny Bryan</a></p></li>
+<li><p><a href="https://education.rstudio.com/teach/materials/#workshops">Many others</a>, courtesy of the RStudio Education Team</p></li>
+</ul>
+<p><strong>rstudio4edu</strong></p>
+<ul>
+<li>a <a href="https://rstudio4edu.github.io/rstudio4edu-book/">book-in-progress</a>, courtesy of <a href="https://desiree.rbind.io/">Desirée De Leon</a> and <a href="https://alison.rbind.io/">Alison Hill</a>. This is in a category of its own because it’s an absolute gold mine.</li>
+</ul>
+<center>
+<br>❖ ❖ ❖<br>
+</center>
+</div>
+<div id="tried-and-tested" class="section level2">
+<h2>Tried and tested <svg style="height:0.8em;top:.04em;position:relative;" viewBox="0 0 576 512"><path d="M416 192c0-88.4-93.1-160-208-160S0 103.6 0 192c0 34.3 14.1 65.9 38 92-13.4 30.2-35.5 54.2-35.8 54.5-2.2 2.3-2.8 5.7-1.5 8.7S4.8 352 8 352c36.6 0 66.9-12.3 88.7-25 32.2 15.7 70.3 25 111.3 25 114.9 0 208-71.6 208-160zm122 220c23.9-26 38-57.7 38-92 0-66.9-53.5-124.2-129.3-148.1.9 6.6 1.3 13.3 1.3 20.1 0 105.9-107.7 192-240 192-10.8 0-21.3-.8-31.7-1.9C207.8 439.6 281.8 480 368 480c41 0 79.1-9.2 111.3-25 21.8 12.7 52.1 25 88.7 25 3.2 0 6.1-1.9 7.3-4.8 1.3-2.9.7-6.3-1.5-8.7-.3-.3-22.4-24.2-35.8-54.5z"/></svg></h2>
+<p>The instructor training program started back in February 2019 and <a href="https://education.rstudio.com/blog/2020/08/august-2020-instructors/">as of August 2020</a> there are almost 150 certified tidyverse instructors and 20 shiny instructors. This means that the program has gone through multiple iterations and has made data-driven improvements based on <a href="https://education.rstudio.com/blog/2020/07/instructor-certification-findings/">feedback from participants</a> – especially in the realm of supporting online teaching in the aftermath of COVID-19. So you can rest assured that, while it is still a relatively new program, all the kinks have been worked out.</p>
+<p>Plus, I’m sure that the content and structure of the training will continue to adapt to the needs and priorities of the community, and you might even be lucky enough to catch a special guest presentation. For example…</p>
+<center>
+<blockquote class="twitter-tweet">
+<p lang="en" dir="ltr">
+Enjoyed sharing some tips today on “Teaching in Production” for our <a href="https://twitter.com/RStudioEDU?ref_src=twsrc%5Etfw"><span class="citation">@RStudioEDU</span></a> certified-instructors-to-be (another <a href="https://twitter.com/thomas_mock?ref_src=twsrc%5Etfw"><span class="citation">@thomas_mock</span></a> distill success story!) <br><br>Thx to <a href="https://twitter.com/gvwilson?ref_src=twsrc%5Etfw"><span class="citation">@gvwilson</span></a> for the invite, <a href="https://twitter.com/allison_horst?ref_src=twsrc%5Etfw"><span class="citation">@allison_horst</span></a> for <a href="https://twitter.com/hashtag/rmarkdown?src=hash&amp;ref_src=twsrc%5Etfw">#rmarkdown</a> 🦔(❣️), and <a href="https://twitter.com/dcossyle?ref_src=twsrc%5Etfw"><span class="citation">@dcossyle</span></a> for all her 🎨.<a href="https://t.co/sngAwlcSqN">https://t.co/sngAwlcSqN</a>
+</p>
+— Alison Presmanes Hill (<span class="citation">@apreshill</span>) <a href="https://twitter.com/apreshill/status/1296553009522962432?ref_src=twsrc%5Etfw">August 20, 2020</a>
+</blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</center>
+<center>
+<br>❖ ❖ ❖<br>
+</center>
+</div>
+<div id="a-focus-on-inclusivity" class="section level2">
+<h2>A focus on inclusivity <svg style="height:0.8em;top:.04em;position:relative;" viewBox="0 0 640 512"><path d="M488 192H336v56c0 39.7-32.3 72-72 72s-72-32.3-72-72V126.4l-64.9 39C107.8 176.9 96 197.8 96 220.2v47.3l-80 46.2C.7 322.5-4.6 342.1 4.3 357.4l80 138.6c8.8 15.3 28.4 20.5 43.7 11.7L231.4 448H368c35.3 0 64-28.7 64-64h16c17.7 0 32-14.3 32-32v-64h8c13.3 0 24-10.7 24-24v-48c0-13.3-10.7-24-24-24zm147.7-37.4L555.7 16C546.9.7 527.3-4.5 512 4.3L408.6 64H306.4c-12 0-23.7 3.4-33.9 9.7L239 94.6c-9.4 5.8-15 16.1-15 27.1V248c0 22.1 17.9 40 40 40s40-17.9 40-40v-88h184c30.9 0 56 25.1 56 56v28.5l80-46.2c15.3-8.9 20.5-28.4 11.7-43.7z"/></svg></h2>
+<p>The focus of this training is not technical competency – it’s how be an effective teacher. One of the most critical components of teaching effectively is to be inclusive of all learners, regardless of race, religion, sexual orientation, gender identity, disability, etc.</p>
+<p>The <a href="https://twitter.com/R4DScommunity">#rstats learning community</a> is known for being welcoming and inclusive, so it’s no surprise that the training course emphasizes these values as well. What I appreciate most about this aspect of the training is that it will challenge you to think about questions and hypothetical scenarios to which there are no easy answers.</p>
+<p>However, it is extremely important to be pushed out of your comfort zone to consciously and proactively reflect on how you will confront issues such as systemic racism and institutionalized violence against BIPOC communities, sexism and a deeply ingrained culture of sexual harassment. These issues will inevitably arise in one form or another in your classroom or teaching setting, and it’s absolutely necessary that we confront these challenges now more than ever. Check out <a href="https://docs.google.com/presentation/d/1uYQCbs88aao7Ho4d4mUfYi6hOXhgHWV6noR_-jOaE50/edit#slide=id.g56df7927dc_0_1">this slide</a> and <a href="https://www.youtube.com/watch?v=EhNisFJPfrs">this talk</a> on effective allyship when you get a chance.</p>
+<div class="book">
+<p><br>
+For further reading on inclusivity and social justice in data science education, I recommend you read <a href="https://education.rstudio.com/blog/2020/06/native-classroom/">this post</a> by <a href="http://www.nicolethompsongonzalez.com/">Nicole Thompson Gonzalez</a> and <a href="https://medium.com/@yimregister/10-ways-to-integrate-social-justice-into-teaching-data-science-f48d13f2337c">this one</a> by <a href="http://students.washington.edu/yreg/">Yim Register</a>. Also check out the amazing work that <a href="https://jooyoungseo.com/">JooYoung Seo</a>, the first blind RStudio Certified Instructor, has been doing to make data science tools <a href="https://education.rstudio.com/blog/2020/07/a11y-midterm/">more accessible</a>.</p>
+</div>
+<p>Another exciting feature is that the training materials are now <a href="https://drive.google.com/drive/folders/1qwTEMqoqphF9qu7f0lSCSTmikIf5chBi">available in Spanish</a>, courtesy of <a href="https://lacion.rbind.io/">Laura Acion</a>, and hopefully other languages soon, as interest in the training seems to be growing around the world. A similar ongoing project to check out is <a href="https://carpentries.github.io/glosario/"><code>glosario</code></a>, an open source glossary of data science terms translated in multiple languages that can be used for teaching (read more <a href="https://education.rstudio.com/blog/2020/07/announcing-glosario/">here</a>).</p>
+<center>
+<br>❖ ❖ ❖<br>
+</center>
+</div>
+<div id="community-of-practice" class="section level2">
+<h2>Community of practice <svg style="height:0.8em;top:.04em;position:relative;" viewBox="0 0 640 512"><path d="M96 224c35.3 0 64-28.7 64-64s-28.7-64-64-64-64 28.7-64 64 28.7 64 64 64zm448 0c35.3 0 64-28.7 64-64s-28.7-64-64-64-64 28.7-64 64 28.7 64 64 64zm32 32h-64c-17.6 0-33.5 7.1-45.1 18.6 40.3 22.1 68.9 62 75.1 109.4h66c17.7 0 32-14.3 32-32v-32c0-35.3-28.7-64-64-64zm-256 0c61.9 0 112-50.1 112-112S381.9 32 320 32 208 82.1 208 144s50.1 112 112 112zm76.8 32h-8.3c-20.8 10-43.9 16-68.5 16s-47.6-6-68.5-16h-8.3C179.6 288 128 339.6 128 403.2V432c0 26.5 21.5 48 48 48h288c26.5 0 48-21.5 48-48v-28.8c0-63.6-51.6-115.2-115.2-115.2zm-223.7-13.4C161.5 263.1 145.6 256 128 256H64c-35.3 0-64 28.7-64 64v32c0 17.7 14.3 32 32 32h65.9c6.3-47.4 34.9-87.3 75.2-109.4z"/></svg></h2>
+<p>To extend the idea of including <em>everyone</em> who wants to learn data science, we must be active in building teaching communities that extend beyond just the walls of academic institutions.</p>
+<p>RStudio’s <a href="https://education.rstudio.com/teach/#:~:text=RStudio&#39;s%20mission%20is%20to%20equip,economy%20that%20rewards%20data%20literacy.&amp;text=All%20of%20RStudio&#39;s%20resources%20are,materials%20in%20their%20own%20ways.">mission</a> is to</p>
+<blockquote>
+<p>“equip everyone, regardless of means, to participate in a global economy that rewards data literacy.”</p>
+</blockquote>
+<p>A more concrete goal, put forth by <a href="https://education.rstudio.com/trainers/people/howe+carl/">Carl Howe</a>, Director of Education at RStudio, is to train the <a href="https://rstudio.com/resources/rstudioconf-2019/the-next-million-r-users/">next million R users</a>. In becoming an RStudio certified instructor, you can better position yourself to actively participate in reaching this goal. But it’s worth reflecting on the fact that teaching and learning doesn’t happen in a vacuum – this is where the idea of community comes in. In my opinion, the fact that R users around the world already have a strong sense of community will make it that much easier to welcome new learners into the fold and make it more likely that they themselves will start to train others one day.</p>
+<div class="book">
+<p><br>
+Read more about building a community of practice <a href="https://teachtogether.tech/en/index.html#s:community">here</a>.</p>
+</div>
+<hr />
+<p><em>P.S.</em> If you need yet another reason to do this training, you get a fancy certificate at the end. ✨</p>
+<p><img src="certificate.png" /></p>
+<hr />
+</div>
+</div>
+<div id="get-in-touch" class="section level1">
+<h1>Get in touch</h1>
+<p>Please feel free to <a href="https://twitter.com/_bcullen">reach out</a> if you are thinking of participating in the training yourself and want to hear more from someone who’s gone through it recently. I would be glad to chat any time!</p>
+<p><img src="https://media.giphy.com/media/3o7btQsLqXMJAPu6Na/giphy.gif" /></p>
+</div>
+
+    </div>
+
+    
+
+
+
+
+
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="/tags/data-science/">data science</a>
+  
+  <a class="badge badge-light" href="/tags/education/">education</a>
+  
+  <a class="badge badge-light" href="/tags/r/">R</a>
+  
+</div>
+
+
+
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=https://bcullen.rbind.io/post/2020-09-03-reflections-on-rstudio-instructor-training/&amp;text=Reflections%20on%20RStudio%20Instructor%20Training" target="_blank" rel="noopener" class="share-btn-twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=https://bcullen.rbind.io/post/2020-09-03-reflections-on-rstudio-instructor-training/&amp;t=Reflections%20on%20RStudio%20Instructor%20Training" target="_blank" rel="noopener" class="share-btn-facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="/cdn-cgi/l/email-protection#556a2620373f30362168073033393036213c3a3b267067653a3b70676507062120313c3a7067651c3b2621272036213a277067650127343c3b3c3b32733438256e373a312c683d212125266f7a7a3736203939303b7b27373c3b317b3c3a7a253a26217a6765676578656c78656678273033393036213c3a3b26783a3b7827262120313c3a783c3b2621272036213a27782127343c3b3c3b327a" target="_blank" rel="noopener" class="share-btn-email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=https://bcullen.rbind.io/post/2020-09-03-reflections-on-rstudio-instructor-training/&amp;title=Reflections%20on%20RStudio%20Instructor%20Training" target="_blank" rel="noopener" class="share-btn-linkedin">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://web.whatsapp.com/send?text=Reflections%20on%20RStudio%20Instructor%20Training%20https://bcullen.rbind.io/post/2020-09-03-reflections-on-rstudio-instructor-training/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=https://bcullen.rbind.io/post/2020-09-03-reflections-on-rstudio-instructor-training/&amp;title=Reflections%20on%20RStudio%20Instructor%20Training" target="_blank" rel="noopener" class="share-btn-weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  
+  
+    
+  
+  
+  
+  <div class="media author-card content-widget-hr">
+    
+      
+      <img class="avatar mr-3 avatar-circle" src="/authors/admin/avatar_hue4061dab9af150946e172a410a9c07a4_141498_270x270_fill_q90_lanczos_center.jpg" alt="Avatar">
+    
+
+    <div class="media-body">
+      <h5 class="card-title"><a href="https://bcullen.rbind.io/">Brendan Cullen</a></h5>
+      <h6 class="card-subtitle">Doctoral Student | NSF GRFP Fellow</h6>
+      <p class="card-text">Psychology PhD student and aspiring data scientist studying precision medicine approaches to health behavior change.</p>
+      <ul class="network-icon" aria-hidden="true">
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+    <li>
+      <a href="/cdn-cgi/l/email-protection#b3d1d0c6dfdfd6ddf3c6dcc1d6d4dcdd9dd6d7c6">
+        <i class="fas fa-envelope"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://twitter.com/_bcullen" target="_blank" rel="noopener">
+        <i class="fab fa-twitter"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://github.com/brendanhcullen" target="_blank" rel="noopener">
+        <i class="fab fa-github"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://www.linkedin.com/in/bcull/" target="_blank" rel="noopener">
+        <i class="fab fa-linkedin-in"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://scholar.google.com/citations?user=02RYe4UAAAAJ&amp;hl=en" target="_blank" rel="noopener">
+        <i class="ai ai-google-scholar"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://osf.io/npcuz" target="_blank" rel="noopener">
+        <i class="ai ai-osf"></i>
+      </a>
+    </li>
+  
+</ul>
+
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+  
+  
+  <div class="article-widget content-widget-hr">
+    <h3>Related</h3>
+    <ul>
+      
+      <li><a href="/post/2020-03-08-data-science-training-needs-in-grad-school/">Data Science Training in Psychology</a></li>
+      
+      <li><a href="/project/rstudio-instructor-certification/">RStudio Instructor Certification</a></li>
+      
+      <li><a href="/project/data-viz-dashboard/">Data Vizualization Dashboard</a></li>
+      
+      <li><a href="/project/k-means-clustering-dashboard/">K-means Clustering Shiny Dashboard</a></li>
+      
+      <li><a href="/project/first-year-project/">Comparing Cognitive and Affective Predictors of Craving</a></li>
+      
+    </ul>
+  </div>
+  
+
+
+
+  </div>
+</article>
+
+      
+
+    
+    
+    
+      <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+
+      
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js" integrity="sha256-1zu+3BnLYV9LdiY85uXMzii3bdrkelyp37e0ZyTAQh0=" crossorigin="anonymous"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/languages/r.min.js"></script>
+        
+      
+
+    
+
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.5.1/leaflet.js" integrity="sha256-EErZamuLefUnbMBQbsEqu1USa+btR2oIlCpBJbyD4/g=" crossorigin="anonymous"></script>
+    
+
+    
+    
+    <script>const code_highlighting = true;</script>
+    
+
+    
+    
+    
+    
+    
+    
+    <script>
+      const search_config = {"indexURI":"/index.json","minLength":1,"threshold":0.3};
+      const i18n = {"no_results":"No results found","placeholder":"Search...","results":"results found"};
+      const content_type = {
+        'post': "Posts",
+        'project': "Projects",
+        'publication' : "Publications",
+        'talk' : "Talks"
+        };
+    </script>
+    
+
+    
+    
+
+    
+    
+    <script id="search-hit-fuse-template" type="text/x-template">
+      <div class="search-hit" id="summary-{{key}}">
+      <div class="search-hit-content">
+        <div class="search-hit-name">
+          <a href="{{relpermalink}}">{{title}}</a>
+          <div class="article-metadata search-hit-type">{{type}}</div>
+          <p class="search-hit-description">{{snippet}}</p>
+        </div>
+      </div>
+      </div>
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    
+    
+    
+    <script src="/js/academic.min.a0d331bcd05dbe8b31e244f796710f08.js"></script>
+
+    
+
+
+
+
+
+
+  
+  
+  <div class="container">
+    <footer class="site-footer">
+  
+
+  <p class="powered-by">
+    © 2020 &middot; 
+
+    Powered by the
+    <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for
+    <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>.
+
+    
+    <span class="float-right" aria-hidden="true">
+      <a href="#" class="back-to-top">
+        <span class="button_icon">
+          <i class="fas fa-chevron-up fa-2x"></i>
+        </span>
+      </a>
+    </span>
+    
+  </p>
+</footer>
+
+  </div>
+  
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

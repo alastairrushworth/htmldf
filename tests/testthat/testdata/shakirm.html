@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html class="notie67" lang="en-GB">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width"><title>The Spectator &larr; Shakir&#039;s Machine Learning Blog</title>
+<link rel="profile" href="http://gmpg.org/xfn/11" /><link rel="stylesheet" type="text/css" media="all" href="http://blog.shakirm.com/wp-content/uploads/montezuma/style.css" /><link rel="shortcut icon" href="http://blog.shakirm.com/wp-content/uploads/2015/11/favicon-1.png" type="image/ico" />
+<link rel="pingback" href="http://blog.shakirm.com/xmlrpc.php" />
+<link rel='dns-prefetch' href='//s0.wp.com' />
+<link rel='dns-prefetch' href='//secure.gravatar.com' />
+<link rel='dns-prefetch' href='//platform-api.sharethis.com' />
+<link rel='dns-prefetch' href='//s.w.org' />
+<link rel="alternate" type="application/rss+xml" title="The Spectator &raquo; Feed" href="http://blog.shakirm.com/feed/" />
+<link rel="alternate" type="application/rss+xml" title="The Spectator &raquo; Comments Feed" href="http://blog.shakirm.com/comments/feed/" />
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/12.0.0-1\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/12.0.0-1\/svg\/","svgExt":".svg","source":{"concatemoji":"http:\/\/blog.shakirm.com\/wp-includes\/js\/wp-emoji-release.min.js?ver=5.4.2"}};
+			/*! This file is auto-generated */
+			!function(e,a,t){var r,n,o,i,p=a.createElement("canvas"),s=p.getContext&&p.getContext("2d");function c(e,t){var a=String.fromCharCode;s.clearRect(0,0,p.width,p.height),s.fillText(a.apply(this,e),0,0);var r=p.toDataURL();return s.clearRect(0,0,p.width,p.height),s.fillText(a.apply(this,t),0,0),r===p.toDataURL()}function l(e){if(!s||!s.fillText)return!1;switch(s.textBaseline="top",s.font="600 32px Arial",e){case"flag":return!c([127987,65039,8205,9895,65039],[127987,65039,8203,9895,65039])&&(!c([55356,56826,55356,56819],[55356,56826,8203,55356,56819])&&!c([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]));case"emoji":return!c([55357,56424,55356,57342,8205,55358,56605,8205,55357,56424,55356,57340],[55357,56424,55356,57342,8203,55358,56605,8203,55357,56424,55356,57340])}return!1}function d(e){var t=a.createElement("script");t.src=e,t.defer=t.type="text/javascript",a.getElementsByTagName("head")[0].appendChild(t)}for(i=Array("flag","emoji"),t.supports={everything:!0,everythingExceptFlag:!0},o=0;o<i.length;o++)t.supports[i[o]]=l(i[o]),t.supports.everything=t.supports.everything&&t.supports[i[o]],"flag"!==i[o]&&(t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&t.supports[i[o]]);t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&!t.supports.flag,t.DOMReady=!1,t.readyCallback=function(){t.DOMReady=!0},t.supports.everything||(n=function(){t.readyCallback()},a.addEventListener?(a.addEventListener("DOMContentLoaded",n,!1),e.addEventListener("load",n,!1)):(e.attachEvent("onload",n),a.attachEvent("onreadystatechange",function(){"complete"===a.readyState&&t.readyCallback()})),(r=t.source||{}).concatemoji?d(r.concatemoji):r.wpemoji&&r.twemoji&&(d(r.twemoji),d(r.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+	<link rel='stylesheet' id='selection-sharer-css'  href='http://blog.shakirm.com/wp-content/plugins/selection-sharer/css/selection-sharer.css?ver=0.1' type='text/css' media='all' />
+<link rel='stylesheet' id='wp-block-library-css'  href='http://blog.shakirm.com/wp-includes/css/dist/block-library/style.min.css?ver=5.4.2' type='text/css' media='all' />
+<link rel='stylesheet' id='abt-frontend-styles-css'  href='http://blog.shakirm.com/wp-content/plugins/academic-bloggers-toolkit/css/frontend.css?ver=4.13.3' type='text/css' media='all' />
+<style id='abt-frontend-styles-inline-css' type='text/css'>
+.abt-tooltip a:hover {
+}
+</style>
+<link rel='stylesheet' id='social-logos-css'  href='http://blog.shakirm.com/wp-content/plugins/jetpack/_inc/social-logos/social-logos.min.css?ver=1' type='text/css' media='all' />
+<link rel='stylesheet' id='jetpack_css-css'  href='http://blog.shakirm.com/wp-content/plugins/jetpack/css/jetpack.css?ver=7.4.2' type='text/css' media='all' />
+<link rel='stylesheet' id='googleWebFonts-css'  href='//fonts.googleapis.com/css?family=Merriweather:300,300italic,400,italic,700,700italic,900,900italic&subset=latin,latin-ext,cyrillic,cyrillic-ext&ver=2' type='text/css' media='all' />
+<script type='text/javascript' src='http://blog.shakirm.com/wp-includes/js/jquery/jquery.js?ver=1.12.4-wp'></script>
+<script type='text/javascript' src='http://blog.shakirm.com/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.4.1'></script>
+<script type='text/javascript' src='http://blog.shakirm.com/wp-includes/js/jquery/ui/core.min.js?ver=1.11.4'></script>
+<script type='text/javascript' src='http://blog.shakirm.com/wp-includes/js/jquery/ui/widget.min.js?ver=1.11.4'></script>
+<script type='text/javascript' src='http://blog.shakirm.com/wp-includes/js/jquery/ui/effect.min.js?ver=1.11.4'></script>
+<script type='text/javascript' src='http://blog.shakirm.com/wp-content/themes/montezuma/javascript/smooth-menu.js?ver=5.4.2'></script>
+<script type='text/javascript' src='http://blog.shakirm.com/wp-content/uploads/montezuma/javascript.js?ver=5.4.2'></script>
+<script type='text/javascript' src='//platform-api.sharethis.com/js/sharethis.js#product=ga&#038;property=5f3021f078e5f200121a8378'></script>
+<link rel='https://api.w.org/' href='http://blog.shakirm.com/wp-json/' />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://blog.shakirm.com/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://blog.shakirm.com/wp-includes/wlwmanifest.xml" /> 
+<meta name="generator" content="WordPress 5.4.2" />
+<link rel='shortlink' href='https://wp.me/3hD0L' />
+<style type="text/css">
+			.wpsdc-drop-cap {
+				float : left;				
+				padding : 0.25em 0.05em 0.25em 0;				
+				font-size : 5em;
+				line-height : 0.4em;color : #3d82bf;}
+		</style>
+<link rel='dns-prefetch' href='//v0.wordpress.com'/>
+
+<!-- Jetpack Open Graph Tags -->
+<meta property="og:type" content="website" />
+<meta property="og:title" content="The Spectator" />
+<meta property="og:description" content="Shakir&#039;s Machine Learning Blog" />
+<meta property="og:url" content="http://blog.shakirm.com/" />
+<meta property="og:site_name" content="The Spectator" />
+<meta property="og:image" content="https://s0.wp.com/i/blank.jpg" />
+<meta property="og:locale" content="en_GB" />
+<meta name="twitter:site" content="@shakir_za" />
+
+<!-- End Jetpack Open Graph Tags -->
+</head>
+	
+<body class="home blog">
+
+<!--<div id="container">-->
+
+<div id="banner-bg" class="cf">
+	<div id="banner" class="row">
+		<div id="logo-area" class="col5">
+			<h1 id="sitetitle">
+				<a href="http://blog.shakirm.com">The Spectator</a>
+			</h1>
+			<p id="tagline">Shakir&#039;s Machine Learning Blog</p>
+		</div>
+		<nav id="menu1-wrapper" class="menu-wrapper col7">
+<ul id="menu1" class="cf menu"><li class="page-about-me"><a href="http://blog.shakirm.com/about-me/">About Me</a></li>
+<li class="page-ml-series"><a href="http://blog.shakirm.com/ml-series/">Post Collections</a>
+<ul class="sub-menu">
+	<li class="page-a-statistical-view-of-deep-learning"><a href="http://blog.shakirm.com/ml-series/a-statistical-view-of-deep-learning/">A Statistical View of Deep Learning</a></li>
+	<li class="page-learning-in-brain-and-machines"><a href="http://blog.shakirm.com/ml-series/learning-in-brain-and-machines/">Learning in Brains and Machines</a></li>
+	<li class="page-trick-of-the-day"><a href="http://blog.shakirm.com/ml-series/trick-of-the-day/">Machine Learning Trick of the Day</a></li>
+	<li class="page-cognitive-machine-learning"><a href="http://blog.shakirm.com/ml-series/cognitive-machine-learning/">Cognitive ML</a></li>
+</ul>
+</li>
+<li class="page-sunday-classic-paper"><a href="http://blog.shakirm.com/sunday-classic-paper/">Sunday Classics</a></li>
+</ul></nav>
+
+	</div>
+</div>
+
+<a href="http://blog.shakirm.com/feed/" class="rsslink" title="Subscribe to RSS Feed"></a>
+		
+
+<div id="breadcrumbs1-bg">
+	<nav id="breadcrumbs1" class="breadcrumbs lw">
+		<ol><li class="bc-home"><a href="http://blog.shakirm.com">&nbsp;</a></li><li><span class="bc-current">Blog</span></li></ol>
+	</nav>
+</div>
+
+
+
+
+<div id="main" class="row">
+
+	<div id="content" class="cf col8">
+		
+		
+
+   <nav class="multinav" id="multinav1">
+       <span aria-current="page" class="page-numbers current">1</span>
+<a class="page-numbers" href="http://blog.shakirm.com/?paged=2">2</a>
+<a class="page-numbers" href="http://blog.shakirm.com/?paged=3">3</a>
+<a class="page-numbers" href="http://blog.shakirm.com/?paged=4">4</a>
+<a class="page-numbers" href="http://blog.shakirm.com/?paged=5">5</a>
+<a class="next page-numbers" href="http://blog.shakirm.com/?paged=2">Next &raquo;</a>   </nav>
+
+   
+		
+				
+		<div class="post-list">
+			<div id="post-1092" class="cf post-1092 post type-post status-publish format-standard has-post-thumbnail hentry category-human-centred-ai category-talks-and-tutorials category-transformation tag-belonging tag-diversity tag-machine-learning tag-poetry tag-queer tag-science tag-transformation">
+
+	<h2>
+		<span class="post-format"></span>
+		<a href="http://blog.shakirm.com/2020/08/queering-machine-learning/" title="Queering Machine Learning" rel="bookmark">Queering Machine Learning</a>
+		
+	</h2>
+
+	<div class="thumb-shadow"><div class="post-thumb"><a href="http://blog.shakirm.com/2020/08/queering-machine-learning/"><img src="http://blog.shakirm.com/wp-content/uploads/2020/07/QAI-QueeringML2020.001-620x180-1.jpeg" width="620" height="180" alt="Queering Machine Learning"/></a></div></div>
+	
+	<div class="post-bodycopy cf">
+	
+		<div class="post-date">		
+			<p class="post-month">Aug</p>
+			<p class="post-day">6</p>
+			<p class="post-year">2020</p>				
+		</div>
+
+		I am incredibly humbled to have been able to give a short talk at the Queer in AI workshop at ICML2020. This is the text of the talk. Watch the video. Look through the slides. What an experience we are all having in recording these videos! Of all the videos you could be watching, Thank ...
+		
+	</div>
+
+	<div class="post-footer">
+		<a class="post-readmore" href="http://blog.shakirm.com/2020/08/queering-machine-learning/" title="Queering Machine Learning">
+		read more &rarr;</a>
+		<p class="post-categories"><a href="http://blog.shakirm.com/category/human-centred-ai/" rel="category tag">Human-centred AI</a> &middot; <a href="http://blog.shakirm.com/category/talks-and-tutorials/" rel="category tag">Talks and Tutorials</a> &middot; <a href="http://blog.shakirm.com/category/transformation/" rel="category tag">Transformation</a></p>
+		<p class="post-tags"><a href="http://blog.shakirm.com/tag/belonging/" rel="tag">belonging</a><a href="http://blog.shakirm.com/tag/diversity/" rel="tag">diversity</a><a href="http://blog.shakirm.com/tag/machine-learning/" rel="tag">machine learning</a><a href="http://blog.shakirm.com/tag/poetry/" rel="tag">poetry</a><a href="http://blog.shakirm.com/tag/queer/" rel="tag">queer</a><a href="http://blog.shakirm.com/tag/science/" rel="tag">science</a><a href="http://blog.shakirm.com/tag/transformation/" rel="tag">transformation</a></p>
+	</div>
+	
+</div>
+
+<div id="post-1077" class="cf post-1077 post type-post status-publish format-standard has-post-thumbnail hentry category-transformation tag-diversity tag-queer tag-science tag-transformation">
+
+	<h2>
+		<span class="post-format"></span>
+		<a href="http://blog.shakirm.com/2020/02/queer-exceptionalism-in-science/" title="Queer Exceptionalism in Science" rel="bookmark">Queer Exceptionalism in Science</a>
+		
+	</h2>
+
+	<div class="thumb-shadow"><div class="post-thumb"><a href="http://blog.shakirm.com/2020/02/queer-exceptionalism-in-science/"><img src="http://blog.shakirm.com/wp-content/uploads/2020/02/anastasia-zhenina-KCoa8XXJoS4-unsplash-620x180-1.jpg" width="620" height="180" alt="Queer Exceptionalism in Science"/></a></div></div>
+	
+	<div class="post-bodycopy cf">
+	
+		<div class="post-date">		
+			<p class="post-month">Feb</p>
+			<p class="post-day">27</p>
+			<p class="post-year">2020</p>				
+		</div>
+
+		Written during the 2020 LGBTQ History Month Remembrance that takes place during February each year in the UK.Read in 5mins (800 words) Today’s queer scientist is exceptional. Exceptional as in extraordinary and remarkable; exceptional as in unusual and strange. This is a state of ambiguity that isn’t surprising, since each year, especially during LGBTQ History ...
+		
+	</div>
+
+	<div class="post-footer">
+		<a class="post-readmore" href="http://blog.shakirm.com/2020/02/queer-exceptionalism-in-science/" title="Queer Exceptionalism in Science">
+		read more &rarr;</a>
+		<p class="post-categories"><a href="http://blog.shakirm.com/category/transformation/" rel="category tag">Transformation</a></p>
+		<p class="post-tags"><a href="http://blog.shakirm.com/tag/diversity/" rel="tag">diversity</a><a href="http://blog.shakirm.com/tag/queer/" rel="tag">queer</a><a href="http://blog.shakirm.com/tag/science/" rel="tag">science</a><a href="http://blog.shakirm.com/tag/transformation/" rel="tag">transformation</a></p>
+	</div>
+	
+</div>
+
+<div id="post-1059" class="cf post-1059 post type-post status-publish format-standard has-post-thumbnail hentry category-talks category-transformation tag-decolonisation tag-diversity tag-indaba tag-poetry tag-social-good tag-transformation">
+
+	<h2>
+		<span class="post-format"></span>
+		<a href="http://blog.shakirm.com/2019/11/machinery-of-grace/" title="Machinery of Grace" rel="bookmark">Machinery of Grace</a>
+		
+	</h2>
+
+	<div class="thumb-shadow"><div class="post-thumb"><a href="http://blog.shakirm.com/2019/11/machinery-of-grace/"><img src="http://blog.shakirm.com/wp-content/uploads/2019/11/img_2229-e1574166651356-620x180-1.jpg" width="620" height="180" alt="Machinery of Grace"/></a></div></div>
+	
+	<div class="post-bodycopy cf">
+	
+		<div class="post-date">		
+			<p class="post-month">Nov</p>
+			<p class="post-day">16</p>
+			<p class="post-year">2019</p>				
+		</div>
+
+		Shakir Mohamed | 1345 words (~14mins). Will link to video and slides once it's ready. for TEDxLSTM: Unknown Destinations Dearest, Dearest, note how these two are alike: This harpsichord pavane by Purcell And the racer’s twelve-speed bike. The machinery of grace is always simple. These are the opening lines from a poem entitled Machines by ...
+		
+	</div>
+
+	<div class="post-footer">
+		<a class="post-readmore" href="http://blog.shakirm.com/2019/11/machinery-of-grace/" title="Machinery of Grace">
+		read more &rarr;</a>
+		<p class="post-categories"><a href="http://blog.shakirm.com/category/talks/" rel="category tag">Talks</a> &middot; <a href="http://blog.shakirm.com/category/transformation/" rel="category tag">Transformation</a></p>
+		<p class="post-tags"><a href="http://blog.shakirm.com/tag/decolonisation/" rel="tag">decolonisation</a><a href="http://blog.shakirm.com/tag/diversity/" rel="tag">diversity</a><a href="http://blog.shakirm.com/tag/indaba/" rel="tag">indaba</a><a href="http://blog.shakirm.com/tag/poetry/" rel="tag">poetry</a><a href="http://blog.shakirm.com/tag/social-good/" rel="tag">social good</a><a href="http://blog.shakirm.com/tag/transformation/" rel="tag">transformation</a></p>
+	</div>
+	
+</div>
+
+<div id="post-1040" class="cf post-1040 post type-post status-publish format-standard has-post-thumbnail hentry category-human-centred-ai category-transformation tag-africa tag-diversity tag-indaba tag-strategy tag-transformation">
+
+	<h2>
+		<span class="post-format"></span>
+		<a href="http://blog.shakirm.com/2019/06/a-new-consciousness-of-inclusion-in-machine-learning/" title="A New Consciousness of Inclusion in Machine Learning" rel="bookmark">A New Consciousness of Inclusion in Machine Learning</a>
+		<a href="http://blog.shakirm.com/2019/06/a-new-consciousness-of-inclusion-in-machine-learning/#comments" class="comment-bubble" >1</a>
+	</h2>
+
+	<div class="thumb-shadow"><div class="post-thumb"><a href="http://blog.shakirm.com/2019/06/a-new-consciousness-of-inclusion-in-machine-learning/"><img src="http://blog.shakirm.com/wp-content/uploads/2019/06/puffins-620x180-1.jpg" width="620" height="180" alt="A New Consciousness of Inclusion in Machine Learning"/></a></div></div>
+	
+	<div class="post-bodycopy cf">
+	
+		<div class="post-date">		
+			<p class="post-month">Jun</p>
+			<p class="post-day">16</p>
+			<p class="post-year">2019</p>				
+		</div>
+
+		On LGBT Freedoms and our Support for Machine Learning in Africa This is an exploration of my thinking and my personal views. Read in · 1147 words · Soon, in two neighbouring countries in Africa, two large machine learning events will take place: one in Nairobi in Kenya, and another in Addis Ababa in Ethiopia. ...
+		
+	</div>
+
+	<div class="post-footer">
+		<a class="post-readmore" href="http://blog.shakirm.com/2019/06/a-new-consciousness-of-inclusion-in-machine-learning/" title="A New Consciousness of Inclusion in Machine Learning">
+		read more &rarr;</a>
+		<p class="post-categories"><a href="http://blog.shakirm.com/category/human-centred-ai/" rel="category tag">Human-centred AI</a> &middot; <a href="http://blog.shakirm.com/category/transformation/" rel="category tag">Transformation</a></p>
+		<p class="post-tags"><a href="http://blog.shakirm.com/tag/africa/" rel="tag">africa</a><a href="http://blog.shakirm.com/tag/diversity/" rel="tag">diversity</a><a href="http://blog.shakirm.com/tag/indaba/" rel="tag">indaba</a><a href="http://blog.shakirm.com/tag/strategy/" rel="tag">strategy</a><a href="http://blog.shakirm.com/tag/transformation/" rel="tag">transformation</a></p>
+	</div>
+	
+</div>
+
+<div id="post-1020" class="cf post-1020 post type-post status-publish format-standard has-post-thumbnail hentry category-talks category-transformation tag-diversity tag-indaba tag-strategy tag-transformation">
+
+	<h2>
+		<span class="post-format"></span>
+		<a href="http://blog.shakirm.com/2019/06/racialised-lives-and-the-life-beyond/" title="Racialised Lives and the Life Beyond" rel="bookmark">Racialised Lives and the Life Beyond</a>
+		
+	</h2>
+
+	<div class="thumb-shadow"><div class="post-thumb"><a href="http://blog.shakirm.com/2019/06/racialised-lives-and-the-life-beyond/"><img src="http://blog.shakirm.com/wp-content/uploads/2019/05/EqualityInScience-Liverpool-cover.001-620x180-1.jpeg" width="620" height="180" alt="Racialised Lives and the Life Beyond"/></a></div></div>
+	
+	<div class="post-bodycopy cf">
+	
+		<div class="post-date">		
+			<p class="post-month">Jun</p>
+			<p class="post-day">4</p>
+			<p class="post-year">2019</p>				
+		</div>
+
+		I spoke at the 2019 Equality in Science Symposium at the Liverpool School of Tropical Medicine. This is the text of  my contribution, and you can watch the video (jump to 2:20:50). Read in 15mins. is truly an honour to be here with you today. How amazing to be in this historic city of Liverpool, ...
+		
+	</div>
+
+	<div class="post-footer">
+		<a class="post-readmore" href="http://blog.shakirm.com/2019/06/racialised-lives-and-the-life-beyond/" title="Racialised Lives and the Life Beyond">
+		read more &rarr;</a>
+		<p class="post-categories"><a href="http://blog.shakirm.com/category/talks/" rel="category tag">Talks</a> &middot; <a href="http://blog.shakirm.com/category/transformation/" rel="category tag">Transformation</a></p>
+		<p class="post-tags"><a href="http://blog.shakirm.com/tag/diversity/" rel="tag">diversity</a><a href="http://blog.shakirm.com/tag/indaba/" rel="tag">indaba</a><a href="http://blog.shakirm.com/tag/strategy/" rel="tag">strategy</a><a href="http://blog.shakirm.com/tag/transformation/" rel="tag">transformation</a></p>
+	</div>
+	
+</div>
+
+<div id="post-1002" class="cf post-1002 post type-post status-publish format-standard has-post-thumbnail hentry category-talks tag-diversity tag-strategy tag-transformation">
+
+	<h2>
+		<span class="post-format"></span>
+		<a href="http://blog.shakirm.com/2018/11/contribution-how-do-we-support-under-represented-groups-to-put-themselves-forward/" title="Talk: How Do We Support Under-represented Groups To Put Themselves Forward?" rel="bookmark">Talk: How Do We Support Under-represented Groups To Put Themselves Forward?</a>
+		<a href="http://blog.shakirm.com/2018/11/contribution-how-do-we-support-under-represented-groups-to-put-themselves-forward/#comments" class="comment-bubble" >2</a>
+	</h2>
+
+	<div class="thumb-shadow"><div class="post-thumb"><a href="http://blog.shakirm.com/2018/11/contribution-how-do-we-support-under-represented-groups-to-put-themselves-forward/"><img src="http://blog.shakirm.com/wp-content/uploads/2018/11/RS-Diversity-Panel-Shakir-Mohamed-1-1-620x180-1.png" width="620" height="180" alt="Talk: How Do We Support Under-represented Groups To Put Themselves Forward?"/></a></div></div>
+	
+	<div class="post-bodycopy cf">
+	
+		<div class="post-date">		
+			<p class="post-month">Nov</p>
+			<p class="post-day">1</p>
+			<p class="post-year">2018</p>				
+		</div>
+
+		I gave a talk at the Royal Society's 2018 annual diversity conference. This is the text of  my contribution; you can also see the video here. Thank you to all the organisers of this year’s annual conference for this very special opportunity to speak to you all today. My aim today is to spark a ...
+		
+	</div>
+
+	<div class="post-footer">
+		<a class="post-readmore" href="http://blog.shakirm.com/2018/11/contribution-how-do-we-support-under-represented-groups-to-put-themselves-forward/" title="Talk: How Do We Support Under-represented Groups To Put Themselves Forward?">
+		read more &rarr;</a>
+		<p class="post-categories"><a href="http://blog.shakirm.com/category/talks/" rel="category tag">Talks</a></p>
+		<p class="post-tags"><a href="http://blog.shakirm.com/tag/diversity/" rel="tag">diversity</a><a href="http://blog.shakirm.com/tag/strategy/" rel="tag">strategy</a><a href="http://blog.shakirm.com/tag/transformation/" rel="tag">transformation</a></p>
+	</div>
+	
+</div>
+
+<div id="post-698" class="cf post-698 post type-post status-publish format-standard has-post-thumbnail hentry category-machine-learning-and-statistics tag-causality tag-density-estimation tag-regression tag-reinforcement-learning tag-statistics tag-temporal-differences tag-tricks">
+
+	<h2>
+		<span class="post-format"></span>
+		<a href="http://blog.shakirm.com/2018/10/machine-learning-trick-of-the-day-8-instrumental-thinking/" title="Machine Learning Trick of the Day (8): Instrumental Thinking" rel="bookmark">Machine Learning Trick of the Day (8): Instrumental Thinking</a>
+		<a href="http://blog.shakirm.com/2018/10/machine-learning-trick-of-the-day-8-instrumental-thinking/#comments" class="comment-bubble" >5</a>
+	</h2>
+
+	<div class="thumb-shadow"><div class="post-thumb"><a href="http://blog.shakirm.com/2018/10/machine-learning-trick-of-the-day-8-instrumental-thinking/"><img src="http://blog.shakirm.com/wp-content/uploads/2018/04/trick8-regressions-620x180-1.png" width="620" height="180" alt="Machine Learning Trick of the Day (8): Instrumental Thinking"/></a></div></div>
+	
+	<div class="post-bodycopy cf">
+	
+		<div class="post-date">		
+			<p class="post-month">Oct</p>
+			<p class="post-day">15</p>
+			<p class="post-year">2018</p>				
+		</div>
+
+		· Read in · 1499 words · All posts in series · trick is unlike the others we've conjured. It will not reveal a clever manipulation of a probability or an integral or a derivative, or produce a code one-liner. But like all our other tricks, it will give us a powerful instrument in our ...
+		
+	</div>
+
+	<div class="post-footer">
+		<a class="post-readmore" href="http://blog.shakirm.com/2018/10/machine-learning-trick-of-the-day-8-instrumental-thinking/" title="Machine Learning Trick of the Day (8): Instrumental Thinking">
+		read more &rarr;</a>
+		<p class="post-categories"><a href="http://blog.shakirm.com/category/machine-learning-and-statistics/" rel="category tag">Machine Learning and Statistics</a></p>
+		<p class="post-tags"><a href="http://blog.shakirm.com/tag/causality/" rel="tag">causality</a><a href="http://blog.shakirm.com/tag/density-estimation/" rel="tag">density estimation</a><a href="http://blog.shakirm.com/tag/regression/" rel="tag">regression</a><a href="http://blog.shakirm.com/tag/reinforcement-learning/" rel="tag">reinforcement learning</a><a href="http://blog.shakirm.com/tag/statistics/" rel="tag">statistics</a><a href="http://blog.shakirm.com/tag/temporal-differences/" rel="tag">temporal differences</a><a href="http://blog.shakirm.com/tag/tricks/" rel="tag">tricks</a></p>
+	</div>
+	
+</div>
+
+<div id="post-805" class="cf post-805 post type-post status-publish format-standard has-post-thumbnail hentry category-human-centred-ai tag-philosophy tag-strategy tag-transformation">
+
+	<h2>
+		<span class="post-format"></span>
+		<a href="http://blog.shakirm.com/2018/10/decolonising-artificial-intelligence/" title="Decolonising Artificial Intelligence" rel="bookmark">Decolonising Artificial Intelligence</a>
+		<a href="http://blog.shakirm.com/2018/10/decolonising-artificial-intelligence/#comments" class="comment-bubble" >7</a>
+	</h2>
+
+	<div class="thumb-shadow"><div class="post-thumb"><a href="http://blog.shakirm.com/2018/10/decolonising-artificial-intelligence/"><img src="http://blog.shakirm.com/wp-content/uploads/2018/10/IMG_4530-EFFECTS-620x180-1.jpg" width="620" height="180" alt="Decolonising Artificial Intelligence"/></a></div></div>
+	
+	<div class="post-bodycopy cf">
+	
+		<div class="post-date">		
+			<p class="post-month">Oct</p>
+			<p class="post-day">11</p>
+			<p class="post-year">2018</p>				
+		</div>
+
+		· Read in 6mins · 1297 words · The Artificial Intelligence we believe to be global, is far from it. It is localised. Contained. Within restricted geographies and people. As the pressure of containment builds and the kettle begins to whistle, the call sounds.  How do we make global AI truly global?  This call will be ...
+		
+	</div>
+
+	<div class="post-footer">
+		<a class="post-readmore" href="http://blog.shakirm.com/2018/10/decolonising-artificial-intelligence/" title="Decolonising Artificial Intelligence">
+		read more &rarr;</a>
+		<p class="post-categories"><a href="http://blog.shakirm.com/category/human-centred-ai/" rel="category tag">Human-centred AI</a></p>
+		<p class="post-tags"><a href="http://blog.shakirm.com/tag/philosophy/" rel="tag">Philosophy</a><a href="http://blog.shakirm.com/tag/strategy/" rel="tag">strategy</a><a href="http://blog.shakirm.com/tag/transformation/" rel="tag">transformation</a></p>
+	</div>
+	
+</div>
+
+<div id="post-767" class="cf post-767 post type-post status-publish format-standard has-post-thumbnail hentry category-human-centred-ai tag-diversity tag-responsibility tag-strategy tag-transformation">
+
+	<h2>
+		<span class="post-format"></span>
+		<a href="http://blog.shakirm.com/2018/09/the-price-of-transformation/" title="The Price of Transformation" rel="bookmark">The Price of Transformation</a>
+		<a href="http://blog.shakirm.com/2018/09/the-price-of-transformation/#comments" class="comment-bubble" >4</a>
+	</h2>
+
+	<div class="thumb-shadow"><div class="post-thumb"><a href="http://blog.shakirm.com/2018/09/the-price-of-transformation/"><img src="http://blog.shakirm.com/wp-content/uploads/2018/09/IMG_4503-620x180-1.jpg" width="620" height="180" alt="The Price of Transformation"/></a></div></div>
+	
+	<div class="post-bodycopy cf">
+	
+		<div class="post-date">		
+			<p class="post-month">Sep</p>
+			<p class="post-day">26</p>
+			<p class="post-year">2018</p>				
+		</div>
+
+		· Read in · 1200 words · We are the people who transform the world. And Transformation is needed. We need a transformation—of our thinking, communities and institutions—in which we are all truly equal, and inherited injustices are eliminated. This is as important to our social well-being today as it has ever been. True Transformation's accomplishment ...
+		
+	</div>
+
+	<div class="post-footer">
+		<a class="post-readmore" href="http://blog.shakirm.com/2018/09/the-price-of-transformation/" title="The Price of Transformation">
+		read more &rarr;</a>
+		<p class="post-categories"><a href="http://blog.shakirm.com/category/human-centred-ai/" rel="category tag">Human-centred AI</a></p>
+		<p class="post-tags"><a href="http://blog.shakirm.com/tag/diversity/" rel="tag">diversity</a><a href="http://blog.shakirm.com/tag/responsibility/" rel="tag">responsibility</a><a href="http://blog.shakirm.com/tag/strategy/" rel="tag">strategy</a><a href="http://blog.shakirm.com/tag/transformation/" rel="tag">transformation</a></p>
+	</div>
+	
+</div>
+
+<div id="post-696" class="cf post-696 post type-post status-publish format-standard has-post-thumbnail hentry category-machine-learning-and-statistics tag-abc tag-bayes-factor tag-density-estimation tag-density-ratio tag-gans tag-hypothesis-testing tag-statistics">
+
+	<h2>
+		<span class="post-format"></span>
+		<a href="http://blog.shakirm.com/2018/01/machine-learning-trick-of-the-day-7-density-ratio-trick/" title="Machine Learning Trick of the Day (7): Density Ratio Trick" rel="bookmark">Machine Learning Trick of the Day (7): Density Ratio Trick</a>
+		<a href="http://blog.shakirm.com/2018/01/machine-learning-trick-of-the-day-7-density-ratio-trick/#comments" class="comment-bubble" >3</a>
+	</h2>
+
+	<div class="thumb-shadow"><div class="post-thumb"><a href="http://blog.shakirm.com/2018/01/machine-learning-trick-of-the-day-7-density-ratio-trick/"><img src="http://blog.shakirm.com/wp-content/uploads/2018/01/4statOps-3-620x180-1.png" width="620" height="180" alt="Machine Learning Trick of the Day (7): Density Ratio Trick"/></a></div></div>
+	
+	<div class="post-bodycopy cf">
+	
+		<div class="post-date">		
+			<p class="post-month">Jan</p>
+			<p class="post-day">14</p>
+			<p class="post-year">2018</p>				
+		</div>
+
+		· Read in · 1481 words · All posts in series · probability on its own is often an uninteresting thing. But when we can compare probabilities, that is when their full splendour is revealed. By comparing probabilities we are able form judgements; by comparing probabilities we can exploit the elements of our world that ...
+		
+	</div>
+
+	<div class="post-footer">
+		<a class="post-readmore" href="http://blog.shakirm.com/2018/01/machine-learning-trick-of-the-day-7-density-ratio-trick/" title="Machine Learning Trick of the Day (7): Density Ratio Trick">
+		read more &rarr;</a>
+		<p class="post-categories"><a href="http://blog.shakirm.com/category/machine-learning-and-statistics/" rel="category tag">Machine Learning and Statistics</a></p>
+		<p class="post-tags"><a href="http://blog.shakirm.com/tag/abc/" rel="tag">ABC</a><a href="http://blog.shakirm.com/tag/bayes-factor/" rel="tag">bayes factor</a><a href="http://blog.shakirm.com/tag/density-estimation/" rel="tag">density estimation</a><a href="http://blog.shakirm.com/tag/density-ratio/" rel="tag">density ratio</a><a href="http://blog.shakirm.com/tag/gans/" rel="tag">GANs</a><a href="http://blog.shakirm.com/tag/hypothesis-testing/" rel="tag">Hypothesis Testing</a><a href="http://blog.shakirm.com/tag/statistics/" rel="tag">statistics</a></p>
+	</div>
+	
+</div>
+
+		</div>
+		
+	
+		
+		
+
+   <nav class="multinav" id="multinav2">
+       <span aria-current="page" class="page-numbers current">1</span>
+<a class="page-numbers" href="http://blog.shakirm.com/?paged=2">2</a>
+<a class="page-numbers" href="http://blog.shakirm.com/?paged=3">3</a>
+<a class="page-numbers" href="http://blog.shakirm.com/?paged=4">4</a>
+<a class="page-numbers" href="http://blog.shakirm.com/?paged=5">5</a>
+<a class="next page-numbers" href="http://blog.shakirm.com/?paged=2">Next &raquo;</a>   </nav>
+
+   
+		
+	</div>
+	
+	<div id="widgetarea-one" class="col4">
+		<aside id="blog_subscription-2" class="widget widget_blog_subscription jetpack_subscription_widget cf"><h3><span>Subscribe to Blog</span></h3>
+            <form action="#" method="post" accept-charset="utf-8" id="subscribe-blog-blog_subscription-2">
+				                    <div id="subscribe-text"><p>Receive notifications by email.</p>
+</div><p>Join 574 other subscribers.</p>
+                    <p id="subscribe-email">
+                        <label id="jetpack-subscribe-label"
+                               class="screen-reader-text"
+                               for="subscribe-field-blog_subscription-2">
+							Email Address                        </label>
+                        <input type="email" name="email" required="required" class="required"
+                               value=""
+                               id="subscribe-field-blog_subscription-2"
+                               placeholder="Email Address"/>
+                    </p>
+
+                    <p id="subscribe-submit">
+                        <input type="hidden" name="action" value="subscribe"/>
+                        <input type="hidden" name="source" value="http://blog.shakirm.com/"/>
+                        <input type="hidden" name="sub-type" value="widget"/>
+                        <input type="hidden" name="redirect_fragment" value="blog_subscription-2"/>
+						                        <button type="submit"
+	                        		                    	                        name="jetpack_subscriptions_widget"
+	                    >
+	                        Subscribe                        </button>
+                    </p>
+				            </form>
+		
+</aside><aside id="search-3" class="widget widget_search cf"><form method="get" class="searchform" action="http://blog.shakirm.com/">
+	<input type="text" class="field" name="s" value="" />
+	<input type="submit" class="submit" name="submit" value="search" />
+</form>
+</aside><aside id="twitter_timeline-3" class="widget widget_twitter_timeline cf"><h3><span>Follow me on Twitter</span></h3><a class="twitter-timeline" data-width="225" data-theme="light" data-link-color="#f96e5b" data-border-color="#e8e8e8" data-tweet-limit="2" data-lang="EN" data-partner="jetpack" data-chrome="noheader nofooter noborders noscrollbar transparent" href="https://twitter.com/shakir_za" href="https://twitter.com/shakir_za">My Tweets</a></aside>		<aside id="recent-posts-2" class="widget widget_recent_entries cf">		<h3><span>Recent Posts</span></h3>		<ul>
+											<li>
+					<a href="http://blog.shakirm.com/2020/08/queering-machine-learning/">Queering Machine Learning</a>
+									</li>
+											<li>
+					<a href="http://blog.shakirm.com/2020/02/queer-exceptionalism-in-science/">Queer Exceptionalism in Science</a>
+									</li>
+											<li>
+					<a href="http://blog.shakirm.com/2019/11/machinery-of-grace/">Machinery of Grace</a>
+									</li>
+											<li>
+					<a href="http://blog.shakirm.com/2019/06/a-new-consciousness-of-inclusion-in-machine-learning/">A New Consciousness of Inclusion in Machine Learning</a>
+									</li>
+											<li>
+					<a href="http://blog.shakirm.com/2019/06/racialised-lives-and-the-life-beyond/">Racialised Lives and the Life Beyond</a>
+									</li>
+					</ul>
+		</aside><aside id="top-posts-3" class="widget widget_top-posts cf"><h3><span>Popular Posts</span></h3><ul>				<li>
+										<a href="http://blog.shakirm.com/2013/04/marrs-levels-of-analysis/" class="bump-view" data-bump-view="tp">
+						Marr&#039;s Levels of Analysis					</a>
+										</li>
+								<li>
+										<a href="http://blog.shakirm.com/2015/11/machine-learning-trick-of-the-day-5-log-derivative-trick/" class="bump-view" data-bump-view="tp">
+						Machine Learning Trick of the Day (5): Log Derivative Trick					</a>
+										</li>
+								<li>
+										<a href="http://blog.shakirm.com/2015/10/machine-learning-trick-of-the-day-4-reparameterisation-tricks/" class="bump-view" data-bump-view="tp">
+						Machine Learning Trick of the Day (4): Reparameterisation Tricks					</a>
+										</li>
+								<li>
+										<a href="http://blog.shakirm.com/2015/01/a-statistical-view-of-deep-learning-i-recursive-glms/" class="bump-view" data-bump-view="tp">
+						A Statistical View of Deep Learning (I): Recursive GLMs					</a>
+										</li>
+								<li>
+										<a href="http://blog.shakirm.com/2015/09/machine-learning-trick-of-the-day-3-hutchinsons-trick/" class="bump-view" data-bump-view="tp">
+						Machine Learning Trick of the Day (3): Hutchinson&#039;s Trick					</a>
+										</li>
+				</ul></aside><aside id="tag_cloud-2" class="widget widget_tag_cloud cf"><h3><span>Tags</span></h3><div class="tagcloud"><a href="http://blog.shakirm.com/tag/ai/" class="tag-cloud-link tag-link-11 tag-link-position-1" style="font-size: 17.081081081081pt;" aria-label="AI (5 items)">AI</a>
+<a href="http://blog.shakirm.com/tag/auto-encoders/" class="tag-cloud-link tag-link-24 tag-link-position-2" style="font-size: 8pt;" aria-label="auto-encoders (1 item)">auto-encoders</a>
+<a href="http://blog.shakirm.com/tag/bayes-factor/" class="tag-cloud-link tag-link-8 tag-link-position-3" style="font-size: 11.405405405405pt;" aria-label="bayes factor (2 items)">bayes factor</a>
+<a href="http://blog.shakirm.com/tag/bayesian-analysis/" class="tag-cloud-link tag-link-33 tag-link-position-4" style="font-size: 19.351351351351pt;" aria-label="Bayesian analysis (7 items)">Bayesian analysis</a>
+<a href="http://blog.shakirm.com/tag/bayesian-brain/" class="tag-cloud-link tag-link-13 tag-link-position-5" style="font-size: 11.405405405405pt;" aria-label="Bayesian brain (2 items)">Bayesian brain</a>
+<a href="http://blog.shakirm.com/tag/cognitive-science/" class="tag-cloud-link tag-link-74 tag-link-position-6" style="font-size: 13.675675675676pt;" aria-label="cognitive science (3 items)">cognitive science</a>
+<a href="http://blog.shakirm.com/tag/deep-learning/" class="tag-cloud-link tag-link-18 tag-link-position-7" style="font-size: 22pt;" aria-label="deep learning (10 items)">deep learning</a>
+<a href="http://blog.shakirm.com/tag/density-estimation/" class="tag-cloud-link tag-link-23 tag-link-position-8" style="font-size: 17.081081081081pt;" aria-label="density estimation (5 items)">density estimation</a>
+<a href="http://blog.shakirm.com/tag/diversity/" class="tag-cloud-link tag-link-86 tag-link-position-9" style="font-size: 19.351351351351pt;" aria-label="diversity (7 items)">diversity</a>
+<a href="http://blog.shakirm.com/tag/dynamical-systems/" class="tag-cloud-link tag-link-26 tag-link-position-10" style="font-size: 8pt;" aria-label="dynamical systems (1 item)">dynamical systems</a>
+<a href="http://blog.shakirm.com/tag/glm/" class="tag-cloud-link tag-link-22 tag-link-position-11" style="font-size: 17.081081081081pt;" aria-label="GLM (5 items)">GLM</a>
+<a href="http://blog.shakirm.com/tag/hierarchical/" class="tag-cloud-link tag-link-31 tag-link-position-12" style="font-size: 11.405405405405pt;" aria-label="hierarchical (2 items)">hierarchical</a>
+<a href="http://blog.shakirm.com/tag/indaba/" class="tag-cloud-link tag-link-92 tag-link-position-13" style="font-size: 13.675675675676pt;" aria-label="indaba (3 items)">indaba</a>
+<a href="http://blog.shakirm.com/tag/inference/" class="tag-cloud-link tag-link-28 tag-link-position-14" style="font-size: 8pt;" aria-label="inference (1 item)">inference</a>
+<a href="http://blog.shakirm.com/tag/latent-variable-models/" class="tag-cloud-link tag-link-16 tag-link-position-15" style="font-size: 20.297297297297pt;" aria-label="latent variable models (8 items)">latent variable models</a>
+<a href="http://blog.shakirm.com/tag/machine-learning/" class="tag-cloud-link tag-link-2 tag-link-position-16" style="font-size: 8pt;" aria-label="machine learning (1 item)">machine learning</a>
+<a href="http://blog.shakirm.com/tag/marginal-likelihood/" class="tag-cloud-link tag-link-7 tag-link-position-17" style="font-size: 11.405405405405pt;" aria-label="marginal likelihood (2 items)">marginal likelihood</a>
+<a href="http://blog.shakirm.com/tag/mcmc/" class="tag-cloud-link tag-link-3 tag-link-position-18" style="font-size: 11.405405405405pt;" aria-label="mcmc (2 items)">mcmc</a>
+<a href="http://blog.shakirm.com/tag/model-selection/" class="tag-cloud-link tag-link-4 tag-link-position-19" style="font-size: 8pt;" aria-label="model selection (1 item)">model selection</a>
+<a href="http://blog.shakirm.com/tag/monte-carlo/" class="tag-cloud-link tag-link-46 tag-link-position-20" style="font-size: 15.567567567568pt;" aria-label="monte carlo (4 items)">monte carlo</a>
+<a href="http://blog.shakirm.com/tag/multi-level-models/" class="tag-cloud-link tag-link-32 tag-link-position-21" style="font-size: 11.405405405405pt;" aria-label="multi-level models (2 items)">multi-level models</a>
+<a href="http://blog.shakirm.com/tag/neuroscience/" class="tag-cloud-link tag-link-66 tag-link-position-22" style="font-size: 18.405405405405pt;" aria-label="neuroscience (6 items)">neuroscience</a>
+<a href="http://blog.shakirm.com/tag/nips/" class="tag-cloud-link tag-link-19 tag-link-position-23" style="font-size: 11.405405405405pt;" aria-label="NIPS (2 items)">NIPS</a>
+<a href="http://blog.shakirm.com/tag/papers/" class="tag-cloud-link tag-link-14 tag-link-position-24" style="font-size: 8pt;" aria-label="papers (1 item)">papers</a>
+<a href="http://blog.shakirm.com/tag/philosophy/" class="tag-cloud-link tag-link-12 tag-link-position-25" style="font-size: 15.567567567568pt;" aria-label="Philosophy (4 items)">Philosophy</a>
+<a href="http://blog.shakirm.com/tag/poetry/" class="tag-cloud-link tag-link-96 tag-link-position-26" style="font-size: 11.405405405405pt;" aria-label="poetry (2 items)">poetry</a>
+<a href="http://blog.shakirm.com/tag/priors/" class="tag-cloud-link tag-link-29 tag-link-position-27" style="font-size: 11.405405405405pt;" aria-label="priors (2 items)">priors</a>
+<a href="http://blog.shakirm.com/tag/probabilistic-modelling/" class="tag-cloud-link tag-link-34 tag-link-position-28" style="font-size: 15.567567567568pt;" aria-label="probabilistic modelling (4 items)">probabilistic modelling</a>
+<a href="http://blog.shakirm.com/tag/queer/" class="tag-cloud-link tag-link-98 tag-link-position-29" style="font-size: 11.405405405405pt;" aria-label="queer (2 items)">queer</a>
+<a href="http://blog.shakirm.com/tag/recurrent-nets/" class="tag-cloud-link tag-link-27 tag-link-position-30" style="font-size: 8pt;" aria-label="Recurrent nets (1 item)">Recurrent nets</a>
+<a href="http://blog.shakirm.com/tag/regression/" class="tag-cloud-link tag-link-21 tag-link-position-31" style="font-size: 17.081081081081pt;" aria-label="regression (5 items)">regression</a>
+<a href="http://blog.shakirm.com/tag/regularisation/" class="tag-cloud-link tag-link-30 tag-link-position-32" style="font-size: 11.405405405405pt;" aria-label="regularisation (2 items)">regularisation</a>
+<a href="http://blog.shakirm.com/tag/reinforcement-learning/" class="tag-cloud-link tag-link-55 tag-link-position-33" style="font-size: 18.405405405405pt;" aria-label="reinforcement learning (6 items)">reinforcement learning</a>
+<a href="http://blog.shakirm.com/tag/replica-trick/" class="tag-cloud-link tag-link-35 tag-link-position-34" style="font-size: 8pt;" aria-label="replica trick (1 item)">replica trick</a>
+<a href="http://blog.shakirm.com/tag/scale-mixture/" class="tag-cloud-link tag-link-41 tag-link-position-35" style="font-size: 11.405405405405pt;" aria-label="scale-mixture (2 items)">scale-mixture</a>
+<a href="http://blog.shakirm.com/tag/science/" class="tag-cloud-link tag-link-97 tag-link-position-36" style="font-size: 11.405405405405pt;" aria-label="science (2 items)">science</a>
+<a href="http://blog.shakirm.com/tag/sparsity/" class="tag-cloud-link tag-link-15 tag-link-position-37" style="font-size: 15.567567567568pt;" aria-label="sparsity (4 items)">sparsity</a>
+<a href="http://blog.shakirm.com/tag/statistics/" class="tag-cloud-link tag-link-20 tag-link-position-38" style="font-size: 18.405405405405pt;" aria-label="statistics (6 items)">statistics</a>
+<a href="http://blog.shakirm.com/tag/strategy/" class="tag-cloud-link tag-link-88 tag-link-position-39" style="font-size: 17.081081081081pt;" aria-label="strategy (5 items)">strategy</a>
+<a href="http://blog.shakirm.com/tag/temporal-differences/" class="tag-cloud-link tag-link-67 tag-link-position-40" style="font-size: 13.675675675676pt;" aria-label="temporal differences (3 items)">temporal differences</a>
+<a href="http://blog.shakirm.com/tag/time-series/" class="tag-cloud-link tag-link-25 tag-link-position-41" style="font-size: 8pt;" aria-label="time-series (1 item)">time-series</a>
+<a href="http://blog.shakirm.com/tag/transformation/" class="tag-cloud-link tag-link-90 tag-link-position-42" style="font-size: 20.297297297297pt;" aria-label="transformation (8 items)">transformation</a>
+<a href="http://blog.shakirm.com/tag/unbiased-estimator/" class="tag-cloud-link tag-link-48 tag-link-position-43" style="font-size: 13.675675675676pt;" aria-label="unbiased estimator (3 items)">unbiased estimator</a>
+<a href="http://blog.shakirm.com/tag/variational-inference/" class="tag-cloud-link tag-link-17 tag-link-position-44" style="font-size: 19.351351351351pt;" aria-label="variational inference (7 items)">variational inference</a>
+<a href="http://blog.shakirm.com/tag/wbic/" class="tag-cloud-link tag-link-9 tag-link-position-45" style="font-size: 8pt;" aria-label="WBIC (1 item)">WBIC</a></div>
+</aside><aside id="archives-2" class="widget widget_archive cf"><h3><span>Archives</span></h3>		<ul>
+				<li><a href='http://blog.shakirm.com/2020/08/'>August 2020</a>&nbsp;(1)</li>
+	<li><a href='http://blog.shakirm.com/2020/02/'>February 2020</a>&nbsp;(1)</li>
+	<li><a href='http://blog.shakirm.com/2019/11/'>November 2019</a>&nbsp;(1)</li>
+	<li><a href='http://blog.shakirm.com/2019/06/'>June 2019</a>&nbsp;(2)</li>
+	<li><a href='http://blog.shakirm.com/2018/11/'>November 2018</a>&nbsp;(1)</li>
+	<li><a href='http://blog.shakirm.com/2018/10/'>October 2018</a>&nbsp;(2)</li>
+	<li><a href='http://blog.shakirm.com/2018/09/'>September 2018</a>&nbsp;(1)</li>
+	<li><a href='http://blog.shakirm.com/2018/01/'>January 2018</a>&nbsp;(1)</li>
+	<li><a href='http://blog.shakirm.com/2017/03/'>March 2017</a>&nbsp;(1)</li>
+	<li><a href='http://blog.shakirm.com/2017/02/'>February 2017</a>&nbsp;(1)</li>
+	<li><a href='http://blog.shakirm.com/2016/10/'>October 2016</a>&nbsp;(1)</li>
+	<li><a href='http://blog.shakirm.com/2016/07/'>July 2016</a>&nbsp;(3)</li>
+	<li><a href='http://blog.shakirm.com/2016/04/'>April 2016</a>&nbsp;(1)</li>
+	<li><a href='http://blog.shakirm.com/2016/02/'>February 2016</a>&nbsp;(1)</li>
+	<li><a href='http://blog.shakirm.com/2015/12/'>December 2015</a>&nbsp;(2)</li>
+	<li><a href='http://blog.shakirm.com/2015/11/'>November 2015</a>&nbsp;(2)</li>
+	<li><a href='http://blog.shakirm.com/2015/10/'>October 2015</a>&nbsp;(2)</li>
+	<li><a href='http://blog.shakirm.com/2015/09/'>September 2015</a>&nbsp;(1)</li>
+	<li><a href='http://blog.shakirm.com/2015/08/'>August 2015</a>&nbsp;(1)</li>
+	<li><a href='http://blog.shakirm.com/2015/07/'>July 2015</a>&nbsp;(2)</li>
+	<li><a href='http://blog.shakirm.com/2015/06/'>June 2015</a>&nbsp;(2)</li>
+	<li><a href='http://blog.shakirm.com/2015/05/'>May 2015</a>&nbsp;(4)</li>
+	<li><a href='http://blog.shakirm.com/2015/04/'>April 2015</a>&nbsp;(1)</li>
+	<li><a href='http://blog.shakirm.com/2015/03/'>March 2015</a>&nbsp;(1)</li>
+	<li><a href='http://blog.shakirm.com/2015/01/'>January 2015</a>&nbsp;(2)</li>
+	<li><a href='http://blog.shakirm.com/2013/08/'>August 2013</a>&nbsp;(1)</li>
+	<li><a href='http://blog.shakirm.com/2013/04/'>April 2013</a>&nbsp;(1)</li>
+	<li><a href='http://blog.shakirm.com/2013/03/'>March 2013</a>&nbsp;(2)</li>
+		</ul>
+			</aside><aside id="meta-2" class="widget widget_meta cf"><h3><span>Meta</span></h3>			<ul>
+						<li><a href="http://blog.shakirm.com/wp-login.php">Log in</a></li>
+			<li><a href="http://blog.shakirm.com/feed/">Entries feed</a></li>
+			<li><a href="http://blog.shakirm.com/comments/feed/">Comments feed</a></li>
+			<li><a href="https://en-gb.wordpress.org/">WordPress.org</a></li>			</ul>
+			</aside><aside id="eu_cookie_law_widget-2" class="widget widget_eu_cookie_law_widget cf"><div
+	class="hide-on-time"
+	data-hide-timeout="8"
+	data-consent-expiration="180"
+	id="eu-cookie-law"
+>
+	<form method="post">
+		<input type="submit" value="Close and accept" class="accept" />
+	</form>
+
+	Privacy &amp; Cookies: This site uses cookies. By continuing to use this website, you agree to their use. <br />
+To find out more, including how to control cookies, see here:
+	<a href="https://automattic.com/cookies/" >
+		Cookie Policy	</a>
+</div>
+</aside>
+	</div>
+
+</div>
+	
+<div id="footer-bg">
+	<div id="footer" class="lw">
+	
+		<p>&copy; 2020 The Spectator &mdash; All Rights Reserved.</p>
+				
+		<!-- 
+		<p>64 queries in 2.437  seconds.</p>
+		-->	
+		
+	</div>
+	
+
+</div>
+
+
+<!--</div>-->		
+	
+<script>jQuery(document).ready(function ($) { $('p').selectionSharer();});</script><script type="text/x-mathjax-config"> 
+        MathJax.Hub.Config({ 
+                TeX: {equationNumbers: {autoNumber: ["AMS"], useLabelIds: true}}, 
+                "HTML-CSS": {linebreaks: {automatic: true}}, 
+                SVG: {linebreaks: {automatic: true}}
+        }); 
+</script><script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
+</script>	<div style="display:none">
+	</div>
+
+	<script type="text/javascript">
+		window.WPCOM_sharing_counts = {"http:\/\/blog.shakirm.com\/2020\/08\/queering-machine-learning\/":1092,"http:\/\/blog.shakirm.com\/2020\/02\/queer-exceptionalism-in-science\/":1077,"http:\/\/blog.shakirm.com\/2019\/11\/machinery-of-grace\/":1059,"http:\/\/blog.shakirm.com\/2019\/06\/a-new-consciousness-of-inclusion-in-machine-learning\/":1040,"http:\/\/blog.shakirm.com\/2019\/06\/racialised-lives-and-the-life-beyond\/":1020,"http:\/\/blog.shakirm.com\/2018\/11\/contribution-how-do-we-support-under-represented-groups-to-put-themselves-forward\/":1002,"http:\/\/blog.shakirm.com\/2018\/10\/machine-learning-trick-of-the-day-8-instrumental-thinking\/":698,"http:\/\/blog.shakirm.com\/2018\/10\/decolonising-artificial-intelligence\/":805,"http:\/\/blog.shakirm.com\/2018\/09\/the-price-of-transformation\/":767,"http:\/\/blog.shakirm.com\/2018\/01\/machine-learning-trick-of-the-day-7-density-ratio-trick\/":696};
+	</script>
+					<div id="sharing_email" style="display: none;">
+		<form action="/" method="post">
+			<label for="target_email">Send to Email Address</label>
+			<input type="email" name="target_email" id="target_email" value="" />
+
+			
+				<label for="source_name">Your Name</label>
+				<input type="text" name="source_name" id="source_name" value="" />
+
+				<label for="source_email">Your Email Address</label>
+				<input type="email" name="source_email" id="source_email" value="" />
+
+						<input type="text" id="jetpack-source_f_name" name="source_f_name" class="input" value="" size="25" autocomplete="off" title="This field is for validation and should not be changed" />
+			
+			<img style="float: right; display: none" class="loading" src="http://blog.shakirm.com/wp-content/plugins/jetpack/modules/sharedaddy/images/loading.gif" alt="loading" width="16" height="16" />
+			<input type="submit" value="Send Email" class="sharing_send" />
+			<a rel="nofollow" href="#cancel" class="sharing_cancel" role="button">Cancel</a>
+
+			<div class="errors errors-1" style="display: none;">
+				Post was not sent - check your email addresses!			</div>
+
+			<div class="errors errors-2" style="display: none;">
+				Email check failed, please try again			</div>
+
+			<div class="errors errors-3" style="display: none;">
+				Sorry, your blog cannot share posts by email.			</div>
+		</form>
+	</div>
+<script type='text/javascript' src='https://s0.wp.com/wp-content/js/devicepx-jetpack.js?ver=202037'></script>
+<script type='text/javascript' src='https://secure.gravatar.com/js/gprofiles.js?ver=2020Sepaa'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var WPGroHo = {"my_hash":""};
+/* ]]> */
+</script>
+<script type='text/javascript' src='http://blog.shakirm.com/wp-content/plugins/jetpack/modules/wpgroho.js?ver=5.4.2'></script>
+<script type='text/javascript' src='http://blog.shakirm.com/wp-content/plugins/jetpack/_inc/build/widgets/eu-cookie-law/eu-cookie-law.min.js?ver=20180522'></script>
+<script type='text/javascript' src='http://blog.shakirm.com/wp-content/plugins/jetpack/_inc/build/twitter-timeline.min.js?ver=4.0.0'></script>
+<script type='text/javascript' src='http://blog.shakirm.com/wp-includes/js/wp-embed.min.js?ver=5.4.2'></script>
+<script type='text/javascript' src='http://blog.shakirm.com/wp-content/plugins/selection-sharer/js/selection-sharer.js?ver=0.1'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var sharing_js_options = {"lang":"en","counts":"1","is_stats_active":"1"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='http://blog.shakirm.com/wp-content/plugins/jetpack/_inc/build/sharedaddy/sharing.min.js?ver=7.4.2'></script>
+<script type='text/javascript'>
+var windowOpen;
+			jQuery( document.body ).on( 'click', 'a.share-twitter', function() {
+				// If there's another sharing window open, close it.
+				if ( 'undefined' !== typeof windowOpen ) {
+					windowOpen.close();
+				}
+				windowOpen = window.open( jQuery( this ).attr( 'href' ), 'wpcomtwitter', 'menubar=1,resizable=1,width=600,height=350' );
+				return false;
+			});
+</script>
+<script type='text/javascript' src='https://stats.wp.com/e-202037.js' async='async' defer='defer'></script>
+<script type='text/javascript'>
+	_stq = window._stq || [];
+	_stq.push([ 'view', {v:'ext',j:'1:7.4.2',blog:'48530547',post:'0',tz:'0',srv:'blog.shakirm.com'} ]);
+	_stq.push([ 'clickTrackerInit', '48530547', '0' ]);
+</script>
+
+</body>
+</html>

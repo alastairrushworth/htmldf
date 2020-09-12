@@ -60,7 +60,7 @@ html_df <- function(urlx, max_size = 5000000,
   # loop over pages and fetch
   if(show_progress) pb <- start_progress(total = length(urlx), prefix = 'Parsing link: ')
   for(i in seq_along(urlx)){
-    if(show_progress) update_progress(bar = pb, iter = i, total = length(urlx), what = urlx[i])
+    if(show_progress) update_progress(bar = pb, iter = i, total = length(urlx), what = ifelse(is.na(urlx[i]), 'URL is NA', urlx[i]))
     fetch_list[[i]] <- fetch_page(urlx[i], max_size = max_size, time_out = time_out, keep_source = keep_source)
   }
   # combine into dataFrame
@@ -95,6 +95,7 @@ html_df <- function(urlx, max_size = 5000000,
 fetch_page <- function(url, time_out, max_size, keep_source){
   # download page
   pg_dl  <- get_pages(url, time_out = time_out)
+  # extract headers from the 
   pg_hdr <- get_headers(pg_dl)
   if(class(pg_dl) == "response"){
     if(!is.null(max_size)){
@@ -112,15 +113,15 @@ fetch_page <- function(url, time_out, max_size, keep_source){
   }
   
   # get attributes from html
-  pg_htm <- get_html(pg_dl)
-  pg_img <- get_imgs(pg_htm, url2)
-  pg_lnk <- get_links(pg_htm, url2)
-  pg_ttl <- get_title(pg_htm, url = url2)
-  pg_scl <- get_social(pg_htm)
-  pg_lng <- get_language(pg_htm)
-  pg_rss <- get_rss(pg_htm, url = url2)
-  pg_gen <- get_generator(pg_htm)
-  pg_tim <- get_time(pg_htm, url = url2)
+  pg_htm       <- get_html(pg_dl)
+  pg_img       <- get_imgs(pg_htm, url2)
+  pg_lnk       <- get_links(pg_htm, url2)
+  pg_ttl       <- get_title(pg_htm, url = url2)
+  pg_scl       <- get_social(pg_htm)
+  pg_lng       <- get_language(pg_htm)
+  pg_rss       <- get_rss(pg_htm, url = url2)
+  pg_gen       <- get_generator(pg_htm)
+  pg_tim       <- get_time(pg_htm, url = url2)
   pg_code_lang <- guess_code_lang(pg_htm)
 
   # combine into list
@@ -138,8 +139,8 @@ fetch_page <- function(url, time_out, max_size, keep_source){
          server = pg_hdr$server, 
          size = pg_hdr$size, 
          accessed = pg_hdr$accessed,
-         published = pg_tim, 
+         published = pg_tim,
          code_lang = pg_code_lang)
-  rm(pg_htm)
+  # rm(pg_htm)
   return(pg_features)
 }

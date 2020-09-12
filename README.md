@@ -49,10 +49,10 @@ z
 
     ## # A tibble: 3 x 15
     ##   url   title lang  url2  links rss   images social code_lang   size server
-    ##   <chr> <chr> <chr> <chr> <lis> <chr> <list> <list> <chr>      <int> <chr> 
-    ## 1 http… Visu… en    http… <tib… http… <tibb… <tibb… r          38445 GitHu…
-    ## 2 http… Conv… en    http… <tib… <NA>  <tibb… <tibb… py        110231 Googl…
-    ## 3 http… Robe… en    http… <tib… <NA>  <tibb… <tibb… r         291099 Netli…
+    ##   <chr> <chr> <chr> <chr> <lis> <chr> <list> <list>     <dbl>  <int> <chr> 
+    ## 1 http… Visu… en    http… <tib… http… <tibb… <tibb…     1      38445 GitHu…
+    ## 2 http… Conv… en    http… <tib… <NA>  <tibb… <tibb…    -0.936 110231 Googl…
+    ## 3 http… Robe… en    http… <tib… <NA>  <tibb… <tibb…     1     291099 Netli…
     ## # … with 4 more variables: accessed <dttm>, published <dttm>, generator <chr>,
     ## #   source <chr>
 
@@ -108,7 +108,7 @@ z$social
     ## 3 github   @coolbutuseless          https://github.com/coolbutuseless           
     ## 4 github   @robertmyles             https://github.com/robertmyles
 
-Inferred code language
+Inferred code language (near 1 = R; near -1 = Python)
 
 ``` r
 z %>% select(code_lang, url2)
@@ -116,10 +116,10 @@ z %>% select(code_lang, url2)
 
     ## # A tibble: 3 x 2
     ##   code_lang url2                                                                
-    ##   <chr>     <chr>                                                               
-    ## 1 r         https://alastairrushworth.github.io/Visualising-Tour-de-France-data…
-    ## 2 py        https://www.tensorflow.org/tutorials/images/cnn                     
-    ## 3 r         https://www.robertmylesmcdonnell.com/content/posts/mtcars/
+    ##       <dbl> <chr>                                                               
+    ## 1     1     https://alastairrushworth.github.io/Visualising-Tour-de-France-data…
+    ## 2    -0.936 https://www.tensorflow.org/tutorials/images/cnn                     
+    ## 3     1     https://www.robertmylesmcdonnell.com/content/posts/mtcars/
 
 ## Comments? Suggestions? Issues?
 

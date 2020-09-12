@@ -37,9 +37,9 @@
 #'
 #' @author Alastair Rushworth
 #' @examples
-#' urlx <- c("https://ropensci.org/blog/2020/02/21/ropensci-leadership/",
-#'           "https://es.wikipedia.org/wiki/Wikipedia_en_espa%C3%B1ol")
-#' html_df(urlx)
+#' # NOT RUN - requires internet connection :)
+#' # urlx <- c("https://github.com/alastairrushworth/htmldf")
+#' # html_df(urlx)
 #'
 #' @importFrom tibble tibble
 #' @importFrom dplyr mutate

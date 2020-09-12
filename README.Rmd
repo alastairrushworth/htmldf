@@ -58,7 +58,7 @@ Social profiles
 z$social
 ```
 
-Inferred code language
+Inferred code language (near 1 = R; near -1 = Python)
 ```{r}
 z %>% select(code_lang, url2)
 ```

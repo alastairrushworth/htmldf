@@ -1,32 +1,31 @@
 #' Get a tabular summary of webpage content from a vector of urls
 #'
-#' @description From a vector of urls, \code{html_df} will attempt to fetch the html.  From the 
-#' html, html_df will attempt to look for a page title, rss feeds, images, embedded social media
+#' @description From a vector of urls, \code{html_df()} will attempt to fetch the html.  From the 
+#' html, \code{html_df()} will attempt to look for a page title, rss feeds, images, embedded social media
 #' profile handles and other page metadata.  Page language is inferred using the package \code{cld3}
-#' which uses Google's Compact Language Detector 3.
+#' which wraps Google's Compact Language Detector 3.
 #'
-#' @param urlx A character vector containing urls.
-#' @param show_progress Logical, defaults to \code{TRUE}. Whether to print progress 
-#' messages to the console while download and parse is in progress.
+#' @param urlx A character vector containing urls.  Local files must be prepended with \code{file://}.
+#' @param show_progress Logical, defaults to \code{TRUE}. Whether to show progress during download.
 #' @param max_size Maximum size in bytes of pages to attempt to parse, defaults to \code{5000000}.
-#'   This is to avoid reading very large base64 encoded pages can cause \code{read_html()} to hang.
-#' @param keep_source Logical argument - should the xml2 document containing page source be kept as 
-#' a column in the output tibble.  Useful when scraping many pages, as the \code{source} column can
-#' become very large.  Defaults to \code{TRUE}.
-#' @param time_out Time in seconds to wait for \code{httr::GET()} when fetching the page.  Defaults 
-#' to 10 seconds. 
+#'   This is to avoid reading very large pages that may cause \code{read_html()} to hang.
+#' @param keep_source Logical argument - whether or not to retain the contents of the page \code{source} 
+#' column in the output tibble.  Useful to reduce memory usage when scraping many pages.  Defaults to \code{TRUE}.
+#' @param time_out Time in seconds to wait for \code{httr::GET()} to complete before exiting.  Defaults 
+#' to 10. 
 #' @return A tibble with columns 
 #' \itemize{
 #' \item \code{url} the original vector of urls provided
 #' \item \code{title} the page title, if found
 #' \item \code{lang} inferred page language
-#' \item \code{url2} the fetched url this may be different to the original eg. if it was redirected
-#' \item \code{links} a list of tibbles of hyperlinks found in \code{a} tags
-#' \item \code{rss} a list of embedded rss feeds found on the page
+#' \item \code{url2} the fetched url, this may be different to the original, for example if redirected
+#' \item \code{links} a list of tibbles of hyperlinks found in \code{<a>} tags
+#' \item \code{rss} a list of embedded RSS feeds found on the page
 #' \item \code{images} list of tibbles containing image links found on the page
 #' \item \code{social} list of tibbles containing twitter, linkedin and github user info found on page
-#' \item \code{code_lang} character indicating inferred code language.  If not code tags are detected,
-#' or the language could not be inferred, this returns an \code{NA}.
+#' \item \code{code_lang} numeric indicating inferred code language.  A negative values near -1 
+#' indicates high likelihood that the language is python, positive values near 1 indicate R. 
+#' If not code tags are detected, or the language could not be inferred, value is \code{NA}.
 #' \item \code{size} the size of the downloaded page in bytes
 #' \item \code{server} the page server
 #' \item \code{accessed} datetime when the page was accessed

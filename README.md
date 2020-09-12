@@ -27,7 +27,7 @@ contain page attributes and metadata extracted from the html, including:
 To install the package:
 
 ``` r
-remotes::install_github('alastairrushworth/htmldf)
+remotes::install_github('alastairrushworth/htmldf')
 ```
 
 To use `html_df`
@@ -35,7 +35,11 @@ To use `html_df`
 ``` r
 library(htmldf)
 library(dplyr)
+```
 
+    ## Warning: package 'dplyr' was built under R version 4.0.2
+
+``` r
 urlx <- c("https://alastairrushworth.github.io/Visualising-Tour-de-France-data-in-R/",
           "https://www.tensorflow.org/tutorials/images/cnn", 
           "https://www.robertmylesmcdonnell.com/content/posts/mtcars/")
@@ -46,11 +50,11 @@ z
     ## # A tibble: 3 x 15
     ##   url   title lang  url2  links rss   images social code_lang   size server
     ##   <chr> <chr> <chr> <chr> <lis> <chr> <list> <list> <chr>      <int> <chr> 
-    ## 1 http… Visu… en    http… <tib… http… <tibb… <tibb… r          38198 GitHu…
-    ## 2 http… Conv… en    http… <tib… <NA>  <tibb… <tibb… py         96758 Googl…
+    ## 1 http… Visu… en    http… <tib… http… <tibb… <tibb… r          38445 GitHu…
+    ## 2 http… Conv… en    http… <tib… <NA>  <tibb… <tibb… py        110231 Googl…
     ## 3 http… Robe… en    http… <tib… <NA>  <tibb… <tibb… r         291099 Netli…
     ## # … with 4 more variables: accessed <dttm>, published <dttm>, generator <chr>,
-    ## #   source <list>
+    ## #   source <chr>
 
 Page titles
 
@@ -82,11 +86,12 @@ z$social
 ```
 
     ## [[1]]
-    ## # A tibble: 2 x 3
-    ##   site    handle             profile                             
-    ##   <chr>   <chr>              <chr>                               
-    ## 1 twitter @rushworth_a       https://twitter.com/rushworth_a     
-    ## 2 github  @alastairrushworth https://github.com/alastairrushworth
+    ## # A tibble: 3 x 3
+    ##   site     handle                    profile                                    
+    ##   <chr>    <chr>                     <chr>                                      
+    ## 1 twitter  @rushworth_a              https://twitter.com/rushworth_a            
+    ## 2 linkedin @alastair-rushworth-2531… https://linkedin.com/in/alastair-rushworth…
+    ## 3 github   @alastairrushworth        https://github.com/alastairrushworth       
     ## 
     ## [[2]]
     ## # A tibble: 1 x 3

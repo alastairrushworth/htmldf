@@ -1,4 +1,5 @@
 #' @importFrom dplyr bind_rows
+#' @importFrom dplyr filter
 #' @importFrom rvest html_nodes
 #' @importFrom rvest html_attr
 #' @importFrom stringr str_extract

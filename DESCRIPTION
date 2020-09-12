@@ -1,14 +1,15 @@
 Package: htmldf
 Type: Package
-Title: Simple scraping and tidy webpage summaries
-Version: 0.0.1
+Title: Simple scraping and Tidy Webpage Summaries
+Version: 0.1.0
 Author: Alastair Rushworth
 Maintainer: Alastair Rushworth <alastairmrushworth@gmail.com>
-Description: Simple tools for scraping webpages, extracting common html tags and parsing to tidy format.
+Description: Simple tools for scraping webpages, extracting common html tags and parsing contents to a tidy, tabular format.
 License: GPL-2
 Imports: cld3, dplyr, httr, lubridate, magrittr, progress, R.utils, ranger, rvest, stringr, tibble, tidyr, tools, urltools, xml2
 Depends: R (>= 3.5.0)
 Encoding: UTF-8
+Language: en_GB
 LazyData: true
 RoxygenNote: 7.1.1
 Suggests: testthat

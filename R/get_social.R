@@ -23,7 +23,9 @@ get_social_links <- function(html_content){
                            tw_attr_meta3, tw_attr_meta4)) %>% unique() %>% sort()
   # add scheme and site root for full profile url
   twitter_profile  <- paste0('https://twitter.com/', gsub('@', '', twitter_handle))
-  twitter_df       <- tibble(site = 'twitter', handle = twitter_handle, profile = twitter_profile)
+  twitter_df       <- 
+    tibble(site = 'twitter', handle = twitter_handle, profile = twitter_profile) %>%
+    filter(nchar(twitter_handle) > 0)
   
   #
   # LINKEDIN HANDLES AND PAGES
@@ -86,7 +88,7 @@ linkedin_handles_from_urls <- function(urlx){
   handles <- urlx %>% 
     grep('linkedin.com/', ., value = TRUE) %>% 
     grep('linkedin.com/(?!sharearticle)', ., value = TRUE, perl = TRUE) %>% # remove article shares
-    gsub('https://www.linkedin.com/in/', '@', .) %>% # replace the main site w/ @
+    gsub('https://www.linkedin.com/in/|https://linkedin.com/in/', '@', .) %>% # replace the main site w/ @
     gsub('\\/$', '', .) %>% # drop trailing backslash
     tolower() %>% unique() %>% sort()
   return(handles)
@@ -102,16 +104,4 @@ github_handles_from_urls <- function(urlx){
     tolower() %>% unique() %>% sort()
   return(handles)
 }
-
-
-# pp <- httr::GET('https://colinfay.me/') %>%
-#   read_html() %>%
-#   html_nodes('a') %>%
-#   html_attr('href') %>%
-#   grep('github', ., value = TRUE) %>%
-#   unique() %>% tolower()
-# pp
-# pp %>% github_handles_from_urls()
-
-
 

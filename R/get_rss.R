@@ -19,7 +19,7 @@ get_rss_links <- function(html_content, url){
   links_feedburner <- html_content %>%
     html_nodes('a') %>% 
     html_attr('href') %>%
-    grep('feeds\\.feedburner\\.com', ., value = TRUE)
+    grep('feeds\\.feedburner\\.com|\\/feed\\/', ., value = TRUE)
   # combine, get absolute
   links <- c(links_rss, links_atom, links_feedburner) %>%
     xml2::url_absolute(base = url) %>%

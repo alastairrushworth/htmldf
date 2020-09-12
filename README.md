@@ -1,9 +1,11 @@
 
+# htmldf <img src="man/figures/hex.png" align="right" width="150" />
+
 [![Build
 Status](https://travis-ci.org/alastairrushworth/htmldf.svg?branch=master)](https://travis-ci.org/alastairrushworth/htmldf)
 [![codecov](https://codecov.io/gh/alastairrushworth/htmldf/branch/master/graph/badge.svg)](https://codecov.io/gh/alastairrushworth/htmldf)
 
-# htmldf
+## Overview
 
 The package `htmldf` contains a single function `html_df()` which
 accepts a vector of urls as an input and from each will attempt to

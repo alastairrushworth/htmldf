@@ -7,6 +7,7 @@
 html_df(
   urlx,
   max_size = 5e+06,
+  wait = 0,
   time_out = 10,
   show_progress = TRUE,
   keep_source = TRUE
@@ -17,6 +18,8 @@ html_df(
 
 \item{max_size}{Maximum size in bytes of pages to attempt to parse, defaults to \code{5000000}.
 This is to avoid reading very large pages that may cause \code{read_html()} to hang.}
+
+\item{wait}{Time in seconds to wait between successive requests. Defaults to 0.}
 
 \item{time_out}{Time in seconds to wait for \code{httr::GET()} to complete before exiting.  Defaults 
 to 10.}

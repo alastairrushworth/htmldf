@@ -7,6 +7,7 @@
 #'
 #' @param urlx A character vector containing urls.  Local files must be prepended with \code{file://}.
 #' @param show_progress Logical, defaults to \code{TRUE}. Whether to show progress during download.
+#' @param wait Time in seconds to wait between successive requests. Defaults to 0.
 #' @param max_size Maximum size in bytes of pages to attempt to parse, defaults to \code{5000000}.
 #'   This is to avoid reading very large pages that may cause \code{read_html()} to hang.
 #' @param keep_source Logical argument - whether or not to retain the contents of the page \code{source} 
@@ -52,6 +53,7 @@
 #' @export
 
 html_df <- function(urlx, max_size = 5000000, 
+                    wait = 0,
                     time_out = 10, 
                     show_progress = TRUE, 
                     keep_source = TRUE){
@@ -59,6 +61,7 @@ html_df <- function(urlx, max_size = 5000000,
   # loop over pages and fetch
   if(show_progress) pb <- start_progress(total = length(urlx), prefix = 'Parsing link: ')
   for(i in seq_along(urlx)){
+    if(wait > 0) Sys.sleep(wait)
     if(show_progress) update_progress(bar = pb, iter = i, total = length(urlx), what = ifelse(is.na(urlx[i]), 'URL is NA', urlx[i]))
     fetch_list[[i]] <- fetch_page(urlx[i], max_size = max_size, time_out = time_out, keep_source = keep_source)
   }

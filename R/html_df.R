@@ -38,9 +38,25 @@
 #'
 #' @author Alastair Rushworth
 #' @examples
-#' # NOT RUN - requires internet connection :)
-#' # urlx <- c("https://github.com/alastairrushworth/htmldf")
-#' # html_df(urlx)
+#' # Examples require an internet connection...
+#' urlx <- c("https://github.com/alastairrushworth/htmldf", 
+#'           "https://alastairrushworth.github.io/")
+#' dl   <- html_df(urlx)
+#' # preview the dataframe
+#' head(dl)
+#' # social tags
+#' dl$social
+#' # page titles
+#' dl$title
+#' # page language
+#' dl$lang
+#' # rss feeds
+#' dl$rss
+#' # inferred code language
+#' dl$code_lang
+#' # print the page source
+#' dl$source
+#' 
 #'
 #' @importFrom tibble tibble
 #' @importFrom dplyr mutate

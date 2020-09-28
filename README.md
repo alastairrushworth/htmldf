@@ -4,6 +4,11 @@
 [![Build
 Status](https://travis-ci.org/alastairrushworth/htmldf.svg?branch=master)](https://travis-ci.org/alastairrushworth/htmldf)
 [![codecov](https://codecov.io/gh/alastairrushworth/htmldf/branch/master/graph/badge.svg)](https://codecov.io/gh/alastairrushworth/htmldf)
+[![CRAN
+status](https://www.r-pkg.org/badges/version/htmldf)](https://cran.r-project.org/package=htmldf)
+[![](https://cranlogs.r-pkg.org/badges/htmldf)](https://cran.r-project.org/package=htmldf)
+[![cran
+checks](https://cranchecks.info/badges/summary/htmldf)](https://cran.r-project.org/web/checks/check_results_htmldf.html)
 
 ## Overview
 
@@ -53,7 +58,7 @@ z
     ##   url   title lang  url2  links rss   images social code_lang   size server
     ##   <chr> <chr> <chr> <chr> <lis> <chr> <list> <list>     <dbl>  <int> <chr> 
     ## 1 http… Visu… en    http… <tib… http… <tibb… <tibb…     1      38445 GitHu…
-    ## 2 http… Conv… en    http… <tib… <NA>  <tibb… <tibb…    -0.936 110231 Googl…
+    ## 2 http… Conv… en    http… <tib… <NA>  <tibb… <tibb…    -0.936 111326 Googl…
     ## 3 http… Robe… en    http… <tib… <NA>  <tibb… <tibb…     1     291099 Netli…
     ## # … with 4 more variables: accessed <dttm>, published <dttm>, generator <chr>,
     ## #   source <chr>

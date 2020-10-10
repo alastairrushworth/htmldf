@@ -22,6 +22,8 @@
 #' \item \code{url2} the fetched url, this may be different to the original, for example if redirected
 #' \item \code{links} a list of tibbles of hyperlinks found in \code{<a>} tags
 #' \item \code{rss} a list of embedded RSS feeds found on the page
+#' \item \code{tables} a list of tables found on the page in descending order of size, coerced to
+#'  \code{tibble} wherever possible.  
 #' \item \code{images} list of tibbles containing image links found on the page
 #' \item \code{social} list of tibbles containing twitter, linkedin and github user info found on page
 #' \item \code{code_lang} numeric indicating inferred code language.  A negative values near -1 
@@ -85,8 +87,8 @@ html_df <- function(urlx,
   # combine into dataFrame
   z <- tibble(z = fetch_list) %>% 
     unnest_wider(z) %>%
-    select(url, title, lang, url2, links, rss, images, 
-           social, code_lang, size, server, 
+    select(url, title, lang, url2, links, rss, tables, 
+           images, social, code_lang, size, server, 
            accessed, published, generator,
            source)
   # unlist the source html column
@@ -141,6 +143,7 @@ fetch_page <- function(url, time_out, max_size, keep_source){
   pg_rss       <- get_rss(pg_htm, url = url2)
   pg_gen       <- get_generator(pg_htm)
   pg_tim       <- get_time(pg_htm, url = url2)
+  pg_tbl       <- get_tables(pg_htm)
   pg_code_lang <- guess_code_lang(pg_htm)
 
   # combine into list
@@ -150,6 +153,7 @@ fetch_page <- function(url, time_out, max_size, keep_source){
          rss = pg_rss, 
          title = pg_ttl, 
          links = pg_lnk,
+         tables = pg_tbl,
          source = ifelse(keep_source, as.character(pg_htm), NA),
          social = pg_scl,
          images = pg_img, 

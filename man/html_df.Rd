@@ -38,6 +38,8 @@ A tibble with columns
 \item \code{url2} the fetched url, this may be different to the original, for example if redirected
 \item \code{links} a list of tibbles of hyperlinks found in \code{<a>} tags
 \item \code{rss} a list of embedded RSS feeds found on the page
+\item \code{tables} a list of tables found on the page in descending order of size, coerced to
+ \code{tibble} wherever possible.  
 \item \code{images} list of tibbles containing image links found on the page
 \item \code{social} list of tibbles containing twitter, linkedin and github user info found on page
 \item \code{code_lang} numeric indicating inferred code language.  A negative values near -1 

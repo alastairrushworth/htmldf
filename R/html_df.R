@@ -68,7 +68,8 @@
 #' @importFrom utils flush.console
 #' @export
 
-html_df <- function(urlx, max_size = 5000000, 
+html_df <- function(urlx, 
+                    max_size = 5000000, 
                     wait = 0,
                     time_out = 10, 
                     show_progress = TRUE, 

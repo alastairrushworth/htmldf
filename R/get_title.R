@@ -8,7 +8,7 @@ get_title <- function(page, url){
     # attempt to read page title from title tag
     text_nodes <- function(page, node) page %>% html_nodes(node) %>% html_text()
     title      <- try(unlist(sapply(c('title', 'h1', 'h2', 'h3'), text_nodes, page = page)), silent = TRUE)
-    if(length(title) > 0) title <- title[nchar(title) > 0]
+    if(length(title) > 0) title <- title[nchar(title, type = 'bytes') > 0]
     # if no error in fetching title, and there is something there...
     if((!'try_error' %in% class(title)) & (length(title) > 0)) title_out <- title[1]
     # if this is a Github repo, use the repo name as the page title

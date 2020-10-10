@@ -18,6 +18,7 @@ The package `htmldf` contains a single function `html_df()` which accepts a vect
 + page title
 + inferred language
 + RSS feeds
++ tables coerced to tibbles, where possible
 + hyperlinks
 + image links
 + twitter, github and linkedin profiles
@@ -27,43 +28,62 @@ The package `htmldf` contains a single function `html_df()` which accepts a vect
 + page published or last updated dates
 
 
-Installation and usage
+Installation
 ---  
 
-To install the package:
+To install the CRAN version of the package:
+
+```{r, eval=FALSE}
+install.packages('htmldf')
+```
+
+To install the development version of the package:
 
 ```{r, eval=FALSE}
 remotes::install_github('alastairrushworth/htmldf')
 ```
 
-To use `html_df`
-```{r, message=FALSE}
+Usage
+---  
+
+First define a vector of URLs you want to gather information from.  The function `html_df()` returns a `tibble` where each row corresponds to a webpage, and each column corresponds to an attribute of that webpage:
+```{r, message=FALSE, warning=FALSE}
 library(htmldf)
 library(dplyr)
 
+# An example vector of URLs to fetch data for
 urlx <- c("https://alastairrushworth.github.io/Visualising-Tour-de-France-data-in-R/",
           "https://www.tensorflow.org/tutorials/images/cnn", 
           "https://www.robertmylesmcdonnell.com/content/posts/mtcars/")
+
+# use html_df() to gather data
 z <- html_df(urlx, show_progress = FALSE)
 z
 ```
 
-Page titles
+To see the page titles, look at the `titles` column.  
 ```{r}
 z %>% select(title, url2)
 ```
 
-RSS feeds
+
+Where there are tables embedded on a page in the `<table>` tag, these will be gathered into the list column `tables`.  `html_df` will attempt to coerce each table to `tibble` - where that isn't possible, the raw html is returned instead.
+
+```{r}
+z$tables
+```
+
+`html_df` does its best to find RSS feeds embedded in the page:
 ```{r}
 z$rss
 ```
 
-Social profiles
+Social profiles embedded on the page.  At present, Twitter, Facebook and Linkedin are extracted.
 ```{r}
 z$social
 ```
 
-Inferred code language (near 1 = R; near -1 = Python)
+Code language is inferred from `<code>` chunks using simple machine learning.  The `code_lang` column contains score where values near 1 indicate mostly R code, values near -1 indicate mostly Python code:
 ```{r}
 z %>% select(code_lang, url2)
 ```

@@ -5,7 +5,7 @@ library(tidyverse)
 library(ranger)
 library(stringr)
 
-load("/Users/alastairrushworth/Documents/git_repositories/htmldf/ddf.RData")
+load("page_inference/code_classification/ddf.RData")
 
 get_code_text <- function(x){
   if('xml_document' %in% class(x)){
@@ -44,9 +44,6 @@ code_features <- function(code){
     xout           <- xout / cnts
     xout
 }
-
-# pp <- html_df('https://www.robertmylesmcdonnell.com/content/posts/mtcars/')
-
 
 
 # get features from code vector

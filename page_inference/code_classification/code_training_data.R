@@ -15,6 +15,11 @@ t_py   <- get_timeline('icymi_py', n = 3200)
 urls_p <- unique(unlist(t_py$urls_expanded_url))
 urls_p <- urls_p[!is.na(urls_p)]
 
+# add GH language info
+# add mentions in text to R, RStudio, 
+# create a test set that is independent of the above?s
+
+
 # gather julia tweets from #julialang hashtag
 # TODO
 

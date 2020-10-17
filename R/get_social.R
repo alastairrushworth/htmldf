@@ -1,5 +1,7 @@
 #' @importFrom dplyr bind_rows
 #' @importFrom dplyr filter
+#' @importFrom dplyr distinct
+#' @importFrom dplyr arrange
 #' @importFrom rvest html_nodes
 #' @importFrom rvest html_attr
 #' @importFrom stringr str_extract
@@ -10,38 +12,61 @@
 
 get_social_links <- function(html_content){
   # get a tags
-  links    <- html_content %>% html_nodes("a") %>% html_attr('href') %>% tolower() %>% unique()
+  links    <- html_content %>% html_nodes("a") %>% html_attr('href') %>% unique()
   
-  #
-  # TWITTER HANDLES AND PAGES
-  tw_attr_meta1 <- html_content %>% html_nodes('meta[name="twitter:site"]') %>% html_attr('content') %>% tolower()
-  tw_attr_meta2 <- html_content %>% html_nodes('meta[name="twitter:creator"]') %>% html_attr('content') %>% tolower()
-  tw_attr_meta3 <- html_content %>% html_nodes('meta[property="twitter:site"]') %>% html_attr('content') %>% tolower()
-  tw_attr_meta4 <- html_content %>% html_nodes('meta[property="twitter:creator"]') %>% html_attr('content') %>% tolower()
-  tw_attr_urlx  <- twitter_handles_from_urls(links)
-  twitter_handle <- gsub('@@', '@', 
-                         c(tw_attr_urlx, tw_attr_meta1, tw_attr_meta2,
-                           tw_attr_meta3, tw_attr_meta4)) %>% unique() %>% sort()
-  # add scheme and site root for full profile url
-  twitter_profile  <- paste0('https://twitter.com/', gsub('@', '', twitter_handle))
+  # TWITTER HANDLES FROM EMBEDDED LINKS
+  tw_links <- twitter_handles_from_urls(links)
+  # TWITTER HANDLES FROM TAGS
+  tw_attrs <- c('meta[name="twitter:site"]', 'meta[name="twitter:creator"]', 
+                'meta[property="twitter:site"]', 'meta[property="twitter:creator"]')
+  tw_tags  <- unlist(sapply(tw_attrs, function(v) html_content %>% html_nodes(v) %>% html_attr('content') %>% tolower()))
+  tw_tags  <- gsub('https://twitter.com/', '', tw_tags)
+  # COMBINE ALL HANDLES
+  tw_hndl  <- c(tw_tags, tw_links) %>% gsub('@@', '@', .) %>% unique() %>% sort() 
+  # COMINE TWITTER PROFILES INTO A DF
   twitter_df       <- 
-    tibble(site = 'twitter', handle = twitter_handle, profile = twitter_profile) %>%
-    filter(nchar(twitter_handle) > 0)
+    tibble(site = 'twitter', 
+           handle = tw_hndl, 
+           profile = paste0('https://twitter.com/', gsub('@', '', tw_hndl))
+    ) %>%
+    filter(nchar(handle) > 0)
   
-  #
-  # LINKEDIN HANDLES AND PAGES
-  li_attr_urlx  <- linkedin_handles_from_urls(links) 
-  linkedin_profile  <- paste0('https://linkedin.com/in/', gsub('@', '', li_attr_urlx))
-  linkedin_df <- tibble(site = 'linkedin', handle = li_attr_urlx, profile = linkedin_profile)
+  social_df <- function(links, instructions){
+    if(!instructions$case_sense) links <- tolower(links)
+    matches <- 
+      links %>% 
+      grep(instructions$pattern, ., perl = TRUE, value = TRUE) 
+    handles <- 
+      matches %>%
+      gsub(instructions$slug, ifelse(instructions$at_profile, '@', ''), .) %>%
+      gsub('\\/$', '', .) 
+    if(!is.null(instructions$gsub2)){
+      handles <- gsub(instructions$gsub2, '', handles)
+    }
+    # handles  <- handles %>% unique() %>% sort()
+    
+    if(!is.null(instructions$slug_add)){
+      profiles <- paste0(instructions$slug_add, gsub('@', '', handles))
+    } else {
+      slug_bits <- xml2::url_parse(matches)
+      profiles  <- paste0(slug_bits$scheme, '://', slug_bits$server, '/', handles)
+    }
+      
+    out_df   <- tibble(
+      site = instructions$site, 
+      handle = handles, 
+      profile = profiles
+    ) %>%
+      distinct(handle, .keep_all = TRUE) %>%
+      arrange(site, handle)
+    return(out_df)
+  }
   
-  #
-  # GITHUB HANDLES AND PAGES
-  gh_attr_urlx  <- github_handles_from_urls(links) 
-  github_profile  <- paste0('https://github.com/', gsub('@', '', gh_attr_urlx))
-  github_df <- tibble(site = 'github', handle = gh_attr_urlx, profile = github_profile)
-  
-  # COMBINE THE PROFILES AND RETURN AS SINGLE DF
-  social   <- bind_rows(twitter_df, linkedin_df, github_df)
+  non_twitter_social <- bind_rows(lapply(social_patterns, social_df, links = links))
+
+  social <- 
+    bind_rows(twitter_df, non_twitter_social) %>%
+    filter(handle != '@')
   return(social)
 }
 
@@ -84,25 +109,148 @@ twitter_handles_from_urls <- function(urlx){
   return(handles)
 }
 
-# function to get twitter handles from twitter urls
-linkedin_handles_from_urls <- function(urlx){
-  handles <- urlx %>% 
-    grep('linkedin.com/', ., value = TRUE) %>% 
-    grep('linkedin.com/(?!sharearticle)', ., value = TRUE, perl = TRUE) %>% # remove article shares
-    gsub('https://www.linkedin.com/in/|https://linkedin.com/in/', '@', .) %>% # replace the main site w/ @
-    gsub('\\/$', '', .) %>% # drop trailing backslash
-    tolower() %>% unique() %>% sort()
-  return(handles)
-}
 
-# function to get twitter handles from twitter urls
-github_handles_from_urls <- function(urlx){
-  handles <- urlx %>% 
-    grep('https://github.com/(?!security$)(?!events$)(?!about$)(?!pricing$)(?!contact$)(?!.*/)([a-z0-9]+)', 
-         ., value = TRUE, perl = TRUE) %>%
-    gsub('https://github.com/', '@', .) %>%
-    gsub('\\/$', '', .) %>% # drop trailing backslash
-    tolower() %>% unique() %>% sort()
-  return(handles)
-}
+
+social_patterns <- list(
+
+  'bitbucket' = list(
+    pattern    = 'https?://(www.)?bitbucket.org/', 
+    slug       = 'https?://(www.)?bitbucket.org/',
+    slug_add   = 'https://bitbucket.org/',
+    site       = 'bitbucket',
+    at_profile = TRUE,
+    case_sense = FALSE
+  ), 
+
+  'devto' = list(
+    pattern    = 'https?://(www.)?dev.to/', 
+    slug       = 'https?://(www.)?dev.to/',
+    slug_add   = 'https://dev.to/',
+    site       = 'devto',
+    at_profile = TRUE,
+    case_sense = FALSE
+  ), 
+
+  'facebook' = list(
+    pattern    = 'https?://(www.)?facebook.com/(?!sharer)', 
+    slug       = 'https?://(www.)?facebook.com/',
+    slug_add   = 'https://facebook.com/',
+    site       = 'facebook',
+    at_profile = TRUE,
+    case_sense = FALSE
+  ), 
+
+  
+  'gitlab' = list(
+    pattern    = 'https?://(www.)?gitlab.com/', 
+    slug       = 'https?://(www.)?gitlab.com/',
+    slug_add   = 'https://gitlab.com/',
+    site       = 'gitlab',
+    at_profile = TRUE,
+    case_sense = FALSE
+  ), 
+  
+  'github' = list(
+    pattern    = 'https?://(www.)?github.com/(?!security(\\/|$))(?!events(\\/|$))(?!about(\\/|$))(?!pricing(\\/|$))(?!contact(\\/|$))(?!site(\\/|$))', 
+    slug       = 'https?://(www.)?github.com/',
+    slug_add   = 'https://github.com/',
+    gsub2      =  "\\/.*",
+    site       = 'github',
+    at_profile = TRUE,
+    case_sense = FALSE
+  ), 
+  
+  'instagram' = list(
+    pattern    = 'https?://(www.)?instagram.com/(?!sharer)', 
+    slug       = 'https?://(www.)?instagram.com/',
+    slug_add   = 'https://instagram.com/',
+    site       = 'instagram',
+    at_profile = TRUE,
+    case_sense = FALSE
+  ), 
+  
+  'keybase' = list(
+    pattern    = 'https?://(www.)?keybase.io/', 
+    slug       = 'https?://(www.)?keybase.io/',
+    slug_add   = 'https://keybase.io/',
+    site       = 'keybase',
+    at_profile = TRUE,
+    case_sense = FALSE
+  ), 
+  
+  'linkedin' = list(
+    pattern    = 'https?://(www.)?linkedin.com/(?!sharearticle)', 
+    slug       = 'https?://(www.)?linkedin.com/',
+    slug_add   = 'https://linkedin.com/',
+    site       = 'linkedin',
+    at_profile = TRUE,
+    case_sense = FALSE
+  ), 
+  
+  'mastodon' = list(
+    pattern    = 'https?://(www.)?mastodon\\.(\\w+)\\/',
+    slug       = 'https?://(www.)?mastodon\\.(\\w+)\\/',
+    slug_add   = NULL,
+    site       = 'mastodon',
+    at_profile = FALSE,
+    case_sense = FALSE
+  ),
+
+  'orcid' = list(
+    pattern    = 'https?://(www.)?orcid.org/(\\d+-?)+\\d+|https://orcid.org/(\\d+-?)+\\d+', 
+    slug       = 'https?://(www.)?orcid.org/',
+    slug_add   = 'https://orcid.org/',
+    site       = 'orcid',
+    at_profile = FALSE,
+    case_sense = FALSE
+  ),
+  
+  'patreon' = list(
+    pattern    = 'https?://(www.)?patreon.com/', 
+    slug       = 'https?://(www.)?patreon.com/',
+    slug_add   = 'https://patreon.com/',
+    site       = 'patreon',
+    at_profile = TRUE,
+    case_sense = FALSE
+  ),
+
+  'researchgate' = list(
+    pattern    = 'https?://(www.)?researchgate.net/profile/', 
+    slug       = 'https?://(www.)?researchgate.net/profile/',
+    slug_add   = 'https://researchgate.net/profile/',
+    site       = 'researchgate',
+    at_profile = TRUE,
+    case_sense = TRUE
+  ),
+  
+  'stackoverflow' = list(
+    pattern    = 'https?://(www.)?stackoverflow.com/users/', 
+    slug       = 'https?://(www.)?stackoverflow.com/users/',
+    slug_add   = 'https://stackoverflow.com/users/',
+    site       = 'stackoverflow',
+    at_profile = TRUE,
+    case_sense = FALSE
+  ),
+  
+  # 'vimeo' = list(
+  #   pattern    = 'https?://(www.)?vimeo.com/', 
+  #   slug       = 'https?://(www.)?vimeo.com/',
+  #   slug_add   = 'https://vimeo.com/',
+  #   site       = 'vimeo',
+  #   at_profile = TRUE,
+  #   case_sense = FALSE
+  # ),
+  # 
+  'youtube' = list(
+    pattern    = 'https?://(www.)?youtube.com/channel/', 
+    slug       = 'https?://(www.)?youtube.com/channel/',
+    slug_add   = 'https://youtube.com/channel/',
+    site       = 'youtube',
+    at_profile = FALSE,
+    case_sense = TRUE
+  )
+)
+
+
+
 

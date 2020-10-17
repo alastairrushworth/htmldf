@@ -21,7 +21,7 @@ The package `htmldf` contains a single function `html_df()` which accepts a vect
 + tables coerced to tibbles, where possible
 + hyperlinks
 + image links
-+ twitter, github and linkedin profiles
++ social media profiles
 + the inferred programming language of any text with code tags
 + page size, generator and server
 + page accessed date

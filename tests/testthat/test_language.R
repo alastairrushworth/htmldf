@@ -1,16 +1,21 @@
 context("Natural language inference")
 
-# gather the names of all of the test files
-test_html <- 
-  list.files(normalizePath('testdata'), pattern = '\\.html', full.names = TRUE) %>%
-  paste0('file://', .)
+# read list of available test pages
+source(paste0(normalizePath('testdata'), '/page_attrs.R'))
+# vector of pages to read
+pgs_html <- names(url_list)
+page_vec <- paste0('file://', normalizePath('testdata'), '/', pgs_html, '.html')
 
-
-test_that("Spanish language", {
-  z <- html_df(test_html, show_progress = FALSE)
-  expect_equal(z$lang, c("en", "en", "en", "en", "en", "en", "en", "en", NA,
-                         "en", "en", "en", "en", "en", "en", NA,  "en", "en",
-                         "en", "en", "en", "en", "en", "en", "en", NA,  "en", 
-                         "en", "es"))
-})
-
+# Test for inferred language in pages
+for(i in seq_along(page_vec)){
+  test_that(paste(pgs_html[i], 'has correct inferred language'), {
+    # grab page source from test data
+    z         <- html_df(page_vec[i])
+    
+    if(is.na(url_list[[pgs_html[i]]]$lang)){
+      expect_equal(z$lang, NA)
+    } else {
+      expect_equal(as.vector(z$lang), url_list[[pgs_html[i]]]$lang)
+    }
+  })
+}

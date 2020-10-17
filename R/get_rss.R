@@ -30,7 +30,7 @@ get_rss_links <- function(html_content, url){
     links <- html_content %>%
       html_nodes('a') %>% 
       html_attr('href') %>%
-      grep('index\\.xml$', ., value = TRUE) %>%
+      grep('index\\.xml$|feed\\.rss$', ., value = TRUE) %>%
       xml2::url_absolute(base = url) %>%
       tolower() %>% unique()
   }

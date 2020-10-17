@@ -1,47 +1,24 @@
 context("Code language inference")
+# read list of available test pages
+source(paste0(normalizePath('testdata'), '/page_attrs.R'))
+# vector of pages to read
+pgs_html <- names(url_list)
+page_vec <- paste0('file://', normalizePath('testdata'), '/', pgs_html, '.html')
 
-#
-# r tests
-test_that("Test R (1)", {
-  # example
-  z    <- html_df(paste0('file://', normalizePath('testdata'), '/ar_tdf.html'))
-  expect_gt(z$code_lang, 0.6)
-})
-
-test_that("Test R (2)", {
-  # example
-  z    <- html_df(paste0('file://', normalizePath('testdata'), '/mcdonnell.html'))
-  expect_gt(z$code_lang, 0.6)
-})
-
-test_that("Test R (3)", {
-  # example
-  z    <- html_df(paste0('file://', normalizePath('testdata'), '/revo.html'))
-  expect_gt(z$code_lang, 0.6)
-})
-
-
-#
-# python tests
-test_that("Test Python (1)", {
-  # example
-  z    <- html_df(paste0('file://', normalizePath('testdata'), '/tflow.html'))
-  expect_lt(z$code_lang, -0.6)
-})
-
-test_that("Test Python (2)", {
-  # example
-  z    <- html_df(paste0('file://', normalizePath('testdata'), '/mlplus.html'))
-  expect_lt(z$code_lang, -0.6)
-})
-
-test_that("Test Python (3)", {
-  # example
-  z    <- html_df(paste0('file://', normalizePath('testdata'), '/vdp.html'))
-  expect_lt(z$code_lang, -0.5)
-})
-
-
-
+# Test for inferred code content in pages
+for(i in seq_along(page_vec)){
+  test_that(paste(pgs_html[i], 'has correct inferred code'), {
+    # grab page source from test data
+    z         <- html_df(page_vec[i])
+    true_code <- url_list[[pgs_html[i]]]$code
+    if(is.na(true_code)){
+      expect_equal(z$code_lang, NA)
+    } else if(true_code == 'py'){
+      expect_lt(z$code_lang, -0.5)
+    } else if(true_code == 'r'){
+      expect_gt(z$code_lang, -0.5)
+    } 
+  })
+}
 
 

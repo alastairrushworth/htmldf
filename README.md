@@ -24,7 +24,7 @@ contain page attributes and metadata extracted from the html, including:
   - tables coerced to tibbles, where possible
   - hyperlinks
   - image links
-  - twitter, github and linkedin profiles
+  - social media profiles
   - the inferred programming language of any text with code tags
   - page size, generator and server
   - page accessed date
@@ -68,7 +68,7 @@ z
     ##   url   title lang  url2  links rss   tables images social code_lang   size
     ##   <chr> <chr> <chr> <chr> <lis> <chr> <list> <list> <list>     <dbl>  <int>
     ## 1 http… Visu… en    http… <tib… http… <lgl … <tibb… <tibb…     1      38445
-    ## 2 http… Conv… en    http… <tib… <NA>  <name… <tibb… <tibb…    -0.936 113305
+    ## 2 http… Conv… en    http… <tib… <NA>  <name… <tibb… <tibb…    -0.936 114051
     ## 3 http… Robe… en    http… <tib… <NA>  <name… <tibb… <tibb…     1     291099
     ## # … with 5 more variables: server <chr>, accessed <dttm>, published <dttm>,
     ## #   generator <chr>, source <chr>
@@ -139,26 +139,28 @@ z$social
 
     ## [[1]]
     ## # A tibble: 3 x 3
-    ##   site     handle                    profile                                    
-    ##   <chr>    <chr>                     <chr>                                      
-    ## 1 twitter  @rushworth_a              https://twitter.com/rushworth_a            
-    ## 2 linkedin @alastair-rushworth-2531… https://linkedin.com/in/alastair-rushworth…
-    ## 3 github   @alastairrushworth        https://github.com/alastairrushworth       
+    ##   site     handle                     profile                                   
+    ##   <chr>    <chr>                      <chr>                                     
+    ## 1 twitter  @rushworth_a               https://twitter.com/rushworth_a           
+    ## 2 github   @alastairrushworth         https://github.com/alastairrushworth      
+    ## 3 linkedin @in/alastair-rushworth-25… https://linkedin.com/in/alastair-rushwort…
     ## 
     ## [[2]]
-    ## # A tibble: 1 x 3
+    ## # A tibble: 2 x 3
     ##   site    handle      profile                       
     ##   <chr>   <chr>       <chr>                         
     ## 1 twitter @tensorflow https://twitter.com/tensorflow
+    ## 2 github  @tensorflow https://github.com/tensorflow 
     ## 
     ## [[3]]
-    ## # A tibble: 4 x 3
-    ##   site     handle                   profile                                     
-    ##   <chr>    <chr>                    <chr>                                       
-    ## 1 twitter  @robertmylesmc           https://twitter.com/robertmylesmc           
-    ## 2 linkedin @robert-mcdonnell-7475b… https://linkedin.com/in/robert-mcdonnell-74…
-    ## 3 github   @coolbutuseless          https://github.com/coolbutuseless           
-    ## 4 github   @robertmyles             https://github.com/robertmyles
+    ## # A tibble: 5 x 3
+    ##   site     handle                     profile                                   
+    ##   <chr>    <chr>                      <chr>                                     
+    ## 1 twitter  @robertmylesmc             https://twitter.com/robertmylesmc         
+    ## 2 github   @coolbutuseless            https://github.com/coolbutuseless         
+    ## 3 github   @robertmyles               https://github.com/robertmyles            
+    ## 4 github   @wilkelab                  https://github.com/wilkelab               
+    ## 5 linkedin @in/robert-mcdonnell-7475… https://linkedin.com/in/robert-mcdonnell-…
 
 Code language is inferred from `<code>` chunks using simple machine
 learning. The `code_lang` column contains score where values near 1

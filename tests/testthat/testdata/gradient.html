@@ -1,0 +1,960 @@
+<!doctype html>
+<html lang='en'>
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+
+  <title>Transformers are Graph Neural Networks</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+
+  <style>
+html{-webkit-box-sizing:border-box;box-sizing:border-box}*,:after,:before{-webkit-box-sizing:inherit;box-sizing:inherit}/*! normalize.css v5.0.0 | MIT License | github.com/necolas/normalize.css */html{font-family:sans-serif;line-height:1.15;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:0}article,aside,footer,header,nav,section{display:block}h1{font-size:2em;margin:.67em 0}figcaption,figure,main{display:block}figure{margin:1em 40px}hr{-webkit-box-sizing:content-box;box-sizing:content-box;height:0;overflow:visible}pre{font-family:monospace,monospace;font-size:1em}a{background-color:transparent;-webkit-text-decoration-skip:objects}a:active,a:hover{outline-width:0}abbr[title]{border-bottom:none;text-decoration:underline;-webkit-text-decoration:underline dotted;text-decoration:underline dotted}b,strong{font-weight:inherit}b,strong{font-weight:bolder}code,kbd,samp{font-family:monospace,monospace;font-size:1em}dfn{font-style:italic}mark{background-color:#ff0;color:#000}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}audio,video{display:inline-block}audio:not([controls]){display:none;height:0}img{border-style:none}svg:not(:root){overflow:hidden}button,input,optgroup,select,textarea{font-family:sans-serif;font-size:100%;line-height:1.15;margin:0}button,input{overflow:visible}button,select{text-transform:none}[type=reset],[type=submit],button,html [type=button]{-webkit-appearance:button}[type=button]::-moz-focus-inner,[type=reset]::-moz-focus-inner,[type=submit]::-moz-focus-inner,button::-moz-focus-inner{border-style:none;padding:0}[type=button]:-moz-focusring,[type=reset]:-moz-focusring,[type=submit]:-moz-focusring,button:-moz-focusring{outline:1px dotted ButtonText}fieldset{border:1px solid silver;margin:0 2px;padding:.35em .625em .75em}legend{-webkit-box-sizing:border-box;box-sizing:border-box;color:inherit;display:table;max-width:100%;padding:0;white-space:normal}progress{display:inline-block;vertical-align:baseline}textarea{overflow:auto}[type=checkbox],[type=radio]{-webkit-box-sizing:border-box;box-sizing:border-box;padding:0}[type=number]::-webkit-inner-spin-button,[type=number]::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}[type=search]::-webkit-search-cancel-button,[type=search]::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}details,menu{display:block}summary{display:list-item}canvas{display:inline-block}template{display:none}[hidden]{display:none}blockquote,body,dd,dl,fieldset,figure,h1,h2,h3,h4,h5,h6,hr,legend,ol,p,pre,ul{margin:0;padding:0}li>ol,li>ul{margin-bottom:0}table{border-collapse:collapse;border-spacing:0}address,blockquote,dl,fieldset,figure,h1,h2,h3,h4,h5,h6,hr,ol,p,pre,table,ul{margin-bottom:16px}dd,ol,ul{margin-left:16px}img[data-action=zoom]{cursor:pointer;cursor:-webkit-zoom-in;cursor:-moz-zoom-in}.zoom-img,.zoom-img-wrap{position:relative;z-index:666;-webkit-transition:all .3s;transition:all .3s}img.zoom-img{cursor:pointer;cursor:-webkit-zoom-out;cursor:-moz-zoom-out}.zoom-overlay{z-index:420;background:#fff;position:fixed;top:0;left:0;right:0;bottom:0;pointer-events:none;filter:"alpha(opacity=0)";opacity:0;-webkit-transition:opacity .3s;transition:opacity .3s}.zoom-overlay-open .zoom-overlay{filter:"alpha(opacity=100)";opacity:1}.zoom-overlay-open,.zoom-overlay-transitioning{cursor:default}@-webkit-keyframes spin{100%{-webkit-transform:rotate(360deg);transform:rotate(360deg)}}@keyframes spin{100%{-webkit-transform:rotate(360deg);transform:rotate(360deg)}}.icon{position:relative;display:inline-block;width:25px;height:25px;overflow:hidden;fill:currentColor}.icon__cnt{width:100%;height:100%;background:inherit;fill:inherit;pointer-events:none;-webkit-transform:translateX(0);transform:translateX(0);-ms-transform:translate(.5px,-.3px)}.icon--m{width:50px;height:50px}.icon--l{width:100px;height:100px}.icon--xl{width:150px;height:150px}.icon--xxl{width:200px;height:200px}.icon__spinner{position:absolute;top:0;left:0;width:100%;height:100%}.icon--ei-spinner .icon__spinner,.icon--ei-spinner-2 .icon__spinner{-webkit-animation:spin 1s steps(12) infinite;animation:spin 1s steps(12) infinite}.icon--ei-spinner-3 .icon__spinner{-webkit-animation:spin 1.5s linear infinite;animation:spin 1.5s linear infinite}.icon--ei-sc-facebook{fill:#3b5998}.icon--ei-sc-github{fill:#333}.icon--ei-sc-google-plus{fill:#dd4b39}.icon--ei-sc-instagram{fill:#3f729b}.icon--ei-sc-linkedin{fill:#0976b4}.icon--ei-sc-odnoklassniki{fill:#ed812b}.icon--ei-sc-skype{fill:#00aff0}.icon--ei-sc-soundcloud{fill:#f80}.icon--ei-sc-tumblr{fill:#35465c}.icon--ei-sc-twitter{fill:#55acee}.icon--ei-sc-vimeo{fill:#1ab7ea}.icon--ei-sc-vk{fill:#45668e}.icon--ei-sc-youtube{fill:#e52d27}.icon--ei-sc-pinterest{fill:#bd081c}.icon--ei-sc-telegram{fill:#08c}code[class*=language-],pre[class*=language-]{color:#000;background:0 0;text-shadow:0 1px #fff;font-family:Consolas,Monaco,'Andale Mono','Ubuntu Mono',monospace;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-ms-hyphens:none;hyphens:none}code[class*=language-] ::-moz-selection,code[class*=language-]::-moz-selection,pre[class*=language-] ::-moz-selection,pre[class*=language-]::-moz-selection{text-shadow:none;background:#b3d4fc}code[class*=language-] ::selection,code[class*=language-]::selection,pre[class*=language-] ::selection,pre[class*=language-]::selection{text-shadow:none;background:#b3d4fc}@media print{code[class*=language-],pre[class*=language-]{text-shadow:none}}pre[class*=language-]{padding:1em;margin:.5em 0;overflow:auto}:not(pre)>code[class*=language-],pre[class*=language-]{background:#f5f2f0}:not(pre)>code[class*=language-]{padding:.1em;border-radius:.3em;white-space:normal}.token.cdata,.token.comment,.token.doctype,.token.prolog{color:#708090}.token.punctuation{color:#999}.namespace{opacity:.7}.token.boolean,.token.constant,.token.deleted,.token.number,.token.property,.token.symbol,.token.tag{color:#905}.token.attr-name,.token.builtin,.token.char,.token.inserted,.token.selector,.token.string{color:#690}.language-css .token.string,.style .token.string,.token.entity,.token.operator,.token.url{color:#a67f59;background:rgba(255,255,255,.5)}.token.atrule,.token.attr-value,.token.keyword{color:#07a}.token.function{color:#dd4a68}.token.important,.token.regex,.token.variable{color:#e90}.token.bold,.token.important{font-weight:700}.token.italic{font-style:italic}.token.entity{cursor:help}body{color:#222;font-size:18px;font-family:Georgia,serif;line-height:32px;background-color:#fff;border:4px solid #f4f6f8;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}@media (min-width:40em){body{border:8px solid #f4f6f8}}::-moz-selection{color:#fff;background-color:#b70038}::selection{color:#fff;background-color:#b70038}@font-face{font-family:Rubik;font-style:normal;font-weight:400;src:local("Rubik"),local("Rubik-Regular"),url(https://fonts.gstatic.com/s/rubik/v7/H-PGIsE3CA76bgvfUI8sM4DGDUGfDkXyfkzVDelzfFk.woff2) format("woff2");unicode-range:U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}@font-face{font-family:Rubik;font-style:normal;font-weight:400;src:local("Rubik"),local("Rubik-Regular"),url(https://fonts.gstatic.com/s/rubik/v7/yliIEUJv6vLJBV8IXYupkIDGDUGfDkXyfkzVDelzfFk.woff2) format("woff2");unicode-range:U+0590-05FF,U+20AA,U+25CC,U+FB1D-FB4F}@font-face{font-family:Rubik;font-style:normal;font-weight:400;src:local("Rubik"),local("Rubik-Regular"),url(https://fonts.gstatic.com/s/rubik/v7/Vi2gYeiEKThJHNpaE3cq54DGDUGfDkXyfkzVDelzfFk.woff2) format("woff2");unicode-range:U+0100-024F,U+1E00-1EFF,U+20A0-20AB,U+20AD-20CF,U+2C60-2C7F,U+A720-A7FF}@font-face{font-family:Rubik;font-style:normal;font-weight:400;src:local("Rubik"),local("Rubik-Regular"),url(https://fonts.gstatic.com/s/rubik/v7/p_PvaTv0YzIEJlEVv30xK6CWcynf_cDxXwCLxiixG1c.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2212,U+2215}@font-face{font-family:Rubik;font-style:normal;font-weight:500;src:local("Rubik Medium"),local("Rubik-Medium"),url(https://fonts.gstatic.com/s/rubik/v7/WdwM2J7q9PjwEDtfaHmmmxkAz4rYn47Zy2rvigWQf6w.woff2) format("woff2");unicode-range:U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}@font-face{font-family:Rubik;font-style:normal;font-weight:500;src:local("Rubik Medium"),local("Rubik-Medium"),url(https://fonts.gstatic.com/s/rubik/v7/UVNnZWb9UilkxwgKrV-6TBkAz4rYn47Zy2rvigWQf6w.woff2) format("woff2");unicode-range:U+0590-05FF,U+20AA,U+25CC,U+FB1D-FB4F}@font-face{font-family:Rubik;font-style:normal;font-weight:500;src:local("Rubik Medium"),local("Rubik-Medium"),url(https://fonts.gstatic.com/s/rubik/v7/XwD9N0jIpRr71ymtU2S41BkAz4rYn47Zy2rvigWQf6w.woff2) format("woff2");unicode-range:U+0100-024F,U+1E00-1EFF,U+20A0-20AB,U+20AD-20CF,U+2C60-2C7F,U+A720-A7FF}@font-face{font-family:Rubik;font-style:normal;font-weight:500;src:local("Rubik Medium"),local("Rubik-Medium"),url(https://fonts.gstatic.com/s/rubik/v7/IUSlgBbgyuDQpy87mBOAc3YhjbSpvc47ee6xR_80Hnw.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2212,U+2215}@font-face{font-family:Rubik;font-style:normal;font-weight:700;src:local("Rubik Bold"),local("Rubik-Bold"),url(https://fonts.gstatic.com/s/rubik/v7/YPNAXz8Lvdc_aVM_nwpD7RkAz4rYn47Zy2rvigWQf6w.woff2) format("woff2");unicode-range:U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}@font-face{font-family:Rubik;font-style:normal;font-weight:700;src:local("Rubik Bold"),local("Rubik-Bold"),url(https://fonts.gstatic.com/s/rubik/v7/qM4Xdpgnd4UROLJsnasqaBkAz4rYn47Zy2rvigWQf6w.woff2) format("woff2");unicode-range:U+0590-05FF,U+20AA,U+25CC,U+FB1D-FB4F}@font-face{font-family:Rubik;font-style:normal;font-weight:700;src:local("Rubik Bold"),local("Rubik-Bold"),url(https://fonts.gstatic.com/s/rubik/v7/u7X1qIRpQ-sYqacI4EpdYxkAz4rYn47Zy2rvigWQf6w.woff2) format("woff2");unicode-range:U+0100-024F,U+1E00-1EFF,U+20A0-20AB,U+20AD-20CF,U+2C60-2C7F,U+A720-A7FF}@font-face{font-family:Rubik;font-style:normal;font-weight:700;src:local("Rubik Bold"),local("Rubik-Bold"),url(https://fonts.gstatic.com/s/rubik/v7/0hS39AKxpJlEXQF3mVPgrnYhjbSpvc47ee6xR_80Hnw.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2212,U+2215}@font-face{font-family:'Playfair Display';font-style:normal;font-weight:400;src:local("Playfair Display Regular"),local("PlayfairDisplay-Regular"),url(https://fonts.gstatic.com/s/playfairdisplay/v13/2NBgzUtEeyB-Xtpr9bm1CRw5vVFbIG7DatP53f3SWfE.woff2) format("woff2");unicode-range:U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}@font-face{font-family:'Playfair Display';font-style:normal;font-weight:400;src:local("Playfair Display Regular"),local("PlayfairDisplay-Regular"),url(https://fonts.gstatic.com/s/playfairdisplay/v13/2NBgzUtEeyB-Xtpr9bm1CaH_fTF-WHdxjXJZkfhNjc4.woff2) format("woff2");unicode-range:U+0102-0103,U+1EA0-1EF9,U+20AB}@font-face{font-family:'Playfair Display';font-style:normal;font-weight:400;src:local("Playfair Display Regular"),local("PlayfairDisplay-Regular"),url(https://fonts.gstatic.com/s/playfairdisplay/v13/2NBgzUtEeyB-Xtpr9bm1CSVudZg2I_9CBJalMPResNk.woff2) format("woff2");unicode-range:U+0100-024F,U+1E00-1EFF,U+20A0-20AB,U+20AD-20CF,U+2C60-2C7F,U+A720-A7FF}@font-face{font-family:'Playfair Display';font-style:normal;font-weight:400;src:local("Playfair Display Regular"),local("PlayfairDisplay-Regular"),url(https://fonts.gstatic.com/s/playfairdisplay/v13/2NBgzUtEeyB-Xtpr9bm1CRD8Ne_KjP89kA3_zOrHj8E.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2212,U+2215}a{text-decoration:none;color:#222;-webkit-transition:.5s;transition:.5s}a:active,a:focus,a:hover{color:#b70038;text-decoration:none}img{display:block;max-width:100%;font-style:italic}hr{height:1px;margin:32px 0;border:0;background-color:#ecf0f1}h1,h2,h3,h4,h5,h6{font-weight:inherit;line-height:initial}h1{font-size:32px}h2{font-size:28px}h3{font-size:24px}h4{font-size:20px}h5{font-size:18px}h6{font-size:16px}b,strong{font-weight:600}blockquote{padding-left:16px;margin:24px 0;border-left:4px solid #b70038;font-family:Georgia,serif;font-size:20px}pre{padding:32px}code,pre{overflow:auto;white-space:pre-wrap;word-wrap:break-word;word-break:break-all;font-family:Courier,monospace;font-size:18px;background-color:#f4f6f8}li code,p code{padding:4px 7px}pre[class*=language-]{padding:32px;margin:16px 0}code[class*=language-],pre[class*=language-]{white-space:pre-wrap;word-break:break-all;line-height:inherit}input[type=color],input[type=date],input[type=datetime-local],input[type=datetime],input[type=email],input[type=month],input[type=number],input[type=password],input[type=search],input[type=tel],input[type=text],input[type=time],input[type=url],input[type=week],select,textarea{width:100%;display:block;padding:16px;margin-bottom:16px;border:1px solid #dfe3e9;border-radius:0;outline:0;line-height:initial;background-color:#fff;font-size:18px;font-family:Rubik,Helvetica,Arial,sans-serif;-webkit-transition:.5s;transition:.5s}input[type=color]:focus,input[type=date]:focus,input[type=datetime-local]:focus,input[type=datetime]:focus,input[type=email]:focus,input[type=month]:focus,input[type=number]:focus,input[type=password]:focus,input[type=search]:focus,input[type=tel]:focus,input[type=text]:focus,input[type=time]:focus,input[type=url]:focus,input[type=week]:focus,select:focus,textarea:focus{border-color:#b70038}table{width:100%;max-width:100%}table td,table th{padding:16px;text-align:left;vertical-align:top;border-top:1px solid #ecf0f1;font-weight:400}table thead th{font-weight:500;text-transform:uppercase;font-size:16px;vertical-align:bottom;border-bottom:2px solid #ecf0f1}table tbody+tbody{border-top:2px solid #ecf0f1}.o-grid{display:-webkit-box;display:-ms-flexbox;display:flex;-ms-flex-wrap:wrap;flex-wrap:wrap;margin:0 auto;max-width:1200px}.o-grid:after{content:'';display:table;clear:both}.o-grid .o-grid{margin-right:-16px;margin-left:-16px;padding:0}.o-grid--full{max-width:100vw}.o-grid__col{padding-right:16px;padding-left:16px}@media (min-width:40em){.o-grid__col{-webkit-box-flex:unset;-ms-flex-positive:unset;flex-grow:unset}}.o-grid__col--1-3-s{width:33.33333%}.o-grid__col--2-3-s{width:66.66667%}.o-grid__col--1-4-s{width:25%}.o-grid__col--2-4-s{width:50%}.o-grid__col--3-4-s{width:75%}.o-grid__col--4-4-s{width:100%}@media (min-width:40em){.o-grid__col--1-3-m{width:33.33333%}.o-grid__col--2-3-m{width:66.66667%}.o-grid__col--1-4-m{width:25%}.o-grid__col--2-4-m{width:50%}.o-grid__col--3-4-m{width:75%}.o-grid__col--4-4-m{width:100%}}@media (min-width:64em){.o-grid__col--1-3-l{width:33.33333%}.o-grid__col--2-3-l{width:66.66667%}.o-grid__col--1-4-l{width:25%}.o-grid__col--2-4-l{width:50%}.o-grid__col--3-4-l{width:75%}.o-grid__col--4-4-l{width:100%}}.o-grid__col--full{width:100%}.o-grid__col--center{margin:0 auto;-webkit-box-flex:initial;-ms-flex-positive:initial;flex-grow:initial}.o-grid__col--end{margin-left:auto}.c-off-canvas-container{display:-webkit-box;display:-ms-flexbox;display:flex;min-height:100vh;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column}.c-off-canvas-container .o-wrapper{-webkit-box-flex:1;-ms-flex:1 0 auto;flex:1 0 auto}.o-plain-list{margin:0;padding:0;list-style:none}.c-header{padding:32px 0}@media (min-width:40em){.c-header{padding:48px 0}}@media (min-width:64em){.c-header{padding:64px 0}}@media (min-width:40em){.c-logo{margin:0 auto;text-align:center;margin-bottom:32px}}.c-logo h1{margin-bottom:0}.c-logo__link{display:block;color:#b70038;font-family:Georgia,serif;font-size:28px;-webkit-transition:color .5s ease-in-out;transition:color .5s ease-in-out}@media (min-width:40em){.c-logo__link{font-size:38px}}.c-logo__link:active,.c-logo__link:focus,.c-logo__link:hover{color:#000}.c-logo__img{max-height:32px}@media (min-width:40em){.c-logo__img{margin:0 auto;max-height:96px}}@media (min-width:64em){.c-logo__img{max-height:192px}}@media (min-width:40em){.c-nav{position:relative;z-index:1;display:inline-block;line-height:1;background-color:#fff;padding:0 32px}.c-nav-wrap{text-align:center}.c-nav-wrap:after{content:'';position:absolute;height:1px;background-color:#ecf0f1;width:100%;top:50%;left:0}}.c-nav__item{display:block;font-size:16px;letter-spacing:2px;text-transform:uppercase}@media (min-width:40em){.c-nav__item:not(:last-child){margin-right:8px}}@media (min-width:64em){.c-nav__item:not(:last-child){margin-right:16px}}@media (min-width:40em){.c-nav__item{display:inline-block}}.c-nav__link{display:block;-webkit-transition:.5s;transition:.5s}@media (max-width:39.99em){.c-nav__link{padding:4px 0}}.c-nav__link--current{color:#b70038}.home-template .c-nav__link--current:not(:hover){color:#222}.c-nav__link:active,.c-nav__link:focus,.c-nav__link:hover{color:#b70038}.c-nav__icon{vertical-align:middle}.c-search{position:fixed;top:0;right:0;bottom:0;left:0;padding-top:32px;background:#fff;z-index:-1;opacity:0;-webkit-transform:scale(.96);transform:scale(.96);-webkit-transition:opacity 250ms cubic-bezier(.8,0,.55,.94),z-index 250ms step-end,-webkit-transform 250ms cubic-bezier(.694,0,.335,1);transition:opacity 250ms cubic-bezier(.8,0,.55,.94),z-index 250ms step-end,-webkit-transform 250ms cubic-bezier(.694,0,.335,1);transition:transform 250ms cubic-bezier(.694,0,.335,1),opacity 250ms cubic-bezier(.8,0,.55,.94),z-index 250ms step-end;transition:transform 250ms cubic-bezier(.694,0,.335,1),opacity 250ms cubic-bezier(.8,0,.55,.94),z-index 250ms step-end,-webkit-transform 250ms cubic-bezier(.694,0,.335,1)}@media (min-width:40em){.c-search{padding-top:64px}}.c-search.is-active{z-index:10;opacity:1;-webkit-transform:scale(1);transform:scale(1);-webkit-transition:opacity 250ms cubic-bezier(.8,0,.55,.94),z-index 250ms step-start,-webkit-transform 250ms cubic-bezier(.8,0,.55,.94);transition:opacity 250ms cubic-bezier(.8,0,.55,.94),z-index 250ms step-start,-webkit-transform 250ms cubic-bezier(.8,0,.55,.94);transition:transform 250ms cubic-bezier(.8,0,.55,.94),opacity 250ms cubic-bezier(.8,0,.55,.94),z-index 250ms step-start;transition:transform 250ms cubic-bezier(.8,0,.55,.94),opacity 250ms cubic-bezier(.8,0,.55,.94),z-index 250ms step-start,-webkit-transform 250ms cubic-bezier(.8,0,.55,.94)}.c-search__form{position:relative}.c-search__icon{position:absolute;left:-8px;fill:#5d738d}@media (max-width:39.99em){.c-search__icon{width:32px}}@media (min-width:40em){.c-search__icon{top:8px}}.c-search__input[type=search]{padding:0;width:100%;outline:0;padding-left:32px;margin-bottom:16px;font-weight:300;font-size:32px;line-height:50px;border:0;border-bottom:1px solid #ecf0f1}.c-search__input[type=search]:focus{border-bottom-color:#ecf0f1}@media (min-width:40em){.c-search__input[type=search]{font-size:38px;line-height:64px;padding-left:48px}}.c-search__close{position:absolute;top:16px;right:16px;cursor:pointer;fill:#222;-webkit-transition:.5s;transition:.5s}@media (min-width:40em){.c-search__close{top:32px;right:32px}}.c-search__close:hover{fill:#5d738d;-webkit-transform:rotate(90deg);transform:rotate(90deg)}.c-search-result{display:none;height:80vh;overflow:auto;white-space:normal;padding-right:32px}.c-search-result__head{padding-bottom:16px;margin-bottom:16px;color:#5d738d;font-size:19px;border-bottom:1px solid #ecf0f1}.c-search-result__item{padding-bottom:16px;margin-bottom:16px;border-bottom:1px solid #ecf0f1}.c-search-result__title{display:block;line-height:28px}.c-search-result__date{color:#5d738d;font-size:14px;text-transform:uppercase;line-height:25px;letter-spacing:1px}.c-off-canvas-toggle{position:absolute;top:40px;right:16px;z-index:10;height:24px;width:24px;cursor:pointer}@media (min-width:40em){.c-off-canvas-toggle{display:none}}.c-off-canvas-toggle__icon{position:absolute;left:0;height:1px;width:25px;background:#000;cursor:pointer}.c-off-canvas-toggle__icon:after,.c-off-canvas-toggle__icon:before{content:'';display:block;height:100%;background-color:inherit;-webkit-transition:.5s;transition:.5s}.c-off-canvas-toggle__icon:before{-webkit-transform:translateY(16px);transform:translateY(16px)}.c-off-canvas-toggle__icon:after{-webkit-transform:translateY(7px);transform:translateY(7px)}.c-off-canvas-toggle--close .c-off-canvas-toggle__icon{height:2px;background-color:transparent}.c-off-canvas-toggle--close .c-off-canvas-toggle__icon:after,.c-off-canvas-toggle--close .c-off-canvas-toggle__icon:before{position:relative;visibility:visible;background:#000}.c-off-canvas-toggle--close .c-off-canvas-toggle__icon:before{top:11px;-webkit-transform:rotate(-45deg);transform:rotate(-45deg)}.c-off-canvas-toggle--close .c-off-canvas-toggle__icon:after{top:9px;-webkit-transform:rotate(45deg);transform:rotate(45deg)}@media (max-width:39.99em){.c-off-canvas-toggle--close{top:32px}}body,html{overflow-x:hidden}@media (min-width:40em){.c-off-canvas-content{position:relative}}@media (max-width:39.99em){.c-off-canvas-content{position:fixed;top:0;right:0;z-index:1;width:300px;height:100vh;overflow-y:auto;padding:32px 40px;background-color:#fff;-webkit-transform:translate3d(300px,0,0);transform:translate3d(300px,0,0)}}@media screen and (max-width:39.99em) and (-ms-high-contrast:active),(max-width:39.99em) and (-ms-high-contrast:none){.c-off-canvas-content.is-active{right:308px}}@media (max-width:39.99em){.c-off-canvas-container{-webkit-perspective:1000;-webkit-transition:-webkit-transform .5s cubic-bezier(.565,1.65,.765,.88);transition:-webkit-transform .5s cubic-bezier(.565,1.65,.765,.88);transition:transform .5s cubic-bezier(.565,1.65,.765,.88);transition:transform .5s cubic-bezier(.565,1.65,.765,.88),-webkit-transform .5s cubic-bezier(.565,1.65,.765,.88)}.c-off-canvas-container.is-active{-webkit-transform:translate3d(-304px,0,0);transform:translate3d(-304px,0,0)}.c-off-canvas-container.is-active:after{position:fixed;top:0;right:0;bottom:0;left:0;content:'';background-color:rgba(0,0,0,.2)}}.c-archive{padding:32px;margin-bottom:32px;background-color:#f4f6f8;border:1px solid #ecf0f1}.c-archive__title{margin-bottom:0;font-size:36px}.c-archive__description{margin-top:8px;margin-bottom:0;font-size:16px;line-height:25px}.c-post-card{position:relative;display:-webkit-box;display:-ms-flexbox;display:flex;width:100%;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;margin-bottom:32px}.c-post-card-wrap{display:-webkit-box;display:-ms-flexbox;display:flex}.c-post-card__media{overflow:hidden;background-color:#f4f6f8}.c-post-card__image{display:block;position:relative;background-repeat:no-repeat;background-position:center;background-size:cover;-webkit-transition:all .5s ease-in-out;transition:all .5s ease-in-out}.c-post-card__image.js-fadein{opacity:0}.c-post-card__image.is-inview{opacity:1}.c-post-card__image:before{-webkit-transition:.5s;transition:.5s;position:absolute;top:0;height:100%;width:100%;content:'';background-color:#000;opacity:0}.c-post-card__image:after{display:block;content:'';width:100%;padding-bottom:75%}.c-post-card__content{-webkit-box-flex:1;-ms-flex-positive:1;flex-grow:1}.c-post-card__tags{float:left;padding-left:8px;margin-top:20px;margin-bottom:14px;border-left:2px solid #b70038;line-height:1;font-size:14px;color:#5d738d;text-transform:uppercase;letter-spacing:1px}.c-post-card__tags a{text-transform:uppercase;color:#5d738d;margin-right:4px;margin-left:4px}.c-post-card__tags a:first-child{margin-left:0}.c-post-card__tags a:active,.c-post-card__tags a:focus,.c-post-card__tags a:hover{color:#222}.c-post-card__share{float:right;position:relative;top:14px;right:-4px;opacity:0;-webkit-transition:all .5s ease-in-out;transition:all .5s ease-in-out}.c-post-card__share-icon{width:20px;height:20px;vertical-align:top}.c-post-card__title-link{border-bottom:1px solid transparent;-webkit-transition:border-bottom .5s ease-in-out;transition:border-bottom .5s ease-in-out}.c-post-card__title{clear:both;margin-bottom:14px;font-size:22px;font-weight:500;-webkit-transition:.5s;transition:.5s}.c-post-card__excerpt{display:none;margin-bottom:0;color:#5d738d;font-size:16px;line-height:25px}.c-post-card__meta{line-height:1;font-size:14px;color:#5d738d;text-transform:uppercase;letter-spacing:1px}.c-post-card__author{display:inline-block}.c-post-card__author a{color:#5d738d}.c-post-card__author a:active,.c-post-card__author a:focus,.c-post-card__author a:hover{color:#222}.c-post-card__author:before{content:'/';display:inline-block;padding-left:4px;margin-right:8px}.c-post-card--featured__icon{position:absolute;bottom:16px;left:16px;fill:#fff;background-color:rgba(0,0,0,.05)}.c-post-card:active .c-post-card__image,.c-post-card:focus .c-post-card__image,.c-post-card:hover .c-post-card__image{-webkit-transform:scale(1.01);transform:scale(1.01)}.c-post-card:active .c-post-card__image:before,.c-post-card:focus .c-post-card__image:before,.c-post-card:hover .c-post-card__image:before{opacity:.1}.c-post-card:active .c-post-card__share,.c-post-card:focus .c-post-card__share,.c-post-card:hover .c-post-card__share{opacity:1}.c-post-card:active .c-post-card__title-link,.c-post-card:focus .c-post-card__title-link,.c-post-card:hover .c-post-card__title-link{color:#222;border-bottom:1px solid #b70038}@media (min-width:64em){.c-post-card--half .c-post-card__image:after{padding-bottom:118%}}@media (min-width:64em){.c-post-card--first .c-post-card__image:after{padding-bottom:56.25%}}.c-teaser{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;padding-left:16px}@media (min-width:40em) and (max-width:63.99em){.c-teaser{display:block;padding-left:0}}.c-teaser:not(:last-child){padding-bottom:16px;margin-bottom:16px;border-bottom:1px solid #ecf0f1}@media (min-width:40em) and (max-width:63.99em){.c-teaser:not(:last-child){padding-bottom:24px;margin-bottom:12px}}.c-teaser:before{counter-increment:widget;content:counter(widget) ". ";position:relative;left:-16px;font-size:19px;font-style:italic;font-family:Georgia,serif;color:#b70038}@media (min-width:40em) and (max-width:63.99em){.c-teaser:before{left:0}}.c-teaser__media{margin-left:16px;background-color:#f4f6f8}@media (min-width:40em) and (max-width:63.99em){.c-teaser__media{margin-left:0}}.c-teaser__content{-webkit-box-flex:1;-ms-flex:1;flex:1}.c-teaser__image{display:block;width:64px;height:48px;background-repeat:no-repeat;background-position:center;background-size:cover;background-color:#f4f6f8;-webkit-transition:all .5s ease-in-out;transition:all .5s ease-in-out}.c-teaser__image.js-fadein{opacity:0}.c-teaser__image.is-inview{opacity:1}@media (min-width:40em) and (max-width:63.99em){.c-teaser__image{width:100%;height:100%}.c-teaser__image:after{display:block;content:'';width:100%;padding-bottom:75%}}.c-teaser__title{margin-bottom:0;font-size:16px;font-weight:500}@media (min-width:40em) and (max-width:63.99em){.c-teaser__title{margin-bottom:8px}}.c-author-card{width:100%;padding:32px;margin-bottom:32px;background-color:#f4f6f8;border:1px solid #ecf0f1}.c-author-card-wrap{display:-webkit-box;display:-ms-flexbox;display:flex}@media (max-width:39.99em){.c-author-card{text-align:center}}@media (min-width:40em){.c-author-card{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center}}@media (max-width:39.99em){.c-author-card__media{margin-bottom:16px}}@media (min-width:40em){.c-author-card__media{margin-right:32px}}@media (min-width:40em){.c-author-card__content{-webkit-box-flex:1;-ms-flex:1;flex:1}}.c-author-card__image{display:block;width:96px;height:96px;border-radius:100%}@media (max-width:39.99em){.c-author-card__image{margin:0 auto}}.c-author-card__title{margin-bottom:8px;font-size:19px}.c-author-card__bio{font-size:16px;line-height:25px}@media (min-width:40em){.c-author-card__bio{margin-bottom:0}}.c-author-card-links{display:-webkit-box;display:-ms-flexbox;display:flex;-ms-flex-wrap:wrap;flex-wrap:wrap;-webkit-box-align:center;-ms-flex-align:center;align-items:center;margin:0;list-style:none}@media (max-width:39.99em){.c-author-card-links{-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center}}.c-author-card-links-item{font-size:14px;text-transform:uppercase;letter-spacing:1px;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center}.c-author-card-links-item:not(:last-child){margin-right:4px}.c-author-card-links-icon{vertical-align:middle;-webkit-transition:.5s;transition:.5s}.c-author-card-links-icon:active,.c-author-card-links-icon:focus,.c-author-card-links-icon:hover{fill:#b70038}.c-pagination{margin-top:32px;margin-bottom:32px}.c-post-hero__media{background-color:#f4f6f8}@media (min-width:64em){.c-post-hero__media{margin-right:-32px}}.c-post-hero__image{position:relative;background-size:cover;background-position:center;background-repeat:no-repeat;background-color:#f4f6f8;-webkit-transition:all .5s ease-in-out;transition:all .5s ease-in-out}.c-post-hero__image.js-fadein{opacity:0}.c-post-hero__image.is-inview{opacity:1}.c-post-hero__image:before{content:'';display:block;padding-bottom:56.25%}.c-post-hero__content{background-color:#f4f6f8;border-style:solid;border-width:0 1px 1px 1px;border-color:#ecf0f1;padding:32px}@media (min-width:64em){.c-post-hero__content{padding:32px;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;-webkit-box-pack:end;-ms-flex-pack:end;justify-content:end;height:100%;border-width:1px;border-color:#ecf0f1 #ecf0f1 #ecf0f1 #fff}}.c-post-hero__date{font-size:14px;color:#5d738d;text-transform:uppercase;letter-spacing:1px}.c-post-hero__title{margin-bottom:0;font-family:Georgia,serif;font-size:24px}@media (min-width:40em){.c-post-hero__title{font-size:28px}}@media (min-width:64em){.c-post-hero__title{font-size:32px;margin-top:auto}}.c-post{padding-top:32px;margin-bottom:32px}@media (max-width:39.99em){.c-content img{position:relative;left:50%;max-width:115%;-webkit-transform:translate(-50%);transform:translate(-50%)}}.c-content a:not(.c-btn){text-decoration:underline;-webkit-text-decoration-skip:ink;text-decoration-skip:ink}.c-content a:not(.c-btn):active,.c-content a:not(.c-btn):focus,.c-content a:not(.c-btn):hover{color:#b70038}.c-content h1,.c-content h2,.c-content h3,.c-content h4,.c-content h5,.c-content h6{font-family:Georgia,serif;font-weight:500}.c-content dd:not(:root:root),.c-content ol:not(:root:root),.c-content ul:not(:root:root){-webkit-padding-start:8px}.c-dropcap{margin-right:8px;color:#b70038}.c-share{display:-webkit-box;display:-ms-flexbox;display:flex}.c-share__item{-webkit-box-flex:1;-ms-flex:1;flex:1;text-align:center}.c-share__item:not(:last-child){border-right:4px solid #fff}.c-share__link{display:block;padding:4px;background-color:#fff;-webkit-transition:.5s;transition:.5s}.c-share__link:active,.c-share__link:focus,.c-share__link:hover{opacity:.8}.c-share__link--twitter{background-color:#1da1f2}.c-share__link--facebook{background-color:#3b5998}.c-share__link--pinterest{background-color:#bd081c}.c-share__icon{vertical-align:middle;fill:#fff}.c-author{width:100%;padding:32px;margin-bottom:32px;background-color:#f4f6f8;border:1px solid #ecf0f1}@media (max-width:39.99em){.c-author{text-align:center}}@media (min-width:40em){.c-author{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center}}@media (max-width:39.99em){.c-author__media{margin-bottom:16px}}@media (min-width:40em){.c-author__media{margin-right:32px}}@media (min-width:40em){.c-author__content{-webkit-box-flex:3;-ms-flex:3;flex:3;padding-right:32px;margin-right:32px;border-right:1px solid #fff}}.c-author__image{display:block;width:96px;height:96px;border-radius:100%}@media (max-width:39.99em){.c-author__image{margin:0 auto}}.c-author__title{margin-bottom:8px;font-size:19px}.c-author__bio{font-size:16px;line-height:25px}@media (min-width:40em){.c-author__bio{margin-bottom:0}}@media (min-width:40em){.c-author__links{-webkit-box-flex:1;-ms-flex:1;flex:1}}.c-author__links-item{display:inline-block;font-size:14px;text-transform:uppercase;letter-spacing:1px;line-height:25px}.c-author__links-icon{vertical-align:bottom;-webkit-transition:.5s;transition:.5s}.c-author__links-icon:active,.c-author__links-icon:focus,.c-author__links-icon:hover{fill:#b70038}.fluid-width-video-wrapper,.twitter-tweet{margin-bottom:16px!important}.c-tags a{display:inline-block;padding:8px 20px;margin:0 8px 8px 0;font-size:16px;font-weight:400;font-family:Rubik,Helvetica,Arial,sans-serif;line-height:25px;color:#5d738d;background-color:#f4f6f8;-webkit-transition:.5s;transition:.5s}@media (max-width:39.99em){.c-tags a{margin-bottom:14px}}.c-tags a:active,.c-tags a:focus,.c-tags a:hover{color:#000;text-decoration:none}.c-tag-card{position:relative;margin-bottom:32px;background-color:#f4f6f8}.c-tag-card__image{display:block;background-position:50%;background-repeat:no-repeat;background-size:cover;-webkit-transition:all .5s ease-in-out;transition:all .5s ease-in-out}.c-tag-card__image.js-fadein{opacity:0}.c-tag-card__image.is-inview{opacity:1}.c-tag-card__image:before{position:absolute;top:0;bottom:0;left:0;right:0;content:'';-webkit-transition:.5s;transition:.5s;background:-webkit-gradient(linear,left bottom,left top,color-stop(0,rgba(0,0,0,.4)),color-stop(32%,transparent));background:linear-gradient(0deg,rgba(0,0,0,.4) 0,transparent 32%)}.c-tag-card__image:after{display:block;content:'';width:100%;padding-bottom:75%}.c-tag-card__title{position:absolute;bottom:0;left:0;right:0;margin-bottom:0;padding:16px;font-size:19px;font-weight:400;color:#fff}.c-tag-card:active .c-tag-card__image:before,.c-tag-card:focus .c-tag-card__image:before,.c-tag-card:hover .c-tag-card__image:before{background-color:rgba(0,0,0,.1)}.c-btn{display:inline-block;padding:16px 32px;border-radius:0;cursor:pointer;-webkit-transition:250ms;transition:250ms;text-align:center;vertical-align:middle;white-space:nowrap;outline:0;line-height:initial;border:none;background-color:#fff;font-size:18px;font-family:Rubik,Helvetica,Arial,sans-serif;border:1px solid #000;font-size:16px;letter-spacing:1px}.c-btn:active,.c-btn:focus,.c-btn:hover{color:#fff;border-color:#b70038;text-decoration:none;background-color:#b70038;border-color:#b70038}.c-btn--active{color:#fff;border-color:#b70038;text-decoration:none;background-color:#b70038;border-color:#b70038}.c-btn--active:active,.c-btn--active:focus,.c-btn--active:hover{opacity:.9}.c-btn--disabled{opacity:.5;cursor:not-allowed}.c-btn--full{width:100%}.c-btn--small{padding:12px 24px}.c-btn--loading{position:relative;padding-right:48px}.c-btn--loading:after{position:absolute;top:16px;right:16px;content:'';display:block;height:16px;width:16px;border:2px solid #fff;border-radius:100%;border-right-color:transparent;border-top-color:transparent;-webkit-animation:spinAround .5s infinite linear;animation:spinAround .5s infinite linear}.c-subscribe-form{padding:32px;background-color:#fff;border:1px solid #ecf0f1}@media (min-width:64em){.c-subscribe-form{display:-webkit-box;display:-ms-flexbox;display:flex;-ms-flex-wrap:wrap;flex-wrap:wrap}.c-subscribe-form .form-group{-webkit-box-flex:8;-ms-flex:8;flex:8;margin-right:16px}.c-subscribe-form__btn{-webkit-box-flex:2;-ms-flex:2;flex:2}}.c-subscribe-form__input[type=email]{padding-left:0;border:0;border-bottom:1px solid #ecf0f1}@media (min-width:64em){.c-subscribe-form__input[type=email]{margin:0}}.c-sidebar{margin-bottom:32px}.c-widget{padding:32px;border-left:1px solid #ecf0f1;border-right:1px solid #ecf0f1;border-bottom:1px solid #ecf0f1;counter-reset:widget}@media (max-width:39.99em){.c-widget{padding:32px;border-right:1px solid #ecf0f1}}@media (max-width:39.99em){.c-widget:first-child{border-top:1px solid #ecf0f1}}.c-widget__title{padding-left:8px;margin-bottom:28px;line-height:1;letter-spacing:2px;border-left:2px solid #b70038;font-size:16px;text-transform:uppercase}.c-widget-author{text-align:center}.c-widget-author__media{margin-bottom:16px}.c-widget-author__image{margin:0 auto;display:block;width:64px;height:64px;border-radius:100%}.c-widget-author__title{margin-bottom:8px;font-size:19px}.c-widget-author__bio{margin-bottom:0;font-size:16px;line-height:25px}.c-widget-instagram{display:-webkit-box;display:-ms-flexbox;display:flex;-ms-flex-wrap:wrap;flex-wrap:wrap}.c-widget-instagram__item{-webkit-box-flex:1;-ms-flex:1 33%;flex:1 33%;border:1px solid #fff}.c-related{padding:32px 0 0;background-color:#f4f6f8;margin-bottom:-32px}@media (min-width:64em){.c-related{padding:48px 0 32px 0}}.c-related__title{padding-bottom:0;margin-bottom:32px;text-align:center;font-size:19px;font-family:Georgia,serif}@media (min-width:64em){.c-related__title{margin-bottom:48px;font-size:24px}}.c-related .c-post-card{padding:16px;background-color:#fff;border:1px solid #ecf0f1}.c-social-icons{text-align:center}@media (min-width:40em){.c-social-icons{text-align:right}}.c-social-icons li{display:inline-block}.c-social-icons a{display:-webkit-box;display:-ms-flexbox;display:flex}.c-footer{margin-top:32px;padding:32px 0 32px 0;border-top:2px solid #fff;background-color:#f4f6f8}@media (min-width:64em){.c-footer{padding:80px 0 16px 0}}.c-footer__bottom{margin-top:16px;padding-top:32px;border-top:1px solid #ecf0f1}.c-footer__copyright{color:#5d738d}.c-footer__copyright a{color:#5d738d}.c-footer__copyright a:active,.c-footer__copyright a:focus,.c-footer__copyright a:hover{color:#b70038}@media (max-width:39.99em){.c-footer__copyright{text-align:center;margin-bottom:8px}}.c-footer-list{margin-bottom:16px}.c-footer-list li{display:block;margin:0;letter-spacing:0;text-transform:capitalize}.c-footer-list a{display:block;padding:0;font-size:16px}.c-footer-list a:active,.c-footer-list a:focus,.c-footer-list a:hover{color:#b70038}.c-footer-list a:active .icon,.c-footer-list a:focus .icon,.c-footer-list a:hover .icon{fill:#b70038}.c-footer-list .icon{fill:#5d738d;vertical-align:middle;-webkit-transition:.5s;transition:.5s}.u-hidden{display:none}.u-hidden-visually{border:0;clip:rect(0 0 0 0);height:1px;margin:-1px;overflow:hidden;padding:0;position:absolute;width:1px}.u-font-serif{font-family:Georgia,serif}.u-font-sans-serif{font-family:Rubik,Helvetica,Arial,sans-serif}.u-font-medium{font-size:18px;line-height:28px}.u-font-small{font-size:16px;line-height:25px}.u-font-tiny{font-size:14px;line-height:22px}.u-font-light{font-weight:300}.u-font-regular{font-weight:400}.u-font-medium{font-weight:500}.u-font-bold{font-weight:600}.u-text-left{text-align:left}.u-text-right{text-align:right}.u-text-center{text-align:center}.u-text-justify{text-align:justify}.u-inline{display:inline}.u-block{display:block}.u-inline-block{display:inline-block}.u-left{float:left}.u-right{float:right}.u-clearfix:after{content:'';display:table;clear:both}
+</style>
+  <script>
+    var pagination_next_page_number       = '',
+        pagination_available_pages_number = '';
+  </script>
+
+  <link rel="icon" href="/favicon.png" type="image/png" />
+    <link rel="canonical" href="https://thegradient.pub/transformers-are-graph-neural-networks/" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+    
+    <meta property="og:site_name" content="The Gradient" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Transformers are Graph Neural Networks" />
+    <meta property="og:description" content="My engineering friends often ask me: deep learning on graphs sounds great, but are there any real applications?  While Graph Neural Networks are used in recommendation systems at Pinterest, Alibaba and Twitter, a more subtle success story is the Transformer architecture, which has taken the NLP world by storm. Through" />
+    <meta property="og:url" content="https://thegradient.pub/transformers-are-graph-neural-networks/" />
+    <meta property="og:image" content="https://thegradient.pub/content/images/2020/09/featured-alt.jpeg" />
+    <meta property="article:published_time" content="2020-09-12T15:13:31.000Z" />
+    <meta property="article:modified_time" content="2020-09-17T19:59:29.000Z" />
+    <meta property="article:tag" content="NLP" />
+    <meta property="article:tag" content="Overviews" />
+    <meta property="article:tag" content="Graphs" />
+    
+    <meta property="article:publisher" content="https://www.facebook.com/gradientpub/" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Transformers are Graph Neural Networks" />
+    <meta name="twitter:description" content="My engineering friends often ask me: deep learning on graphs sounds great, but are there any real applications?  While Graph Neural Networks are used in recommendation systems at Pinterest, Alibaba and Twitter, a more subtle success story is the Transformer architecture, which has taken the NLP world by storm. Through" />
+    <meta name="twitter:url" content="https://thegradient.pub/transformers-are-graph-neural-networks/" />
+    <meta name="twitter:image" content="https://thegradient.pub/content/images/2020/09/featured-alt.jpeg" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="Chaitanya K. Joshi" />
+    <meta name="twitter:label2" content="Filed under" />
+    <meta name="twitter:data2" content="NLP, Overviews, Graphs" />
+    <meta name="twitter:site" content="@gradientpub" />
+    <meta property="og:image:width" content="1250" />
+    <meta property="og:image:height" content="702" />
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "The Gradient",
+        "url": "https://thegradient.pub/",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://thegradient.pub/content/images/2018/05/logo3.png"
+        }
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Chaitanya K. Joshi",
+        "image": {
+            "@type": "ImageObject",
+            "url": "//www.gravatar.com/avatar/eaa2328555bafec222e9bd6b3f641df1?s=250&d=mm&r=x",
+            "width": 250,
+            "height": 250
+        },
+        "url": "https://thegradient.pub/author/chaitanya-k-joshi/",
+        "sameAs": []
+    },
+    "headline": "Transformers are Graph Neural Networks",
+    "url": "https://thegradient.pub/transformers-are-graph-neural-networks/",
+    "datePublished": "2020-09-12T15:13:31.000Z",
+    "dateModified": "2020-09-17T19:59:29.000Z",
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://thegradient.pub/content/images/2020/09/featured-alt.jpeg",
+        "width": 1250,
+        "height": 702
+    },
+    "keywords": "NLP, Overviews, Graphs",
+    "description": "My engineering friends often ask me: deep learning on graphs sounds great, but\nare there any real applications?\n\nWhile Graph Neural Networks are used in recommendation systems at Pinterest\n[https://medium.com/pinterest-engineering/pinsage-a-new-graph-convolutional-neural-network-for-web-scale-recommender-systems-88795a107f48]\n, Alibaba [https://arxiv.org/abs/1902.08730] and Twitter\n[https://blog.twitter.com/en_us/topics/company/2019/Twitter-acquires-Fabula-AI.html]\n, a more subtle success story ",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://thegradient.pub/"
+    }
+}
+    </script>
+
+    <meta name="generator" content="Ghost 3.35" />
+    <link rel="alternate" type="application/rss+xml" title="The Gradient" href="https://thegradient.pub/rss/" />
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-115283063-1"></script>
+<!-- link tag -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.10.0/tocbot.css" />
+
+<!-- script tag -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.10.0/tocbot.min.js"></script>
+
+<script data-ad-client="ca-pub-3163608388594659" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-115283063-1');
+</script>
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bigfoot/2.1.4/bigfoot-default.min.css">
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bigfoot/2.1.4/bigfoot-number.min.css">
+
+<script
+  src="https://code.jquery.com/jquery-2.2.4.min.js"
+  integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+  crossorigin="anonymous"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bigfoot/2.1.4/bigfoot.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+
+<script type="text/javascript">
+    $.bigfoot({useFootnoteOnlyOnce: false});
+</script>
+
+<script type="text/javascript" src="//downloads.mailchimp.com/js/signup-forms/popup/embed.js" data-dojo-config="usePlainJson: true, isDebug: false"></script><script type="text/javascript">require(["mojo/signup-forms/Loader"], function(L) { L.start({"baseUrl":"mc.us18.list-manage.com","uuid":"0e35c6e6c5e418d9d9e835845","lid":"4dd82e12b6"}) })</script>
+<link href="https://fonts.googleapis.com/css?family=Crimson+Text&display=swap" rel="stylesheet">
+
+<style>
+    
+    .is-active-link::before {
+        background-color: #b70038;
+    }
+    
+    .c-content h1, .c-content h2, .c-content h3, .c-content h4, .c-content h5, .c-content h6 {
+    font-family: 'Georgia', serif;
+
+    font-weight: 500;
+	}
+      body {
+      font-family: 'Georgia', serif;
+      }
+      .c-post-hero__title {
+            font-family: 'Georgia', serif;
+      }
+    
+      div.table {
+          overflow: auto;
+      }
+    
+      .twitter-tweet {
+      	width:50%;
+      }
+    
+      .o-grid__col {
+        max-width: 100%;
+      }
+    
+      img {
+        max-width: 100%;
+        max-height: 100%;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      figure {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: left;
+        vertical-align: top;
+        width: 75%;
+      }
+
+      figcaption {
+        text-align: center;
+        /* margin-left: -25%; */
+        width: 100%;
+      	font-size: 12px;
+        line-height: 18px;
+      }
+</style>
+</head>
+<body class='post-template tag-nlp tag-overviews tag-graphs'>
+
+  <div class='js-off-canvas-container c-off-canvas-container'>
+    <header class='c-header'>
+
+  <div class='o-grid'>
+
+    <div class='o-grid__col o-grid__col--3-4-s o-grid__col--4-4-m'>
+      <div class='c-logo'>
+          <a href='https://thegradient.pub'>
+            <img class='c-logo__img' src='/content/images/2018/05/logo3.png' alt='The Gradient'>
+          </a>
+      </div>
+    </div>
+
+    <div class='o-grid__col o-grid__col--1-4-s o-grid__col--3-4-l o-grid__col--full'>
+      <div class='c-off-canvas-content js-off-canvas-content'>
+        <div class='js-off-canvas-toggle c-off-canvas-toggle c-off-canvas-toggle--close'>
+          <span class='c-off-canvas-toggle__icon'></span>
+        </div>
+
+        <div class='o-grid'>
+          <div class='o-grid__col o-grid__col--4-4-s o-grid__col--3-4-l o-grid__col--full'>
+            <nav class='c-nav-wrap'>
+              <ul class='c-nav o-plain-list'>
+                  <li class='c-nav__item'>
+    <a href='https://thegradient.pub/' class='c-nav__link '>Home</a>
+  </li>
+  <li class='c-nav__item'>
+    <a href='https://thegradient.pub/tag/overviews/' class='c-nav__link '>Overviews</a>
+  </li>
+  <li class='c-nav__item'>
+    <a href='https://thegradient.pub/tag/perspectives/' class='c-nav__link '>Perspectives</a>
+  </li>
+  <li class='c-nav__item'>
+    <a href='https://thegradient.pub/about/' class='c-nav__link '>About</a>
+  </li>
+  <li class='c-nav__item'>
+    <a href='https://thegradient.pub/subscribe/' class='c-nav__link '>Subscribe</a>
+  </li>
+  <li class='c-nav__item'>
+    <a href='https://thegradient.pub/contribute/' class='c-nav__link '>Contribute</a>
+  </li>
+
+                <li class='c-nav__item'>
+                  <a class='toggle-search-button js-search-toggle' href='#' aria-label='Search'>
+                    <span class='c-nav__icon' data-icon='ei-search' data-size='s'></span>
+                  </a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </div>
+
+      <div class='js-off-canvas-toggle c-off-canvas-toggle' aria-label='Toggle navigation'>
+        <span class='c-off-canvas-toggle__icon'></span>
+      </div>
+    </div>
+
+  </div>
+
+</header>
+
+<div class='c-search js-search'>
+
+  <div class='o-grid'>
+    <div class='o-grid__col o-grid__col--4-4-s o-grid__col--3-4-m o-grid__col--2-4-l o-grid__col--center'>
+      <form class='c-search__form'>
+        <span class='c-search__icon' data-icon='ei-search' data-size='m'></span>
+        <input type='search' aria-label='Search The Gradient' class='c-search__input js-search-input' placeholder='Type to Search'>
+      </form>
+    </div>
+  </div>
+
+  <div class='o-grid'>
+    <div class='o-grid__col o-grid__col--4-4-s o-grid__col--3-4-m o-grid__col--2-4-l o-grid__col--center'>
+      <div class='c-search-result js-search-result'></div>
+    </div>
+  </div>
+
+  <div data-icon='ei-close' data-size='s' class='c-search__close js-search-close'></div>
+</div>
+
+    
+
+<div class='c-post-hero'>
+  <div class='o-grid _o-grid--full'>
+    <div class='o-grid__col o-grid__col--4-4-s o-grid__col--4-4-m o-grid__col--2-3-l'>
+      <div class='c-post-hero__media'>
+        <div class='c-post-hero__image js-fadein' style='background-image: url(https://thegradient.pub/content/images/2020/09/featured-alt.jpeg)'></div>
+      </div>
+    </div>
+    <div class='o-grid__col o-grid__col--4-4-s o-grid__col--1-3-m'>
+      <div class='c-post-hero__content'>
+        <h1 class='c-post-hero__title'>Transformers are Graph Neural Networks</h1>
+          <time class='c-post-hero__date' datetime='2020-09-12'>12.Sep.2020</time>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class='o-wrapper'>
+  <div class='o-grid'>
+    <div class='o-grid__col o-grid__col--2-3-m'>
+      <article class='c-post tag-nlp tag-overviews tag-graphs'>
+
+        <div class='c-content'>
+          <!--kg-card-begin: markdown--><p>My engineering friends often ask me: deep learning on graphs sounds great, but are there any real applications?</p>
+<p>While Graph Neural Networks are used in recommendation systems at <a href="https://medium.com/pinterest-engineering/pinsage-a-new-graph-convolutional-neural-network-for-web-scale-recommender-systems-88795a107f48">Pinterest</a>, <a href="https://arxiv.org/abs/1902.08730">Alibaba</a> and <a href="https://blog.twitter.com/en_us/topics/company/2019/Twitter-acquires-Fabula-AI.html">Twitter</a>, a more subtle success story is the <a href="https://arxiv.org/abs/1706.03762"><strong>Transformer architecture</strong></a>, which has <a href="https://openai.com/blog/better-language-models/">taken</a> <a href="https://www.blog.google/products/search/search-language-understanding-bert/">the</a> <a href="https://www.microsoft.com/en-us/research/project/large-scale-pretraining-for-response-generation/">NLP</a> <a href="https://ai.facebook.com/blog/roberta-an-optimized-method-for-pretraining-self-supervised-nlp-systems/">world</a> <a href="https://blog.einstein.ai/introducing-a-conditional-transformer-language-model-for-controllable-generation/">by</a> <a href="https://nv-adlr.github.io/MegatronLM">storm</a>. Through this post, I want to establish a link between <a href="https://graphdeeplearning.github.io/project/spatial-convnets/">Graph Neural Networks (GNNs)</a> and Transformers. I'll talk about the intuitions behind model architectures in the NLP and GNN communities, make connections using equations and figures, and discuss how we can work together to drive future progress. Let's start by talking about the purpose of model architectures—<em>representation learning</em>.</p>
+<hr>
+<h3 id="representationlearningfornlp">Representation Learning for NLP</h3>
+<p>At a high level, all neural network architectures build <em>representations</em> of input data as vectors/embeddings, which encode useful statistical and semantic information about the data. These <em>latent</em> or <em>hidden</em> representations can then be used for performing something useful, such as classifying an image or translating a sentence. The neural network <em>learns</em> to build better-and-better representations by receiving feedback, usually via error/loss functions.</p>
+<p>For Natural Language Processing (NLP), conventionally, <strong>Recurrent Neural Networks</strong> (RNNs) build representations of each word in a sentence in a sequential manner, <em>i.e.</em>, <strong>one word at a time</strong>. Intuitively, we can imagine an RNN layer as a conveyor belt, with the words being processed on it <em>autoregressively</em> from left to right. In the end, we get a hidden feature for each word in the sentence, which we pass to the next RNN layer or use for our NLP tasks of choice.</p>
+<p>I highly recommend Chris Olah's legendary blog for recaps on <a href="http://colah.github.io/posts/2015-08-Understanding-LSTMs/">RNNs</a> and <a href="http://colah.github.io/posts/2014-07-NLP-RNNs-Representations/">representation learning</a> for NLP.</p>
+<figure>
+  <img src="https://thegradient.pub/content/images/2020/09/rnn-transf-nlp.jpg" />
+<!--   <figcaption></figcaption> -->
+</figure>
+<p>Initially introduced for machine translation, <strong>Transformers</strong> have gradually replaced RNNs in mainstream NLP. The architecture takes a fresh approach to representation learning: Doing away with recurrence entirely, Transformers build features of each word using an <a href="https://distill.pub/2016/augmented-rnns/">attention</a> <a href="https://lilianweng.github.io/lil-log/2018/06/24/attention-attention.html">mechanism</a> to figure out how important <strong>all the other words</strong> in the sentence are w.r.t. to the aforementioned word. Knowing this, the word's updated features are simply the sum of linear transformations of the features of all the words, weighted by their importance.</p>
+<p>Back in 2017, this idea sounded very radical, because the NLP community was so used to the sequential—one-word-at-a-time—style of processing text with RNNs. The title of the paper probably added fuel to the fire! For a recap, Yannic Kilcher made an excellent <a href="https://www.youtube.com/watch?v=iDulhoQ2pro">video overview</a>.</p>
+<hr>
+<h3 id="breakingdownthetransformer">Breaking down the Transformer</h3>
+<p>Let's develop intuitions about the architecture by translating the previous paragraph into the language of mathematical symbols and vectors.<br>
+We update the hidden feature $h$ of the $i$'th word in a sentence $\mathcal{S}$ from layer $\ell$ to layer $\ell+1$ as follows:</p>
+<p>$$<br>
+h_{i}^{\ell+1} = \text{Attention} \left( Q^{\ell} h_{i}^{\ell} \ , K^{\ell} h_{j}^{\ell} \ , V^{\ell} h_{j}^{\ell} \right)<br>
+$$<br>
+i.e., $$<br>
+\ h_{i}^{\ell+1} = \sum_{j \in \mathcal{S}} w_{ij} \left( V^{\ell} h_{j}^{\ell} \right)<br>
+$$</p>
+<p>$$<br>
+\text{where} \ w_{ij} = \text{softmax}_j \left ( Q^{\ell} h^{\ell}_i \cdot  K^{\ell} h^{\ell}_j  \right)<br>
+$$</p>
+<p>where $j \in \mathcal{S}$ denotes the set of words in the sentence and $Q^{\ell}, K^{\ell}, V^{\ell}$ are learnable linear weights (denoting the <strong>Q</strong>uery, <strong>K</strong>ey and <strong>V</strong>alue for the attention computation, respectively).<br>
+The attention mechanism is performed parallelly for each word in the sentence to obtain their updated features in <em>one shot</em>—another plus point for Transformers over RNNs, which update features word-by-word.</p>
+<p>We can understand the attention mechanism better through the following pipeline:</p>
+<figure>
+  <img src="https://thegradient.pub/content/images/2020/09/attention-block.jpg" width="70%" />
+  <figcaption>Taking in the features of the word $h_{i}^{\ell}$ and the set of other words in the sentence $\{ h_{j}^{\ell} \;\ \forall j \in \mathcal{S} \}$, we compute the attention weights $w_{ij}$ for each pair $(i,j)$ through the dot-product, followed by a softmax across all $j$ 's. Finally, we produce the updated word feature $h_{i}^{\ell+1}$ for word $i$ by summing over all $\{ h_{j}^{\ell} \}$ 's weighted by their corresponding $w_{ij}$. Each word in the sentence parallelly undergoes the same pipeline to update its features.</figcaption>
+</figure>
+<hr>
+<h3 id="multiheadattention">Multi-head Attention</h3>
+<p>Getting this straightforward dot-product attention mechanism to work proves to be tricky. Bad random initializations of the learnable weights can de-stabilize the training process.<br>
+We can overcome this by parallelly performing multiple 'heads' of attention and concatenating the result (with each head now having separate learnable weights):</p>
+<p>$$<br>
+h_{i}^{\ell+1} = \text{Concat} \left( \text{head}_1, \ldots, \text{head}_K \right) O^{\ell},<br>
+$$</p>
+<p>$$<br>
+\text{head}_k = \text{Attention} \left(  Q^{k,\ell} h_i^{\ell} \ , K^{k, \ell} h_j^{\ell} \ , V^{k, \ell} h_j^{\ell} \right),<br>
+$$</p>
+<p>where $Q^{k,\ell}, K^{k,\ell}, V^{k,\ell}$ are the learnable weights of the $k$'th attention head and $O^{\ell}$ is a down-projection to match the dimensions of $h_i^{\ell+1}$ and $h_i^{\ell}$ across layers.</p>
+<p>Multiple heads allow the attention mechanism to essentially 'hedge its bets', looking at different transformations or aspects of the hidden features from the previous layer. We'll talk more about this later.</p>
+<hr>
+<h3 id="scalingissues">Scaling Issues</h3>
+<p>A key issue motivating the final Transformer architecture is that the features for words <em>after</em> the attention mechanism might be at <strong>different scales</strong> or <strong>magnitudes</strong>. This can be due to some words having very sharp or very distributed attention weights $w_{ij}$ when summing over the features of the other words. Additionally, at the individual feature/vector entries level, concatenating across multiple attention heads—each of which might output values at different scales—can lead to the entries of the final vector $h_{i}^{\ell+1}$ having a wide range of values.<br>
+Following conventional ML wisdom, it seems reasonable to add a <a href="https://nealjean.com/ml/neural-network-normalization/">normalization layer</a> into the pipeline.</p>
+<p>Transformers overcome issue (2) with <a href="https://arxiv.org/abs/1607.06450"><strong>LayerNorm</strong></a>, which normalizes and learns an affine transformation at the feature level. Additionally, <strong>scaling the dot-product</strong> attention by the square-root of the feature dimension helps counteract issue (1).</p>
+<p>Finally, the authors propose another 'trick' to control the scale issue: <strong>a position-wise 2-layer MLP</strong> with a special structure. After the multi-head attention, they project $h_i^{\ell+1}$ to a (absurdly) higher dimension by a learnable weight, where it undergoes the ReLU non-linearity, and is then projected back to its original dimension followed by another normalization:</p>
+<p>$$<br>
+h_i^{\ell+1} = \text{LN} \left( \text{MLP} \left( \text{LN} \left( h_i^{\ell+1} \right) \right) \right)<br>
+$$</p>
+<p>To be honest, I'm not sure what the exact intuition behind the over-parameterized feed-forward sub-layer was. I suppose LayerNorm and scaled dot-products didn't completely solve the issues highlighted, so the big MLP is a sort of hack to re-scale the feature vectors independently of each other. According to <a href="https://www.gfz-potsdam.de/en/staff/jannes-muenchmeyer/sec24/">Jannes Muenchmeyer</a>, the feed-forward sub-layer ensures that the Transformer is a universal approximator. Thus, projecting to a very high dimensional space, applying a non-linearity, and re-projecting to the original dimension allows the model to represent more functions than maintaining the same dimension across the hidden layer would.</p>
+<hr>
+<p>The final picture of a Transformer layer looks like this:</p>
+<figure>
+  <img src="https://thegradient.pub/content/images/2020/09/transformer-block.png" width="70%" />
+<!--   <figcaption></figcaption> -->
+</figure>
+<p>The Transformer architecture is also extremely amenable to very deep networks, enabling the NLP community to <em><a href="https://arxiv.org/abs/1910.10683">scale</a> <a href="https://arxiv.org/abs/2001.08361">up</a></em> in terms of both model parameters and, by extension, data.<br>
+<strong>Residual connections</strong> between the inputs and outputs of each multi-head attention sub-layer and the feed-forward sub-layer are key for stacking Transformer layers (but omitted from the diagram for clarity).</p>
+<hr>
+<h3 id="gnnsbuildrepresentationsofgraphs">GNNs build representations of graphs</h3>
+<p>Let's take a step away from NLP for a moment.</p>
+<p>Graph Neural Networks (GNNs) or Graph Convolutional Networks (GCNs) build representations of nodes and edges in graph data. They do so through <strong>neighbourhood aggregation</strong> (or message passing), where each node gathers features from its neighbours to update its representation of the <em>local</em> graph structure around it. Stacking several GNN layers enables the model to propagate each node's features over the entire graph—from its neighbours to the neighbours' neighbours, and so on.</p>
+<figure>
+  <img src="https://thegradient.pub/content/images/2020/09/gnn-social-network.jpg" />
+  <figcaption>Take the example of this emoji social network: The node features produced by the GNN can be used for predictive tasks such as identifying the most influential members or proposing potential connections.</figcaption>
+</figure>
+<p>In their most basic form, GNNs update the hidden features $h$ of node $i$ (for example, 😆) at layer $\ell$ via a non-linear transformation of the node's own features $h_i^{\ell}$ added to the aggregation of features $h_j^{\ell}$ from each neighbouring node $j \in \mathcal{N}(i)$:</p>
+<p>$$<br>
+h_{i}^{\ell+1} =  \sigma \Big( U^{\ell} h_{i}^{\ell} + \sum_{j \in \mathcal{N}(i)} \left( V^{\ell} h_{j}^{\ell} \right)  \Big),<br>
+$$</p>
+<p>where $U^{\ell}, V^{\ell}$ are learnable weight matrices of the GNN layer and $\sigma$ is a non-linear function such as ReLU. In the example, $\mathcal{N}$(😆) $=$ { 😘, 😎, 😜, 🤩 }.</p>
+<p>The summation over the neighbourhood nodes $j \in \mathcal{N}(i)$ can be replaced by other input size-invariant <strong>aggregation functions</strong> such as simple mean/max or something more powerful, such as a weighted sum via an <a href="https://petar-v.com/GAT/"><strong>attention mechanism</strong></a>.</p>
+<p>Does that sound familiar? Maybe a pipeline will help make the connection:</p>
+<figure>
+  <img src="https://thegradient.pub/content/images/2020/09/gnn-block.jpg" width="70%" />
+<!--   <figcaption></figcaption> -->
+</figure>
+<p>If we were to do multiple parallel heads of neighbourhood aggregation and replace summation over the neighbours $j$ with the attention mechanism, i.e., a weighted sum, we'd get the <strong>Graph Attention Network (GAT)</strong>. Add normalization and the feed-forward MLP, and voila, we have a <strong>Graph Transformer</strong>!</p>
+<hr>
+<h3 id="sentencesarefullyconnectedwordgraphs">Sentences are fully-connected word graphs</h3>
+<p>To make the connection more explicit, consider a sentence as a fully-connected graph, where each word is connected to every other word. Now, we can use a GNN to build features for each node (word) in the graph (sentence), which we can then perform NLP tasks with.</p>
+<figure>
+  <img src="https://thegradient.pub/content/images/2020/09/gnn-nlp.jpg" width="90%" />
+<!--   <figcaption></figcaption> -->
+</figure>
+<p>Broadly, this is what Transformers are doing: they are <strong>GNNs with multi-head attention</strong> as the neighbourhood aggregation function. Whereas standard GNNs aggregate features from their local neighbourhood nodes $j \in \mathcal{N}(i)$, Transformers for NLP treat the entire sentence $\mathcal{S}$ as the local neighbourhood, aggregating features from each word $j \in \mathcal{S}$ at each layer.</p>
+<p>Importantly, various problem-specific tricks—such as position encodings, causal/masked aggregation, learning rate schedules and extensive pre-training—are essential for the success of Transformers but seldom seem in the GNN community. At the same time, looking at Transformers from a GNN perspective could inspire us to get rid of a lot of the <em>bells and whistles</em> in the architecture.</p>
+<hr>
+<h1 id="lessons">Lessons</h1>
+<h3 id="aresentencesfullyconnectedgraphs">Are sentences fully connected graphs?</h3>
+<p>Now that we've established a connection between Transformers and GNNs, let me throw some ideas around. For one, <strong>are fully-connected graphs the best input format for NLP?</strong></p>
+<p>Before statistical NLP and ML, linguists like Noam Chomsky focused on developing formal theories of <a href="https://en.wikipedia.org/wiki/Syntactic_Structures">linguistic structure</a>, such as <strong>syntax trees/graphs</strong>. <a href="https://arxiv.org/abs/1503.00075">Tree LSTMs</a> already tried this, but maybe Transformers/GNNs are better architectures for bringing together the two worlds of linguistic theory and statistical NLP? For example, a very recent work from MILA and Stanford explores augmenting pre-trained Transformers such as BERT with syntax trees [<a href="https://arxiv.org/abs/2008.09084">Sachan et al., 2020</a>].</p>
+<figure>
+  <img src="https://thegradient.pub/content/images/2020/09/syntax-tree.png" width="70%" />
+  <figcaption>Source: <a href="https://en.wikipedia.org/wiki/Syntactic_Structures#/media/File:Cgisf-tgg.svg">Wikipedia</a></figcaption>
+</figure>
+<h3 id="longtermdependencies">Long term dependencies</h3>
+<p>Another issue with fully-connected graphs is that they make <strong>learning very long-term dependencies between words difficult</strong>. This is simply due to how the number of edges in the graph <em>scales quadratically</em> with the number of nodes, i.e., in an $n$ word sentence, a Transformer/GNN would be doing computations over $n^2$ pairs of words. Things get out of hand for very large $n$.</p>
+<p>The NLP community's perspective on the long sequences and dependencies problem is interesting: making the attention mechanism <a href="https://openai.com/blog/sparse-transformer/">sparse</a> or <a href="https://ai.facebook.com/blog/making-transformer-networks-simpler-and-more-efficient/">adaptive</a> in terms of input size, adding <a href="https://ai.googleblog.com/2019/01/transformer-xl-unleashing-potential-of.html">recurrence</a> or <a href="https://deepmind.com/blog/article/A_new_model_and_dataset_for_long-range_memory">compression</a> into each layer, and using <a href="https://www.pragmatic.ml/reformer-deep-dive/">Locality Sensitive Hashing</a> for efficient attention are all promising new ideas for better transformers. See Maddison May's <a href="https://www.pragmatic.ml/a-survey-of-methods-for-incorporating-long-term-context/">excellent survey</a> on long-term context in Transformers for more details.</p>
+<p>It would be interesting to see ideas from the GNN community thrown into the mix, <em>e.g.</em>, <a href="https://arxiv.org/abs/1911.04070">Binary Partitioning</a> for sentence <strong>graph sparsification</strong> seems like another exciting approach. BP-Transformers recursively sub-divide sentences into two until they can construct a hierarchical binary tree from the sentence tokens. This structural inductive bias helps the model process longer text sequences in a memory-efficient manner.</p>
+<figure>
+  <img src="https://thegradient.pub/content/images/2020/09/long-term-depend.png" width="100%" />
+  <figcaption>Source: <a href="https://arxiv.org/abs/1911.04070">Ye et al., 2019</a></figcaption>
+</figure>
+<h3 id="aretransformerslearningneuralsyntax">Are Transformers learning <em>neural syntax</em>?</h3>
+<p>There have been <a href="https://pair-code.github.io/interpretability/bert-tree/">several</a> <a href="https://arxiv.org/abs/1905.05950">interesting</a> <a href="https://arxiv.org/abs/1906.04341">papers</a> from the NLP community on what Transformers might be learning. The basic premise is that performing attention on all word pairs in a sentence—with the purpose of identifying which pairs are the most interesting—enables Transformers to learn something like a <strong>task-specific syntax</strong>. Different heads in the multi-head attention might also be 'looking' at different syntactic properties.</p>
+<p>In graph terms, by using GNNs on full graphs, can we <a href="https://arxiv.org/abs/2002.04999">recover the most important edges</a>—and what they might entail—from how the GNN performs neighborhood aggregation at each layer? I'm <a href="https://arxiv.org/abs/1909.07913">not so convinced</a> by this view yet.</p>
+<figure>
+  <img src="https://thegradient.pub/content/images/2020/09/attention-heads.png" width="100%" />
+  <figcaption>Source: <a href="https://arxiv.org/abs/1906.04341">Clark et al., 2019</a></figcaption>
+</figure>
+<h3 id="whymultipleheadsofattentionwhyattention">Why multiple heads of attention? Why attention?</h3>
+<p>I'm more sympathetic to the optimization view of the multi-head mechanism—having multiple attention heads <strong>improves learning</strong> and overcomes <strong>bad random initializations</strong>. For instance, <a href="https://lena-voita.github.io/posts/acl19_heads.html">these</a> <a href="https://arxiv.org/abs/1905.10650">papers</a> showed that Transformer heads can be 'pruned' or removed <em>after</em> training without significant performance impact.</p>
+<p>Multi-head neighbourhood aggregation mechanisms have also proven effective in GNNs, <em>e.g.</em>, GAT uses the same multi-head attention, and <a href="https://arxiv.org/abs/1611.08402">MoNet</a> uses multiple <em>Gaussian kernels</em> for aggregating features. Although invented to stabilize attention mechanisms, could the multi-head trick become standard for squeezing out extra model performance?</p>
+<p>Conversely, GNNs with simpler aggregation functions such as sum or max do not require multiple aggregation heads for stable training. Wouldn't it be nice for Transformers if we didn't have to compute pair-wise compatibilities between each word pair in the sentence?</p>
+<p>Could Transformers benefit from ditching attention, altogether? Yann Dauphin and collaborators' <a href="https://arxiv.org/abs/1705.03122">recent</a> <a href="https://arxiv.org/abs/1901.10430">work</a> suggests an alternative <strong>ConvNet architecture</strong>. Transformers, too, might ultimately be doing <a href="http://jbcordonnier.com/posts/attention-cnn/">something</a> <a href="https://twitter.com/ChrSzegedy/status/1232148457810538496">similar</a> to ConvNets!</p>
+<figure>
+  <img src="https://thegradient.pub/content/images/2020/09/attention-conv.png" width-"100%" />
+  <figcaption>Source: <a href="https://arxiv.org/abs/1901.10430">Wu et al., 2019</a></figcaption>
+</figure>
+<h3 id="whyistrainingtransformerssohard">Why is training Transformers so hard?</h3>
+<p>Reading new Transformer papers makes me feel that training these models requires something akin to <em>black magic</em> when determining the best <strong>learning rate schedule, warmup strategy</strong> and <strong>decay settings</strong>. This could simply be because the models are so huge and the NLP tasks studied are so challenging.</p>
+<p>But <a href="https://arxiv.org/abs/1906.01787">recent</a> <a href="https://arxiv.org/abs/1910.06764">results</a> <a href="https://arxiv.org/abs/2002.04745">suggest</a> that it could also be due to the specific permutation of normalization and residual connections within the architecture.</p>
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">I enjoyed reading the new <a href="https://twitter.com/DeepMind?ref_src=twsrc%5Etfw">@DeepMind</a> Transformer paper, but why is training these models such dark magic? &quot;For word-based LM we used 16,000 warmup steps with 500,000 decay steps and sacrifice 9,000 goats.&quot;<a href="https://t.co/dP49GTa4ze">https://t.co/dP49GTa4ze</a> <a href="https://t.co/1K3Fx4s3M8">pic.twitter.com/1K3Fx4s3M8</a></p>&mdash; Chaitanya K. Joshi (@chaitjo) <a href="https://twitter.com/chaitjo/status/1229335421806501888?ref_src=twsrc%5Etfw">February 17, 2020</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>	
+<p>I know I'm ranting, but this makes me skeptical: Do we really need multiple heads of expensive pair-wise attention, overparameterized MLP sub-layers, and complicated learning schedules? Do we really need massive models with <a href="https://www.technologyreview.com/s/613630/training-a-single-ai-model-can-emit-as-much-carbon-as-five-cars-in-their-lifetimes/">massive carbon footprints</a>? Shouldn't architectures with good <a href="https://arxiv.org/abs/1806.01261">inductive biases</a> for the task at hand be easier to train?</p>
+<hr>
+<h2 id="furtherreading">Further Reading</h2>
+<p>To dive deep into the Transformer architecture from an NLP perspective, check out these amazing blog posts: <a href="http://jalammar.github.io/illustrated-transformer/">The Illustrated Transformer</a> and <a href="http://nlp.seas.harvard.edu/2018/04/03/attention.html">The Annotated Transformer</a>.</p>
+<p>Also, this blog isn't the first to link GNNs and Transformers. Here's <a href="https://ipam.wistia.com/medias/1zgl4lq6nh">an excellent talk</a> by Arthur Szlam on the history and connection between Attention/Memory Networks, GNNs and Transformers. Similarly, DeepMind's <a href="https://arxiv.org/abs/1806.01261">star-studded position paper</a> introduces the <em>Graph Networks</em> framework, unifying all these ideas. For a code walkthrough, the DGL team has <a href="https://docs.dgl.ai/en/latest/tutorials/models/4_old_wines/7_transformer.html">a nice tutorial</a> on seq2seq as a graph problem and building Transformers as GNNs.</p>
+<hr>
+<h3 id="finalnotes">Final Notes</h3>
+<p>The post initially appeared on the <a href="https://graphdeeplearning.github.io/post/transformers-are-gnns/">NTU Graph Deep Learning lab website</a> and <a href="https://medium.com/@chaitjo/transformers-are-graph-neural-networks-bca9f75412aa?source=friends_link&amp;sk=c54de873b2cec3db70166a6cf0b41d3e">Medium</a>, and has also been translated to <a href="https://mp.weixin.qq.com/s/DABEcNf1hHahlZFMttiT2g">Chinese</a> and <a href="https://habr.com/ru/post/491576/">Russian</a>. Do join the discussion on <a href="https://twitter.com/chaitjo/status/1233220586358181888?s=20">Twitter</a>, <a href="https://www.reddit.com/r/MachineLearning/comments/fb86mo/d_transformers_are_graph_neural_networks_blog/">Reddit</a> or <a href="https://news.ycombinator.com/item?id=22518263">HackerNews</a>!</p>
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Transformers are a special case of Graph Neural Networks. This may be obvious to some, but the following blog post does a good job at explaining these important concepts. <a href="https://t.co/H8LT2F7LqC">https://t.co/H8LT2F7LqC</a></p>&mdash; Oriol Vinyals (@OriolVinyalsML) <a href="https://twitter.com/OriolVinyalsML/status/1233783593626951681?ref_src=twsrc%5Etfw">February 29, 2020</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script><!--kg-card-end: markdown--><p></p><p><em><strong>Author Bio</strong></em></p><!--kg-card-begin: markdown--><p><a href="http://chaitjo.github.io/">Chaitanya K. Joshi</a> is a Research Engineer at A*STAR, Singapore, working on Graph Neural Networks and their applications to accelerating scientific discovery. He obtained a BEng in Computer Science from NTU, Singapore in 2019 and was previously a Research Assistant under Dr. Xavier Bresson. His work has been presented at top Machine Learning venues, including NeurIPS, ICLR and INFORMS.</p>
+<!--kg-card-end: markdown--><!--kg-card-begin: markdown--><p><strong>Citation</strong><br>
+<em>For attribution in academic contexts or books, please cite this work as</em></p>
+<blockquote>
+<p>Chaitanya K. Joshi, &quot;Transformers are Graph Neural Networks&quot;, The Gradient, 2020.</p>
+</blockquote>
+<p><em>BibTeX citation:</em></p>
+<blockquote>
+<p>@article{joshi2020transformers,<br/>
+  author = {Joshi, Chaitanya},<br/>
+  title = {Transformers are Graph Neural Networks},<br/>
+  journal = {The Gradient},<br/>
+  year = {2020},<br/>
+  howpublished = {\url{<a href="https://thegradient.pub/transformers-are-gaph-neural-networks/">https://thegradient.pub/transformers-are-gaph-neural-networks/</a> } },<br/>
+}</p>
+</blockquote>
+<hr>
+<p>If you enjoyed this piece and want to hear more, <a href="https://thegradient.pub/subscribe/">subscribe</a> to the Gradient and follow us on <a href="https://twitter.com/gradientpub">Twitter</a>.</p>
+<!--kg-card-end: markdown-->
+        </div>
+
+        <div class='o-grid'>
+          <div class='o-grid__col o-grid__col--4-4-s o-grid__col--2-4-m o-grid__col--3-4-l'>
+            <div class='c-tags'>
+              <a href="/tag/nlp/">NLP</a><a href="/tag/overviews/">Overviews</a><a href="/tag/graphs/">Graphs</a>
+            </div>
+          </div>
+          <div class='o-grid__col o-grid__col--4-4-s o-grid__col--1-4-m o-grid__col--1-4-l'>
+            <ul class='c-share o-plain-list'>
+  <li class='c-share__item'>
+    <a class='c-share__link c-share__link--twitter'
+       title='Share on Twitter'
+       aria-label='Share on Twitter'
+       href='https://twitter.com/share?text=Transformers%20are%20Graph%20Neural%20Networks&amp;url=https://thegradient.pub/transformers-are-graph-neural-networks/'
+       onclick="window.open(this.href, 'twitter-share', 'width=550, height=235'); return false;">
+      <div data-icon='ei-sc-twitter' data-size='s' class='c-share__icon c-share__icon--twitter'></div>
+    </a>
+  </li>
+
+  <li class='c-share__item'>
+    <a class='c-share__link c-share__link--facebook'
+       title='Share on Facebook'
+       aria-label='Share on Facebook'
+       href='https://www.facebook.com/sharer/sharer.php?u=https://thegradient.pub/transformers-are-graph-neural-networks/'
+       onclick="window.open(this.href, 'facebook-share', 'width=580, height=296'); return false;">
+      <div data-icon='ei-sc-facebook' data-size='s' class='c-share__icon c-share__icon--facebook'></div>
+    </a>
+  </li>
+</ul>
+          </div>
+        </div>
+
+        <hr>
+
+        <div class='o-grid__col o-grid__col--center o-grid__col--4-4-s o-grid__col--1-3-l'>
+  <button class='c-btn c-btn--full js-load-disqus'>Comments</button>
+</div>
+
+<hr>
+
+<div class='disqus u-hidden js-disqus'>
+  <div id='disqus_thread'></div>
+  <script type='text/javascript'>
+    var disqus_shortname = 'www-gradientml-org'; // required: replace example with your forum shortname
+    var disqus_identifier = 'ghost-5f57d9031117b00039a25fe3';
+
+    // DON'T EDIT BELOW THIS LINE
+    (function() {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href='http://disqus.com/?ref_noscript'>comments powered by Disqus.</a></noscript>
+  <a href='http://disqus.com' class='dsq-brlink'>comments powered by <span class='logo-disqus'>Disqus</span></a>
+</div>
+
+      </article>
+
+    </div>
+
+
+    <div class='o-grid__col o-grid__col--1-3-m'>
+      <div class='c-sidebar'>
+
+      <div class='c-widget c-widget-author'>
+
+        <div class='c-widget-author__media'>
+          <a href='/author/chaitanya-k-joshi/' aria-hidden='true' role='presentation' tabindex='-1'>
+            <img src='//www.gravatar.com/avatar/eaa2328555bafec222e9bd6b3f641df1?s&#x3D;250&amp;d&#x3D;mm&amp;r&#x3D;x' alt='Chaitanya K. Joshi' class='c-widget-author__image' role='presentation'>
+          </a>
+        </div>
+
+      <div class='c-widget-author__content'>
+        <h3 class='c-widget-author__title'>
+          <a href='/author/chaitanya-k-joshi/'>Chaitanya K. Joshi</a>
+        </h3>
+      </div>
+
+    </div>
+
+      <div class='c-widget'>
+      <h3 class='c-widget__title'>Recent Stories</h3>
+
+        <a href='/the-gap-where-machine-learning-education-falls-short/' class='c-teaser'>
+          <div class='c-teaser__content'>
+            <h3 class='c-teaser__title'>The Gap: Where Machine Learning Education Falls Short</h3>
+          </div>
+            <div class='c-teaser__media'>
+              <div class='c-teaser__image js-fadein' style='background-image: url(https://thegradient.pub/content/images/2020/10/what-about-gap-and-ruin-reconstruction-theories-1.jpg)' aria-label='The Gap: Where Machine Learning Education Falls Short'></div>
+            </div>
+        </a>
+
+        <a href='/how-the-police-use-ai-to-track-and-identify-you/' class='c-teaser'>
+          <div class='c-teaser__content'>
+            <h3 class='c-teaser__title'>How the Police Use AI to Track and Identify You</h3>
+          </div>
+            <div class='c-teaser__media'>
+              <div class='c-teaser__image js-fadein' style='background-image: url(https://thegradient.pub/content/images/2020/10/pexels-photo-97509.jpeg)' aria-label='How the Police Use AI to Track and Identify You'></div>
+            </div>
+        </a>
+
+        <a href='/ai-democratization-in-the-era-of-gpt-3/' class='c-teaser'>
+          <div class='c-teaser__content'>
+            <h3 class='c-teaser__title'>AI Democratization in the Era of GPT-3</h3>
+          </div>
+            <div class='c-teaser__media'>
+              <div class='c-teaser__image js-fadein' style='background-image: url(https://thegradient.pub/content/images/2020/09/main.jpg)' aria-label='AI Democratization in the Era of GPT-3'></div>
+            </div>
+        </a>
+
+        <a href='/shortcuts-neural-networks-love-to-cheat/' class='c-teaser'>
+          <div class='c-teaser__content'>
+            <h3 class='c-teaser__title'>Shortcuts: How Neural Networks Love to Cheat</h3>
+          </div>
+            <div class='c-teaser__media'>
+              <div class='c-teaser__image js-fadein' style='background-image: url(https://thegradient.pub/content/images/2020/07/temp-1--1.png)' aria-label='Shortcuts: How Neural Networks Love to Cheat'></div>
+            </div>
+        </a>
+
+        <a href='/how-to-stop-worrying-about-compositionality-2/' class='c-teaser'>
+          <div class='c-teaser__content'>
+            <h3 class='c-teaser__title'>How to Stop Worrying About Compositionality</h3>
+          </div>
+            <div class='c-teaser__media'>
+              <div class='c-teaser__image js-fadein' style='background-image: url(https://thegradient.pub/content/images/2020/07/blocks.jpeg)' aria-label='How to Stop Worrying About Compositionality'></div>
+            </div>
+        </a>
+
+    </div>
+
+  <div class='c-widget'>
+  <h3 class='c-widget__title'>Tags</h3>
+
+  <div class='c-tags'>
+        <a href='/tag/art'>Art</a>
+        <a href='/tag/bayesian-inference'>Bayesian inference</a>
+        <a href='/tag/best-practices'>Best Practices</a>
+        <a href='/tag/beyond-ai'>Beyond AI</a>
+        <a href='/tag/conference'>Conference</a>
+        <a href='/tag/deep-learning'>Deep Learning</a>
+        <a href='/tag/ethics'>Ethics</a>
+        <a href='/tag/games'>Games</a>
+        <a href='/tag/gaussian-process'>Gaussian Process</a>
+        <a href='/tag/generative-models'>Generative Models</a>
+        <a href='/tag/graphs'>Graphs</a>
+        <a href='/tag/healthcare'>Healthcare</a>
+        <a href='/tag/history'>History</a>
+        <a href='/tag/language'>Language</a>
+        <a href='/tag/neural-nets'>Neural Nets</a>
+        <a href='/tag/nlp'>NLP</a>
+        <a href='/tag/openness'>Openness</a>
+        <a href='/tag/overviews'>Overviews</a>
+        <a href='/tag/perspectives'>Perspectives</a>
+        <a href='/tag/policy'>Policy</a>
+        <a href='/tag/reinforcement-learning'>Reinforcement Learning</a>
+        <a href='/tag/representation-learning'>Representation learning</a>
+        <a href='/tag/resources'>Resources</a>
+        <a href='/tag/speech-to-text'>Speech-To-Text</a>
+        <a href='/tag/trends'>Trends</a>
+        <a href='/tag/uncertainty'>Uncertainty</a>
+        <a href='/tag/vision'>Vision</a>
+  </div>
+</div>
+</div>
+    </div>
+  </div>
+
+</div>
+
+<!--
+  Get related posts based on tags
+  https://themes.ghost.org/docs/recent-featured-sidebar#extra-special-sauce-related-posts
+ -->
+
+    <div class='c-related'>
+      <div class='o-grid'>
+        <div class='o-grid__col o-grid__col--full'>
+          <h3 class='c-related__title'>More in this category</h3>
+        </div>
+        
+  <div class='o-grid__col o-grid__col--4-4-s o-grid__col--2-4-m o-grid__col--1-3-l c-post-card-wrap js-post-card-wrap'>
+
+  <div class='c-post-card'>
+    <div class='c-post-card__media'>
+      <a href='/machine-learning-ancient-japan/' class='c-post-card__image js-fadein' style='background-image: url(https://thegradient.pub/content/images/2019/11/new_cover.jpg)' aria-label='How Machine Learning Can Help Unlock the World of Ancient Japan' aria-hidden='true' role='presentation' tabindex='-1'>
+      </a>
+    </div>
+
+    <div class='c-post-card__content'>
+        <div class='c-post-card__tags'>
+          <a href="/tag/history/">History</a>
+        </div>
+
+      <div class='c-post-card__share'>
+        <a title='Share on Twitter'
+           aria-label='Share on Twitter'
+           tabindex='-1'
+           href='https://twitter.com/share?text=How%20Machine%20Learning%20Can%20Help%20Unlock%20the%20World%20of%20Ancient%20Japan&amp;url=https://thegradient.pub/machine-learning-ancient-japan/'
+           onclick="window.open(this.href, 'twitter-share', 'width=550, height=235'); return false;">
+          <div class='icon icon--ei-sc-twitter icon--s c-post-card__share-icon'>
+            <svg class='icon__cnt'><use xmlns:xlink='http://www.w3.org/1999/xlink' xlink:href='#ei-sc-twitter-icon'></use></svg>
+          </div>
+        </a>
+        <a title='Share on Facebook'
+           aria-label='Share on Facebook'
+           tabindex='-1'
+           href='https://www.facebook.com/sharer/sharer.php?u=https://thegradient.pub/machine-learning-ancient-japan/'
+           onclick="window.open(this.href, 'facebook-share', 'width=580, height=296'); return false;">
+          <div class='icon icon--ei-sc-facebook icon--s c-post-card__share-icon'>
+            <svg class='icon__cnt'><use xmlns:xlink='http://www.w3.org/1999/xlink' xlink:href='#ei-sc-facebook-icon'></use></svg>
+          </div>
+        </a>
+      </div>
+
+      <h2 class='c-post-card__title'>
+        <a href='/machine-learning-ancient-japan/' class='c-post-card__title-link'>
+          How Machine Learning Can Help Unlock the World of Ancient Japan
+        </a>
+      </h2>
+
+      <div class='c-post-card__meta'>
+        <time class='c-post-card__date' datetime='2019-11-17' title='17 November 2019'>17.Nov.2019</time>
+        <div class='c-post-card__author'></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+  <div class='o-grid__col o-grid__col--4-4-s o-grid__col--2-4-m o-grid__col--1-3-l c-post-card-wrap js-post-card-wrap'>
+
+  <div class='c-post-card'>
+    <div class='c-post-card__media'>
+      <a href='/leveraging-learning-in-robotics-rss-2019-highlights/' class='c-post-card__image js-fadein' style='background-image: url(https://thegradient.pub/content/images/2019/08/rss-1.jpg)' aria-label='Leveraging Learning in Robotics: RSS 2019 Highlights' aria-hidden='true' role='presentation' tabindex='-1'>
+      </a>
+    </div>
+
+    <div class='c-post-card__content'>
+        <div class='c-post-card__tags'>
+          <a href="/tag/conference/">Conference</a>
+        </div>
+
+      <div class='c-post-card__share'>
+        <a title='Share on Twitter'
+           aria-label='Share on Twitter'
+           tabindex='-1'
+           href='https://twitter.com/share?text=Leveraging%20Learning%20in%20Robotics%3A%20RSS%202019%20Highlights&amp;url=https://thegradient.pub/leveraging-learning-in-robotics-rss-2019-highlights/'
+           onclick="window.open(this.href, 'twitter-share', 'width=550, height=235'); return false;">
+          <div class='icon icon--ei-sc-twitter icon--s c-post-card__share-icon'>
+            <svg class='icon__cnt'><use xmlns:xlink='http://www.w3.org/1999/xlink' xlink:href='#ei-sc-twitter-icon'></use></svg>
+          </div>
+        </a>
+        <a title='Share on Facebook'
+           aria-label='Share on Facebook'
+           tabindex='-1'
+           href='https://www.facebook.com/sharer/sharer.php?u=https://thegradient.pub/leveraging-learning-in-robotics-rss-2019-highlights/'
+           onclick="window.open(this.href, 'facebook-share', 'width=580, height=296'); return false;">
+          <div class='icon icon--ei-sc-facebook icon--s c-post-card__share-icon'>
+            <svg class='icon__cnt'><use xmlns:xlink='http://www.w3.org/1999/xlink' xlink:href='#ei-sc-facebook-icon'></use></svg>
+          </div>
+        </a>
+      </div>
+
+      <h2 class='c-post-card__title'>
+        <a href='/leveraging-learning-in-robotics-rss-2019-highlights/' class='c-post-card__title-link'>
+          Leveraging Learning in Robotics: RSS 2019 Highlights
+        </a>
+      </h2>
+
+      <div class='c-post-card__meta'>
+        <time class='c-post-card__date' datetime='2019-08-17' title='17 August 2019'>17.Aug.2019</time>
+        <div class='c-post-card__author'></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+  <div class='o-grid__col o-grid__col--4-4-s o-grid__col--2-4-m o-grid__col--1-3-l c-post-card-wrap js-post-card-wrap'>
+
+  <div class='c-post-card'>
+    <div class='c-post-card__media'>
+      <a href='/the-benderrule-on-naming-the-languages-we-study-and-why-it-matters/' class='c-post-card__image js-fadein' style='background-image: url(https://thegradient.pub/content/images/2019/09/1353px-Rain_splashing_down_a_window.jpg)' aria-label='The #BenderRule: On Naming the Languages We Study and Why It Matters' aria-hidden='true' role='presentation' tabindex='-1'>
+      </a>
+    </div>
+
+    <div class='c-post-card__content'>
+        <div class='c-post-card__tags'>
+          <a href="/tag/best-practices/">Best Practices</a>
+        </div>
+
+      <div class='c-post-card__share'>
+        <a title='Share on Twitter'
+           aria-label='Share on Twitter'
+           tabindex='-1'
+           href='https://twitter.com/share?text=The%20%23BenderRule%3A%20On%20Naming%20the%20Languages%20We%20Study%20and%20Why%20It%20Matters&amp;url=https://thegradient.pub/the-benderrule-on-naming-the-languages-we-study-and-why-it-matters/'
+           onclick="window.open(this.href, 'twitter-share', 'width=550, height=235'); return false;">
+          <div class='icon icon--ei-sc-twitter icon--s c-post-card__share-icon'>
+            <svg class='icon__cnt'><use xmlns:xlink='http://www.w3.org/1999/xlink' xlink:href='#ei-sc-twitter-icon'></use></svg>
+          </div>
+        </a>
+        <a title='Share on Facebook'
+           aria-label='Share on Facebook'
+           tabindex='-1'
+           href='https://www.facebook.com/sharer/sharer.php?u=https://thegradient.pub/the-benderrule-on-naming-the-languages-we-study-and-why-it-matters/'
+           onclick="window.open(this.href, 'facebook-share', 'width=580, height=296'); return false;">
+          <div class='icon icon--ei-sc-facebook icon--s c-post-card__share-icon'>
+            <svg class='icon__cnt'><use xmlns:xlink='http://www.w3.org/1999/xlink' xlink:href='#ei-sc-facebook-icon'></use></svg>
+          </div>
+        </a>
+      </div>
+
+      <h2 class='c-post-card__title'>
+        <a href='/the-benderrule-on-naming-the-languages-we-study-and-why-it-matters/' class='c-post-card__title-link'>
+          The #BenderRule: On Naming the Languages We Study and Why It Matters
+        </a>
+      </h2>
+
+      <div class='c-post-card__meta'>
+        <time class='c-post-card__date' datetime='2019-09-14' title='14 September 2019'>14.Sep.2019</time>
+        <div class='c-post-card__author'></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+      </div>
+    </div>
+
+
+    <footer class='c-footer'>
+  <div class='o-grid'>
+
+    <div class='o-grid__col o-grid__col--4-4-s o-grid__col--2-4-m  o-grid__col--2-4-l  '>
+      <p class='u-font-medium'>Tags</p>
+
+        <ul class='c-footer-list o-plain-list'>
+            <li><a href='/tag/art'>Art</a></li>
+            <li><a href='/tag/bayesian-inference'>Bayesian inference</a></li>
+            <li><a href='/tag/best-practices'>Best Practices</a></li>
+            <li><a href='/tag/beyond-ai'>Beyond AI</a></li>
+            <li><a href='/tag/conference'>Conference</a></li>
+            <li><a href='/tag/deep-learning'>Deep Learning</a></li>
+            <li><a href='/tag/ethics'>Ethics</a></li>
+            <li><a href='/tag/games'>Games</a></li>
+            <li><a href='/tag/gaussian-process'>Gaussian Process</a></li>
+            <li><a href='/tag/generative-models'>Generative Models</a></li>
+            <li><a href='/tag/graphs'>Graphs</a></li>
+            <li><a href='/tag/healthcare'>Healthcare</a></li>
+            <li><a href='/tag/history'>History</a></li>
+            <li><a href='/tag/language'>Language</a></li>
+            <li><a href='/tag/neural-nets'>Neural Nets</a></li>
+            <li><a href='/tag/nlp'>NLP</a></li>
+            <li><a href='/tag/openness'>Openness</a></li>
+            <li><a href='/tag/overviews'>Overviews</a></li>
+            <li><a href='/tag/perspectives'>Perspectives</a></li>
+            <li><a href='/tag/policy'>Policy</a></li>
+            <li><a href='/tag/reinforcement-learning'>Reinforcement Learning</a></li>
+            <li><a href='/tag/representation-learning'>Representation learning</a></li>
+            <li><a href='/tag/resources'>Resources</a></li>
+            <li><a href='/tag/speech-to-text'>Speech-To-Text</a></li>
+            <li><a href='/tag/trends'>Trends</a></li>
+            <li><a href='/tag/uncertainty'>Uncertainty</a></li>
+            <li><a href='/tag/vision'>Vision</a></li>
+        </ul>
+    </div>
+
+    <div class='o-grid__col o-grid__col--4-4-s o-grid__col--2-4-m  o-grid__col--2-4-l  '>
+      <p class='u-font-medium'>Navigation</p>
+
+      <ul class='c-footer-list o-plain-list'>
+          <li class='c-nav__item'>
+    <a href='https://thegradient.pub/' class='c-nav__link '>Home</a>
+  </li>
+  <li class='c-nav__item'>
+    <a href='https://thegradient.pub/tag/overviews/' class='c-nav__link '>Overviews</a>
+  </li>
+  <li class='c-nav__item'>
+    <a href='https://thegradient.pub/tag/perspectives/' class='c-nav__link '>Perspectives</a>
+  </li>
+  <li class='c-nav__item'>
+    <a href='https://thegradient.pub/about/' class='c-nav__link '>About</a>
+  </li>
+  <li class='c-nav__item'>
+    <a href='https://thegradient.pub/subscribe/' class='c-nav__link '>Subscribe</a>
+  </li>
+  <li class='c-nav__item'>
+    <a href='https://thegradient.pub/contribute/' class='c-nav__link '>Contribute</a>
+  </li>
+
+      </ul>
+    </div>
+
+
+    <div class='o-grid__col o-grid__col--full'>
+      <div class='c-footer__bottom'>
+        <div class='o-grid'>
+
+          <div class='o-grid__col o-grid__col--4-4-s o-grid__col--2-4-m'>
+            <div class='u-font-tiny c-footer__copyright'>
+
+              &copy; 2020 The Gradient - Published with <a href='https://ghost.org' target='_blank' rel='noopener'>Ghost</a>
+            </div>
+          </div>
+
+          <div class='o-grid__col o-grid__col--4-4-s o-grid__col--2-4-m'>
+            <ul class='c-social-icons o-plain-list'>
+                <li>
+                  <a href='https://twitter.com/gradientpub' aria-label='Twitter' target='_blank' rel='noopener'>
+                    <span data-icon='ei-sc-twitter' data-size='s'></span>
+                  </a>
+                </li>
+                <li>
+                  <a href='https://www.facebook.com/gradientpub/' aria-label='Facebook' target='_blank' rel='noopener'>
+                    <span data-icon='ei-sc-facebook' data-size='s'></span>
+                  </a>
+                </li>
+              <li>
+              </li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</footer>
+
+    <script type="text/javascript" async src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_SVG"></script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [["$", "$"], ["\\(", "\\)"]],
+        processEscapes: true,
+    },
+    "SVG": {
+        linebreaks: {
+            automatic: true
+        }
+    },
+    "HTML-CSS": {
+    	linebreaks: {
+        	automatic: true
+        }
+    }
+});
+</script>
+
+<script>
+    tocbot.init({
+        tocSelector: '.toc',
+        contentSelector: '.c-content',
+        hasInnerContainers: true,
+        headingSelector: 'h1, h2, h3',
+    });
+</script>
+
+<script type="text/javascript">
+      var pagination_next_url = $('link[rel=next]').attr('href'),
+    $load_posts_button = $('.js-load-posts');
+
+  $load_posts_button.click(function(e) {
+    e.preventDefault();
+
+    var request_next_link =
+      pagination_next_url.split(/page/)[0] +
+      'page/' +
+      pagination_next_page_number +
+      '/';
+
+    $.ajax({
+      url: request_next_link,
+      beforeSend: function() {
+        $load_posts_button.text('Loading');
+        $load_posts_button.addClass('c-btn--loading');
+      }   
+    }).done(function(data) {
+      var posts = $('.js-post-card-wrap', data);
+
+      $('.js-grid').append(posts);
+
+      $('.js-fadein').viewportChecker({
+        classToAdd: 'is-inview', // Class to add to the elements when they are visible
+        offset: 100,
+        removeClassAfterAnimation: true
+      }); 
+
+      $load_posts_button.text('More Stories');
+      $load_posts_button.removeClass('c-btn--loading');
+
+      pagination_next_page_number++;
+
+      // If you are on the last pagination page, hide the load more button
+      if (pagination_next_page_number > pagination_available_pages_number) {
+        $load_posts_button.addClass('c-btn--disabled').attr('disabled', true);
+      }
+    });
+  });  
+</script>
+<script src="https://ghostboard.io/t/5f2e7da341a52636f1391db2.js" type="text/javascript" async></script><noscript><img src="https://ghostboard.io/api/noscript/5f2e7da341a52636f1391db2/pixel.gif" alt="" border="0" /></noscript>
+  </div>
+
+  <script src='/assets/js/app.min.js?v=5ec3123393'></script>
+  <script src='/assets/js/instagram.js?v=5ec3123393'></script>
+</body>
+</html>

@@ -1,0 +1,1579 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"><script>
+window.addEventListener('WebComponentsReady', function() {
+  console.warn('WebComponentsReady');
+  const loaderTag = document.createElement('script');
+  loaderTag.src = 'https://distill.pub/template.v2.js';
+  document.head.insertBefore(loaderTag, document.head.firstChild);
+});
+</script><script src="https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/1.0.17/webcomponents-loader.js"></script>
+    
+    
+    <style id="distill-prerendered-styles" type="text/css">/*
+ * Copyright 2018 The Distill Template Authors
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+html {
+  font-size: 14px;
+	line-height: 1.6em;
+  /* font-family: "Libre Franklin", "Helvetica Neue", sans-serif; */
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif;
+  /*, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";*/
+  text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+@media(min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+body {
+  margin: 0;
+}
+
+a {
+  color: #004276;
+}
+
+figure {
+  margin: 0;
+}
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+table th {
+	text-align: left;
+}
+
+table thead {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+table thead th {
+  padding-bottom: 0.5em;
+}
+
+table tbody :first-child td {
+  padding-top: 0.5em;
+}
+
+pre {
+  overflow: auto;
+  max-width: 100%;
+}
+
+p {
+  margin-top: 0;
+  margin-bottom: 1em;
+}
+
+sup, sub {
+  vertical-align: baseline;
+  position: relative;
+  top: -0.4em;
+  line-height: 1em;
+}
+
+sub {
+  top: 0.4em;
+}
+
+.kicker,
+.marker {
+  font-size: 15px;
+  font-weight: 600;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+
+/* Headline */
+
+@media(min-width: 1024px) {
+  d-title h1 span {
+    display: block;
+  }
+}
+
+/* Figure */
+
+figure {
+  position: relative;
+  margin-bottom: 2.5em;
+  margin-top: 1.5em;
+}
+
+figcaption+figure {
+
+}
+
+figure img {
+  width: 100%;
+}
+
+figure svg text,
+figure svg tspan {
+}
+
+figcaption,
+.figcaption {
+  color: rgba(0, 0, 0, 0.6);
+  font-size: 12px;
+  line-height: 1.5em;
+}
+
+@media(min-width: 1024px) {
+figcaption,
+.figcaption {
+    font-size: 13px;
+  }
+}
+
+figure.external img {
+  background: white;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.1);
+  padding: 18px;
+  box-sizing: border-box;
+}
+
+figcaption a {
+  color: rgba(0, 0, 0, 0.6);
+}
+
+figcaption b,
+figcaption strong, {
+  font-weight: 600;
+  color: rgba(0, 0, 0, 1.0);
+}
+/*
+ * Copyright 2018 The Distill Template Authors
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+@supports not (display: grid) {
+  .base-grid,
+  distill-header,
+  d-title,
+  d-abstract,
+  d-article,
+  d-appendix,
+  distill-appendix,
+  d-byline,
+  d-footnote-list,
+  d-citation-list,
+  distill-footer {
+    display: block;
+    padding: 8px;
+  }
+}
+
+.base-grid,
+distill-header,
+d-title,
+d-abstract,
+d-article,
+d-appendix,
+distill-appendix,
+d-byline,
+d-footnote-list,
+d-citation-list,
+distill-footer {
+  display: grid;
+  justify-items: stretch;
+  grid-template-columns: [screen-start] 8px [page-start kicker-start text-start gutter-start middle-start] 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr [text-end page-end gutter-end kicker-end middle-end] 8px [screen-end];
+  grid-column-gap: 8px;
+}
+
+.grid {
+  display: grid;
+  grid-column-gap: 8px;
+}
+
+@media(min-width: 768px) {
+  .base-grid,
+  distill-header,
+  d-title,
+  d-abstract,
+  d-article,
+  d-appendix,
+  distill-appendix,
+  d-byline,
+  d-footnote-list,
+  d-citation-list,
+  distill-footer {
+    grid-template-columns: [screen-start] 1fr [page-start kicker-start middle-start text-start] 45px 45px 45px 45px 45px 45px 45px 45px [ kicker-end text-end gutter-start] 45px [middle-end] 45px [page-end gutter-end] 1fr [screen-end];
+    grid-column-gap: 16px;
+  }
+
+  .grid {
+    grid-column-gap: 16px;
+  }
+}
+
+@media(min-width: 1000px) {
+  .base-grid,
+  distill-header,
+  d-title,
+  d-abstract,
+  d-article,
+  d-appendix,
+  distill-appendix,
+  d-byline,
+  d-footnote-list,
+  d-citation-list,
+  distill-footer {
+    grid-template-columns: [screen-start] 1fr [page-start kicker-start] 50px [middle-start] 50px [text-start kicker-end] 50px 50px 50px 50px 50px 50px 50px 50px [text-end gutter-start] 50px [middle-end] 50px [page-end gutter-end] 1fr [screen-end];
+    grid-column-gap: 16px;
+  }
+
+  .grid {
+    grid-column-gap: 16px;
+  }
+}
+
+@media(min-width: 1180px) {
+  .base-grid,
+  distill-header,
+  d-title,
+  d-abstract,
+  d-article,
+  d-appendix,
+  distill-appendix,
+  d-byline,
+  d-footnote-list,
+  d-citation-list,
+  distill-footer {
+    grid-template-columns: [screen-start] 1fr [page-start kicker-start] 60px [middle-start] 60px [text-start kicker-end] 60px 60px 60px 60px 60px 60px 60px 60px [text-end gutter-start] 60px [middle-end] 60px [page-end gutter-end] 1fr [screen-end];
+    grid-column-gap: 32px;
+  }
+
+  .grid {
+    grid-column-gap: 32px;
+  }
+}
+
+
+
+
+.base-grid {
+  grid-column: screen;
+}
+
+/* .l-body,
+d-article > *  {
+  grid-column: text;
+}
+
+.l-page,
+d-title > *,
+d-figure {
+  grid-column: page;
+} */
+
+.l-gutter {
+  grid-column: gutter;
+}
+
+.l-text,
+.l-body {
+  grid-column: text;
+}
+
+.l-page {
+  grid-column: page;
+}
+
+.l-body-outset {
+  grid-column: middle;
+}
+
+.l-page-outset {
+  grid-column: page;
+}
+
+.l-screen {
+  grid-column: screen;
+}
+
+.l-screen-inset {
+  grid-column: screen;
+  padding-left: 16px;
+  padding-left: 16px;
+}
+
+
+/* Aside */
+
+d-article aside {
+  grid-column: gutter;
+  font-size: 12px;
+  line-height: 1.6em;
+  color: rgba(0, 0, 0, 0.6)
+}
+
+@media(min-width: 768px) {
+  aside {
+    grid-column: gutter;
+  }
+
+  .side {
+    grid-column: gutter;
+  }
+}
+/*
+ * Copyright 2018 The Distill Template Authors
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+d-title {
+  padding: 2rem 0 1.5rem;
+  contain: layout style;
+  overflow-x: hidden;
+}
+
+@media(min-width: 768px) {
+  d-title {
+    padding: 4rem 0 1.5rem;
+  }
+}
+
+d-title h1 {
+  grid-column: text;
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 1.1em;
+  margin: 0 0 0.5rem;
+}
+
+@media(min-width: 768px) {
+  d-title h1 {
+    font-size: 50px;
+  }
+}
+
+d-title p {
+  font-weight: 300;
+  font-size: 1.2rem;
+  line-height: 1.55em;
+  grid-column: text;
+}
+
+d-title .status {
+  margin-top: 0px;
+  font-size: 12px;
+  color: #009688;
+  opacity: 0.8;
+  grid-column: kicker;
+}
+
+d-title .status span {
+  line-height: 1;
+  display: inline-block;
+  padding: 6px 0;
+  border-bottom: 1px solid #80cbc4;
+  font-size: 11px;
+  text-transform: uppercase;
+}
+/*
+ * Copyright 2018 The Distill Template Authors
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+d-byline {
+  contain: style;
+  overflow: hidden;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  font-size: 0.8rem;
+  line-height: 1.8em;
+  padding: 1.5rem 0;
+  min-height: 1.8em;
+}
+
+
+d-byline .byline {
+  grid-template-columns: 1fr 1fr;
+  grid-column: text;
+}
+
+@media(min-width: 768px) {
+  d-byline .byline {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+}
+
+d-byline .authors-affiliations {
+  grid-column-end: span 2;
+  grid-template-columns: 1fr 1fr;
+  margin-bottom: 1em;
+}
+
+@media(min-width: 768px) {
+  d-byline .authors-affiliations {
+    margin-bottom: 0;
+  }
+}
+
+d-byline h3 {
+  font-size: 0.6rem;
+  font-weight: 400;
+  color: rgba(0, 0, 0, 0.5);
+  margin: 0;
+  text-transform: uppercase;
+}
+
+d-byline p {
+  margin: 0;
+}
+
+d-byline a,
+d-article d-byline a {
+  color: rgba(0, 0, 0, 0.8);
+  text-decoration: none;
+  border-bottom: none;
+}
+
+d-article d-byline a:hover {
+  text-decoration: underline;
+  border-bottom: none;
+}
+
+d-byline p.author {
+  font-weight: 500;
+}
+
+d-byline .affiliations {
+
+}
+/*
+ * Copyright 2018 The Distill Template Authors
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+d-article {
+  contain: layout style;
+  overflow-x: hidden;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  padding-top: 2rem;
+  color: rgba(0, 0, 0, 0.8);
+}
+
+d-article > * {
+  grid-column: text;
+}
+
+@media(min-width: 768px) {
+  d-article {
+    font-size: 16px;
+  }
+}
+
+@media(min-width: 1024px) {
+  d-article {
+    font-size: 1.06rem;
+    line-height: 1.7em;
+  }
+}
+
+
+/* H2 */
+
+
+d-article .marker {
+  text-decoration: none;
+  border: none;
+  counter-reset: section;
+  grid-column: kicker;
+  line-height: 1.7em;
+}
+
+d-article .marker:hover {
+  border: none;
+}
+
+d-article .marker span {
+  padding: 0 3px 4px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  position: relative;
+  top: 4px;
+}
+
+d-article .marker:hover span {
+  color: rgba(0, 0, 0, 0.7);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.7);
+}
+
+d-article h2 {
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 1.25em;
+  margin: 2rem 0 1.5rem 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  padding-bottom: 1rem;
+}
+
+@media(min-width: 1024px) {
+  d-article h2 {
+    font-size: 36px;
+  }
+}
+
+/* H3 */
+
+d-article h3 {
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 1.4em;
+  margin-bottom: 1em;
+  margin-top: 2em;
+}
+
+@media(min-width: 1024px) {
+  d-article h3 {
+    font-size: 20px;
+  }
+}
+
+/* H4 */
+
+d-article h4 {
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 14px;
+  line-height: 1.4em;
+}
+
+d-article a {
+  color: inherit;
+}
+
+d-article p,
+d-article ul,
+d-article ol,
+d-article blockquote {
+  margin-top: 0;
+  margin-bottom: 1em;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+d-article blockquote {
+  border-left: 2px solid rgba(0, 0, 0, 0.2);
+  padding-left: 2em;
+  font-style: italic;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+d-article a {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+  text-decoration: none;
+}
+
+d-article a:hover {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.8);
+}
+
+d-article .link {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+d-article ul,
+d-article ol {
+  padding-left: 24px;
+}
+
+d-article li {
+  margin-bottom: 1em;
+  margin-left: 0;
+  padding-left: 0;
+}
+
+d-article li:last-child {
+  margin-bottom: 0;
+}
+
+d-article pre {
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+d-article hr {
+  grid-column: screen;
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  margin-top: 60px;
+  margin-bottom: 60px;
+}
+
+d-article section {
+  margin-top: 60px;
+  margin-bottom: 60px;
+}
+
+d-article span.equation-mimic {
+  font-family: georgia;
+  font-size: 115%;
+  font-style: italic;
+}
+
+d-article > d-code,
+d-article section > d-code  {
+  display: block;
+}
+
+d-article > d-math[block],
+d-article section > d-math[block]  {
+  display: block;
+}
+
+@media (max-width: 768px) {
+  d-article > d-code,
+  d-article section > d-code,
+  d-article > d-math[block],
+  d-article section > d-math[block] {
+      overflow-x: scroll;
+      -ms-overflow-style: none;  // IE 10+
+      overflow: -moz-scrollbars-none;  // Firefox
+  }
+
+  d-article > d-code::-webkit-scrollbar,
+  d-article section > d-code::-webkit-scrollbar,
+  d-article > d-math[block]::-webkit-scrollbar,
+  d-article section > d-math[block]::-webkit-scrollbar {
+    display: none;  // Safari and Chrome
+  }
+}
+
+d-article .citation {
+  color: #668;
+  cursor: pointer;
+}
+
+d-include {
+  width: auto;
+  display: block;
+}
+
+d-figure {
+  contain: layout style;
+}
+
+/* KaTeX */
+
+.katex, .katex-prerendered {
+  contain: style;
+  display: inline-block;
+}
+
+/* Tables */
+
+d-article table {
+  border-collapse: collapse;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+d-article table th {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+d-article table td {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+d-article table tr:last-of-type td {
+  border-bottom: none;
+}
+
+d-article table th,
+d-article table td {
+  font-size: 15px;
+  padding: 2px 8px;
+}
+
+d-article table tbody :first-child td {
+  padding-top: 2px;
+}
+/*
+ * Copyright 2018 The Distill Template Authors
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+span.katex-display {
+  text-align: left;
+  padding: 8px 0 8px 0;
+  margin: 0.5em 0 0.5em 1em;
+}
+
+span.katex {
+  -webkit-font-smoothing: antialiased;
+  color: rgba(0, 0, 0, 0.8);
+  font-size: 1.18em;
+}
+/*
+ * Copyright 2018 The Distill Template Authors
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+@media print {
+
+  @page {
+    size: 8in 11in;
+    @bottom-right {
+      content: counter(page) " of " counter(pages);
+    }
+  }
+
+  html {
+    /* no general margins -- CSS Grid takes care of those */
+  }
+
+  p, code {
+    page-break-inside: avoid;
+  }
+
+  h2, h3 {
+    page-break-after: avoid;
+  }
+
+  d-header {
+    visibility: hidden;
+  }
+
+  d-footer {
+    display: none!important;
+  }
+
+}
+</style>
+    <style>
+        .subgrid {
+	grid-column: screen;
+	display: grid;
+	grid-template-columns: inherit;
+	grid-template-rows: inherit;
+	grid-column-gap: inherit;
+	grid-row-gap: inherit;
+}
+
+d-figure.base-grid {
+	grid-column: screen;
+	background: hsl(0, 0%, 97%);
+	padding: 20px 0;
+	border-top: 1px solid rgba(0, 0, 0, 0.1);
+	border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+d-figure {
+	margin-bottom: 1em;
+	position: relative;
+}
+
+d-figure > figure {
+	margin-top: 0;
+	margin-bottom: 0;
+}
+
+.shaded-figure {
+	background-color: hsl(0, 0%, 97%);
+	border-top: 1px solid hsla(0, 0%, 0%, 0.1);
+	border-bottom: 1px solid hsla(0, 0%, 0%, 0.1);
+	padding: 30px 0;
+}
+
+.pointer {
+	position: absolute;
+	width: 26px;
+	height: 26px;
+	top: 26px;
+	left: -48px;
+}
+
+.rebuttal-summary,
+#response-info {
+	margin: 1em 0;
+	padding: 1em;
+	/* border-radius: 0.25em; */
+}
+
+.summary {
+	margin-top: 18px;
+	margin-bottom: 18px;
+}
+
+.rebuttal-summary {
+	margin-top: 18px;
+	margin-bottom: 32px;
+}
+
+h3 .author {
+	font-weight: normal;
+	color: #555;
+	margin-left: 8px;
+}
+
+.rebuttal-summary,
+#response-info {
+	background-color: hsl(118, 50%, 97%);
+	border-left: solid hsl(119, 50%, 25%) 3px;
+	/* border-radius: 0.25em; */
+}
+
+.rebuttal {
+	background-color: hsl(54, 78%, 96%);
+	border-left: solid hsl(54, 33%, 67%) 1px;
+	padding: 1.5em;
+	color: hsla(0, 0%, 0%, 0.67);
+}
+
+.rebuttal h4 {
+	margin-top: 0;
+}
+
+.rebuttal p {
+	margin-bottom: 0;
+}
+
+.articles article {
+	border-top: 1px solid rgba(0, 0, 0, 0.1);
+	padding: 2em 0;
+	display: grid;
+	grid-template-columns: 65px 1fr;
+	grid-template-areas:
+		"icon header"
+		"icon summary"
+		"icon rebuttal";
+	grid-row-gap: 1.5em;
+}
+
+article#rebuttal {
+	grid-template-areas:
+		"icon header"
+		"icon summary";
+}
+
+.articles article .icon {
+	grid-area: icon;
+	padding-top: 0.5em;
+	content: url(images/single-page.svg);
+}
+
+.articles article header {
+	grid-area: header;
+}
+
+.articles article header h3 {
+	font-size: 22px;
+}
+
+.articles article header .authors-affiliations {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(25%, max-content));
+	font-size: 0.8rem;
+}
+
+.articles article header .authors-affiliations h3 {
+	font-size: 0.6rem;
+	font-weight: 400;
+	color: rgba(0, 0, 0, 0.5);
+	margin: 0;
+	text-transform: uppercase;
+}
+
+.articles article header .authors-affiliations a {
+	color: rgba(0, 0, 0, 0.8);
+	text-decoration: none;
+	border-bottom: none;
+}
+
+.articles article header .authors-affiliations p {
+	margin-bottom: 0;
+}
+
+.articles article .summary {
+	grid-area: summary;
+	margin: 0;
+}
+
+.articles article .continue {
+	grid-area: continue;
+	font-size: 80%;
+	font-weight: 600;
+	border-bottom: none;
+	text-transform: uppercase;
+	color: #2e6db7;
+	display: block;
+	margin-top: 0.25em;
+	letter-spacing: 0.25px;
+}
+
+.articles article .continue::before {
+	content: "→";
+	margin-right: 0.25em;
+}
+
+.articles article .rebuttal {
+	grid-area: rebuttal;
+}
+
+.articles article header h3 {
+	margin-top: 0;
+}
+
+.articles article header h3 a {
+	border-bottom: none;
+	color: #2e6db7;
+}
+
+    </style>
+
+    
+    <link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA99JREFUeNrsG4t1ozDMzQSM4A2ODUonKBucN2hugtIJ6E1AboLcBiQTkJsANiAb9OCd/OpzMWBJBl5TvaeXPiiyJetry0J8wW3D3QpjRh3GjneXDq+fSQA9s2mH9x3KDhN4foJfCb8N/Jrv+2fnDn8vLRQOplWHVYdvHZYdZsBcZP1vBmh/n8DzEmhUQDPaOuP9pFuY+JwJHwHnCLQE2tnWBGEyXozY9xCUgHMhhjE2I4heVWtgIkZ83wL6Qgxj1obfWBxymPwe+b00BCCRNPbwfb60yleAkkBHGT5AEehIYz7eJrFDMF9CvH4wwhcGHiHMneFvLDQwlwvMLQq58trRcYBWfYn0A0OgHWQUSu25mE+BnoYKnnEJoeIWAifzOv7vLWd2ZKRfWAIme3tOiUaQ3UnLkb0xj1FxRIeEGKaGIHOs9nEgLaaA9i0JRYo1Ic67wJW86KSKE/ZAM8KuVMk8ITVhmxUxJ3Cl2xlm9Vtkeju1+mpCQNxaEGNCY8bs9X2YqwNoQeGjBWut/ma0QAWy/TqAsHx9wSya3I5IRxOfTC+leG+kA/4vSeEcGBtNUN6byhu3+keEZCQJUNh8MAO7HL6H8pQLnsW/Hd4T4lv93TPjfM7A46iEEqbB5EDOvwYNW6tGNZzT/o+CZ6sqZ6wUtR/wf7mi/VL8iNciT6rHih48Y55b4nKCHJCCzb4y0nwFmin3ZEMIoLfZF8F7nncFmvnWBaBj7CGAYA/WGJsUwHdYqVDwAmNsUgAx4CGgAA7GOOxADYOFWOaIKifuVYzmOpREqA21Mo7aPsgiY1PhOMAmxtR+AUbYH3Id2wc0SAFIQTsn9IUGWR8k9jx3vtXSiAacFxTAGakBk9UudkNECd6jLe+6HrshshvIuC6IlLMRy7er+JpcKma24SlE4cFZSZJDGVVrsNvitQhQrDhW0jfiOLfFd47C42eHT56D/BK0To+58Ahj+cAT8HT1UWlfLZCCd/uKawzU0Rh2EyIX/Icqth3niG8ybNroezwe6khdCNxRN+l4XGdOLVLlOOt2hTRJlr1ETIuMAltVTMz70mJrkdGAaZLSmnBEqmAE32JCMmuTlCnRgsBENtOUpHhvvsYIL0ibnBkaC6QvKcR7738GKp0AKnim7xgUSNv1bpS8QwhBt8r+EP47v/oyRK/S34yJ9nT+AN0Tkm4OdB9E4BsmXM3SnMlRFUrtp6IDpV2eKzdYvF3etm3KhQksbOLChGkSmcBdmcEwvqkrMy5BzL00NZeu3qPYJOOuCc+5NjcWKXQxFvTa3NoXJ4d8in7fiAUuTt781dkvuHX4K8AA2Usy7yNKLy0AAAAASUVORK5CYII=
+">
+    <link href="/rss.xml" rel="alternate" type="application/rss+xml" title="Articles from Distill">
+  
+    <title>Thread: Differentiable Self-organizing Systems</title>
+    
+    <link rel="canonical" href="https://distill.pub/2020/selforg">
+    
+    <!--  https://schema.org/Article -->
+    <meta property="description" itemprop="description" content="A collection of articles and comments with the goal of understanding how to design robust and general purpose self-organizing systems.">
+    <meta property="article:published" itemprop="datePublished" content="2020-08-27">
+    <meta property="article:created" itemprop="dateCreated" content="2020-08-27">
+    
+    <meta property="article:modified" itemprop="dateModified" content="2020-09-01T22:05:19.000Z">
+    
+    <meta property="article:author" content="Alexander Mordvintsev">
+    <meta property="article:author" content="Ettore Randazzo">
+    <meta property="article:author" content="Eyvind Niklasson">
+    <meta property="article:author" content="Michael Levin">
+    <meta property="article:author" content="Sam Greydanus">
+    <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Thread: Differentiable Self-organizing Systems">
+    <meta property="og:description" content="A collection of articles and comments with the goal of understanding how to design robust and general purpose self-organizing systems.">
+    <meta property="og:url" content="https://distill.pub/2020/selforg">
+    <meta property="og:image" content="https://distill.pub/2020/selforg/thumbnail.jpg">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:site_name" content="Distill">
+  
+    <!--  https://dev.twitter.com/cards/types/summary -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Thread: Differentiable Self-organizing Systems">
+    <meta name="twitter:description" content="A collection of articles and comments with the goal of understanding how to design robust and general purpose self-organizing systems.">
+    <meta name="twitter:url" content="https://distill.pub/2020/selforg">
+    <meta name="twitter:image" content="https://distill.pub/2020/selforg/thumbnail.jpg">
+    <meta name="twitter:image:width" content="560">
+    <meta name="twitter:image:height" content="295">
+  
+      <!--  https://scholar.google.com/intl/en/scholar/inclusion.html#indexing -->
+    <meta name="citation_title" content="Thread: Differentiable Self-organizing Systems">
+    <meta name="citation_fulltext_html_url" content="https://distill.pub/2020/selforg">
+    <meta name="citation_volume" content="5">
+    <meta name="citation_issue" content="8">
+    <meta name="citation_firstpage" content="e27">
+    <meta name="citation_doi" content="10.23915/distill.00027">
+    <meta name="citation_journal_title" content="Distill">
+    <meta name="citation_journal_abbrev" content="Distill">
+    <meta name="citation_issn" content="2476-0757">
+    <meta name="citation_fulltext_world_readable" content="">
+    <meta name="citation_online_date" content="2020/08/27">
+    <meta name="citation_publication_date" content="2020/08/27">
+    <meta name="citation_author" content="Mordvintsev, Alexander">
+    <meta name="citation_author_institution" content="Google">
+    <meta name="citation_author" content="Randazzo, Ettore">
+    <meta name="citation_author_institution" content="Google">
+    <meta name="citation_author" content="Niklasson, Eyvind">
+    <meta name="citation_author_institution" content="Google">
+    <meta name="citation_author" content="Levin, Michael">
+    <meta name="citation_author_institution" content="Allen Discovery Center at Tufts University">
+    <meta name="citation_author" content="Greydanus, Sam">
+    <meta name="citation_author_institution" content="Oregon State University and the ML Collective">
+</head>
+
+<body distill-prerendered=""><distill-header distill-prerendered="">
+<style>
+distill-header {
+  position: relative;
+  height: 60px;
+  background-color: hsl(200, 60%, 15%);
+  width: 100%;
+  box-sizing: border-box;
+  z-index: 2;
+  color: rgba(0, 0, 0, 0.8);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.05);
+}
+distill-header .content {
+  height: 70px;
+  grid-column: page;
+}
+distill-header a {
+  font-size: 16px;
+  height: 60px;
+  line-height: 60px;
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.8);
+  padding: 22px 0;
+}
+distill-header a:hover {
+  color: rgba(255, 255, 255, 1);
+}
+distill-header svg {
+  width: 24px;
+  position: relative;
+  top: 4px;
+  margin-right: 2px;
+}
+@media(min-width: 1080px) {
+  distill-header {
+    height: 70px;
+  }
+  distill-header a {
+    height: 70px;
+    line-height: 70px;
+    padding: 28px 0;
+  }
+  distill-header .logo {
+  }
+}
+distill-header svg path {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.8);
+  stroke-width: 3px;
+}
+distill-header .logo {
+  font-size: 17px;
+  font-weight: 200;
+}
+distill-header .nav {
+  float: right;
+  font-weight: 300;
+}
+distill-header .nav a {
+  font-size: 12px;
+  margin-left: 24px;
+  text-transform: uppercase;
+}
+</style>
+<div class="content">
+  <a href="/" class="logo">
+    <svg viewBox="-607 419 64 64">
+  <path d="M-573.4,478.9c-8,0-14.6-6.4-14.6-14.5s14.6-25.9,14.6-40.8c0,14.9,14.6,32.8,14.6,40.8S-565.4,478.9-573.4,478.9z"></path>
+</svg>
+
+    Distill
+  </a>
+  <nav class="nav">
+    <a href="/about/">About</a>
+    <a href="/prize/">Prize</a>
+    <a href="/journal/">Submit</a>
+  </nav>
+</div>
+</distill-header>
+  <d-front-matter>
+    <script type="text/json">
+      {
+        "title": "Thread: Differentiable Self-organizing Systems",
+        "description": "A collection of articles and comments with the goal of understanding how to design robust and general purpose self-organizing systems.",
+        "authors": [
+        {
+          "author": "Alexander Mordvintsev",
+          "authorURL": "https://znah.net/",
+          "affiliation": "Google",
+          "affiliationURL": "https://ai.google/"
+        },
+        {
+          "author": "Ettore Randazzo",
+          "authorURL": "https://oteret.github.io/",
+          "affiliation": "Google",
+          "affiliationURL": "https://ai.google/"
+        },
+        {
+          "author": "Eyvind Niklasson",
+          "authorURL": "https://eyvind.me/",
+          "affiliation": "Google",
+          "affiliationURL": "https://ai.google/"
+        },
+        {
+          "author": "Michael Levin",
+          "authorURL": "http://www.drmichaellevin.org",
+          "affiliation": "Allen Discovery Center at Tufts University",
+          "affiliationURL": "http://allencenter.tufts.edu"
+        },
+        {
+          "author": "Sam Greydanus",
+          "authorURL": "https://greydanus.github.io/about.html",
+          "affiliation": "Oregon State University and the ML Collective",
+          "affiliationURL": "http://mlcollective.org/"
+        }
+        ],
+        "katex": {
+          "delimiters": [
+            {
+              "left": "$",
+              "right": "$",
+              "display": false
+            },
+            {
+              "left": "$$",
+              "right": "$$",
+              "display": true
+            }
+          ]
+        }
+      }
+    </script>
+  </d-front-matter>
+
+    <d-title>
+        <h1>Thread: <i>Differentiable Self-organizing Systems</i></h1>
+        <p>How can we construct robust, general-purpose self-organising systems?</p>
+    </d-title>
+
+    <style>
+        .authors-affiliations {
+            display: none;
+        }
+    </style>
+
+    <d-byline>
+  <div class="byline grid">
+    <div class="authors-affiliations grid">
+      <h3>Authors</h3>
+      <h3>Affiliations</h3>
+      
+        <p class="author">
+          
+            <a class="name" href="https://znah.net/">Alexander Mordvintsev</a>
+        </p>
+        <p class="affiliation">
+        <a class="affiliation" href="https://ai.google/">Google</a>
+        </p>
+      
+        <p class="author">
+          
+            <a class="name" href="https://oteret.github.io/">Ettore Randazzo</a>
+        </p>
+        <p class="affiliation">
+        <a class="affiliation" href="https://ai.google/">Google</a>
+        </p>
+      
+        <p class="author">
+          
+            <a class="name" href="https://eyvind.me/">Eyvind Niklasson</a>
+        </p>
+        <p class="affiliation">
+        <a class="affiliation" href="https://ai.google/">Google</a>
+        </p>
+      
+        <p class="author">
+          
+            <a class="name" href="http://www.drmichaellevin.org">Michael Levin</a>
+        </p>
+        <p class="affiliation">
+        <a class="affiliation" href="http://allencenter.tufts.edu">Allen Discovery Center at Tufts University</a>
+        </p>
+      
+        <p class="author">
+          
+            <a class="name" href="https://greydanus.github.io/about.html">Sam Greydanus</a>
+        </p>
+        <p class="affiliation">
+        <a class="affiliation" href="http://mlcollective.org/">Oregon State University and the ML Collective</a>
+        </p>
+      
+    </div>
+    <div>
+      <h3>Published</h3>
+      
+        <p>Aug. 27, 2020</p> 
+    </div>
+    <div>
+      <h3>DOI</h3>
+      
+        <p><a href="https://doi.org/10.23915/distill.00027">10.23915/distill.00027</a></p>
+    </div>
+  </div>
+</d-byline><d-article>
+
+
+        <p>
+        Self-organisation is omnipresent on all scales of biological life. From complex interactions between molecules forming structures such as proteins, to cell colonies achieving global goals like exploration by means of the individual cells collaborating and communicating, to humans forming collectives in society such as tribes, governments or countries. The old adage “the whole is greater than the sum of its parts”, often ascribed to Aristotle, rings true everywhere we look. 
+       </p>
+
+        <p>
+The articles in this thread focus on practical ways of designing self-organizing systems. In particular we use Differentiable Programming (optimization) to learn agent-level policies that satisfy system-level objectives. The cross-disciplinary nature of this thread aims to facilitate ideas exchange between ML and developmental biology communities.
+       </p>
+
+
+
+        <h2>Articles &amp; Comments</h2>
+
+        <p>
+          Distill has invited several researchers to publish a “thread” of short articles exploring differentiable self-organizing systems,
+          interspersed with critical commentary from several experts in adjacent fields.
+          The thread will be a living document, with new articles added over time.
+          Articles and comments are presented below in chronological order:
+        </p>
+
+
+        <div id="commentaries" class="articles">
+
+            <article id="article-1">
+                <div class="icon"></div>
+                <header>
+                    <h3>
+                        <a href="/2020/growing-ca/">Growing Neural Cellular Automata</a>
+                    </h3>
+                    <div class="authors-affiliations grid">
+                        <h3>Authors</h3>
+                        <h3>Affiliations</h3>
+                        <p class="author" style="line-height: 1.5; margin-top: 4px;">
+                            <a class="name" href="https://znah.net/">Alexander Mordvintsev</a>, 
+                            <a class="name" href="">Ettore Randazzo</a>,
+                            <a class="name" href="">Eyvind Niklasson</a>,
+                            <a class="name" href="https://people.eecs.berkeley.edu/~hendrycks/">Michael Levin</a>
+                        </p>
+                        <p class="affiliation" style="line-height: 1.5; margin-top: 4px;">
+                            <a class="affiliation" href="https://research.google/">Google</a>,
+                            <a class="affiliation" href="https://allencenter.tufts.edu/">Allen Discovery Center</a>
+                        </p>
+                    </div>
+                </header>
+                <p class="summary">
+                Building their own bodies is the very first skill all living creatures possess. How can we design systems that grow themselves, maintain and repair themselves by regenerating damages? This work investigates morphogenesis, the process by which living creatures self-assemble their bodies. It proposes a simple, differentiable, Cellular Automata model of morphogenesis and shows how such a model learns a robust and persistent set of dynamics to grow any arbitrary structure starting from a single cell.
+                    <a class="continue" href="/2020/growing-ca/">
+                        Read Full Article
+                    </a>
+                </p>
+            </article>
+
+            <article id="article-2">
+                <div class="icon"></div>
+                <header>
+                    <h3>
+                        <a href="/2020/selforg/mnist">Self-classifying MNIST Digits</a>
+                    </h3>
+                    <div class="authors-affiliations grid">
+                        <h3>Authors</h3>
+                        <h3>Affiliations</h3>
+                        <p class="author" style="line-height: 1.5; margin-top: 4px;"> 
+                            <a class="name" href="">Ettore Randazzo</a>,
+                            <a class="name" href="https://znah.net/">Alexander Mordvintsev</a>,
+                            <a class="name" href="">Eyvind Niklasson</a>,
+                            <a class="name" href="https://people.eecs.berkeley.edu/~hendrycks/">Michael Levin</a>,
+                            <a class="name" href="https://greydanus.github.io/about.html">Sam Greydanus</a>
+                        </p>
+                        <p class="affiliation" style="line-height: 1.5; margin-top: 4px;">
+                            <a class="affiliation" href="https://research.google/">Google</a>,
+                            <a class="affiliation" href="https://allencenter.tufts.edu/">Allen Discovery Center</a>,
+                            <a class="affiliation" href="http://mlcollective.org/">Oregon State University and the ML Collective</a>
+                        </p>
+                    </div>
+                </header>
+                <p class="summary">
+                This work presents a follow up to Growing Neural CAs, using a similar computational model for the goal of digit “self-classification”. The authors show how neural CAs can self-classify the MNIST digit they form. The resulting CAs can be interacted with by dynamically changing the underlying digit. The CAs respond to perturbations with a learned self-correcting classification behaviour.
+                    <a class="continue" href="/2020/selforg/mnist/">
+                        Read Full Article
+                    </a>
+                </p>
+            </article>
+
+          </div>
+
+          <div class="info">
+            <h4>This is a living document</h4>
+            <p>
+              Expect more articles on this topic, along with critical comments from
+              experts.
+            </p>
+          </div>
+
+              
+        <h2>Get Involved</h2>
+    
+        <p>
+          The Self-Organizing systems thread is open to articles exploring differentiable self-organizing sytems. 
+          Critical
+          commentary and discussion of existing articles is also welcome. The thread
+          is organized through the open <code>#selforg</code> channel on the
+          <a href="http://slack.distill.pub">Distill slack</a>. Articles can be
+          suggested there, and will be included at the discretion of previous
+          authors in the thread, or in the case of disagreement by an uninvolved
+          editor.
+        </p>
+    
+        <p>
+          If you would like get involved but don’t know where to start, small
+          projects may be available if you ask in the channel.
+        </p>
+    
+        <h2>About the Thread Format</h2>
+    
+        <p>
+          Part of Distill’s mandate is to experiment with new forms of scientific
+          publishing. We believe that that reconciling faster and more continuous
+          approaches to publication with review and discussion is an important open
+          problem in scientific publishing.
+        </p>
+        <p>
+          Threads are collections of short articles, experiments, and critical
+          commentary around a narrow or unusual research topic, along with a slack
+          channel for real time discussion and collaboration. They are intended to
+          be earlier stage than a full Distill paper, and allow for more fluid
+          publishing, feedback and discussion. We also hope they’ll allow for wider
+          participation. Think of a cross between a Twitter thread, an academic
+          workshop, and a book of collected essays.
+        </p>
+        <p>
+          Threads are very much an experiment. We think it’s possible they’re a
+          great format, and also possible they’re terrible. We plan to trial two
+          such threads and then re-evaluate our thought on the format.
+        </p>
+
+    </d-article>
+
+    <d-appendix>
+
+      <h3>Editorial Note</h3>
+      <p>
+          Part of Distill’s mandate is to experiment with new forms of scientific publishing.
+          We believe something along the lines of this “thread” format might be promising,
+          but see it very much as an experiment.
+          We plan to trial two such threads and then re-evaluate our thought on the format.
+      </p>
+
+        <h3>Citation Information</h3>
+        <p>
+            If you wish to cite this thread as a whole, citation information can be found below.
+            The author order is all participants in the thread in alphabetical order.
+            Since this is a living document, the citation may add additional authors as it evolves.
+            You can also cite individual articles using the citation information provided at the
+            bottom of the corresponding article.
+        </p>
+
+
+
+
+
+
+        <d-footnote-list></d-footnote-list>
+        <d-citation-list style="display: none;" distill-prerendered="true"></d-citation-list>
+    <distill-appendix>
+<style>
+  distill-appendix {
+    contain: layout style;
+  }
+
+  distill-appendix .citation {
+    font-size: 11px;
+    line-height: 15px;
+    border-left: 1px solid rgba(0, 0, 0, 0.1);
+    padding-left: 18px;
+    border: 1px solid rgba(0,0,0,0.1);
+    background: rgba(0, 0, 0, 0.02);
+    padding: 10px 18px;
+    border-radius: 3px;
+    color: rgba(150, 150, 150, 1);
+    overflow: hidden;
+    margin-top: -12px;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+
+  distill-appendix > * {
+    grid-column: text;
+  }
+</style>
+
+    <h3 id="updates-and-corrections">Updates and Corrections</h3>
+    <p>
+    If you see mistakes or want to suggest changes, please <a href="https://github.com/distillpub/post--selforg-overview/issues/new">create an issue on GitHub</a>. </p>
+    
+    <h3 id="reuse">Reuse</h3>
+    <p>Diagrams and text are licensed under Creative Commons Attribution <a href="https://creativecommons.org/licenses/by/4.0/">CC-BY 4.0</a> with the <a class="github" href="https://github.com/distillpub/post--selforg-overview">source available on GitHub</a>, unless noted otherwise. The figures that have been reused from other sources don’t fall under this license and can be recognized by a note in their caption: “Figure from …”.</p>
+    
+    <h3 id="citation">Citation</h3>
+    <p>For attribution in academic contexts, please cite this work as</p>
+    <pre class="citation short">Mordvintsev, et al., "Thread: Differentiable Self-organizing Systems", Distill, 2020.</pre>
+    <p>BibTeX citation</p>
+    <pre class="citation long">@article{mordvintsev2020thread:,
+  author = {Mordvintsev, Alexander and Randazzo, Ettore and Niklasson, Eyvind and Levin, Michael and Greydanus, Sam},
+  title = {Thread: Differentiable Self-organizing Systems},
+  journal = {Distill},
+  year = {2020},
+  note = {https://distill.pub/2020/selforg},
+  doi = {10.23915/distill.00027}
+}</pre>
+    </distill-appendix></d-appendix>
+
+    <d-bibliography><script type="text/json">[["ilyas2019adversarial",{"title":"Adversarial examples are not bugs, they are features","author":"Ilyas, Andrew and Santurkar, Shibani and Tsipras, Dimitris and Engstrom, Logan and Tran, Brandon and Madry, Aleksander","journal":"arXiv preprint arXiv:1905.02175","year":"2019","archivePrefix":"arXiv","url":"https://arxiv.org/pdf/1905.02175.pdf","archiveprefix":"arXiv","type":"article"}],["olah2017feature",{"author":"Olah, Chris and Mordvintsev, Alexander and Schubert, Ludwig","title":"Feature Visualization","journal":"Distill","year":"2017","url":"https://distill.pub/2017/feature-visualization","doi":"10.23915/distill.00007","type":"article"}],["gatys2015",{"author":"Leon A. Gatys and Alexander S. Ecker and Matthias Bethge","title":"A Neural Algorithm of Artistic Style","journal":"CoRR","volume":"abs/1508.06576","year":"2015","url":"http://arxiv.org/abs/1508.06576","archivePrefix":"arXiv","eprint":"1508.06576","timestamp":"Wed, 07 Jun 2017 14:41:58 +0200","biburl":"http://dblp.org/rec/bib/journals/corr/GatysEB15a","bibsource":"dblp computer science bibliography, http://dblp.org","archiveprefix":"arXiv","type":"article"}],["li2017",{"author":"Yanghao Li and Naiyan Wang and Jiaying Liu and Xiaodi Hou","title":"Demystifying Neural Style Transfer","journal":"CoRR","volume":"abs/1701.01036","year":"2017","url":"http://arxiv.org/abs/1701.01036","archivePrefix":"arXiv","eprint":"1701.01036","timestamp":"Wed, 07 Jun 2017 14:42:49 +0200","biburl":"http://dblp.org/rec/bib/journals/corr/LiWLH17","bibsource":"dblp computer science bibliography, http://dblp.org","archiveprefix":"arXiv","type":"article"}],["wilmot2017",{"author":"Pierre Wilmot and Eric Risser and Connelly Barnes","title":"Stable and Controllable Neural Texture Synthesis and Style Transfer Using Histogram Losses","journal":"CoRR","volume":"abs/1701.08893","year":"2017","url":"http://arxiv.org/abs/1701.08893","archivePrefix":"arXiv","eprint":"1701.08893","timestamp":"Wed, 07 Jun 2017 14:42:55 +0200","biburl":"http://dblp.org/rec/bib/journals/corr/WilmotRB17","bibsource":"dblp computer science bibliography, http://dblp.org","archiveprefix":"arXiv","type":"article"}],["li2016",{"author":"Chuan Li and Michael Wand","title":"Combining Markov Random Fields and Convolutional Neural Networks for Image Synthesis","journal":"CoRR","volume":"abs/1601.04589","year":"2016","url":"http://arxiv.org/abs/1601.04589","archivePrefix":"arXiv","eprint":"1601.04589","timestamp":"Wed, 07 Jun 2017 14:40:20 +0200","biburl":"http://dblp.org/rec/bib/journals/corr/LiW16","bibsource":"dblp computer science bibliography, http://dblp.org","archiveprefix":"arXiv","type":"article"}],["athalye2017",{"author":"Anish Athalye and Logan Engstrom and Andrew Ilyas and Kevin Kwok","title":"Synthesizing Robust Adversarial Examples","journal":"CoRR","volume":"abs/1707.07397","year":"2017","url":"http://arxiv.org/abs/1707.07397","archivePrefix":"arXiv","eprint":"1707.07397","timestamp":"Tue, 31 Oct 2017 11:47:03 +0100","biburl":"http://dblp.org/rec/bib/journals/corr/AthalyeS17","bibsource":"dblp computer science bibliography, http://dblp.org","archiveprefix":"arXiv","type":"article"}],["ruder2016",{"author":"Manuel Ruder and Alexey Dosovitskiy and Thomas Brox","title":"Artistic style transfer for videos","journal":"CoRR","volume":"abs/1604.08610","year":"2016","url":"http://arxiv.org/abs/1604.08610","archivePrefix":"arXiv","eprint":"1604.08610","timestamp":"Wed, 07 Jun 2017 14:43:14 +0200","biburl":"http://dblp.org/rec/bib/journals/corr/RuderDB16","bibsource":"dblp computer science bibliography, http://dblp.org","archiveprefix":"arXiv","type":"article"}],["krizhevsky2012",{"author":"Krizhevsky, Alex and Sutskever, Ilya and Hinton, Geoffrey E.","title":"ImageNet Classification with Deep Convolutional Neural Networks","booktitle":"Proceedings of the 25th International Conference on Neural Information Processing Systems - Volume 1","series":"NIPS'12","year":"2012","pages":"1097--1105","url":"http://papers.nips.cc/paper/4824-imagenet-classification-with-deep-convolutional-neural-networks.pdf","type":"inproceedings"}],["zeiler2014",{"author":"Zeiler, Matthew D. and Fergus, Rob","editor":"Fleet, David and Pajdla, Tomas and Schiele, Bernt and Tuytelaars, Tinne","title":"Visualizing and Understanding Convolutional Networks","booktitle":"Computer Vision -- ECCV 2014","year":"2014","publisher":"Springer International Publishing","address":"Cham","pages":"818--833","isbn":"978-3-319-10590-1","url":"https://arxiv.org/abs/1311.2901","type":"InProceedings"}],["mordvintsev2015inceptionism",{"title":"Inceptionism: Going deeper into neural networks","author":"Mordvintsev, Alexander and Olah, Christopher and Tyka, Mike","journal":"Google Research Blog. Retrieved June","volume":"20","number":"14","pages":"5","year":"2015","url":"https://research.googleblog.com/2015/06/inceptionism-going-deeper-into-neural.html","type":"article"}],["goodfellow2014:adversarial",{"title":"Generative Adversarial Nets","author":"Goodfellow, Ian and Pouget-Abadie, Jean and Mirza, Mehdi and Xu, Bing and Warde-Farley, David and Ozair, Sherjil and Courville, Aaron and Bengio, Yoshua","booktitle":"Advances in Neural Information Processing Systems 27","editor":"Z. Ghahramani and M. Welling and C. Cortes and N. D. Lawrence and K. Q. Weinberger","pages":"2672--2680","year":"2014","publisher":"Curran Associates, Inc.","url":"http://papers.nips.cc/paper/5423-generative-adversarial-nets.pdf","type":"incollection"}],["Diederik2013:VAE",{"author":"Diederik P. Kingma and Max Welling","title":"Auto-Encoding Variational Bayes","journal":"CoRR","volume":"abs/1312.6114","year":"2013","url":"http://arxiv.org/abs/1312.6114","archivePrefix":"arXiv","eprint":"1312.6114","timestamp":"Wed, 07 Jun 2017 14:40:08 +0200","biburl":"http://dblp.org/rec/bib/journals/corr/KingmaW13","bibsource":"dblp computer science bibliography, http://dblp.org","archiveprefix":"arXiv","type":"article"}],["stanley2007cppn",{"title":"Compositional pattern producing networks: A novel abstraction of development","author":"Stanley, Kenneth O","journal":"Genetic programming and evolvable machines","volume":"8","number":"2","pages":"131--162","year":"2007","publisher":"Springer","url":"http://eplex.cs.ucf.edu/papers/stanley_gpem07.pdf","type":"article"}],["CPPN:random",{"author":"Otoro.net","title":"Neural Network Generative Art in Javascript","url":"http://blog.otoro.net/2015/06/19/neural-network-generative-art/","year":"2015","note":"[Online; accessed 26-February-2018]","type":"misc"}],["Nguyen2015:easilyFooled",{"author":"Anh Mai Nguyen and Jason Yosinski and Jeff Clune","title":"Deep neural networks are easily fooled: High confidence predictions for unrecognizable images","booktitle":"IEEE Conference on Computer Vision and Pattern Recognition, CVPR 2015, Boston, MA, USA, June 7-12, 2015","pages":"427--436","year":"2015","url":"https://arxiv.org/abs/1412.1897","type":"inproceedings"}],["kato2017neural3D",{"title":"Neural 3D Mesh Renderer","author":"Kato, Hiroharu and Ushiku, Yoshitaka and Harada, Tatsuya","journal":"arXiv preprint arXiv:1711.07566","year":"2017","url":"https://arxiv.org/abs/1711.07566","type":"article"}],["wu20153d",{"title":"3d shapenets: A deep representation for volumetric shapes","author":"Wu, Zhirong and Song, Shuran and Khosla, Aditya and Yu, Fisher and Zhang, Linguang and Tang, Xiaoou and Xiao, Jianxiong","booktitle":"Proceedings of the IEEE conference on computer vision and pattern recognition","pages":"1912--1920","year":"2015","url":"https://people.csail.mit.edu/khosla/papers/cvpr2015_wu.pdf","type":"inproceedings"}],["qi2016volumetric",{"title":"Volumetric and Multi-View CNNs for Object Classification on 3D Data","author":"Qi, Charles R and Su, Hao and Niesner, Matthias and Dai, Angela and Yan, Mengyuan and Guibas, Leonidas J","booktitle":"Proceedings of the IEEE conference on computer vision and pattern recognition","pages":"5648--5656","year":"2016","url":"https://arxiv.org/abs/1604.03265","type":"inproceedings"}],["turk2005stanfordBunny",{"title":"The Stanford Bunny","author":"Turk, Greg and Levoy, Marc","year":"2005","publisher":"Stanford University Computer Graphics Laboratory","url":"http://graphics. stanford. edu/data/3Dscanrep","type":"misc"}],["Shreiner2013OpenGL",{"author":"Shreiner, Dave and Sellers, Graham and Kessenich, John M. and Licea-Kane, Bill M.","title":"OpenGL Programming Guide: The Official Guide to Learning OpenGL, Version 4.3","year":"2013","isbn":"0321773039, 9780321773036","edition":"8th","publisher":"Addison-Wesley Professional","type":"book"}],["wierstra2014naturalEvolutionStrategies",{"title":"Natural evolution strategies.","author":"Wierstra, Daan and Schaul, Tom and Glasmachers, Tobias and Sun, Yi and Peters, Jan and Schmidhuber, Jurgen","journal":"Journal of Machine Learning Research","volume":"15","number":"1","pages":"949--980","year":"2014","url":"http://www.jmlr.org/papers/volume15/wierstra14a/wierstra14a.pdf","type":"article"}],["szegedy2015googlenet",{"title":"Going Deeper with Convolutions","author":"Christian Szegedy and Wei Liu and Yangqing Jia and Pierre Sermanet and Scott Reed and Dragomir Anguelov and Dumitru Erhan and Vincent Vanhoucke and Andrew Rabinovich","year":"2015","URL":"http://arxiv.org/abs/1409.4842","booktitle":"Computer Vision and Pattern Recognition (CVPR)","url":"http://arxiv.org/abs/1409.4842","type":"inproceedings"}],["lecun2015deepLearning",{"title":"Deep learning","author":"LeCun, Yann and Bengio, Yoshua and Hinton, Geoffrey","journal":"Nature","volume":"521","number":"7553","pages":"436","year":"2015","publisher":"Nature Publishing Group","url":"http://pages.cs.wisc.edu/~dyer/cs540/handouts/deep-learning-nature2015.pdf","type":"article"}],["Goodfellow2016deepLearning",{"title":"Deep Learning","author":"Ian Goodfellow and Yoshua Bengio and Aaron Courville","publisher":"MIT Press","url":"http://www.deeplearningbook.org","year":"2016","type":"article"}],["simonyan2014vgg",{"title":"Very deep convolutional networks for large-scale image recognition","author":"Simonyan, Karen and Zisserman, Andrew","journal":"arXiv preprint arXiv:1409.1556","year":"2014","url":"https://arxiv.org/abs/1409.1556","type":"article"}],["li2017universal",{"title":"Universal style transfer via feature transforms","author":"Li, Yijun and Fang, Chen and Yang, Jimei and Wang, Zhaowen and Lu, Xin and Yang, Ming-Hsuan","booktitle":"Advances in Neural Information Processing Systems","pages":"385--395","year":"2017","url":"https://arxiv.org/abs/1705.08086","type":"inproceedings"}],["levy2002least",{"title":"Least squares conformal maps for automatic texture atlas generation","author":"Levy, Bruno and Petitjean, Sylvain and Ray, Nicolas and Maillot, Jerome","booktitle":"ACM transactions on graphics (TOG)","pages":"362--371","year":"2002","url":"http://alice.loria.fr/index.php/software/7-data/37-unwrapped-meshes.html","type":"inproceedings"}],["athalye2017synthesizing",{"title":"Synthesizing robust adversarial examples","author":"Athalye, Anish and Engstrom, Logan and Ilyas, Andrew and Kwok, Kevin","journal":"arXiv preprint arXiv:1707.07397","year":"2017","url":"https://arxiv.org/pdf/1707.07397.pdf","type":"article"}],["gershenfeld2012make",{"title":"How to make almost anything: The digital fabrication revolution","author":"Gershenfeld, Neil","journal":"Foreign affairs","pages":"43--57","year":"2012","url":"https://www.vteducation.org/sites/default/files/file_attach/Christophe%20Reverd/2014/05/12.09.fa_.pdf","type":"article"}],["odena2016deconvolution",{"title":"Deconvolution and checkerboard artifacts","author":"Odena, Augustus and Dumoulin, Vincent and Olah, Chris","journal":"Distill","volume":"1","number":"10","pages":"e3","year":"2016","doi":"distill.00003","url":"http://distill.pub/2016/deconv-checkerboard/","type":"article"}],["kodama1981automatic",{"title":"Automatic method for fabricating a three-dimensional plastic model with photo-hardening polymer","author":"Kodama, Hideo","journal":"Review of scientific instruments","volume":"52","number":"11","pages":"1770--1773","year":"1981","publisher":"AIP","doi":"10.1063/1.1136492","type":"article"}],["jones2011reprap",{"title":"RepRap--the replicating rapid prototyper","author":"Jones, Rhys and Haufe, Patrick and Sells, Edward and Iravani, Pejman and Olliver, Vik and Palmer, Chris and Bowyer, Adrian","journal":"Robotica","volume":"29","number":"1","pages":"177--191","year":"2011","publisher":"Cambridge University Press","doi":"10.1017/S026357471000069X","type":"article"}],["salimans2017evolution",{"title":"Evolution strategies as a scalable alternative to reinforcement learning","author":"Salimans, Tim and Ho, Jonathan and Chen, Xi and Sutskever, Ilya","journal":"arXiv preprint arXiv:1703.03864","year":"2017","type":"article"}],["milli2018model",{"title":"Model reconstruction from model explanations","author":"Milli, Smitha and Schmidt, Ludwig and Dragan, Anca D and Hardt, Moritz","journal":"arXiv preprint arXiv:1807.05185","year":"2018","type":"article"}]]</script></d-bibliography>
+
+<script type="text/javascript" src="index.bundle.js"></script>
+<distill-footer>
+<style>
+
+:host {
+  color: rgba(255, 255, 255, 0.5);
+  font-weight: 300;
+  padding: 2rem 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  background-color: hsl(180, 5%, 15%); /*hsl(200, 60%, 15%);*/
+  text-align: left;
+  contain: content;
+}
+
+.footer-container .logo svg {
+  width: 24px;
+  position: relative;
+  top: 4px;
+  margin-right: 2px;
+}
+
+.footer-container .logo svg path {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.8);
+  stroke-width: 3px;
+}
+
+.footer-container .logo {
+  font-size: 17px;
+  font-weight: 200;
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  margin-right: 6px;
+}
+
+.footer-container {
+  grid-column: text;
+}
+
+.footer-container .nav {
+  font-size: 0.9em;
+  margin-top: 1.5em;
+}
+
+.footer-container .nav a {
+  color: rgba(255, 255, 255, 0.8);
+  margin-right: 6px;
+  text-decoration: none;
+}
+
+</style>
+
+<div class="footer-container">
+
+  <a href="/" class="logo">
+    <svg viewBox="-607 419 64 64">
+  <path d="M-573.4,478.9c-8,0-14.6-6.4-14.6-14.5s14.6-25.9,14.6-40.8c0,14.9,14.6,32.8,14.6,40.8S-565.4,478.9-573.4,478.9z"></path>
+</svg>
+
+    Distill
+  </a> is dedicated to clear explanations of machine learning
+
+  <div class="nav">
+    <a href="https://distill.pub/about/">About</a>
+    <a href="https://distill.pub/journal/">Submit</a>
+    <a href="https://distill.pub/prize/">Prize</a>
+    <a href="https://distill.pub/archive/">Archive</a>
+    <a href="https://distill.pub/rss.xml">RSS</a>
+    <a href="https://github.com/distillpub">GitHub</a>
+    <a href="https://twitter.com/distillpub">Twitter</a>
+    &nbsp;&nbsp;&nbsp;&nbsp; ISSN 2476-0757
+  </div>
+
+</div>
+
+</distill-footer><script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-83741880-1', 'auto');
+  ga('send', 'pageview');
+</script></body></html>

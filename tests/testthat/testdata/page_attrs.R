@@ -1,5 +1,6 @@
 
 url_list <- list(
+  
   # Adventures in machine learning - data science blog
   'adv_ml'      = list(url    = 'https://adventuresinmachinelearning.com/python-tensorflow-tutorial/',
                        rss    = "https://adventuresinmachinelearning.com/feed/",
@@ -9,6 +10,7 @@ url_list <- list(
                        code   = 'python',
                        lang   = 'en-us',
                        tables = NA),
+  
   # # Aeon - philosophy blog
   # 'aeon'        = list(url    = 'https://aeon.co/essays/pippi-and-the-moomins-served-as-a-social-antidote-to-fascism',
   #                      # rss    = "https://aeon.co/feed.rss", # need V8 to get this
@@ -20,6 +22,7 @@ url_list <- list(
   #                      code   =  NA,
   #                      lang   = 'en',
   #                      tables =  NA),
+  
   # Alastair Rushworth - about me 
   'alastair'    = list(url    = 'https://alastairrushworth.github.io/aboutme/',
                        rss    = "https://alastairrushworth.github.io/feed.xml",
@@ -60,6 +63,7 @@ url_list <- list(
   #                      code   = NA,
   #                      lang   = 'en-gb',
   #                      tables = NA),
+  
   # # BBC news article
   # 'bbc_2'       = list(url    = 'https://www.bbc.co.uk/sport/football/54495196',
   #                      rss    = NA,
@@ -69,6 +73,7 @@ url_list <- list(
   #                      code   = NA,
   #                      lang   = 'en-gb',
   #                      tables = NA),
+  
   # burns-stat
   'burnsstat'   = list(url    = 'https://www.burns-stat.com/blog-2/',
                        rss    = 'https://www.burns-stat.com/feed/',
@@ -77,6 +82,7 @@ url_list <- list(
                        code   = 'r',
                        lang   = 'en-us',
                        tables = NA),
+  
   # Business Science
   'businesssci' = list(url    = 'https://www.business-science.io',
                        rss    = c("https://www.business-science.io/feed.xml",           
@@ -138,6 +144,16 @@ url_list <- list(
                        lang   = 'de-de',
                        tables = NA),
   
+  # distill.pub
+  'distill'     = list(url    = 'https://distill.pub/2020/selforg/',
+                       rss    = "https://distill.pub/rss.xml",
+                       social = c("https://twitter.com/distillpub", 
+                                  "https://github.com/distillpub"),
+                       title  = "Thread: Differentiable Self-organizing Systems",
+                       code   = 'py',
+                       lang   = 'en',
+                       tables = NA),
+  
   # DVC
   'dvc'         = list(url    = 'https://dvc.org/blog/september-20-dvc-heartbeat',
                        rss    = "https://dvc.org/blog/rss.xml",
@@ -172,6 +188,31 @@ url_list <- list(
                        title  = "Etsy - Shop for handmade, vintage, custom, and unique gifts for everyone",
                        code   = NA,
                        lang   = 'en-gb',
+                       tables = NA),
+  
+  # the gradient blog
+  'gradient'    = list(url    = 'https://thegradient.pub/transformers-are-graph-neural-networks/',
+                       rss    = "https://thegradient.pub/rss/",
+                       social = c("https://twitter.com/chaitjo",       
+                                  "https://twitter.com/chrszegedy",    
+                                  "https://twitter.com/deepmind",      
+                                  "https://twitter.com/en_us",         
+                                  "https://twitter.com/gradientpub",   
+                                  "https://twitter.com/oriolvinyalsml",
+                                  "https://facebook.com/gradientpub"),
+                       title  = "Transformers are Graph Neural Networks",
+                       code   = NA,
+                       lang   = 'en',
+                       tables = NA),
+  
+  # the guardian news
+  'guardian'    = list(url    = 'https://www.theguardian.com/uk-news',
+                       rss    = "https://www.theguardian.com/uk-news/rss",
+                       social = c("https://twitter.com/guardian", 
+                                  "https://facebook.com/theguardian"),
+                       title  = "Latest UK news | The Guardian",
+                       code   = NA,
+                       lang   = 'en',
                        tables = NA),
   
   # inspectdf gh repo
@@ -340,6 +381,16 @@ url_list <- list(
                         code   = NA,
                         lang   = 'en-us', 
                         tables = NA),
+  
+  # reddit rstats sub
+  'reddit'       = list(url    = 'https://www.reddit.com/r/rstats/',
+                        rss    = NA,
+                        social = "https://twitter.com/reddit",
+                        title  = "The Statistical Computing with R subreddit",
+                        code   = 'r',
+                        lang   = 'en-us', 
+                        tables = NA),
+  
   
   # revolutions blog
   'revo'         = list(url    = "https://blog.revolutionanalytics.com/2020/05/azurevision.html",
@@ -520,6 +571,16 @@ url_list <- list(
                         social = c("https://twitter.com/quaesita",    
                                    "https://twitter.com/tdatascience"),
                         title  = "How to spot a data charlatan. Tips for identifying fakers and… | by Cassie Kozyrkov | Oct, 2020 | Towards Data Science",
+                        code   = NA,
+                        lang   = 'en', 
+                        tables = NA),
+  
+  # towardsds2 blog
+  'towardsds2'   = list(url    = 'https://towardsdatascience.com/multinomial-mixture-model-for-supermarket-shoppers-segmentation-a-complete-tutorial-268974d905da',
+                        rss    = NA,
+                        social = c("https://github.com/biarne-a",    
+                                   "https://twitter.com/tdatascience"),
+                        title  = "Multinomial Mixture Model for Supermarket Shoppers Segmentation | by Adrien Biarnes | Oct, 2020 | Towards Data Science",
                         code   = NA,
                         lang   = 'en', 
                         tables = NA),

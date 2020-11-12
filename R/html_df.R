@@ -66,7 +66,7 @@
 #' @importFrom magrittr `%>%`
 #' @importFrom tidyr unnest_wider
 #' @importFrom tibble tibble
-#' @importFrom lubridate as_datetime
+#' @importFrom lubridate parse_date_time
 #' @importFrom utils flush.console
 #' @export
 
@@ -91,15 +91,20 @@ html_df <- function(urlx,
            images, social, code_lang, size, server, 
            accessed, published, generator,
            source)
-  # unlist the source html column
-  # z$source <- lapply(z$source, function(v) v[[1]])
   # coerce the accessed dt to datetime
-  accessed_dt <- try(as_datetime(z$accessed), silent = TRUE)
+  accessed_dt <- suppressWarnings(try(as_datetime(z$accessed), silent = TRUE))
   if(!'try-error' %in% class(accessed_dt)){
     z$accessed <- accessed_dt
   }
   # coerce the pub_date to datetime
-  published_dt <- try(as_datetime(z$published), silent = TRUE)
+  # attempt to parse the published date colunn to datetime
+  date_patterns <- c("d m y", "d B Y", "m/d/y", "Y/m/d", 'd b Y HM', 'b d')
+  published_dt <- try(
+    suppressWarnings(
+      parse_date_time(x = z$published, orders = date_patterns)
+    ), 
+    silent = TRUE
+  )
   if(!'try-error' %in% class(published_dt)){
     z$published <- published_dt
   }

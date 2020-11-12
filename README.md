@@ -68,7 +68,7 @@ z
     ##   url   title lang  url2  links rss   tables images social code_lang   size
     ##   <chr> <chr> <chr> <chr> <lis> <chr> <list> <list> <list>     <dbl>  <int>
     ## 1 http… Visu… en    http… <tib… http… <lgl … <tibb… <tibb…     1      38445
-    ## 2 http… Conv… en    http… <tib… <NA>  <name… <tibb… <tibb…    -0.936 114051
+    ## 2 http… Conv… en    http… <tib… <NA>  <name… <tibb… <tibb…    -0.936 114238
     ## 3 http… Robe… en    http… <tib… <NA>  <name… <tibb… <tibb…     1     291099
     ## # … with 5 more variables: server <chr>, accessed <dttm>, published <dttm>,
     ## #   generator <chr>, source <chr>

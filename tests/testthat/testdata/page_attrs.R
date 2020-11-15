@@ -9,7 +9,8 @@ url_list <- list(
                        title  = "Python TensorFlow Tutorial - Build a Neural Network - Adventures in Machine Learning",
                        code   = 'python',
                        lang   = 'en-us',
-                       tables = NA),
+                       tables = NA,
+                       pdate  = NA),
   
   # # Aeon - philosophy blog
   # 'aeon'        = list(url    = 'https://aeon.co/essays/pippi-and-the-moomins-served-as-a-social-antidote-to-fascism',
@@ -21,7 +22,8 @@ url_list <- list(
   #                      title  = "Pippi and the Moomins served as a social antidote to fascism | Aeon Essays",
   #                      code   =  NA,
   #                      lang   = 'en',
-  #                      tables =  NA),
+  #                      tables =  NA,
+  #                      pdate  = "2020-10-06"),
   
   # Alastair Rushworth - about me 
   'alastair'    = list(url    = 'https://alastairrushworth.github.io/aboutme/',
@@ -32,7 +34,8 @@ url_list <- list(
                        title  = "About Me -",
                        code   = NA,
                        lang   = 'en',
-                       tables =  NA),
+                       tables =  NA, 
+                       pdate  = NA),
   
   # Alastair Rushworth - blog page about tour de france
   'ar_tdf'      = list(url    = 'https://alastairrushworth.github.io/Visualising-Tour-de-France-data-in-R/',
@@ -43,7 +46,8 @@ url_list <- list(
                        title  = "Visualising Tour De France Data In R -",
                        code   = 'r',
                        lang   = 'en',
-                       tables =  NA),
+                       tables =  NA, 
+                       pdate  = "2019-11-24"),
   
   # # Alastair Rushworth - blog page about tour de france
   # 'arxiv'       = list(url    = 'https://arxiv.org/pdf/1802.03426.pdf',
@@ -52,7 +56,8 @@ url_list <- list(
   #                      title  = NA,
   #                      code   = NA,
   #                      lang   = NA,
-  #                      tables = NA),
+  #                      tables = NA, 
+  #                      pdate  = NA),
   
   # # BBC news article
   # 'bbc_1'       = list(url    = 'https://www.bbc.co.uk/news/uk-scotland-54496759',
@@ -62,7 +67,8 @@ url_list <- list(
   #                      title  = "Margaret Ferrier: Covid MP says virus 'makes you act out of character' - BBC News",
   #                      code   = NA,
   #                      lang   = 'en-gb',
-  #                      tables = NA),
+  #                      tables = NA, 
+  #                      pdate  = NA),
   
   # # BBC news article
   # 'bbc_2'       = list(url    = 'https://www.bbc.co.uk/sport/football/54495196',
@@ -72,7 +78,8 @@ url_list <- list(
   #                      title  =   "Kevin de Bruyne: England have potential for major titles - BBC Sport",
   #                      code   = NA,
   #                      lang   = 'en-gb',
-  #                      tables = NA),
+  #                      tables = NA, 
+  #                      pdate = NA),
   
   # burns-stat
   'burnsstat'   = list(url    = 'https://www.burns-stat.com/blog-2/',
@@ -81,7 +88,8 @@ url_list <- list(
                        title  = "Blog - Burns Statistics",
                        code   = 'r',
                        lang   = 'en-us',
-                       tables = NA),
+                       tables = NA, 
+                       pdate  = "2016-08-15"),
   
   # Business Science
   'businesssci' = list(url    = 'https://www.business-science.io',
@@ -97,7 +105,8 @@ url_list <- list(
                        title  = "Learn Data Science",
                        code   = NA,
                        lang   = 'en',
-                       tables = NA),
+                       tables = NA, 
+                       pdate  = NA),
   
   # Colin Fay
   'colinfay'    = list(url    = 'https://colinfay.me/',
@@ -108,27 +117,29 @@ url_list <- list(
                        title  = "All Code No Brain - Colin Fay",
                        code   = NA,
                        lang   = 'en',
-                       tables = NA),
+                       tables = NA, 
+                       pdate  = NA),
   
   # # Brendan Cullen
   # 'cullen'      = list(url    = 'https://bcullen.rbind.io/post/2020-09-03-reflections-on-rstudio-instructor-training/',
   #                      rss    = "https://colinfay.me/feed.xml",
-  #                      social = c("https://twitter.com/_bcullen",     
+  #                      social = c("https://twitter.com/_bcullen",
   #                                 "https://twitter.com/allison_horst",
   #                                 "https://twitter.com/apreshill",
-  #                                 "https://twitter.com/dcossyle",    
-  #                                 "https://twitter.com/gvwilson",     
+  #                                 "https://twitter.com/dcossyle",
+  #                                 "https://twitter.com/gvwilson",
   #                                 "https://twitter.com/r4dscommunity",
-  #                                 "https://twitter.com/rstudioedu",   
-  #                                 "https://twitter.com/thomas_mock",  
-  #                                 "https://linkedin.com/in/bcull",    
-  #                                 "https://github.com/brendanhcullen", 
-  #                                 "https://scholar.google.com/citations?user=02RYe4UAAAAJ&hl=en", 
+  #                                 "https://twitter.com/rstudioedu",
+  #                                 "https://twitter.com/thomas_mock",
+  #                                 "https://linkedin.com/in/bcull",
+  #                                 "https://github.com/brendanhcullen",
+  #                                 "https://scholar.google.com/citations?user=02RYe4UAAAAJ&hl=en",
   #                                 "https://osf.io/npcuz"),
   #                      title  = "Reflections on RStudio Instructor Training | Brendan Cullen",
   #                      code   = 'r',
   #                      lang   = 'en',
-  #                      tables = NA),
+  #                      tables = NA, 
+  #                      pdate  = NA),
   
   # Data brain
   'databrain'   = list(url    = 'https://databraineo.de/ki-training-resources/r-programmierung/datentypen-in-r-einfach-erklaert/',
@@ -142,7 +153,8 @@ url_list <- list(
                        title  = "Die Basis-Datentypen in R - einfach erklärt",
                        code   = 'r',
                        lang   = 'de-de',
-                       tables = NA),
+                       tables = NA, 
+                       pdate  = NA),
   
   # distill.pub
   'distill'     = list(url    = 'https://distill.pub/2020/selforg/',
@@ -152,7 +164,8 @@ url_list <- list(
                        title  = "Thread: Differentiable Self-organizing Systems",
                        code   = 'py',
                        lang   = 'en',
-                       tables = NA),
+                       tables = NA, 
+                       pdate  = NA),
   
   # DVC
   'dvc'         = list(url    = 'https://dvc.org/blog/september-20-dvc-heartbeat',
@@ -169,7 +182,8 @@ url_list <- list(
                        title  = "September '20 Heartbeat | Data Version Control · DVC",
                        code   = NA,
                        lang   = 'en',
-                       tables = NA),
+                       tables = NA, 
+                       pdate  = NA),
   
   # Ebay
   'ebay'        = list(url    = 'https://www.ebay.com',
@@ -179,7 +193,8 @@ url_list <- list(
                        title  = "Electronics, Cars, Fashion, Collectibles & More | eBay" ,
                        code   = NA,
                        lang   = 'en',
-                       tables = 1),
+                       tables = 1, 
+                       pdate  = NA),
   
   # Etsy
   'etsy'        = list(url    = 'https://www.etsy.com/uk/',
@@ -188,7 +203,8 @@ url_list <- list(
                        title  = "Etsy - Shop for handmade, vintage, custom, and unique gifts for everyone",
                        code   = NA,
                        lang   = 'en-gb',
-                       tables = NA),
+                       tables = NA, 
+                       pdate  = NA),
   
   # the gradient blog
   'gradient'    = list(url    = 'https://thegradient.pub/transformers-are-graph-neural-networks/',
@@ -203,7 +219,8 @@ url_list <- list(
                        title  = "Transformers are Graph Neural Networks",
                        code   = NA,
                        lang   = 'en',
-                       tables = NA),
+                       tables = NA, 
+                       pdate  = "2020-12-20"),
   
   # the guardian news
   'guardian'    = list(url    = 'https://www.theguardian.com/uk-news',
@@ -213,17 +230,8 @@ url_list <- list(
                        title  = "Latest UK news | The Guardian",
                        code   = NA,
                        lang   = 'en',
-                       tables = NA),
-  
-  # inspectdf gh repo
-  'inspect_df'  = list(url    = "https://github.com/alastairrushworth/inspectdf",
-                       rss    = "https://github.com/alastairrushworth/inspectdf/commits/master.atom",
-                       social = c("https://twitter.com/github",
-                                  "https://twitter.com/rushworth_a"),
-                       title  = "GitHub - alastairrushworth/inspectdf: \U0001f4c8 \U0001f4ca Tools for Exploring and Comparing Data Frames",
-                       code   = 'r',
-                       lang   = 'en',
-                       tables = NA),
+                       tables = NA, 
+                       pdate  = NA),
   
   # O giminez github repo
   'giminez'     = list(url    = "https://github.com/oliviergimenez/marss_jags",
@@ -232,7 +240,8 @@ url_list <- list(
                        title  = "GitHub - oliviergimenez/marss_jags: Fit multivariate state-space autoregressive models in Jags",
                        code   = 'r',
                        lang   = 'en',
-                       tables = NA),
+                       tables = NA, 
+                       pdate  = NA),
   
   # Alastair Rushworth github profile
   'github2'     = list(url    = 'https://github.com/alastairrushworth',
@@ -242,7 +251,8 @@ url_list <- list(
                        title  = "alastairrushworth (alastair rushworth) · GitHub",
                        code   = NA,
                        lang   = 'en',
-                       tables = NA),
+                       tables = NA, 
+                       pdate  = "0000-10-09"),
   
   # htmldf github repo page
   'github3'     = list(url    = 'https://github.com/alastairrushworth/htmldf',
@@ -252,7 +262,8 @@ url_list <- list(
                        title  = "GitHub - alastairrushworth/htmldf: \U0001f5a5 ✂️ \U0001f4c1 Simple scraping and tidy webpage summaries",
                        code   = 'r',
                        lang   = 'en', 
-                       tables = NA),
+                       tables = NA, 
+                       pdate  = NA),
   
   # hogan blog
   'hogan'       = list(url    = 'http://alittlestats.blogspot.com/',
@@ -263,7 +274,8 @@ url_list <- list(
                        title  = "A Little Stats",
                        code   = NA,
                        lang   = 'en', 
-                       tables = 1),
+                       tables = 1, 
+                       pdate  = "2018-08-22"),
   
   # hogervorst blog
   'hogervorst'  = list(url    = 'https://blog.rmhogervorst.nl/blog/2020/08/27/how-to-use-lightgbm-with-tidymodels-framework/',
@@ -297,6 +309,17 @@ url_list <- list(
                        lang   = 'en-us', 
                        tables = NA),
   
+  # inspectdf gh repo
+  'inspect_df'  = list(url    = "https://github.com/alastairrushworth/inspectdf",
+                       rss    = "https://github.com/alastairrushworth/inspectdf/commits/master.atom",
+                       social = c("https://twitter.com/github",
+                                  "https://twitter.com/rushworth_a"),
+                       title  = "GitHub - alastairrushworth/inspectdf: \U0001f4c8 \U0001f4ca Tools for Exploring and Comparing Data Frames",
+                       code   = 'r',
+                       lang   = 'en',
+                       tables = NA, 
+                       pdate  = NA),
+  
   # gelman blog
   'gelman'      = list(url    = 'https://statmodeling.stat.columbia.edu/',
                        rss    = c("https://statmodeling.stat.columbia.edu/feed/",         
@@ -307,7 +330,8 @@ url_list <- list(
                        title  = "Statistical Modeling, Causal Inference, and Social Science",
                        code   = NA,
                        lang   = 'en-us', 
-                       tables = NA),
+                       tables = NA, 
+                       pdate  = "2020-10-10"),
   
   # landau targets bookdown 
   'landau'       = list(url   = 'https://wlandau.github.io/targets-manual/index.html',
@@ -320,7 +344,8 @@ url_list <- list(
                         title  = "The targets R Package User Manual",
                         code   = 'r',
                         lang   = 'en', 
-                        tables = 1),
+                        tables = 1, 
+                        pdate  = NA),
   
   # mcdonnell blog article
   'mcdonnell'    = list(url    = 'https://www.robertmylesmcdonnell.com/content/posts/modelscript/',
@@ -332,7 +357,8 @@ url_list <- list(
                         title  = "Robert Myles McDonnell",
                         code   = 'r',
                         lang   = 'en', 
-                        tables = NA),
+                        tables = NA, 
+                        pdate  = NA),
   
   # meissner blog article
   'meissner'     = list(url    = 'https://petermeissner.de/blog/2020/09/03/utils-treasures-moifyList/',
@@ -342,7 +368,8 @@ url_list <- list(
                         title  = "R treasures: modifyList() › petermeissner",
                         code   = 'r',
                         lang   = 'en', 
-                        tables = NA),
+                        tables = NA, 
+                        pdate  = "2020-09-03"),
   
   # mlplus blog article
   'mlplus'       = list(url    = "https://www.machinelearningplus.com/plots/matplotlib-tutorial-complete-guide-python-plot-examples/",
@@ -353,7 +380,8 @@ url_list <- list(
                         title  = "Matplotlib - Introduction to Python Plots with Examples | ML+",
                         code   = 'py',
                         lang   = 'en-us', 
-                        tables = NA),
+                        tables = NA, 
+                        pdate  = NA),
   
   # rbloggers blog article
   'rbloggers'    = list(url    = 'https://www.r-bloggers.com/data-visualization-with-r-2/',
@@ -367,7 +395,8 @@ url_list <- list(
                         title  = "Data Visualization with R | R-bloggers",
                         code   = 'r',
                         lang   = 'en-us', 
-                        tables = NA),
+                        tables = NA, 
+                        pdate  = NA),
   
   # rbloggers blog article
   'rbloggers2'   = list(url    = 'https://www.r-bloggers.com/2020/10/how-to-pick-an-optimal-utility-threshold-using-the-roc-plot/',
@@ -380,7 +409,8 @@ url_list <- list(
                         title  = "How to Pick an Optimal Utility Threshold Using the ROC Plot | R-bloggers",
                         code   = NA,
                         lang   = 'en-us', 
-                        tables = NA),
+                        tables = NA, 
+                        pdate  = NA),
   
   # reddit rstats sub
   'reddit'       = list(url    = 'https://www.reddit.com/r/rstats/',
@@ -389,7 +419,8 @@ url_list <- list(
                         title  = "The Statistical Computing with R subreddit",
                         code   = 'r',
                         lang   = 'en-us', 
-                        tables = NA),
+                        tables = NA, 
+                        pdate  = NA),
   
   
   # revolutions blog
@@ -406,7 +437,8 @@ url_list <- list(
                         title  = "Create and deploy a Custom Vision predictive service in R with AzureVision (Revolutions)",
                         code   = 'r',
                         lang   = 'en', 
-                        tables = NA),
+                        tables = NA, 
+                        pdate  = "2020-05-13"),
   
   # drob blog
   'robinson'     = list(url    = 'http://varianceexplained.org/',
@@ -417,7 +449,8 @@ url_list <- list(
                         title  = "Variance Explained",
                         code   = NA,
                         lang   = 'en', 
-                        tables = NA),
+                        tables = NA, 
+                        pdate  = "2020-05-04"),
   
   # rolkra blog
   'rolkra'       = list(url    = 'https://rolkra.github.io/start-to-explore/',
@@ -426,7 +459,8 @@ url_list <- list(
                         title  = "start to {explore} – explore R – by Roland Krasser",
                         code   = 'r',
                         lang   = 'en', 
-                        tables = NA),
+                        tables = NA, 
+                        pdate  = "2020-07-30"),
   
   # ropensci blog
   'ropensci'     = list(url    = "https://ropensci.org/blog/2020/02/21/ropensci-leadership/",
@@ -445,7 +479,8 @@ url_list <- list(
                         title  = "rOpenSci | rOpenSci's Leadership in #rstats Culture",
                         code   = NA,
                         lang   = 'en', 
-                        tables = NA),
+                        tables = NA, 
+                        pdate  = NA),
   
   # rushworth blog
   'rushworth'    = list(url    = 'https://alastairrushworth.github.io/',
@@ -456,7 +491,8 @@ url_list <- list(
                         title  = "R Posts You Might Have Missed!",
                         code   = NA,
                         lang   = 'en', 
-                        tables = NA),
+                        tables = NA, 
+                        pdate  = NA),
   
   # rweekly
   'rweekly'      = list(url    = 'https://rweekly.org',
@@ -478,7 +514,8 @@ url_list <- list(
                         title  = "Home | RWeekly.org - Blogs to Learn R from the Community",
                         code   = NA,
                         lang   = 'en', 
-                        tables = NA),
+                        tables = NA, 
+                        pdate  = "2020-05-20"),
   
   # maelle salmon blog
   'salmon'       = list(url    = 'https://masalmon.eu/post/',
@@ -496,7 +533,8 @@ url_list <- list(
                         title  = "Maëlle's R blog · Maëlle Salmon's personal website",
                         code   = NA,
                         lang   = 'en', 
-                        tables = NA),
+                        tables = NA, 
+                        pdate  = "2019-02-11"),
   
   # shakirm blog
   'shakirm'      = list(url    = 'http://blog.shakirm.com/',
@@ -506,7 +544,8 @@ url_list <- list(
                         title  = "The Spectator ← Shakir's Machine Learning Blog",
                         code   = NA,
                         lang   = 'en-gb', 
-                        tables = NA),
+                        tables = NA, 
+                        pdate  = NA),
   
   # julia silge blog
   'silge'        = list(url    = 'https://juliasilge.com/',
@@ -518,7 +557,8 @@ url_list <- list(
                         title  = "Julia Silge",
                         code   = NA,
                         lang   = 'en-us', 
-                        tables = NA),
+                        tables = NA, 
+                        pdate  = NA),
   
   # sitstand website
   'sitstand'     = list(url    = 'https://sit-stand.com/best-standing-desks',
@@ -532,7 +572,8 @@ url_list <- list(
                         title  = "UK’s #1 Supplier of Standing Desks & Office Wellness Furniture | Best Price Guaranteed | Sit-Stand.Com®",
                         code   = NA,
                         lang   = 'en', 
-                        tables = NA),
+                        tables = NA, 
+                        pdate  = NA),
   
   # mike spencer blog
   'spencer'      = list(url    = 'https://scottishsnow.wordpress.com/',
@@ -551,7 +592,8 @@ url_list <- list(
                         title  = "scottishsnow – Observations, methods and analyses of snow in Scotland",
                         code   = NA,
                         lang   = 'en', 
-                        tables = NA),
+                        tables = NA, 
+                        pdate  = NA),
   
   # tensorflow blog
   'tflow'        = list(url    = 'https://www.tensorflow.org/tutorials/images/cnn',
@@ -563,7 +605,8 @@ url_list <- list(
                         title  = "Convolutional Neural Network (CNN)  |  TensorFlow Core",
                         code   = 'py',
                         lang   = 'en', 
-                        tables = 1),
+                        tables = 1, 
+                        pdate  = NA),
   
   # towardsds blog
   'towardsds'    = list(url    = 'https://towardsdatascience.com/how-to-spot-a-data-charlatan-85785c991433',
@@ -573,7 +616,8 @@ url_list <- list(
                         title  = "How to spot a data charlatan. Tips for identifying fakers and… | by Cassie Kozyrkov | Oct, 2020 | Towards Data Science",
                         code   = NA,
                         lang   = 'en', 
-                        tables = NA),
+                        tables = NA, 
+                        pdate  = NA),
   
   # towardsds2 blog
   'towardsds2'   = list(url    = 'https://towardsdatascience.com/multinomial-mixture-model-for-supermarket-shoppers-segmentation-a-complete-tutorial-268974d905da',
@@ -583,7 +627,8 @@ url_list <- list(
                         title  = "Multinomial Mixture Model for Supermarket Shoppers Segmentation | by Adrien Biarnes | Oct, 2020 | Towards Data Science",
                         code   = NA,
                         lang   = 'en', 
-                        tables = NA),
+                        tables = NA, 
+                        pdate  = NA),
   
   # jake vdp blog
   'vdp'          = list(url    = "https://jakevdp.github.io/PythonDataScienceHandbook/02.02-the-basics-of-numpy-arrays.html",
@@ -592,16 +637,8 @@ url_list <- list(
                         title  = "The Basics of NumPy Arrays | Python Data Science Handbook",
                         code   = 'py',
                         lang   = 'en', 
-                        tables = NA),
-  
-  # wikipedia page
-  'wikipedia'    = list(url    = "https://es.wikipedia.org/wiki/Wikipedia_en_espa%C3%B1ol",
-                        rss    = NA,
-                        social = NA,
-                        title  = "Wikipedia en español - Wikipedia, la enciclopedia libre",
-                        code   = NA,
-                        lang   = 'es', 
-                        tables = 1),
+                        tables = NA, 
+                        pdate  = NA),
   
   # wikipedia page
   'wiki_tdf'     = list(url    = "https://en.wikipedia.org/wiki/2020_Tour_de_France",
@@ -610,6 +647,17 @@ url_list <- list(
                         title  = "2020 Tour de France - Wikipedia",
                         code   = NA,
                         lang   = 'en', 
-                        tables = 1)
+                        tables = 1, 
+                        pdate  = NA), 
+  
+  # wikipedia page
+  'wikipedia'    = list(url    = "https://es.wikipedia.org/wiki/Wikipedia_en_espa%C3%B1ol",
+                        rss    = NA,
+                        social = NA,
+                        title  = "Wikipedia en español - Wikipedia, la enciclopedia libre",
+                        code   = NA,
+                        lang   = 'es', 
+                        tables = 1, 
+                        pdate  = NA)
 )
 

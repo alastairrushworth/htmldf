@@ -98,13 +98,15 @@ html_df <- function(urlx,
   }
   # coerce the pub_date to datetime
   # attempt to parse the published date colunn to datetime
-  date_patterns <- c("d m y", "d B Y", "m/d/y", "Y/m/d", 'd b Y HM', 'b d')
+  date_patterns <- c("d m y", "d B Y", "m/d/y", "Y/m/d", 'd b Y HM', 
+                     'b d', 'Y-m-dH:M:S', "ymdTz", "ymdT")
   published_dt <- try(
     suppressWarnings(
       parse_date_time(x = z$published, orders = date_patterns)
     ), 
     silent = TRUE
   )
+  
   if(!'try-error' %in% class(published_dt)){
     z$published <- published_dt
   }
@@ -167,8 +169,8 @@ fetch_page <- function(url, time_out, max_size, keep_source){
          server = pg_hdr$server, 
          size = pg_hdr$size, 
          accessed = pg_hdr$accessed,
-         published = pg_tim,
+         published = ifelse(length(pg_tim) == 0, NA, pg_tim),
          code_lang = pg_code_lang)
-  # rm(pg_htm)
+
   return(pg_features)
 }

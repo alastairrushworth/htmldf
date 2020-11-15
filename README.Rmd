@@ -53,8 +53,9 @@ library(dplyr)
 
 # An example vector of URLs to fetch data for
 urlx <- c("https://alastairrushworth.github.io/Visualising-Tour-de-France-data-in-R/",
+          "https://medium.com/dair-ai/pytorch-1-2-introduction-guide-f6fa9bb7597c",
           "https://www.tensorflow.org/tutorials/images/cnn", 
-          "https://www.robertmylesmcdonnell.com/content/posts/mtcars/")
+          "https://www.analyticsvidhya.com/blog/2019/09/introduction-to-pytorch-from-scratch/")
 
 # use html_df() to gather data
 z <- html_df(urlx, show_progress = FALSE)
@@ -86,6 +87,12 @@ z$social
 Code language is inferred from `<code>` chunks using simple machine learning.  The `code_lang` column contains score where values near 1 indicate mostly R code, values near -1 indicate mostly Python code:
 ```{r}
 z %>% select(code_lang, url2)
+```
+
+Publication dates
+
+```{r}
+z %>% select(published, url2)
 ```
 
 

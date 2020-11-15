@@ -1,0 +1,2054 @@
+<!doctype html>
+<head lang="en-US">
+
+<meta name="google-play-app" content="app-id=com.analyticsvidhya.android">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<link href="//www.google-analytics.com" rel="dns-prefetch">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+<link rel="pingback" href="https://www.analyticsvidhya.com/xmlrpc.php">
+<link rel='icon' id='favicon' type='image/png' href='https://www.analyticsvidhya.com/wp-content/uploads/2015/02/logo_square_v2.jpg'><link rel='apple-touch-icon' href='https://www.analyticsvidhya.com/wp-content/uploads/2015/02/logo_square_v2.jpg'><link rel='apple-touch-icon' sizes='76x76' href='https://www.analyticsvidhya.com/wp-content/uploads/2015/02/logo_square_v2.jpg'><link rel='apple-touch-icon' sizes='114x114' href='https://www.analyticsvidhya.com/wp-content/uploads/2015/02/logo_square_v2.jpg'><link rel='apple-touch-icon' sizes='144x144' href='https://www.analyticsvidhya.com/wp-content/uploads/2015/02/logo_square_v2.jpg'><link href="https://www.analyticsvidhya.com/wp-content/themes/Curated/custom/custom_style.css?ver=4.9.7.19" rel="preload stylesheet" as=style>
+<link href="https://www.analyticsvidhya.com/wp-content/themes/Curated/custom/footer_style.css?ver=1.1.1" rel="preload stylesheet" as=style>
+<link href="https://www.analyticsvidhya.com/wp-content/themes/Curated/custom/special-offer-strip-2.css?ver=2.3.1" rel="preload stylesheet" as=style>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="preload stylesheet" as=style>
+<link href="https://www.analyticsvidhya.com/wp-content/themes/Curated/static/css/bootstrap-responsive.css?ver=1.0" rel="preload stylesheet" as=style>
+<link href="https://www.analyticsvidhya.com/wp-content/themes/Curated/static/css/font-tm.css?ver=1.0" rel="preload stylesheet" as=style>
+<link href="https://www.analyticsvidhya.com/wp-content/themes/Curated/static/css/basix.css?ver=1.0" rel="preload stylesheet" as=style>
+<link href="https://www.analyticsvidhya.com/wp-content/themes/Curated/static/css/basix-responsive.css?ver=1.0" rel="preload stylesheet" as=style>
+<script>
+                            /* You can add more configuration options to webfontloader by previously defining the WebFontConfig with your options */
+                            if ( typeof WebFontConfig === "undefined" ) {
+                                WebFontConfig = new Object();
+                            }
+                            WebFontConfig['google'] = {families: ['Open+Sans:700', 'Raleway:600', 'Roboto:400&amp;subset=latin']};
+
+                            (function() {
+                                var wf = document.createElement( 'script' );
+                                wf.src = 'https://ajax.googleapis.com/ajax/libs/webfont/1.5.3/webfont.js';
+                                wf.type = 'text/javascript';
+                                wf.async = 'true';
+                                var s = document.getElementsByTagName( 'script' )[0];
+                                s.parentNode.insertBefore( wf, s );
+                            })();
+                        </script>
+<style>
+.stb-container-css {margin: 10px 10px 10px 10px;}.stb-box {}.stb-caption-box {}.stb-body-box {}
+/* Class Dependent Parameters */
+.stb-border.stb-alert-container {border: 1px none #FF4F4A;}.stb-side.stb-alert-container {background: #FF4F4A;filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#FF4F4A', endColorstr='#504848',GradientType=0 );background: -moz-linear-gradient(top,  #FF4F4A 30%, #504848 90%);background: -webkit-gradient(linear, left top, left bottom, color-stop(30%,#FF4F4A), color-stop(90%,#504848));background: -webkit-linear-gradient(top,  #FF4F4A 30%,#504848 90%);background: -o-linear-gradient(top,  #FF4F4A 30%,#504848 90%);background: -ms-linear-gradient(top,  #FF4F4A 30%,#504848 90%);background: linear-gradient(#FF4F4A 30%, #504848 90%);}.stb-side-none.stb-alert-container {background: #FFE7E6;filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#FFE7E6', endColorstr='#fb7d78',GradientType=0 );background: -moz-linear-gradient(top,  #FFE7E6 30%, #fb7d78 90%);background: -webkit-gradient(linear, left top, left bottom, color-stop(30%,#FFE7E6), color-stop(90%,#fb7d78));background: -webkit-linear-gradient(top,  #FFE7E6 30%,#fb7d78 90%);background: -o-linear-gradient(top,  #FFE7E6 30%,#fb7d78 90%);background: -ms-linear-gradient(top,  #FFE7E6 30%,#fb7d78 90%);background: linear-gradient(#FFE7E6 30%, #fb7d78 90%);}.stb-alert_box {background: #FFE7E6;filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#FFE7E6', endColorstr='#fb7d78',GradientType=0 );background: -moz-linear-gradient(top,  #FFE7E6 30%, #fb7d78 90%);background: -webkit-gradient(linear, left top, left bottom, color-stop(30%,#FFE7E6), color-stop(90%,#fb7d78));background: -webkit-linear-gradient(top,  #FFE7E6 30%,#fb7d78 90%);background: -o-linear-gradient(top,  #FFE7E6 30%,#fb7d78 90%);background: -ms-linear-gradient(top,  #FFE7E6 30%,#fb7d78 90%);background: linear-gradient(#FFE7E6 30%, #fb7d78 90%);color: #000000;}.stb-alert-caption_box {background: #FF4F4A;background: -moz-linear-gradient(top,  #FF4F4A 30%, #504848 90%);background: -webkit-gradient(linear, left top, left bottom, color-stop(30%,#FF4F4A), color-stop(90%,#504848));background: -webkit-linear-gradient(top,  #FF4F4A 30%,#504848 90%);background: -o-linear-gradient(top,  #FF4F4A 30%,#504848 90%);background: -ms-linear-gradient(top,  #FF4F4A 30%,#504848 90%);background: linear-gradient(#FF4F4A 30%, #504848 90%);color: #FFFFFF;}.stb-alert-body_box {background: #FFE7E6;filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#FFE7E6', endColorstr='#fb7d78',GradientType=0 );background: -moz-linear-gradient(top,  #FFE7E6 30%, #fb7d78 90%);background: -webkit-gradient(linear, left top, left bottom, color-stop(30%,#FFE7E6), color-stop(90%,#fb7d78));background: -webkit-linear-gradient(top,  #FFE7E6 30%,#fb7d78 90%);background: -o-linear-gradient(top,  #FFE7E6 30%,#fb7d78 90%);background: -ms-linear-gradient(top,  #FFE7E6 30%,#fb7d78 90%);background: linear-gradient(#FFE7E6 30%, #fb7d78 90%);color: #000000;}.stb-border.stb-black-container {border: 1px none #6E6E6E;}.stb-side.stb-black-container {background: #333333;filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#333333', endColorstr='#504848',GradientType=0 );background: -moz-linear-gradient(top,  #333333 30%, #504848 90%);background: -webkit-gradient(linear, left top, left bottom, color-stop(30%,#333333), color-stop(90%,#504848));background: -webkit-linear-gradient(top,  #333333 30%,#504848 90%);background: -o-linear-gradient(top,  #333333 30%,#504848 90%);background: -ms-linear-gradient(top,  #333333 30%,#504848 90%);background: linear-gradient(#333333 30%, #504848 90%);}.stb-side-none.stb-black-container {background: #000000;filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#000000',GradientType=0 );background: -moz-linear-gradient(top,  #000000 30%, #000000 90%);background: -webkit-gradient(linear, left top, left bottom, color-stop(30%,#000000), color-stop(90%,#000000));background: -webkit-linear-gradient(top,  #000000 30%,#000000 90%);background: -o-linear-gradient(top,  #000000 30%,#000000 90%);background: -ms-linear-gradient(top,  #000000 30%,#000000 90%);background: linear-gradient(#000000 30%, #000000 90%);}.stb-black_box {background: #000000;filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#000000',GradientType=0 );background: -moz-linear-gradient(top,  #000000 30%, #000000 90%);background: -webkit-gradient(linear, left top, left bottom, color-stop(30%,#000000), color-stop(90%,#000000));background: -webkit-linear-gradient(top,  #000000 30%,#000000 90%);background: -o-linear-gradient(top,  #000000 30%,#000000 90%);background: -ms-linear-gradient(top,  #000000 30%,#000000 90%);background: linear-gradient(#000000 30%, #000000 90%);color: #FFFFFF;}.stb-black-caption_box {background: #333333;background: -moz-linear-gradient(top,  #333333 30%, #504848 90%);background: -webkit-gradient(linear, left top, left bottom, color-stop(30%,#333333), color-stop(90%,#504848));background: -webkit-linear-gradient(top,  #333333 30%,#504848 90%);background: -o-linear-gradient(top,  #333333 30%,#504848 90%);background: -ms-linear-gradient(top,  #333333 30%,#504848 90%);background: linear-gradient(#333333 30%, #504848 90%);color: #FFFFFF;}.stb-black-body_box {background: #000000;filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#000000',GradientType=0 );background: -moz-linear-gradient(top,  #000000 30%, #000000 90%);background: -webkit-gradient(linear, left top, left bottom, color-stop(30%,#000000), color-stop(90%,#000000));background: -webkit-linear-gradient(top,  #000000 30%,#000000 90%);background: -o-linear-gradient(top,  #000000 30%,#000000 90%);background: -ms-linear-gradient(top,  #000000 30%,#000000 90%);background: linear-gradient(#000000 30%, #000000 90%);color: #FFFFFF;}.stb-border.stb-custom-container {border: 1px none #f844ee;}.stb-side.stb-custom-container {background: #f844ee;filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f844ee', endColorstr='#504848',GradientType=0 );background: -moz-linear-gradient(top,  #f844ee 30%, #504848 90%);background: -webkit-gradient(linear, left top, left bottom, color-stop(30%,#f844ee), color-stop(90%,#504848));background: -webkit-linear-gradient(top,  #f844ee 30%,#504848 90%);background: -o-linear-gradient(top,  #f844ee 30%,#504848 90%);background: -ms-linear-gradient(top,  #f844ee 30%,#504848 90%);background: linear-gradient(#f844ee 30%, #504848 90%);}.stb-side-none.stb-custom-container {background: #f7cdf5;filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f7cdf5', endColorstr='#f77df1',GradientType=0 );background: -moz-linear-gradient(top,  #f7cdf5 30%, #f77df1 90%);background: -webkit-gradient(linear, left top, left bottom, color-stop(30%,#f7cdf5), color-stop(90%,#f77df1));background: -webkit-linear-gradient(top,  #f7cdf5 30%,#f77df1 90%);background: -o-linear-gradient(top,  #f7cdf5 30%,#f77df1 90%);background: -ms-linear-gradient(top,  #f7cdf5 30%,#f77df1 90%);background: linear-gradient(#f7cdf5 30%, #f77df1 90%);}.stb-custom_box {background: #f7cdf5;filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f7cdf5', endColorstr='#f77df1',GradientType=0 );background: -moz-linear-gradient(top,  #f7cdf5 30%, #f77df1 90%);background: -webkit-gradient(linear, left top, left bottom, color-stop(30%,#f7cdf5), color-stop(90%,#f77df1));background: -webkit-linear-gradient(top,  #f7cdf5 30%,#f77df1 90%);background: -o-linear-gradient(top,  #f7cdf5 30%,#f77df1 90%);background: -ms-linear-gradient(top,  #f7cdf5 30%,#f77df1 90%);background: linear-gradient(#f7cdf5 30%, #f77df1 90%);color: #000000;}.stb-custom-caption_box {background: #f844ee;background: -moz-linear-gradient(top,  #f844ee 30%, #504848 90%);background: -webkit-gradient(linear, left top, left bottom, color-stop(30%,#f844ee), color-stop(90%,#504848));background: -webkit-linear-gradient(top,  #f844ee 30%,#504848 90%);background: -o-linear-gradient(top,  #f844ee 30%,#504848 90%);background: -ms-linear-gradient(top,  #f844ee 30%,#504848 90%);background: linear-gradient(#f844ee 30%, #504848 90%);color: #ffffff;}.stb-custom-body_box {background: #f7cdf5;filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f7cdf5', endColorstr='#f77df1',GradientType=0 );background: -moz-linear-gradient(top,  #f7cdf5 30%, #f77df1 90%);background: -webkit-gradient(linear, left top, left bottom, color-stop(30%,#f7cdf5), color-stop(90%,#f77df1));background: -webkit-linear-gradient(top,  #f7cdf5 30%,#f77df1 90%);background: -o-linear-gradient(top,  #f7cdf5 30%,#f77df1 90%);background: -ms-linear-gradient(top,  #f7cdf5 30%,#f77df1 90%);background: linear-gradient(#f7cdf5 30%, #f77df1 90%);color: #000000;}.stb-border.stb-download-container {border: 1px none #65ADFE;}.stb-side.stb-download-container {background: #65ADFE;filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#65ADFE', endColorstr='#504848',GradientType=0 );background: -moz-linear-gradient(top,  #65ADFE 30%, #504848 90%);background: -webkit-gradient(linear, left top, left bottom, color-stop(30%,#65ADFE), color-stop(90%,#504848));background: -webkit-linear-gradient(top,  #65ADFE 30%,#504848 90%);background: -o-linear-gradient(top,  #65ADFE 30%,#504848 90%);background: -ms-linear-gradient(top,  #65ADFE 30%,#504848 90%);background: linear-gradient(#65ADFE 30%, #504848 90%);}.stb-side-none.stb-download-container {background: #DFF0FF;filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#DFF0FF', endColorstr='#2e7cb9',GradientType=0 );background: -moz-linear-gradient(top,  #DFF0FF 30%, #2e7cb9 90%);background: -webkit-gradient(linear, left top, left bottom, color-stop(30%,#DFF0FF), color-stop(90%,#2e7cb9));background: -webkit-linear-gradient(top,  #DFF0FF 30%,#2e7cb9 90%);background: -o-linear-gradient(top,  #DFF0FF 30%,#2e7cb9 90%);background: -ms-linear-gradient(top,  #DFF0FF 30%,#2e7cb9 90%);background: linear-gradient(#DFF0FF 30%, #2e7cb9 90%);}.stb-download_box {background: #DFF0FF;filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#DFF0FF', endColorstr='#2e7cb9',GradientType=0 );background: -moz-linear-gradient(top,  #DFF0FF 30%, #2e7cb9 90%);background: -webkit-gradient(linear, left top, left bottom, color-stop(30%,#DFF0FF), color-stop(90%,#2e7cb9));background: -webkit-linear-gradient(top,  #DFF0FF 30%,#2e7cb9 90%);background: -o-linear-gradient(top,  #DFF0FF 30%,#2e7cb9 90%);background: -ms-linear-gradient(top,  #DFF0FF 30%,#2e7cb9 90%);background: linear-gradient(#DFF0FF 30%, #2e7cb9 90%);color: #000000;}.stb-download-caption_box {background: #65ADFE;background: -moz-linear-gradient(top,  #65ADFE 30%, #504848 90%);background: -webkit-gradient(linear, left top, left bottom, color-stop(30%,#65ADFE), color-stop(90%,#504848));background: -webkit-linear-gradient(top,  #65ADFE 30%,#504848 90%);background: -o-linear-gradient(top,  #65ADFE 30%,#504848 90%);background: -ms-linear-gradient(top,  #65ADFE 30%,#504848 90%);background: linear-gradient(#65ADFE 30%, #504848 90%);color: #FFFFFF;}.stb-download-body_box {background: #DFF0FF;filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#DFF0FF', endColorstr='#2e7cb9',GradientType=0 );background: -moz-linear-gradient(top,  #DFF0FF 30%, #2e7cb9 90%);background: -webkit-gradient(linear, left top, left bottom, color-stop(30%,#DFF0FF), color-stop(90%,#2e7cb9));background: -webkit-linear-gradient(top,  #DFF0FF 30%,#2e7cb9 90%);background: -o-linear-gradient(top,  #DFF0FF 30%,#2e7cb9 90%);background: -ms-linear-gradient(top,  #DFF0FF 30%,#2e7cb9 90%);background: linear-gradient(#DFF0FF 30%, #2e7cb9 90%);color: #000000;}.stb-border.stb-grey-container {border: 1px none #BBBBBB;}.stb-side.stb-grey-container {background: #BBBBBB;filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#BBBBBB', endColorstr='#6e6e6e',GradientType=0 );background: -moz-linear-gradient(top,  #BBBBBB 30%, #6e6e6e 90%);background: -webkit-gradient(linear, left top, left bottom, color-stop(30%,#BBBBBB), color-stop(90%,#6e6e6e));background: -webkit-linear-gradient(top,  #BBBBBB 30%,#6e6e6e 90%);background: -o-linear-gradient(top,  #BBBBBB 30%,#6e6e6e 90%);background: -ms-linear-gradient(top,  #BBBBBB 30%,#6e6e6e 90%);background: linear-gradient(#BBBBBB 30%, #6e6e6e 90%);}.stb-side-none.stb-grey-container {background: #EEEEEE;filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#EEEEEE', endColorstr='#ababab',GradientType=0 );background: -moz-linear-gradient(top,  #EEEEEE 30%, #ababab 90%);background: -webkit-gradient(linear, left top, left bottom, color-stop(30%,#EEEEEE), color-stop(90%,#ababab));background: -webkit-linear-gradient(top,  #EEEEEE 30%,#ababab 90%);background: -o-linear-gradient(top,  #EEEEEE 30%,#ababab 90%);background: -ms-linear-gradient(top,  #EEEEEE 30%,#ababab 90%);background: linear-gradient(#EEEEEE 30%, #ababab 90%);}.stb-grey_box {background: #EEEEEE;filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#EEEEEE', endColorstr='#ababab',GradientType=0 );background: -moz-linear-gradient(top,  #EEEEEE 30%, #ababab 90%);background: -webkit-gradient(linear, left top, left bottom, color-stop(30%,#EEEEEE), color-stop(90%,#ababab));background: -webkit-linear-gradient(top,  #EEEEEE 30%,#ababab 90%);background: -o-linear-gradient(top,  #EEEEEE 30%,#ababab 90%);background: -ms-linear-gradient(top,  #EEEEEE 30%,#ababab 90%);background: linear-gradient(#EEEEEE 30%, #ababab 90%);color: #000000;}.stb-grey-caption_box {background: #BBBBBB;background: -moz-linear-gradient(top,  #BBBBBB 30%, #6e6e6e 90%);background: -webkit-gradient(linear, left top, left bottom, color-stop(30%,#BBBBBB), color-stop(90%,#6e6e6e));background: -webkit-linear-gradient(top,  #BBBBBB 30%,#6e6e6e 90%);background: -o-linear-gradient(top,  #BBBBBB 30%,#6e6e6e 90%);background: -ms-linear-gradient(top,  #BBBBBB 30%,#6e6e6e 90%);background: linear-gradient(#BBBBBB 30%, #6e6e6e 90%);color: #FFFFFF;}.stb-grey-body_box {background: #EEEEEE;filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#EEEEEE', endColorstr='#ababab',GradientType=0 );background: -moz-linear-gradient(top,  #EEEEEE 30%, #ababab 90%);background: -webkit-gradient(linear, left top, left bottom, color-stop(30%,#EEEEEE), color-stop(90%,#ababab));background: -webkit-linear-gradient(top,  #EEEEEE 30%,#ababab 90%);background: -o-linear-gradient(top,  #EEEEEE 30%,#ababab 90%);background: -ms-linear-gradient(top,  #EEEEEE 30%,#ababab 90%);background: linear-gradient(#EEEEEE 30%, #ababab 90%);color: #000000;}.stb-border.stb-info-container {border: 1px none #7AD975;}.stb-side.stb-info-container {background: #7AD975;filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7AD975', endColorstr='#504848',GradientType=0 );background: -moz-linear-gradient(top,  #7AD975 30%, #504848 90%);background: -webkit-gradient(linear, left top, left bottom, color-stop(30%,#7AD975), color-stop(90%,#504848));background: -webkit-linear-gradient(top,  #7AD975 30%,#504848 90%);background: -o-linear-gradient(top,  #7AD975 30%,#504848 90%);background: -ms-linear-gradient(top,  #7AD975 30%,#504848 90%);background: linear-gradient(#7AD975 30%, #504848 90%);}.stb-side-none.stb-info-container {background: #E2F8DE;filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#E2F8DE', endColorstr='#79b06e',GradientType=0 );background: -moz-linear-gradient(top,  #E2F8DE 30%, #79b06e 90%);background: -webkit-gradient(linear, left top, left bottom, color-stop(30%,#E2F8DE), color-stop(90%,#79b06e));background: -webkit-linear-gradient(top,  #E2F8DE 30%,#79b06e 90%);background: -o-linear-gradient(top,  #E2F8DE 30%,#79b06e 90%);background: -ms-linear-gradient(top,  #E2F8DE 30%,#79b06e 90%);background: linear-gradient(#E2F8DE 30%, #79b06e 90%);}.stb-info_box {background: #E2F8DE;filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#E2F8DE', endColorstr='#79b06e',GradientType=0 );background: -moz-linear-gradient(top,  #E2F8DE 30%, #79b06e 90%);background: -webkit-gradient(linear, left top, left bottom, color-stop(30%,#E2F8DE), color-stop(90%,#79b06e));background: -webkit-linear-gradient(top,  #E2F8DE 30%,#79b06e 90%);background: -o-linear-gradient(top,  #E2F8DE 30%,#79b06e 90%);background: -ms-linear-gradient(top,  #E2F8DE 30%,#79b06e 90%);background: linear-gradient(#E2F8DE 30%, #79b06e 90%);color: #000000;}.stb-info-caption_box {background: #7AD975;background: -moz-linear-gradient(top,  #7AD975 30%, #504848 90%);background: -webkit-gradient(linear, left top, left bottom, color-stop(30%,#7AD975), color-stop(90%,#504848));background: -webkit-linear-gradient(top,  #7AD975 30%,#504848 90%);background: -o-linear-gradient(top,  #7AD975 30%,#504848 90%);background: -ms-linear-gradient(top,  #7AD975 30%,#504848 90%);background: linear-gradient(#7AD975 30%, #504848 90%);color: #FFFFFF;}.stb-info-body_box {background: #E2F8DE;filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#E2F8DE', endColorstr='#79b06e',GradientType=0 );background: -moz-linear-gradient(top,  #E2F8DE 30%, #79b06e 90%);background: -webkit-gradient(linear, left top, left bottom, color-stop(30%,#E2F8DE), color-stop(90%,#79b06e));background: -webkit-linear-gradient(top,  #E2F8DE 30%,#79b06e 90%);background: -o-linear-gradient(top,  #E2F8DE 30%,#79b06e 90%);background: -ms-linear-gradient(top,  #E2F8DE 30%,#79b06e 90%);background: linear-gradient(#E2F8DE 30%, #79b06e 90%);color: #000000;}.stb-border.stb-section-container {border: 1px none #2982C5;}.stb-side.stb-section-container {background: #2982C5;filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2982C5', endColorstr='#2944f2',GradientType=0 );background: -moz-linear-gradient(top,  #2982C5 30%, #2944f2 90%);background: -webkit-gradient(linear, left top, left bottom, color-stop(30%,#2982C5), color-stop(90%,#2944f2));background: -webkit-linear-gradient(top,  #2982C5 30%,#2944f2 90%);background: -o-linear-gradient(top,  #2982C5 30%,#2944f2 90%);background: -ms-linear-gradient(top,  #2982C5 30%,#2944f2 90%);background: linear-gradient(#2982C5 30%, #2944f2 90%);}.stb-side-none.stb-section-container {background: #2982C5;filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2982C5', endColorstr='#294ee3',GradientType=0 );background: -moz-linear-gradient(top,  #2982C5 30%, #294ee3 90%);background: -webkit-gradient(linear, left top, left bottom, color-stop(30%,#2982C5), color-stop(90%,#294ee3));background: -webkit-linear-gradient(top,  #2982C5 30%,#294ee3 90%);background: -o-linear-gradient(top,  #2982C5 30%,#294ee3 90%);background: -ms-linear-gradient(top,  #2982C5 30%,#294ee3 90%);background: linear-gradient(#2982C5 30%, #294ee3 90%);}.stb-section_box {background: #2982C5;filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2982C5', endColorstr='#294ee3',GradientType=0 );background: -moz-linear-gradient(top,  #2982C5 30%, #294ee3 90%);background: -webkit-gradient(linear, left top, left bottom, color-stop(30%,#2982C5), color-stop(90%,#294ee3));background: -webkit-linear-gradient(top,  #2982C5 30%,#294ee3 90%);background: -o-linear-gradient(top,  #2982C5 30%,#294ee3 90%);background: -ms-linear-gradient(top,  #2982C5 30%,#294ee3 90%);background: linear-gradient(#2982C5 30%, #294ee3 90%);color: #000000;}.stb-section-caption_box {background: #2982C5;background: -moz-linear-gradient(top,  #2982C5 30%, #2944f2 90%);background: -webkit-gradient(linear, left top, left bottom, color-stop(30%,#2982C5), color-stop(90%,#2944f2));background: -webkit-linear-gradient(top,  #2982C5 30%,#2944f2 90%);background: -o-linear-gradient(top,  #2982C5 30%,#2944f2 90%);background: -ms-linear-gradient(top,  #2982C5 30%,#2944f2 90%);background: linear-gradient(#2982C5 30%, #2944f2 90%);color: #FFFFFF;}.stb-section-body_box {background: #2982C5;filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2982C5', endColorstr='#294ee3',GradientType=0 );background: -moz-linear-gradient(top,  #2982C5 30%, #294ee3 90%);background: -webkit-gradient(linear, left top, left bottom, color-stop(30%,#2982C5), color-stop(90%,#294ee3));background: -webkit-linear-gradient(top,  #2982C5 30%,#294ee3 90%);background: -o-linear-gradient(top,  #2982C5 30%,#294ee3 90%);background: -ms-linear-gradient(top,  #2982C5 30%,#294ee3 90%);background: linear-gradient(#2982C5 30%, #294ee3 90%);color: #000000;}.stb-border.stb-warning-container {border: 1px none #FE9A05;}.stb-side.stb-warning-container {background: #FE9A05;filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#FE9A05', endColorstr='#504848',GradientType=0 );background: -moz-linear-gradient(top,  #FE9A05 30%, #504848 90%);background: -webkit-gradient(linear, left top, left bottom, color-stop(30%,#FE9A05), color-stop(90%,#504848));background: -webkit-linear-gradient(top,  #FE9A05 30%,#504848 90%);background: -o-linear-gradient(top,  #FE9A05 30%,#504848 90%);background: -ms-linear-gradient(top,  #FE9A05 30%,#504848 90%);background: linear-gradient(#FE9A05 30%, #504848 90%);}.stb-side-none.stb-warning-container {background: #FEFFD5;filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#FEFFD5', endColorstr='#f0d208',GradientType=0 );background: -moz-linear-gradient(top,  #FEFFD5 30%, #f0d208 90%);background: -webkit-gradient(linear, left top, left bottom, color-stop(30%,#FEFFD5), color-stop(90%,#f0d208));background: -webkit-linear-gradient(top,  #FEFFD5 30%,#f0d208 90%);background: -o-linear-gradient(top,  #FEFFD5 30%,#f0d208 90%);background: -ms-linear-gradient(top,  #FEFFD5 30%,#f0d208 90%);background: linear-gradient(#FEFFD5 30%, #f0d208 90%);}.stb-warning_box {background: #FEFFD5;filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#FEFFD5', endColorstr='#f0d208',GradientType=0 );background: -moz-linear-gradient(top,  #FEFFD5 30%, #f0d208 90%);background: -webkit-gradient(linear, left top, left bottom, color-stop(30%,#FEFFD5), color-stop(90%,#f0d208));background: -webkit-linear-gradient(top,  #FEFFD5 30%,#f0d208 90%);background: -o-linear-gradient(top,  #FEFFD5 30%,#f0d208 90%);background: -ms-linear-gradient(top,  #FEFFD5 30%,#f0d208 90%);background: linear-gradient(#FEFFD5 30%, #f0d208 90%);color: #000000;}.stb-warning-caption_box {background: #FE9A05;background: -moz-linear-gradient(top,  #FE9A05 30%, #504848 90%);background: -webkit-gradient(linear, left top, left bottom, color-stop(30%,#FE9A05), color-stop(90%,#504848));background: -webkit-linear-gradient(top,  #FE9A05 30%,#504848 90%);background: -o-linear-gradient(top,  #FE9A05 30%,#504848 90%);background: -ms-linear-gradient(top,  #FE9A05 30%,#504848 90%);background: linear-gradient(#FE9A05 30%, #504848 90%);color: #FFFFFF;}.stb-warning-body_box {background: #FEFFD5;filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#FEFFD5', endColorstr='#f0d208',GradientType=0 );background: -moz-linear-gradient(top,  #FEFFD5 30%, #f0d208 90%);background: -webkit-gradient(linear, left top, left bottom, color-stop(30%,#FEFFD5), color-stop(90%,#f0d208));background: -webkit-linear-gradient(top,  #FEFFD5 30%,#f0d208 90%);background: -o-linear-gradient(top,  #FEFFD5 30%,#f0d208 90%);background: -ms-linear-gradient(top,  #FEFFD5 30%,#f0d208 90%);background: linear-gradient(#FEFFD5 30%, #f0d208 90%);color: #000000;}</style>
+
+<title>Pytorch | Getting Started With Pytorch</title>
+<meta name="description" content="Pytorch is a python based library. An introduction to pytorch and getting started with pytorch to build neural networks and take a case study as an example." />
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+<link rel="canonical" href="https://www.analyticsvidhya.com/blog/2019/09/introduction-to-pytorch-from-scratch/" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Pytorch | Getting Started With Pytorch" />
+<meta property="og:description" content="Pytorch is a python based library. An introduction to pytorch and getting started with pytorch to build neural networks and take a case study as an example." />
+<meta property="og:url" content="https://www.analyticsvidhya.com/blog/2019/09/introduction-to-pytorch-from-scratch/" />
+<meta property="og:site_name" content="Analytics Vidhya" />
+<meta property="article:publisher" content="https://www.facebook.com/AnalyticsVidhya/" />
+<meta property="article:published_time" content="2019-09-17T03:09:28+00:00" />
+<meta property="article:modified_time" content="2020-05-10T16:49:32+00:00" />
+<meta property="og:image" content="https://cdn.analyticsvidhya.com/wp-content/uploads/2019/09/pytorch_3.png" />
+<meta property="og:image:width" content="1050" />
+<meta property="og:image:height" content="520" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:creator" content="@analyticsvidhya" />
+<meta name="twitter:site" content="@analyticsvidhya" />
+<script type="application/ld+json" class="yoast-schema-graph">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://www.analyticsvidhya.com/#website","url":"https://www.analyticsvidhya.com/","name":"Analytics Vidhya","description":"Learn everything about Analytics","potentialAction":[{"@type":"SearchAction","target":"https://www.analyticsvidhya.com/?s={search_term_string}","query-input":"required name=search_term_string"}],"inLanguage":"en-US"},{"@type":"ImageObject","@id":"https://www.analyticsvidhya.com/blog/2019/09/introduction-to-pytorch-from-scratch/#primaryimage","inLanguage":"en-US","url":"https://cdn.analyticsvidhya.com/wp-content/uploads/2019/09/pytorch_3.png","width":1050,"height":520,"caption":"pytorch"},{"@type":"WebPage","@id":"https://www.analyticsvidhya.com/blog/2019/09/introduction-to-pytorch-from-scratch/#webpage","url":"https://www.analyticsvidhya.com/blog/2019/09/introduction-to-pytorch-from-scratch/","name":"Pytorch | Getting Started With Pytorch","isPartOf":{"@id":"https://www.analyticsvidhya.com/#website"},"primaryImageOfPage":{"@id":"https://www.analyticsvidhya.com/blog/2019/09/introduction-to-pytorch-from-scratch/#primaryimage"},"datePublished":"2019-09-17T03:09:28+00:00","dateModified":"2020-05-10T16:49:32+00:00","author":{"@id":"https://www.analyticsvidhya.com/#/schema/person/737a8d856ed73d1c24850befb4d38107"},"description":"Pytorch is a python based library. An introduction to pytorch and getting started with pytorch to build neural networks and take a case study as an example.","breadcrumb":{"@id":"https://www.analyticsvidhya.com/blog/2019/09/introduction-to-pytorch-from-scratch/#breadcrumb"},"inLanguage":"en-US","potentialAction":[{"@type":"ReadAction","target":["https://www.analyticsvidhya.com/blog/2019/09/introduction-to-pytorch-from-scratch/"]}]},{"@type":"BreadcrumbList","@id":"https://www.analyticsvidhya.com/blog/2019/09/introduction-to-pytorch-from-scratch/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"item":{"@type":"WebPage","@id":"https://www.analyticsvidhya.com/","url":"https://www.analyticsvidhya.com/","name":"Home"}},{"@type":"ListItem","position":2,"item":{"@type":"WebPage","@id":"https://www.analyticsvidhya.com/blog/2019/09/introduction-to-pytorch-from-scratch/","url":"https://www.analyticsvidhya.com/blog/2019/09/introduction-to-pytorch-from-scratch/","name":"A Beginner-Friendly Guide to PyTorch and How it Works from Scratch"}}]},{"@type":"Person","@id":"https://www.analyticsvidhya.com/#/schema/person/737a8d856ed73d1c24850befb4d38107","name":"Pulkit Sharma","image":{"@type":"ImageObject","@id":"https://www.analyticsvidhya.com/#personlogo","inLanguage":"en-US","url":"https://secure.gravatar.com/avatar/eed74e736d0a3795af0cc24f161a8a24?s=96&d=mm&r=g","caption":"Pulkit Sharma"},"description":"My research interests lies in the field of Machine Learning and Deep Learning. Possess an enthusiasm for learning new skills and technologies."}]}</script>
+
+<link rel='dns-prefetch' href='//www.analyticsvidhya.com' />
+<link rel='dns-prefetch' href='//cdnjs.cloudflare.com' />
+<link rel='dns-prefetch' href='//s.w.org' />
+<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/13.0.0\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/13.0.0\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/www.analyticsvidhya.com\/wp-includes\/js\/wp-emoji-release.min.js?ver=5.5.1"}};
+			!function(e,a,t){var r,n,o,i,p=a.createElement("canvas"),s=p.getContext&&p.getContext("2d");function c(e,t){var a=String.fromCharCode;s.clearRect(0,0,p.width,p.height),s.fillText(a.apply(this,e),0,0);var r=p.toDataURL();return s.clearRect(0,0,p.width,p.height),s.fillText(a.apply(this,t),0,0),r===p.toDataURL()}function l(e){if(!s||!s.fillText)return!1;switch(s.textBaseline="top",s.font="600 32px Arial",e){case"flag":return!c([127987,65039,8205,9895,65039],[127987,65039,8203,9895,65039])&&(!c([55356,56826,55356,56819],[55356,56826,8203,55356,56819])&&!c([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]));case"emoji":return!c([55357,56424,8205,55356,57212],[55357,56424,8203,55356,57212])}return!1}function d(e){var t=a.createElement("script");t.src=e,t.defer=t.type="text/javascript",a.getElementsByTagName("head")[0].appendChild(t)}for(i=Array("flag","emoji"),t.supports={everything:!0,everythingExceptFlag:!0},o=0;o<i.length;o++)t.supports[i[o]]=l(i[o]),t.supports.everything=t.supports.everything&&t.supports[i[o]],"flag"!==i[o]&&(t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&t.supports[i[o]]);t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&!t.supports.flag,t.DOMReady=!1,t.readyCallback=function(){t.DOMReady=!0},t.supports.everything||(n=function(){t.readyCallback()},a.addEventListener?(a.addEventListener("DOMContentLoaded",n,!1),e.addEventListener("load",n,!1)):(e.attachEvent("onload",n),a.attachEvent("onreadystatechange",function(){"complete"===a.readyState&&t.readyCallback()})),(r=t.source||{}).concatemoji?d(r.concatemoji):r.wpemoji&&r.twemoji&&(d(r.twemoji),d(r.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+<link rel='stylesheet' id='jetpack_related-posts-css' href='https://www.analyticsvidhya.com/wp-content/plugins/jetpack/modules/related-posts/related-posts.css?ver=20191011' type='text/css' media='all' />
+<link rel='stylesheet' id='contact-form-7-css' href='https://www.analyticsvidhya.com/wp-content/plugins/contact-form-7/includes/css/styles.css?ver=5.2.2' type='text/css' media='all' />
+<style id='contact-form-7-inline-css' type='text/css'>
+.wpcf7 .wpcf7-recaptcha iframe {margin-bottom: 0;}.wpcf7 .wpcf7-recaptcha[data-align="center"] > div {margin: 0 auto;}.wpcf7 .wpcf7-recaptcha[data-align="right"] > div {margin: 0 0 0 auto;}
+</style>
+<link rel='stylesheet' id='dgd-scrollbox-plugin-core-css' href='https://www.analyticsvidhya.com/wp-content/plugins/dreamgrow-scroll-triggered-box/css/style.css?ver=2.3' type='text/css' media='all' />
+<link rel='stylesheet' id='stbCoreCSS-css' href='https://www.analyticsvidhya.com/wp-content/plugins/wp-special-textboxes/css/stb-core.css?ver=5.9.109' type='text/css' media='all' />
+<link rel='stylesheet' id='wpss-style-css' href='https://www.analyticsvidhya.com/wp-content/plugins/wordpress-simple-survey/assets/build/css/wpss-pkg.min.css?ver=5.5.1' type='text/css' media='all' />
+<link rel='stylesheet' id='wpss-custom-db-style-css' href='https://www.analyticsvidhya.com/wp-content/plugins/wordpress-simple-survey/assets/css/custom-performance.css?ver=5.5.1' type='text/css' media='all' />
+<script type='text/javascript' src='https://www.analyticsvidhya.com/wp-includes/js/jquery/jquery.js?ver=1.12.4-wp' id='jquery-core-js'></script>
+<script type='text/javascript' id='jetpack_related-posts-js-extra'>
+/* <![CDATA[ */
+var related_posts_js_options = {"post_heading":"h4"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://www.analyticsvidhya.com/wp-content/plugins/jetpack/_inc/build/related-posts/related-posts.min.js?ver=20191011' defer='defer' id='jetpack_related-posts-js'></script>
+<script type='text/javascript' id='dgd-scrollbox-plugin-js-extra'>
+/* <![CDATA[ */
+var $DGD = {"ajaxurl":"\/wp-admin\/admin-ajax.php","nonce":"95be81a21f","debug":"","permalink":"https:\/\/www.analyticsvidhya.com\/blog\/2019\/09\/introduction-to-pytorch-from-scratch\/","title":"A Beginner-Friendly Guide to PyTorch and How it Works from Scratch","thumbnail":"https:\/\/cdn.analyticsvidhya.com\/wp-content\/uploads\/2019\/09\/pytorch_3.png","scripthost":"\/wp-content\/plugins\/dreamgrow-scroll-triggered-box\/","scrollboxes":[{"trigger":{"action":"scroll","scroll":"0","delaytime":"0","element":""},"vpos":"center","hpos":"center","cookieLifetime":"0","hide_mobile":"1","receiver_email":"0","thankyou":"","submit_auto_close":"5","hide_submitted":"1","delay_auto_close":"0","lightbox":{"enabled":"1","color":"#000000","opacity":"0.7","blur":"2"},"theme":"none","widget_enabled":"1","height":"500","width":"800","jsCss":{"padding":"0","margin":"0","backgroundColor":"","boxShadow":"0px","borderColor":"","borderWidth":"0px","borderRadius":"0px","backgroundImageUrl":""},"closeImageUrl":"","transition":{"from":"b","effect":"none","speed":"400"},"social":{"facebook":"","twitter":"","google":"","pinterest":"","stumbleupon":"","linkedin":""},"id":"dgd_scrollbox-67322","mode":"stb","voff":0,"hoff":0}]};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://www.analyticsvidhya.com/wp-content/plugins/dreamgrow-scroll-triggered-box/js/script.js?ver=2.3' defer='defer' id='dgd-scrollbox-plugin-js'></script>
+<script type='text/javascript' src='https://www.analyticsvidhya.com/wp-content/plugins/wordpress-simple-survey/assets/build/js/wpss-pkg.min.js?ver=3.0.0' defer='defer' id='wpss-pkg-js'></script>
+<link rel="https://api.w.org/" href="https://www.analyticsvidhya.com/wp-json/" /><link rel="alternate" type="application/json" href="https://www.analyticsvidhya.com/wp-json/wp/v2/posts/57258" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://www.analyticsvidhya.com/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://www.analyticsvidhya.com/wp-includes/wlwmanifest.xml" />
+<meta name="generator" content="WordPress 5.5.1" />
+<link rel='shortlink' href='https://www.analyticsvidhya.com/?p=57258' />
+<link rel="alternate" type="application/json+oembed" href="https://www.analyticsvidhya.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.analyticsvidhya.com%2Fblog%2F2019%2F09%2Fintroduction-to-pytorch-from-scratch%2F" />
+<link rel="alternate" type="text/xml+oembed" href="https://www.analyticsvidhya.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.analyticsvidhya.com%2Fblog%2F2019%2F09%2Fintroduction-to-pytorch-from-scratch%2F&#038;format=xml" />
+<script type="text/javascript"><!--
+function powerpress_pinw(pinw_url){window.open(pinw_url, 'PowerPressPlayer','toolbar=0,status=0,resizable=1,width=460,height=320');	return false;}
+//-->
+</script>
+<script type="text/javascript">/* <![CDATA[ */ jQuery.post("https://www.analyticsvidhya.com/wp-admin/admin-ajax.php", { action: "wmp_update", id: 57258, token: "df36e31cc5" }); /* ]]> */</script>
+<style type="text/css">
+
+
+
+                #yith-topbar-countdown.topbar-countdown-container{
+
+                    
+                                            background-color: #ee3d24;
+                    
+                    
+                    background-repeat:repeat;
+                    background-position:top left;
+                    background-attachment:scroll;
+                }
+
+                #yith-topbar-countdown .countdown_slogan{
+                    color: #FFFFFF;
+font-size: 14px;
+font-family: 'Roboto';
+font-weight: 400;
+font-style: normal;
+                }
+
+                #yith-topbar-countdown .countdown_information .countdown .num {color: #ffffff;
+font-size: 14px;
+font-family: 'Roboto';
+font-weight: 700;
+font-style: normal;
+}
+
+                #yith-topbar-countdown .countdown_information .countdown_slogan strong{
+                    color: #ffffff;
+font-size: 14px;
+font-family: 'Roboto';
+font-weight: 700;
+font-style: normal;
+                }
+
+                #yith-topbar-countdown .countdown_information .message,
+                #yith-topbar-countdown .countdown_information .countdown-label{
+                    color: #FFFFFF;
+font-size: 14px;
+font-family: 'Roboto';
+font-weight: 400;
+font-style: normal;
+                }
+
+                #yith-topbar-countdown .countdown_button {
+
+                                            background-color: #ee3d24;
+                    
+                    color: #FFFFFF;
+font-size: 14px;
+font-family: 'Roboto';
+font-weight: 700;
+font-style: normal;
+                }
+
+                #yith-topbar-countdown .countdown_button a{color: #FFFFFF;
+font-size: 14px;
+font-family: 'Roboto';
+font-weight: 700;
+font-style: normal;
+}
+
+                #yith-topbar-countdown .countdown_button:hover {
+                                            background-color: #821919;
+                                    }
+
+            </style>
+
+<meta property="og:url" content="https://www.analyticsvidhya.com/blog/2019/09/introduction-to-pytorch-from-scratch/" />
+<meta property="og:title" content="A Beginner-Friendly Guide to PyTorch and How it Works from Scratch" />
+<meta property="og:description" content="Overview   	What is PyTorch? How can you get started with it from scratch? We'll cover all of that in this article  	PyTorch is one of the most popular deep learning libraries right now  	We'll also take up a case study and use PyTorch to understand its practice applications  &nbsp; Introduction" />
+<meta property="og:image" content="https://cdn.analyticsvidhya.com/wp-content/uploads/2019/09/pytorch_3-200x200.png" />
+
+<link rel='canonical' href='https://www.analyticsvidhya.com/blog/2019/09/introduction-to-pytorch-from-scratch/' />
+<style type="text/css"></style>
+
+
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-MPSM42V');</script>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-40101183-1', 'auto');
+  ga('require', 'GTM-PBZGQJ4');
+  //ga('send', 'pageview');
+  ga('send', 'pageview', {
+     'dimension1': 'Pulkit Sharma',
+     'dimension2': 'Classification'
+     });
+</script>
+<meta property="fb:pages" content="452065408218678" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="application/javascript" src="https://sdki.truepush.com/sdk/v2.0.2/app.js" async></script>
+<script>
+    var truepush = window.truepush || [];
+    truepush.push(function(){
+      truepush.Init({
+        id: "5f2968e91e8ca92c6cc55c46"
+      },
+        function(error){
+        if(error) console.log(error);
+})
+    })
+</script>
+</head>
+<body class="post-template-default single single-post postid-57258 single-format-standard mh-body safari">
+
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MPSM42V"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<div class="sale-strip" id="sale-strip" style="display: none;">
+<a id="href_id">
+</a>
+<div id="clockdiv" style="display: none;">
+<span>
+<h4 class="days" id="day"></h4>
+<sup>D</sup>
+</span>
+<span>
+<h4 class="hours" id="hour"></h4>
+<sup>H</sup>
+</span>
+<span>
+<h4 class="minutes" id="minute"></h4>
+<sup>M</sup>
+</span>
+<span>
+<h4 class="seconds" id="second"></h4>
+<sup>S</sup>
+</span>
+</div>
+</div>
+<div id="body-maha" class="body-maha" data-tmloader="https://www.analyticsvidhya.com/wp-content/themes/Curated/images/ellipsis.gif">
+<nav id="mobile-bar-sticky" role="navigation" class="mobile-bar bar-sticky">
+<div id="close-mobile-bar"><i class="tm-cancel"></i></div>
+<div id="search-mobile-bar"><form action="https://www.analyticsvidhya.com/" class="searchform" method="get">
+<button class="search-button"><i class="tm-search"></i></button>
+<input type="text" name="s" class="search-input" value="Search" onfocus="if(this.value=='Search')this.value='';" onblur="if(this.value=='')this.value='Search';" autocomplete="off" />
+</form></div>
+<ul id="menu-main-menu" class="menu"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children mh-navcat-0"><span></span><a href="https://www.analyticsvidhya.com/blog/?utm_source=home_blog_navbar">Blog</a>
+<ul class="sub-menu">
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children mh-navcat-0"><span></span><a href="https://www.analyticsvidhya.com/blog-archive/">Blog Archive</a>
+<ul class="sub-menu">
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category mh-navcat-2498"><span></span><a href="https://www.analyticsvidhya.com/blog/category/machine-learning/">Machine Learning</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent mh-navcat-3761"><span></span><a href="https://www.analyticsvidhya.com/blog/category/deep-learning/">Deep Learning</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category mh-navcat-4121"><span></span><a href="https://www.analyticsvidhya.com/blog/category/career/">Career</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category mh-navcat-3118"><span></span><a href="https://www.analyticsvidhya.com/blog/category/stories/">Stories</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category mh-navcat-0"><span></span><a href="https://www.analyticsvidhya.com/blog/category/podcast/">DataHack Radio</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children mh-navcat-0"><span></span><a href="https://www.analyticsvidhya.com/learning-paths-data-science-business-analytics-business-intelligence-big-data/">Learning Paths</a>
+<ul class="sub-menu">
+<li class="menu-item menu-item-type-post_type menu-item-object-page mh-navcat-0"><span></span><a href="https://www.analyticsvidhya.com/learning-paths-data-science-business-analytics-business-intelligence-big-data/learning-path-business-analyst-sas/">SAS Business Analyst</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page mh-navcat-0"><span></span><a href="https://www.analyticsvidhya.com/learning-paths-data-science-business-analytics-business-intelligence-big-data/learning-path-r-data-science/">LeaRn Data Science on R</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page mh-navcat-0"><span></span><a href="https://www.analyticsvidhya.com/learning-paths-data-science-business-analytics-business-intelligence-big-data/learning-path-data-science-python/">Data Science in Python</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page mh-navcat-0"><span></span><a href="https://www.analyticsvidhya.com/learning-paths-data-science-business-analytics-business-intelligence-big-data/weka-gui-learn-machine-learning/">DATA SCIENCE IN WEKA</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page mh-navcat-0"><span></span><a href="https://www.analyticsvidhya.com/learning-paths-data-science-business-analytics-business-intelligence-big-data/tableau-learning-path/">Data Visualization with Tableau</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page mh-navcat-0"><span></span><a href="https://www.analyticsvidhya.com/learning-paths-data-science-business-analytics-business-intelligence-big-data/qlikview-learning-path/">Data Visualization with QlikView</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page mh-navcat-0"><span></span><a href="https://www.analyticsvidhya.com/learning-paths-data-science-business-analytics-business-intelligence-big-data/newbie-d3-js-expert-complete-path-create-interactive-visualization-d3-js/">Interactive Data Stories with D3.js</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom mh-navcat-0"><span></span><a href="https://www.analyticsvidhya.com/glossary-of-common-statistics-and-machine-learning-terms/">Glossary</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children mh-navcat-5288"><span></span><a href="https://courses.analyticsvidhya.com">Courses</a>
+<ul class="sub-menu">
+<li class="menu-item menu-item-type-custom menu-item-object-custom mh-navcat-0"><span></span><a href="https://courses.analyticsvidhya.com/courses/applied-machine-learning-beginner-to-professional?utm_source=home_blog_navbar">Applied Machine Learning &#8211; Beginner to Professional</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom mh-navcat-0"><span></span><a href="https://courses.analyticsvidhya.com/courses/introduction-to-data-science-2?utm_source=home_blog_navbar">INTRODUCTION TO DATA SCIENCE</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom mh-navcat-0"><span></span><a href="https://courses.analyticsvidhya.com/courses/natural-language-processing-nlp?utm_source=home_blog_navbar">Natural Language Processing (NLP) Using Python</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom mh-navcat-0"><span></span><a href="https://courses.analyticsvidhya.com/courses/computer-vision-using-deep-learning-version2?utm_source=home_blog_navbar">Computer Vision using Deep Learning 2.0</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom mh-navcat-0"><span></span><a href="https://courses.analyticsvidhya.com/collections/?utm_source=blog-navbar">More Courses</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom mh-navcat-0"><span></span><a href="https://datahack.analyticsvidhya.com/contest/all">Hackathons</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom mh-navcat-170"><span></span><a href="https://jobs.analyticsvidhya.com/?utm_source=home_blog_navbar">Jobs</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom mh-navcat-0"><span></span><a href="https://courses.analyticsvidhya.com/bundles/certified-ai-ml-blackbelt-plus/?utm-source=blog-navbar&amp;utm-medium=web">AI &#038; ML BLACKBELT+</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom mh-navcat-0"><span></span><a href="https://www.analyticsvidhya.com/ascend-pro/?utm_source=blog&amp;utm_medium=navbar&amp;utm_campaign=ascend_pro"><span style='color:#EE3D24'>Ascend Pro</span></a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page mh-navcat-0"><span></span><a href="https://www.analyticsvidhya.com/contact/">Contact</a></li>
+</ul> </nav>
+
+<div id='body-background'>
+
+<div id="off-canvas-body" class="off-canvas-body animati-on">
+
+<div id="top-bar-sticky" class="bar-sticky">
+<div class="top-bar">
+
+<div class="container">
+<div class="row">
+<div class="col-sm-12">
+<div id="top-right-nav">
+<div class="social-top">
+<ul><li><a target="_blank" href="https://www.facebook.com/AnalyticsVidhya"><i class="tm-facebook"></i></a></li><li><a target="_blank" href="https://twitter.com/analyticsvidhya"><i class="tm-twitter"></i></a></li><li><a target="_blank" href="https://plus.google.com/+Analyticsvidhya/posts"><i class="tm-googleplus"></i></a></li><li><a target="_blank" href="https://in.linkedin.com/company/analytics-vidhya"><i class="tm-linkedin"></i></a></li></ul>
+</div>
+<div class="top-user">
+<i class='tm-user'></i>
+<a class="login-modal-closer" data-reveal-id="cur-register" data-animation="fade" data-dismissmodalclass="register-reveal-modal" id="login1"></a><span id="regiter1"></span>
+</div>
+</div>
+<nav id="top-nav-wrapper" class="ul-nav">
+<ul id="menu-top" class="menu"><li id="menu-item-42575" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-42575 mh-navcat-0"><span></span><a href="https://www.analyticsvidhya.com">Home</a></li>
+<li id="menu-item-64144" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-64144 mh-navcat-0"><span></span><a href="https://www.analyticsvidhya.com/myfeed/?utm-source=blog&#038;utm-medium=top-icon/">My Feed</a></li>
+<li id="menu-item-12992" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-12992 mh-navcat-0"><span></span><a href="https://www.analyticsvidhya.com/blog-archive/">Blog Archive</a></li>
+<li id="menu-item-12952" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12952 mh-navcat-0"><span></span><a href="https://discuss.analyticsvidhya.com">Discuss</a></li>
+<li id="menu-item-39605" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-39605 mh-navcat-0"><span></span><a href="https://www.analyticsvidhya.com/corporate/">Corporate</a></li>
+</ul> </nav>
+<nav id="top-mobile-wrapper" class="ul-nav">
+<ul><li><a><i class="tm-menu"></i></a></li></ul>
+</nav>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+
+<div class="main-logo-ads-wrap">
+<div class="main-logo-ads">
+
+<div class="container">
+<div class="row ">
+<div class="col-sm-12">
+
+<div id="thelogo" class="logo ">
+ <a href="https://www.analyticsvidhya.com/blog/">
+<img alt="Analytics Vidhya - Learn everything about Analytics" src="https://cdn.analyticsvidhya.com/wp-content/uploads/2020/06/Av-Logo-250x71-1.jpg" data-retina="https://cdn.analyticsvidhya.com/wp-content/uploads/2020/06/Av-Logo-250x71-1.jpg" data-first="https://cdn.analyticsvidhya.com/wp-content/uploads/2020/06/Av-Logo-250x71-1.jpg" />
+</a>
+</div>
+<h2 class='site-outline'>Learn everything about Analytics</h2>
+
+<div id="main-ads" class="main-ads-right">
+<div><a href="https://www.analyticsvidhya.com/back-channel/download-starter-kit.php?utm_source=ml-interview-guide&id=10"><img src="https://cdn.analyticsvidhya.com/wp-content/uploads/2020/08/Machine-Learning-Interview-Guide.png"></a></div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+
+<div id="main-nav">
+<div id="main-nav-bar" class="main-nav-bar clearfix ">
+<div id="main-search" class=" clearfix">
+<div id="con-search">
+<div class="container">
+<div class="cols-sm12">
+<div id="main-search-form">
+<span class="close-search-form"><i class="tm-cancel"></i></span>
+<span class="loading-search-result"><img src="https://www.analyticsvidhya.com/wp-content/themes/Curated/images/ellipsis.gif" alt=""></span>
+<form action="https://www.analyticsvidhya.com/" class="searchform" method="get">
+<button class="search-button"><i class="tm-search"></i></button>
+<input type="text" name="s" class="search-input" value="Search" onfocus="if(this.value=='Search')this.value='';" onblur="if(this.value=='')this.value='Search';" autocomplete="off" />
+</form> <div class="search-result">
+<div class="container search-result-content"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='maha-notification container'><div id="main-notif"></div></div>
+<div class="container clearfix">
+</div>
+
+<div class="container clearfix">
+<div class="row clearfix">
+<div class="col-sm-12 clearfix">
+
+
+<div id="search-nav" class="search-nav clearfix">
+<span class="open-search-form"><i class="tm-search"></i></span>
+</div>
+
+
+<nav id="main-nav-wrapper" class="main-ul-nav clearfix">
+<div id="thelogosmall" class="logo">
+<a href="https://www.analyticsvidhya.com/blog/">
+<img alt="Analytics Vidhya - Learn everything about Analytics" src="https://cdn.analyticsvidhya.com/wp-content/uploads/2020/06/Av-logo-138x40-1.jpg" data-retina="https://cdn.analyticsvidhya.com/wp-content/uploads/2020/06/Av-logo-319x90-1.jpg" data-first="https://cdn.analyticsvidhya.com/wp-content/uploads/2020/06/Av-logo-138x40-1.jpg" />
+</a>
+</div>
+<ul id="menu-main-menu-1" class="menu"><li id="menu-item-37781" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children mh-navcat-0"><a href="https://www.analyticsvidhya.com/blog/?utm_source=home_blog_navbar">Blog</a><div class="nav-sub-wrap container"><div class="nsw clearfix row">
+<div class="nav-sub-menus"><ul>
+<li id="menu-item-55484" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children mh-navcat-0"><a href="https://www.analyticsvidhya.com/blog-archive/">Blog Archive</a><div class="nav-sub-wrap container"><div class="nsw clearfix row">
+<div class="nav-sub-menus"><ul>
+<li id="menu-item-47251" class="menu-item menu-item-type-taxonomy menu-item-object-category mh-navcat-2498"><a href="https://www.analyticsvidhya.com/blog/category/machine-learning/">Machine Learning</a></li>
+<li id="menu-item-47265" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent mh-navcat-3761"><a href="https://www.analyticsvidhya.com/blog/category/deep-learning/">Deep Learning</a></li>
+<li id="menu-item-47191" class="menu-item menu-item-type-taxonomy menu-item-object-category mh-navcat-4121"><a href="https://www.analyticsvidhya.com/blog/category/career/">Career</a></li>
+<li id="menu-item-27174" class="menu-item menu-item-type-taxonomy menu-item-object-category mh-navcat-3118"><a href="https://www.analyticsvidhya.com/blog/category/stories/">Stories</a></li>
+<li id="menu-item-45209" class="menu-item menu-item-type-taxonomy menu-item-object-category mh-navcat-0"><a href="https://www.analyticsvidhya.com/blog/category/podcast/">DataHack Radio</a></li>
+</ul></div>
+</div></div>
+</li>
+<li id="menu-item-12170" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children mh-navcat-0"><a href="https://www.analyticsvidhya.com/learning-paths-data-science-business-analytics-business-intelligence-big-data/">Learning Paths</a><div class="nav-sub-wrap container"><div class="nsw clearfix row">
+<div class="nav-sub-menus"><ul>
+<li id="menu-item-12503" class="menu-item menu-item-type-post_type menu-item-object-page mh-navcat-0"><a href="https://www.analyticsvidhya.com/learning-paths-data-science-business-analytics-business-intelligence-big-data/learning-path-business-analyst-sas/">SAS Business Analyst</a><div class="nav-sub-wrap container"><div class="nsw clearfix row"></div></div>
+</li>
+<li id="menu-item-14416" class="menu-item menu-item-type-post_type menu-item-object-page mh-navcat-0"><a href="https://www.analyticsvidhya.com/learning-paths-data-science-business-analytics-business-intelligence-big-data/learning-path-r-data-science/">LeaRn Data Science on R</a><div class="nav-sub-wrap container"><div class="nsw clearfix row"></div></div>
+</li>
+<li id="menu-item-12171" class="menu-item menu-item-type-post_type menu-item-object-page mh-navcat-0"><a href="https://www.analyticsvidhya.com/learning-paths-data-science-business-analytics-business-intelligence-big-data/learning-path-data-science-python/">Data Science in Python</a><div class="nav-sub-wrap container"><div class="nsw clearfix row"></div></div>
+</li>
+<li id="menu-item-13207" class="menu-item menu-item-type-post_type menu-item-object-page mh-navcat-0"><a href="https://www.analyticsvidhya.com/learning-paths-data-science-business-analytics-business-intelligence-big-data/weka-gui-learn-machine-learning/">DATA SCIENCE IN WEKA</a><div class="nav-sub-wrap container"><div class="nsw clearfix row"></div></div>
+</li>
+<li id="menu-item-23077" class="menu-item menu-item-type-post_type menu-item-object-page mh-navcat-0"><a href="https://www.analyticsvidhya.com/learning-paths-data-science-business-analytics-business-intelligence-big-data/tableau-learning-path/">Data Visualization with Tableau</a><div class="nav-sub-wrap container"><div class="nsw clearfix row"></div></div>
+</li>
+<li id="menu-item-12320" class="menu-item menu-item-type-post_type menu-item-object-page mh-navcat-0"><a href="https://www.analyticsvidhya.com/learning-paths-data-science-business-analytics-business-intelligence-big-data/qlikview-learning-path/">Data Visualization with QlikView</a><div class="nav-sub-wrap container"><div class="nsw clearfix row"></div></div>
+</li>
+<li id="menu-item-23078" class="menu-item menu-item-type-post_type menu-item-object-page mh-navcat-0"><a href="https://www.analyticsvidhya.com/learning-paths-data-science-business-analytics-business-intelligence-big-data/newbie-d3-js-expert-complete-path-create-interactive-visualization-d3-js/">Interactive Data Stories with D3.js</a><div class="nav-sub-wrap container"><div class="nsw clearfix row"></div></div>
+</li>
+</ul></div>
+</div></div>
+</li>
+<li id="menu-item-55487" class="menu-item menu-item-type-custom menu-item-object-custom mh-navcat-0"><a href="https://www.analyticsvidhya.com/glossary-of-common-statistics-and-machine-learning-terms/">Glossary</a><div class="nav-sub-wrap container"><div class="nsw clearfix row"></div></div>
+</li>
+</ul></div>
+</div></div>
+</li>
+<li id="menu-item-44643" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children mh-navcat-5288"><a href="https://courses.analyticsvidhya.com">Courses</a><div class="nav-sub-wrap container"><div class="nsw clearfix row">
+<div class="nav-sub-menus"><ul>
+<li id="menu-item-53978" class="menu-item menu-item-type-custom menu-item-object-custom mh-navcat-0"><a href="https://courses.analyticsvidhya.com/courses/applied-machine-learning-beginner-to-professional?utm_source=home_blog_navbar">Applied Machine Learning &#8211; Beginner to Professional</a><div class="nav-sub-wrap container"><div class="nsw clearfix row"></div></div>
+</li>
+<li id="menu-item-44644" class="menu-item menu-item-type-custom menu-item-object-custom mh-navcat-0"><a href="https://courses.analyticsvidhya.com/courses/introduction-to-data-science-2?utm_source=home_blog_navbar">INTRODUCTION TO DATA SCIENCE</a><div class="nav-sub-wrap container"><div class="nsw clearfix row"></div></div>
+</li>
+<li id="menu-item-48965" class="menu-item menu-item-type-custom menu-item-object-custom mh-navcat-0"><a href="https://courses.analyticsvidhya.com/courses/natural-language-processing-nlp?utm_source=home_blog_navbar">Natural Language Processing (NLP) Using Python</a><div class="nav-sub-wrap container"><div class="nsw clearfix row"></div></div>
+</li>
+<li id="menu-item-48964" class="menu-item menu-item-type-custom menu-item-object-custom mh-navcat-0"><a href="https://courses.analyticsvidhya.com/courses/computer-vision-using-deep-learning-version2?utm_source=home_blog_navbar">Computer Vision using Deep Learning 2.0</a><div class="nav-sub-wrap container"><div class="nsw clearfix row"></div></div>
+</li>
+<li id="menu-item-44646" class="menu-item menu-item-type-custom menu-item-object-custom mh-navcat-0"><a href="https://courses.analyticsvidhya.com/collections/?utm_source=blog-navbar">More Courses</a><div class="nav-sub-wrap container"><div class="nsw clearfix row"></div></div>
+</li>
+</ul></div>
+</div></div>
+</li>
+<li id="menu-item-24638" class="menu-item menu-item-type-custom menu-item-object-custom mh-navcat-0"><a href="https://datahack.analyticsvidhya.com/contest/all">Hackathons</a><div class="nav-sub-wrap container"><div class="nsw clearfix row"></div></div>
+</li>
+<li id="menu-item-55521" class="menu-item menu-item-type-custom menu-item-object-custom mh-navcat-170"><a href="https://jobs.analyticsvidhya.com/?utm_source=home_blog_navbar">Jobs</a><div class="nav-sub-wrap container"><div class="nsw clearfix row"></div></div>
+</li>
+<li id="menu-item-37784" class="menu-item menu-item-type-custom menu-item-object-custom mh-navcat-0"><a href="https://courses.analyticsvidhya.com/bundles/certified-ai-ml-blackbelt-plus/?utm-source=blog-navbar&amp;utm-medium=web">AI &#038; ML BLACKBELT+</a><div class="nav-sub-wrap container"><div class="nsw clearfix row"></div></div>
+</li>
+<li id="menu-item-69325" class="menu-item menu-item-type-custom menu-item-object-custom mh-navcat-0"><a href="https://www.analyticsvidhya.com/ascend-pro/?utm_source=blog&amp;utm_medium=navbar&amp;utm_campaign=ascend_pro"><span style='color:#EE3D24'>Ascend Pro</span></a><div class="nav-sub-wrap container"><div class="nsw clearfix row"></div></div>
+</li>
+<li id="menu-item-24641" class="menu-item menu-item-type-post_type menu-item-object-page mh-navcat-0"><a href="https://www.analyticsvidhya.com/contact/">Contact</a><div class="nav-sub-wrap container"><div class="nsw clearfix row"></div></div>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+
+<div class="page-wrapper">
+
+<div class="mh-el page-sidebar single-regular" itemscope itemtype="https://schema.org/Article">
+
+<div class="container">
+<div class="row">
+
+<div class="col-sm-8">
+<div class="main-content">
+
+<div class="maha-crumbs"><span><span><a href="https://www.analyticsvidhya.com/">Home</a> » <span class="breadcrumb_last" aria-current="page">A Beginner-Friendly Guide to PyTorch and How it Works from Scratch</span></span></span></div>
+<article id="post-57258" class="main-content single-post-box">
+<header>
+<meta itemprop="headline" content="A Beginner-Friendly Guide to PyTorch and How it Works from Scratch">
+<meta itemprop="datecreated" content="2019-09-17T08:39:28+05:30">
+<meta itemprop="datePublished" content="2019-09-17T08:39:28+05:30">
+<meta itemprop="dateModified" content="2020-05-10T22:19:32+05:30">
+<meta itemscope itemprop="mainEntityOfPage" itemType="https://schema.org/WebPage" itemid="https://www.analyticsvidhya.com/blog/2019/09/introduction-to-pytorch-from-scratch/" />
+<span class="hidden" itemprop="image" itemscope itemtype="https://schema.org/ImageObject">
+<meta itemprop="url" content="https://cdn.analyticsvidhya.com/wp-content/uploads/2019/09/pytorch_3.png">
+<meta itemprop="width" content="520">
+<meta itemprop="height" content="520">
+</span>
+<span class="hidden" itemprop="publisher" itemscope itemtype="https://schema.org/Organization">
+<span class="hidden" itemprop="logo" itemscope itemtype="https://schema.org/ImageObject">
+<meta itemprop="url" content="https://cdn.analyticsvidhya.com/wp-content/uploads/2020/06/Av-Logo-250x71-1.jpg">
+</span>
+<meta itemprop="name" content="Analytics Vidhya">
+</span>
+<div class="meta-count">
+<span class="i-category"><span class="mh-cat-item"><a class="mh-elcat-5347" href="https://www.analyticsvidhya.com/blog/category/classification/" title="Classification" rel="category">Classification</a></span><span class="mh-cat-item"><a class="mh-elcat-4895" href="https://www.analyticsvidhya.com/blog/category/computer-vision/" title="Computer Vision" rel="category">Computer Vision</a></span><span class="mh-cat-item"><a class="mh-elcat-3761" href="https://www.analyticsvidhya.com/blog/category/deep-learning/" title="Deep Learning" rel="category">Deep Learning</a></span><span class="mh-cat-item"><a class="mh-elcat-5362" href="https://www.analyticsvidhya.com/blog/category/image/" title="Image" rel="category">Image</a></span><span class="mh-cat-item"><a class="mh-elcat-5386" href="https://www.analyticsvidhya.com/blog/category/intermediate/" title="Intermediate" rel="category">Intermediate</a></span><span class="mh-cat-item"><a class="mh-elcat-5301" href="https://www.analyticsvidhya.com/blog/category/project/" title="Project" rel="category">Project</a></span><span class="mh-cat-item"><a class="mh-elcat-396" href="https://www.analyticsvidhya.com/blog/category/python-2/" title="Python" rel="category">Python</a></span><span class="mh-cat-item"><a class="mh-elcat-5233" href="https://www.analyticsvidhya.com/blog/category/pytorch/" title="PyTorch" rel="category">PyTorch</a></span><span class="mh-cat-item"><a class="mh-elcat-5356" href="https://www.analyticsvidhya.com/blog/category/supervised/" title="Supervised" rel="category">Supervised</a></span><span class="mh-cat-item"><a class="mh-elcat-5307" href="https://www.analyticsvidhya.com/blog/category/technique/" title="Technique" rel="category">Technique</a></span><span class="mh-cat-item"><a class="mh-elcat-5365" href="https://www.analyticsvidhya.com/blog/category/unstructured-data/" title="Unstructured Data" rel="category">Unstructured Data</a></span></span>
+</div>
+<h1 itemprop="name" class="entry-title">A Beginner-Friendly Guide to PyTorch and How it Works from Scratch</h1>
+<div class="meta-info">
+<span class="entry-author">
+<a href="https://www.analyticsvidhya.com/blog/author/pulkits/"><span>Pulkit Sharma</span></a>,
+</span>
+<time class="entry-date" content="2019-09-17" datetime="2019-09-17T08:39:28+05:30">
+September 17, 2019 </time>
+<div class="count-data right">
+</div>
+<span class="save-for-later"></span>
+<span class="download-pdf"></span>
+</div>
+</header>
+<div class="text-content">
+<div id="ban3_av"></div>
+<h2>Overview</h2>
+<ul>
+<li>What is PyTorch? How can you get started with it from scratch? We&#8217;ll cover all of that in this article</li>
+<li>PyTorch is one of the most popular deep learning libraries right now</li>
+<li>We&#8217;ll also take up a case study and use PyTorch to understand its practice applications</li>
+</ul>
+<p>&nbsp;</p>
+<h2>Introduction</h2>
+<p>Every once in a while, there comes a library or framework that reshapes and reimagines how we look at the field of deep learning. The remarkable progress a single framework can bring about never ceases to amaze me.</p>
+<p>I can safely say PyTorch is on that list of deep learning frameworks. It has helped accelerate the research that goes into deep learning models by making them computationally faster and less expensive (a data scientist&#8217;s dream!).</p>
+<p>I&#8217;ve personally found PyTorch really useful for my work. I delve heavily into the arts of <a href="https://courses.analyticsvidhya.com/courses/computer-vision-using-deep-learning-version2?utm_source=blog&amp;utm_medium=introduction-to-pytorch-from-scratch" target="_blank" rel="noopener noreferrer">computer vision</a> and find myself leaning on PyTorch&#8217;s flexibility and efficiency quite often.</p>
+<p><a rel="lightbox" href=https://cdn.analyticsvidhya.com/wp-content/uploads/2019/09/pytorch_3.png><img loading="lazy" class="aligncenter size-full wp-image-57379" src="https://cdn.analyticsvidhya.com/wp-content/uploads/2019/09/pytorch_3.png" alt="pytorch" width="1050" height="520" srcset="https://cdn.analyticsvidhya.com/wp-content/uploads/2019/09/pytorch_3.png 1050w, https://cdn.analyticsvidhya.com/wp-content/uploads/2019/09/pytorch_3-300x149.png 300w, https://cdn.analyticsvidhya.com/wp-content/uploads/2019/09/pytorch_3-768x380.png 768w, https://cdn.analyticsvidhya.com/wp-content/uploads/2019/09/pytorch_3-850x421.png 850w" sizes="(max-width: 1050px) 100vw, 1050px" /></a></p>
+<p>So in this article, I will guide you on how PyTorch works, and how you can get started with it today itself. We&#8217;ll cover everything there is to cover about this game-changing deep learning framework and also take up a really cool case study to see PyTorch in action.</p>
+<p>Part II and III of this series are now live, and you can access them here:</p>
+<ul>
+<li><a href="https://www.analyticsvidhya.com/blog/2019/10/building-image-classification-models-cnn-pytorch/?utm_source=blog&amp;utm_medium=introduction-to-pytorch-from-scratch" target="_blank" rel="noopener noreferrer">Build an Image Classification Model using Convolutional Neural Networks in PyTorch</a></li>
+<li>
+<p class="entry-title"><a href="https://www.analyticsvidhya.com/blog/2019/10/how-to-master-transfer-learning-using-pytorch/?utm_source=blog&amp;utm_medium=introduction-to-pytorch-from-scratch">Deep Learning for Everyone: Master the Powerful Art of Transfer Learning using PyTorch</a></p>
+</li>
+</ul>
+<p>If you prefer to approach learning PyTorch and the below concepts in a structured format, you can enrol for this free course and follow the concepts chapter-wise: <a href="https://courses.analyticsvidhya.com/courses/introduction-to-pytorch-for-deeplearning?utm_source=blog&amp;utm_medium=introduction-to-pytorch-from-scratch" target="_blank" rel="noopener noreferrer">PyTorch Course</a></p>
+<p>&nbsp;</p>
+<h2>Table of Contents</h2>
+<ol>
+<li>Getting Started with PyTorch</li>
+<li>Basics of PyTorch
+<ol>
+<li>Introduction to Tensors</li>
+<li>Mathematical Operations</li>
+<li>Matrix Initialization and Matrix Operations</li>
+</ol>
+</li>
+<li>Common PyTorch Modules
+<ol>
+<li>Autograd</li>
+<li>Optim</li>
+<li>nn</li>
+</ol>
+</li>
+<li>Building a Neural Network from Scratch in PyTorch</li>
+<li>Solving an Image Classification Problem using PyTorch</li>
+<li>What&#8217;s Next?</li>
+</ol>
+<p>&nbsp;</p>
+<h2>Getting Started with PyTorch</h2>
+<p><a rel="lightbox" href=https://cdn.analyticsvidhya.com/wp-content/uploads/2019/09/pytorch.png><img loading="lazy" class="aligncenter wp-image-57373 size-full" src="https://cdn.analyticsvidhya.com/wp-content/uploads/2019/09/pytorch.png" alt="pytorch" width="1025" height="205" srcset="https://cdn.analyticsvidhya.com/wp-content/uploads/2019/09/pytorch.png 1025w, https://cdn.analyticsvidhya.com/wp-content/uploads/2019/09/pytorch-300x60.png 300w, https://cdn.analyticsvidhya.com/wp-content/uploads/2019/09/pytorch-768x154.png 768w, https://cdn.analyticsvidhya.com/wp-content/uploads/2019/09/pytorch-850x170.png 850w" sizes="(max-width: 1025px) 100vw, 1025px" /></a></p>
+<p>PyTorch is a Python-based library that provides maximum flexibility and speed.</p>
+<blockquote><p>I&#8217;ve found PyTorch to be as simple as working with NumPy &#8211; and trust me, that is not an exaggeration.</p></blockquote>
+<p>You will figure this out really soon as we move forward in this article. But before we dive into the nuances of PyTorch, let’s look at some of the key features of this framework which make it unique and easy to use.</p>
+<p>&nbsp;</p>
+<h3>TorchScript</h3>
+<p>PyTorch TorchScript helps to create serializable and optimizable models. Once we train these models in Python, they can be run independently from Python as well. This helps when we&#8217;re in the model deployment stage of a data science project.</p>
+<p>So,<strong> you can train a model in PyTorch using Python and then export the model via TorchScript to a production environment where Python is not available.</strong> We will discuss model deployment in more detail in the later articles of this series.</p>
+<p>&nbsp;</p>
+<h3>Distributed Training</h3>
+<p>PyTorch also supports distributed training which enables researchers as well as practitioners to parallelize their computations. Distributed training makes it possible to use multiple GPUs to process larger batches of input data. This, in turn, reduces the computation time.</p>
+<p>&nbsp;</p>
+<h3>Python Support</h3>
+<p>PyTorch has a very good interaction with Python. In fact, coding in PyTorch is quite similar to Python. So<strong> if you are comfortable with Python, you are going to love working with PyTorch.</strong></p>
+<p>&nbsp;</p>
+<h3>Dynamic Computation Graphs</h3>
+<p>PyTorch has a unique way of building <a href="https://www.analyticsvidhya.com/blog/2018/10/introduction-neural-networks-deep-learning/?utm_source=blog&amp;utm_medium=introduction-to-pytorch-from-scratch" target="_blank" rel="noopener noreferrer">neural networks</a>. It creates dynamic computation graphs meaning that the graph will be created on the fly:</p>
+<p><a rel="lightbox" href=https://cdn.analyticsvidhya.com/wp-content/uploads/2019/09/dynamic_graph.gif><img loading="lazy" class="aligncenter wp-image-57259 size-full" src="https://cdn.analyticsvidhya.com/wp-content/uploads/2019/09/dynamic_graph.gif" alt="dynamic graphs" width="718" height="404" /></a></p>
+<p>And this is just skimming the surface of why PyTorch has become such a beloved framework in the data science community.</p>
+<p>Right &#8211; now it&#8217;s time to get started with understanding the basics of PyTorch. So make sure you install PyTorch on your machine before proceeding. The latest version of PyTorch (PyTorch 1.2) was released on August 08, 2019 and you can see the installation steps for it using <a href="https://pytorch.org/get-started/locally/" target="_blank" rel="noopener noreferrer">this link</a>.</p>
+<p>&nbsp;</p>
+<h2>Basics of PyTorch</h2>
+<p>Remember how I said PyTorch is quite similar to Numpy earlier? Let&#8217;s build on that statement now. I will demonstrate basic PyTorch operations and show you how similar they are to NumPy.</p>
+<p>In the NumPy library, we have multi-dimensional arrays whereas in PyTorch, we have tensors. So, let’s first understand what tensors are.</p>
+<p>&nbsp;</p>
+<h3>Introduction to Tensors</h3>
+<p><strong>Tensors are multidimensional arrays</strong>. And PyTorch tensors are similar to NumPy&#8217;s n-dimensional arrays. We can use these tensors on a GPU as well (this is not the case with NumPy arrays). This is a major advantage of using tensors.</p>
+<p>PyTorch supports multiple types of tensors, including:</p>
+<ol>
+<li>FloatTensor: 32-bit float</li>
+<li>DoubleTensor: 64-bit float</li>
+<li>HalfTensor: 16-bit float</li>
+<li>IntTensor: 32-bit int</li>
+<li>LongTensor: 64-bit int</li>
+</ol>
+<p>Now, let’s look at the basics of PyTorch along with how it compares against NumPy. If you are familiar with other deep learning frameworks, you must have come across tensors in TensorFlow as well. In fact, you are welcome to implement the following tasks in Tensorflow too and make your own comparison of PyTorch vs. TensorFlow!</p>
+<p>We&#8217;ll start by importing both the NumPy and the Torch libraries:</p>
+<div class="oembed-gist"><script src="https://gist.github.com/PulkitS01/961cde8f6ebe63517f21af223981b132.js?file=library.py"></script><noscript>View the code on <a href="https://gist.github.com/PulkitS01/961cde8f6ebe63517f21af223981b132">Gist</a>.</noscript></div>
+<p>Now, let’s see how we can assign a variable in NumPy as well as PyTorch:</p>
+<div class="oembed-gist"><script src="https://gist.github.com/PulkitS01/961cde8f6ebe63517f21af223981b132.js?file=assigning_variable.py"></script><noscript>View the code on <a href="https://gist.github.com/PulkitS01/961cde8f6ebe63517f21af223981b132">Gist</a>.</noscript></div>
+<p><a rel="lightbox" href=https://cdn.analyticsvidhya.com/wp-content/uploads/2019/09/Screenshot-from-2019-09-11-15-50-47.png><img loading="lazy" class="alignleft wp-image-57260 size-full" src="https://cdn.analyticsvidhya.com/wp-content/uploads/2019/09/Screenshot-from-2019-09-11-15-50-47.png" alt="array and tensor" width="109" height="42" /></a></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>Let’s quickly look at the type of both these variables:</p>
+<div class="oembed-gist"><script src="https://gist.github.com/PulkitS01/961cde8f6ebe63517f21af223981b132.js?file=type.py"></script><noscript>View the code on <a href="https://gist.github.com/PulkitS01/961cde8f6ebe63517f21af223981b132">Gist</a>.</noscript></div>
+<p><a rel="lightbox" href=https://cdn.analyticsvidhya.com/wp-content/uploads/2019/09/Screenshot-from-2019-09-11-16-00-01.png><img loading="lazy" class="alignleft wp-image-57262 size-full" src="https://cdn.analyticsvidhya.com/wp-content/uploads/2019/09/Screenshot-from-2019-09-11-16-00-01.png" alt="type of variables" width="240" height="25" /></a></p>
+<p>&nbsp;</p>
+<p>Type here confirms that the first variable (a) here is a NumPy array whereas the second variable (b) is a torch tensor.</p>
+<p>Next, we will see how to perform mathematical operations on these tensors and how it is similar to NumPy&#8217;s mathematical operations.</p>
+<p>&nbsp;</p>
+<h3>Mathematical operations</h3>
+<p>Do you remember how to perform mathematical operations on NumPy arrays? If not, let me quickly recap that for you.</p>
+<p>We will initialize two arrays and then perform mathematical operations like addition, subtraction, multiplication, and division, on them:</p>
+<div class="oembed-gist"><script src="https://gist.github.com/PulkitS01/961cde8f6ebe63517f21af223981b132.js?file=array.py"></script><noscript>View the code on <a href="https://gist.github.com/PulkitS01/961cde8f6ebe63517f21af223981b132">Gist</a>.</noscript></div>
+<p><a rel="lightbox" href=https://cdn.analyticsvidhya.com/wp-content/uploads/2019/09/Screenshot-from-2019-09-11-16-03-46.png><img loading="lazy" class="alignleft wp-image-57263 size-full" src="https://cdn.analyticsvidhya.com/wp-content/uploads/2019/09/Screenshot-from-2019-09-11-16-03-46.png" alt="numpy arrays" width="43" height="20" /></a></p>
+<p>&nbsp;</p>
+<p>These are the two NumPy arrays we have initialized. Now let’s see how we can perform mathematical operations on these arrays:</p>
+<div class="oembed-gist"><script src="https://gist.github.com/PulkitS01/961cde8f6ebe63517f21af223981b132.js?file=mathematical_operation_numpy.py"></script><noscript>View the code on <a href="https://gist.github.com/PulkitS01/961cde8f6ebe63517f21af223981b132">Gist</a>.</noscript></div>
+<p><a rel="lightbox" href=https://cdn.analyticsvidhya.com/wp-content/uploads/2019/09/Screenshot-from-2019-09-11-16-05-26.png><img loading="lazy" class="alignleft wp-image-57264 size-full" src="https://cdn.analyticsvidhya.com/wp-content/uploads/2019/09/Screenshot-from-2019-09-11-16-05-26.png" alt="mathematical operations on numpy array" width="46" height="70" /></a></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>Let’s now see how we can do the same using PyTorch on tensors. So, first, let’s initialize two tensors:</p>
+<div class="oembed-gist"><script src="https://gist.github.com/PulkitS01/961cde8f6ebe63517f21af223981b132.js?file=tensor.py"></script><noscript>View the code on <a href="https://gist.github.com/PulkitS01/961cde8f6ebe63517f21af223981b132">Gist</a>.</noscript></div>
+<p><a rel="lightbox" href=https://cdn.analyticsvidhya.com/wp-content/uploads/2019/09/Screenshot-from-2019-09-11-16-06-26.png><img loading="lazy" class="alignleft wp-image-57265 size-full" src="https://cdn.analyticsvidhya.com/wp-content/uploads/2019/09/Screenshot-from-2019-09-11-16-06-26.png" alt="pytorch tensors" width="173" height="21" /></a></p>
+<p>&nbsp;</p>
+<p>Next, perform the operations which we saw in NumPy:</p>
+<div class="oembed-gist"><script src="https://gist.github.com/PulkitS01/961cde8f6ebe63517f21af223981b132.js?file=mathematical_operation_torch.py"></script><noscript>View the code on <a href="https://gist.github.com/PulkitS01/961cde8f6ebe63517f21af223981b132">Gist</a>.</noscript></div>
+<p><a rel="lightbox" href=https://cdn.analyticsvidhya.com/wp-content/uploads/2019/09/Screenshot-from-2019-09-11-16-07-14.png><img loading="lazy" class="alignleft wp-image-57266 size-full" src="https://cdn.analyticsvidhya.com/wp-content/uploads/2019/09/Screenshot-from-2019-09-11-16-07-14.png" alt="mathematical operations on tensors" width="97" height="75" srcset="https://cdn.analyticsvidhya.com/wp-content/uploads/2019/09/Screenshot-from-2019-09-11-16-07-14.png 97w, https://cdn.analyticsvidhya.com/wp-content/uploads/2019/09/Screenshot-from-2019-09-11-16-07-14-83x63.png 83w" sizes="(max-width: 97px) 100vw, 97px" /></a></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>Did you see the similarities? The codes are exactly the same to perform the above mentioned mathematical operations in both NumPy and PyTorch.</p>
+<p>Next, let’s see how to initialize a matrix as well as perform matrix operations in PyTorch (along with, you guessed it, it&#8217;s NumPy counterpart!).</p>
+<p>&nbsp;</p>
+<h3>Matrix Initialization</h3>
+<p>Let’s say we want a matrix of shape 3*3 having all zeros. Take a moment to think &#8211; how can we do that using NumPy?</p>
+<div class="oembed-gist"><script src="https://gist.github.com/PulkitS01/961cde8f6ebe63517f21af223981b132.js?file=matrix_numpy.py"></script><noscript>View the code on <a href="https://gist.github.com/PulkitS01/961cde8f6ebe63517f21af223981b132">Gist</a>.</noscript></div>
+<p><a rel="lightbox" href=https://cdn.analyticsvidhya.com/wp-content/uploads/2019/09/Screenshot-from-2019-09-11-16-14-28.png><img loading="lazy" class="alignleft wp-image-57267 size-full" src="https://cdn.analyticsvidhya.com/wp-content/uploads/2019/09/Screenshot-from-2019-09-11-16-14-28.png" alt="matrix in numpy" width="122" height="75" /></a></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>Fairly straightforward. We just have to use the<em> zeros()</em> function of NumPy and pass the desired shape ((3,3) in our case), and we get a matrix consisting of all zeros. Let’s now see how we can do this in PyTorch:</p>
+<div class="oembed-gist"><script src="https://gist.github.com/PulkitS01/961cde8f6ebe63517f21af223981b132.js?file=matrix_zero.py"></script><noscript>View the code on <a href="https://gist.github.com/PulkitS01/961cde8f6ebe63517f21af223981b132">Gist</a>.</noscript></div>
+<p><a rel="lightbox" href=https://cdn.analyticsvidhya.com/wp-content/uploads/2019/09/Screenshot-from-2019-09-11-16-15-55.png><img loading="lazy" class="alignleft wp-image-57268 size-full" src="https://cdn.analyticsvidhya.com/wp-content/uploads/2019/09/Screenshot-from-2019-09-11-16-15-55.png" alt="matrix in pytorch" width="204" height="75" srcset="https://cdn.analyticsvidhya.com/wp-content/uploads/2019/09/Screenshot-from-2019-09-11-16-15-55.png 204w, https://cdn.analyticsvidhya.com/wp-content/uploads/2019/09/Screenshot-from-2019-09-11-16-15-55-200x75.png 200w" sizes="(max-width: 204px) 100vw, 204px" /></a></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>Similar to NumPy, PyTorch also has the <em>zeros()</em> function which takes the shape as input and returns a matrix of zeros of a specified shape. Now, while building a neural network, we randomly initialize the weights for the model. So, let’s see how we can initialize a matrix with random numbers:</p>
+<div class="oembed-gist"><script src="https://gist.github.com/PulkitS01/961cde8f6ebe63517f21af223981b132.js?file=random_matrix_numpy.py"></script><noscript>View the code on <a href="https://gist.github.com/PulkitS01/961cde8f6ebe63517f21af223981b132">Gist</a>.</noscript></div>
+<p><a rel="lightbox" href=https://cdn.analyticsvidhya.com/wp-content/uploads/2019/09/Screenshot-from-2019-09-11-16-21-40.png><img loading="lazy" class="alignleft wp-image-57269 size-full" src="https://cdn.analyticsvidhya.com/wp-content/uploads/2019/09/Screenshot-from-2019-09-11-16-21-40.png" alt="matrix with random numbers in numpy" width="392" height="61" srcset="https://cdn.analyticsvidhya.com/wp-content/uploads/2019/09/Screenshot-from-2019-09-11-16-21-40.png 392w, https://cdn.analyticsvidhya.com/wp-content/uploads/2019/09/Screenshot-from-2019-09-11-16-21-40-300x47.png 300w" sizes="(max-width: 392px) 100vw, 392px" /></a></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>We have specified the random seed at the beginning here so that every time we run the above code, the same random number will generate. <strong>The <em>random.randn()</em> function returns random numbers that follow a standard normal distribution. </strong></p>
+<p>But let&#8217;s not get waylaid by the statistics part of things. We&#8217;ll focus on how we can initialize a similar matrix of random numbers using PyTorch:</p>
+<div class="oembed-gist"><script src="https://gist.github.com/PulkitS01/961cde8f6ebe63517f21af223981b132.js?file=random_matrix_torch.py"></script><noscript>View the code on <a href="https://gist.github.com/PulkitS01/961cde8f6ebe63517f21af223981b132">Gist</a>.</noscript></div>
+<p><a rel="lightbox" href=https://cdn.analyticsvidhya.com/wp-content/uploads/2019/09/Screenshot-from-2019-09-11-16-24-18.png><img loading="lazy" class="alignleft wp-image-57270 size-full" src="https://cdn.analyticsvidhya.com/wp-content/uploads/2019/09/Screenshot-from-2019-09-11-16-24-18.png" alt="matrix with random numbers in pytorch" width="310" height="60" srcset="https://cdn.analyticsvidhya.com/wp-content/uploads/2019/09/Screenshot-from-2019-09-11-16-24-18.png 310w, https://cdn.analyticsvidhya.com/wp-content/uploads/2019/09/Screenshot-from-2019-09-11-16-24-18-300x58.png 300w" sizes="(max-width: 310px) 100vw, 310px" /></a></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>This is where even more similarities with NumPy crop up. PyTorch also has a function called <em>randn()</em> that returns a tensor filled with random numbers from a normal distribution with mean 0 and variance 1 (also called the standard normal distribution).</p>
+<p>Note that we have set the random seed here as well just to reproduce the results every time you run this code. So far, we have seen how to initialize a matrix using PyTorch. Next, let’s see how to perform matrix operations in PyTorch.</p>
+<p>&nbsp;</p>
+<h3>Matrix Operations</h3>
+<p>We will first initialize two matrices in NumPy:</p>
+<div class="oembed-gist"><script src="https://gist.github.com/PulkitS01/961cde8f6ebe63517f21af223981b132.js?file=random_numpy.py"></script><noscript>View the code on <a href="https://gist.github.com/PulkitS01/961cde8f6ebe63517f21af223981b132">Gist</a>.</noscript></div>
+<p>Next, let’s perform basic operations on them using NumPy:</p>
+<div class="oembed-gist"><script src="https://gist.github.com/PulkitS01/961cde8f6ebe63517f21af223981b132.js?file=matrix_operation_numpy.py"></script><noscript>View the code on <a href="https://gist.github.com/PulkitS01/961cde8f6ebe63517f21af223981b132">Gist</a>.</noscript></div>
+<p><a rel="lightbox" href=https://cdn.analyticsvidhya.com/wp-content/uploads/2019/09/Screenshot-from-2019-09-11-16-31-52.png><img loading="lazy" class="alignleft wp-image-57271 size-full" src="https://cdn.analyticsvidhya.com/wp-content/uploads/2019/09/Screenshot-from-2019-09-11-16-31-52.png" alt="matrix operations in numpy" width="340" height="265" srcset="https://cdn.analyticsvidhya.com/wp-content/uploads/2019/09/Screenshot-from-2019-09-11-16-31-52.png 340w, https://cdn.analyticsvidhya.com/wp-content/uploads/2019/09/Screenshot-from-2019-09-11-16-31-52-300x234.png 300w" sizes="(max-width: 340px) 100vw, 340px" /></a></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><strong>Matrix transpose is one technique which is also very useful while creating a neural network from scratch.</strong> So let’s see how we take the transpose of a matrix in NumPy:</p>
+<div class="oembed-gist"><script src="https://gist.github.com/PulkitS01/961cde8f6ebe63517f21af223981b132.js?file=transpose_numpy.py"></script><noscript>View the code on <a href="https://gist.github.com/PulkitS01/961cde8f6ebe63517f21af223981b132">Gist</a>.</noscript></div>
+<p><a rel="lightbox" href=https://cdn.analyticsvidhya.com/wp-content/uploads/2019/09/Screenshot-from-2019-09-11-16-34-14.png><img loading="lazy" class="alignleft wp-image-57272 size-full" src="https://cdn.analyticsvidhya.com/wp-content/uploads/2019/09/Screenshot-from-2019-09-11-16-34-14.png" alt="matrix transpose in numpy" width="334" height="129" srcset="https://cdn.analyticsvidhya.com/wp-content/uploads/2019/09/Screenshot-from-2019-09-11-16-34-14.png 334w, https://cdn.analyticsvidhya.com/wp-content/uploads/2019/09/Screenshot-from-2019-09-11-16-34-14-300x116.png 300w" sizes="(max-width: 334px) 100vw, 334px" /></a></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>The <em>transpose()</em> function of NumPy automatically returns the transpose of a matrix. How does this happen in PyTorch? Let&#8217;s find out:</p>
+<div class="oembed-gist"><script src="https://gist.github.com/PulkitS01/961cde8f6ebe63517f21af223981b132.js?file=random_tensor.py"></script><noscript>View the code on <a href="https://gist.github.com/PulkitS01/961cde8f6ebe63517f21af223981b132">Gist</a>.</noscript></div>
+<div class="oembed-gist"><script src="https://gist.github.com/PulkitS01/961cde8f6ebe63517f21af223981b132.js?file=matrix_operation_torch.py"></script><noscript>View the code on <a href="https://gist.github.com/PulkitS01/961cde8f6ebe63517f21af223981b132">Gist</a>.</noscript></div>
+<p><a rel="lightbox" href=https://cdn.analyticsvidhya.com/wp-content/uploads/2019/09/Screenshot-from-2019-09-11-16-36-54.png><img loading="lazy" class="alignleft wp-image-57273 size-full" src="https://cdn.analyticsvidhya.com/wp-content/uploads/2019/09/Screenshot-from-2019-09-11-16-36-54.png" alt="matrix operations in pytorch" width="309" height="262" srcset="https://cdn.analyticsvidhya.com/wp-content/uploads/2019/09/Screenshot-from-2019-09-11-16-36-54.png 309w, https://cdn.analyticsvidhya.com/wp-content/uploads/2019/09/Screenshot-from-2019-09-11-16-36-54-300x254.png 300w" sizes="(max-width: 309px) 100vw, 309px" /></a></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>Note that the <em>.mm()</em> function of PyTorch is similar to the dot product in NumPy. This function will be helpful when we create our model from scratch in PyTorch. Calculating transpose is also similar to NumPy:</p>
+<div class="oembed-gist"><script src="https://gist.github.com/PulkitS01/961cde8f6ebe63517f21af223981b132.js?file=transpose_torch.py"></script><noscript>View the code on <a href="https://gist.github.com/PulkitS01/961cde8f6ebe63517f21af223981b132">Gist</a>.</noscript></div>
+<p><a rel="lightbox" href=https://cdn.analyticsvidhya.com/wp-content/uploads/2019/09/Screenshot-from-2019-09-11-16-41-09.png><img loading="lazy" class="alignleft wp-image-57274 size-full" src="https://cdn.analyticsvidhya.com/wp-content/uploads/2019/09/Screenshot-from-2019-09-11-16-41-09.png" alt="matrix transpose in pytorch" width="317" height="142" srcset="https://cdn.analyticsvidhya.com/wp-content/uploads/2019/09/Screenshot-from-2019-09-11-16-41-09.png 317w, https://cdn.analyticsvidhya.com/wp-content/uploads/2019/09/Screenshot-from-2019-09-11-16-41-09-300x134.png 300w" sizes="(max-width: 317px) 100vw, 317px" /></a></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>Next, we will look at some other common operations like concatenating and reshaping tensors. From this point forward, I will not be comparing PyTorch against NumPy as you must have got an idea of how the codes are similar.</p>
+<p>&nbsp;</p>
+<h3>Concatenating Tensors</h3>
+<p>Let’s say we have two tensors as shown below:</p>
+<div class="oembed-gist"><script src="https://gist.github.com/PulkitS01/961cde8f6ebe63517f21af223981b132.js?file=initialize_torch.py"></script><noscript>View the code on <a href="https://gist.github.com/PulkitS01/961cde8f6ebe63517f21af223981b132">Gist</a>.</noscript></div>
+<p><a rel="lightbox" href=https://cdn.analyticsvidhya.com/wp-content/uploads/2019/09/Screenshot-from-2019-09-11-16-47-17.png><img loading="lazy" class="alignleft wp-image-57275 size-full" src="https://cdn.analyticsvidhya.com/wp-content/uploads/2019/09/Screenshot-from-2019-09-11-16-47-17.png" alt="pytorch tensors" width="143" height="97" /></a></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>What if we want to concatenate these tensors vertically? We can use the below code:</p>
+<div class="oembed-gist"><script src="https://gist.github.com/PulkitS01/961cde8f6ebe63517f21af223981b132.js?file=concate_v_torch.py"></script><noscript>View the code on <a href="https://gist.github.com/PulkitS01/961cde8f6ebe63517f21af223981b132">Gist</a>.</noscript></div>
+<p><a rel="lightbox" href=https://cdn.analyticsvidhya.com/wp-content/uploads/2019/09/Screenshot-from-2019-09-11-16-48-04.png><img loading="lazy" class="alignleft wp-image-57276 size-full" src="https://cdn.analyticsvidhya.com/wp-content/uploads/2019/09/Screenshot-from-2019-09-11-16-48-04.png" alt="vertically concatenating pytorch tensors" width="137" height="75" /></a></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>As you can see, the second tensor has been stacked below the first tensor. We can concatenate the tensors horizontally as well by setting the dim parameter to 1:</p>
+<div class="oembed-gist"><script src="https://gist.github.com/PulkitS01/961cde8f6ebe63517f21af223981b132.js?file=concate_h_torch.py"></script><noscript>View the code on <a href="https://gist.github.com/PulkitS01/961cde8f6ebe63517f21af223981b132">Gist</a>.</noscript></div>
+<p><a rel="lightbox" href=https://cdn.analyticsvidhya.com/wp-content/uploads/2019/09/Screenshot-from-2019-09-11-16-49-29.png><img loading="lazy" class="alignleft wp-image-57277 size-full" src="https://cdn.analyticsvidhya.com/wp-content/uploads/2019/09/Screenshot-from-2019-09-11-16-49-29.png" alt="horizontally concatenating pytorch tensors" width="190" height="45" /></a></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h3>Reshaping Tensors</h3>
+<p>Let’s say we have the following tensor:</p>
+<div class="oembed-gist"><script src="https://gist.github.com/PulkitS01/961cde8f6ebe63517f21af223981b132.js?file=random_tensor_pytorch.py"></script><noscript>View the code on <a href="https://gist.github.com/PulkitS01/961cde8f6ebe63517f21af223981b132">Gist</a>.</noscript></div>
+<p><a rel="lightbox" href=https://cdn.analyticsvidhya.com/wp-content/uploads/2019/09/Screenshot-from-2019-09-11-16-52-10.png><img loading="lazy" class="alignleft wp-image-57278 size-full" src="https://cdn.analyticsvidhya.com/wp-content/uploads/2019/09/Screenshot-from-2019-09-11-16-52-10.png" alt="pytorch tensor" width="384" height="72" srcset="https://cdn.analyticsvidhya.com/wp-content/uploads/2019/09/Screenshot-from-2019-09-11-16-52-10.png 384w, https://cdn.analyticsvidhya.com/wp-content/uploads/2019/09/Screenshot-from-2019-09-11-16-52-10-300x56.png 300w" sizes="(max-width: 384px) 100vw, 384px" /></a></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>We can use the <em>.reshape()</em> function and pass the required shape as a parameter. Let’s try to convert the above tensor of shape (2,4) to a tensor of shape (1,8):</p>
+<div class="oembed-gist"><script src="https://gist.github.com/PulkitS01/961cde8f6ebe63517f21af223981b132.js?file=reshape_tensor.py"></script><noscript>View the code on <a href="https://gist.github.com/PulkitS01/961cde8f6ebe63517f21af223981b132">Gist</a>.</noscript></div>
+<p><a rel="lightbox" href=https://cdn.analyticsvidhya.com/wp-content/uploads/2019/09/Screenshot-from-2019-09-11-16-53-46.png><img loading="lazy" class="alignleft wp-image-57279 size-full" src="https://cdn.analyticsvidhya.com/wp-content/uploads/2019/09/Screenshot-from-2019-09-11-16-53-46.png" alt="reshaping tensor" width="683" height="54" srcset="https://cdn.analyticsvidhya.com/wp-content/uploads/2019/09/Screenshot-from-2019-09-11-16-53-46.png 683w, https://cdn.analyticsvidhya.com/wp-content/uploads/2019/09/Screenshot-from-2019-09-11-16-53-46-300x24.png 300w, https://cdn.analyticsvidhya.com/wp-content/uploads/2019/09/Screenshot-from-2019-09-11-16-53-46-670x54.png 670w" sizes="(max-width: 683px) 100vw, 683px" /></a></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>Awesome! PyTorch also provides the functionality to convert NumPy arrays to tensors. You can use the below code to do it:</p>
+<div class="oembed-gist"><script src="https://gist.github.com/PulkitS01/961cde8f6ebe63517f21af223981b132.js?file=convert_array_to_tensor.py"></script><noscript>View the code on <a href="https://gist.github.com/PulkitS01/961cde8f6ebe63517f21af223981b132">Gist</a>.</noscript></div>
+<p><a rel="lightbox" href=https://cdn.analyticsvidhya.com/wp-content/uploads/2019/09/Screenshot-from-2019-09-11-17-01-23.png><img loading="lazy" class="alignleft wp-image-57280 size-full" src="https://cdn.analyticsvidhya.com/wp-content/uploads/2019/09/Screenshot-from-2019-09-11-17-01-23.png" alt="converting numpy array to tensor" width="177" height="103" /></a></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>With me so far? Good &#8211; let&#8217;s move on and dive deeper into the various aspects of PyTorch.</p>
+<p>&nbsp;</p>
+<h2>Common PyTorch Modules</h2>
+<h3>Autograd Module</h3>
+<p><strong>PyTorch uses a technique called automatic differentiation</strong>. It records all the operations that we are performing and replays it backward to compute gradients. This technique helps us to save time on each epoch as we are calculating the gradients on the forward pass itself.</p>
+<p>Let’s look at an example to understand how the gradients are computed:</p>
+<div class="oembed-gist"><script src="https://gist.github.com/PulkitS01/961cde8f6ebe63517f21af223981b132.js?file=tensor_init.py"></script><noscript>View the code on <a href="https://gist.github.com/PulkitS01/961cde8f6ebe63517f21af223981b132">Gist</a>.</noscript></div>
+<p><a rel="lightbox" href=https://cdn.analyticsvidhya.com/wp-content/uploads/2019/09/Screenshot-from-2019-09-11-17-15-27.png><img loading="lazy" class="alignleft wp-image-57281 size-full" src="https://cdn.analyticsvidhya.com/wp-content/uploads/2019/09/Screenshot-from-2019-09-11-17-15-27.png" alt="pytorch tensor" width="337" height="41" srcset="https://cdn.analyticsvidhya.com/wp-content/uploads/2019/09/Screenshot-from-2019-09-11-17-15-27.png 337w, https://cdn.analyticsvidhya.com/wp-content/uploads/2019/09/Screenshot-from-2019-09-11-17-15-27-300x36.png 300w" sizes="(max-width: 337px) 100vw, 337px" /></a></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>Here, we have initialized a tensor. Specifying <em>requires_grad</em> as True will make sure that the gradients are stored for this particular tensor whenever we perform some operation on it. Let’s now perform some operations on the defined tensor:</p>
+<div class="oembed-gist"><script src="https://gist.github.com/PulkitS01/961cde8f6ebe63517f21af223981b132.js?file=tensor_operation.py"></script><noscript>View the code on <a href="https://gist.github.com/PulkitS01/961cde8f6ebe63517f21af223981b132">Gist</a>.</noscript></div>
+<p><a rel="lightbox" href=https://cdn.analyticsvidhya.com/wp-content/uploads/2019/09/Screenshot-from-2019-09-11-17-17-14.png><img loading="lazy" class="alignleft wp-image-57282 size-full" src="https://cdn.analyticsvidhya.com/wp-content/uploads/2019/09/Screenshot-from-2019-09-11-17-17-14.png" alt="operations on tensor" width="639" height="42" srcset="https://cdn.analyticsvidhya.com/wp-content/uploads/2019/09/Screenshot-from-2019-09-11-17-17-14.png 639w, https://cdn.analyticsvidhya.com/wp-content/uploads/2019/09/Screenshot-from-2019-09-11-17-17-14-300x20.png 300w" sizes="(max-width: 639px) 100vw, 639px" /></a></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>First of all, we added 5 to all the elements of this tensor and then taken the mean of that tensor. We will first manually calculate the gradients and then verify that using PyTorch. We performed the following operations on <em>a</em>:</p>
+<p style="text-align: center;">b = a + 5</p>
+<p style="text-align: center;">c = mean(b) = Σ(a+5) / 4</p>
+<p>Now, the derivative of c w.r.t. a will be ¼ and hence the gradient matrix will be 0.25. Let’s verify this using PyTorch:</p>
+<div class="oembed-gist"><script src="https://gist.github.com/PulkitS01/961cde8f6ebe63517f21af223981b132.js?file=backprop.py"></script><noscript>View the code on <a href="https://gist.github.com/PulkitS01/961cde8f6ebe63517f21af223981b132">Gist</a>.</noscript></div>
+<p><a rel="lightbox" href=https://cdn.analyticsvidhya.com/wp-content/uploads/2019/09/Screenshot-from-2019-09-11-17-43-05.png><img loading="lazy" class="alignleft wp-image-57283 size-full" src="https://cdn.analyticsvidhya.com/wp-content/uploads/2019/09/Screenshot-from-2019-09-11-17-43-05.png" alt="gradients of tensor " width="238" height="48" /></a></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>As expected, we have the gradients.</p>
+<blockquote><p>The autograd module helps us to compute the gradients in the forward pass itself which saves a lot of computation time of an epoch.</p></blockquote>
+<p>&nbsp;</p>
+<h3><strong>Optim Module</strong></h3>
+<p>The Optim module in PyTorch has pre-written codes for most of the optimizers that are used while building a neural network. We just have to import them and then they can be used to build models.</p>
+<p>Let’s see how we can use an optimizer in PyTorch:</p>
+<div class="oembed-gist"><script src="https://gist.github.com/PulkitS01/961cde8f6ebe63517f21af223981b132.js?file=optim.py"></script><noscript>View the code on <a href="https://gist.github.com/PulkitS01/961cde8f6ebe63517f21af223981b132">Gist</a>.</noscript></div>
+<p>Above are the examples to get the ADAM and SGD optimizers. Most of the commonly used optimizers are supported in PyTorch and hence we do not have to write them from scratch. Some of them are:</p>
+<ul>
+<li>SGD</li>
+<li>Adam</li>
+<li>Adadelta</li>
+<li>Adagrad</li>
+<li>AdamW</li>
+<li>SparseAdam</li>
+<li>Adamax</li>
+<li>ASGD (Averaged Stochastic Gradient Descent)</li>
+<li>RMSprop</li>
+<li>Rprop (resilient backpropagation)</li>
+</ul>
+<p>&nbsp;</p>
+<h3>nn Module</h3>
+<p>The autograd module in PyTorch helps us define computation graphs as we proceed in the model. But, just using the autograd module can be low-level when we are dealing with a complex neural network.</p>
+<p>In those cases, we can make use of the nn module. This defines a set of functions, similar to the layers of a neural network, which takes the input from the previous state and produces an output.</p>
+<p>We will use all these modules and define our neural network to solve a case study in the later sections. For now, let’s build a neural network from scratch that will help us understand how PyTorch works in a practical way.</p>
+<p>&nbsp;</p>
+<h2>Building a Neural Network from Scratch in PyTorch</h2>
+<p>I hope you are comfortable with building a neural network from scratch using NumPy. If not, I highly recommend you go through <a href="https://www.analyticsvidhya.com/blog/2017/05/neural-network-from-scratch-in-python-and-r/?utm_source=blog&amp;utm_medium=introduction-to-pytorch-from-scratch" target="_blank" rel="noopener noreferrer">this article</a>.</p>
+<p>Alright &#8211; time to get started with neural networks! This is going to be a lot of fun so let&#8217;s get right down to it. We will first initialize the input and output:</p>
+<div class="oembed-gist"><script src="https://gist.github.com/PulkitS01/961cde8f6ebe63517f21af223981b132.js?file=input_output_tensor.py"></script><noscript>View the code on <a href="https://gist.github.com/PulkitS01/961cde8f6ebe63517f21af223981b132">Gist</a>.</noscript></div>
+<p><a rel="lightbox" href=https://cdn.analyticsvidhya.com/wp-content/uploads/2019/09/Screenshot-from-2019-09-11-19-40-42.png><img loading="lazy" class="alignleft wp-image-57284 size-full" src="https://cdn.analyticsvidhya.com/wp-content/uploads/2019/09/Screenshot-from-2019-09-11-19-40-42.png" alt="neural network input and output" width="219" height="129" /></a></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>Next, we will define the sigmoid function which will act as the activation function and the derivative of the sigmoid function which will help us in the backpropagation step:</p>
+<div class="oembed-gist"><script src="https://gist.github.com/PulkitS01/961cde8f6ebe63517f21af223981b132.js?file=sigmoid.py"></script><noscript>View the code on <a href="https://gist.github.com/PulkitS01/961cde8f6ebe63517f21af223981b132">Gist</a>.</noscript></div>
+<p>Next, initialize the parameters for our model including the number of epochs, learning rate, weights, biases, etc.:</p>
+<div class="oembed-gist"><script src="https://gist.github.com/PulkitS01/961cde8f6ebe63517f21af223981b132.js?file=variable_initialization.py"></script><noscript>View the code on <a href="https://gist.github.com/PulkitS01/961cde8f6ebe63517f21af223981b132">Gist</a>.</noscript></div>
+<p>Here we have randomly initialized the weights and biases using the <em>.randn()</em> function which we saw earlier. Finally, we will create a neural network. I am taking a simple model here just to make things clear. There is a single hidden layer and an input and an output layer in the model:</p>
+<div class="oembed-gist"><script src="https://gist.github.com/PulkitS01/961cde8f6ebe63517f21af223981b132.js?file=nn_pytorch_scratch.py"></script><noscript>View the code on <a href="https://gist.github.com/PulkitS01/961cde8f6ebe63517f21af223981b132">Gist</a>.</noscript></div>
+<p>In the forward propagation step, we are calculating the output and finally, in the backward propagation step, we are calculating the error. We will then update the weights and biases using this error.</p>
+<p>Let’s now look at the output from the model:</p>
+<div class="oembed-gist"><script src="https://gist.github.com/PulkitS01/961cde8f6ebe63517f21af223981b132.js?file=nn_torch_prediction.py"></script><noscript>View the code on <a href="https://gist.github.com/PulkitS01/961cde8f6ebe63517f21af223981b132">Gist</a>.</noscript></div>
+<p><a rel="lightbox" href=https://cdn.analyticsvidhya.com/wp-content/uploads/2019/09/Screenshot-from-2019-09-11-19-47-05.png><img loading="lazy" class="alignleft wp-image-57285 size-full" src="https://cdn.analyticsvidhya.com/wp-content/uploads/2019/09/Screenshot-from-2019-09-11-19-47-05.png" alt="neural network predictions" width="164" height="161" /></a></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>So, the target is 1, 1, 0 and the predicted values from the model are 0.98, 0.97 and 0.03. Not bad at all!</p>
+<p>This is how we can build and train a neural network from scratch in <a href="https://courses.analyticsvidhya.com/courses/introduction-to-pytorch-for-deeplearning?utm_source=blog&amp;utm_medium=introduction-to-pytorch-from-scratch">PyTorch</a>. Let’s now take things up a notch and dive into a case study. We will try to solve that case study using the techniques we have learned in this article.</p>
+<p>&nbsp;</p>
+<h2>Solving an Image Classification Problem using PyTorch</h2>
+<p>You&#8217;re going to love this section. This is where all our learning will culminate in a final neural network model on a real-world case study, and we will see how the PyTorch framework builds a deep learning model.</p>
+<p>Our task is to identify the type of apparel by looking at a variety of apparel images. It&#8217;s a classic <a href="http://www.analyticsvidhya.com/blog/2019/01/build-image-classification-model-10-minutes/?utm_source=blog&amp;utm_medium=introduction-to-pytorch-from-scratch" target="_blank" rel="noopener noreferrer">image classification</a> problem using computer vision. This dataset, taken from the <a href="https://datahack.analyticsvidhya.com?utm_source=blog&amp;utm_medium=introduction-to-pytorch-from-scratch" target="_blank" rel="noopener noreferrer">DataHack Platform</a>, can be downloaded <a href="https://datahack.analyticsvidhya.com/contest/practice-problem-identify-the-apparels/?utm_source=blog&amp;utm_medium=introduction-to-pytorch-from-scratch" target="_blank" rel="noopener noreferrer">here</a>.</p>
+<p>There are a total of 10 classes in which we can classify the images of apparels:</p>
+<table>
+<tbody>
+<tr>
+<td><b>Label</b></td>
+<td><b>Description</b></td>
+</tr>
+<tr>
+<td>0</td>
+<td>T-shirt/top</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Trouser</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Pullover</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Dress</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Coat</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Sandal</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Shirt</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Sneaker</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Bag</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Ankle boot</td>
+</tr>
+</tbody>
+</table>
+<p>&nbsp;</p>
+<p>There are 70,000 images, out of which 60,000 are in the training set and the remaining 10,000 in the test set. All the images are grayscale images of size (28*28).</p>
+<p>The dataset contains two folders &#8211; one each for the training set and the test set. In each folder, there is a .csv file that has the <em>id</em> of the image and its corresponding label and a folder containing the images for that particular set.</p>
+<h3>Loading the data</h3>
+<p>Let’s now get started with the code! We will first import the required libraries:</p>
+<div class="oembed-gist"><script src="https://gist.github.com/PulkitS01/961cde8f6ebe63517f21af223981b132.js?file=library_import.py"></script><noscript>View the code on <a href="https://gist.github.com/PulkitS01/961cde8f6ebe63517f21af223981b132">Gist</a>.</noscript></div>
+<p>Next, read the .csv file that we downloaded from the competition page.</p>
+<div class="oembed-gist"><script src="https://gist.github.com/PulkitS01/961cde8f6ebe63517f21af223981b132.js?file=dataset.py"></script><noscript>View the code on <a href="https://gist.github.com/PulkitS01/961cde8f6ebe63517f21af223981b132">Gist</a>.</noscript></div>
+<p><a rel="lightbox" href=https://cdn.analyticsvidhya.com/wp-content/uploads/2019/09/Screenshot-from-2019-09-12-12-36-11.png><img loading="lazy" class="alignleft wp-image-57286 size-full" src="https://cdn.analyticsvidhya.com/wp-content/uploads/2019/09/Screenshot-from-2019-09-12-12-36-11.png" alt="training file for model" width="115" height="177" /></a></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><em>id</em> here represents the name of the image (we just have to add .png as the images are in png format) and the label is the corresponding class of that particular image.</p>
+<p>Let’s now plot an image to get a better understanding of how our data looks. We will randomly select an image and plot it. So, let’s first create a random number generator:</p>
+<div class="oembed-gist"><script src="https://gist.github.com/PulkitS01/961cde8f6ebe63517f21af223981b132.js?file=random_seed.py"></script><noscript>View the code on <a href="https://gist.github.com/PulkitS01/961cde8f6ebe63517f21af223981b132">Gist</a>.</noscript></div>
+<p>Plot an image:</p>
+<div class="oembed-gist"><script src="https://gist.github.com/PulkitS01/961cde8f6ebe63517f21af223981b132.js?file=plot_image.py"></script><noscript>View the code on <a href="https://gist.github.com/PulkitS01/961cde8f6ebe63517f21af223981b132">Gist</a>.</noscript></div>
+<p><a rel="lightbox" href=https://cdn.analyticsvidhya.com/wp-content/uploads/2019/09/Screenshot-from-2019-09-12-12-50-38.png><img loading="lazy" class="aligncenter wp-image-57287 size-full" src="https://cdn.analyticsvidhya.com/wp-content/uploads/2019/09/Screenshot-from-2019-09-12-12-50-38.png" alt="sample image" width="314" height="308" srcset="https://cdn.analyticsvidhya.com/wp-content/uploads/2019/09/Screenshot-from-2019-09-12-12-50-38.png 314w, https://cdn.analyticsvidhya.com/wp-content/uploads/2019/09/Screenshot-from-2019-09-12-12-50-38-300x294.png 300w" sizes="(max-width: 314px) 100vw, 314px" /></a></p>
+<p>This is a random image from our dataset and gives us an idea of what all the other images look like. Next, we will load all the training images using the <em>train.csv</em> file. We will use a <em>for</em> loop to read all the images from the training set and finally store them as a NumPy array:</p>
+<div class="oembed-gist"><script src="https://gist.github.com/PulkitS01/961cde8f6ebe63517f21af223981b132.js?file=train_images.py"></script><noscript>View the code on <a href="https://gist.github.com/PulkitS01/961cde8f6ebe63517f21af223981b132">Gist</a>.</noscript></div>
+<p><img loading="lazy" class="alignleft size-full wp-image-57288" src="https://cdn.analyticsvidhya.com/wp-content/uploads/2019/09/Screenshot-from-2019-09-12-12-54-07.png" alt="shape of the data" width="136" height="27" /></p>
+<p>&nbsp;</p>
+<p>So, there are 60,000 images in the training set each of shape 28 x 28. We will be making a simple neural network which takes a one-dimensional input and hence we have to flatten these two-dimensional images into a single dimension:</p>
+<div class="oembed-gist"><script src="https://gist.github.com/PulkitS01/961cde8f6ebe63517f21af223981b132.js?file=train_reshape.py"></script><noscript>View the code on <a href="https://gist.github.com/PulkitS01/961cde8f6ebe63517f21af223981b132">Gist</a>.</noscript></div>
+<p><img loading="lazy" class="alignleft size-full wp-image-57289" src="https://cdn.analyticsvidhya.com/wp-content/uploads/2019/09/Screenshot-from-2019-09-12-12-55-59.png" alt="resampled data" width="102" height="27" srcset="https://cdn.analyticsvidhya.com/wp-content/uploads/2019/09/Screenshot-from-2019-09-12-12-55-59.png 102w, https://cdn.analyticsvidhya.com/wp-content/uploads/2019/09/Screenshot-from-2019-09-12-12-55-59-100x27.png 100w" sizes="(max-width: 102px) 100vw, 102px" /></p>
+<p>&nbsp;</p>
+<p>We have reshaped the images to a single dimension. So far, we have created the input set but we also need the target to train the model, right? So, let’s go ahead and create that:</p>
+<div class="oembed-gist"><script src="https://gist.github.com/PulkitS01/961cde8f6ebe63517f21af223981b132.js?file=target.py"></script><noscript>View the code on <a href="https://gist.github.com/PulkitS01/961cde8f6ebe63517f21af223981b132">Gist</a>.</noscript></div>
+<h3>Training the model</h3>
+<p>Let’s create a validation set to evaluate how well our model will perform on unseen data:</p>
+<div class="oembed-gist"><script src="https://gist.github.com/PulkitS01/961cde8f6ebe63517f21af223981b132.js?file=validation_set.py"></script><noscript>View the code on <a href="https://gist.github.com/PulkitS01/961cde8f6ebe63517f21af223981b132">Gist</a>.</noscript></div>
+<p><img loading="lazy" class="alignleft size-full wp-image-57290" src="https://cdn.analyticsvidhya.com/wp-content/uploads/2019/09/Screenshot-from-2019-09-12-14-10-17.png" alt="training and validation set" width="414" height="29" srcset="https://cdn.analyticsvidhya.com/wp-content/uploads/2019/09/Screenshot-from-2019-09-12-14-10-17.png 414w, https://cdn.analyticsvidhya.com/wp-content/uploads/2019/09/Screenshot-from-2019-09-12-14-10-17-300x21.png 300w" sizes="(max-width: 414px) 100vw, 414px" /></p>
+<p>&nbsp;</p>
+<p>We have taken 10 percent of the training data in the validation set.</p>
+<p>Now, it’s time to define our model. We will first import the Torch package and the required modules:</p>
+<div class="oembed-gist"><script src="https://gist.github.com/PulkitS01/961cde8f6ebe63517f21af223981b132.js?file=torch_library.py"></script><noscript>View the code on <a href="https://gist.github.com/PulkitS01/961cde8f6ebe63517f21af223981b132">Gist</a>.</noscript></div>
+<p>Next, define the parameters like the number of neurons in the hidden layer, the number of epochs, and the learning rate:</p>
+<div class="oembed-gist"><script src="https://gist.github.com/PulkitS01/961cde8f6ebe63517f21af223981b132.js?file=nn_parameters.py"></script><noscript>View the code on <a href="https://gist.github.com/PulkitS01/961cde8f6ebe63517f21af223981b132">Gist</a>.</noscript></div>
+<p>Finally, let’s build the model! For now, <strong>we will have a single hidden layer and choose the loss function as cross-entropy.</strong> We will be using the Adam optimizer here. Remember that there are other parameters of our model and you can change them as well.</p>
+<div class="oembed-gist"><script src="https://gist.github.com/PulkitS01/961cde8f6ebe63517f21af223981b132.js?file=model_torch.py"></script><noscript>View the code on <a href="https://gist.github.com/PulkitS01/961cde8f6ebe63517f21af223981b132">Gist</a>.</noscript></div>
+<p>Let’s now train the model for a specified number of epochs and save the training and validation loss for each epoch:</p>
+<div class="oembed-gist"><script src="https://gist.github.com/PulkitS01/961cde8f6ebe63517f21af223981b132.js?file=model_training.py"></script><noscript>View the code on <a href="https://gist.github.com/PulkitS01/961cde8f6ebe63517f21af223981b132">Gist</a>.</noscript></div>
+<p><img loading="lazy" class="size-full wp-image-57291 alignleft" src="https://cdn.analyticsvidhya.com/wp-content/uploads/2019/09/Screenshot-from-2019-09-12-14-20-03.png" alt="training losses" width="161" height="180" /></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>Here, I have printed the training losses after every second epoch and we can see that <strong>the loss is decreasing.</strong> Let’s now plot the training and validation loss to check whether they are in sync or not:</p>
+<div class="oembed-gist"><script src="https://gist.github.com/PulkitS01/961cde8f6ebe63517f21af223981b132.js?file=losses.py"></script><noscript>View the code on <a href="https://gist.github.com/PulkitS01/961cde8f6ebe63517f21af223981b132">Gist</a>.</noscript></div>
+<p><a rel="lightbox" href=https://cdn.analyticsvidhya.com/wp-content/uploads/2019/09/Screenshot-from-2019-09-12-14-20-27.png><img loading="lazy" class="aligncenter wp-image-57292 size-full" src="https://cdn.analyticsvidhya.com/wp-content/uploads/2019/09/Screenshot-from-2019-09-12-14-20-27.png" alt="training vs validation loss" width="383" height="248" srcset="https://cdn.analyticsvidhya.com/wp-content/uploads/2019/09/Screenshot-from-2019-09-12-14-20-27.png 383w, https://cdn.analyticsvidhya.com/wp-content/uploads/2019/09/Screenshot-from-2019-09-12-14-20-27-300x194.png 300w" sizes="(max-width: 383px) 100vw, 383px" /></a></p>
+<p>Perfect! We can see that the training and validation losses are in sync and the model is not overfitting. Let’s now check how accurate our model is on predicting the classes for both training and validation sets. We&#8217;ll start by looking at the training accuracy:</p>
+<div class="oembed-gist"><script src="https://gist.github.com/PulkitS01/961cde8f6ebe63517f21af223981b132.js?file=train_accuracy.py"></script><noscript>View the code on <a href="https://gist.github.com/PulkitS01/961cde8f6ebe63517f21af223981b132">Gist</a>.</noscript></div>
+<p><img loading="lazy" class="size-full wp-image-57294 alignleft" src="https://cdn.analyticsvidhya.com/wp-content/uploads/2019/09/Screenshot-from-2019-09-12-14-21-10.png" alt="training accuracy" width="148" height="28" /></p>
+<p>&nbsp;</p>
+<p>We got an accuracy of above 65% on the training set. Let’s check for the validation set as well:</p>
+<div class="oembed-gist"><script src="https://gist.github.com/PulkitS01/961cde8f6ebe63517f21af223981b132.js?file=validation_accuracy.py"></script><noscript>View the code on <a href="https://gist.github.com/PulkitS01/961cde8f6ebe63517f21af223981b132">Gist</a>.</noscript></div>
+<p><img loading="lazy" class="alignleft size-full wp-image-57295" src="https://cdn.analyticsvidhya.com/wp-content/uploads/2019/09/Screenshot-from-2019-09-12-14-22-04.png" alt="validation accuracy" width="172" height="27" /></p>
+<p>&nbsp;</p>
+<p>We have an almost similar performance on the validation set. Note that even though we have used a very simple architecture with just one hidden layer, the performance is pretty good.</p>
+<p>You can try to increase the number of hidden layers or play with other model parameters like the optimizer function, the number of hidden units, etc. and try to improve the performance further.</p>
+<h3>Getting predictions</h3>
+<p>Finally, let’s load the test images, make predictions on them and submit the predictions on the competition page. We will have to preprocess the test images in a similar way that we did for the training images:</p>
+<div class="oembed-gist"><script src="https://gist.github.com/PulkitS01/961cde8f6ebe63517f21af223981b132.js?file=test_images.py"></script><noscript>View the code on <a href="https://gist.github.com/PulkitS01/961cde8f6ebe63517f21af223981b132">Gist</a>.</noscript></div>
+<p><img loading="lazy" class="alignleft size-full wp-image-57296" src="https://cdn.analyticsvidhya.com/wp-content/uploads/2019/09/Screenshot-from-2019-09-12-14-25-31.png" alt="test images" width="129" height="27" /></p>
+<p>&nbsp;</p>
+<p>Let’s convert these images to a 1-d array now:</p>
+<div class="oembed-gist"><script src="https://gist.github.com/PulkitS01/961cde8f6ebe63517f21af223981b132.js?file=test_reshape.py"></script><noscript>View the code on <a href="https://gist.github.com/PulkitS01/961cde8f6ebe63517f21af223981b132">Gist</a>.</noscript></div>
+<p><img loading="lazy" class="alignleft size-full wp-image-57297" src="https://cdn.analyticsvidhya.com/wp-content/uploads/2019/09/Screenshot-from-2019-09-12-14-26-13.png" alt="reshaped test images" width="117" height="28" /></p>
+<p>&nbsp;</p>
+<p>Finally, we will make predictions for these images:</p>
+<div class="oembed-gist"><script src="https://gist.github.com/PulkitS01/961cde8f6ebe63517f21af223981b132.js?file=prediction.py"></script><noscript>View the code on <a href="https://gist.github.com/PulkitS01/961cde8f6ebe63517f21af223981b132">Gist</a>.</noscript></div>
+<p>Great, we now have the predictions. We will now save these predictions in the sample submission file:</p>
+<div class="oembed-gist"><script src="https://gist.github.com/PulkitS01/961cde8f6ebe63517f21af223981b132.js?file=sample_submission.py"></script><noscript>View the code on <a href="https://gist.github.com/PulkitS01/961cde8f6ebe63517f21af223981b132">Gist</a>.</noscript></div>
+<p><a rel="lightbox" href=https://cdn.analyticsvidhya.com/wp-content/uploads/2019/09/Screenshot-from-2019-09-12-14-29-45.png><img loading="lazy" class="alignleft wp-image-57298 size-full" src="https://cdn.analyticsvidhya.com/wp-content/uploads/2019/09/Screenshot-from-2019-09-12-14-29-45.png" alt="sample submission" width="135" height="177" /></a></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>Replace these labels with the predictions that we got from the model for test images:</p>
+<div class="oembed-gist"><script src="https://gist.github.com/PulkitS01/961cde8f6ebe63517f21af223981b132.js?file=prediction_file.py"></script><noscript>View the code on <a href="https://gist.github.com/PulkitS01/961cde8f6ebe63517f21af223981b132">Gist</a>.</noscript></div>
+<p><a rel="lightbox" href=https://cdn.analyticsvidhya.com/wp-content/uploads/2019/09/Screenshot-from-2019-09-12-14-31-05.png><img loading="lazy" class="alignleft wp-image-57299 size-full" src="https://cdn.analyticsvidhya.com/wp-content/uploads/2019/09/Screenshot-from-2019-09-12-14-31-05.png" alt="predictions" width="131" height="184" /></a></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>Save this sample submission file and make a submission on the <a href="https://datahack.analyticsvidhya.com/contest/practice-problem-identify-the-apparels/?utm_source=blog&amp;utm_medium=introduction-to-pytorch-from-scratch" target="_blank" rel="noopener noreferrer">competition page</a>:</p>
+<div class="oembed-gist"><script src="https://gist.github.com/PulkitS01/961cde8f6ebe63517f21af223981b132.js?file=saving_prediction.py"></script><noscript>View the code on <a href="https://gist.github.com/PulkitS01/961cde8f6ebe63517f21af223981b132">Gist</a>.</noscript></div>
+<p>After submitting these predictions, we get an accuracy of <strong>64.625%</strong> on the leaderboard. You can use this accuracy as a benchmark and try to improve on this by playing around with the parameters of the above model.</p>
+<p>&nbsp;</p>
+<h2>End Notes</h2>
+<p>In this article, we understood the basic concepts of <a href="https://courses.analyticsvidhya.com/courses/introduction-to-pytorch-for-deeplearning?utm_source=blog&amp;utm_medium=introduction-to-pytorch-from-scratch" target="_blank" rel="noopener noreferrer">PyTorch</a> including how it&#8217;s quite intuitively similar to NumPy. We also saw how to build a neural network from scratch using.</p>
+<p>We then took a case study where we solved an image classification problem and got a benchmark score of around 65% on the leaderboard. I encourage you to try and improve this score by changing different parameters of the model, including the optimizer function, increasing the number of hidden layers, tuning the number of hidden units, etc.</p>
+<p>This article is the start of our journey with PyTorch. In the <a href="https://www.analyticsvidhya.com/blog/2019/10/building-image-classification-models-cnn-pytorch/?utm_source=blog&amp;utm_medium=introduction-to-pytorch-from-scratch">upcoming article</a>, we will learn how to build convolutional neural networks in PyTorch, model checkpointing techniques, and how to deploy trained deep learning models using PyTorch. So stay tuned!</p>
+<p>As always, if you have any doubts related to this article, feel free to post them in the comments section below. And make sure you check out our course if you&#8217;re interested in computer vision and deep learning:</p>
+<ul>
+<li><a href="https://courses.analyticsvidhya.com/courses/computer-vision-using-deep-learning-version2?utm_source=blog&amp;utm_medium=introduction-to-pytorch-from-scratch" target="_blank" rel="noopener noreferrer">Computer Vision using Deep Learning 2.0</a></li>
+</ul>
+You can also read this article on our Mobile APP <a href='//play.google.com/store/apps/details?id=com.analyticsvidhya.android&utm_source=blog_article&utm_campaign=blog&pcampaignid=MKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1' onclick="ga('send', {'hitType': 'event', 'eventCategory': 'app-blog', 'eventAction': 'clicked'});"><img alt='Get it on Google Play' src='//play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png' style='height:80px'></a><a href='https://apps.apple.com/us/app/analytics-vidhya/id1470025572'><img src='https://cdn.analyticsvidhya.com/wp-content/uploads/2020/06/download-appstore-apple.png'></a>
+<div id='jp-relatedposts' class='jp-relatedposts'>
+<h3>Related Articles</h3>
+</div><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+<ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-5229672700622157" data-ad-slot="7938033629"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+<footer class="clearfix both">
+<div class="meta-tags clearfix">
+Tags : <a href="https://www.analyticsvidhya.com/blog/tag/artificial-neural-network/" rel="tag">Artificial Neural Network</a><span>,</span> <a href="https://www.analyticsvidhya.com/blog/tag/deep-learning/" rel="tag">deep learning</a><span>,</span> <a href="https://www.analyticsvidhya.com/blog/tag/python/" rel="tag">python</a><span>,</span> <a href="https://www.analyticsvidhya.com/blog/tag/pytorch/" rel="tag">pytorch</a><span>,</span> <a href="https://www.analyticsvidhya.com/blog/tag/pytorch-python/" rel="tag">pytorch python</a> </div>
+<div class="next-prev clearfix">
+<a class="next" href="https://www.analyticsvidhya.com/blog/2019/09/4-methods-optimize-python-code-data-science/" rel="next"><i class="tm-chevron-right"></i><div class="np-caption">Next Article</div><h3 class="np-title">4 Unique Methods to Optimize your Python Code for Data Science</h3></a> <i class="tm-3dots"></i>
+<a class="prev" href="https://www.analyticsvidhya.com/blog/2019/09/9-powerful-tricks-for-working-image-data-skimage-python/" rel="prev"><i class="tm-chevron-left"></i><div class="np-caption">Previous Article</div><h3 class="np-title">9 Powerful Tips and Tricks for Working with Image Data using skimage in Python</h3></a> </div>
+<div class="meta-author" itemprop="author" itemscope itemtype="https://schema.org/Person">
+<div class="author-thumb">
+<a href="https://www.analyticsvidhya.com/blog/author/pulkits/">
+<img alt='' src='https://secure.gravatar.com/avatar/eed74e736d0a3795af0cc24f161a8a24?s=200&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/eed74e736d0a3795af0cc24f161a8a24?s=400&#038;d=mm&#038;r=g 2x' class='avatar avatar-200 photo' height='200' width='200' loading='lazy' /> </a>
+</div>
+<div class="author-info">
+<h3 class="author-name">
+<a itemprop="name" content="Pulkit Sharma" href="https://www.analyticsvidhya.com/blog/author/pulkits/">Pulkit Sharma</a>
+</h3>
+<div class="author-desc">
+<span class="fn">My research interests lies in the field of Machine Learning and Deep Learning. Possess an enthusiasm for learning new skills and technologies.</span>
+</div>
+<ul class="author-links">
+</ul>
+</div>
+</div>
+</footer>
+</article> 
+
+
+<div class="row">
+<div class="col-sm-12">
+<div class="message-article">This article is quite old and you might not get a prompt response from the author. We request you to post this comment on Analytics Vidhya's <a href="https://discuss.analyticsvidhya.com/"><b>Discussion portal</b></a> to get your queries resolved</div> </div>
+</div>
+<div class="comment-wrap">
+
+<div class="row">
+<div class="col-sm-12">
+<div class="block-cap" id="comments">
+<h3 id="comment">10 Comments</h3>
+</div>
+</div>
+</div>
+<div class="navigation">
+<div class="alignleft"></div>
+<div class="alignright"></div>
+</div>
+<ul class="comment-list" id="show-comments">
+<li class="comment even thread-even depth-1 parent" id="comment-159723">
+<div id="div-comment-159723" class="comment-body">
+<div class="comment-author vcard">
+<img alt='' src='https://secure.gravatar.com/avatar/59fd8377fa198d661afad07d84690388?s=100&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/59fd8377fa198d661afad07d84690388?s=200&#038;d=mm&#038;r=g 2x' class='avatar avatar-100 photo' height='100' width='100' loading='lazy' /> <cite class="fn">Anna</cite> <span class="says">says:</span> </div>
+<div class="comment-meta commentmetadata"><a href="https://www.analyticsvidhya.com/blog/2019/09/introduction-to-pytorch-from-scratch/#comment-159723">
+September 26, 2019 at 11:44 am </a>
+</div>
+<p>Awesome post, thanks for sharing.</p>
+<div class="reply"><a rel='nofollow' class='comment-reply-link' href='#comment-159723' data-commentid="159723" data-postid="57258" data-belowelement="div-comment-159723" data-respondelement="respond" data-replyto="Reply to Anna" aria-label='Reply to Anna'>Reply</a></div>
+</div>
+<ul class="children">
+<li class="comment byuser comment-author-pulkits bypostauthor odd alt depth-2" id="comment-159724">
+<div id="div-comment-159724" class="comment-body">
+<div class="comment-author vcard">
+<img alt='' src='https://secure.gravatar.com/avatar/eed74e736d0a3795af0cc24f161a8a24?s=100&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/eed74e736d0a3795af0cc24f161a8a24?s=200&#038;d=mm&#038;r=g 2x' class='avatar avatar-100 photo' height='100' width='100' loading='lazy' /> <cite class="fn">Pulkit Sharma</cite> <span class="says">says:</span> </div>
+<div class="comment-meta commentmetadata"><a href="https://www.analyticsvidhya.com/blog/2019/09/introduction-to-pytorch-from-scratch/#comment-159724">
+September 26, 2019 at 11:49 am </a>
+</div>
+<p>Glad you liked it Anna!!</p>
+<div class="reply"><a rel='nofollow' class='comment-reply-link' href='#comment-159724' data-commentid="159724" data-postid="57258" data-belowelement="div-comment-159724" data-respondelement="respond" data-replyto="Reply to Pulkit Sharma" aria-label='Reply to Pulkit Sharma'>Reply</a></div>
+</div>
+</li>
+</ul>
+</li>
+<li class="comment even thread-odd thread-alt depth-1 parent" id="comment-159791">
+<div id="div-comment-159791" class="comment-body">
+<div class="comment-author vcard">
+<img alt='' src='https://secure.gravatar.com/avatar/a5f646b22ff236a2a8d33502099d88b7?s=100&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/a5f646b22ff236a2a8d33502099d88b7?s=200&#038;d=mm&#038;r=g 2x' class='avatar avatar-100 photo' height='100' width='100' loading='lazy' /> <cite class="fn">Rajat</cite> <span class="says">says:</span> </div>
+<div class="comment-meta commentmetadata"><a href="https://www.analyticsvidhya.com/blog/2019/09/introduction-to-pytorch-from-scratch/#comment-159791">
+October 4, 2019 at 5:40 am </a>
+</div>
+<p>I don&#8217;t how to thank you Pulkit. So much informative and well-explained article. Keep up the good work.</p>
+<div class="reply"><a rel='nofollow' class='comment-reply-link' href='#comment-159791' data-commentid="159791" data-postid="57258" data-belowelement="div-comment-159791" data-respondelement="respond" data-replyto="Reply to Rajat" aria-label='Reply to Rajat'>Reply</a></div>
+</div>
+<ul class="children">
+<li class="comment byuser comment-author-pulkits bypostauthor odd alt depth-2" id="comment-159794">
+<div id="div-comment-159794" class="comment-body">
+<div class="comment-author vcard">
+<img alt='' src='https://secure.gravatar.com/avatar/eed74e736d0a3795af0cc24f161a8a24?s=100&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/eed74e736d0a3795af0cc24f161a8a24?s=200&#038;d=mm&#038;r=g 2x' class='avatar avatar-100 photo' height='100' width='100' loading='lazy' /> <cite class="fn">Pulkit Sharma</cite> <span class="says">says:</span> </div>
+<div class="comment-meta commentmetadata"><a href="https://www.analyticsvidhya.com/blog/2019/09/introduction-to-pytorch-from-scratch/#comment-159794">
+October 4, 2019 at 12:18 pm </a>
+</div>
+<p>Glad you liked it Rajat!</p>
+<div class="reply"><a rel='nofollow' class='comment-reply-link' href='#comment-159794' data-commentid="159794" data-postid="57258" data-belowelement="div-comment-159794" data-respondelement="respond" data-replyto="Reply to Pulkit Sharma" aria-label='Reply to Pulkit Sharma'>Reply</a></div>
+</div>
+</li>
+</ul>
+</li>
+<li class="comment even thread-even depth-1 parent" id="comment-159917">
+<div id="div-comment-159917" class="comment-body">
+<div class="comment-author vcard">
+<img alt='' src='https://secure.gravatar.com/avatar/f5080c2008439fdb96c3caa9583d4a60?s=100&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/f5080c2008439fdb96c3caa9583d4a60?s=200&#038;d=mm&#038;r=g 2x' class='avatar avatar-100 photo' height='100' width='100' loading='lazy' /> <cite class="fn"><a href='https://rottenhayato.com' rel='external nofollow ugc' class='url'>Hayato Kawajiri</a></cite> <span class="says">says:</span> </div>
+<div class="comment-meta commentmetadata"><a href="https://www.analyticsvidhya.com/blog/2019/09/introduction-to-pytorch-from-scratch/#comment-159917">
+October 17, 2019 at 2:42 pm </a>
+</div>
+<p>Amazing article, broadens as once seemingly narrow concept and gives food for thought. Thank you.</p>
+<div class="reply"><a rel='nofollow' class='comment-reply-link' href='#comment-159917' data-commentid="159917" data-postid="57258" data-belowelement="div-comment-159917" data-respondelement="respond" data-replyto="Reply to Hayato Kawajiri" aria-label='Reply to Hayato Kawajiri'>Reply</a></div>
+</div>
+<ul class="children">
+<li class="comment byuser comment-author-pulkits bypostauthor odd alt depth-2" id="comment-159918">
+<div id="div-comment-159918" class="comment-body">
+<div class="comment-author vcard">
+<img alt='' src='https://secure.gravatar.com/avatar/eed74e736d0a3795af0cc24f161a8a24?s=100&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/eed74e736d0a3795af0cc24f161a8a24?s=200&#038;d=mm&#038;r=g 2x' class='avatar avatar-100 photo' height='100' width='100' loading='lazy' /> <cite class="fn">Pulkit Sharma</cite> <span class="says">says:</span> </div>
+<div class="comment-meta commentmetadata"><a href="https://www.analyticsvidhya.com/blog/2019/09/introduction-to-pytorch-from-scratch/#comment-159918">
+October 17, 2019 at 2:44 pm </a>
+</div>
+<p>Thank you for your feedback Hayato!</p>
+<div class="reply"><a rel='nofollow' class='comment-reply-link' href='#comment-159918' data-commentid="159918" data-postid="57258" data-belowelement="div-comment-159918" data-respondelement="respond" data-replyto="Reply to Pulkit Sharma" aria-label='Reply to Pulkit Sharma'>Reply</a></div>
+</div>
+</li>
+</ul>
+</li>
+<li class="comment even thread-odd thread-alt depth-1 parent" id="comment-160353">
+<div id="div-comment-160353" class="comment-body">
+<div class="comment-author vcard">
+<img alt='' src='https://secure.gravatar.com/avatar/7b3e105fea6d39fba3c5fd554248d877?s=100&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/7b3e105fea6d39fba3c5fd554248d877?s=200&#038;d=mm&#038;r=g 2x' class='avatar avatar-100 photo' height='100' width='100' loading='lazy' /> <cite class="fn">purna</cite> <span class="says">says:</span> </div>
+<div class="comment-meta commentmetadata"><a href="https://www.analyticsvidhya.com/blog/2019/09/introduction-to-pytorch-from-scratch/#comment-160353">
+December 6, 2019 at 4:20 pm </a>
+</div>
+<p>I think &#8220;output = sigmoid(output_layer_input1)&#8221; , this should be &#8221; output = sigmoid(output_layer_input). please correct me if I am wrong. Thank you</p>
+<div class="reply"><a rel='nofollow' class='comment-reply-link' href='#comment-160353' data-commentid="160353" data-postid="57258" data-belowelement="div-comment-160353" data-respondelement="respond" data-replyto="Reply to purna" aria-label='Reply to purna'>Reply</a></div>
+</div>
+<ul class="children">
+<li class="comment byuser comment-author-pulkits bypostauthor odd alt depth-2" id="comment-160354">
+<div id="div-comment-160354" class="comment-body">
+<div class="comment-author vcard">
+<img alt='' src='https://secure.gravatar.com/avatar/eed74e736d0a3795af0cc24f161a8a24?s=100&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/eed74e736d0a3795af0cc24f161a8a24?s=200&#038;d=mm&#038;r=g 2x' class='avatar avatar-100 photo' height='100' width='100' loading='lazy' /> <cite class="fn">Pulkit Sharma</cite> <span class="says">says:</span> </div>
+<div class="comment-meta commentmetadata"><a href="https://www.analyticsvidhya.com/blog/2019/09/introduction-to-pytorch-from-scratch/#comment-160354">
+December 6, 2019 at 4:41 pm </a>
+</div>
+<p>Hi Purna,<br />
+Yes you are correct. Thank you for pointing it out. I have updated the same in the article.</p>
+<div class="reply"><a rel='nofollow' class='comment-reply-link' href='#comment-160354' data-commentid="160354" data-postid="57258" data-belowelement="div-comment-160354" data-respondelement="respond" data-replyto="Reply to Pulkit Sharma" aria-label='Reply to Pulkit Sharma'>Reply</a></div>
+</div>
+</li>
+</ul>
+</li>
+<li class="comment even thread-even depth-1 parent" id="comment-160796">
+<div id="div-comment-160796" class="comment-body">
+<div class="comment-author vcard">
+<img alt='' src='https://secure.gravatar.com/avatar/2ecb0ac0cea8a5c820b00964c96d040e?s=100&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/2ecb0ac0cea8a5c820b00964c96d040e?s=200&#038;d=mm&#038;r=g 2x' class='avatar avatar-100 photo' height='100' width='100' loading='lazy' /> <cite class="fn">Vol</cite> <span class="says">says:</span> </div>
+<div class="comment-meta commentmetadata"><a href="https://www.analyticsvidhya.com/blog/2019/09/introduction-to-pytorch-from-scratch/#comment-160796">
+February 13, 2020 at 9:50 am </a>
+</div>
+<p>This is a very well written post. Excellent attempt to communicate concepts for beginners.</p>
+<p>Please take a look at the derivative of sigmoid function again.</p>
+<p><a rel="nofollow" href="https://math.stackexchange.com/questions/78575/derivative-of-sigmoid-function-sigma-x-frac11e-x" rel="nofollow ugc">https://math.stackexchange.com/questions/78575/derivative-of-sigmoid-function-sigma-x-frac11e-x</a></p>
+<div class="reply"><a rel='nofollow' class='comment-reply-link' href='#comment-160796' data-commentid="160796" data-postid="57258" data-belowelement="div-comment-160796" data-respondelement="respond" data-replyto="Reply to Vol" aria-label='Reply to Vol'>Reply</a></div>
+</div>
+<ul class="children">
+<li class="comment byuser comment-author-pulkits bypostauthor odd alt depth-2" id="comment-160799">
+<div id="div-comment-160799" class="comment-body">
+<div class="comment-author vcard">
+<img alt='' src='https://secure.gravatar.com/avatar/eed74e736d0a3795af0cc24f161a8a24?s=100&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/eed74e736d0a3795af0cc24f161a8a24?s=200&#038;d=mm&#038;r=g 2x' class='avatar avatar-100 photo' height='100' width='100' loading='lazy' /> <cite class="fn">Pulkit Sharma</cite> <span class="says">says:</span> </div>
+<div class="comment-meta commentmetadata"><a href="https://www.analyticsvidhya.com/blog/2019/09/introduction-to-pytorch-from-scratch/#comment-160799">
+February 13, 2020 at 11:29 am </a>
+</div>
+<p>Hi,<br />
+That&#8217;s a good catch. Thank you for pointing it out. The derivative of a sigmoid function is sigmoid(x) * [1 &#8211; sigmoid(x)]. I have updated the same in the article.</p>
+<div class="reply"><a rel='nofollow' class='comment-reply-link' href='#comment-160799' data-commentid="160799" data-postid="57258" data-belowelement="div-comment-160799" data-respondelement="respond" data-replyto="Reply to Pulkit Sharma" aria-label='Reply to Pulkit Sharma'>Reply</a></div>
+</div>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div id="write-comment"></div>
+<script>
+var hash = window.location.hash;
+if(hash!=""){
+jQuery.ajax ({
+	type: 'GET',
+    url: 'https://www.analyticsvidhya.com/comments-form/show-comments.php?rand='+Math.random()+'&id=57258',
+    success: function (data)
+	{
+		jQuery('#show-comments').html(data);
+	},
+	error: function (e) {
+		console.log(e);
+	}
+});
+}
+</script>
+</div>
+</div>
+<div class="col-sm-4 "><div class="sidebar"><div id="text-24" class="widget clearfix widget_text"> <div class="textwidget"><div id="time-series-disp"></div></div>
+</div><div id="text-44" class="widget clearfix widget_text"> <div class="textwidget"><p><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><br />
+<br />
+<ins class="adsbygoogle" style="display: inline-block; width: 336px; height: 280px;" data-ad-client="ca-pub-5229672700622157" data-ad-slot="1620249624"></ins><br />
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></p>
+</div>
+</div><div id="wmp_widget-2" class="widget clearfix widget_wmp_widget"><div class="widget-title"><div class="block-cap"><h3>Popular posts</h3></div></div><ul class="wp-most-popular">
+<li class="post-71423posttype-poststatus-publishformat-standardhas-post-thumbnailcategory-advancedcategory-algorithmcategory-deep-learningcategory-machine-learningcategory-python-2category-unstructured-datacategory-unsupervisedtag-blogathon">
+<a href="https://www.analyticsvidhya.com/blog/2020/10/lets-improve-the-model-accuracy-of-imbalanced-covid-19-mortality-prediction-using-generative-adversarial-networks-gan-based-oversampling-technique/" title="Boost Model Accuracy of Imbalanced COVID-19 Mortality Prediction Using GAN-based Oversampling Technique">
+Boost Model Accuracy of Imbalanced COVID-19 Mortality Prediction Using GAN-based Oversampling Technique
+</a>
+</li>
+<li class="post-72816posttype-poststatus-publishformat-standardhas-post-thumbnailcategory-advancedcategory-nlpcategory-python-2category-social-mediacategory-techniquecategory-textcategory-unstructured-datacategory-unsupervisedtag-barttag-berttag-blogathontag-gpt-2tag-pre-trained-modelstag-t-5tag-twitter-data-analysistag-xlnet">
+<a href="https://www.analyticsvidhya.com/blog/2020/11/summarize-twitter-live-data-using-pretrained-nlp-models/" title="Summarize Twitter Live data using Pretrained NLP models">
+Summarize Twitter Live data using Pretrained NLP models
+</a>
+</li>
+<li class="post-71174posttype-poststatus-publishformat-standardhas-post-thumbnailcategory-beginnercategory-programmingcategory-python-2category-techniquetag-class-methodstag-instance-methodstag-methodstag-programmingtag-pythontag-python-methodstag-static-methods">
+<a href="https://www.analyticsvidhya.com/blog/2020/11/basic-concepts-object-oriented-programming-types-methods-python/" title="Methods in Python &#8211; A Key Concept of Object Oriented Programming">
+Methods in Python &#8211; A Key Concept of Object Oriented Programming
+</a>
+</li>
+<li class="post-32906posttype-poststatus-publishformat-standardhas-post-thumbnailcategory-business-analyticscategory-careercategory-intermediatecategory-machine-learningcategory-rcategory-skilltesttag-clusteringtag-clustering-analysistag-clustering-skilltest-solutiontag-clustering-techniquestag-hierarchical-clusteringtag-k-means-clusteringtag-non-hierarchical-clusteringtag-portfolio-clusteringtag-two-step-clustering">
+<a href="https://www.analyticsvidhya.com/blog/2017/02/test-data-scientist-clustering/" title="40 Questions to test a Data Scientist on Clustering Techniques (Skill test Solution)">
+40 Questions to test a Data Scientist on Clustering Techniques (Skill test Solution)
+</a>
+</li>
+<li class="post-72525posttype-poststatus-publishformat-standardhas-post-thumbnailcategory-intermediatecategory-python-2category-reinforcement-learning-2category-stock-tradingcategory-time-seriescategory-unstructured-datacategory-use-casestag-blogathontag-pythontag-reinforcement-learningtag-stock-pricetag-stock-price-prediction">
+<a href="https://www.analyticsvidhya.com/blog/2020/10/reinforcement-learning-stock-price-prediction/" title="Predicting Stock Prices using Reinforcement Learning (with Python Code!)">
+Predicting Stock Prices using Reinforcement Learning (with Python Code!)
+</a>
+</li>
+<li class="post-72910posttype-poststatus-publishformat-standardhas-post-thumbnailcategory-algorithmcategory-beginnercategory-machine-learningcategory-mathscategory-python-2category-structured-datacategory-supervisedtag-blogathontag-decision-treetag-entropytag-information-gain">
+<a href="https://www.analyticsvidhya.com/blog/2020/11/entropy-a-key-concept-for-all-data-science-beginners/" title="Entropy &#8211; A Key Concept for All  Data Science Beginners">
+Entropy &#8211; A Key Concept for All Data Science Beginners
+</a>
+</li>
+<li class="post-72883posttype-poststatus-publishformat-standardhas-post-thumbnailcategory-advancedcategory-deep-learningcategory-python-2tag-blogathontag-cudatag-cudnntag-nvidia-gputag-tensorflow">
+<a href="https://www.analyticsvidhya.com/blog/2020/11/how-to-download-install-and-use-nvidia-gpu-for-tensorflow-on-windows/" title="How to Download, Install and Use Nvidia GPU for Training Deep Neural Networks by TensorFlow on Windows Seamlessly">
+How to Download, Install and Use Nvidia GPU for Training Deep Neural Networks by TensorFlow on Windows Seamlessly
+</a>
+</li>
+<li class="post-35058posttype-poststatus-publishformat-standardhas-post-thumbnailcategory-careercategory-intermediatecategory-interviewscategory-machine-learningcategory-skilltesttag-data-science-interviewstag-essential-machine-learning-skillstag-machine-learningtag-machine-learning-algorithmtag-machine-learning-application">
+<a href="https://www.analyticsvidhya.com/blog/2017/04/40-questions-test-data-scientist-machine-learning-solution-skillpower-machine-learning-datafest-2017/" title="40 Questions to test a data scientist on Machine Learning [Solution: SkillPower – Machine Learning, DataFest 2017]">
+40 Questions to test a data scientist on Machine Learning [Solution: SkillPower – Machine Learning, DataFest 2017]
+</a>
+</li>
+</ul></div><div id="text-23" class="widget clearfix widget_text"> <div class="textwidget"><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+<ins class="adsbygoogle" style="display:inline-block;width:336px;height:280px" data-ad-client="ca-pub-5229672700622157" data-ad-slot="1620249624"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></div>
+</div><div id="maha_recent_posts-3" class="widget clearfix widget_recents"><div class="widget-title"><div class="block-cap"><h3>Recent Posts</h3></div></div>
+<article class="post-box-small recent-item clearfix">
+<div class="thumb-wrap zoom-zoom three">
+<a href="https://www.analyticsvidhya.com/blog/2020/11/how-to-transition-data-science-different-backgrounds/" rel="bookmark" title="8 Thoughts on How to Transition into Data Science from Different Backgrounds">
+<img width="83" height="63" class="entry-thumb zoom-it three" src="https://cdn.analyticsvidhya.com/wp-content/uploads/2019/06/Transition-to-data-science-83x63.jpg" alt="8 Thoughts on How to Transition into Data Science from Different Backgrounds" title="8 Thoughts on How to Transition into Data Science from Different Backgrounds" />
+</a>
+</div>
+<div class="box-small-wrap">
+<h3 class="entry-title short-bottom">
+<a href="https://www.analyticsvidhya.com/blog/2020/11/how-to-transition-data-science-different-backgrounds/" rel="bookmark" title="8 Thoughts on How to Transition into Data Science from Different Backgrounds">
+8 Thoughts on How to Transition into Data Science from Different Backgrounds </a>
+</h3>
+<meta content="8 Thoughts on How to Transition into Data Science from Different Backgrounds" />
+<div class="meta-info">
+<time class="entry-date" datetime="2020-11-13T15:00:00+05:30">
+November 13, 2020 </time>
+</div>
+</div>
+</article>
+<article class="post-box-small recent-item clearfix">
+<div class="thumb-wrap zoom-zoom three">
+<a href="https://www.analyticsvidhya.com/blog/2020/11/fine-grained-sentiment-analysis-of-smartphone-review/" rel="bookmark" title="Fine-Grained Sentiment Analysis of Smartphone Review">
+<img width="83" height="63" class="entry-thumb zoom-it three" src="https://cdn.analyticsvidhya.com/wp-content/uploads/2020/08/Sentiment-Analysis-83x63.jpg" alt="Fine-Grained Sentiment Analysis of Smartphone Review" title="Fine-Grained Sentiment Analysis of Smartphone Review" />
+</a>
+</div>
+<div class="box-small-wrap">
+<h3 class="entry-title short-bottom">
+<a href="https://www.analyticsvidhya.com/blog/2020/11/fine-grained-sentiment-analysis-of-smartphone-review/" rel="bookmark" title="Fine-Grained Sentiment Analysis of Smartphone Review">
+Fine-Grained Sentiment Analysis of Smartphone Review </a>
+</h3>
+<meta content="Fine-Grained Sentiment Analysis of Smartphone Review" />
+<div class="meta-info">
+<time class="entry-date" datetime="2020-11-13T11:48:59+05:30">
+November 13, 2020 </time>
+</div>
+</div>
+</article>
+<article class="post-box-small recent-item clearfix">
+<div class="thumb-wrap zoom-zoom three">
+<a href="https://www.analyticsvidhya.com/blog/2020/11/14-must-have-skills-to-become-a-data-scientist-with-resources/" rel="bookmark" title="14 Must-Have Skills to Become a Data Scientist (with Resources!)">
+<img width="83" height="63" class="entry-thumb zoom-it three" src="https://cdn.analyticsvidhya.com/wp-content/uploads/2020/11/skills-to-become-a-Data-Scientist-83x63.jpg" alt="14 Must-Have Skills to Become a Data Scientist (with Resources!)" title="14 Must-Have Skills to Become a Data Scientist (with Resources!)" />
+</a>
+</div>
+<div class="box-small-wrap">
+<h3 class="entry-title short-bottom">
+<a href="https://www.analyticsvidhya.com/blog/2020/11/14-must-have-skills-to-become-a-data-scientist-with-resources/" rel="bookmark" title="14 Must-Have Skills to Become a Data Scientist (with Resources!)">
+14 Must-Have Skills to Become a Data Scientist (with Resources!) </a>
+</h3>
+<meta content="14 Must-Have Skills to Become a Data Scientist (with Resources!)" />
+ <div class="meta-info">
+<time class="entry-date" datetime="2020-11-12T15:50:03+05:30">
+November 12, 2020 </time>
+</div>
+</div>
+</article>
+<article class="post-box-small recent-item clearfix">
+<div class="thumb-wrap zoom-zoom three">
+<a href="https://www.analyticsvidhya.com/blog/2020/11/kaggle-grandmaster-series-exclusive-interview-with-2x-kaggle-grandmaster-firat-gonen/" rel="bookmark" title="Kaggle Grandmaster Series &#8211; Exclusive Interview with 2x Kaggle Grandmaster Firat Gonen">
+<img width="83" height="63" class="entry-thumb zoom-it three" src="https://cdn.analyticsvidhya.com/wp-content/uploads/2020/11/Exclusive-interview-with-Firat-Gonen-83x63.jpg" alt="Kaggle Grandmaster Series &#8211; Exclusive Interview with 2x Kaggle Grandmaster Firat Gonen" title="Kaggle Grandmaster Series &#8211; Exclusive Interview with 2x Kaggle Grandmaster Firat Gonen" />
+</a>
+</div>
+<div class="box-small-wrap">
+<h3 class="entry-title short-bottom">
+<a href="https://www.analyticsvidhya.com/blog/2020/11/kaggle-grandmaster-series-exclusive-interview-with-2x-kaggle-grandmaster-firat-gonen/" rel="bookmark" title="Kaggle Grandmaster Series &#8211; Exclusive Interview with 2x Kaggle Grandmaster Firat Gonen">
+Kaggle Grandmaster Series &#8211; Exclusive Interview with 2x Kaggle Grandmaster Firat Gonen </a>
+</h3>
+<meta content="Kaggle Grandmaster Series &#8211; Exclusive Interview with 2x Kaggle Grandmaster Firat Gonen" />
+<div class="meta-info">
+<time class="entry-date" datetime="2020-11-12T15:49:06+05:30">
+November 12, 2020 </time>
+</div>
+</div>
+</article>
+</div><div id="text-42" class="widget clearfix widget_text"> <div class="textwidget"><p><a href="https://courses.analyticsvidhya.com/pages/all-free-courses/?utm_source=Sticky_banner1&#038;utm_medium=display&#038;utm_campaign=Free_Certified_Courses_September" target="_blank" rel="noopener noreferrer"><img src="https://cdn.analyticsvidhya.com/wp-content/uploads/2020/10/ds-dl-ml-1.png" /></a></p>
+</div>
+</div><div id="text-45" class="widget clearfix widget_text"><div class="widget-title"><div class="block-cap"><h3>Jobs &#038; Internships</h3></div></div> <div class="textwidget"><div id="jobs-show"></div>
+</div>
+</div></div></div> </div>
+</div>
+</div>
+</div>
+
+</div>
+
+<footer class="footer-bg">
+<div class="container">
+<div class="row">
+<div class="col-lg-4 col-md-4 col-sm-4 col-12">
+<a href="https://www.analyticsvidhya.com/">
+<img src="https://www.analyticsvidhya.com/wp-content/themes/Curated/custom/images/av-white2.png" alt="Analytics Vidhya" width="85%">
+</a>
+<div class="download-av-app">
+<h6 class="d-flex align-items-center download-text-center">Download App</h6>
+<a href="https://play.google.com/store/apps/details?id=com.analyticsvidhya.android" target="_blank">
+<img src="https://www.analyticsvidhya.com/wp-content/themes/Curated/custom/images/play_store_icon.svg" alt="play store">
+</a>
+<a href="https://apps.apple.com/us/app/analytics-vidhya/id1470025572" target="_blank">
+<img src="https://www.analyticsvidhya.com/wp-content/themes/Curated/custom/images/app_Store_icon.svg" alt="App Store">
+</a>
+</div>
+</div>
+<div class="col-lg-8 col-md-8 col-sm-8 col-12">
+<div class="av-links">
+<ul>
+<li>
+<h6>Analytics Vidhya</h6>
+<a href="https://www.analyticsvidhya.com/about-me/">About Us</a>
+<a href="https://www.analyticsvidhya.com/about-me/team/">Our Team</a>
+<a href="https://www.analyticsvidhya.com/about-me/career-analytics-vidhya/">Careers</a>
+<a href="https://www.analyticsvidhya.com/contact/">Contact us</a>
+</li>
+<li>
+<h6>Data Science</h6>
+<a href="https://www.analyticsvidhya.com/blog/">Blog</a>
+<a href="https://datahack.analyticsvidhya.com/">Hackathon</a>
+<a href="https://discuss.analyticsvidhya.com/">Discussions</a>
+<a href="https://www.analyticsvidhya.com/jobs/">Apply Jobs</a>
+</li>
+<li>
+<h6>Companies</h6>
+<a href="https://www.analyticsvidhya.com/corporate/">Post Jobs</a>
+<a href="https://courses.analyticsvidhya.com/">Trainings</a>
+<a href="https://datahack.analyticsvidhya.com/">Hiring Hackathons</a>
+<a href="https://www.analyticsvidhya.com/contact/">Advertising</a>
+</li>
+<li>
+<h6>Visit us</h6>
+<div class="av-get-social">
+<a href="https://www.facebook.com/AnalyticsVidhya/" target="_blank" class="social-visit fb mr-2">
+<i class="fa fa-facebook"></i>
+</a>
+<a href="https://www.linkedin.com/company/analytics-vidhya/" target="_blank" class="social-visit in mr-2">
+<i class="fa fa-linkedin"></i>
+</a>
+<a href="https://www.youtube.com/channel/UCH6gDteHtH4hg3o2343iObA" target="_blank" class="social-visit utub mr-2">
+<i class="fa fa-youtube"></i>
+</a>
+<a href="https://twitter.com/analyticsvidhya" target="_blank" class="social-visit tw mr-2">
+<i class="fa fa-twitter"></i>
+</a>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
+<div class="footer-link-bottom">
+<div class="container">
+<div class="row">
+<div class="col-12 col-sm-6 col-md-6">
+<div class="mr-auto">
+<p>© Copyright 2013-2020 Analytics Vidhya</p>
+</div>
+</div>
+<div class="col-12 col-sm-6 col-md-6">
+<div class="footer-float-right">
+<a href="https://www.analyticsvidhya.com/privacy-policy/" target="_blank">Privacy Policy</a>
+<a href="https://www.analyticsvidhya.com/terms/" target="_blank">Terms of Use</a>
+<a href="https://www.analyticsvidhya.com/refund-policy/" target="_blank">Refund Policy</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</footer>
+</div>
+
+</div>
+
+<div id="scrolltop">
+<a><i class="tm-go-top"></i></a>
+</div>
+</div>
+<div>
+<a target="_blank" href="https://www.analyticsvidhya.com/back-channel/download-pdf.php?utm_source=pdf&pid=57258&next=https://www.analyticsvidhya.com/blog/2019/09/introduction-to-pytorch-from-scratch/" title="Download PDF of this Article">
+<div class="floating-btn fb-red">
+ <img src="https://www.analyticsvidhya.com/wp-content/themes/Curated/custom/images/pdf.png">
+</div>
+</a>
+</div>
+<div>
+<a id="fb-blue-href" href="#" target="_blank" title="Bookmark this Article">
+<div class="floating-btn fb-blue">
+<img src="https://www.analyticsvidhya.com/wp-content/themes/Curated/custom/images/bookmark.png">
+</div>
+</a>
+</div>
+<script>
+ $(document).ready(function(){
+	     $.ajax({
+        url: "https://www.analyticsvidhya.com/back-channel/display-image.php",
+        data: {
+            image: '3'
+        },
+        type: "GET",
+				cache: false,
+        dataType: "html",
+        success: function (data) {
+            $('#ban3_av').html(data);
+        },
+        error: function (xhr, status) {
+					console.log("Image Failed!");
+        },
+    });
+});
+</script>
+<script type="text/javascript" src="https://www.analyticsvidhya.com/wp-content/themes/Curated/custom/oidc-client.js" defer></script>
+<script>
+var redirect_uri = 'https://www.analyticsvidhya.com/';
+var authority_id = 'https://id.analyticsvidhya.com/openid';
+var client_o_id = '516577';
+</script>
+<script type="text/javascript" src="https://www.analyticsvidhya.com/back-channel/id-connect-v2.js" defer></script>
+<script>
+var img_path = "https://www.analyticsvidhya.com/wp-content/themes/Curated/";
+var bookmark_post_id = "57258"
+var is_bookmarked = false;
+var uid = "";
+
+function user_logged_in(user)
+{
+    $.ajaxSetup({
+            beforeSend: function (xhr){
+                xhr.setRequestHeader("Authorization","Bearer "+user.access_token);
+             }
+    });//ajaxsetup
+    // Check if the article is already bookmarked
+    $.ajax({
+     type:"GET",
+     url:"https://id.analyticsvidhya.com/api/v1/resources/external_save_check?resource_ids=57258",
+     contentType: 'application/json',
+     success: function(data) {
+         if(data.results[0].is_bookmarked==true)
+            {
+              $(".save-for-later").html('<a id="bookmark-article" href="#"><img src="'+img_path+'/custom-design/images/bookmarked.svg" width="18px" alt="Remove Bookmark" title="Remove Bookmark" data-toggle="tooltip"></a>');
+							$(".fb-blue").addClass("fb-active-blue");
+							$("#fb-blue-href").attr("title","Remove Bookmark");
+							is_bookmarked = true;
+						}
+     },
+        error: function(data) {
+        data =  JSON.stringify(data);
+//        $(".save-for-later").html(data);
+       }
+    });
+   // End Check if article already Bookmarked
+
+	// If user is logged in give option to bookmark article
+        $("#login1").html("<a href='https://id.analyticsvidhya.com/accounts/profile/' target='_blank'>" + user.profile.preferred_username + "</a>");
+        $(".save-for-later").html('<a id="bookmark-article" href="#"><img src="'+img_path+'/custom-design/images/do-bookmark.svg" width="18px" alt="Bookmark this story to read later" title="Bookmark this story to read later" data-toggle="tooltip"></a>');
+				$("#fb-blue-href").attr("title","Bookmark this story to read later");
+				$(".download-pdf").html("<a href='https://www.analyticsvidhya.com/back-channel/download-pdf.php?pid=57258&next="+$(location).attr('href')+ "' ><img src='https://cdn.analyticsvidhya.com/wp-content/uploads/2020/06/download-post-pdf.png' alt='Click to Download PDF' title='Click to Download PDF of this Article'></a>");
+				$("#top-av-users-signup").hide();
+				$("#top-av-users-show").show();
+				$("#is_logged_in_brchr").val("1");
+				$(".coding-window-no-show").hide();
+				initCodingWindow();
+				$(".coding-window").show();
+				$(".qa-login-req-no-show").hide();
+				$(".qa-login-req").show();
+				$('.qa-login-req').css('visibility','visible');
+				$(".fluffycourse-hide").hide();
+				$(".fluffycourse").show();
+				uid = user.profile.sub;
+				quizInit(uid);
+				// Popup Logged in
+				$("#popup_logged_in").val("1");
+				//console.log ("H:"+uid);
+				$.getScript( "https://brahma.analyticsvidhya.com/static/js/events.js" )
+				  .done(function( script, textStatus ) {
+				    console.log( "Brahma Loaded" );
+				  })
+				  .fail(function( jqxhr, settings, exception ) {
+						console.log( "Brahma Failed" );
+				});
+								//$("#signup").hide();
+				//$("#dwn-brchr").show();
+	// End If user is logged in give option to bookmark article
+
+}
+
+function user_logged_out()
+{
+    //console.log("logged out");
+		var page_url = $(location). attr("href");
+    $("#login1").html("<a href='https://id.analyticsvidhya.com/auth/login/?next="+$(location).attr('href')+ "' target='_blank'> Login / Register</a>");
+    $(".save-for-later").html("<a href='https://id.analyticsvidhya.com/auth/login/?next="+$(location).attr('href')+ "' target='_blank'>Login to Bookmark this article</a>");
+		$("#fb-blue-href").attr("href","https://id.analyticsvidhya.com/auth/login/?next="+$(location).attr('href'));
+		$("#fb-blue-href").attr("title","Login to Bookmark this article");
+		$(".download-pdf").html("<a href='https://www.analyticsvidhya.com/back-channel/download-pdf.php?pid=57258' target='_blank'><img src='https://cdn.analyticsvidhya.com/wp-content/uploads/2020/06/download-post-pdf.png' alt='Click to Download PDF' title='Click to Download PDF of this Article'></a>");
+		$("#top-av-users-show").hide();
+		$("#top-av-users-signup").show();
+		$("#is_logged_in_brchr").val("0");
+		if ($(".coding-window-no-show").length == 0)
+		{
+			$(".coding-window").before("<a href='https://id.analyticsvidhya.com/auth/login/?next="+$(location).attr('href')+ "?&utm_source=coding-window-blog&source=coding-window-blog'><img src='https://s3-ap-south-1.amazonaws.com/av-blog-media/wp-content/uploads/2019/08/coding-window-noshow.jpg' class='coding-window-no-show'></a>");
+		}
+		$(".coding-window").hide();
+
+		if ($(".qa-login-req-no-show").length == 0)
+		{
+			$(".qa-login-req").before("<a href='https://id.analyticsvidhya.com/auth/login/?next="+$(location).attr('href')+ "?&utm_source=question-answer-blog&source=qa-blog'><img src='https://cdn.analyticsvidhya.com/wp-content/uploads/2020/10/answer-signin.png' class='qa-login-req-no-show'></a>");
+		}
+		$(".qa-login-req").hide();
+		$(".fluffycourse").hide();
+		$(".fluffycourse").after("<div 'fluffycourse-hide'><a href='https://id.analyticsvidhya.com/auth/login/?next="+$(location).attr('href')+ "?&utm_source=coding-window-blog&source=coding-window-blog'><img src='https://s3-ap-south-1.amazonaws.com/av-blog-media/wp-content/uploads/2019/08/test-learning.jpg' class='coding-window-no-show'></a></div>");
+		// Popup Logged out
+		$("#popup_logged_in").val("0");
+		uid = "";
+		//$("#signup").show();
+		//$("#dwn-brchr").hide();
+		$.getScript( "https://brahma.analyticsvidhya.com/static/js/events.js" )
+			.done(function( script, textStatus ) {
+				console.log( "Brahma Script Loaded" );
+			})
+			.fail(function( jqxhr, settings, exception ) {
+				console.log( "Brahma Script Failed" );
+		});
+		}
+
+// Assess yourself
+$(document).ready(function(){
+
+$("#assess-button-1").hide();
+$("#assess-button-2").show();
+
+
+$('#assess-button-2').click(function(){
+//	$('#assess-button-2').addClass("assess-tab-button-active");
+//	$('#assess-button-1').removeClass("assess-tab-button-active");
+	$('#assess-button-1').addClass("assess-tab-button-active");
+	$('#assess-button-2').removeClass("assess-tab-button-active");
+	$("#article-data").hide();
+	$("#assess-data").show();
+	$("#assess-button-2").hide();
+	$("#assess-button-1").show();
+	
+
+// Check if user is logged in
+if (av_is_signed_in == true)
+	{
+			$("#assess-data").html('<iframe src="https://dsat.analyticsvidhya.com/blog/create/assessment/57258" height="500" width="100%">');
+	}
+else {
+		$("#assess-data").html("<a id='auth_url' href='https://id.analyticsvidhya.com/auth/login/?next="+$(location).attr('href')+ "?&utm_source=assess-yourself&source=assess-yourself-blog'><img id='auth_url_image' src='https://cdn.analyticsvidhya.com/wp-content/uploads/2020/11/click-to-login.png'></a>");
+	}
+
+});
+
+$('#assess-button-1').click(function(){
+//	$('#assess-button-1').addClass("assess-tab-button-active");
+//	$('#assess-button-2').removeClass("assess-tab-button-active");
+	$('#assess-button-2').addClass("assess-tab-button-active");
+	$('#assess-button-1').removeClass("assess-tab-button-active");
+
+	$("#assess-data").hide();
+	$("#article-data").show();
+	$("#assess-button-1").hide();
+	$("#assess-button-2").show();
+
+});
+});
+// End Assess yourself
+
+function quizInit(uid)
+{
+			return;
+	}
+
+function initCodingWindow() {
+	$('.coding-window iframe').each(function() {
+		var src = $(this).data('src');
+		if (!src) {
+			return;
+		}
+		this.src = src;
+	})
+}
+
+$(document).ready(function(){
+
+        var img_path = "https://www.analyticsvidhya.com/wp-content/themes/Curated/";
+
+
+mgr.getUser().then(function(user) {
+    // If user was already logged in
+    if (user!==null){
+        mgr.querySessionStatus().then(function(res) {
+        //console.log('Ohhh, its you again');
+        av_is_signed_in = true;
+        // Log the user in
+        user_logged_in(user);
+
+        }).catch(function(err){
+            // If user logged out from OP
+            av_is_signed_in = false;
+            user_logged_out();
+            mgr.removeUser();
+        });
+
+    } // End check if the user is not null
+    else{
+        mgr.signinRedirectCallback().then(function(user) {
+            // If user just logged in and redirected to this page
+            //console.log(user.profile.given_name, ' bro, how was login experience?');
+            av_is_signed_in = true;
+            // Call user_logged_in_functions
+            user_logged_in(user);
+        }).catch(function(err) {
+            // If user is NOT logged in
+            //console.log('Logged out');
+            user_logged_out();
+            mgr.signinSilent().then(function(user) {
+                av_is_signed_in = true;
+                //console.log("silent signed in", user);
+                user_logged_in(user);
+            }).catch(function(err) {
+                av_is_signed_in = false;
+                user_logged_out();
+                //console.log("Silentsignin Err");
+               // console.log(err);
+            });
+
+        });
+    }
+}).catch(function(err){
+    //console.log('Couldnt get user');
+    user_logged_out();
+});
+
+
+}); // document.ready
+
+
+// Bookmark Article
+$('.fb-blue').click(function(){
+	if (av_is_signed_in)
+		bookmark_post();
+});
+
+$('.save-for-later').on("click", "#bookmark-article",function(event){
+	bookmark_post();
+});
+
+function bookmark_post()
+{
+	event.preventDefault();
+	var bookmark_data = {resource_id:"57258", resource_type:"article",resource_permalink:"https://www.analyticsvidhya.com/blog/2019/09/introduction-to-pytorch-from-scratch/",resource_title:"A Beginner-Friendly Guide to PyTorch and How it Works from Scratch",resource_medium: "blog"};
+ if (is_bookmarked==false) {
+ $.ajax({
+	type:"POST",
+	dataType:"json",
+	url:"https://id.analyticsvidhya.com/api/v1/resources/external_save",
+	data:JSON.stringify(bookmark_data),
+ contentType: 'application/json',
+	success: function(data) {
+			data =JSON.stringify(data);
+			 $(".save-for-later").html('<a id="bookmark-article" href="#"><img src="'+img_path+'/custom-design/images/bookmarked.svg" width="18px" alt="Article Bookmarked" title="Article Bookmarked" data-toggle="tooltip"></a>');
+			 $(".fb-blue").addClass("fb-active-blue");
+			 $("#fb-blue-href").attr("title","Article Bookmarked");
+			 is_bookmarked=true;
+	},
+		 error: function(data) {
+		 data =  JSON.stringify(data);
+		 //$(".save-for-later").html(data);
+		 $(".save-for-later").html('Failed to Bookmark Article');
+		 $(".fb-blue").removeClass("fb-active-blue");
+		 $("#fb-blue-href").attr("title","Failed to Bookmark Article");
+		}
+ });
+} // end if
+else if (is_bookmarked==true){
+ //console.log("Remove");
+ $.ajax({
+	type:"DELETE",
+	dataType:"json",
+	url:"https://id.analyticsvidhya.com/api/v1/resources/external_save",
+	data:JSON.stringify(bookmark_data),
+ contentType: 'application/json',
+	success: function(data) {
+			data =JSON.stringify(data);
+			$(".save-for-later").html('<a id="bookmark-article" href="#"><img src="'+img_path+'/custom-design/images/do-bookmark.svg" width="18px" alt="Bookmark this story to read later" title="Bookmark this story to read later" data-toggle="tooltip"></a>');
+			$(".fb-blue").removeClass("fb-active-blue");
+			$("#fb-blue-href").attr("title","Bookmark this story to read later");
+			 is_bookmarked=false;
+	},
+		 error: function(data) {
+		 data =  JSON.stringify(data);
+		 //$(".save-for-later").html(data);
+		 $(".save-for-later").html('Failed to Remove Bookmark');
+		 $("#fb-blue-href").attr("title","Failed to Remove Bookmark");
+
+		}
+ });
+} //end elseif
+
+}
+
+
+</script>
+<script>
+jQuery(document).ready(function(){
+	var articles1 = [21948,23238,34673,40972,48985,25318,57430,59396];
+	var articles2 = [18835,18770,36077,22831,31141,36659,46495];
+	var articles3 = [22185,15335,22387,62604,6377,21124,27576,20925]
+	var articles4 = [21124,62205,43910,39175];
+	var cur_article = 57258;
+
+	//time series banner
+	if (jQuery.inArray(cur_article, articles1) !='-1'){
+		jQuery("#time-series-disp").html('<a href="https://courses.analyticsvidhya.com/courses/creating-time-series-forecast-using-python?utm_source=timesereisbanner&utm_medium=blog" target="_blank"><img src="https://cdn.analyticsvidhya.com/wp-content/uploads/2020/02/7-2.png"></a>');
+
+		//Pandas for data analysis course
+	}else if (jQuery.inArray(cur_article, articles3) !='-1'){
+			jQuery("#time-series-disp").html('<a href="https://courses.analyticsvidhya.com/courses/pandas-for-data-analysis-in-python?utm_source=pandascoursebanner&utm_medium=blog" target="_blank"><img src="https://cdn.analyticsvidhya.com/wp-content/uploads/2020/03/3-1.png"></a>');
+			//Regression analysis data
+	}else if (jQuery.inArray(cur_article, articles2) !='-1'){
+			jQuery("#time-series-disp").html('<a href="https://courses.analyticsvidhya.com/courses/Fundamentals-of-Regression-Analysis?utm_source=regressionbanner&utm_medium=blog" target="_blank"><img src="https://cdn.analyticsvidhya.com/wp-content/uploads/2020/03/2.jpg"></a>');
+	}else if (jQuery.inArray(cur_article, articles4) !='-1'){
+				jQuery("#time-series-disp").html('<a href="https://courses.analyticsvidhya.com/courses/introduction-to-analytics?utm_source=BusinessAnalyticsBanner&utm_medium=blog" target="_blank"><img src="https://cdn.analyticsvidhya.com/wp-content/uploads/2020/05/intro-to-bs.png"></a>');
+			//default course banner
+	}else{
+		jQuery("#time-series-disp").html('<a href="https://courses.analyticsvidhya.com/courses/data-science-hacks-tips-and-tricks?utm_source=hacksandtipsbanner&utm_medium=blog" target="_blank"><img src="https://cdn.analyticsvidhya.com/wp-content/uploads/2020/06/free-ds.png"></a>');
+	}
+});
+
+</script>
+<script>
+$(document).ready(function(){
+$("#jobs-show").load("https://jobsnew.analyticsvidhya.com/blog/jobs");
+});
+</script>
+
+<script>
+$(document).ready(function(){
+	$('#download_brochure_btn').on('click',function(){
+		event.preventDefault();
+		var article_url = $('#dwn-post-id').val();
+		var name = $('#dwn-name').val();
+		var phone = $('#dwn-phone').val();
+		var email = $('#dwn-email').val();
+		var bid = $('#for-download-pdf').val();
+		if(name!=""){
+			if(phone!=""){
+				$.ajax({
+					method: 'post',
+					data:{'name':name,'phone':phone,'email':email,'article_url':article_url,'bid':bid},
+					url:'https://www.analyticsvidhya.com/back-channel/download-brochure.php',
+					success:function(response){
+						if (response == 1)
+							{
+							$('#dwn-brochure-message').html('Thank you for your Interest');
+							$('#dwn-brochure-frm').hide();
+							// $('#dwn-error').hide();
+							window.location = 'https://www.analyticsvidhya.com/back-channel/download-brochure-file.php?brochure_id='+bid+'&email='+email;
+							}
+						else 	$('#dwn-error').html(response);
+						//$('#hide-download-brochure').html(response);
+					},
+					error:function(){
+						$('#dwn-error').html('Some error occured');
+						return false;
+						// alert('Failed');
+					}
+				});
+			}else{
+				$('#dwn-error').html('Please enter phone');
+				return false;
+			}
+		}else{
+			$('#dwn-error').html('Please enter name');
+			return false;
+		}
+	});
+});
+</script>
+
+<script>
+/* Use
+			$(document).ready(function() {
+
+		     $('#brochure-btn2').click(function(e) {
+		        e.preventDefault();
+		       	window.location.replace("https://id.analyticsvidhya.com/auth/login/?next="+window.location.href);
+		     });
+
+        $('#brochure-btn').click(function(e) {
+*/
+				/* Do not use
+								if ($('#dwn_bcr_name').val() == ""){
+									$("#error").empty();
+									$('#error').addClass('error-show');
+									$("#dwn_bcr_email").css("margin-top", "6%");
+									$('#error').append('Please Enter Name');
+									$('#dwn_bcr_name').focus();
+									return false;
+							}
+							else*/
+							/* Use
+							 if ($('#dwn_bcr_email').val() == ""){
+									$("#error1").empty();
+									$("#dwn_bcr_email").css({ 'margin-top' : '', '6%' : '' });
+									$('#error1').addClass('error-show');
+									$('#error1').append('Please Enter Email Id');
+									$("#dwn_bcr_phone").css("margin-top", "6%");
+									$('#dwn_bcr_email').focus();
+									return false;
+							}
+							/* Do not Use
+							else if ($('#dwn_bcr_phone').val() == ""){
+									$("#error2").empty();
+									$("#dwn_bcr_phone").css({ 'margin-top' : '', '6%' : '' });
+									$('#error2').addClass('error-show');
+									$('#error2').append('Please Enter Phone Number');
+									$('#dwn_bcr_phone').focus();
+									return false;
+							}*/
+							/* Use
+            e.preventDefault();
+            $.ajax({
+                type: "POST",
+                url: 'https://www.analyticsvidhya.com/back-channel/download-brochure.php',
+                data: $('#download-brochure').serialize(),
+                beforeSend: function() {
+                    $("#loading-image").show();
+
+                },
+                success: function(data){
+                    $('#grdnt-clr').replaceWith('<div class="thnk-top">Thanks for showing your interest.</div>');
+                    $('#frm-cntnt').replaceWith('<div class="thnk-cntn">' + data + '</div>');
+                    // $('#frm-cntnt').html(data);
+                    $("#loading-image").hide();
+										if (av_is_signed_in == false)
+										{
+											try {
+											window.location.replace("https://id.analyticsvidhya.com/auth/login/?next="+window.location.href);
+											}
+											catch(e) {
+												window.location = "https://id.analyticsvidhya.com/auth/login/?next="+window.location.href;
+											}
+									  }
+								}
+            });
+        });
+    });*/
+</script>
+<script>
+    function myFunction1() {
+        document.getElementById("error").innerHTML = "";
+    }
+    function myFunction2() {
+        var email = document.getElementById("dwn_bcr_email").value;
+        var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        if(email.match(re)){
+            document.getElementById("error1").innerHTML = "";
+            return true;
+        }else{
+            document.getElementById("error1").classList.add("error-show");
+            document.getElementById("error1").innerHTML = "Please enter valid email id";
+            return false;
+        }
+    }
+    function myFunction3() {
+        document.getElementById("error2").innerHTML = "";
+    }
+</script>
+
+
+<script type='text/javascript' id='contact-form-7-js-extra'>
+/* <![CDATA[ */
+var wpcf7 = {"apiSettings":{"root":"https:\/\/www.analyticsvidhya.com\/wp-json\/contact-form-7\/v1","namespace":"contact-form-7\/v1"},"cached":"1"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://www.analyticsvidhya.com/wp-content/plugins/contact-form-7/includes/js/scripts.js?ver=5.2.2' defer='defer' id='contact-form-7-js'></script>
+<script type='text/javascript' src='https://www.analyticsvidhya.com/wp-content/themes/Curated/static/js/main.js?ver=1.0.0' id='maha-main-js'></script>
+<script type='text/javascript' id='maha-basix-js-extra'>
+/* <![CDATA[ */
+var MahaAjax = {"ajaxurl":"https:\/\/www.analyticsvidhya.com\/wp-admin\/admin-ajax.php"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://www.analyticsvidhya.com/wp-content/themes/Curated/static/js/basix.js?ver=1.0.0' defer='defer' id='maha-basix-js'></script>
+<script type='text/javascript' src='https://www.analyticsvidhya.com/wp-content/themes/Curated/static/js/add_to_cart.js?ver=1.0.0' defer='defer' id='add_to_cart-js'></script>
+<script type='text/javascript' src='https://www.analyticsvidhya.com/wp-includes/js/comment-reply.min.js?ver=5.5.1' defer='defer' id='comment-reply-js'></script>
+<!--[if IE 9]>
+<script type='text/javascript' src='//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js?ver=1' defer='defer' id='maha-html5-ie9-js'></script>
+<![endif]-->
+<!--[if IE 9]>
+<script type='text/javascript' src='//cdnjs.cloudflare.com/ajax/libs/respond.js/1.3.0/respond.min.js?ver=1' defer='defer' id='maha-respond-ie9-js'></script>
+<![endif]-->
+<script type='text/javascript' id='q2w3_fixed_widget-js-extra'>
+/* <![CDATA[ */
+var q2w3_sidebar_options = [{"sidebar":"blog-sidebar","margin_top":55,"margin_bottom":800,"stop_id":"","screen_max_width":0,"screen_max_height":0,"width_inherit":false,"refresh_interval":1500,"window_load_hook":false,"disable_mo_api":false,"widgets":["text-42","text-45"]}];
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://www.analyticsvidhya.com/wp-content/plugins/q2w3-fixed-widget/js/q2w3-fixed-widget.min.js?ver=5.1.9' defer='defer' id='q2w3_fixed_widget-js'></script>
+<script type='text/javascript' src='https://www.analyticsvidhya.com/wp-includes/js/jquery/ui/effect.min.js?ver=1.11.4' defer='defer' id='jquery-effects-core-js'></script>
+<script type='text/javascript' src='https://www.analyticsvidhya.com/wp-includes/js/jquery/ui/effect-blind.min.js?ver=1.11.4' defer='defer' id='jquery-effects-blind-js'></script>
+<script type='text/javascript' id='wstbLayout-js-extra'>
+/* <![CDATA[ */
+var stbUserOptions = {"mode":"css","cssOptions":{"roundedCorners":true,"mbottom":10,"imgHide":"https:\/\/www.analyticsvidhya.com\/blog\/wp-content\/plugins\/wp-special-textboxes\/images\/minus.png","imgShow":"https:\/\/www.analyticsvidhya.com\/blog\/wp-content\/plugins\/wp-special-textboxes\/images\/plus.png","strHide":"Hide","strShow":"Show"}};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://www.analyticsvidhya.com/wp-content/plugins/wp-special-textboxes/js/wstb.min.js?ver=5.9.109' defer='defer' id='wstbLayout-js'></script>
+<script type='text/javascript' src='https://www.analyticsvidhya.com/wp-includes/js/wp-embed.min.js?ver=5.5.1' defer='defer' id='wp-embed-js'></script>
+<script type='text/javascript' src='https://www.analyticsvidhya.com/wp-content/plugins/oembed-gist/js/script.min.js?ver=4.9.1' defer='defer' id='oembed-gist-js'></script>
+
+<div class="dgd_overlay"></div>
+<div class="dgd_stb_box none" id="dgd_scrollbox-67322"><a class="dgd_stb_box_close dgd_stb_box_x" href="javascript:void(0);"> </a><p><a href="https://courses.analyticsvidhya.com/bundles/certified-ai-ml-blackbelt-plus?utm_source=Blog&utm" target="_blank" rel="noopener noreferrer"><img src="https://www.analyticsvidhya.com/wp-content/uploads/2020/11/ai-ml-bb.png" /></a></p>
+</div>
+
+<script type='text/javascript' src='https://stats.wp.com/e-202046.js' async='async' defer='defer'></script>
+<script type='text/javascript'>
+	_stq = window._stq || [];
+	_stq.push([ 'view', {v:'ext',j:'1:9.0.2',blog:'180026056',post:'57258',tz:'5.5',srv:'www.analyticsvidhya.com'} ]);
+	_stq.push([ 'clickTrackerInit', '180026056', '57258' ]);
+</script>
+<link rel="stylesheet" href="https://automation.analyticsvidhya.com/static/css/strip.css">
+
+<script type="text/javascript" src="https://automation.analyticsvidhya.com/static/js/getFlashDetails.js" defer></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.0/moment-with-locales.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+<link rel="stylesheet" href="https://www.analyticsvidhya.com/wp-content/themes/Curated/css/popup-style.css?ver=1.0.8">
+
+<div id="download-brochure-pdf-modal" class="modal">
+<center>
+<div class="modal-head">
+<h3 class="pdf-modal-heading" id="download-pdf-modal-heading">
+Download PDF
+</h3>
+</div>
+<div id="dwn-error1"></div>
+<div id="dwn-brochure-message1"></div>
+<form method="post" id="dwn-brochure-frm">
+<div class="form-container text-left">
+<input type="text" class="form-input name" placeholder="* Name" id="dwn-bro-name">
+<input type="email" class="form-input email" placeholder="* Email" id="dwn-bro-email">
+<input type="mobile" class="form-input" placeholder="Mobile" id="dwn-bro-mobile" style="border: 1px solid #dbdbdb;">
+<input type="hidden" name="dwnfile" value="" id="download-pdf-modal-dwnfile">
+
+<div class="btn-container text-center">
+<input type="submit" class="av-pdf-btn" value="download" id="dwnld_brochure_btn">
+</div>
+</div>
+</form>
+</center>
+</div>
+<script>
+$(document).ready(function(){
+ $('.download-pdf-popup').click(function(event) {
+  $('#download-pdf-modal-heading').text($(this).data('title'));
+  $('#download-pdf-modal-dwnfile').val($(this).data('downlaod'));
+  $('#download-brochure-pdf-modal').modal();
+  return false;
+ });
+});
+</script>
+<script>
+$(document).ready(function(){
+$('#dwnld_brochure_btn').on('click',function(){
+event.preventDefault();
+var article_url = 'https://www.analyticsvidhya.com/blog/2020/11/kaggle-grandmaster-series-exclusive-interview-with-2x-kaggle-grandmaster-firat-gonen/';
+var name = $('#dwn-bro-name').val();
+var email = $('#dwn-bro-email').val();
+var mobile = $('#dwn-bro-mobile').val();
+var dwnpath = $('#download-pdf-modal-dwnfile').val();
+if(name!=""){
+   if(email!=""){
+    $.ajax({
+      method: 'post',
+      data:{'name':name,'email':email,'mobile':mobile,'file_path':dwnpath,'article_url':article_url},
+      url:'https://www.analyticsvidhya.com/back-channel/download-popup-brochure.php',
+      success:function(response){
+        if (response == 1)
+          {
+          $('#dwn-brochure-message1').html('Thank you for your Interest');
+          $('#dwn-brochure-frm1').hide();
+          // $('#dwn-error').hide();
+          // window.location.assign(dwnpath);
+          window.open(dwnpath, 'Download'); 
+         // window.location = 'https://www.analyticsvidhya.com/back-channel/download-popup-brochure-file.php?email='+email;
+          $('.jquery-modal').css("background", "none"); 
+          //$('#ex1').hide();
+          }
+        else 	$('#dwn-error1').html(response);
+        //$('#hide-download-brochure').html(response);
+        
+      },
+      error:function(){
+          alert('Failed');
+        $('#dwn-error1').html('Some error occured');
+        return false;
+        // alert('Failed');
+      }
+    });
+   }else{
+   	$('#dwn-error1').html('Please enter email address');
+   	return false;
+   }
+}else{
+  $('#dwn-error1').html('Please enter name');
+  return false;
+}
+});
+});
+</script>
+
+</body>
+</html>
+
+<div class="dgd_overlay"></div>
+<div class="dgd_stb_box none" id="dgd_scrollbox-67322"><a class="dgd_stb_box_close dgd_stb_box_x" href="javascript:void(0);"> </a><p><a href="https://courses.analyticsvidhya.com/bundles/certified-ai-ml-blackbelt-plus?utm_source=Blog&utm" target="_blank" rel="noopener noreferrer"><img src="https://www.analyticsvidhya.com/wp-content/uploads/2020/11/ai-ml-bb.png" /></a></p>
+</div>
+
+<script type='text/javascript' src='https://stats.wp.com/e-202046.js' async='async' defer='defer'></script>
+<script type='text/javascript'>
+	_stq = window._stq || [];
+	_stq.push([ 'view', {v:'ext',j:'1:9.0.2',blog:'180026056',post:'57258',tz:'5.5',srv:'www.analyticsvidhya.com'} ]);
+	_stq.push([ 'clickTrackerInit', '180026056', '57258' ]);
+</script>
+</body>
+</html>

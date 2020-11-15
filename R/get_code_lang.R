@@ -23,16 +23,17 @@ guess_code_lang <- function(x){
         code <- unlist(strsplit(code, "\n"))
         # remove \r code
         code <- paste(gsub("\r", "", code), collapse = " ")
-        
-        # get the number of occurences of certain syntaxes
-        items <- c("<-", "::", "\\.", "%>%", "\\(\\)", "\\(", "\\)", 
-                   "\\[", "\\]", "__", " + ", "\\{", "\\}", 
-                   "\\$", "function\\((.*?)\\)", 
-                   "library\\((.*?)\\)", "install.packages\\((.*?)\\)",
-                   "import ", "def ", "pandas", "from ",  "numpy",
-                   "geom_", "pip install", "python", "dplyr",
-                   "\\.py", "\\.r")
-        # count up the number of occurences of the patterns above
+        # code patterns to check code chunks for 
+        items <- c(
+          "<-", "::", "\\.", "%>%", "\\(\\)", "\\(", "\\)", 
+          "\\[", "\\]", "__", " + ", "\\{", "\\}", 
+          "\\$", "function\\((.*?)\\)", 
+          "library\\((.*?)\\)", "install.packages\\((.*?)\\)",
+          "import ", "def ", "pandas", "from ",  "numpy",
+          "geom_", "pip install", "python", "dplyr",
+          "\\.py", "\\.r"
+        )
+        # count up the number of occurrences of the patterns above
         code_pattern_counts <- lapply(tolower(code), str_count, pattern = items)
         xout           <- as.data.frame(do.call("rbind", code_pattern_counts))
         if(sum(xout[1, ]) > 0){
@@ -51,12 +52,20 @@ guess_code_lang <- function(x){
             lang <- ifelse(z$name[1] == 'py', -z$value[1], z$value) 
           }
         } else {
-          lang <- NA
+          # if no embedded code, check for code gists and use file ext as the code guess
+          gist_score <- x %>%
+            html_nodes('script') %>%
+            html_attr('src') %>%
+            grep('gist.github.com', ., value = TRUE) %>%
+            grep('.py$|.r$', ., value = TRUE, ignore.case = TRUE) %>%
+            grepl('.py$', ., ignore.case = TRUE) 
+          lang <- ifelse(length(gist_score) > 0, c(1, -1)[1 + (mean(gist_score) > 0.5)], NA)
         }
       } else {
         lang <- NA
       }
-    }, silent = TRUE)
+    },
+    silent = TRUE)
   # if the above fails, lang is NA
   if(!exists('lang')) lang <- NA
   return(lang)

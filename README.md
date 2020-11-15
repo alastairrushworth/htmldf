@@ -69,9 +69,9 @@ z
     ##   url   title lang  url2  links rss   tables images social code_lang   size
     ##   <chr> <chr> <chr> <chr> <lis> <chr> <list> <list> <list>     <dbl>  <int>
     ## 1 http… Visu… en    http… <tib… http… <lgl … <tibb… <tibb…     1      38445
-    ## 2 http… A Ge… en    http… <tib… <NA>  <lgl … <tibb… <tibb…    -0.860 226288
+    ## 2 http… A Ge… en    http… <tib… <NA>  <lgl … <tibb… <tibb…    -0.860 226543
     ## 3 http… Conv… en    http… <tib… <NA>  <name… <tibb… <tibb…    -0.936 115758
-    ## 4 http… Pyto… en    http… <tib… <NA>  <name… <tibb… <tibb…    NA     187704
+    ## 4 http… Pyto… en    http… <tib… <NA>  <name… <tibb… <tibb…    -1     187706
     ## # … with 5 more variables: server <chr>, accessed <dttm>, published <dttm>,
     ## #   generator <chr>, source <chr>
 
@@ -190,7 +190,7 @@ z %>% select(code_lang, url2)
     ## 1     1     https://alastairrushworth.github.io/Visualising-Tour-de-France-data…
     ## 2    -0.860 https://medium.com/dair-ai/pytorch-1-2-introduction-guide-f6fa9bb75…
     ## 3    -0.936 https://www.tensorflow.org/tutorials/images/cnn                     
-    ## 4    NA     https://www.analyticsvidhya.com/blog/2019/09/introduction-to-pytorc…
+    ## 4    -1     https://www.analyticsvidhya.com/blog/2019/09/introduction-to-pytorc…
 
 Publication dates
 

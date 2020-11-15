@@ -37,6 +37,21 @@ url_list <- list(
                        tables =  NA, 
                        pdate  = NA),
   
+  'analytics_vidya' =  list(url = "https://www.analyticsvidhya.com/blog/2019/09/introduction-to-pytorch-from-scratch/",
+                            rss = NA, 
+                            social = c(
+                              "https://twitter.com/analyticsvidhya",                 
+                              "https://facebook.com/analyticsvidhya",                
+                              "https://linkedin.com/company/analytics-vidhya",       
+                              "https://youtube.com/channel/UCH6gDteHtH4hg3o2343iObA"
+                            ),
+                            title =  "Pytorch | Getting Started With Pytorch",
+                            code  = 'py',
+                            lang = 'en',
+                            tables = 1, 
+                            published = "2019-09-17 03:09:28 UTC"),
+                            
+
   # Alastair Rushworth - blog page about tour de france
   'ar_tdf'      = list(url    = 'https://alastairrushworth.github.io/Visualising-Tour-de-France-data-in-R/',
                        rss    = "https://alastairrushworth.github.io/feed.xml",

@@ -56,20 +56,22 @@ library(dplyr)
 
 # An example vector of URLs to fetch data for
 urlx <- c("https://alastairrushworth.github.io/Visualising-Tour-de-France-data-in-R/",
+          "https://medium.com/dair-ai/pytorch-1-2-introduction-guide-f6fa9bb7597c",
           "https://www.tensorflow.org/tutorials/images/cnn", 
-          "https://www.robertmylesmcdonnell.com/content/posts/mtcars/")
+          "https://www.analyticsvidhya.com/blog/2019/09/introduction-to-pytorch-from-scratch/")
 
 # use html_df() to gather data
 z <- html_df(urlx, show_progress = FALSE)
 z
 ```
 
-    ## # A tibble: 3 x 16
+    ## # A tibble: 4 x 16
     ##   url   title lang  url2  links rss   tables images social code_lang   size
     ##   <chr> <chr> <chr> <chr> <lis> <chr> <list> <list> <list>     <dbl>  <int>
     ## 1 http… Visu… en    http… <tib… http… <lgl … <tibb… <tibb…     1      38445
-    ## 2 http… Conv… en    http… <tib… <NA>  <name… <tibb… <tibb…    -0.936 114238
-    ## 3 http… Robe… en    http… <tib… <NA>  <name… <tibb… <tibb…     1     291099
+    ## 2 http… A Ge… en    http… <tib… <NA>  <lgl … <tibb… <tibb…    -0.860 226288
+    ## 3 http… Conv… en    http… <tib… <NA>  <name… <tibb… <tibb…    -0.936 115758
+    ## 4 http… Pyto… en    http… <tib… <NA>  <name… <tibb… <tibb…    NA     187704
     ## # … with 5 more variables: server <chr>, accessed <dttm>, published <dttm>,
     ## #   generator <chr>, source <chr>
 
@@ -79,12 +81,13 @@ To see the page titles, look at the `titles` column.
 z %>% select(title, url2)
 ```
 
-    ## # A tibble: 3 x 2
-    ##   title                              url2                                       
-    ##   <chr>                              <chr>                                      
-    ## 1 Visualising Tour De France Data I… https://alastairrushworth.github.io/Visual…
-    ## 2 Convolutional Neural Network (CNN… https://www.tensorflow.org/tutorials/image…
-    ## 3 Robert Myles McDonnell             https://www.robertmylesmcdonnell.com/conte…
+    ## # A tibble: 4 x 2
+    ##   title                                url2                                     
+    ##   <chr>                                <chr>                                    
+    ## 1 Visualising Tour De France Data In … https://alastairrushworth.github.io/Visu…
+    ## 2 A Gentle Introduction to PyTorch 1.… https://medium.com/dair-ai/pytorch-1-2-i…
+    ## 3 Convolutional Neural Network (CNN) … https://www.tensorflow.org/tutorials/ima…
+    ## 4 Pytorch | Getting Started With Pyto… https://www.analyticsvidhya.com/blog/201…
 
 Where there are tables embedded on a page in the `<table>` tag, these
 will be gathered into the list column `tables`. `html_df` will attempt
@@ -99,26 +102,29 @@ z$tables
     ## [1] NA
     ## 
     ## [[2]]
-    ## [[2]]$uncoercible
+    ## [1] NA
+    ## 
+    ## [[3]]
+    ## [[3]]$uncoercible
     ## [1] "<table class=\"tfo-notebook-buttons\" align=\"left\">\n<td>\n    <a target=\"_blank\" href=\"https://www.tensorflow.org/tutorials/images/cnn\">\n    <img src=\"https://www.tensorflow.org/images/tf_logo_32px.png\">\n    View on TensorFlow.org</a>\n  </td>\n  <td>\n    <a target=\"_blank\" href=\"https://colab.research.google.com/github/tensorflow/docs/blob/master/site/en/tutorials/images/cnn.ipynb\">\n    <img src=\"https://www.tensorflow.org/images/colab_logo_32px.png\">\n    Run in Google Colab</a>\n  </td>\n  <td>\n    <a target=\"_blank\" href=\"https://github.com/tensorflow/docs/blob/master/site/en/tutorials/images/cnn.ipynb\">\n    <img src=\"https://www.tensorflow.org/images/GitHub-Mark-32px.png\">\n    View source on GitHub</a>\n  </td>\n  <td>\n    <a href=\"https://storage.googleapis.com/tensorflow_docs/docs/site/en/tutorials/images/cnn.ipynb\"><img src=\"https://www.tensorflow.org/images/download_logo_32px.png\">Download notebook</a>\n  </td>\n</table>\n"
     ## 
     ## 
-    ## [[3]]
-    ## [[3]]$`no-caption`
-    ## # A tibble: 32 x 2
-    ##    model             car  
-    ##    <chr>             <lgl>
-    ##  1 Mazda RX4         NA   
-    ##  2 Mazda RX4 Wag     NA   
-    ##  3 Datsun 710        NA   
-    ##  4 Hornet 4 Drive    NA   
-    ##  5 Hornet Sportabout NA   
-    ##  6 Valiant           NA   
-    ##  7 Duster 360        NA   
-    ##  8 Merc 240D         NA   
-    ##  9 Merc 230          NA   
-    ## 10 Merc 280          NA   
-    ## # … with 22 more rows
+    ## [[4]]
+    ## [[4]]$`no-caption`
+    ## # A tibble: 11 x 2
+    ##    X1    X2         
+    ##    <chr> <chr>      
+    ##  1 Label Description
+    ##  2 0     T-shirt/top
+    ##  3 1     Trouser    
+    ##  4 2     Pullover   
+    ##  5 3     Dress      
+    ##  6 4     Coat       
+    ##  7 5     Sandal     
+    ##  8 6     Shirt      
+    ##  9 7     Sneaker    
+    ## 10 8     Bag        
+    ## 11 9     Ankle boot
 
 `html_df` does its best to find RSS feeds embedded in the page:
 
@@ -128,7 +134,8 @@ z$rss
 
     ## [1] "https://alastairrushworth.github.io/feed.xml"
     ## [2] NA                                            
-    ## [3] NA
+    ## [3] NA                                            
+    ## [4] NA
 
 Social profiles embedded on the page. At present, Twitter, Facebook and
 Linkedin are extracted.
@@ -146,21 +153,28 @@ z$social
     ## 3 linkedin @in/alastair-rushworth-25… https://linkedin.com/in/alastair-rushwort…
     ## 
     ## [[2]]
+    ## # A tibble: 3 x 3
+    ##   site    handle    profile                     
+    ##   <chr>   <chr>     <chr>                       
+    ## 1 twitter @dair_ai  https://twitter.com/dair_ai 
+    ## 2 twitter @omarsar0 https://twitter.com/omarsar0
+    ## 3 github  @omarsar  https://github.com/omarsar  
+    ## 
+    ## [[3]]
     ## # A tibble: 2 x 3
     ##   site    handle      profile                       
     ##   <chr>   <chr>       <chr>                         
     ## 1 twitter @tensorflow https://twitter.com/tensorflow
     ## 2 github  @tensorflow https://github.com/tensorflow 
     ## 
-    ## [[3]]
-    ## # A tibble: 5 x 3
-    ##   site     handle                     profile                                   
-    ##   <chr>    <chr>                      <chr>                                     
-    ## 1 twitter  @robertmylesmc             https://twitter.com/robertmylesmc         
-    ## 2 github   @coolbutuseless            https://github.com/coolbutuseless         
-    ## 3 github   @robertmyles               https://github.com/robertmyles            
-    ## 4 github   @wilkelab                  https://github.com/wilkelab               
-    ## 5 linkedin @in/robert-mcdonnell-7475… https://linkedin.com/in/robert-mcdonnell-…
+    ## [[4]]
+    ## # A tibble: 4 x 3
+    ##   site     handle                  profile                                      
+    ##   <chr>    <chr>                   <chr>                                        
+    ## 1 twitter  @analyticsvidhya        https://twitter.com/analyticsvidhya          
+    ## 2 facebook @analyticsvidhya        https://facebook.com/analyticsvidhya         
+    ## 3 linkedin @company/analytics-vid… https://linkedin.com/company/analytics-vidhya
+    ## 4 youtube  UCH6gDteHtH4hg3o2343iO… https://youtube.com/channel/UCH6gDteHtH4hg3o…
 
 Code language is inferred from `<code>` chunks using simple machine
 learning. The `code_lang` column contains score where values near 1
@@ -170,12 +184,27 @@ indicate mostly R code, values near -1 indicate mostly Python code:
 z %>% select(code_lang, url2)
 ```
 
-    ## # A tibble: 3 x 2
+    ## # A tibble: 4 x 2
     ##   code_lang url2                                                                
     ##       <dbl> <chr>                                                               
     ## 1     1     https://alastairrushworth.github.io/Visualising-Tour-de-France-data…
-    ## 2    -0.936 https://www.tensorflow.org/tutorials/images/cnn                     
-    ## 3     1     https://www.robertmylesmcdonnell.com/content/posts/mtcars/
+    ## 2    -0.860 https://medium.com/dair-ai/pytorch-1-2-introduction-guide-f6fa9bb75…
+    ## 3    -0.936 https://www.tensorflow.org/tutorials/images/cnn                     
+    ## 4    NA     https://www.analyticsvidhya.com/blog/2019/09/introduction-to-pytorc…
+
+Publication dates
+
+``` r
+z %>% select(published, url2)
+```
+
+    ## # A tibble: 4 x 2
+    ##   published           url2                                                      
+    ##   <dttm>              <chr>                                                     
+    ## 1 2019-11-24 00:00:00 https://alastairrushworth.github.io/Visualising-Tour-de-F…
+    ## 2 2019-09-01 18:03:22 https://medium.com/dair-ai/pytorch-1-2-introduction-guide…
+    ## 3 NA                  https://www.tensorflow.org/tutorials/images/cnn           
+    ## 4 2019-09-17 03:09:28 https://www.analyticsvidhya.com/blog/2019/09/introduction…
 
 ## Comments? Suggestions? Issues?
 

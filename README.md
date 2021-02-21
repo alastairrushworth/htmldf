@@ -18,17 +18,17 @@ download each page, extract and parse the html. The result is returned
 as a `tibble` where each row corresponds to a document, and the columns
 contain page attributes and metadata extracted from the html, including:
 
-  - page title
-  - inferred language
-  - RSS feeds
-  - tables coerced to tibbles, where possible
-  - hyperlinks
-  - image links
-  - social media profiles
-  - the inferred programming language of any text with code tags
-  - page size, generator and server
-  - page accessed date
-  - page published or last updated dates
+-   page title
+-   inferred language
+-   RSS feeds
+-   tables coerced to tibbles, where possible
+-   hyperlinks
+-   image links
+-   social media profiles
+-   the inferred programming language of any text with code tags
+-   page size, generator and server
+-   page accessed date
+-   page published or last updated dates
 
 ## Installation
 
@@ -69,9 +69,9 @@ z
     ##   url   title lang  url2  links rss   tables images social code_lang   size
     ##   <chr> <chr> <chr> <chr> <lis> <chr> <list> <list> <list>     <dbl>  <int>
     ## 1 http… Visu… en    http… <tib… http… <lgl … <tibb… <tibb…     1      38445
-    ## 2 http… A Ge… en    http… <tib… <NA>  <lgl … <tibb… <tibb…    -0.860 226543
-    ## 3 http… Conv… en    http… <tib… <NA>  <name… <tibb… <tibb…    -0.936 115758
-    ## 4 http… Pyto… en    http… <tib… <NA>  <name… <tibb… <tibb…    -1     187706
+    ## 2 http… A Ge… en    http… <tib… <NA>  <lgl … <tibb… <tibb…    -0.860 228328
+    ## 3 http… Conv… en    http… <tib… <NA>  <name… <tibb… <tibb…    -0.936 117806
+    ## 4 http… Pyto… en    http… <tib… <NA>  <name… <tibb… <tibb…    -1     191515
     ## # … with 5 more variables: server <chr>, accessed <dttm>, published <dttm>,
     ## #   generator <chr>, source <chr>
 
@@ -208,5 +208,5 @@ z %>% select(published, url2)
 
 ## Comments? Suggestions? Issues?
 
-Any feedback is welcome\! Feel free to write a github issue or send me a
+Any feedback is welcome! Feel free to write a github issue or send me a
 message on [twitter](https://twitter.com/rushworth_a).

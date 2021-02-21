@@ -69,8 +69,8 @@ z
     ##   url   title lang  url2  links rss   tables images social code_lang   size
     ##   <chr> <chr> <chr> <chr> <lis> <chr> <list> <list> <list>     <dbl>  <int>
     ## 1 http… Visu… en    http… <tib… http… <lgl … <tibb… <tibb…     1      38445
-    ## 2 http… A Ge… en    http… <tib… <NA>  <lgl … <tibb… <tibb…    -0.860 228328
-    ## 3 http… Conv… en    http… <tib… <NA>  <name… <tibb… <tibb…    -0.936 117806
+    ## 2 http… A Ge… en    http… <tib… <NA>  <lgl … <tibb… <tibb…    -0.860 228304
+    ## 3 http… Conv… en    http… <tib… <NA>  <name… <tibb… <tibb…    -0.936 117802
     ## 4 http… Pyto… en    http… <tib… <NA>  <name… <tibb… <tibb…    -1     191515
     ## # … with 5 more variables: server <chr>, accessed <dttm>, published <dttm>,
     ## #   generator <chr>, source <chr>
@@ -126,7 +126,7 @@ z$tables
     ## 10 8     Bag        
     ## 11 9     Ankle boot
 
-`html_df` does its best to find RSS feeds embedded in the page:
+`html_df()` does its best to find RSS feeds embedded in the page:
 
 ``` r
 z$rss
@@ -137,8 +137,24 @@ z$rss
     ## [3] NA                                            
     ## [4] NA
 
-Social profiles embedded on the page. At present, Twitter, Facebook and
-Linkedin are extracted.
+`html_df()` will try to parese out any social profiles embedded or
+mentioned on the page. Currently, this includes profiles for the sites
+
+-   bitbucket
+-   devto
+-   facebook
+-   github
+-   gitlab
+-   instagram
+-   keybase
+-   linkedin
+-   mastodon
+-   orcid
+-   patreon
+-   researchgate
+-   stackoverflow
+-   twitter
+-   youtube
 
 ``` r
 z$social
@@ -176,8 +192,8 @@ z$social
     ## 3 linkedin @company/analytics-vid… https://linkedin.com/company/analytics-vidhya
     ## 4 youtube  UCH6gDteHtH4hg3o2343iO… https://youtube.com/channel/UCH6gDteHtH4hg3o…
 
-Code language is inferred from `<code>` chunks using simple machine
-learning. The `code_lang` column contains score where values near 1
+Code language is inferred from `<code>` chunks using a preditive model.
+The `code_lang` column contains a numeric score where values near 1
 indicate mostly R code, values near -1 indicate mostly Python code:
 
 ``` r

@@ -27,7 +27,8 @@ get_time <- function(page, url){
         'meta[property="og:updated_time"]',
         'meta[property="article:published"]', 
         'meta[property="article:created"]', 
-        'meta[itemprop="datePublished"]'
+        'meta[itemprop="datePublished"]',
+        'meta[name="citation_online_date"]'
       )
       pub_time  <- as.vector(na.omit(unlist(lapply(time_tags, get_tags, page = page))))
     }

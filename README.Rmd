@@ -74,17 +74,35 @@ Where there are tables embedded on a page in the `<table>` tag, these will be ga
 z$tables
 ```
 
-`html_df` does its best to find RSS feeds embedded in the page:
+`html_df()` does its best to find RSS feeds embedded in the page:
 ```{r}
 z$rss
 ```
 
-Social profiles embedded on the page.  At present, Twitter, Facebook and Linkedin are extracted.
+`html_df()` will try to parese out any social profiles embedded or mentioned on the page.  Currently, this includes profiles for the sites
+
++ bitbucket
++ devto
++ facebook
++ github
++ gitlab
++ instagram
++ keybase
++ linkedin
++ mastodon
++ orcid
++ patreon
++ researchgate
++ stackoverflow
++ twitter
++ youtube
+
+
 ```{r}
 z$social
 ```
 
-Code language is inferred from `<code>` chunks using simple machine learning.  The `code_lang` column contains score where values near 1 indicate mostly R code, values near -1 indicate mostly Python code:
+Code language is inferred from `<code>` chunks using a preditive model.  The `code_lang` column contains a numeric score where values near 1 indicate mostly R code, values near -1 indicate mostly Python code:
 ```{r}
 z %>% select(code_lang, url2)
 ```

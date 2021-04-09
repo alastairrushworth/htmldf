@@ -10,7 +10,7 @@ url_list <- list(
                        code   = 'python',
                        lang   = 'en-us',
                        tables = NA,
-                       pdate  = NA),
+                       pdate  = "2020-11-26 04:53:48 UTC"),
   
   # # Aeon - philosophy blog
   # 'aeon'        = list(url    = 'https://aeon.co/essays/pippi-and-the-moomins-served-as-a-social-antidote-to-fascism',
@@ -62,7 +62,7 @@ url_list <- list(
                        code   = 'r',
                        lang   = 'en',
                        tables =  NA, 
-                       pdate  = "2019-11-24"),
+                       pdate  = "2019-11-24 UTC"),
   
   # # Alastair Rushworth - blog page about tour de france
   # 'arxiv'       = list(url    = 'https://arxiv.org/pdf/1802.03426.pdf',
@@ -169,7 +169,7 @@ url_list <- list(
                        code   = 'r',
                        lang   = 'de-de',
                        tables = NA, 
-                       pdate  = NA),
+                       pdate  = "2020-03-06 08:35:41 UTC"),
   
   # distill.pub
   'distill'     = list(url    = 'https://distill.pub/2020/selforg/',
@@ -180,7 +180,7 @@ url_list <- list(
                        code   = 'py',
                        lang   = 'en',
                        tables = NA, 
-                       pdate  = NA),
+                       pdate  = "2020-08-27 UTC"),
   
   # DVC
   'dvc'         = list(url    = 'https://dvc.org/blog/september-20-dvc-heartbeat',
@@ -235,7 +235,7 @@ url_list <- list(
                        code   = NA,
                        lang   = 'en',
                        tables = NA, 
-                       pdate  = "2020-12-20"),
+                       pdate  = "2020-09-12 UTC"),
   
   # the guardian news
   'guardian'    = list(url    = 'https://www.theguardian.com/uk-news',
@@ -267,7 +267,7 @@ url_list <- list(
                        code   = NA,
                        lang   = 'en',
                        tables = NA, 
-                       pdate  = "0000-10-09"),
+                       pdate  = NA),
   
   # htmldf github repo page
   'github3'     = list(url    = 'https://github.com/alastairrushworth/htmldf',
@@ -309,7 +309,8 @@ url_list <- list(
                        title  = "How to Use Lightgbm with Tidymodels",
                        code   = 'r',
                        lang   = 'en', 
-                       tables = 1),
+                       tables = 1, 
+                       pdate  = "2020-08-27 UTC"),
   
   # hvitfeldt blog article
   'hvitfeldt'   = list(url    = 'https://www.hvitfeldt.me/blog/textrecipes-series-pretrained-word-embeddings/',
@@ -322,7 +323,8 @@ url_list <- list(
                        title  = "Textrecipes series: Pretrained Word Embedding | Emil Hvitfeldt",
                        code   = 'r',
                        lang   = 'en-us', 
-                       tables = NA),
+                       tables = NA, 
+                       pdate  = "2020-08-07 UTC"),
   
   # inspectdf gh repo
   'inspect_df'  = list(url    = "https://github.com/alastairrushworth/inspectdf",
@@ -384,7 +386,7 @@ url_list <- list(
                         code   = 'r',
                         lang   = 'en', 
                         tables = NA, 
-                        pdate  = "2020-09-03"),
+                        pdate  = "2020-09-03 05:00:00 UTC"),
   
   # mlplus blog article
   'mlplus'       = list(url    = "https://www.machinelearningplus.com/plots/matplotlib-tutorial-complete-guide-python-plot-examples/",
@@ -396,7 +398,23 @@ url_list <- list(
                         code   = 'py',
                         lang   = 'en-us', 
                         tables = NA, 
-                        pdate  = NA),
+                        pdate  = "2019-01-22 18:05:36 UTC"),
+  
+  'pipingdata'    = list(
+    url    = 'https://www.pipinghotdata.com/posts/2021-04-01-deploy-previews-with-netlifly/', 
+    title  = "PIPING HOT DATA: Deploy previews with Netlifly", 
+    rss    =  "https://www.pipinghotdata.com/index.xml", 
+    social = c("https://twitter.com/apreshill",            
+               "https://twitter.com/ma_salmon",            
+               "https://twitter.com/pipinghotdata",        
+               "https://github.com/shannonpileggi",        
+               "https://github.com/sindresorhus",          
+               "https://linkedin.com/in/shannon-m-pileggi"), 
+    code   = 'r', 
+    lang   = 'en', 
+    tables = NA,
+    pdate  = "2021-04-01 UTC"
+  ),
   
   # rbloggers blog article
   'rbloggers'    = list(url    = 'https://www.r-bloggers.com/data-visualization-with-r-2/',
@@ -411,7 +429,7 @@ url_list <- list(
                         code   = 'r',
                         lang   = 'en-us', 
                         tables = NA, 
-                        pdate  = NA),
+                        pdate  = "2019-07-10 01:02:02 UTC"),
   
   # rbloggers blog article
   'rbloggers2'   = list(url    = 'https://www.r-bloggers.com/2020/10/how-to-pick-an-optimal-utility-threshold-using-the-roc-plot/',
@@ -425,7 +443,7 @@ url_list <- list(
                         code   = NA,
                         lang   = 'en-us', 
                         tables = NA, 
-                        pdate  = NA),
+                        pdate  = "2020-10-10 18:17:37 UTC"),
   
   # reddit rstats sub
   'reddit'       = list(url    = 'https://www.reddit.com/r/rstats/',
@@ -453,7 +471,7 @@ url_list <- list(
                         code   = 'r',
                         lang   = 'en', 
                         tables = NA, 
-                        pdate  = "2020-05-13"),
+                        pdate  = "2020-05-13 UTC"),
   
   # drob blog
   'robinson'     = list(url    = 'http://varianceexplained.org/',
@@ -465,7 +483,7 @@ url_list <- list(
                         code   = NA,
                         lang   = 'en', 
                         tables = NA, 
-                        pdate  = "2020-05-04"),
+                        pdate  = "2020-05-04 UTC"),
   
   # rolkra blog
   'rolkra'       = list(url    = 'https://rolkra.github.io/start-to-explore/',
@@ -475,7 +493,7 @@ url_list <- list(
                         code   = 'r',
                         lang   = 'en', 
                         tables = NA, 
-                        pdate  = "2020-07-30"),
+                        pdate  = "2020-07-30 UTC"),
   
   # ropensci blog
   'ropensci'     = list(url    = "https://ropensci.org/blog/2020/02/21/ropensci-leadership/",
@@ -495,7 +513,7 @@ url_list <- list(
                         code   = NA,
                         lang   = 'en', 
                         tables = NA, 
-                        pdate  = NA),
+                        pdate  = "2020-02-21 UTC"),
   
   # rushworth blog
   'rushworth'    = list(url    = 'https://alastairrushworth.github.io/',
@@ -530,7 +548,7 @@ url_list <- list(
                         code   = NA,
                         lang   = 'en', 
                         tables = NA, 
-                        pdate  = "2020-05-20"),
+                        pdate  = "2020-05-20 UTC"),
   
   # maelle salmon blog
   'salmon'       = list(url    = 'https://masalmon.eu/post/',
@@ -549,7 +567,7 @@ url_list <- list(
                         code   = NA,
                         lang   = 'en', 
                         tables = NA, 
-                        pdate  = "2019-02-11"),
+                        pdate  = "2019-02-11 UTC"),
   
   # shakirm blog
   'shakirm'      = list(url    = 'http://blog.shakirm.com/',
@@ -573,7 +591,7 @@ url_list <- list(
                         code   = NA,
                         lang   = 'en-us', 
                         tables = NA, 
-                        pdate  = NA),
+                        pdate  = "2020-01-01 UTC"),
   
   # sitstand website
   'sitstand'     = list(url    = 'https://sit-stand.com/best-standing-desks',
@@ -621,7 +639,7 @@ url_list <- list(
                         code   = 'py',
                         lang   = 'en', 
                         tables = 1, 
-                        pdate  = NA),
+                        pdate  = 'Last updated 2021-03-19 UTC'),
   
   # towardsds blog
   'towardsds'    = list(url    = 'https://towardsdatascience.com/how-to-spot-a-data-charlatan-85785c991433',
@@ -632,7 +650,7 @@ url_list <- list(
                         code   = NA,
                         lang   = 'en', 
                         tables = NA, 
-                        pdate  = NA),
+                        pdate  = "2020-10-10 16:29:07 UTC"),
   
   # towardsds2 blog
   'towardsds2'   = list(url    = 'https://towardsdatascience.com/multinomial-mixture-model-for-supermarket-shoppers-segmentation-a-complete-tutorial-268974d905da',
@@ -643,7 +661,7 @@ url_list <- list(
                         code   = NA,
                         lang   = 'en', 
                         tables = NA, 
-                        pdate  = NA),
+                        pdate  = "2021-01-20 10:55:15 UTC"),
   
   # jake vdp blog
   'vdp'          = list(url    = "https://jakevdp.github.io/PythonDataScienceHandbook/02.02-the-basics-of-numpy-arrays.html",

@@ -9,7 +9,6 @@ Imports: cld3, dplyr, httr, lubridate, magrittr, progress, R.utils, ranger, rves
 Depends: R (>= 3.5.0)
 Encoding: UTF-8
 Language: en_GB
-LazyData: true
 URL: https://github.com/alastairrushworth/htmldf/
 BugReports: https://github.com/alastairrushworth/htmldf/issues
 RoxygenNote: 7.1.1

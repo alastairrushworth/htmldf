@@ -42,7 +42,9 @@ get_time <- function(page, url){
         "p[class='dateline']",
         "div[class='date']",
         "i[class='fa fa-calendar-o']", 
-        "span[class='post-meta']"
+        "span[class='post-meta']", 
+        "p", 
+        "h4"
       )
       pub_time  <-  as.vector(na.omit(unlist(lapply(node_list, get_time_text, page = page))))
     }
@@ -50,8 +52,9 @@ get_time <- function(page, url){
       pub_time <- unique(pub_time)
       pub_time <- unlist(strsplit(pub_time, '\n'))
       date_patterns <- c("d m y", "d B Y", "m/d/y", "Y/m/d", 'd b Y HM', 
-                         'b d', 'Y-m-dH:M:S', "ymdTz", "ymdT")
-      pub_time <- suppressWarnings(parse_date_time(pub_time, orders = date_patterns))
+                         'b d', 'Y-m-dH:M:S', "ymdTz", "ymdT", "Y-m-d")
+      pub_time <- suppressWarnings(try(parse_date_time(pub_time, orders = date_patterns), silent = TRUE))
+      if("try-error" %in% class(pub_time)) pub_time <- NA
       pub_time <- na.omit(pub_time)
       if(length(pub_time) > 1) pub_time  <- pub_time[1]
     } else {
@@ -60,7 +63,8 @@ get_time <- function(page, url){
   } else {
     pub_time <- NA
   }
-  return(as.character(pub_time))
+  pub_time <- ifelse(length(pub_time) == 0, as.character(NA), as.character(pub_time))
+  return(pub_time)
 }
 
 get_tags  <- function(tag, page){

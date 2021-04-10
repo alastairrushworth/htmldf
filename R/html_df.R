@@ -169,7 +169,7 @@ fetch_page <- function(url, time_out, max_size, keep_source){
          server = pg_hdr$server, 
          size = pg_hdr$size, 
          accessed = pg_hdr$accessed,
-         published = ifelse(length(pg_tim) == 0, NA, pg_tim),
+         published = pg_tim,
          code_lang = pg_code_lang)
 
   return(pg_features)

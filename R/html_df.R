@@ -152,7 +152,17 @@ fetch_page <- function(url, time_out, max_size, keep_source){
   pg_tim       <- get_time(pg_htm, url = url2)
   pg_tbl       <- get_tables(pg_htm)
   pg_code_lang <- guess_code_lang(pg_htm)
-
+  # source - sometimes coerciion to character will fail
+  pg_source    <- ifelse(
+    keep_source, 
+    ifelse(
+      'try-error' %in% class(try(as.character(pg_htm), silent = TRUE)),
+      NA, 
+      as.character(pg_htm)
+    ), 
+    NA
+  )
+  
   # combine into list
   pg_features <- 
     list(url = url, 
@@ -161,7 +171,7 @@ fetch_page <- function(url, time_out, max_size, keep_source){
          title = pg_ttl, 
          links = pg_lnk,
          tables = pg_tbl,
-         source = ifelse(keep_source, as.character(pg_htm), NA),
+         source = pg_source,
          social = pg_scl,
          images = pg_img, 
          generator = pg_gen, 

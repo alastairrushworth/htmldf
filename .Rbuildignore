@@ -6,5 +6,6 @@
 ^code_classifier.R$
 ^main.R$
 ^checks.R$
+^example.R$
 ^tests$
 ^README\.Rmd$

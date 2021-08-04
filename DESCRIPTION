@@ -5,7 +5,7 @@ Author: Alastair Rushworth
 Maintainer: Alastair Rushworth <alastairmrushworth@gmail.com>
 Description: Simple tools for scraping webpages, extracting common html tags and parsing contents to a tidy, tabular format.  Tools help with extraction of page titles, links, images, rss feeds, social media handles and page metadata.
 License: GPL-2
-Imports: cld3, dplyr, httr, lubridate, magrittr, progress, R.utils, ranger, rvest, stringr, tibble, tidyr, tools, urltools, xml2
+Imports: cld3, dplyr, httr, lubridate, magrittr, processx, progress, R.utils, ranger, rvest, stringr, tibble, tidyr, tools, urltools, xml2
 Depends: R (>= 3.5.0)
 Encoding: UTF-8
 Language: en_GB

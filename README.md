@@ -1,8 +1,6 @@
 
 # htmldf <img src="man/figures/hex.png" align="right" width="150" />
 
-[![Build
-Status](https://travis-ci.org/alastairrushworth/htmldf.svg?branch=master)](https://travis-ci.org/alastairrushworth/htmldf)
 [![codecov](https://codecov.io/gh/alastairrushworth/htmldf/branch/master/graph/badge.svg)](https://codecov.io/gh/alastairrushworth/htmldf)
 [![CRAN
 status](https://www.r-pkg.org/badges/version/htmldf)](https://cran.r-project.org/package=htmldf)
@@ -19,7 +17,7 @@ as a `tibble` where each row corresponds to a document, and the columns
 contain page attributes and metadata extracted from the html, including:
 
 -   page title
--   inferred language
+-   inferred language (uses Google’s compact language detector)
 -   RSS feeds
 -   tables coerced to tibbles, where possible
 -   hyperlinks
@@ -29,6 +27,7 @@ contain page attributes and metadata extracted from the html, including:
 -   page size, generator and server
 -   page accessed date
 -   page published or last updated dates
+-   full page source html
 
 ## Installation
 
@@ -65,13 +64,13 @@ z <- html_df(urlx, show_progress = FALSE)
 z
 ```
 
-    ## # A tibble: 4 x 16
-    ##   url   title lang  url2  links rss   tables images social code_lang   size
-    ##   <chr> <chr> <chr> <chr> <lis> <chr> <list> <list> <list>     <dbl>  <int>
-    ## 1 http… Visu… en    http… <tib… http… <lgl … <tibb… <tibb…     1      38445
-    ## 2 http… A Ge… en    http… <tib… <NA>  <lgl … <tibb… <tibb…    -0.860 228304
-    ## 3 http… Conv… en    http… <tib… <NA>  <name… <tibb… <tibb…    -0.936 117802
-    ## 4 http… Pyto… en    http… <tib… <NA>  <name… <tibb… <tibb…    -1     191515
+    ## # A tibble: 4 × 16
+    ##   url     title   lang  url2   links rss   tables images social code_lang   size
+    ##   <chr>   <chr>   <chr> <chr>  <lis> <chr> <list> <list> <list>     <dbl>  <int>
+    ## 1 https:… Visual… en    https… <tib… http… <lgl … <tibb… <tibb…     1      38104
+    ## 2 https:… A Gent… en    https… <tib… <NA>  <lgl … <tibb… <tibb…    -0.860 202528
+    ## 3 https:… Convol… en    https… <tib… <NA>  <name… <tibb… <tibb…    -0.936 113768
+    ## 4 https:… Pytorc… en    https… <tib… <NA>  <name… <tibb… <tibb…    -1     204088
     ## # … with 5 more variables: server <chr>, accessed <dttm>, published <dttm>,
     ## #   generator <chr>, source <chr>
 
@@ -81,13 +80,13 @@ To see the page titles, look at the `titles` column.
 z %>% select(title, url2)
 ```
 
-    ## # A tibble: 4 x 2
-    ##   title                                url2                                     
-    ##   <chr>                                <chr>                                    
-    ## 1 Visualising Tour De France Data In … https://alastairrushworth.github.io/Visu…
-    ## 2 A Gentle Introduction to PyTorch 1.… https://medium.com/dair-ai/pytorch-1-2-i…
-    ## 3 Convolutional Neural Network (CNN) … https://www.tensorflow.org/tutorials/ima…
-    ## 4 Pytorch | Getting Started With Pyto… https://www.analyticsvidhya.com/blog/201…
+    ## # A tibble: 4 × 2
+    ##   title                                                              url2       
+    ##   <chr>                                                              <chr>      
+    ## 1 Visualising Tour De France Data In R -                             https://al…
+    ## 2 A Gentle Introduction to PyTorch 1.2 | by elvis | dair.ai | Medium https://me…
+    ## 3 Convolutional Neural Network (CNN)  |  TensorFlow Core             https://ww…
+    ## 4 Pytorch | Getting Started With Pytorch                             https://ww…
 
 Where there are tables embedded on a page in the `<table>` tag, these
 will be gathered into the list column `tables`. `html_df` will attempt
@@ -111,7 +110,7 @@ z$tables
     ## 
     ## [[4]]
     ## [[4]]$`no-caption`
-    ## # A tibble: 11 x 2
+    ## # A tibble: 11 × 2
     ##    X1    X2         
     ##    <chr> <chr>      
     ##  1 Label Description
@@ -161,15 +160,15 @@ z$social
 ```
 
     ## [[1]]
-    ## # A tibble: 3 x 3
-    ##   site     handle                     profile                                   
-    ##   <chr>    <chr>                      <chr>                                     
-    ## 1 twitter  @rushworth_a               https://twitter.com/rushworth_a           
-    ## 2 github   @alastairrushworth         https://github.com/alastairrushworth      
-    ## 3 linkedin @in/alastair-rushworth-25… https://linkedin.com/in/alastair-rushwort…
+    ## # A tibble: 3 × 3
+    ##   site     handle                           profile                             
+    ##   <chr>    <chr>                            <chr>                               
+    ## 1 twitter  @rushworth_a                     https://twitter.com/rushworth_a     
+    ## 2 github   @alastairrushworth               https://github.com/alastairrushworth
+    ## 3 linkedin @in/alastair-rushworth-253137143 https://linkedin.com/in/alastair-ru…
     ## 
     ## [[2]]
-    ## # A tibble: 3 x 3
+    ## # A tibble: 3 × 3
     ##   site    handle    profile                     
     ##   <chr>   <chr>     <chr>                       
     ## 1 twitter @dair_ai  https://twitter.com/dair_ai 
@@ -177,20 +176,20 @@ z$social
     ## 3 github  @omarsar  https://github.com/omarsar  
     ## 
     ## [[3]]
-    ## # A tibble: 2 x 3
+    ## # A tibble: 2 × 3
     ##   site    handle      profile                       
     ##   <chr>   <chr>       <chr>                         
     ## 1 twitter @tensorflow https://twitter.com/tensorflow
     ## 2 github  @tensorflow https://github.com/tensorflow 
     ## 
     ## [[4]]
-    ## # A tibble: 4 x 3
-    ##   site     handle                  profile                                      
-    ##   <chr>    <chr>                   <chr>                                        
-    ## 1 twitter  @analyticsvidhya        https://twitter.com/analyticsvidhya          
-    ## 2 facebook @analyticsvidhya        https://facebook.com/analyticsvidhya         
-    ## 3 linkedin @company/analytics-vid… https://linkedin.com/company/analytics-vidhya
-    ## 4 youtube  UCH6gDteHtH4hg3o2343iO… https://youtube.com/channel/UCH6gDteHtH4hg3o…
+    ## # A tibble: 4 × 3
+    ##   site     handle                    profile                                    
+    ##   <chr>    <chr>                     <chr>                                      
+    ## 1 twitter  @analyticsvidhya          https://twitter.com/analyticsvidhya        
+    ## 2 facebook @analyticsvidhya          https://facebook.com/analyticsvidhya       
+    ## 3 linkedin @company/analytics-vidhya https://linkedin.com/company/analytics-vid…
+    ## 4 youtube  UCH6gDteHtH4hg3o2343iObA  https://youtube.com/channel/UCH6gDteHtH4hg…
 
 Code language is inferred from `<code>` chunks using a preditive model.
 The `code_lang` column contains a numeric score where values near 1
@@ -200,7 +199,7 @@ indicate mostly R code, values near -1 indicate mostly Python code:
 z %>% select(code_lang, url2)
 ```
 
-    ## # A tibble: 4 x 2
+    ## # A tibble: 4 × 2
     ##   code_lang url2                                                                
     ##       <dbl> <chr>                                                               
     ## 1     1     https://alastairrushworth.github.io/Visualising-Tour-de-France-data…
@@ -214,12 +213,12 @@ Publication dates
 z %>% select(published, url2)
 ```
 
-    ## # A tibble: 4 x 2
+    ## # A tibble: 4 × 2
     ##   published           url2                                                      
     ##   <dttm>              <chr>                                                     
     ## 1 2019-11-24 00:00:00 https://alastairrushworth.github.io/Visualising-Tour-de-F…
     ## 2 2019-09-01 18:03:22 https://medium.com/dair-ai/pytorch-1-2-introduction-guide…
-    ## 3 NA                  https://www.tensorflow.org/tutorials/images/cnn           
+    ## 3 2021-06-17 00:00:00 https://www.tensorflow.org/tutorials/images/cnn           
     ## 4 2019-09-17 03:09:28 https://www.analyticsvidhya.com/blog/2019/09/introduction…
 
 ## Comments? Suggestions? Issues?

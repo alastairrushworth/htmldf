@@ -20,5 +20,5 @@ chrome_read_html <- function(url, chrome_bin, timeout){
     timeout = timeout
   )
   
-  res$stdout
+  return(res$stdout)
 }

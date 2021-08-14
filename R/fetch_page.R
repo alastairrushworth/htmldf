@@ -38,7 +38,6 @@ fetch_page <- function(url, time_out, max_size, keep_source, chrome_bin){
   if(class(pg_dl) == "response"){
     pg_hdr     <- get_headers(pg_dl)
     hdr_server <- pg_hdr$server
-    hdr_size   <- pg_hdr$size
     if(!is.null(max_size)){
       if(max_size < pg_hdr$size){
         pg_dl <- NA
@@ -49,12 +48,19 @@ fetch_page <- function(url, time_out, max_size, keep_source, chrome_bin){
     } else {
       url2  <- pg_dl$url
     }
-  } else {
+  } else if(!is.null(chrome_bin)){
+    url2 <- try({
+      base::curlGetHeaders(url) %>%
+        grep('^Location', ., value = TRUE) %>%
+        gsub('^Location\\: |\\\r\\\n', '', .)},
+      silent = TRUE)
+    url2       <- ifelse('try-error' %in% class(url2), NA, dest_url)
+    hdr_server <- NA
+  } else{
     url2       <- url
     hdr_server <- NA
-    hdr_size   <- NA
   }
-  
+
   # get attributes from html
   pg_htm       <- if(grepl('file://', url)) read_html(file(url)) else get_html(pg_dl) 
   pg_img       <- get_imgs(pg_htm, url2)

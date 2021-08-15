@@ -54,7 +54,7 @@ fetch_page <- function(url, time_out, max_size, keep_source, chrome_bin){
         grep('^Location', ., value = TRUE) %>%
         gsub('^Location\\: |\\\r\\\n', '', .)},
       silent = TRUE)
-    url2       <- ifelse('try-error' %in% class(url2), NA, dest_url)
+    url2       <- ifelse('try-error' %in% class(url2), NA, url2)
     hdr_server <- NA
   } else{
     url2       <- url

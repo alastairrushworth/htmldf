@@ -4,9 +4,10 @@
 
 get_generator <- function(page){
     if('xml_document' %in% class(page)){
-      html_gen <- try(page %>%
-                        rvest::html_node('meta[name="generator"]') %>%
-                        rvest::html_attr('content'), silent = TRUE)
+      html_gen <- try(
+        page %>%
+          rvest::html_node('meta[name="generator"]') %>%
+          rvest::html_attr('content'), silent = TRUE)
       if(!'try-error' %in% class(html_gen)){
         if(is.na(html_gen)){
           # check comments for pkgdown

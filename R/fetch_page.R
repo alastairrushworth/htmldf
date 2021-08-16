@@ -1,12 +1,12 @@
 #' @importFrom httr GET
+#' @importFrom httr HEAD
 #' @importFrom httr timeout
 
 fetch_page <- function(url, time_out, max_size, keep_source, chrome_bin){
   # attempt to read from  url
+  parse_attempt <- try(httr::GET(url, httr::timeout(time_out)), silent = TRUE)
   if(is.null(chrome_bin)){
-    parse_attempt <- try(httr::GET(url, httr::timeout(time_out)), silent = TRUE)
-  } else {
-    parse_attempt <- try(
+    parse_attempt2 <- try(
       chrome_read_html(
         url, 
         timeout = time_out, 
@@ -14,19 +14,17 @@ fetch_page <- function(url, time_out, max_size, keep_source, chrome_bin){
       silent = TRUE)
   }
   
-  # just try again if it fails...
-  if(class(parse_attempt) == 'try-error'){
-    if(is.null(chrome_bin)){
-      parse_attempt <- try(httr::GET(url, httr::timeout(time_out)), silent = TRUE)
-    } else {
-      parse_attempt <- try(
-        chrome_read_html(
-          url, 
-          timeout = time_out, 
-          chrome_bin = chrome_bin), 
-        silent = TRUE)
-    }
+  # attempt to read from  url
+  parse_attempt <- try(httr::GET(url, httr::timeout(time_out)), silent = TRUE)
+  if(is.null(chrome_bin)){
+    parse_attempt2 <- try(
+      chrome_read_html(
+        url, 
+        timeout = time_out, 
+        chrome_bin = chrome_bin), 
+      silent = TRUE)
   }
+  
   # return NA if the URL could not be read
   if(class(parse_attempt) == 'try-error'){
     pg_dl <- NA
@@ -38,42 +36,26 @@ fetch_page <- function(url, time_out, max_size, keep_source, chrome_bin){
   if(class(pg_dl) == "response"){
     pg_hdr     <- get_headers(pg_dl)
     hdr_server <- pg_hdr$server
-    if(!is.null(max_size)){
-      if(max_size < pg_hdr$size){
-        pg_dl <- NA
-        url2  <- NA
-      } else {
-        url2  <- pg_dl$url
-      }
-    } else {
-      url2  <- pg_dl$url
-    }
-  } else if(!is.null(chrome_bin)){
-    url2 <- try({
-      base::curlGetHeaders(url) %>%
-        grep('^Location', ., value = TRUE) %>%
-        gsub('^Location\\: |\\\r\\\n', '', .)},
-      silent = TRUE)
-    url2       <- ifelse('try-error' %in% class(url2), NA, url2)
-    hdr_server <- NA
-  } else{
-    url2       <- url
-    hdr_server <- NA
-  }
+    hdr_acc    <- pg_hdr$accessed
+    hdr_size   <- pg_hdr$size
+    hdr_url2   <- pg_hdr$url2
+  } 
+  if(!is.null(chrome_bin)) pg_dl <- parse_attempt2
 
   # get attributes from html
   pg_htm       <- if(grepl('file://', url)) read_html(file(url)) else get_html(pg_dl) 
-  pg_img       <- get_imgs(pg_htm, url2)
-  pg_lnk       <- get_links(pg_htm, url2)
-  pg_ttl       <- get_title(pg_htm, url = url2)
+  pg_img       <- get_imgs(pg_htm, hdr_url2)
+  pg_lnk       <- get_links(pg_htm, hdr_url2)
+  pg_ttl       <- get_title(pg_htm, url = hdr_url2)
   pg_scl       <- get_social(pg_htm)
   pg_lng       <- get_language(pg_htm)
-  pg_rss       <- get_rss(pg_htm, url = url2)
+  pg_rss       <- get_rss(pg_htm, url = hdr_url2)
   pg_gen       <- get_generator(pg_htm)
-  pg_tim       <- get_time(pg_htm, url = url2)
+  pg_tim       <- get_time(pg_htm, url = hdr_url2)
   pg_tbl       <- get_tables(pg_htm)
   pg_code_lang <- guess_code_lang(pg_htm)
-  # source - sometimes coerciion to character will fail
+  
+  # source - sometimes coercion to character will fail
   pg_source    <- ifelse(
     keep_source, 
     ifelse(
@@ -86,11 +68,11 @@ fetch_page <- function(url, time_out, max_size, keep_source, chrome_bin){
   
   # combine into list
   pg_features <- 
-    list(url = url, 
-         url2 = url2, 
-         rss = pg_rss, 
-         title = pg_ttl, 
-         links = pg_lnk,
+    list(url    = url, 
+         url2   = hdr_url2, 
+         rss    = pg_rss, 
+         title  = pg_ttl, 
+         links  = pg_lnk,
          tables = pg_tbl,
          source = pg_source,
          social = pg_scl,
@@ -98,8 +80,8 @@ fetch_page <- function(url, time_out, max_size, keep_source, chrome_bin){
          generator = pg_gen, 
          lang = pg_lng, 
          server = hdr_server, 
-         size = ifelse(is.na(pg_source), NA, as.integer(object.size(pg_source))), 
-         accessed = Sys.time(),
+         size = hdr_size,
+         accessed = hdr_acc,
          published = pg_tim,
          code_lang = pg_code_lang)
   

@@ -39,6 +39,7 @@ fetch_page <- function(url, time_out, max_size, keep_source, chrome_bin){
     hdr_acc    <- pg_hdr$accessed
     hdr_size   <- pg_hdr$size
     hdr_url2   <- pg_hdr$url2
+    hdr_status <- pg_hdr$status
   } 
   if(!is.null(chrome_bin)) pg_dl <- parse_attempt2
 
@@ -83,7 +84,8 @@ fetch_page <- function(url, time_out, max_size, keep_source, chrome_bin){
          size = hdr_size,
          accessed = hdr_acc,
          published = pg_tim,
-         code_lang = pg_code_lang)
+         code_lang = pg_code_lang, 
+         status    = hdr_status)
   
   return(pg_features)
 }

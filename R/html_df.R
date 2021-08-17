@@ -35,6 +35,7 @@
 #' \item \code{accessed} datetime when the page was accessed
 #' \item \code{published} page publication or last updated date, if detected 
 #' \item \code{generator} the page generator, if found
+#' \item \code{status} HTTP status code 
 #' \item \code{source} character string of xml documents.  These can each be coerced to \code{xml_document}
 #' for further processing using \code{rvest} using \code{xml2:read_html()}.
 #' }
@@ -102,7 +103,7 @@ html_df <- function(urlx,
     unnest_wider(z) %>%
     select(url, title, lang, url2, links, rss, tables, 
            images, social, code_lang, size, server, 
-           accessed, published, generator,
+           accessed, published, generator, status,
            source)
   # coerce the accessed dt to datetime
   accessed_dt <- suppressWarnings(try(as_datetime(z$accessed), silent = TRUE))

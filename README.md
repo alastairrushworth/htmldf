@@ -27,6 +27,7 @@ contain page attributes and metadata extracted from the html, including:
 -   page size, generator and server
 -   page accessed date
 -   page published or last updated dates
+-   HTTP status code
 -   full page source html
 
 ## Installation
@@ -61,18 +62,30 @@ urlx <- c("https://alastairrushworth.github.io/Visualising-Tour-de-France-data-i
 
 # use html_df() to gather data
 z <- html_df(urlx, show_progress = FALSE)
-z
+
+# have a quick look at the first page
+glimpse(z[1, ])
 ```
 
-    ## # A tibble: 4 × 16
-    ##   url     title   lang  url2   links rss   tables images social code_lang   size
-    ##   <chr>   <chr>   <chr> <chr>  <lis> <chr> <list> <list> <list>     <dbl>  <int>
-    ## 1 https:… Visual… en    https… <tib… http… <lgl … <tibb… <tibb…     1      38104
-    ## 2 https:… A Gent… en    https… <tib… <NA>  <lgl … <tibb… <tibb…    -0.860 202528
-    ## 3 https:… Convol… en    https… <tib… <NA>  <name… <tibb… <tibb…    -0.936 113768
-    ## 4 https:… Pytorc… en    https… <tib… <NA>  <name… <tibb… <tibb…    -1     204088
-    ## # … with 5 more variables: server <chr>, accessed <dttm>, published <dttm>,
-    ## #   generator <chr>, source <chr>
+    ## Rows: 1
+    ## Columns: 17
+    ## $ url       <chr> "https://alastairrushworth.github.io/Visualising-Tour-de-Fra…
+    ## $ title     <chr> "Visualising Tour De France Data In R -"
+    ## $ lang      <chr> "en"
+    ## $ url2      <chr> "https://alastairrushworth.github.io/Visualising-Tour-de-Fra…
+    ## $ links     <list> [<tbl_df[27 x 2]>]
+    ## $ rss       <chr> "https://alastairrushworth.github.io/feed.xml"
+    ## $ tables    <list> NA
+    ## $ images    <list> [<tbl_df[8 x 3]>]
+    ## $ social    <list> [<tbl_df[3 x 3]>]
+    ## $ code_lang <dbl> 1
+    ## $ size      <int> 38445
+    ## $ server    <chr> "GitHub.com"
+    ## $ accessed  <dttm> 2021-08-17 07:15:58
+    ## $ published <dttm> 2019-11-24
+    ## $ generator <chr> NA
+    ## $ status    <int> 200
+    ## $ source    <chr> "<!DOCTYPE html>\n<!--\n  Minimal Mistakes Jekyll Theme 4.4.…
 
 To see the page titles, look at the `titles` column.
 
@@ -136,7 +149,7 @@ z$rss
     ## [3] NA                                            
     ## [4] NA
 
-`html_df()` will try to parese out any social profiles embedded or
+`html_df()` will try to parse out any social profiles embedded or
 mentioned on the page. Currently, this includes profiles for the sites
 
 -   bitbucket

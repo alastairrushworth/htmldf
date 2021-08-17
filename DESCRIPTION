@@ -1,6 +1,6 @@
 Package: htmldf
 Title: Simple Scraping and Tidy Webpage Summaries
-Version: 0.4.0.9999
+Version: 0.4.0
 Author: Alastair Rushworth
 Maintainer: Alastair Rushworth <alastairmrushworth@gmail.com>
 Description: Simple tools for scraping webpages, extracting common html tags and parsing contents to a tidy, tabular format.  Tools help with extraction of page titles, links, images, rss feeds, social media handles and page metadata.

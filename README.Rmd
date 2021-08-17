@@ -25,6 +25,7 @@ The package `htmldf` contains a single function `html_df()` which accepts a vect
 + page size, generator and server
 + page accessed date
 + page published or last updated dates
++ HTTP status code
 + full page source html
 
 Installation
@@ -58,7 +59,9 @@ urlx <- c("https://alastairrushworth.github.io/Visualising-Tour-de-France-data-i
 
 # use html_df() to gather data
 z <- html_df(urlx, show_progress = FALSE)
-z
+
+# have a quick look at the first page
+glimpse(z[1, ])
 ```
 
 To see the page titles, look at the `titles` column.  
@@ -78,7 +81,7 @@ z$tables
 z$rss
 ```
 
-`html_df()` will try to parese out any social profiles embedded or mentioned on the page.  Currently, this includes profiles for the sites
+`html_df()` will try to parse out any social profiles embedded or mentioned on the page.  Currently, this includes profiles for the sites
 
 + bitbucket
 + devto

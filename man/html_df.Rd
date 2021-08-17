@@ -53,6 +53,7 @@ If not code tags are detected, or the language could not be inferred, value is \
 \item \code{accessed} datetime when the page was accessed
 \item \code{published} page publication or last updated date, if detected 
 \item \code{generator} the page generator, if found
+\item \code{status} HTTP status code 
 \item \code{source} character string of xml documents.  These can each be coerced to \code{xml_document}
 for further processing using \code{rvest} using \code{xml2:read_html()}.
 }

@@ -5,7 +5,7 @@
 fetch_page <- function(url, time_out, max_size, keep_source, chrome_bin){
   # attempt to read from  url
   parse_attempt <- try(httr::GET(url, httr::timeout(time_out)), silent = TRUE)
-  if(is.null(chrome_bin)){
+  if(!is.null(chrome_bin)){
     parse_attempt2 <- try(
       chrome_read_html(
         url, 
@@ -16,7 +16,7 @@ fetch_page <- function(url, time_out, max_size, keep_source, chrome_bin){
   
   # attempt to read from  url
   parse_attempt <- try(httr::GET(url, httr::timeout(time_out)), silent = TRUE)
-  if(is.null(chrome_bin)){
+  if(!is.null(chrome_bin)){
     parse_attempt2 <- try(
       chrome_read_html(
         url, 

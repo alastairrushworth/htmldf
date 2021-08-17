@@ -40,7 +40,11 @@ fetch_page <- function(url, time_out, max_size, keep_source, chrome_bin){
     hdr_size   <- pg_hdr$size
     hdr_url2   <- pg_hdr$url2
     hdr_status <- pg_hdr$status
-  } 
+  } else {
+    hdr_server <- hdr_acc <- hdr_size <- hdr_url2 <- hdr_status <- NA
+  }
+  
+  # if using headless chrome, replace page source with chrome document
   if(!is.null(chrome_bin)) pg_dl <- parse_attempt2
 
   # get attributes from html

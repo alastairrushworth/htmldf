@@ -4,7 +4,6 @@
 #' @importFrom rvest html_nodes
 #' @importFrom rvest html_table
 #' @importFrom rvest html_text
-
 #' @importFrom tibble tibble
 #' @importFrom xml2 read_html
 
@@ -34,13 +33,7 @@ get_tables <- function(html_content){
 
 table_to_tibble <- function(v){
   table_tibble <- 
-    try(
-      suppressWarnings(
-        suppressMessages(
-          tibble(html_table(v, fill = TRUE), 
-                 .name_repair = 'universal')
-        )), 
-      silent = TRUE)
+    try(suppressWarnings(suppressMessages(html_table(v))), silent = TRUE)
   table_caption <- 
     try(v %>%
           html_nodes('caption') %>%

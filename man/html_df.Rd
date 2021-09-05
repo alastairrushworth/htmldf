@@ -8,6 +8,7 @@ html_df(
   urlx,
   max_size = 5e+06,
   wait = 0,
+  retry_times = 0,
   time_out = 10,
   show_progress = TRUE,
   keep_source = TRUE,
@@ -21,6 +22,8 @@ html_df(
 This is to avoid reading very large pages that may cause \code{read_html()} to hang.}
 
 \item{wait}{Time in seconds to wait between successive requests. Defaults to 0.}
+
+\item{retry_times}{Number of times to retry a URL after failure.}
 
 \item{time_out}{Time in seconds to wait for \code{httr::GET()} to complete before exiting.  Defaults 
 to 10.}

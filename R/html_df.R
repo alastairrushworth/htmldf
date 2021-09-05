@@ -8,6 +8,7 @@
 #' @param urlx A character vector containing urls.  Local files must be prepended with \code{file://}.
 #' @param show_progress Logical, defaults to \code{TRUE}. Whether to show progress during download.
 #' @param wait Time in seconds to wait between successive requests. Defaults to 0.
+#' @param retry_times Number of times to retry a URL after failure.
 #' @param max_size Maximum size in bytes of pages to attempt to parse, defaults to \code{5000000}.
 #'   This is to avoid reading very large pages that may cause \code{read_html()} to hang.
 #' @param keep_source Logical argument - whether or not to retain the contents of the page \code{source} 
@@ -76,6 +77,7 @@
 html_df <- function(urlx, 
                     max_size = 5000000, 
                     wait = 0,
+                    retry_times = 0,
                     time_out = 10, 
                     show_progress = TRUE, 
                     keep_source = TRUE, 
@@ -94,9 +96,12 @@ html_df <- function(urlx,
     }
     # cycle through urls and attempt to request each page
     fetch_list[[i]] <- fetch_page(
-      urlx[i], max_size = max_size, 
-      time_out = time_out, keep_source = keep_source, 
-      chrome_bin = chrome_bin)
+      urlx[i], 
+      max_size    = max_size, 
+      time_out    = time_out, 
+      retry_times = retry_times,
+      keep_source = keep_source, 
+      chrome_bin  = chrome_bin)
   }
   # combine into dataFrame
   z <- tibble(z = fetch_list) %>% 

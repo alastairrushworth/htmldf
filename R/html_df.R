@@ -16,6 +16,7 @@
 #' @param time_out Time in seconds to wait for \code{httr::GET()} to complete before exiting.  Defaults 
 #' to 10. 
 #' @param chrome_bin (Optional) Path to a Chromium install to use Chrome in headless mode for scraping
+#' @param ... Additional arguments to `rvest::GET()`.
 #' @return A tibble with columns 
 #' \itemize{
 #' \item \code{url} the original vector of urls provided
@@ -74,14 +75,17 @@
 #' @importFrom utils object.size
 #' @export
 
-html_df <- function(urlx, 
-                    max_size = 5000000, 
-                    wait = 0,
-                    retry_times = 0,
-                    time_out = 10, 
-                    show_progress = TRUE, 
-                    keep_source = TRUE, 
-                    chrome_bin = NULL){
+html_df <- function(
+  urlx, 
+  max_size = 5000000, 
+  wait = 0,
+  retry_times = 0,
+  time_out = 10, 
+  show_progress = TRUE, 
+  keep_source = TRUE, 
+  chrome_bin = NULL,
+  ...
+){
   fetch_list <- vector('list', length = length(urlx))
   # loop over pages and fetch
   if(show_progress) pb <- start_progress(total = length(urlx), prefix = 'Parsing link: ')
@@ -101,7 +105,8 @@ html_df <- function(urlx,
       time_out    = time_out, 
       retry_times = retry_times,
       keep_source = keep_source, 
-      chrome_bin  = chrome_bin)
+      chrome_bin  = chrome_bin, 
+      ...)
   }
   # combine into dataFrame
   z <- tibble(z = fetch_list) %>% 

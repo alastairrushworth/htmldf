@@ -12,7 +12,8 @@ html_df(
   time_out = 10,
   show_progress = TRUE,
   keep_source = TRUE,
-  chrome_bin = NULL
+  chrome_bin = NULL,
+  ...
 )
 }
 \arguments{
@@ -34,6 +35,8 @@ to 10.}
 column in the output tibble.  Useful to reduce memory usage when scraping many pages.  Defaults to \code{TRUE}.}
 
 \item{chrome_bin}{(Optional) Path to a Chromium install to use Chrome in headless mode for scraping}
+
+\item{...}{Additional arguments to `rvest::GET()`.}
 }
 \value{
 A tibble with columns 

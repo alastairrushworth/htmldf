@@ -3,10 +3,10 @@
 #' @importFrom httr HEAD
 #' @importFrom httr timeout
 
-fetch_page <- function(url, time_out, retry_times, max_size, keep_source, chrome_bin){
+fetch_page <- function(url, time_out, retry_times, max_size, keep_source, chrome_bin, ...){
   # attempt to read from  url
   parse_attempt <- try(
-    httr::RETRY("GET", url, timeout = httr::timeout(time_out), times = retry_times), 
+    httr::RETRY("GET", url, timeout = httr::timeout(time_out), times = retry_times, ...), 
     silent = TRUE)
   if(!is.null(chrome_bin)){
     parse_attempt2 <- try(

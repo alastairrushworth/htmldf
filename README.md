@@ -81,7 +81,7 @@ glimpse(z[1, ])
     ## $ code_lang <dbl> 1
     ## $ size      <int> 38445
     ## $ server    <chr> "GitHub.com"
-    ## $ accessed  <dttm> 2021-09-05 07:59:26
+    ## $ accessed  <dttm> 2021-12-27 10:19:35
     ## $ published <dttm> 2019-11-24
     ## $ generator <chr> NA
     ## $ status    <int> 200
@@ -97,7 +97,7 @@ z %>% select(title, url2)
     ##   title                                                              url2       
     ##   <chr>                                                              <chr>      
     ## 1 Visualising Tour De France Data In R -                             https://al…
-    ## 2 A Gentle Introduction to PyTorch 1.2 | by elvis | dair.ai | Medium https://me…
+    ## 2 A Gentle Introduction to PyTorch 1.2 | by elvis | DAIR.AI | Medium https://me…
     ## 3 Convolutional Neural Network (CNN)  |  TensorFlow Core             https://ww…
     ## 4 Pytorch | Getting Started With Pytorch                             https://ww…
 
@@ -117,8 +117,8 @@ z$tables
     ## [1] NA
     ## 
     ## [[3]]
-    ## [[3]]$uncoercible
-    ## [1] "<table class=\"tfo-notebook-buttons\" align=\"left\">\n<td>\n    <a target=\"_blank\" href=\"https://www.tensorflow.org/tutorials/images/cnn\">\n    <img src=\"https://www.tensorflow.org/images/tf_logo_32px.png\">\n    View on TensorFlow.org</a>\n  </td>\n  <td>\n    <a target=\"_blank\" href=\"https://colab.research.google.com/github/tensorflow/docs/blob/master/site/en/tutorials/images/cnn.ipynb\">\n    <img src=\"https://www.tensorflow.org/images/colab_logo_32px.png\">\n    Run in Google Colab</a>\n  </td>\n  <td>\n    <a target=\"_blank\" href=\"https://github.com/tensorflow/docs/blob/master/site/en/tutorials/images/cnn.ipynb\">\n    <img src=\"https://www.tensorflow.org/images/GitHub-Mark-32px.png\">\n    View source on GitHub</a>\n  </td>\n  <td>\n    <a href=\"https://storage.googleapis.com/tensorflow_docs/docs/site/en/tutorials/images/cnn.ipynb\"><img src=\"https://www.tensorflow.org/images/download_logo_32px.png\">Download notebook</a>\n  </td>\n</table>\n"
+    ## [[3]]$`no-caption`
+    ## # A tibble: 0 × 0
     ## 
     ## 
     ## [[4]]
@@ -231,7 +231,7 @@ z %>% select(published, url2)
     ##   <dttm>              <chr>                                                     
     ## 1 2019-11-24 00:00:00 https://alastairrushworth.github.io/Visualising-Tour-de-F…
     ## 2 2019-09-01 18:03:22 https://medium.com/dair-ai/pytorch-1-2-introduction-guide…
-    ## 3 2021-06-17 00:00:00 https://www.tensorflow.org/tutorials/images/cnn           
+    ## 3 2021-11-11 00:00:00 https://www.tensorflow.org/tutorials/images/cnn           
     ## 4 2019-09-17 03:09:28 https://www.analyticsvidhya.com/blog/2019/09/introduction…
 
 ## Comments? Suggestions? Issues?

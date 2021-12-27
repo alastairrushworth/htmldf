@@ -3,13 +3,15 @@
 
 chrome_read_html <- function(url, chrome_bin, timeout){
   
-  args <- c("--headless", 
-            "--disable-gpu", 
-            "--no-sandbox", 
-            "--allow-no-sandbox-job",  
-            "--dump-dom",
-            "--virtual-time-budget=10000",
-            url)
+  args <- c(
+    "--headless", 
+    "--disable-gpu", 
+    "--no-sandbox", 
+    "--allow-no-sandbox-job",  
+    "--dump-dom",
+    "--virtual-time-budget=10000",
+    url
+  )
   
   res <- processx::run(
     command = chrome_bin,

@@ -19,7 +19,6 @@ get_generator <- function(page){
         } else{
           generator <- html_gen
         }
-        
       } else {
         generator <- NA
       }

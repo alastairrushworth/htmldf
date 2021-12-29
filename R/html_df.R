@@ -14,9 +14,10 @@
 #' @param keep_source Logical argument - whether or not to retain the contents of the page \code{source} 
 #' column in the output tibble.  Useful to reduce memory usage when scraping many pages.  Defaults to \code{TRUE}.
 #' @param time_out Time in seconds to wait for \code{httr::GET()} to complete before exiting.  Defaults 
-#' to 10. 
+#' to 30. 
 #' @param chrome_bin (Optional) Path to a Chromium install to use Chrome in headless mode for scraping
-#' @param ... Additional arguments to `rvest::GET()`.
+#' @param chrome_args (Optional) Vector of additional command-line arguments to pass to chrome
+#' @param ... Additional arguments to `httr::GET()`.
 #' @return A tibble with columns 
 #' \itemize{
 #' \item \code{url} the original vector of urls provided
@@ -80,10 +81,11 @@ html_df <- function(
   max_size = 5000000, 
   wait = 0,
   retry_times = 0,
-  time_out = 10, 
+  time_out = 30, 
   show_progress = TRUE, 
   keep_source = TRUE, 
   chrome_bin = NULL,
+  chrome_args = NULL,
   ...
 ){
   fetch_list <- vector('list', length = length(urlx))
@@ -106,6 +108,7 @@ html_df <- function(
       retry_times = retry_times,
       keep_source = keep_source, 
       chrome_bin  = chrome_bin, 
+      chrome_args = chrome_args,
       ...)
   }
   # combine into dataFrame

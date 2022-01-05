@@ -10,3 +10,5 @@
 ^exampleshit.R$
 ^tests$
 ^README\.Rmd$
+^.github$
+^tag_train.R$

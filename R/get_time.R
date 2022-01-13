@@ -43,11 +43,13 @@ get_time <- function(page, url){
         "div[class='date']",
         "i[class='fa fa-calendar-o']", 
         "span[class='post-meta']", 
-        "p", 
+        "p",
         "h4"
       )
       pub_time  <-  as.vector(na.omit(unlist(lapply(node_list, get_time_text, page = page))))
     }
+    # remove anything with too many characters
+    if(length(pub_time) > 0) pub_time <- pub_time[nchar(pub_time) < 10^6]
     if(length(pub_time) > 0){
       pub_time <- unique(pub_time)
       pub_time <- unlist(strsplit(pub_time, '\n'))

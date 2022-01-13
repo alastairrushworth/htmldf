@@ -3,8 +3,8 @@
 
 [![codecov](https://codecov.io/gh/alastairrushworth/htmldf/branch/master/graph/badge.svg)](https://app.codecov.io/gh/alastairrushworth/htmldf)
 [![CRAN
-status](https://www.r-pkg.org/badges/version/htmldf)](https://cran.r-project.org/web/packages/htmldf/index.html)
-[![](https://cranlogs.r-pkg.org/badges/htmldf)](https://cran.r-project.org/web/packages/htmldf/index.html)
+status](https://www.r-pkg.org/badges/version/htmldf)](https://CRAN.R-project.org/package=htmldf)
+[![](https://cranlogs.r-pkg.org/badges/htmldf)](https://CRAN.R-project.org/package=htmldf)
 [![cran
 checks](https://cranchecks.info/badges/summary/htmldf)](https://cran.r-project.org/web/checks/check_results_htmldf.html)
 
@@ -81,7 +81,7 @@ glimpse(z[1, ])
     ## $ code_lang <dbl> 1
     ## $ size      <int> 38445
     ## $ server    <chr> "GitHub.com"
-    ## $ accessed  <dttm> 2022-01-13 08:56:06
+    ## $ accessed  <dttm> 2022-01-13 08:58:58
     ## $ published <dttm> 2019-11-24
     ## $ generator <chr> NA
     ## $ status    <int> 200

@@ -49,7 +49,7 @@ get_time <- function(page, url){
       pub_time  <-  as.vector(na.omit(unlist(lapply(node_list, get_time_text, page = page))))
     }
     # remove anything with too many characters
-    if(length(pub_time) > 0) pub_time <- pub_time[nchar(pub_time) < 10^6]
+    if(length(pub_time) > 0) pub_time <- na.omit(pub_time[nchar(iconv(pub_time, to = 'UTF-8')) < 10^6])
     if(length(pub_time) > 0){
       pub_time <- unique(pub_time)
       pub_time <- unlist(strsplit(pub_time, '\n'))

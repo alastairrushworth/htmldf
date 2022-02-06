@@ -81,7 +81,7 @@ glimpse(z[1, ])
     ## $ code_lang <dbl> 1
     ## $ size      <int> 38445
     ## $ server    <chr> "GitHub.com"
-    ## $ accessed  <dttm> 2022-01-13 08:58:58
+    ## $ accessed  <dttm> 2022-02-06 17:20:06
     ## $ published <dttm> 2019-11-24
     ## $ generator <chr> NA
     ## $ status    <int> 200
@@ -217,7 +217,7 @@ z %>% select(code_lang, url2)
     ##       <dbl> <chr>                                                               
     ## 1     1     https://alastairrushworth.github.io/Visualising-Tour-de-France-data…
     ## 2    -0.860 https://medium.com/dair-ai/pytorch-1-2-introduction-guide-f6fa9bb75…
-    ## 3    -0.936 https://www.tensorflow.org/tutorials/images/cnn                     
+    ## 3    -0.983 https://www.tensorflow.org/tutorials/images/cnn                     
     ## 4    -1     https://www.analyticsvidhya.com/blog/2019/09/introduction-to-pytorc…
 
 Publication dates
@@ -231,7 +231,7 @@ z %>% select(published, url2)
     ##   <dttm>              <chr>                                                     
     ## 1 2019-11-24 00:00:00 https://alastairrushworth.github.io/Visualising-Tour-de-F…
     ## 2 2019-09-01 18:03:22 https://medium.com/dair-ai/pytorch-1-2-introduction-guide…
-    ## 3 2021-11-11 00:00:00 https://www.tensorflow.org/tutorials/images/cnn           
+    ## 3 2022-01-26 00:00:00 https://www.tensorflow.org/tutorials/images/cnn           
     ## 4 2019-09-17 03:09:28 https://www.analyticsvidhya.com/blog/2019/09/introduction…
 
 ## Comments? Suggestions? Issues?

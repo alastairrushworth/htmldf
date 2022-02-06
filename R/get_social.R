@@ -17,8 +17,11 @@ get_social_links <- function(html_content){
   # TWITTER HANDLES FROM EMBEDDED LINKS
   tw_links <- twitter_handles_from_urls(links)
   # TWITTER HANDLES FROM TAGS
-  tw_attrs <- c('meta[name="twitter:site"]', 'meta[name="twitter:creator"]', 
-                'meta[property="twitter:site"]', 'meta[property="twitter:creator"]')
+  tw_attrs <- c(
+    'meta[name="twitter:site"]', 
+    'meta[name="twitter:creator"]', 
+    'meta[property="twitter:site"]', 
+    'meta[property="twitter:creator"]')
   tw_tags  <- unlist(sapply(tw_attrs, function(v) html_content %>% html_nodes(v) %>% html_attr('content') %>% tolower()))
   tw_tags  <- gsub('https://twitter.com/', '', tw_tags)
   # COMBINE ALL HANDLES
@@ -36,6 +39,16 @@ get_social_links <- function(html_content){
     matches <- 
       links %>% 
       grep(instructions$pattern, ., perl = TRUE, value = TRUE) 
+    if(!is.null(instructions$gexclude)) if(length(matches) > 0) matches <- matches[!grepl(instructions$gexclude, matches)]
+    if(!is.null(instructions$max_segments)){
+      if(length(matches) > 0){
+        x <- strsplit(matches, '/')
+        x <- lapply(x, function(v) v[1:(ifelse(length(v) > (instructions$max_segments + 2), instructions$max_segments + 2, length(v)))]) 
+        x <- lapply(x, paste0, collapse = "/")
+        matches <- unlist(x)
+      }
+    }
+    if(!is.null(instructions$gexclude)) if(length(matches) > 0) matches <- matches[!grepl(instructions$gexclude, matches)]
     handles <- 
       matches %>%
       gsub(instructions$slug, ifelse(instructions$at_profile, '@', ''), .) %>%
@@ -46,10 +59,14 @@ get_social_links <- function(html_content){
     # handles  <- handles %>% unique() %>% sort()
     
     if(!is.null(instructions$slug_add)){
-      profiles <- paste0(instructions$slug_add, gsub('@', '', handles))
+      if(instructions$slug_add == 'auto'){
+        slug_bits <- xml2::url_parse(matches)
+        profiles  <- paste0(slug_bits$scheme, '://', slug_bits$server, '/', handles)
+      } else if(is.character(instructions$slug_add)){
+        profiles <- paste0(instructions$slug_add, gsub('@', '', handles))
+      }
     } else {
-      slug_bits <- xml2::url_parse(matches)
-      profiles  <- paste0(slug_bits$scheme, '://', slug_bits$server, '/', handles)
+      profiles <- handles
     }
       
     out_df   <- tibble(
@@ -130,6 +147,15 @@ social_patterns <- list(
     at_profile = TRUE,
     case_sense = FALSE
   ), 
+  
+  'discord' = list(
+    pattern    = 'https?://(www.)?discord.gg/|https?://(www.)?discordapp.com/invite/',
+    slug       = 'https?://(www.)?discord.gg/',
+    slug_add   = 'https://discord.gg/',
+    site       = 'discord',
+    at_profile = TRUE,
+    case_sense = TRUE
+  ),
 
   'facebook' = list(
     pattern    = 'https?://(www.)?facebook.com/(?!sharer)', 
@@ -139,7 +165,6 @@ social_patterns <- list(
     at_profile = TRUE,
     case_sense = FALSE
   ), 
-
   
   'gitlab' = list(
     pattern    = 'https?://(www.)?gitlab.com/', 
@@ -169,6 +194,15 @@ social_patterns <- list(
     case_sense = FALSE
   ), 
   
+  'kakao' = list(
+    pattern    = 'https?://(www.)?open.kakao.com/o/',
+    slug       = 'https?://(www.)?open.kakao.com/o/',
+    slug_add   = 'https://open.kakao.com/o/',
+    site       = 'kakao',
+    at_profile = TRUE,
+    case_sense = FALSE
+  ),
+  
   'keybase' = list(
     pattern    = 'https?://(www.)?keybase.io/', 
     slug       = 'https?://(www.)?keybase.io/',
@@ -190,10 +224,33 @@ social_patterns <- list(
   'mastodon' = list(
     pattern    = 'https?://(www.)?mastodon\\.(\\w+)\\/',
     slug       = 'https?://(www.)?mastodon\\.(\\w+)\\/',
-    slug_add   = NULL,
+    slug_add   = 'auto',
     site       = 'mastodon',
     at_profile = FALSE,
     case_sense = FALSE
+  ),
+
+  'medium1' = list(
+    pattern    = 'https?://(www.)?medium.com/(?!/m/signin(\\/|))(?!events(\\/|))(?!membership(\\/|))(?!about(\\/|))(?!topics(\\/|))(?!contact(\\/|))(?!site(\\/|))',
+    slug       = 'https?://(www.)?medium.com/',
+    slug_add   = 'https://medium.com/',
+    site       = 'medium',
+    gsub2      = '\\./*|\\?.*',
+    at_profile = FALSE,
+    case_sense = TRUE, 
+    gexclude   = '^https://medium.com/m?$',
+    max_segments = 2
+  ),
+  
+  'medium2' = list(
+    pattern    = 'https://(www.)?(\\w+).medium.com/',
+    slug       = 'https://(www.)?(\\w+).medium.com/',
+    slug_add   = NULL,
+    site       = 'medium',
+    at_profile = FALSE,
+    case_sense = TRUE, 
+    gexclude   = 'https://(policy|help|about).medium.com/',
+    max_segments = 1
   ),
 
   'orcid' = list(
@@ -214,6 +271,26 @@ social_patterns <- list(
     case_sense = FALSE
   ),
 
+  'reddit-community' = list(
+    pattern    = 'https?://(www.)?reddit.com/r/',
+    slug       = 'https?://(www.)?reddit.com/r/',
+    slug_add   = 'https://reddit.com/r/',
+    site       = 'reddit-community',
+    gsub2      = "\\/comments/.*",
+    at_profile = FALSE,
+    case_sense = TRUE
+  ),
+
+  'reddit-user' = list(
+    pattern    = 'https?://(www.)?reddit.com/u(ser)?/',
+    slug       = 'https?://(www.)?reddit.com/u(ser)?/',
+    slug_add   = 'https://reddit.com/user/',
+    site       = 'reddit-user',
+    gsub2      = "\\/comments/.*",
+    at_profile = FALSE,
+    case_sense = TRUE
+  ),
+  
   'researchgate' = list(
     pattern    = 'https?://(www.)?researchgate.net/profile/', 
     slug       = 'https?://(www.)?researchgate.net/profile/',
@@ -232,6 +309,15 @@ social_patterns <- list(
     case_sense = FALSE
   ),
   
+  'telegram' = list(
+    pattern    = 'https?://(www.)?t.me/',
+    slug       = 'https?://(www.)?t.me/',
+    slug_add   = 'https://t.me/',
+    site       = 'telegram',
+    at_profile = TRUE,
+    case_sense = FALSE
+  ),
+
   # 'vimeo' = list(
   #   pattern    = 'https?://(www.)?vimeo.com/', 
   #   slug       = 'https?://(www.)?vimeo.com/',

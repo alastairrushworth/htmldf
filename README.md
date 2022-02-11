@@ -81,7 +81,7 @@ glimpse(z[1, ])
     ## $ code_lang <dbl> 1
     ## $ size      <int> 38445
     ## $ server    <chr> "GitHub.com"
-    ## $ accessed  <dttm> 2022-02-06 17:23:31
+    ## $ accessed  <dttm> 2022-02-11 11:27:13
     ## $ published <dttm> 2019-11-24
     ## $ generator <chr> NA
     ## $ status    <int> 200
@@ -152,21 +152,10 @@ z$rss
 `html_df()` will try to parse out any social profiles embedded or
 mentioned on the page. Currently, this includes profiles for the sites
 
--   bitbucket
--   devto
--   facebook
--   github
--   gitlab
--   instagram
--   keybase
--   linkedin
--   mastodon
--   orcid
--   patreon
--   researchgate
--   stackoverflow
--   twitter
--   youtube
+`bitbucket`, `dev.to`, `discord`, `facebook`, `github`, `gitlab`,
+`instagram`, `kakao`, `keybase`, `linkedin`, `mastodon`, `medium`,
+`orcid`, `patreon`, `researchgate`, `stackoverflow`, `reddit`,
+`telegram`, `twitter`, `youtube`
 
 ``` r
 z$social
@@ -181,17 +170,13 @@ z$social
     ## 3 linkedin @in/alastair-rushworth-253137143 https://linkedin.com/in/alastair-ru…
     ## 
     ## [[2]]
-    ## # A tibble: 8 × 3
-    ##   site    handle                           profile                       
-    ##   <chr>   <chr>                            <chr>                         
-    ## 1 twitter "@dair_ai"                       https://twitter.com/dair_ai   
-    ## 2 twitter "@omarsar0"                      https://twitter.com/omarsar0  
-    ## 3 github  "@omarsar"                       https://github.com/omarsar    
-    ## 4 medium  ""                               https://medium.com/           
-    ## 5 medium  "dair-ai"                        https://medium.com/dair-ai    
-    ## 6 medium  "https://deepganteam.medium.com" https://deepganteam.medium.com
-    ## 7 medium  "https://iambideniz.medium.com"  https://iambideniz.medium.com 
-    ## 8 medium  "https://swayattadaw.medium.com" https://swayattadaw.medium.com
+    ## # A tibble: 4 × 3
+    ##   site    handle    profile                     
+    ##   <chr>   <chr>     <chr>                       
+    ## 1 twitter @dair_ai  https://twitter.com/dair_ai 
+    ## 2 twitter @omarsar0 https://twitter.com/omarsar0
+    ## 3 github  @omarsar  https://github.com/omarsar  
+    ## 4 medium  dair-ai   https://medium.com/dair-ai  
     ## 
     ## [[3]]
     ## # A tibble: 2 × 3

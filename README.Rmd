@@ -83,21 +83,7 @@ z$rss
 
 `html_df()` will try to parse out any social profiles embedded or mentioned on the page.  Currently, this includes profiles for the sites
 
-+ bitbucket
-+ devto
-+ facebook
-+ github
-+ gitlab
-+ instagram
-+ keybase
-+ linkedin
-+ mastodon
-+ orcid
-+ patreon
-+ researchgate
-+ stackoverflow
-+ twitter
-+ youtube
+`bitbucket`, `dev.to`, `discord`, `facebook`, `github`, `gitlab`, `instagram`, `kakao`, `keybase`, `linkedin`, `mastodon`, `medium`, `orcid`, `patreon`, `researchgate`, `stackoverflow`, `reddit`, `telegram`, `twitter`, `youtube`
 
 
 ```{r}

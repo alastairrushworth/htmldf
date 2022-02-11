@@ -38,7 +38,8 @@ get_social_links <- function(html_content){
     if(!instructions$case_sense) links <- tolower(links)
     matches <- 
       links %>% 
-      grep(instructions$pattern, ., perl = TRUE, value = TRUE) 
+      grep(instructions$pattern, ., perl = TRUE, value = TRUE) %>%
+      gsub('\\?(.*)', '', .)
     if(!is.null(instructions$gexclude)) if(length(matches) > 0) matches <- matches[!grepl(instructions$gexclude, matches)]
     if(!is.null(instructions$max_segments)){
       if(length(matches) > 0){
@@ -56,8 +57,6 @@ get_social_links <- function(html_content){
     if(!is.null(instructions$gsub2)){
       handles <- gsub(instructions$gsub2, '', handles)
     }
-    # handles  <- handles %>% unique() %>% sort()
-    
     if(!is.null(instructions$slug_add)){
       if(instructions$slug_add == 'auto'){
         slug_bits <- xml2::url_parse(matches)

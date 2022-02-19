@@ -1,3 +1,7 @@
+### v0.6.0
++ Extended social media profile inference to include several extra sites
++ Added better default user agent string
+
 ### v0.5.0 // 13-01-2022
 + Improvement to table parsing inherited from recent changes in `rvest::html_table()`
 + `retry_times` argument to allow retrying of URLs after failure

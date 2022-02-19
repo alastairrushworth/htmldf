@@ -113,7 +113,9 @@ html_df <- function(
   }
   # combine into dataFrame
   z <- tibble(z = fetch_list) %>% 
-    unnest_wider(z) %>%
+    unnest_wider(
+      z, 
+      simplify = list('social' = FALSE, 'tables' = FALSE, 'images' = FALSE, 'links' = FALSE)) %>%
     select(url, title, lang, url2, links, rss, tables, 
            images, social, code_lang, size, server, 
            accessed, published, generator, status,

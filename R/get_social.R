@@ -220,6 +220,15 @@ social_patterns <- list(
     case_sense = FALSE
   ), 
   
+  # 'linktree' = list(
+  #   pattern    = 'https?://(www.)?linktr.ee/', 
+  #   slug       = 'https?://(www.)?linktr.ee/',
+  #   slug_add   = 'https://linktr.ee/',
+  #   site       = 'linktree',
+  #   at_profile = TRUE,
+  #   case_sense = FALSE
+  # ), 
+  
   'mastodon' = list(
     pattern    = 'https?://(www.)?mastodon\\.(\\w+)\\/',
     slug       = 'https?://(www.)?mastodon\\.(\\w+)\\/',

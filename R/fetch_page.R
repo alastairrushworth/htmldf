@@ -66,23 +66,24 @@ fetch_page <- function(url, time_out, retry_times, max_size, keep_source, chrome
   
   # combine into list
   pg_features <- 
-    list(url    = url, 
-         url2   = hdr_url2, 
-         rss    = pg_rss, 
-         title  = pg_ttl, 
-         links  = pg_lnk,
-         tables = pg_tbl,
-         source = pg_source,
-         social = pg_scl,
-         images = pg_img, 
-         generator = pg_gen, 
-         lang = pg_lng, 
-         server = hdr_server, 
-         size = hdr_size,
-         accessed = hdr_acc,
-         published = pg_tim,
-         code_lang = pg_code_lang, 
-         status    = hdr_status)
-  
+    list(
+      url    = url, 
+      url2   = hdr_url2, 
+      rss    = pg_rss, 
+      title  = pg_ttl, 
+      links  = pg_lnk,
+      tables = pg_tbl,
+      source = pg_source,
+      social = pg_scl,
+      images = pg_img, 
+      generator = pg_gen, 
+      lang = pg_lng, 
+      server = hdr_server, 
+      size = hdr_size,
+      accessed = hdr_acc,
+      published = pg_tim,
+      code_lang = pg_code_lang, 
+      status    = hdr_status
+    )
   return(pg_features)
 }

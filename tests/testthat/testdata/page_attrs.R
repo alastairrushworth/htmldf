@@ -12,18 +12,6 @@ url_list <- list(
                        tables = NA,
                        pdate  = "2017-04-08 04:53:48"),
   
-  # # Aeon - philosophy blog
-  # 'aeon'        = list(url    = 'https://aeon.co/essays/pippi-and-the-moomins-served-as-a-social-antidote-to-fascism',
-  #                      # rss    = "https://aeon.co/feed.rss", # need V8 to get this
-  #                      rss    = NA,
-  #                      social = c('https://facebook.com/AeonMagazine', 
-  #                                 'https://instagram.com/aeonmag', 
-  #                                 'https://twitter.com/aeonmag'),
-  #                      title  = "Pippi and the Moomins served as a social antidote to fascism | Aeon Essays",
-  #                      code   =  NA,
-  #                      lang   = 'en',
-  #                      tables =  NA,
-  #                      pdate  = "2020-10-06"),
   
   # Alastair Rushworth - about me 
   'alastair'    = list(url    = 'https://alastairrushworth.github.io/aboutme/',
@@ -372,7 +360,29 @@ url_list <- list(
                        tables = NA, 
                        pdate  = NA),
   
-
+  # kadena
+  'kadena' = list(
+    url = 'https://kadena.io/', 
+    rss = c(
+      "https://kadena.io/feed/", 
+      "https://kadena.io/comments/feed/"), 
+    social = c(
+      'https://twitter.com/kadena_io', 
+      'https://github.com/kadena-io', 
+      'https://linkedin.com/company/kadena-llc', 
+      'https://medium.com/kadena-io', 
+      'https://reddit.com/r/kadena', 
+      'https://t.me/kadena_io', 
+      'https://youtube.com/kadenablockchain'
+    ), 
+    title = "Home - Kadena", 
+    code  = NA, 
+    lang  = 'en-us',
+    tables = NA, 
+    pdate = "2021-10-12 12:24:01"
+  ),
+    
+  
   # landau targets bookdown 
   'landau'       = list(url   = 'https://wlandau.github.io/targets-manual/index.html',
                         rss    = NA,

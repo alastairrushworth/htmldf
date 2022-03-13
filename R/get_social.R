@@ -217,6 +217,7 @@ social_patterns <- list(
     slug_add   = 'https://linkedin.com/',
     site       = 'linkedin',
     at_profile = TRUE,
+    gexclude   = 'https://(www.)?linkedin.com/(accessibility|legal)',
     case_sense = FALSE
   ), 
   
@@ -334,12 +335,13 @@ social_patterns <- list(
   #   at_profile = TRUE,
   #   case_sense = FALSE
   # ),
-  # 
+ 
   'youtube' = list(
-    pattern    = 'https?://(www.)?youtube.com/channel/', 
-    slug       = 'https?://(www.)?youtube.com/channel/',
-    slug_add   = 'https://youtube.com/channel/',
+    pattern    = 'https?://(www.)?youtube.com/', 
+    slug       = 'https?://(www.)?youtube.com/',
+    slug_add   = 'https://youtube.com/',
     site       = 'youtube',
+    gexclude   = 'https?://(www.)?youtube.com/(about/|ads/|creators/|howyoutubeworks$|watch$)',
     at_profile = FALSE,
     case_sense = TRUE
   )

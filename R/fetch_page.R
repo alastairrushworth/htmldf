@@ -19,14 +19,14 @@ fetch_page <- function(url, time_out, retry_times, max_size, keep_source, chrome
   }
   
   # return NA if the URL could not be read
-  if(class(parse_attempt) == 'try-error'){
+  if(inherits(parse_attempt, 'try-error')){
     pg_dl <- NA
   } else {
     pg_dl <- parse_attempt
   }
 
   # extract headers from the page
-  if(class(pg_dl) == "response"){
+  if(inherits(pg_dl, "response")){
     pg_hdr     <- get_headers(pg_dl)
     hdr_server <- pg_hdr$server
     hdr_acc    <- pg_hdr$accessed

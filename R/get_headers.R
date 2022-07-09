@@ -1,7 +1,7 @@
 #' @importFrom tibble tibble
 #' @importFrom lubridate as_datetime
 get_headers <- function(page){
-  if(class(page) == 'response') {
+  if(inherits(page, 'response')) {
     try_size   <- try(length(page$content), silent = TRUE)
     try_server <- try(page$headers$server, silent = TRUE)
     try_url    <- try(page$url, silent = TRUE)

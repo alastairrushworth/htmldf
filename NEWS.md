@@ -1,4 +1,4 @@
-### v0.6.0
+### v0.6.0 // 09-07-2022
 + Extended social media profile inference to include several extra sites
 + Added better default user agent string
 

@@ -3,7 +3,7 @@ output: github_document
 ---
 
 # htmldf <img src="man/figures/hex.png" align="right" width="150" />
-
+![build](https://github.com/alastairrushworth/htmldf/workflows/R-CMD-check/badge.svg)
 [![codecov](https://codecov.io/gh/alastairrushworth/htmldf/branch/master/graph/badge.svg)](https://app.codecov.io/gh/alastairrushworth/htmldf)
 [![CRAN status](https://www.r-pkg.org/badges/version/htmldf)](https://CRAN.R-project.org/package=htmldf)
 [![](https://cranlogs.r-pkg.org/badges/htmldf)](https://CRAN.R-project.org/package=htmldf)

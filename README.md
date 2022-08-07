@@ -1,6 +1,7 @@
 
 # htmldf <img src="man/figures/hex.png" align="right" width="150" />
 
+![build](https://github.com/alastairrushworth/htmldf/workflows/R-CMD-check/badge.svg)
 [![codecov](https://codecov.io/gh/alastairrushworth/htmldf/branch/master/graph/badge.svg)](https://app.codecov.io/gh/alastairrushworth/htmldf)
 [![CRAN
 status](https://www.r-pkg.org/badges/version/htmldf)](https://CRAN.R-project.org/package=htmldf)
@@ -81,7 +82,7 @@ glimpse(z[1, ])
     ## $ code_lang <dbl> 1
     ## $ size      <int> 38445
     ## $ server    <chr> "GitHub.com"
-    ## $ accessed  <dttm> 2022-07-09 16:01:32
+    ## $ accessed  <dttm> 2022-08-07 06:30:03
     ## $ published <dttm> 2019-11-24
     ## $ generator <chr> NA
     ## $ status    <int> 200
@@ -170,12 +171,16 @@ z$social
     ## 3 linkedin @in/alastair-rushworth-253137143 https://linkedin.com/in/alastair-ru…
     ## 
     ## [[2]]
-    ## # A tibble: 3 × 3
-    ##   site    handle    profile                     
-    ##   <chr>   <chr>     <chr>                       
-    ## 1 twitter @dair_ai  https://twitter.com/dair_ai 
-    ## 2 twitter @omarsar0 https://twitter.com/omarsar0
-    ## 3 github  @omarsar  https://github.com/omarsar  
+    ## # A tibble: 7 × 3
+    ##   site    handle               profile                                
+    ##   <chr>   <chr>                <chr>                                  
+    ## 1 twitter @dair_ai             https://twitter.com/dair_ai            
+    ## 2 twitter @omarsar0            https://twitter.com/omarsar0           
+    ## 3 github  @omarsar             https://github.com/omarsar             
+    ## 4 medium  a-chatbots-life      https://medium.com/a-chatbots-life     
+    ## 5 medium  analytics-vidhya     https://medium.com/analytics-vidhya    
+    ## 6 medium  dair-ai              https://medium.com/dair-ai             
+    ## 7 medium  towards-data-science https://medium.com/towards-data-science
     ## 
     ## [[3]]
     ## # A tibble: 2 × 3
@@ -186,12 +191,12 @@ z$social
     ## 
     ## [[4]]
     ## # A tibble: 4 × 3
-    ##   site     handle                    profile                                    
-    ##   <chr>    <chr>                     <chr>                                      
-    ## 1 twitter  @analyticsvidhya          https://twitter.com/analyticsvidhya        
-    ## 2 facebook @analyticsvidhya          https://facebook.com/analyticsvidhya       
-    ## 3 linkedin @company/analytics-vidhya https://linkedin.com/company/analytics-vid…
-    ## 4 youtube  UCH6gDteHtH4hg3o2343iObA  https://youtube.com/channel/UCH6gDteHtH4hg…
+    ##   site     handle                           profile                             
+    ##   <chr>    <chr>                            <chr>                               
+    ## 1 twitter  @analyticsvidhya                 https://twitter.com/analyticsvidhya 
+    ## 2 facebook @analyticsvidhya                 https://facebook.com/analyticsvidhya
+    ## 3 linkedin @company/analytics-vidhya        https://linkedin.com/company/analyt…
+    ## 4 youtube  channel/UCH6gDteHtH4hg3o2343iObA https://youtube.com/channel/UCH6gDt…
 
 Code language is inferred from `<code>` chunks using a preditive model.
 The `code_lang` column contains a numeric score where values near 1
